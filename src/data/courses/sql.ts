@@ -1,504 +1,525 @@
 import { Track } from '../../types';
-import { SAMPLE_DATABASES } from '../sampleDatabases';
+
+const BASE_SQL_SCHEMA = `
+CREATE TABLE users (
+  id INTEGER PRIMARY KEY,
+  name TEXT,
+  email TEXT,
+  country TEXT,
+  role TEXT,
+  created_at TEXT
+);
+
+INSERT INTO users (id, name, email, country, role, created_at) VALUES
+  (1, 'Sarah Chen', 'sarah@example.com', 'USA', 'admin', '2023-01-15'),
+  (2, 'Marcus Miller', 'marcus@example.com', 'UK', 'member', '2023-02-20'),
+  (3, 'Aria Stark', 'aria@example.com', 'USA', 'member', '2023-03-10'),
+  (4, 'Liam O''Connor', 'liam@example.com', 'Ireland', 'member', '2023-04-05'),
+  (5, 'Yuki Tanaka', 'yuki@example.com', 'Japan', 'admin', '2023-05-12');
+
+CREATE TABLE products (
+  id INTEGER PRIMARY KEY,
+  name TEXT,
+  category TEXT,
+  price REAL,
+  stock INTEGER
+);
+
+INSERT INTO products (id, name, category, price, stock) VALUES
+  (1, 'Mechanical Keyboard', 'Electronics', 120.00, 45),
+  (2, 'Noise-Cancelling Headphones', 'Electronics', 250.00, 18),
+  (3, 'Ergonomic Desk Chair', 'Furniture', 340.00, 12),
+  (4, 'Standing Desk Converter', 'Furniture', 180.00, 25),
+  (5, 'USB-C Fast Charger', 'Accessories', 29.99, 120),
+  (6, 'Ultra-wide Gaming Monitor', 'Electronics', 499.00, 8);
+
+CREATE TABLE orders (
+  id INTEGER PRIMARY KEY,
+  user_id INTEGER,
+  amount REAL,
+  status TEXT,
+  order_date TEXT
+);
+
+INSERT INTO orders (id, user_id, amount, status, order_date) VALUES
+  (1, 1, 120.00, 'completed', '2023-06-01'),
+  (2, 2, 250.00, 'completed', '2023-06-03'),
+  (3, 1, 29.99, 'completed', '2023-06-04'),
+  (4, 3, 340.00, 'pending', '2023-06-10'),
+  (5, 5, 499.00, 'completed', '2023-06-12');
+`;
 
 export const SQL_TRACK: Track = {
   id: 'sql',
-  title: 'SQL: Foundations to Database Architect',
+  title: 'SQL: Beginner to Pro',
   slug: 'sql',
   language: 'sql',
   icon: 'Database',
-  color: 'from-blue-500 to-cyan-500',
-  tagline: '5-tier relational database journey: Learn relational concepts with worked examples first, then write real queries.',
-  description: 'Master relational data engineering on real SQLite WebAssembly databases. Learn foundational queries, aggregations, relational normalization, CTE pipelines, and analytic window functions.',
+  color: 'from-cyan-400 to-blue-500',
+  tagline: 'Learn how to talk to databases, query records, filter tables, and build business intelligence reports.',
+  description: 'Master SQL using a real in-browser SQLite database. Learn SELECT, WHERE filters, ORDER BY, aggregate statistics, and multi-table JOINs.',
   lessons: [
-    // TIER 1: FOUNDATIONS
+    // LESSON 1: WHAT IS SQL & SELECT *
     {
-      id: 'sql-t1-select-filtering',
-      title: 'Foundations: Retrieving & Filtering Data (SELECT, WHERE, ORDER BY)',
-      slug: 'select-where-order',
+      id: 'sql-1-select-all',
+      title: '1. Meet the Database: SELECT * FROM users',
+      slug: 'select-all',
       language: 'sql',
-      category: '1. Foundations',
+      category: '1. Fundamentals',
       difficulty: 'Beginner',
       tier: 1,
       tierName: 'Foundations',
-      estimatedMinutes: 10,
-      xp: 40,
-      description: 'Start with relational basics: retrieve records, filter by column criteria with WHERE, and sort results with ORDER BY.',
-      concepts: ['SELECT specific columns', 'WHERE comparisons (=, >, <, AND)', 'ORDER BY ... DESC/ASC', 'LIMIT'],
-      analogy: 'Imagine an Excel spreadsheet with 1,000 rows. SELECT is choosing which columns to display. WHERE is applying a filter dropdown to hide irrelevant rows. ORDER BY is clicking the column header to sort from highest to lowest.',
-      explanationMarkdown: `
-### Step 1: The SELECT Statement
-In a database, tables store rows and columns. To retrieve data:
+      estimatedMinutes: 3,
+      xp: 25,
+      description: 'Discover what a database is and retrieve your very first table of data using SELECT *.',
+      concepts: ['Tables, rows, and columns', 'The SELECT keyword', 'The FROM keyword'],
+      analogy: 'A database is like a collection of spreadsheets (tables). Each row is a person or item, and each column is a piece of info (name, price, country).',
+      explanationMarkdown: `### Welcome to SQL!
+SQL (Structured Query Language) is the universal language used by every company in the world to ask questions from databases.
+
+### Reading Data
+To see everything inside a table, we use:
 \`\`\`sql
-SELECT name, price 
-FROM products;
+SELECT * FROM users;
 \`\`\`
-
----
-
-### Step 2: Filtering with WHERE
-To fetch only specific items (for example, electronics over $100):
-\`\`\`sql
-SELECT name, price 
-FROM products
-WHERE category = 'Electronics' AND price > 100;
-\`\`\`
-
----
-
-### Step 3: Sorting with ORDER BY
-Sort results using \`ORDER BY column_name DESC\` (highest first) or \`ASC\` (lowest first):
-\`\`\`sql
-SELECT name, price 
-FROM products
-ORDER BY price DESC
-LIMIT 5;
-\`\`\`
-      `,
+* \`SELECT\` means "Show me".
+* \`*\` (asterisk) is a wildcard that means **"all columns"**.
+* \`FROM users\` tells the database which table to read.
+* Every SQL query ends with a semicolon \`;\`.
+`,
       workedExample: {
-        title: 'Worked Example: Finding High-Rated Books',
-        code: `SELECT name, price, rating
-FROM products
-WHERE category = 'Office' AND rating >= 4.5
-ORDER BY price ASC
-LIMIT 3;`,
-        explanation: '• Line 1: Asks for name, price, and rating columns.\n• Line 2: Reads from the products table.\n• Line 3: Filters for Office category items with rating >= 4.5.\n• Line 4: Sorts by price from lowest to highest (ASC).\n• Line 5: Returns only the top 3 items.',
-        expectedOutput: '| name | price | rating |\n| Leather Notebook & Gel Pen Set | 34.00 | 4.7 |'
+        title: 'Worked Example: Viewing All Products',
+        code: `SELECT * FROM products;`,
+        explanation: '• Asks SQLite to retrieve all rows and all columns from the products table.\n• The result is a clean grid of items, prices, and stock counts.',
+        expectedOutput: '6 rows returned with id, name, category, price, stock'
       },
       commonMistakes: [
-        'Putting `WHERE` after `ORDER BY`. In SQL, the order of clauses is strictly: SELECT ... FROM ... WHERE ... GROUP BY ... ORDER BY ... LIMIT.',
-        'Using double quotes for string values in SQL (use single quotes like `\'Electronics\'`).'
+        'Forgetting the semicolon ; at the end of the query.',
+        'Misspelling the table name (e.g. user instead of users).'
       ],
       exerciseSteps: [
-        'Step 1: Select `name, price, rating` from `products`.',
-        'Step 2: Filter with `WHERE category = \'Electronics\' AND price > 100`.',
-        'Step 3: Sort by price descending: `ORDER BY price DESC;`.'
+        'Write a query to retrieve all columns from the `users` table.',
+        'Run the query and click "Check Answer" to verify.'
       ],
-      initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
-      initialCode: `-- 👉 Step 1: Select name, price, rating
--- 👉 Step 2: Filter for Electronics with price > 100
--- 👉 Step 3: Sort by price descending
-
-SELECT name, price, rating
-FROM products
-WHERE category = 'Electronics' AND price > 100
-ORDER BY price DESC;
+      initialCode: `-- 👉 Step 1: Write your query to select everything from users:
+SELECT * FROM users;
 `,
-      solutionCode: `SELECT name, price, rating
-FROM products
-WHERE category = 'Electronics' AND price > 100
-ORDER BY price DESC;
+      solutionCode: `SELECT * FROM users;
 `,
       hints: [
-        'Add `AND price > 100` to the WHERE clause.',
-        'Add `ORDER BY price DESC;` at the end.'
+        'Write `SELECT * FROM users;` exactly.'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Returns products in Electronics category with price > 100',
-          testFn: `(() => {
-            if (!values || values.length === 0) return false;
-            return values.length === 3 && values[0][0] === '4K Ultra-Wide Monitor 34"';
-          })()`,
-          expectedMessage: 'Expected 3 products ordered from highest price to lowest'
-        },
-        {
-          id: 'tc-2',
-          description: 'Includes name, price, and rating columns',
-          testFn: `columns.map(c => c.toLowerCase()).includes('name') && columns.map(c => c.toLowerCase()).includes('price')`,
-          expectedMessage: 'Columns must include name and price'
+          id: 'sql-1-tc-1',
+          description: 'Returns all columns and rows from users',
+          testFn: 'rowCount === 5 && columns.includes("name") && columns.includes("email")',
+          expectedMessage: 'Query should return all 5 rows from the users table'
         }
-      ]
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
     },
 
-    // TIER 2: CORE DEVELOPER
+    // LESSON 2: SELECTING SPECIFIC COLUMNS
     {
-      id: 'sql-t2-aggregations-group-by',
-      title: 'Core: Aggregations & Grouping (COUNT, SUM, GROUP BY, HAVING)',
-      slug: 'group-by-aggregations',
+      id: 'sql-2-specific-columns',
+      title: '2. Picking Specific Columns',
+      slug: 'specific-columns',
       language: 'sql',
-      category: '2. Core Concepts',
+      category: '1. Fundamentals',
+      difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 5,
+      xp: 30,
+      description: 'Clean up your results by asking for only the columns you care about.',
+      concepts: ['Column projection', 'Comma-separated column names', 'Query efficiency'],
+      analogy: 'When ordering a burger, you don\'t say "bring me the entire kitchen". You ask specifically for the burger and fries.',
+      explanationMarkdown: `### Why Pick Columns?
+Instead of fetching everything with \`*\`, you can name the exact columns you want separated by commas:
+
+\`\`\`sql
+SELECT name, email FROM users;
+\`\`\`
+This makes your queries faster and much cleaner to read!
+`,
+      workedExample: {
+        title: 'Worked Example: Product Names and Prices',
+        code: `SELECT name, price FROM products;`,
+        explanation: '• Only the name and price columns are returned.\n• ID, category, and stock are omitted from the view.',
+        expectedOutput: '6 rows returned with only name and price'
+      },
+      commonMistakes: [
+        'Forgetting the comma between column names (e.g. SELECT name email is invalid).'
+      ],
+      exerciseSteps: [
+        'Write a query that selects only `name` and `country` from the `users` table.',
+        'Click "Check Answer" to verify.'
+      ],
+      initialCode: `-- 👉 Select only name and country from users:
+SELECT name, country FROM users;
+`,
+      solutionCode: `SELECT name, country FROM users;
+`,
+      hints: [
+        'Write `SELECT name, country FROM users;`'
+      ],
+      testCases: [
+        {
+          id: 'sql-2-tc-1',
+          description: 'Returns exactly 2 columns: name and country',
+          testFn: 'columns.length === 2 && columns.includes("name") && columns.includes("country")',
+          expectedMessage: 'Columns should be only name and country'
+        }
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
+    },
+
+    // LESSON 3: FILTERING WITH WHERE
+    {
+      id: 'sql-3-where-filtering',
+      title: '3. Filtering Rows with WHERE',
+      slug: 'where-filtering',
+      language: 'sql',
+      category: '1. Fundamentals',
+      difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 5,
+      xp: 30,
+      description: 'Filter your table to find only the rows that match your conditions.',
+      concepts: ['WHERE clause', 'Text matching (country = \'USA\')', 'Number filters (price < 100)'],
+      analogy: 'Using search filters on an online store: you only want to see items under $50.',
+      explanationMarkdown: `### The WHERE Clause
+To filter rows, add \`WHERE\` at the end of your query:
+
+\`\`\`sql
+SELECT * FROM users WHERE country = 'USA';
+\`\`\`
+
+Note: In SQL, text values must be enclosed in single quotes \`'USA'\`.
+`,
+      workedExample: {
+        title: 'Worked Example: Budget Products',
+        code: `SELECT name, price FROM products WHERE price < 100;`,
+        explanation: '• Looks through products and keeps only rows where price is under 100.\n• Returns USB-C Fast Charger ($29.99).',
+        expectedOutput: '1 row returned (USB-C Fast Charger)'
+      },
+      commonMistakes: [
+        'Using double quotes instead of single quotes for text in SQL (standard SQL prefers single quotes like \'USA\').'
+      ],
+      exerciseSteps: [
+        'Find all users who live in the USA.',
+        'Select all columns from `users` where `country = \'USA\'`.'
+      ],
+      initialCode: `-- 👉 Find users where country is 'USA':
+SELECT * FROM users WHERE country = 'USA';
+`,
+      solutionCode: `SELECT * FROM users WHERE country = 'USA';
+`,
+      hints: [
+        'Write `SELECT * FROM users WHERE country = \'USA\';`'
+      ],
+      testCases: [
+        {
+          id: 'sql-3-tc-1',
+          description: 'Returns 2 users from USA (Sarah and Aria)',
+          testFn: 'rowCount === 2 && values.every(row => row.includes("USA"))',
+          expectedMessage: 'Should return only the 2 users living in USA'
+        }
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
+    },
+
+    // LESSON 4: SORTING WITH ORDER BY
+    {
+      id: 'sql-4-order-by',
+      title: '4. Sorting Results with ORDER BY',
+      slug: 'order-by',
+      language: 'sql',
+      category: '2. Organizing Data',
       difficulty: 'Beginner',
       tier: 2,
       tierName: 'Core',
-      estimatedMinutes: 15,
-      xp: 55,
-      description: 'Summarize metrics across categories using aggregate functions and GROUP BY.',
-      concepts: ['COUNT, SUM, AVG aggregate functions', 'GROUP BY clause', 'HAVING (filtering grouped summaries)', 'Aliases with AS'],
-      analogy: 'Imagine taking a pile of 100 receipts and sorting them into separate folders by store department (GROUP BY category). Then you count how many receipts are in each folder (COUNT) and add up the total money spent (SUM).',
-      explanationMarkdown: `
-### Aggregating Large Datasets
-Aggregate functions compute a single summary value across multiple rows:
-- \`COUNT(*)\`: Counts rows
-- \`SUM(column)\`: Totals numbers
-- \`AVG(column)\`: Computes average
+      estimatedMinutes: 5,
+      xp: 35,
+      description: 'Sort your results alphabetically or from highest to lowest number.',
+      concepts: ['ORDER BY column', 'ASC (Ascending / lowest first)', 'DESC (Descending / highest first)'],
+      analogy: 'Sorting a leaderboard in a video game so the highest score is at the very top.',
+      explanationMarkdown: `### Sorting with ORDER BY
+By default, databases return rows in arbitrary order. You can sort them using \`ORDER BY\`:
 
 \`\`\`sql
-SELECT category, COUNT(*) AS total_items, AVG(price) AS average_price
-FROM products
-GROUP BY category;
-\`\`\`
+-- Sort prices from highest to lowest:
+SELECT name, price FROM products ORDER BY price DESC;
 
----
-
-### WHERE vs HAVING
-- \`WHERE\` filters individual rows *before* grouping.
-- \`HAVING\` filters aggregated groups *after* grouping:
-\`\`\`sql
-SELECT category, COUNT(*) AS total_items
-FROM products
-GROUP BY category
-HAVING total_items >= 2; -- Filters out categories with fewer than 2 items!
+-- Sort names alphabetically A-Z:
+SELECT name FROM users ORDER BY name ASC;
 \`\`\`
-      `,
+`,
       workedExample: {
-        title: 'Worked Example: Customer Order Frequency Summary',
-        code: `SELECT user_id, 
-       COUNT(id) AS order_count, 
-       SUM(total_amount) AS total_spent
-FROM orders
-GROUP BY user_id
-HAVING order_count >= 2
-ORDER BY total_spent DESC;`,
-        explanation: '• GROUP BY user_id groups all order rows belonging to the same customer.\n• COUNT(id) counts their total orders.\n• HAVING order_count >= 2 keeps only repeat buyers who made at least 2 purchases.',
-        expectedOutput: '| user_id | order_count | total_spent |\n| 1 | 2 | 431.99 |\n| 2 | 2 | 189.89 |'
+        title: 'Worked Example: Price Leaderboard',
+        code: `SELECT name, price FROM products ORDER BY price DESC;`,
+        explanation: '• Displays all products sorted from the most expensive ($499 Gaming Monitor) down to the cheapest ($29.99 Charger).',
+        expectedOutput: '6 rows sorted from 499 down to 29.99'
       },
       commonMistakes: [
-        'Trying to use aggregate functions inside the `WHERE` clause (e.g. `WHERE COUNT(*) > 1` is illegal; use `HAVING COUNT(*) > 1` instead).',
-        'Selecting non-aggregated columns that are not included in the `GROUP BY` list.'
+        'Putting ORDER BY before the WHERE clause. ORDER BY always comes near the end!'
       ],
       exerciseSteps: [
-        'Step 1: Select `category`, `COUNT(*) AS product_count`, `AVG(price) AS average_price`, `SUM(stock) AS total_stock`.',
-        'Step 2: Group by `category`.',
-        'Step 3: Add `HAVING COUNT(*) >= 2` to filter for categories with at least 2 items.',
-        'Step 4: Order by `total_stock DESC`.'
+        'Write a query to select all products from the `products` table.',
+        'Sort them by `price` in descending order (`DESC`).'
       ],
-      initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
-      initialCode: `-- Calculate category metrics:
-SELECT 
-  category,
-  COUNT(*) AS product_count,
-  AVG(price) AS average_price,
-  SUM(stock) AS total_stock
-FROM products
-GROUP BY category
-HAVING COUNT(*) >= 2
-ORDER BY total_stock DESC;
+      initialCode: `-- 👉 Select all products sorted by price DESC:
+SELECT * FROM products ORDER BY price DESC;
 `,
-      solutionCode: `SELECT 
-  category,
-  COUNT(*) AS product_count,
-  AVG(price) AS average_price,
-  SUM(stock) AS total_stock
-FROM products
-GROUP BY category
-HAVING COUNT(*) >= 2
-ORDER BY total_stock DESC;
+      solutionCode: `SELECT * FROM products ORDER BY price DESC;
 `,
       hints: [
-        'Group by `category`.',
-        'Use `HAVING COUNT(*) >= 2` to filter.',
-        'Add `ORDER BY total_stock DESC;`.'
+        'Write `SELECT * FROM products ORDER BY price DESC;`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Correctly groups categories and filters with HAVING >= 2',
-          testFn: `(() => {
-            if (!values || values.length < 2) return false;
-            const categories = values.map(v => v[0]);
-            return categories.includes('Electronics') && categories.includes('Office');
-          })()`,
-          expectedMessage: 'Expected Electronics and Office categories'
+          id: 'sql-4-tc-1',
+          description: 'Returns products sorted highest price first',
+          testFn: 'rowCount === 6 && values[0].includes("Ultra-wide Gaming Monitor")',
+          expectedMessage: 'The first row should be the most expensive item (Ultra-wide Gaming Monitor)'
         }
-      ]
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
     },
 
-    // TIER 3: INTERMEDIATE
+    // LESSON 5: TOP RESULTS WITH LIMIT
     {
-      id: 'sql-t3-relational-joins',
-      title: 'Intermediate: Relational Joins (Connecting Multiple Tables)',
-      slug: 'inner-joins',
+      id: 'sql-5-limit',
+      title: '5. Top Results with LIMIT',
+      slug: 'limit',
       language: 'sql',
-      category: '3. Intermediate',
+      category: '2. Organizing Data',
+      difficulty: 'Beginner',
+      tier: 2,
+      tierName: 'Core',
+      estimatedMinutes: 4,
+      xp: 35,
+      description: 'Get the Top 3 or Top 5 rows using the LIMIT keyword.',
+      concepts: ['LIMIT clause', 'Combining ORDER BY and LIMIT', 'Top-N queries'],
+      analogy: 'An Olympic medal podium: only the top 3 athletes get medals, even if 100 people raced.',
+      explanationMarkdown: `### Limiting Rows
+If a table has 100,000 rows, you don't want to load all of them. Add \`LIMIT\` at the very end of your query:
+
+\`\`\`sql
+SELECT * FROM products ORDER BY price DESC LIMIT 3;
+\`\`\`
+This gives you the top 3 most expensive products!
+`,
+      workedExample: {
+        title: 'Worked Example: The Single Most Expensive Product',
+        code: `SELECT name, price FROM products ORDER BY price DESC LIMIT 1;`,
+        explanation: '• Orders by price DESC.\n• LIMIT 1 stops after retrieving the top row.',
+        expectedOutput: '1 row (Ultra-wide Gaming Monitor, $499)'
+      },
+      commonMistakes: [
+        'LIMIT must always go at the very end of the query.'
+      ],
+      exerciseSteps: [
+        'Find the top 3 cheapest products.',
+        'Select all columns from `products`, order by `price ASC`, and `LIMIT 3`.'
+      ],
+      initialCode: `-- 👉 Get top 3 cheapest products:
+SELECT * FROM products ORDER BY price ASC LIMIT 3;
+`,
+      solutionCode: `SELECT * FROM products ORDER BY price ASC LIMIT 3;
+`,
+      hints: [
+        'Write `SELECT * FROM products ORDER BY price ASC LIMIT 3;`'
+      ],
+      testCases: [
+        {
+          id: 'sql-5-tc-1',
+          description: 'Returns exactly 3 cheapest products',
+          testFn: 'rowCount === 3 && values[0].includes("USB-C Fast Charger")',
+          expectedMessage: 'Should return exactly 3 rows starting with USB-C Fast Charger'
+        }
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
+    },
+
+    // LESSON 6: COUNT & SUMMARY STATISTICS
+    {
+      id: 'sql-6-count-aggregates',
+      title: '6. Counting & Calculations (COUNT, SUM)',
+      slug: 'count-aggregates',
+      language: 'sql',
+      category: '3. Analytics',
       difficulty: 'Intermediate',
       tier: 3,
       tierName: 'Intermediate',
-      estimatedMinutes: 20,
-      xp: 75,
-      description: 'Connect related entities across primary and foreign keys to synthesize complete insights.',
-      concepts: ['Relational database keys', 'INNER JOIN syntax', 'Table aliasing (orders o, users u)', 'Cross-table column resolution'],
-      analogy: 'Imagine having an address book with customer names and IDs, and a separate stack of receipts showing only customer ID and order price. An INNER JOIN is matching the ID on the receipt to the ID in the address book so you can see the customer\'s real name next to their purchase.',
-      explanationMarkdown: `
-### Why Normalize with Joins?
-Relational databases don't duplicate customer names across millions of orders. Instead:
-- \`users\` table stores: \`id\`, \`name\`, \`email\`
-- \`orders\` table stores: \`id\`, \`user_id\`, \`total_amount\`
+      estimatedMinutes: 6,
+      xp: 40,
+      description: 'Summarize thousands of rows into clean statistics using COUNT() and SUM().',
+      concepts: ['COUNT(*) aggregate', 'SUM(column)', 'AVG(column)'],
+      analogy: 'Counting the ballot box votes after an election to announce the total number of voters.',
+      explanationMarkdown: `### Aggregate Functions
+SQL includes built-in calculation functions:
+* \`COUNT(*)\`: Counts the total number of rows.
+* \`SUM(price)\`: Adds up all numbers in a column.
+* \`AVG(price)\`: Calculates the average value.
 
-To connect them:
 \`\`\`sql
-SELECT orders.id, users.name, orders.total_amount
-FROM orders
-JOIN users ON orders.user_id = users.id;
+SELECT COUNT(*) FROM users;
+SELECT AVG(price) FROM products;
 \`\`\`
-      `,
+`,
       workedExample: {
-        title: 'Worked Example: Orders with Customer Email and Country',
-        code: `SELECT o.id AS order_id, 
-       u.name AS customer_name, 
-       u.country, 
-       o.total_amount
-FROM orders o
-JOIN users u ON o.user_id = u.id
-WHERE o.status = 'delivered'
-LIMIT 3;`,
-        explanation: '• o.user_id = u.id matches each order to its owner.\n• Aliases (o and u) keep the query clean and concise.\n• Filters only for delivered orders.',
-        expectedOutput: '| order_id | customer_name | country | total_amount |\n| 1001 | Alice Johnson | United States | 379.49 |'
+        title: 'Worked Example: Total Users',
+        code: `SELECT COUNT(*) AS total_users FROM users;`,
+        explanation: '• Counts how many user records exist in the database (5).\n• AS total_users gives the result column a friendly name.',
+        expectedOutput: 'total_users = 5'
       },
       commonMistakes: [
-        'Ambiguous column names: If both tables have an `id` column, writing `SELECT id` causes an error. Always specify `SELECT o.id, u.id`.',
-        'Forgetting the `ON` condition: writing `JOIN users` without `ON o.user_id = u.id` creates an accidental cross product of every user paired with every order!'
+        'Trying to use SUM() on a text column (SUM only works on numeric data).'
       ],
       exerciseSteps: [
-        'Step 1: Select `o.id AS order_id, u.name AS customer_name, u.country, o.total_amount, o.status`.',
-        'Step 2: `JOIN users u ON o.user_id = u.id`.',
-        'Step 3: Add `WHERE o.status = \'delivered\' AND o.total_amount >= 100`.',
-        'Step 4: Add `ORDER BY o.total_amount DESC;`.'
+        'Count the total number of products in the `products` table.',
+        'Write `SELECT COUNT(*) FROM products;`.'
       ],
-      initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
-      initialCode: `-- Join orders with users:
-SELECT 
-  o.id AS order_id,
-  u.name AS customer_name,
-  u.country,
-  o.total_amount,
-  o.status
-FROM orders o
-JOIN users u ON o.user_id = u.id
-WHERE o.status = 'delivered' AND o.total_amount >= 100
-ORDER BY o.total_amount DESC;
+      initialCode: `-- 👉 Count how many products exist:
+SELECT COUNT(*) FROM products;
 `,
-      solutionCode: `SELECT 
-  o.id AS order_id,
-  u.name AS customer_name,
-  u.country,
-  o.total_amount,
-  o.status
-FROM orders o
-JOIN users u ON o.user_id = u.id
-WHERE o.status = 'delivered' AND o.total_amount >= 100
-ORDER BY o.total_amount DESC;
+      solutionCode: `SELECT COUNT(*) FROM products;
 `,
       hints: [
-        'Use `JOIN users u ON o.user_id = u.id`.',
-        'Add `WHERE o.status = "delivered" AND o.total_amount >= 100`.',
-        'Sort with `ORDER BY o.total_amount DESC;`.'
+        'Write `SELECT COUNT(*) FROM products;`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Correctly matches delivered orders over 100 with user profile info',
-          testFn: `(() => {
-            if (!values || values.length === 0) return false;
-            return values[0][1] === 'Charlie Zhang' && values[0][3] === 548.99;
-          })()`,
-          expectedMessage: 'Top order should be Charlie Zhang ($548.99)'
+          id: 'sql-6-tc-1',
+          description: 'Returns count of 6 products',
+          testFn: 'rowCount === 1 && String(values[0][0]) === "6"',
+          expectedMessage: 'Should return 6 for total count of products'
         }
-      ]
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
     },
 
-    // TIER 4: ADVANCED
+    // LESSON 7: GROUP BY
     {
-      id: 'sql-t4-subqueries-cte',
-      title: 'Advanced: Common Table Expressions (WITH CTE)',
-      slug: 'subqueries-cte',
+      id: 'sql-7-group-by',
+      title: '7. Grouping Data with GROUP BY',
+      slug: 'group-by',
       language: 'sql',
-      category: '4. Advanced Architecture',
-      difficulty: 'Advanced',
+      category: '3. Analytics',
+      difficulty: 'Intermediate',
+      tier: 3,
+      tierName: 'Intermediate',
+      estimatedMinutes: 7,
+      xp: 45,
+      description: 'Bucket data into categories and calculate stats for each group.',
+      concepts: ['GROUP BY clause', 'Aggregating by category', 'Business reports'],
+      analogy: 'Sorting coins into separate piles for quarters, dimes, and nickels, and then counting how many are in each pile.',
+      explanationMarkdown: `### Bucketing with GROUP BY
+When you want to calculate totals **per category** or **per country**, use \`GROUP BY\`:
+
+\`\`\`sql
+SELECT category, COUNT(*) FROM products GROUP BY category;
+\`\`\`
+This gives you the number of products inside each category!
+`,
+      workedExample: {
+        title: 'Worked Example: Users Per Country',
+        code: `SELECT country, COUNT(*) AS user_count FROM users GROUP BY country;`,
+        explanation: '• Groups the user table by country.\n• Counts how many users belong to each country.',
+        expectedOutput: 'Ireland: 1, Japan: 1, UK: 1, USA: 2'
+      },
+      commonMistakes: [
+        'Selecting a column that is neither in the GROUP BY clause nor wrapped in an aggregate function.'
+      ],
+      exerciseSteps: [
+        'Find how many products are in each category.',
+        'Select `category` and `COUNT(*)`, grouped by `category`.'
+      ],
+      initialCode: `-- 👉 Count products per category:
+SELECT category, COUNT(*) FROM products GROUP BY category;
+`,
+      solutionCode: `SELECT category, COUNT(*) FROM products GROUP BY category;
+`,
+      hints: [
+        'Write `SELECT category, COUNT(*) FROM products GROUP BY category;`'
+      ],
+      testCases: [
+        {
+          id: 'sql-7-tc-1',
+          description: 'Groups by category (Accessories, Electronics, Furniture)',
+          testFn: 'rowCount === 3 && columns.includes("category")',
+          expectedMessage: 'Should return 3 categories with their counts'
+        }
+      ],
+      initSqlSchema: BASE_SQL_SCHEMA
+    },
+
+    // LESSON 8: CAPSTONE & JOIN CERTIFICATE
+    {
+      id: 'sql-8-inner-join-capstone',
+      title: '8. Capstone Challenge: Connecting Tables with INNER JOIN',
+      slug: 'inner-join-capstone',
+      language: 'sql',
+      category: '4. Capstone Project',
+      difficulty: 'Intermediate',
       tier: 4,
       tierName: 'Advanced',
-      estimatedMinutes: 25,
-      xp: 90,
-      description: 'Write modular, clean analytical pipelines using Common Table Expressions (WITH clause).',
-      concepts: ['WITH clause (CTEs)', 'Temporary result set isolation', 'Complex business analytics'],
-      analogy: 'Imagine a recipe. Instead of doing all calculations in one messy sentence, you prepare intermediate bowls first: "Bowl 1: Beat eggs and sugar." Then you take Bowl 1 and mix it into the main batter. That is what a CTE (`WITH ... AS`) does for complex queries.',
-      explanationMarkdown: `
-### What is a CTE?
-A Common Table Expression (CTE) creates a named, temporary query result that you can immediately query in your main SELECT:
+      estimatedMinutes: 10,
+      xp: 60,
+      description: 'Combine user details and order records into a complete sales report using INNER JOIN.',
+      concepts: ['Relational databases', 'Primary Keys & Foreign Keys', 'INNER JOIN syntax'],
+      analogy: 'Connecting a library card number to the actual book checkout record so you can see who borrowed each book.',
+      explanationMarkdown: `### The Power of Relational Databases: JOIN
+Real databases split data into multiple tables to avoid duplication. The \`orders\` table has a \`user_id\` that matches \`users.id\`.
 
+To stitch them together in one report:
 \`\`\`sql
-WITH HighSpenders AS (
-  SELECT user_id, SUM(total_amount) AS total_spent
-  FROM orders
-  GROUP BY user_id
-  HAVING total_spent > 300
-)
-SELECT u.name, hs.total_spent
-FROM users u
-JOIN HighSpenders hs ON u.id = hs.user_id;
+SELECT users.name, orders.amount, orders.status
+FROM users
+JOIN orders ON users.id = orders.user_id;
 \`\`\`
-      `,
+`,
       workedExample: {
-        title: 'Worked Example: Identifying High-Value Customers',
-        code: `WITH CustomerSpending AS (
-  SELECT user_id, SUM(total_amount) AS total_spent
-  FROM orders
-  GROUP BY user_id
-)
-SELECT u.name, u.email, cs.total_spent
-FROM users u
-JOIN CustomerSpending cs ON u.id = cs.user_id
-WHERE cs.total_spent > 300
-ORDER BY cs.total_spent DESC;`,
-        explanation: '• The CTE calculates total_spent per customer.\n• The main query joins it with users to attach their name and email.\n• Filters for customers who spent > $300.',
-        expectedOutput: '| name | email | total_spent |\n| Charlie Zhang | charlie@example.com | 548.99 |\n| Alice Johnson | alice@example.com | 431.99 |'
+        title: 'Worked Example: Customer Order History',
+        code: `SELECT users.name, orders.amount 
+FROM users 
+JOIN orders ON users.id = orders.user_id;`,
+        explanation: '• Matches user ID in both tables.\n• Shows Sarah Chen ($120.00), Marcus Miller ($250.00), etc.',
+        expectedOutput: '5 matched order records with customer names'
       },
       commonMistakes: [
-        'Trying to put a semicolon `;` at the end of the `WITH ... )` block. The CTE is part of the statement; the semicolon belongs only at the very end of the entire query!',
-        'Referencing a CTE outside of the single query that immediately follows it.'
+        'Forgetting the ON condition (JOIN orders ON users.id = orders.user_id).'
       ],
       exerciseSteps: [
-        'Step 1: Define `WITH CustomerSpending AS (SELECT user_id, SUM(total_amount) AS total_spent FROM orders GROUP BY user_id)`.',
-        'Step 2: In the main query, select `u.name, u.email, cs.total_spent`.',
-        'Step 3: `JOIN CustomerSpending cs ON u.id = cs.user_id`.',
-        'Step 4: Filter `WHERE cs.total_spent > 200` and order by `cs.total_spent DESC;`.'
+        'Join the `users` and `orders` tables.',
+        'Select `users.name`, `orders.amount`, and `orders.status`.',
+        'Link them where `users.id = orders.user_id`.',
+        'Pass all tests to finish the SQL course and claim your Certificate!'
       ],
-      initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
-      initialCode: `WITH CustomerSpending AS (
-  SELECT user_id, SUM(total_amount) AS total_spent
-  FROM orders
-  GROUP BY user_id
-)
-SELECT u.name, u.email, cs.total_spent
-FROM users u
-JOIN CustomerSpending cs ON u.id = cs.user_id
-WHERE cs.total_spent > 200
-ORDER BY cs.total_spent DESC;
+      initialCode: `-- 👉 Join users and orders:
+SELECT users.name, orders.amount, orders.status
+FROM users
+JOIN orders ON users.id = orders.user_id;
 `,
-      solutionCode: `WITH CustomerSpending AS (
-  SELECT user_id, SUM(total_amount) AS total_spent
-  FROM orders
-  GROUP BY user_id
-)
-SELECT u.name, u.email, cs.total_spent
-FROM users u
-JOIN CustomerSpending cs ON u.id = cs.user_id
-WHERE cs.total_spent > 200
-ORDER BY cs.total_spent DESC;
+      solutionCode: `SELECT users.name, orders.amount, orders.status
+FROM users
+JOIN orders ON users.id = orders.user_id;
 `,
       hints: [
-        'Complete the CTE query, then JOIN users u ON u.id = cs.user_id.',
-        'Add `WHERE cs.total_spent > 200`.',
-        'Add `ORDER BY cs.total_spent DESC;`.'
+        'Write `SELECT users.name, orders.amount, orders.status FROM users JOIN orders ON users.id = orders.user_id;`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Returns customers with spending exceeding 200 ordered descending',
-          testFn: `(() => {
-            if (!values || values.length === 0) return false;
-            return values.length >= 3 && values[0][0] === 'Charlie Zhang';
-          })()`,
-          expectedMessage: 'Charlie Zhang must be the highest spender in the list'
+          id: 'sql-8-tc-1',
+          description: 'Returns joined order records with customer names',
+          testFn: 'rowCount === 5 && columns.includes("name") && columns.includes("amount")',
+          expectedMessage: 'Query should return 5 joined rows containing customer names and order amounts'
         }
-      ]
-    },
-
-    // TIER 5: MASTERCLASS / EXPERT
-    {
-      id: 'sql-t5-window-functions',
-      title: 'Masterclass: Window Functions (ROW_NUMBER & PARTITION BY)',
-      slug: 'window-functions',
-      language: 'sql',
-      category: '5. Masterclass & Internals',
-      difficulty: 'Expert',
-      tier: 5,
-      tierName: 'Masterclass',
-      estimatedMinutes: 30,
-      xp: 130,
-      description: 'Master analytical SQL. Compute rankings, running totals, and partitioned metrics without collapsing rows.',
-      concepts: ['Window functions: OVER ()', 'PARTITION BY clause', 'ROW_NUMBER() vs RANK()', 'Retaining individual row records'],
-      analogy: 'Imagine a marathon. GROUP BY would combine everyone from each age group and output just 1 row per group with their average time. A Window Function keeps every single runner on the screen, but assigns each runner their ranking within their specific age group (Rank #1 in Under-30, Rank #2 in Under-30, etc.).',
-      explanationMarkdown: `
-### What is a Window Function?
-Unlike \`GROUP BY\`, which collapses multiple rows into a single summary row, a **Window Function** computes values across a group of related rows **while retaining every individual row**:
-
-\`\`\`sql
-SELECT 
-  name, 
-  category, 
-  price,
-  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS category_rank
-FROM products;
-\`\`\`
-
-- \`PARTITION BY category\`: Divides the rows into category windows.
-- \`ORDER BY price DESC\`: Sorts within each window.
-- \`ROW_NUMBER()\`: Generates sequential 1, 2, 3... ranks.
-      `,
-      workedExample: {
-        title: 'Worked Example: Ranking Top Products by Category',
-        code: `SELECT 
-  name,
-  category,
-  price,
-  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank
-FROM products
-ORDER BY category ASC, price_rank ASC;`,
-        explanation: '• Ranks products from most expensive to least within each category.\n• In Electronics: Monitor is #1 ($499), Headphones #2 ($249.50), Keyboard #3 ($129.99).\n• In Office: Desk Lamp is #1 ($59.90), Desk Mat #2 ($49.99).',
-        expectedOutput: '| name | category | price | price_rank |\n| 4K Ultra-Wide Monitor 34" | Electronics | 499.00 | 1 |\n| Wireless Headphones | Electronics | 249.50 | 2 |'
-      },
-      commonMistakes: [
-        'Forgetting the `OVER (...)` clause. Without `OVER (...)`, SQL thinks ROW_NUMBER is a normal function and throws a syntax error.',
-        'Trying to filter on `price_rank` in the `WHERE` clause of the same query. (Window functions execute after WHERE; use a CTE to filter on window ranks).'
       ],
-      exerciseSteps: [
-        'Step 1: Select `name, category, price`.',
-        'Step 2: Add `ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank`.',
-        'Step 3: From `products`.',
-        'Step 4: Order by `category ASC, price_rank ASC;`.'
-      ],
-      initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
-      initialCode: `-- Use ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC)
-SELECT 
-  name,
-  category,
-  price,
-  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank
-FROM products
-ORDER BY category ASC, price_rank ASC;
-`,
-      solutionCode: `SELECT 
-  name,
-  category,
-  price,
-  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank
-FROM products
-ORDER BY category ASC, price_rank ASC;
-`,
-      hints: [
-        'Write `ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank`.',
-        'Add `ORDER BY category ASC, price_rank ASC;` at the end.'
-      ],
-      testCases: [
-        {
-          id: 'tc-1',
-          description: 'Ranks items inside each category correctly',
-          testFn: `(() => {
-            if (!values || values.length === 0) return false;
-            const electronicsRank1 = values.find(r => r[1] === 'Electronics' && r[3] === 1);
-            return electronicsRank1 && electronicsRank1[0] === '4K Ultra-Wide Monitor 34"';
-          })()`,
-          expectedMessage: '4K Ultra-Wide Monitor must be Electronics rank 1'
-        },
-        {
-          id: 'tc-2',
-          description: 'Calculates price_rank column for all products',
-          testFn: `columns.map(c => c.toLowerCase()).includes('price_rank')`,
-          expectedMessage: 'Column price_rank must be present'
-        }
-      ]
+      initSqlSchema: BASE_SQL_SCHEMA
     }
   ]
 };

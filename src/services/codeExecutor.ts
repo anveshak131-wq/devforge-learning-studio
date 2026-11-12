@@ -153,21 +153,28 @@ export class CodeExecutor {
   private static executePython(code: string, startTime: number): ExecutionResult {
     const logs: ConsoleOutputMessage[] = [];
     try {
-      // Basic Python to JS transpiler/interpreter for browser sandbox
-      // Handles print(), variables, lists, dicts, for loops, functions, math
       const lines = code.split('\n');
       const jsLines: string[] = [];
+      const indentStack: number[] = [0];
 
       for (let line of lines) {
-        let trimmed = line.trim();
-        // Comment
+        const trimmed = line.trim();
+        if (!trimmed) {
+          jsLines.push('');
+          continue;
+        }
         if (trimmed.startsWith('#')) {
           jsLines.push('// ' + trimmed.substring(1));
           continue;
         }
 
-        // Convert print(...) to console.log(...)
-        let converted = line
+        const indent = line.search(/\S/);
+        while (indentStack.length > 1 && indent < indentStack[indentStack.length - 1]) {
+          indentStack.pop();
+          jsLines.push(' '.repeat(indentStack[indentStack.length - 1]) + '}');
+        }
+
+        let converted = trimmed
           .replace(/\bprint\s*\((.*?)\)/g, 'customConsole.log($1)')
           .replace(/\bTrue\b/g, 'true')
           .replace(/\bFalse\b/g, 'false')
@@ -175,12 +182,43 @@ export class CodeExecutor {
           .replace(/\blen\s*\((.*?)\)/g, '($1).length')
           .replace(/\brange\s*\((.*?)\)/g, 'Array.from({length: $1}, (_, i) => i)');
 
-        // Simple def function_name(args):
-        if (converted.match(/^\s*def\s+([a-zA-Z0-9_]+)\s*\((.*?)\):/)) {
-          converted = converted.replace(/def\s+([a-zA-Z0-9_]+)\s*\((.*?)\):/, 'function $1($2) {');
+        converted = converted.replace(/f"(.*?)"/g, (_, p1) => '`' + p1.replace(/\{/g, '${') + '`');
+        converted = converted.replace(/f\x27(.*?)\x27/g, (_, p1) => '`' + p1.replace(/\{/g, '${') + '`');
+
+        if (converted.match(/^if\s+(.*?):$/)) {
+          converted = converted.replace(/^if\s+(.*?):$/, 'if ($1) {');
+          indentStack.push(indent + 4);
+        } else if (converted.match(/^elif\s+(.*?):$/)) {
+          converted = converted.replace(/^elif\s+(.*?):$/, 'else if ($1) {');
+          indentStack.push(indent + 4);
+        } else if (converted === 'else:') {
+          converted = 'else {';
+          indentStack.push(indent + 4);
+        } else if (converted.match(/^for\s+([a-zA-Z0-9_]+)\s+in\s+(.*?):$/)) {
+          converted = converted.replace(/^for\s+([a-zA-Z0-9_]+)\s+in\s+(.*?):$/, 'for (const $1 of $2) {');
+          indentStack.push(indent + 4);
+        } else if (converted.match(/^def\s+([a-zA-Z0-9_]+)\s*\((.*?)\):$/)) {
+          converted = converted.replace(/^def\s+([a-zA-Z0-9_]+)\s*\((.*?)\):$/, 'function $1($2) {');
+          indentStack.push(indent + 4);
+        } else if (
+          converted.match(/^[a-zA-Z0-9_]+\s*=\s*.+/) &&
+          !converted.startsWith('let ') &&
+          !converted.startsWith('const ') &&
+          !converted.startsWith('var ')
+        ) {
+          converted = 'let ' + converted + ';';
+        } else {
+          if (!converted.endsWith(';') && !converted.endsWith('{') && !converted.endsWith('}')) {
+            converted = converted + ';';
+          }
         }
 
-        jsLines.push(converted);
+        jsLines.push(' '.repeat(indent) + converted);
+      }
+
+      while (indentStack.length > 1) {
+        indentStack.pop();
+        jsLines.push('}');
       }
 
       const runnableJs = jsLines.join('\n');
@@ -207,6 +245,7 @@ export class CodeExecutor {
         return {
           success: true,
           logs,
+          transpiledCode: runnableJs,
           executionTimeMs: duration
         };
       } catch (e: any) {
@@ -214,6 +253,7 @@ export class CodeExecutor {
         return {
           success: false,
           logs,
+          transpiledCode: runnableJs,
           error: e.message,
           executionTimeMs: duration
         };

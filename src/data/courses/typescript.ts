@@ -2,525 +2,462 @@ import { Track } from '../../types';
 
 export const TYPESCRIPT_TRACK: Track = {
   id: 'typescript',
-  title: 'TypeScript: Foundations to Type Gymnastics',
+  title: 'TypeScript: Beginner to Pro',
   slug: 'typescript',
   language: 'typescript',
   icon: 'ShieldCheck',
-  color: 'from-blue-600 to-indigo-600',
-  tagline: '5-tier static type system mastery: Learn contracts with worked examples first, then write type-safe code.',
-  description: 'Level up your software engineering with TypeScript. Progress from primitive type annotations to interfaces, generic constraints, discriminated union state machines, and advanced conditional types with the infer keyword.',
+  color: 'from-indigo-400 to-cyan-500',
+  tagline: 'Write safer, cleaner JavaScript by catching mistakes before your code even runs.',
+  description: 'Master TypeScript step-by-step: understand type annotations, function contracts, interfaces, arrays, and generics.',
   lessons: [
-    // TIER 1: FOUNDATIONS (ABSOLUTE BEGINNER)
+    // LESSON 1: WHY TYPESCRIPT & STRING TYPES
     {
-      id: 'ts-t1-type-annotations',
-      title: 'Foundations: Explicit Type Annotations & Tuples',
-      slug: 'type-annotations',
+      id: 'ts-1-primitives',
+      title: '1. What is TypeScript? Adding Types to Variables',
+      slug: 'intro-primitives',
       language: 'typescript',
-      category: '1. Foundations',
+      category: '1. Type Basics',
       difficulty: 'Beginner',
       tier: 1,
       tierName: 'Foundations',
-      estimatedMinutes: 10,
-      xp: 40,
-      description: 'Learn the core philosophy of TypeScript: adding static compile-time type annotations to variables and functions.',
-      concepts: ['Explicit type annotations (: string, : number)', 'Function return types', 'Fixed-length Tuples: [string, number, string]'],
-      analogy: 'Imagine ordering at a drive-thru. In JavaScript, you can ask for "ice cream" and the kitchen might accidentally hand you a hot soup without warning. In TypeScript, every cup has a rigid shape template: if you try to pour soup into an ice cream cone, the compiler stops you before you even leave the counter!',
-      explanationMarkdown: `
-### Step 1: Why TypeScript?
-JavaScript is dynamically typed, meaning type mistakes only crash your app when real users are using it.
-TypeScript adds static type annotations that check your code as you type:
+      estimatedMinutes: 4,
+      xp: 25,
+      description: 'Discover how adding type labels prevents bugs and makes your code self-documenting.',
+      concepts: ['What is TypeScript?', 'The : string annotation', 'Preventing type bugs'],
+      analogy: 'Imagine labeled storage bins: one marked "Plastic", one marked "Glass". The label ensures nobody accidentally puts metal or liquids in the wrong box.',
+      explanationMarkdown: `### Welcome to TypeScript!
+TypeScript is JavaScript with **Type Checking**. In normal JavaScript, you can accidentally put a number into a variable meant for a person's name and cause errors.
+
+In TypeScript, you tell the computer what type of data belongs in each variable:
 
 \`\`\`typescript
-let username: string = "Elena";
-let age: number = 25;
-let isProMember: boolean = true;
+let username: string = "Nova";
 \`\`\`
-
-If you later try to write \`username = 42;\`, TypeScript gives you an instant red underline:
-*Type 'number' is not assignable to type 'string'.*
-
----
-
-### Step 2: Fixed-Length Tuples
-A standard array \`number[]\` can have any length.
-A **Tuple** is an array with an exact, fixed number of elements and specific types in each position:
-\`\`\`typescript
-// Exactly two elements: a string followed by a number
-type ItemRecord = [string, number];
-const product: ItemRecord = ["Keyboard", 79.99];
-\`\`\`
-      `,
+If you ever try to assign a number to \`username\`, TypeScript warns you immediately!
+`,
       workedExample: {
-        title: 'Worked Example: Building a Coordinates Tuple',
-        code: `// A tuple holding [CityName, Latitude, Longitude]
-type GeoLocation = [string, number, number];
-
-function formatLocation(loc: GeoLocation): string {
-  const [city, lat, lng] = loc;
-  return \`\${city} is at coordinates (\${lat}, \${lng})\`;
-}
-
-const tokyo: GeoLocation = ["Tokyo", 35.6762, 139.6503];
-console.log(formatLocation(tokyo));`,
-        explanation: '• GeoLocation guarantees position 0 is text, and positions 1 & 2 are numbers.\n• If someone tries to pass ["Tokyo", "North", 139], TypeScript prevents the bug at compile-time!',
-        expectedOutput: 'Tokyo is at coordinates (35.6762, 139.6503)'
+        title: 'Worked Example: Typed User Info',
+        code: `let developerName: string = "Sarah";
+console.log("Developer: " + developerName);`,
+        explanation: '• : string tells TypeScript that developerName must always hold text.\n• console.log prints the result.',
+        expectedOutput: 'Developer: Sarah'
       },
       commonMistakes: [
-        'Confusing lowercase primitive types (`string`, `number`, `boolean`) with wrapper objects (`String`, `Number`). Always use lowercase `string` and `number` in TypeScript!',
-        'Trying to add a 4th element to a 3-element tuple.'
+        'Trying to assign a number to a string variable (e.g. let name: string = 123;).',
+        'Capitalizing String instead of lowercase string.'
       ],
       exerciseSteps: [
-        'Step 1: In `createScorecard(student: string, score: number, isPassing: boolean)`, return a 3-element tuple.',
-        'Step 2: Position 0 is `student` (string).',
-        'Step 3: Position 1 is `score` (number).',
-        'Step 4: Position 2 is `isPassing ? "PASSED" : "FAILED"` (string).'
+        'Declare a variable named `appName` with type `: string` and set it to `"DevForge"`.',
+        'Print `appName` using `console.log(appName);`.'
       ],
-      initialCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
-  // 👉 Return the 3-element tuple:
-  return [student, score, isPassing ? "PASSED" : "FAILED"];
-}
+      initialCode: `// 👉 Step 1: Declare appName with type string:
+let appName: string = "DevForge";
 
-// 🧪 Test call:
-console.log(createScorecard("Jordan", 88, true));
+// 👉 Step 2: Print it to the screen:
+console.log(appName);
 `,
-      solutionCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
-  return [student, score, isPassing ? "PASSED" : "FAILED"];
-}
-
-console.log(createScorecard("Jordan", 88, true));
+      solutionCode: `let appName: string = "DevForge";
+console.log(appName);
 `,
       hints: [
-        'Return `[student, score, isPassing ? "PASSED" : "FAILED"]`.'
+        'Write `let appName: string = "DevForge";`',
+        'Print with `console.log(appName);`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Returns correct tuple with PASSED status',
-          testFn: `(() => {
-            const res = createScorecard('Jordan', 88, true);
-            return Array.isArray(res) && res[0] === 'Jordan' && res[1] === 88 && res[2] === 'PASSED';
-          })()`,
-          expectedMessage: 'Expected ["Jordan", 88, "PASSED"]'
+          id: 'ts-1-tc-1',
+          description: 'appName is declared as string "DevForge"',
+          testFn: 'typeof appName !== "undefined" && appName === "DevForge"',
+          expectedMessage: 'appName should be "DevForge"'
         },
         {
-          id: 'tc-2',
-          description: 'Returns correct tuple with FAILED status',
-          testFn: `(() => {
-            const res = createScorecard('Sam', 45, false);
-            return res[2] === 'FAILED';
-          })()`,
-          expectedMessage: 'Expected status "FAILED"'
+          id: 'ts-1-tc-2',
+          description: 'Prints "DevForge" to console',
+          testFn: 'logs.some(l => l.args.join(" ").includes("DevForge"))',
+          expectedMessage: 'Make sure to print appName'
         }
       ]
     },
 
-    // TIER 2: CORE DEVELOPER
+    // LESSON 2: NUMBERS AND BOOLEANS
     {
-      id: 'ts-t2-interfaces-contracts',
-      title: 'Core: Data Contracts with Interfaces & Optional Fields',
-      slug: 'interfaces-contracts',
+      id: 'ts-2-numbers-booleans',
+      title: '2. Number and Boolean Types',
+      slug: 'numbers-booleans',
       language: 'typescript',
-      category: '2. Core Concepts',
+      category: '1. Type Basics',
+      difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 5,
+      xp: 30,
+      description: 'Work with numbers and true/false flags with complete type safety.',
+      concepts: [': number type', ': boolean type', 'Type inference'],
+      analogy: 'A light switch (boolean): it can only ever be ON (true) or OFF (false). It can never be "banana" or 42.',
+      explanationMarkdown: `### Numbers and Booleans
+The other two essential primitive types are:
+* \`number\`: for integers and decimals (e.g. \`10\`, \`3.14\`)
+* \`boolean\`: for true or false values
+
+\`\`\`typescript
+let userScore: number = 100;
+let isLoggedIn: boolean = true;
+\`\`\`
+`,
+      workedExample: {
+        title: 'Worked Example: Product Inventory Status',
+        code: `let productPrice: number = 29.99;
+let inStock: boolean = true;
+
+console.log("Price: $" + productPrice);
+console.log("In Stock: " + inStock);`,
+        explanation: '• productPrice is guaranteed to be a number.\n• inStock is guaranteed to be a boolean.',
+        expectedOutput: 'Price: $29.99\nIn Stock: true'
+      },
+      commonMistakes: [
+        'Putting quotes around numbers or booleans (e.g. "true" is a string, true is a boolean).'
+      ],
+      exerciseSteps: [
+        'Declare `userAge: number = 22;`.',
+        'Declare `hasLicense: boolean = true;`.',
+        'Print both variables.'
+      ],
+      initialCode: `// 👉 Declare userAge as a number (22):
+let userAge: number = 22;
+
+// 👉 Declare hasLicense as a boolean (true):
+let hasLicense: boolean = true;
+
+console.log(userAge);
+console.log(hasLicense);
+`,
+      solutionCode: `let userAge: number = 22;
+let hasLicense: boolean = true;
+console.log(userAge);
+console.log(hasLicense);
+`,
+      hints: [
+        'Write `let userAge: number = 22;`',
+        'Write `let hasLicense: boolean = true;`'
+      ],
+      testCases: [
+        {
+          id: 'ts-2-tc-1',
+          description: 'userAge is number 22 and hasLicense is boolean true',
+          testFn: 'userAge === 22 && hasLicense === true',
+          expectedMessage: 'userAge should be 22 and hasLicense should be true'
+        }
+      ]
+    },
+
+    // LESSON 3: TYPED FUNCTIONS
+    {
+      id: 'ts-3-functions',
+      title: '3. Typed Functions: Inputs & Outputs',
+      slug: 'typed-functions',
+      language: 'typescript',
+      category: '2. Functions & Contracts',
       difficulty: 'Beginner',
       tier: 2,
       tierName: 'Core',
-      estimatedMinutes: 12,
-      xp: 50,
-      description: 'Define robust shape contracts for data using interfaces, readonly modifiers, and optional fields.',
-      concepts: ['interface keyword', 'Optional properties with ?', 'Readonly properties', 'Enforcing object shapes'],
-      analogy: 'An interface is like an architectural blueprint. Before you start building a house, the blueprint specifies: it must have a roof, walls, and a front door. A swimming pool might be marked with a question mark (`pool?: boolean`) as optional.',
-      explanationMarkdown: `
-### What is an Interface?
-An \`interface\` defines the exact contract an object must honor:
+      estimatedMinutes: 6,
+      xp: 35,
+      description: 'Define clear contracts for what parameters a function expects and what type it returns.',
+      concepts: ['Parameter types (a: number)', 'Return type annotation (: number)', 'Compiler guarantees'],
+      analogy: 'A vending machine with a strict coin slot: it only accepts quarters (number parameter), and guarantees it drops a snack (return type).',
+      explanationMarkdown: `### Specifying Function Types
+In TypeScript, you annotate both the parameters and the return type:
 
 \`\`\`typescript
-interface UserProfile {
-  readonly id: string; // Cannot be modified after creation
-  name: string;
-  email: string;
-  avatarUrl?: string;  // The '?' marks this field as optional!
+function add(a: number, b: number): number {
+  return a + b;
 }
 \`\`\`
-
-If any required property is missing or given the wrong type, TypeScript immediately notifies you.
-      `,
+* \`(a: number, b: number)\` guarantees only numbers can be passed in.
+* \`: number\` after the parentheses guarantees the function returns a number.
+`,
       workedExample: {
-        title: 'Worked Example: User Contact Card Contract',
-        code: `interface Contact {
-  name: string;
-  phone: string;
-  notes?: string; // Optional
+        title: 'Worked Example: Greeting Builder',
+        code: `function buildGreeting(name: string): string {
+  return "Welcome, " + name + "!";
 }
 
-function printContact(person: Contact): string {
-  const noteInfo = person.notes ? \` (Note: \${person.notes})\` : "";
-  return \`Contact: \${person.name} - \${person.phone}\${noteInfo}\`;
-}
-
-const c1: Contact = { name: "Alice", phone: "555-0199" };
-console.log(printContact(c1));`,
-        explanation: '• Contact defines name and phone as required, and notes as optional.\n• c1 does not have notes, but TypeScript accepts it happily because of the ? modifier.',
-        expectedOutput: 'Contact: Alice - 555-0199'
+console.log(buildGreeting("Maya"));`,
+        explanation: '• Expects a string parameter name.\n• Returns a string.\n• Prints "Welcome, Maya!".',
+        expectedOutput: 'Welcome, Maya!'
       },
       commonMistakes: [
-        'Trying to assign to a `readonly` property after initialization.',
-        'Assuming optional properties are guaranteed to exist without checking `if (obj.prop)` first.'
+        'Returning a value that does not match the specified return type.'
       ],
       exerciseSteps: [
-        'Step 1: Define an interface `Book` with properties: `title: string`, `author: string`, `pages: number`, `isRead?: boolean`.',
-        'Step 2: Implement `summarizeBook(book: Book): string`.',
-        'Step 3: Return `"{title} by {author} ({pages} pages) - {Read or Unread}"`.'
+        'Define a function `multiply(x: number, y: number): number`.',
+        'Inside the function, return `x * y`.',
+        'Test it with `console.log(multiply(4, 5));`.'
       ],
-      initialCode: `interface Book {
-  title: string;
-  author: string;
-  pages: number;
-  isRead?: boolean;
+      initialCode: `// 👉 Define multiply with typed parameters and return type:
+function multiply(x: number, y: number): number {
+  return x * y;
 }
 
-function summarizeBook(book: Book): string {
-  // 👉 Check isRead and format string:
-  const status = book.isRead ? "Read" : "Unread";
-  return \`\${book.title} by \${book.author} (\${book.pages} pages) - \${status}\`;
-}
-
-// 🧪 Test call:
-console.log(summarizeBook({ title: "Atomic Habits", author: "James Clear", pages: 320, isRead: true }));
+// Test it:
+console.log(multiply(4, 5)); // Should print 20
 `,
-      solutionCode: `interface Book {
-  title: string;
-  author: string;
-  pages: number;
-  isRead?: boolean;
+      solutionCode: `function multiply(x: number, y: number): number {
+  return x * y;
 }
 
-function summarizeBook(book: Book): string {
-  const status = book.isRead ? "Read" : "Unread";
-  return \`\${book.title} by \${book.author} (\${book.pages} pages) - \${status}\`;
-}
+console.log(multiply(4, 5));
 `,
       hints: [
-        'Check `book.isRead ? "Read" : "Unread"`.',
-        'Return `${book.title} by ${book.author} (${book.pages} pages) - ${status}`.'
+        'Write `function multiply(x: number, y: number): number { return x * y; }`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Formats read book correctly',
-          testFn: `summarizeBook({ title: 'Clean Code', author: 'Robert Martin', pages: 464, isRead: true }) === 'Clean Code by Robert Martin (464 pages) - Read'`,
-          expectedMessage: 'Expected "Clean Code by Robert Martin (464 pages) - Read"'
+          id: 'ts-3-tc-1',
+          description: 'multiply(4, 5) returns 20',
+          testFn: 'typeof multiply === "function" && multiply(4, 5) === 20',
+          expectedMessage: 'multiply(4, 5) should return 20'
         }
       ]
     },
 
-    // TIER 3: INTERMEDIATE
+    // LESSON 4: TYPED ARRAYS
     {
-      id: 'ts-t3-generics-constraints',
-      title: 'Intermediate: Generics & Keyof Property Constraints',
-      slug: 'generics-constraints',
+      id: 'ts-4-arrays',
+      title: '4. Typed Arrays: Lists of Data',
+      slug: 'typed-arrays',
       language: 'typescript',
-      category: '3. Intermediate',
+      category: '2. Functions & Contracts',
+      difficulty: 'Beginner',
+      tier: 2,
+      tierName: 'Core',
+      estimatedMinutes: 5,
+      xp: 35,
+      description: 'Ensure lists only contain items of the designated type using type[] syntax.',
+      concepts: ['string[] array type', 'number[] array type', 'Preventing mixed data'],
+      analogy: 'A coin roll for dimes: it can only hold 10-cent coins. You cannot slide a penny into a dime roll.',
+      explanationMarkdown: `### Typed Arrays
+Add brackets \`[]\` after any type to create an array of that type:
+
+\`\`\`typescript
+let scores: number[] = [95, 88, 100];
+let names: string[] = ["Alice", "Bob"];
+\`\`\`
+If anyone tries to put a string into \`scores\`, TypeScript flags it immediately!
+`,
+      workedExample: {
+        title: 'Worked Example: City Names List',
+        code: `let cities: string[] = ["Tokyo", "London", "New York"];
+console.log("First city: " + cities[0]);`,
+        explanation: '• cities is an array of strings.\n• Accessing cities[0] returns "Tokyo".',
+        expectedOutput: 'First city: Tokyo'
+      },
+      commonMistakes: [
+        'Trying to mix types in a standard array without a union type.'
+      ],
+      exerciseSteps: [
+        'Declare an array named `tags` with type `string[]` containing `"react"`, `"vue"`, `"angular"`.',
+        'Print `tags[0]`.'
+      ],
+      initialCode: `// 👉 Declare tags as string[]:
+const tags: string[] = ["react", "vue", "angular"];
+
+console.log(tags[0]);
+`,
+      solutionCode: `const tags: string[] = ["react", "vue", "angular"];
+console.log(tags[0]);
+`,
+      hints: [
+        'Write `const tags: string[] = ["react", "vue", "angular"];`'
+      ],
+      testCases: [
+        {
+          id: 'ts-4-tc-1',
+          description: 'tags is string[] containing 3 items',
+          testFn: 'Array.isArray(tags) && tags.length === 3 && tags[0] === "react"',
+          expectedMessage: 'tags should be an array of 3 strings'
+        }
+      ]
+    },
+
+    // LESSON 5: INTERFACES
+    {
+      id: 'ts-5-interfaces',
+      title: '5. Interfaces: Describing Object Shapes',
+      slug: 'interfaces',
+      language: 'typescript',
+      category: '3. Data Modeling',
       difficulty: 'Intermediate',
       tier: 3,
       tierName: 'Intermediate',
-      estimatedMinutes: 20,
-      xp: 75,
-      description: 'Write flexible, reusable functions without using `any` and without losing type safety.',
-      concepts: ['Generic type parameters (<T>)', 'Keyof operator', 'Generic constraints (extends)', 'Type preservation'],
-      analogy: 'Imagine a shipping crate with a clear glass window. A generic `<T>` is like saying: "This crate can hold anything (bikes, apples, laptops), but whatever you put into it, the window remembers its exact type, so when you unpack it, you don\'t just get a mystery object — you get your exact laptop back!"',
-      explanationMarkdown: `
-### Why Generics?
-If you write a function with \`any\`, TypeScript loses all ability to autocomplete or check properties:
-\`\`\`typescript
-function badWrap(item: any): any { return item; }
-// badWrap("hello") returns any, so you lose autocomplete for string methods!
-\`\`\`
+      estimatedMinutes: 7,
+      xp: 40,
+      description: 'Create blueprints for objects so every property is checked and verified.',
+      concepts: ['interface keyword', 'Object contracts', 'Property verification'],
+      analogy: 'An architectural blueprint: every house built from the blueprint is guaranteed to have 2 doors, 4 windows, and a roof.',
+      explanationMarkdown: `### What is an Interface?
+An \`interface\` defines the shape that an object must have:
 
-With a **Generic Parameter \`<T>\`**, the type is preserved dynamically:
 \`\`\`typescript
-function wrapInArray<T>(item: T): T[] {
-  return [item];
+interface UserProfile {
+  id: number;
+  name: string;
+  isAdmin: boolean;
 }
-const nums = wrapInArray(42); // Type is number[]!
+
+let currentUser: UserProfile = {
+  id: 1,
+  name: "Sarah",
+  isAdmin: true
+};
 \`\`\`
-      `,
+`,
       workedExample: {
-        title: 'Worked Example: Safely Reading Object Keys with keyof',
-        code: `function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
-  return obj[key];
+        title: 'Worked Example: Product Interface',
+        code: `interface Product {
+  id: number;
+  title: string;
+  price: number;
 }
 
-const user = { id: 1, name: "Alice", role: "Admin" };
-const userName = getProperty(user, "name"); // Type is string!
+let item: Product = {
+  id: 101,
+  title: "Mechanical Keyboard",
+  price: 120
+};
 
-console.log("Extracted property:", userName);`,
-        explanation: '• K extends keyof T guarantees key must be one of "id", "name", or "role".\n• If you wrote getProperty(user, "password"), TypeScript immediately catches the error at compile-time!',
-        expectedOutput: 'Extracted property: Alice'
+console.log(item.title + " - $" + item.price);`,
+        explanation: '• Product specifies the required fields.\n• item satisfies all three requirements.',
+        expectedOutput: 'Mechanical Keyboard - $120'
       },
       commonMistakes: [
-        'Using `any` instead of a generic parameter `<T>`.',
-        'Over-complicating generics when standard interfaces would suffice.'
+        'Omitting a required property when creating the object.'
       ],
       exerciseSteps: [
-        'Step 1: In `pluck<T, K extends keyof T>(items: T[], key: K): T[K][]`, map over `items`.',
-        'Step 2: Return `item[key]` for each element in the array.',
-        'Step 3: Click "Check Solution" to test extraction!'
+        'Define an interface named `Book` with properties `title: string` and `pages: number`.',
+        'Create a variable `myBook: Book = { title: "TypeScript Handbook", pages: 250 };`.',
+        'Print `myBook.title`.'
       ],
-      initialCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
-  // 👉 Extract the value of property [key] from each item:
-  return items.map(item => item[key]);
+      initialCode: `// 👉 Step 1: Define interface Book:
+interface Book {
+  title: string;
+  pages: number;
 }
 
-// 🧪 Test call:
-const users = [{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }];
-console.log("Plucked names:", pluck(users, "name"));
+// 👉 Step 2: Create myBook object:
+const myBook: Book = {
+  title: "TypeScript Handbook",
+  pages: 250
+};
+
+console.log(myBook.title);
 `,
-      solutionCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
-  return items.map(item => item[key]);
+      solutionCode: `interface Book {
+  title: string;
+  pages: number;
 }
+
+const myBook: Book = {
+  title: "TypeScript Handbook",
+  pages: 250
+};
+
+console.log(myBook.title);
 `,
       hints: [
-        'Map over items and return `item[key]`.'
+        'Define `interface Book { title: string; pages: number; }`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Plucks string properties preserving types',
-          testFn: `(() => {
-            const arr = [{ x: 'one' }, { x: 'two' }];
-            const res = pluck(arr, 'x');
-            return Array.isArray(res) && res[0] === 'one' && res[1] === 'two';
-          })()`,
-          expectedMessage: 'Expected ["one", "two"]'
+          id: 'ts-5-tc-1',
+          description: 'myBook has title and pages',
+          testFn: 'typeof myBook === "object" && myBook.title === "TypeScript Handbook" && myBook.pages === 250',
+          expectedMessage: 'myBook should have title: "TypeScript Handbook" and pages: 250'
         }
       ]
     },
 
-    // TIER 4: ADVANCED
+    // LESSON 6: CAPSTONE & CERTIFICATE
     {
-      id: 'ts-t4-discriminated-unions',
-      title: 'Advanced: Discriminated Unions & Exhaustive Narrowing',
-      slug: 'discriminated-unions',
+      id: 'ts-6-capstone-mastery',
+      title: '6. Capstone Challenge: Type-Safe State Manager',
+      slug: 'capstone-mastery',
       language: 'typescript',
-      category: '4. Advanced Architecture',
-      difficulty: 'Advanced',
+      category: '4. Capstone Project',
+      difficulty: 'Intermediate',
       tier: 4,
       tierName: 'Advanced',
-      estimatedMinutes: 20,
-      xp: 90,
-      description: 'Model real-world state machines cleanly using tagged/discriminated unions and pattern matching.',
-      concepts: ['Discriminated union pattern', 'Literal discriminant (kind/status)', 'Type narrowing via switch/if'],
-      analogy: 'Imagine luggage tags at an airport. Every piece of luggage has a tag: "CarryOn", "CheckedBag", or "Oversized". As soon as baggage handlers see the tag "CarryOn", they instantly know without guessing that it has dimensions fitting into an overhead bin.',
-      explanationMarkdown: `
-### What is a Discriminated Union?
-A discriminated union combines multiple object types that share a single common literal property (the "discriminant" or tag):
+      estimatedMinutes: 10,
+      xp: 60,
+      description: 'Build a type-safe user score tracker using interfaces, typed functions, and arrays.',
+      concepts: ['Combining TypeScript features', 'Generic functions', 'End-to-end type safety'],
+      analogy: 'A bank vault transaction ledger where every deposit and withdrawal is verified by two automated audit checkers.',
+      explanationMarkdown: `### You are Ready for TypeScript Mastery!
+You have learned:
+1. Primitive types (: string, : number, : boolean)
+2. Typed function parameters and return types
+3. Typed arrays (string[], number[])
+4. Object contracts with interface
 
-\`\`\`typescript
-type NetworkState =
-  | { status: 'idle' }
-  | { status: 'loading' }
-  | { status: 'success'; data: string[] }
-  | { status: 'error'; message: string };
-\`\`\`
-
-When you check \`if (state.status === 'success')\`, TypeScript automatically narrows the object so you can access \`state.data\` without any type casting!
-      `,
+Now let's write a practical function that formats a user score badge safely!
+`,
       workedExample: {
-        title: 'Worked Example: Notification Renderer State Machine',
-        code: `type Notification =
-  | { type: 'email'; address: string; subject: string }
-  | { type: 'sms'; phoneNumber: string };
-
-function dispatch(n: Notification): string {
-  switch (n.type) {
-    case 'email':
-      return \`Sending Email to \${n.address}: "\${n.subject}"\`;
-    case 'sms':
-      return \`Sending SMS to \${n.phoneNumber}\`;
-  }
+        title: 'Worked Example: Formatting User Card',
+        code: `interface Player {
+  name: string;
+  score: number;
 }
 
-console.log(dispatch({ type: 'sms', phoneNumber: '+1-555-0100' }));`,
-        explanation: '• Inside case "email", TypeScript knows n has .address and .subject.\n• Inside case "sms", TypeScript knows n has .phoneNumber.\n• If you add a new type and forget to handle it, TypeScript warns you!',
-        expectedOutput: 'Sending SMS to +1-555-0100'
+function formatBadge(p: Player): string {
+  return p.name + " (Score: " + p.score + ")";
+}
+
+console.log(formatBadge({ name: "Alex", score: 95 }));`,
+        explanation: '• formatBadge guarantees safe access to name and score.\n• Returns formatted string.',
+        expectedOutput: 'Alex (Score: 95)'
       },
       commonMistakes: [
-        'Forgetting the break or return statement inside a switch block.',
-        'Not handling all possible cases in a union.'
+        'Returning undefined or forgetting the interface definition.'
       ],
       exerciseSteps: [
-        'Step 1: Review the `Shape` union (`circle`, `square`, `rectangle`).',
-        'Step 2: In `calculateArea(shape: Shape)` switch on `shape.kind`.',
-        'Step 3: Return `Math.PI * shape.radius * shape.radius` for circle, `shape.size * shape.size` for square, and `shape.width * shape.height` for rectangle.'
+        'Look at interface `Member` with `username: string` and `xp: number`.',
+        'Complete function `formatMemberStatus(member: Member): string`.',
+        'Return `"{username} has {xp} XP"`.',
+        'Pass all tests to complete TypeScript and claim your Certificate!'
       ],
-      initialCode: `type Shape =
-  | { kind: 'circle'; radius: number }
-  | { kind: 'square'; size: number }
-  | { kind: 'rectangle'; width: number; height: number };
-
-function calculateArea(shape: Shape): number {
-  // 👉 Switch on shape.kind to calculate area:
-  switch (shape.kind) {
-    case 'circle': return Math.PI * shape.radius * shape.radius;
-    case 'square': return shape.size * shape.size;
-    case 'rectangle': return shape.width * shape.height;
-  }
+      initialCode: `interface Member {
+  username: string;
+  xp: number;
 }
 
-// 🧪 Test call:
-console.log("Square area:", calculateArea({ kind: 'square', size: 10 }));
-console.log("Rectangle area:", calculateArea({ kind: 'rectangle', width: 7, height: 4 }));
+// 👉 Format member status as "{username} has {xp} XP":
+function formatMemberStatus(member: Member): string {
+  return member.username + " has " + member.xp + " XP";
+}
+
+// Test it:
+console.log(formatMemberStatus({ username: "Nova", xp: 500 }));
 `,
-      solutionCode: `type Shape =
-  | { kind: 'circle'; radius: number }
-  | { kind: 'square'; size: number }
-  | { kind: 'rectangle'; width: number; height: number };
-
-function calculateArea(shape: Shape): number {
-  switch (shape.kind) {
-    case 'circle': return Math.PI * shape.radius * shape.radius;
-    case 'square': return shape.size * shape.size;
-    case 'rectangle': return shape.width * shape.height;
-  }
+      solutionCode: `interface Member {
+  username: string;
+  xp: number;
 }
+
+function formatMemberStatus(member: Member): string {
+  return member.username + " has " + member.xp + " XP";
+}
+
+console.log(formatMemberStatus({ username: "Nova", xp: 500 }));
 `,
       hints: [
-        'Switch on `shape.kind`.',
-        'In `case "circle"`, TypeScript auto-narrows to radius.'
+        'Return `member.username + " has " + member.xp + " XP"`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Calculates square area accurately',
-          testFn: `calculateArea({ kind: 'square', size: 10 }) === 100`,
-          expectedMessage: 'Expected 10 * 10 = 100'
-        },
-        {
-          id: 'tc-2',
-          description: 'Calculates rectangle area accurately',
-          testFn: `calculateArea({ kind: 'rectangle', width: 7, height: 4 }) === 28`,
-          expectedMessage: 'Expected 7 * 4 = 28'
-        }
-      ]
-    },
-
-    // TIER 5: MASTERCLASS / EXPERT
-    {
-      id: 'ts-t5-conditional-infer-types',
-      title: 'Masterclass: Conditional Types & The Infer Keyword',
-      slug: 'conditional-infer-types',
-      language: 'typescript',
-      category: '5. Masterclass & Internals',
-      difficulty: 'Expert',
-      tier: 5,
-      tierName: 'Masterclass',
-      estimatedMinutes: 25,
-      xp: 130,
-      description: 'The pinnacle of TypeScript: write type-level functions using conditional types, the infer keyword, and type unboxing.',
-      concepts: ['Conditional types (T extends U ? X : Y)', 'The infer keyword', 'Type extraction and unboxing', 'Type gymnastics'],
-      analogy: 'Imagine an X-ray machine at a postal office. When a parcel comes through, you can\'t open it directly with your hands. Instead, the X-ray machine scans the inside: if it sees a Promise, it extracts the hidden diamond inside (`infer R`). If it is not a Promise, it leaves it as is.',
-      explanationMarkdown: `
-### Type-Level Programming: Conditional Types
-Generic types in TypeScript can evaluate conditions using ternary syntax:
-
-\`\`\`typescript
-type IsString<T> = T extends string ? true : false;
-type A = IsString<"hello">; // true
-type B = IsString<42>;      // false
-\`\`\`
-
----
-
-### The \`infer\` Keyword
-\`infer\` allows you to extract an unknown type variable from within another type structure:
-
-\`\`\`typescript
-type UnwrapPromise<T> = T extends Promise<infer R> ? R : T;
-type X = UnwrapPromise<Promise<number>>; // Extracts: number!
-\`\`\`
-      `,
-      workedExample: {
-        title: 'Worked Example: Unwrapping Nested Array Elements',
-        code: `type ElementType<T> = T extends (infer U)[] ? U : T;
-
-type StringList = string[];
-type Unwrapped = ElementType<StringList>; // string
-
-function logFirstItem<T>(items: T[]): T | null {
-  return items.length > 0 ? items[0] : null;
-}
-
-console.log("Unwrapped item:", logFirstItem(["Alpha", "Beta"]));`,
-        explanation: '• ElementType checks if T is an array of something.\n• infer U dynamically captures whatever type is inside the array and extracts it.',
-        expectedOutput: 'Unwrapped item: Alpha'
-      },
-      commonMistakes: [
-        'Using `infer` outside of the `extends` clause of a conditional type (it is only valid in the extends check).',
-        'Creating overly deep recursive conditional types that can exceed the TypeScript compiler depth limit.'
-      ],
-      exerciseSteps: [
-        'Step 1: In `unwrapApiResponse<T>(payload)`, check `if (payload.status === "success") return payload.data`. Else return `null`.',
-        'Step 2: In `extractValueOrFallback<T, D>(val, fallback)`, return `val` if it is not null or undefined, else return `fallback`.'
-      ],
-      initialCode: `type ApiResponse<T> =
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: string };
-
-function unwrapApiResponse<T>(payload: ApiResponse<T>): T | null {
-  // 👉 Step 1: Return data if status is success, otherwise null:
-  if (payload.status === 'success') {
-    return payload.data;
-  }
-  return null;
-}
-
-function extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D {
-  // 👉 Step 2: Return val if not null/undefined, else fallback:
-  return val !== null && val !== undefined ? val : fallback;
-}
-
-// 🧪 Test call:
-const good = unwrapApiResponse({ status: 'success', data: { score: 99 } });
-console.log("Extracted score:", extractValueOrFallback(good?.score, 0));
-`,
-      solutionCode: `type ApiResponse<T> =
-  | { status: 'success'; data: T }
-  | { status: 'error'; error: string };
-
-function unwrapApiResponse<T>(payload: ApiResponse<T>): T | null {
-  if (payload.status === 'success') {
-    return payload.data;
-  }
-  return null;
-}
-
-function extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D {
-  return val !== null && val !== undefined ? val : fallback;
-}
-`,
-      hints: [
-        'Check `if (payload.status === "success") return payload.data; else return null;`.',
-        'In extractValueOrFallback, check `val !== null && val !== undefined ? val : fallback`.'
-      ],
-      testCases: [
-        {
-          id: 'tc-1',
-          description: 'Unwraps data from success response',
-          testFn: `(() => {
-            const res = unwrapApiResponse({ status: 'success', data: 'TOKEN_123' });
-            return res === 'TOKEN_123';
-          })()`,
-          expectedMessage: 'Expected "TOKEN_123"'
-        },
-        {
-          id: 'tc-2',
-          description: 'Returns fallback on error or null payload',
-          testFn: `(() => {
-            const errRes = unwrapApiResponse({ status: 'error', error: '404' });
-            const val = extractValueOrFallback(errRes, 'DEFAULT');
-            return val === 'DEFAULT';
-          })()`,
-          expectedMessage: 'Expected fallback "DEFAULT"'
+          id: 'ts-6-tc-1',
+          description: 'formatMemberStatus returns "Nova has 500 XP"',
+          testFn: 'typeof formatMemberStatus === "function" && formatMemberStatus({ username: "Nova", xp: 500 }) === "Nova has 500 XP"',
+          expectedMessage: 'Should return "Nova has 500 XP"'
         }
       ]
     }

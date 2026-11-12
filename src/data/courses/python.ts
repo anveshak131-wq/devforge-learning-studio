@@ -2,478 +2,589 @@ import { Track } from '../../types';
 
 export const PYTHON_TRACK: Track = {
   id: 'python',
-  title: 'Python: Foundations to Senior Engineer',
+  title: 'Python: Beginner to Pro',
   slug: 'python',
   language: 'python',
   icon: 'Terminal',
   color: 'from-emerald-400 to-teal-500',
-  tagline: 'Learn Python concepts first with worked examples and real-world analogies, then build hands-on scripts.',
-  description: 'Master Pythonic design. Learn dynamic data structures, slicing, list & dict comprehensions, higher-order functions, and advanced custom decorators with interactive in-browser execution.',
+  tagline: 'The world\'s most popular language for beginners, data science, and AI — made easy with simple steps.',
+  description: 'Learn Python from scratch with clear analogies, instant in-browser execution, and practical exercises from print statements to data processing.',
   lessons: [
-    // TIER 1: FOUNDATIONS (ABSOLUTE BEGINNER)
+    // LESSON 1: HELLO WORLD
     {
-      id: 'py-t1-variables-fstrings',
-      title: 'Foundations: Variables, Math & Modern F-Strings',
-      slug: 'variables-fstrings',
+      id: 'py-1-hello-world',
+      title: '1. Hello, Python! The print() Function',
+      slug: 'hello-python',
       language: 'python',
-      category: '1. Foundations',
+      category: '1. Fundamentals',
       difficulty: 'Beginner',
       tier: 1,
       tierName: 'Foundations',
-      estimatedMinutes: 8,
-      xp: 40,
-      description: 'Start learning Python from step zero. Learn variable assignment, numbers, strings, and modern f-string formatting.',
-      concepts: ['Dynamic variable assignment', 'Basic arithmetic: +, *, /', 'f-string interpolation: f"{var}"'],
-      analogy: 'Writing Python is like writing clean notes in your notebook. You do not need semicolons, brackets, or type keywords. To save a value, you simply write `box_name = value`.',
-      explanationMarkdown: `
-### Step 1: Storing Data in Python
-In Python, creating a variable is as simple as:
-\`\`\`python
-name = "Jordan"
-price = 19.99
-quantity = 3
-\`\`\`
+      estimatedMinutes: 3,
+      xp: 25,
+      description: 'Write your first Python command! Learn how to display text on the screen using print().',
+      concepts: ['The print() function', 'Strings in Python', 'Clean syntax'],
+      analogy: 'Imagine speaking through a microphone. The print() function takes whatever text you give it and broadcasts it to the computer screen.',
+      explanationMarkdown: `### Welcome to Python!
+Python is famous for being clean, readable, and easy to learn. It reads almost like plain English.
 
-Python automatically understands whether something is a number or text.
-
----
-
-### Step 2: Formatted Strings (F-Strings)
-An **f-string** allows you to embed variables and math directly inside text by putting an \`f\` before your quotes and wrapping variables in \`{ ... }\`:
+### Displaying Messages
+To display text in Python, use \`print()\`. Put your text inside quotation marks:
 
 \`\`\`python
-item = "Headphones"
-total = price * quantity
-print(f"Purchased {quantity}x {item} for a total of \${total}.")
+print("Welcome to Python!")
 \`\`\`
-      `,
+Notice that in Python, you don't even need semicolons \`;\` at the end of lines!
+`,
       workedExample: {
-        title: 'Worked Example: Generating a Coffee Order Receipt',
-        code: `coffee_type = "Latte"
-cup_price = 4.50
-tax_rate = 0.08
-
-# Calculate total with 8% sales tax
-final_total = round(cup_price * (1 + tax_rate), 2)
-
-message = f"Your order: 1x {coffee_type} costs \${final_total}"
-print(message)`,
-        explanation: '• Line 1-3: Stores coffee name, price, and tax rate.\n• Line 6: Uses round(..., 2) to keep 2 decimal places.\n• Line 8: Uses f"..." to insert coffee_type and final_total into the string.',
-        expectedOutput: 'Your order: 1x Latte costs $4.86'
+        title: 'Worked Example: Saying Hello',
+        code: `# Print a friendly message to the screen
+print("Hello, World!")`,
+        explanation: '• print(...) displays text to the console screen.\n• "Hello, World!" is the message enclosed in quotes.\n• Lines starting with # are comments for humans to read.',
+        expectedOutput: 'Hello, World!'
       },
       commonMistakes: [
-        'Forgetting the letter `f` before the opening quote (e.g. `"{name}"` will print "{name}" literally rather than the variable value).',
-        'Mixing up indentations (Python uses spaces to organize code blocks instead of curly braces).'
+        'Forgetting quotes around text: print(Hello) will cause an error because Python looks for a variable named Hello.',
+        'Capitalizing Print: Python is case-sensitive, so it must be lowercase print.'
       ],
       exerciseSteps: [
-        'Step 1: In `format_receipt(item_name, price, tax_rate)`, calculate `total = round(price + (price * tax_rate), 2)`.',
-        'Step 2: Return an f-string formatted as: `"Receipt: {item_name} costs ${total}"`.',
-        'Step 3: Click "Check Solution" to verify with test cases!'
+        'Look at the editor on the right.',
+        'Use `print()` to display `"Hello, World!"` to the screen.',
+        'Click "Check Answer" to earn your XP!'
       ],
-      initialCode: `def format_receipt(item_name, price, tax_rate):
-  # 👉 Step 1: Calculate total including tax (rounded to 2 decimal places)
-  total = round(price + (price * tax_rate), 2)
-
-  # 👉 Step 2: Return formatted f-string:
-  return f"Receipt: {item_name} costs \${total}"
-
-# 🧪 Test call:
-print(format_receipt("Coffee", 4.00, 0.10))
+      initialCode: `# 👉 Step 1: Print "Hello, World!" to the screen below:
+print("Hello, World!")
 `,
-      solutionCode: `def format_receipt(item_name, price, tax_rate):
-  total = round(price + (price * tax_rate), 2)
-  return f"Receipt: {item_name} costs \${total}"
-
-print(format_receipt("Coffee", 4.00, 0.10))
+      solutionCode: `print("Hello, World!")
 `,
       hints: [
-        'Calculate `total = round(price + (price * tax_rate), 2)`.',
-        'Return `f"Receipt: {item_name} costs ${total}"`.'
+        'Type `print("Hello, World!")` exactly.',
+        'Make sure to include quotation marks around the text.'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Calculates total with tax and formats receipt accurately',
-          testFn: `(() => {
-            const res = format_receipt('Coffee', 4.00, 0.10);
-            return res === 'Receipt: Coffee costs $4.4';
-          })()`,
-          expectedMessage: 'Expected "Receipt: Coffee costs $4.4"'
+          id: 'py-1-tc-1',
+          description: 'Prints "Hello, World!" to the screen',
+          testFn: 'logs.some(l => l.args.join(" ").toLowerCase().includes("hello, world"))',
+          expectedMessage: 'Make sure your code has print("Hello, World!")'
         }
       ]
     },
 
-    // TIER 2: CORE DEVELOPER
+    // LESSON 2: VARIABLES
     {
-      id: 'py-t2-lists-dictionaries',
-      title: 'Core: Dictionary Lookups & Safe Default Fallbacks',
-      slug: 'dictionaries-lookups',
+      id: 'py-2-variables',
+      title: '2. Storing Information in Variables',
+      slug: 'variables',
       language: 'python',
-      category: '2. Core Concepts',
+      category: '1. Fundamentals',
+      difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 5,
+      xp: 30,
+      description: 'Give names to pieces of data so you can save and reuse them throughout your program.',
+      concepts: ['Variable assignment (=)', 'Strings and numbers', 'Printing variables'],
+      analogy: 'A variable is like sticking a nametag on a box. You write "city" on the box and put "Paris" inside.',
+      explanationMarkdown: `### What is a Variable in Python?
+In Python, creating a variable is as simple as writing its name, an equals sign \`=\`, and its value:
+
+\`\`\`python
+name = "Alex"
+age = 25
+print(name)
+\`\`\`
+You don't need any special keywords like \`let\` or \`var\` — Python automatically understands what you want!
+`,
+      workedExample: {
+        title: 'Worked Example: Player Profile',
+        code: `player_name = "Mario"
+coins = 100
+
+print(player_name)
+print(coins)`,
+        explanation: '• player_name holds the text "Mario".\n• coins holds the number 100.\n• print() displays each variable.',
+        expectedOutput: 'Mario\n100'
+      },
+      commonMistakes: [
+        'Using spaces in variable names (use underscores instead, like user_name).',
+        'Starting variable names with a number (e.g. 1name is invalid).'
+      ],
+      exerciseSteps: [
+        'Create a variable named `favorite_food` and set it to `"Pizza"`.',
+        'Print `favorite_food` using `print(favorite_food)`.'
+      ],
+      initialCode: `# 👉 Step 1: Create favorite_food = "Pizza"
+favorite_food = "Pizza"
+
+# 👉 Step 2: Print it to the screen
+print(favorite_food)
+`,
+      solutionCode: `favorite_food = "Pizza"
+print(favorite_food)
+`,
+      hints: [
+        'Write `favorite_food = "Pizza"`',
+        'Then write `print(favorite_food)`'
+      ],
+      testCases: [
+        {
+          id: 'py-2-tc-1',
+          description: 'Prints "Pizza" to the screen',
+          testFn: 'logs.some(l => l.args.join(" ").includes("Pizza"))',
+          expectedMessage: 'Make sure favorite_food is printed to the screen'
+        }
+      ]
+    },
+
+    // LESSON 3: NUMBERS & MATH
+    {
+      id: 'py-3-numbers-math',
+      title: '3. Numbers & Doing Calculations',
+      slug: 'numbers-math',
+      language: 'python',
+      category: '1. Fundamentals',
+      difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 5,
+      xp: 30,
+      description: 'Use Python to calculate numbers with addition, subtraction, multiplication, and division.',
+      concepts: ['Integers and floats', 'Arithmetic operators (+, -, *, /)', 'Calculating totals'],
+      analogy: 'Think of Python as a pocket calculator that can remember thousands of numbers at once.',
+      explanationMarkdown: `### Math in Python
+Python handles numbers naturally:
+* \`+\` Addition
+* \`-\` Subtraction
+* \`*\` Multiplication
+* \`/\` Division
+
+\`\`\`python
+price = 20
+discount = 5
+final_price = price - discount
+print(final_price) # 15
+\`\`\`
+`,
+      workedExample: {
+        title: 'Worked Example: Area of a Room',
+        code: `width = 5
+length = 8
+area = width * length
+
+print("Area:")
+print(area)`,
+        explanation: '• width is 5 and length is 8.\n• area = width * length multiplies 5 × 8 = 40.\n• print(area) outputs 40.',
+        expectedOutput: 'Area:\n40'
+      },
+      commonMistakes: [
+        'Putting quotes around numbers: "10" is text, not a number! Always write numbers without quotes.'
+      ],
+      exerciseSteps: [
+        'You have `hourly_rate = 25` and `hours_worked = 4`.',
+        'Create a variable `total_pay = hourly_rate * hours_worked`.',
+        'Print `total_pay`.'
+      ],
+      initialCode: `hourly_rate = 25
+hours_worked = 4
+
+# 👉 Calculate total_pay by multiplying hourly_rate * hours_worked:
+total_pay = hourly_rate * hours_worked
+
+# 👉 Print total_pay:
+print(total_pay)
+`,
+      solutionCode: `hourly_rate = 25
+hours_worked = 4
+total_pay = hourly_rate * hours_worked
+print(total_pay)
+`,
+      hints: [
+        'Use `total_pay = hourly_rate * hours_worked`',
+        'Then `print(total_pay)`'
+      ],
+      testCases: [
+        {
+          id: 'py-3-tc-1',
+          description: 'Calculates total_pay (100) and prints it',
+          testFn: 'logs.some(l => l.args.join(" ").includes("100"))',
+          expectedMessage: 'total_pay should equal 25 * 4 = 100'
+        }
+      ]
+    },
+
+    // LESSON 4: IF / ELSE DECISIONS
+    {
+      id: 'py-4-if-else',
+      title: '4. Making Decisions with if and else',
+      slug: 'if-else',
+      language: 'python',
+      category: '2. Logic & Flow',
       difficulty: 'Beginner',
       tier: 2,
       tierName: 'Core',
-      estimatedMinutes: 12,
-      xp: 50,
-      description: 'Master key-value dictionaries, default values with .get(), and safe data retrieval.',
-      concepts: ['Dictionaries (`{"key": "value"}`)', 'Safe access with `dict.get(key, default)`', 'Preventing KeyError crashes'],
-      analogy: 'Imagine a physical dictionary. If you look up a word that does not exist in standard dictionaries, the book burns up in flames (a KeyError crash!). Using `.get()` is like a polite librarian who checks for the word, and if it is missing, hands you a standard fallback card instead.',
-      explanationMarkdown: `
-### Python Dictionaries
-Dictionaries store paired data using keys and values:
+      estimatedMinutes: 6,
+      xp: 35,
+      description: 'Teach Python how to make choices using conditional statements and clean indentation.',
+      concepts: ['if condition:', 'else: fallback', 'Indentation in Python'],
+      analogy: 'A security guard at an amusement park: IF you are taller than 120cm, you can ride the rollercoaster. ELSE, you must wait.',
+      explanationMarkdown: `### How Python Makes Choices
+In Python, an \`if\` statement tests if something is true. Note the colon \`:\` and the indentation:
+
 \`\`\`python
-user = {
-  "name": "Sarah",
-  "role": "admin"
-}
+score = 80
+
+if score >= 50:
+    print("Passed!")
+else:
+    print("Try again!")
 \`\`\`
-
-If you ask for a key that does not exist like \`user["country"]\`, Python will throw a **KeyError** and crash your program!
-
----
-
-### The Safe Way: \`.get(key, default)\`
-Using \`.get()\` lets you specify a fallback if the key is missing:
-\`\`\`python
-# If "theme" doesn't exist, it defaults to "dark" instead of crashing:
-theme = user.get("theme", "dark")
-\`\`\`
-      `,
+Python uses **indentation** (spacing) to know which lines belong inside the \`if\` block!
+`,
       workedExample: {
-        title: 'Worked Example: Reading User Preferences Safely',
-        code: `settings = {
-  "notifications": True,
-  "volume": 80
-  # Notice "language" is not configured!
-}
+        title: 'Worked Example: Pass or Fail',
+        code: `grade = 75
 
-# Safely get language with fallback to "English"
-app_language = settings.get("language", "English")
-
-print(f"Loaded language: {app_language}")`,
-        explanation: '• Line 1-4: settings has notifications and volume, but no language key.\n• Line 7: settings.get("language", "English") sees that "language" is missing and safely returns "English".',
-        expectedOutput: 'Loaded language: English'
+if grade >= 60:
+    print("Good job! You passed.")
+else:
+    print("Please retake the exam.")`,
+        explanation: '• grade is 75.\n• grade >= 60 is True, so the indented print line runs.\n• The else branch is skipped.',
+        expectedOutput: 'Good job! You passed.'
       },
       commonMistakes: [
-        'Accessing missing keys using square brackets `dict[key]` instead of `dict.get(key, default)`.',
-        'Confusing lists `[1, 2, 3]` (indexed by position 0, 1, 2) with dictionaries `{"a": 1}` (indexed by named keys).'
+        'Forgetting the colon : at the end of the if or else line.',
+        'Inconsistent indentation (always indent the lines inside the if block by 4 spaces or a tab).'
       ],
       exerciseSteps: [
-        'Step 1: In `merge_user_profile(user_dict, default_theme="dark")`, build a new dictionary.',
-        'Step 2: Read `"name"` from user_dict.',
-        'Step 3: Read `"role"` with `.get("role", "member")`.',
-        'Step 4: Read `"theme"` with `.get("theme", default_theme)`.'
+        'Look at `temperature = 32`.',
+        'Write an `if` check: if `temperature > 25`, print `"Hot"`.',
+        'Otherwise in `else:`, print `"Cold"`.'
       ],
-      initialCode: `def merge_user_profile(user_dict, default_theme="dark"):
-  # 👉 Build and return a safe profile dictionary:
-  return {
-    "name": user_dict.get("name"),
-    "role": user_dict.get("role", "member"),
-    "theme": user_dict.get("theme", default_theme)
-  }
+      initialCode: `temperature = 32
 
-# 🧪 Test call:
-print(merge_user_profile({"name": "Dan"}))
+# 👉 Write your if / else check below:
+if temperature > 25:
+    print("Hot")
+else:
+    print("Cold")
 `,
-      solutionCode: `def merge_user_profile(user_dict, default_theme="dark"):
-  return {
-    "name": user_dict.get("name"),
-    "role": user_dict.get("role", "member"),
-    "theme": user_dict.get("theme", default_theme)
-  }
+      solutionCode: `temperature = 32
+
+if temperature > 25:
+    print("Hot")
+else:
+    print("Cold")
 `,
       hints: [
-        'Use `user_dict.get("role", "member")` to fallback safely.',
-        'Use `user_dict.get("theme", default_theme)` for theme.'
+        'Write `if temperature > 25:`',
+        'Indent the next line and write `print("Hot")`',
+        'On a new line without indentation, write `else:` and then `print("Cold")`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Supplies default role and theme when absent',
-          testFn: `(() => {
-            const res = merge_user_profile({ name: 'Dan' });
-            return res.name === 'Dan' && res.role === 'member' && res.theme === 'dark';
-          })()`,
-          expectedMessage: 'Expected default role: member, theme: dark'
+          id: 'py-4-tc-1',
+          description: 'Prints "Hot" when temperature is 32',
+          testFn: 'logs.some(l => l.args.join(" ").includes("Hot"))',
+          expectedMessage: 'When temperature > 25, it should print "Hot"'
         }
       ]
     },
 
-    // TIER 3: INTERMEDIATE
+    // LESSON 5: LISTS
     {
-      id: 'py-t3-list-comprehensions',
-      title: 'Intermediate: List & Dictionary Comprehensions',
-      slug: 'list-comprehensions',
+      id: 'py-5-lists',
+      title: '5. Lists: Storing Collections of Data',
+      slug: 'lists',
       language: 'python',
-      category: '3. Intermediate',
+      category: '3. Data Collections',
+      difficulty: 'Beginner',
+      tier: 2,
+      tierName: 'Core',
+      estimatedMinutes: 6,
+      xp: 40,
+      description: 'Store multiple items together in an ordered Python list.',
+      concepts: ['List syntax [item1, item2]', 'Accessing items by index [0]', 'len() function'],
+      analogy: 'A grocery shopping list written on a notepad: milk, eggs, bread. You check off items one by one.',
+      explanationMarkdown: `### What is a List?
+A list in Python is an ordered sequence of items enclosed in square brackets \`[ ]\`:
+
+\`\`\`python
+fruits = ["apple", "banana", "cherry"]
+
+# The first item is at index 0:
+print(fruits[0]) # apple
+
+# len() tells you how many items are in the list:
+print(len(fruits)) # 3
+\`\`\`
+`,
+      workedExample: {
+        title: 'Worked Example: Favorite Games',
+        code: `games = ["Zelda", "Mario", "Minecraft"]
+
+print("Favorite:")
+print(games[0])`,
+        explanation: '• games stores 3 game titles.\n• games[0] retrieves the very first game: Zelda.',
+        expectedOutput: 'Favorite:\nZelda'
+      },
+      commonMistakes: [
+        'Trying to access index 3 when there are only 3 items (indexes are 0, 1, 2).'
+      ],
+      exerciseSteps: [
+        'Create a list named `animals` containing `"cat"`, `"dog"`, and `"bird"`.',
+        'Print the first animal (`animals[0]`).'
+      ],
+      initialCode: `# 👉 Step 1: Create the animals list:
+animals = ["cat", "dog", "bird"]
+
+# 👉 Step 2: Print the first animal:
+print(animals[0])
+`,
+      solutionCode: `animals = ["cat", "dog", "bird"]
+print(animals[0])
+`,
+      hints: [
+        'Write `animals = ["cat", "dog", "bird"]`',
+        'Print with `print(animals[0])`'
+      ],
+      testCases: [
+        {
+          id: 'py-5-tc-1',
+          description: 'Prints "cat" to the screen',
+          testFn: 'logs.some(l => l.args.join(" ").includes("cat"))',
+          expectedMessage: 'Make sure animals[0] prints "cat"'
+        }
+      ]
+    },
+
+    // LESSON 6: FOR LOOPS
+    {
+      id: 'py-6-loops',
+      title: '6. Repeating Work with for Loops',
+      slug: 'loops',
+      language: 'python',
+      category: '3. Data Collections',
       difficulty: 'Intermediate',
       tier: 3,
       tierName: 'Intermediate',
-      estimatedMinutes: 15,
-      xp: 65,
-      description: 'Transform collections cleanly and expressively in a single line using Pythonic comprehensions.',
-      concepts: ['List comprehensions: `[expression for item in iterable if condition]`', 'Data filtering & transformation', 'Writing readable Pythonic code'],
-      analogy: 'Instead of building an empty box, looping through a warehouse, picking items one by one, checking them, and putting them in the box, a list comprehension is a high-speed express line: "Give me all positive even numbers multiplied by 2 in one swift command."',
-      explanationMarkdown: `
-### Pythonic Code: List Comprehensions
-In other languages, filtering and transforming a list takes 5-6 lines of boilerplate:
-\`\`\`python
-# The old, slow way:
-evens = []
-for n in numbers:
-  if n % 2 == 0:
-    evens.append(n * 2)
-\`\`\`
+      estimatedMinutes: 6,
+      xp: 40,
+      description: 'Let Python do repetitive tasks for you automatically by looping through items.',
+      concepts: ['for item in list:', 'Loop variable', 'Automating tasks'],
+      analogy: 'Imagine a teacher handing out test papers to each student in row 1. You repeat the exact same handoff for every person.',
+      explanationMarkdown: `### The Power of Loops
+Instead of writing 10 print statements, a \`for\` loop runs your code once for each item in a collection:
 
-In idiomatic Python, you express this in a single readable line:
 \`\`\`python
-# The Pythonic way:
-evens = [n * 2 for n in numbers if n % 2 == 0]
+friends = ["Maya", "Liam", "Noah"]
+
+for friend in friends:
+    print(friend)
 \`\`\`
-      `,
+Python automatically assigns each item to the variable \`friend\` one by one!
+`,
       workedExample: {
-        title: 'Worked Example: Extracting Passing Grades',
-        code: `scores = [45, 88, 92, 59, 78, 95]
+        title: 'Worked Example: Cheering on Players',
+        code: `players = ["Aria", "Leo", "Mia"]
 
-# Keep only passing scores (>= 70) and add a 5-point curve
-curved_passing = [score + 5 for score in scores if score >= 70]
-
-print("Curved passing scores:", curved_passing)`,
-        explanation: '• for score in scores: loops through all 6 scores.\n• if score >= 70: filters out 45 and 59.\n• score + 5: adds 5 points to 88, 92, 78, 95.',
-        expectedOutput: 'Curved passing scores: [93, 97, 83, 100]'
+for p in players:
+    print("Go " + p + "!")`,
+        explanation: '• The loop runs 3 times, once for Aria, once for Leo, and once for Mia.\n• In each iteration, p holds the current player.',
+        expectedOutput: 'Go Aria!\nGo Leo!\nGo Mia!'
       },
       commonMistakes: [
-        'Putting the `if` condition at the beginning instead of the end when filtering: `[x for x in list if condition]`.',
-        'Over-nesting comprehensions: if logic becomes too complex, break it into standard functions.'
+        'Forgetting the colon : after the for statement.',
+        'Not indenting the lines inside the loop.'
       ],
       exerciseSteps: [
-        'Step 1: In `filter_and_double(numbers)`, write a list comprehension.',
-        'Step 2: Filter for numbers where `n > 0` and `n % 2 == 0` (positive evens).',
-        'Step 3: Double each matched number: `n * 2`.'
+        'Look at the list `numbers = [1, 2, 3]`.',
+        'Write a `for` loop that iterates over `numbers` and prints each number.'
       ],
-      initialCode: `def filter_and_double(numbers):
-  # 👉 Write your list comprehension:
-  return [n * 2 for n in numbers if n > 0 and n % 2 == 0]
+      initialCode: `numbers = [1, 2, 3]
 
-# 🧪 Test call:
-print(filter_and_double([-4, -2, 0, 1, 2, 3, 4, 5, 6]))
+# 👉 Write a for loop to print each number:
+for n in numbers:
+    print(n)
 `,
-      solutionCode: `def filter_and_double(numbers):
-  return [n * 2 for n in numbers if n > 0 and n % 2 == 0]
+      solutionCode: `numbers = [1, 2, 3]
+
+for n in numbers:
+    print(n)
 `,
       hints: [
-        'Check both `n > 0` and `n % 2 == 0`.',
-        'Multiply by 2 in the expression: `n * 2`.'
+        'Write `for n in numbers:`',
+        'Indent the next line and write `print(n)`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Filters positive evens and doubles them correctly',
-          testFn: `(() => {
-            const res = filter_and_double([-4, -2, 0, 1, 2, 3, 4, 5, 6]);
-            return Array.isArray(res) && res.length === 3 && res[0] === 4 && res[1] === 8 && res[2] === 12;
-          })()`,
-          expectedMessage: 'Expected [4, 8, 12]'
+          id: 'py-6-tc-1',
+          description: 'Prints numbers 1, 2, and 3',
+          testFn: 'logs.some(l => l.args.join(" ").includes("1")) && logs.some(l => l.args.join(" ").includes("3"))',
+          expectedMessage: 'Make sure your loop prints each number'
         }
       ]
     },
 
-    // TIER 4: ADVANCED
+    // LESSON 7: FUNCTIONS WITH DEF
     {
-      id: 'py-t4-args-kwargs-higher-order',
-      title: 'Advanced: Flexible Functions (*args & **kwargs)',
-      slug: 'args-kwargs',
+      id: 'py-7-functions',
+      title: '7. Functions: Creating Tools with def',
+      slug: 'functions',
       language: 'python',
-      category: '4. Advanced Architecture',
-      difficulty: 'Advanced',
+      category: '3. Data Collections',
+      difficulty: 'Intermediate',
+      tier: 3,
+      tierName: 'Intermediate',
+      estimatedMinutes: 7,
+      xp: 45,
+      description: 'Package your code into reusable tools using the def keyword and return values.',
+      concepts: ['Defining functions with def', 'Function arguments', 'return statement'],
+      analogy: 'A coffee machine: you put in coffee beans and water (inputs), press the button, and it returns a hot cup of coffee (output).',
+      explanationMarkdown: `### Defining Functions in Python
+We define a function using the keyword \`def\`, followed by a name and parentheses:
+
+\`\`\`python
+def make_greeting(name):
+    return "Hello, " + name + "!"
+
+message = make_greeting("Sarah")
+print(message) # Hello, Sarah!
+\`\`\`
+`,
+      workedExample: {
+        title: 'Worked Example: Calculating Tax',
+        code: `def calculate_tax(amount):
+    return amount * 0.10
+
+tax = calculate_tax(50)
+print(tax)`,
+        explanation: '• calculate_tax takes amount (50).\n• Multiplies 50 × 0.10 and returns 5.\n• print(tax) outputs 5.',
+        expectedOutput: '5'
+      },
+      commonMistakes: [
+        'Forgetting to return the result (using print inside the function instead of return).'
+      ],
+      exerciseSteps: [
+        'Define a function named `add_numbers(a, b)` that returns `a + b`.',
+        'Test your function with `print(add_numbers(10, 20))`.'
+      ],
+      initialCode: `# 👉 Define your function add_numbers(a, b):
+def add_numbers(a, b):
+    return a + b
+
+# Test it:
+print(add_numbers(10, 20)) # Should print 30
+`,
+      solutionCode: `def add_numbers(a, b):
+    return a + b
+
+print(add_numbers(10, 20))
+`,
+      hints: [
+        'Write `def add_numbers(a, b):`',
+        'Indent and write `return a + b`'
+      ],
+      testCases: [
+        {
+          id: 'py-7-tc-1',
+          description: 'add_numbers(10, 20) returns 30',
+          testFn: 'typeof add_numbers === "function" && add_numbers(10, 20) === 30',
+          expectedMessage: 'add_numbers(10, 20) should return 30'
+        },
+        {
+          id: 'py-7-tc-2',
+          description: 'add_numbers(5, 5) returns 10',
+          testFn: 'typeof add_numbers === "function" && add_numbers(5, 5) === 10',
+          expectedMessage: 'add_numbers(5, 5) should return 10'
+        }
+      ]
+    },
+
+    // LESSON 8: CAPSTONE PROJECT & CERTIFICATE
+    {
+      id: 'py-8-capstone-mastery',
+      title: '8. Capstone Challenge: Data Analyzer',
+      slug: 'capstone-analyzer',
+      language: 'python',
+      category: '4. Capstone Project',
+      difficulty: 'Intermediate',
       tier: 4,
       tierName: 'Advanced',
-      estimatedMinutes: 20,
-      xp: 85,
-      description: 'Write flexible functions and library APIs that accept arbitrary positional and keyword arguments.',
-      concepts: ['*args positional unpacking', '**kwargs keyword dictionary unpacking', 'Building flexible URL query formatters'],
-      analogy: '*args is like an open backpack where you can toss any number of items in order. **kwargs is like a filing cabinet where every item you hand in has a sticky note label attached to it.',
-      explanationMarkdown: `
-### What are *args and **kwargs?
-When writing frameworks or reusable utilities, you don't always know beforehand how many parameters a user will pass:
-- \`*args\`: Collects extra positional arguments into a tuple.
-- \`**kwargs\`: Collects extra named keyword arguments into a dictionary.
+      estimatedMinutes: 10,
+      xp: 60,
+      description: 'Combine loops, math, and functions to compute the average score of a test group.',
+      concepts: ['Combining Python tools', 'Accumulating sums in a loop', 'Calculating averages'],
+      analogy: 'You are working as a data analyst at Netflix or Spotify, calculating average watch times across thousands of users.',
+      explanationMarkdown: `### Congratulations! You are Ready for the Capstone!
+You have mastered:
+1. Printing messages
+2. Storing data in variables
+3. Arithmetic and numbers
+4. Conditional decisions with if/else
+5. Storing lists of data
+6. Repeating tasks with for loops
+7. Defining reusable functions with def
 
-\`\`\`python
-def log_event(event_name, **details):
-  print(f"Event: {event_name}")
-  for key, value in details.items():
-    print(f"  {key} = {value}")
-
-log_event("USER_LOGIN", user_id=42, ip="127.0.0.1", browser="Chrome")
-\`\`\`
-      `,
+Now, let's write a practical function that finds the average of any list of numbers!
+`,
       workedExample: {
-        title: 'Worked Example: Flexible HTML Tag Generator',
-        code: `def make_element(tag, content, **attrs):
-  # Format attributes as key="value"
-  formatted_attrs = " ".join([f'{k}="{v}"' for k, v in attrs.items()])
-  if formatted_attrs:
-    return f"<{tag} {formatted_attrs}>{content}</{tag}>"
-  return f"<{tag}>{content}</{tag}>"
+        title: 'Worked Example: Totaling a List',
+        code: `def sum_list(items):
+    total = 0
+    for num in items:
+        total = total + num
+    return total
 
-btn = make_element("button", "Submit Order", id="btn-submit", className="primary")
-print(btn)`,
-        explanation: '• **attrs absorbs any keyword arguments (id and className) into a dict.\n• The comprehension turns them into id="btn-submit" className="primary".',
-        expectedOutput: '<button id="btn-submit" className="primary">Submit Order</button>'
+print(sum_list([10, 20, 30])) # 60`,
+        explanation: '• sum_list initializes total = 0.\n• Loops through each item and adds it to total.\n• Returns 60.',
+        expectedOutput: '60'
       },
       commonMistakes: [
-        'Putting `**kwargs` before `*args` (positional arguments must always precede keyword arguments in Python function signatures).',
-        'Mutating `kwargs` directly when passing them along to another function.'
+        'Dividing by zero (make sure len(numbers) > 0 before dividing).'
       ],
       exerciseSteps: [
-        'Step 1: In `build_query_string(base_url, **params)`, check `if not params: return base_url`.',
-        'Step 2: Format pairs sorted by key: `[f"{k}={v}" for k, v in sorted(params.items())]`.',
-        'Step 3: Return `f"{base_url}?" + "&".join(pairs)`.'
+        'Complete the function `calculate_average(scores)`.',
+        'Add up all the numbers in `scores`, then divide by `len(scores)`.',
+        'Return the average value.',
+        'Pass all tests to finish Python and claim your Certificate!'
       ],
-      initialCode: `def build_query_string(base_url, **params):
-  # 👉 Step 1: Return base_url if no params were passed:
-  if not params:
-    return base_url
+      initialCode: `def calculate_average(scores):
+    total = 0
+    # 👉 Step 1: Add up each score in the list:
+    for s in scores:
+        total = total + s
+        
+    # 👉 Step 2: Divide total by len(scores) and return:
+    return total / len(scores)
 
-  # 👉 Step 2: Format key=value pairs sorted by key:
-  pairs = [f"{k}={v}" for k, v in sorted(params.items())]
-
-  # 👉 Step 3: Combine with ? and &:
-  return f"{base_url}?" + "&".join(pairs)
-
-# 🧪 Test call:
-print(build_query_string("https://api.example.com", sort="asc", page=2))
+# Test it:
+print(calculate_average([80, 90, 100])) # Should print 90
 `,
-      solutionCode: `def build_query_string(base_url, **params):
-  if not params:
-    return base_url
-  pairs = [f"{k}={v}" for k, v in sorted(params.items())]
-  return f"{base_url}?" + "&".join(pairs)
+      solutionCode: `def calculate_average(scores):
+    total = 0
+    for s in scores:
+        total = total + s
+    return total / len(scores)
+
+print(calculate_average([80, 90, 100]))
 `,
       hints: [
-        'If not params return base_url.',
-        'Use `sorted(params.items())` and join with `&`.'
+        'Sum with `for s in scores: total = total + s`',
+        'Return `total / len(scores)`'
       ],
       testCases: [
         {
-          id: 'tc-1',
-          description: 'Constructs query string sorted by key',
-          testFn: `(() => {
-            const res = build_query_string('https://api.com', limit=10, search='dev');
-            return res === 'https://api.com?limit=10&search=dev';
-          })()`,
-          expectedMessage: 'Expected "https://api.com?limit=10&search=dev"'
-        }
-      ]
-    },
-
-    // TIER 5: MASTERCLASS / EXPERT
-    {
-      id: 'py-t5-custom-decorators',
-      title: 'Masterclass: Metaprogramming with Function Decorators',
-      slug: 'decorators-metaprogramming',
-      language: 'python',
-      category: '5. Masterclass & Internals',
-      difficulty: 'Expert',
-      tier: 5,
-      tierName: 'Masterclass',
-      estimatedMinutes: 25,
-      xp: 120,
-      description: 'Understand Python function wrappers, closures, and the @decorator syntax for caching, authentication, and logging.',
-      concepts: ['Decorators as higher-order functions', 'Function closures', 'Wrapper execution interception', 'Reusable metaprogramming'],
-      analogy: 'Imagine wrapping a gift box. The gift inside (the original function) doesn\'t change at all, but the wrapping paper and ribbon (the decorator) add beauty, security, or a tag before anyone opens the box.',
-      explanationMarkdown: `
-### What is a Python Decorator?
-A decorator takes a function as an argument, wraps extra behavior around it, and returns the wrapped version:
-
-\`\`\`python
-def log_call(func):
-  def wrapper(*args, **kwargs):
-    print(f"Calling: {func.__name__}")
-    return func(*args, **kwargs)
-  return wrapper
-
-@log_call
-def greet(name):
-  return f"Hello, {name}"
-\`\`\`
-      `,
-      workedExample: {
-        title: 'Worked Example: Building a Timer & Execution Logger Decorator',
-        code: `def notify(func):
-  def wrapper(*args, **kwargs):
-    print("🔔 Notification: Function starting...")
-    result = func(*args, **kwargs)
-    print("✅ Notification: Function finished.")
-    return result
-  return wrapper
-
-@notify
-def send_email(to):
-  return f"Email sent to {to}"
-
-print(send_email("alice@example.com"))`,
-        explanation: '• @notify wraps send_email.\n• When send_email is called, wrapper runs first, prints start, calls the real function, prints finish, and returns the result.',
-        expectedOutput: '🔔 Notification: Function starting...\n✅ Notification: Function finished.\nEmail sent to alice@example.com'
-      },
-      commonMistakes: [
-        'Forgetting to return the result of `func(*args, **kwargs)` from the wrapper, causing the decorated function to return None!',
-        'Forgetting to accept `*args, **kwargs` in the wrapper function.'
-      ],
-      exerciseSteps: [
-        'Step 1: Implement a decorator factory `repeat_call(n)` that takes integer `n`.',
-        'Step 2: It returns `decorator(func)`.',
-        'Step 3: Inside `wrapper(*args, **kwargs)`, run a loop `for _ in range(n): res = func(*args, **kwargs)`.',
-        'Step 4: Return `res`.'
-      ],
-      initialCode: `def repeat_call(n):
-  def decorator(func):
-    def wrapper(*args, **kwargs):
-      # 👉 Execute func n times in a loop and return the last result:
-      res = None
-      for _ in range(n):
-        res = func(*args, **kwargs)
-      return res
-    return wrapper
-  return decorator
-
-# 🧪 Test call:
-counter = 0
-def increment():
-  global counter
-  counter += 1
-  return counter
-
-three_times = repeat_call(3)(increment)
-print("Final result after 3 runs:", three_times())
-`,
-      solutionCode: `def repeat_call(n):
-  def decorator(func):
-    def wrapper(*args, **kwargs):
-      res = None
-      for _ in range(n):
-        res = func(*args, **kwargs)
-      return res
-    return wrapper
-  return decorator
-`,
-      hints: [
-        'repeat_call(n) returns decorator(func) which returns wrapper(*args, **kwargs).',
-        'Run `for _ in range(n): res = func(*args, **kwargs)` and return res.'
-      ],
-      testCases: [
+          id: 'py-8-tc-1',
+          description: 'calculate_average([80, 90, 100]) returns 90',
+          testFn: 'typeof calculate_average === "function" && calculate_average([80, 90, 100]) === 90',
+          expectedMessage: 'The average of [80, 90, 100] is 90'
+        },
         {
-          id: 'tc-1',
-          description: 'Repeats underlying function invocation n times',
-          testFn: `(() => {
-            let count = 0;
-            const inc = () => { count++; return count; };
-            const wrapped = repeat_call(4)(inc);
-            const finalVal = wrapped();
-            return count === 4 && finalVal === 4;
-          })()`,
-          expectedMessage: 'Expected function to be executed 4 times'
+          id: 'py-8-tc-2',
+          description: 'calculate_average([10, 20]) returns 15',
+          testFn: 'typeof calculate_average === "function" && calculate_average([10, 20]) === 15',
+          expectedMessage: 'The average of [10, 20] is 15'
         }
       ]
     }

@@ -12,7 +12,8 @@ import {
   User as UserIcon,
   LogOut,
   ChevronDown,
-  LogIn
+  LogIn,
+  Compass
 } from 'lucide-react';
 import { UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
@@ -40,11 +41,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLogout
 }) => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
+  const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
 
   return (
     <header className="h-14 border-b border-slate-800 bg-slate-900/90 backdrop-blur-md px-4 flex items-center justify-between z-30 select-none">
-      {/* Brand & Nav */}
+      {/* Brand & Main Navigation */}
       <div className="flex items-center space-x-6">
         <button
           onClick={() => onNavigate('dashboard')}
@@ -62,39 +64,27 @@ export const Navbar: React.FC<NavbarProps> = ({
                 Academy
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 -mt-0.5 hidden sm:block">Zero to Masterclass</p>
+            <p className="text-[10px] text-slate-400 -mt-0.5 hidden sm:block">Learn to Code with Ease</p>
           </div>
         </button>
 
-        {/* Navigation Tabs */}
-        <nav className="hidden lg:flex items-center space-x-1">
+        {/* Core Navigation Tabs (Simple & Frictionless) */}
+        <nav className="hidden md:flex items-center space-x-1">
           <button
             onClick={() => onNavigate('dashboard')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
               currentView === 'dashboard'
                 ? 'bg-slate-800 text-indigo-400 border border-slate-700'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
-            <span>Dashboard</span>
-          </button>
-
-          <button
-            onClick={() => onNavigate('roadmap')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
-              currentView === 'roadmap'
-                ? 'bg-slate-800 text-indigo-400 border border-slate-700'
-                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-            }`}
-          >
-            <GitFork className="w-3.5 h-3.5 text-cyan-400" />
-            <span>Skill Tree</span>
+            <span>Home</span>
           </button>
 
           <button
             onClick={() => onNavigate('tracks')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
               currentView === 'tracks' || currentView === 'lesson'
                 ? 'bg-slate-800 text-indigo-400 border border-slate-700'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -106,7 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
           <button
             onClick={() => onNavigate('projects')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
               currentView === 'projects' || currentView === 'project-milestone'
                 ? 'bg-slate-800 text-indigo-400 border border-slate-700'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -117,8 +107,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
+            onClick={() => onNavigate('playground')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
+              currentView === 'playground'
+                ? 'bg-slate-800 text-indigo-400 border border-slate-700'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <FileCode2 className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Playground</span>
+          </button>
+
+          <button
             onClick={() => onNavigate('vault')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
               currentView === 'vault'
                 ? 'bg-slate-800 text-amber-400 border border-slate-700'
                 : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
@@ -128,38 +130,57 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Certificates</span>
           </button>
 
-          <button
-            onClick={() => onNavigate('playground')}
-            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
-              currentView === 'playground'
-                ? 'bg-slate-800 text-indigo-400 border border-slate-700'
-                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
-            }`}
-          >
-            <FileCode2 className="w-3.5 h-3.5" />
-            <span>Playground</span>
-          </button>
+          {/* Extra Study Tools Dropdown */}
+          <div className="relative">
+            <button
+              onClick={() => setToolsDropdownOpen(!toolsDropdownOpen)}
+              className="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-400 hover:text-white hover:bg-slate-800/60 flex items-center space-x-1 transition"
+            >
+              <Compass className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Tools</span>
+              <ChevronDown className="w-3 h-3 ml-0.5" />
+            </button>
+
+            {toolsDropdownOpen && (
+              <div 
+                className="absolute left-0 mt-1.5 w-48 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-1 z-50 text-xs"
+                onMouseLeave={() => setToolsDropdownOpen(false)}
+              >
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onNavigate('roadmap'); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <GitFork className="w-4 h-4 text-cyan-400" />
+                  <span>Skill Tree Roadmap</span>
+                </button>
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onOpenFlashcards(); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <Brain className="w-4 h-4 text-indigo-400" />
+                  <span>Recall Flashcards</span>
+                </button>
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onOpenPlacementQuiz(); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <Sparkles className="w-4 h-4 text-amber-400" />
+                  <span>Placement Quiz</span>
+                </button>
+              </div>
+            )}
+          </div>
         </nav>
       </div>
 
-      {/* User Progression Metrics & Auth */}
+      {/* Right: Metrics & Account */}
       <div className="flex items-center space-x-2.5">
-        {/* Flashcards */}
-        <button
-          onClick={onOpenFlashcards}
-          className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition"
-          title="Daily Concept Recall Flashcards"
-        >
-          <Brain className="w-3.5 h-3.5 text-indigo-400" />
-          <span>Recall</span>
-        </button>
-
         {/* Streak */}
         <div 
           className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium"
           title="Daily Learning Streak"
         >
-          <Flame className="w-3.5 h-3.5 fill-amber-500/80 text-amber-500" />
+          <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
           <span>{userStats.streakDays}d Streak</span>
         </div>
 
@@ -188,7 +209,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Auth / Account Profile Button */}
+        {/* User Account / Sign In */}
         {currentUser ? (
           <div className="relative">
             <button
