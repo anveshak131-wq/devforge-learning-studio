@@ -116,6 +116,13 @@ export class TestRunner {
     for (const tc of testCases) {
       try {
         const testScript = `
+          const customConsole = {
+            log: (...args) => {},
+            error: (...args) => {},
+            warn: (...args) => {},
+            info: (...args) => {},
+            table: (...args) => {}
+          };
           ${runnableCode};
           const logs = ${JSON.stringify(execResult.logs)};
           const returnValue = ${JSON.stringify(execResult.returnValue !== undefined ? execResult.returnValue : null)};
