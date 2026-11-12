@@ -6,12 +6,22 @@ let sqlInitPromise: Promise<SqlJsStatic> | null = null;
 export async function getSqlJs(): Promise<SqlJsStatic> {
   if (SQLModule) return SQLModule;
   if (!sqlInitPromise) {
-    sqlInitPromise = initSqlJs({
-      locateFile: (file) => `/${file}`
-    }).then((sql) => {
-      SQLModule = sql;
-      return sql;
-    });
+    sqlInitPromise = (async () => {
+      try {
+        const sql = await initSqlJs({
+          locateFile: (file) => file.startsWith('/') ? file : `/${file}`
+        });
+        SQLModule = sql;
+        return sql;
+      } catch (err) {
+        console.warn('Local sql-wasm.wasm failed, falling back to CDN:', err);
+        const sql = await initSqlJs({
+          locateFile: () => `https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.12.0/sql-wasm.wasm`
+        });
+        SQLModule = sql;
+        return sql;
+      }
+    })();
   }
   return sqlInitPromise;
 }
@@ -36,18 +46,56 @@ export interface TableSchema {
 
 export class SqlSession {
   private db: Database | null = null;
+  private initPromise: Promise<void> | null = null;
+  private currentSchema?: string;
 
-  async init(initialSqlSchema?: string) {
-    const SQL = await getSqlJs();
-    this.db = new SQL.Database();
-    if (initialSqlSchema && initialSqlSchema.trim()) {
-      try {
-        this.db.run(initialSqlSchema);
-      } catch (err: any) {
-        console.error('Failed to initialize SQL schema:', err);
-        throw new Error(`Schema Initialization Error: ${err.message}`);
-      }
+  private static sharedSession: SqlSession | null = null;
+
+  static getSharedSession(initialSqlSchema?: string): SqlSession {
+    if (!SqlSession.sharedSession) {
+      SqlSession.sharedSession = new SqlSession();
+      SqlSession.sharedSession.ensureReady(initialSqlSchema);
     }
+    return SqlSession.sharedSession;
+  }
+
+  isReady(): boolean {
+    return Boolean(this.db);
+  }
+
+  async init(initialSqlSchema?: string): Promise<void> {
+    this.currentSchema = initialSqlSchema;
+    this.initPromise = (async () => {
+      const SQL = await getSqlJs();
+      this.db = new SQL.Database();
+      if (initialSqlSchema && initialSqlSchema.trim()) {
+        try {
+          this.db.run(initialSqlSchema);
+        } catch (err: any) {
+          console.error('Failed to initialize SQL schema:', err);
+          throw new Error(`Schema Initialization Error: ${err.message}`);
+        }
+      }
+    })();
+    return this.initPromise;
+  }
+
+  async ensureReady(initialSqlSchema?: string): Promise<Database> {
+    if (this.db) {
+      // If a new schema was provided that hasn't been initialized, re-initialize if needed
+      if (initialSqlSchema && initialSqlSchema !== this.currentSchema) {
+        await this.init(initialSqlSchema);
+      }
+      return this.db;
+    }
+
+    if (this.initPromise) {
+      await this.initPromise;
+      if (this.db) return this.db;
+    }
+
+    await this.init(initialSqlSchema);
+    return this.db!;
   }
 
   runQuery(query: string): SqlQueryResult[] {
@@ -115,5 +163,6 @@ export class SqlSession {
       this.db.close();
       this.db = null;
     }
+    this.initPromise = null;
   }
 }

@@ -28,20 +28,13 @@ export class TestRunner {
     testCases: TestCase[],
     sqlSession?: SqlSession
   ): Promise<TestResultItem[]> {
-    if (!sqlSession) {
-      return testCases.map(tc => ({
-        id: tc.id,
-        description: tc.description,
-        passed: false,
-        error: 'Database not initialized'
-      }));
-    }
-
     let queryResults: any[] = [];
     let queryError: string | null = null;
 
     try {
-      queryResults = sqlSession.runQuery(userQuery);
+      const activeSession = sqlSession || SqlSession.getSharedSession();
+      await activeSession.ensureReady();
+      queryResults = activeSession.runQuery(userQuery);
     } catch (err: any) {
       queryError = err.message;
     }

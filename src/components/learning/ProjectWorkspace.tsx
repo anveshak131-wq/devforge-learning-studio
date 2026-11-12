@@ -48,14 +48,22 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
   
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
+  const getReadySqlSession = async (): Promise<SqlSession | undefined> => {
+    if (project.language !== 'sql') return undefined;
+    if (!sqlSessionRef.current) {
+      sqlSessionRef.current = new SqlSession();
+    }
+    await sqlSessionRef.current.ensureReady(project.initSqlSchema);
+    setSchemas(sqlSessionRef.current.getSchema());
+    return sqlSessionRef.current;
+  };
+
   // Initialize SQL if project uses SQL
   useEffect(() => {
     let active = true;
     if (project.language === 'sql') {
-      const session = new SqlSession();
-      session.init(project.initSqlSchema).then(() => {
-        if (active) {
-          sqlSessionRef.current = session;
+      getReadySqlSession().then((session) => {
+        if (active && session) {
           setSchemas(session.getSchema());
         }
       });
@@ -63,10 +71,6 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
 
     return () => {
       active = false;
-      if (sqlSessionRef.current) {
-        sqlSessionRef.current.close();
-        sqlSessionRef.current = null;
-      }
     };
   }, [project.id, project.language, project.initSqlSchema]);
 
@@ -86,14 +90,15 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
   const handleRun = async () => {
     setIsRunning(true);
     try {
+      const session = await getReadySqlSession();
       const res = await CodeExecutor.executeCode(
         code,
         project.language,
-        sqlSessionRef.current || undefined
+        session
       );
       setExecutionResult(res);
-      if (sqlSessionRef.current) {
-        setSchemas(sqlSessionRef.current.getSchema());
+      if (session) {
+        setSchemas(session.getSchema());
       }
     } finally {
       setIsRunning(false);
@@ -103,10 +108,11 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
   const handleVerify = async () => {
     setIsVerifying(true);
     try {
+      const session = await getReadySqlSession();
       const exec = await CodeExecutor.executeCode(
         code,
         project.language,
-        sqlSessionRef.current || undefined
+        session
       );
       setExecutionResult(exec);
 
@@ -114,7 +120,7 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
         code,
         project.language,
         milestone.testCases,
-        sqlSessionRef.current || undefined
+        session
       );
       setTestResults(tests);
 

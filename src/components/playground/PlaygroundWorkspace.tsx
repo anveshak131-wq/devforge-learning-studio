@@ -143,15 +143,23 @@ export const PlaygroundWorkspace: React.FC = () => {
   const [schemas, setSchemas] = useState<TableSchema[]>([]);
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
+  const getReadySqlSession = async (): Promise<SqlSession | undefined> => {
+    if (selectedLanguage !== 'sql') return undefined;
+    const preset = SAMPLE_DATABASES[selectedDbPreset] || SAMPLE_DATABASES.ecommerce;
+    if (!sqlSessionRef.current) {
+      sqlSessionRef.current = new SqlSession();
+    }
+    await sqlSessionRef.current.ensureReady(preset.sql);
+    setSchemas(sqlSessionRef.current.getSchema());
+    return sqlSessionRef.current;
+  };
+
   // Initialize or re-initialize SQL when language is SQL
   useEffect(() => {
     let active = true;
     if (selectedLanguage === 'sql') {
-      const preset = SAMPLE_DATABASES[selectedDbPreset] || SAMPLE_DATABASES.ecommerce;
-      const session = new SqlSession();
-      session.init(preset.sql).then(() => {
-        if (active) {
-          sqlSessionRef.current = session;
+      getReadySqlSession().then((session) => {
+        if (active && session) {
           setSchemas(session.getSchema());
         }
       });
@@ -159,10 +167,6 @@ export const PlaygroundWorkspace: React.FC = () => {
 
     return () => {
       active = false;
-      if (sqlSessionRef.current) {
-        sqlSessionRef.current.close();
-        sqlSessionRef.current = null;
-      }
     };
   }, [selectedLanguage, selectedDbPreset]);
 
@@ -175,14 +179,15 @@ export const PlaygroundWorkspace: React.FC = () => {
   const handleRun = async () => {
     setIsRunning(true);
     try {
+      const session = await getReadySqlSession();
       const res = await CodeExecutor.executeCode(
         code,
         selectedLanguage,
-        sqlSessionRef.current || undefined
+        session
       );
       setExecutionResult(res);
-      if (sqlSessionRef.current) {
-        setSchemas(sqlSessionRef.current.getSchema());
+      if (session) {
+        setSchemas(session.getSchema());
       }
     } finally {
       setIsRunning(false);

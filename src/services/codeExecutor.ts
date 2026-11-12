@@ -34,16 +34,10 @@ export class CodeExecutor {
     };
 
     if (language === 'sql') {
-      if (!sqlSession) {
-        return {
-          success: false,
-          logs: [{ type: 'error', args: ['SQL Session not ready'], timestamp: Date.now() }],
-          executionTimeMs: 0,
-          error: 'SQL Session not ready'
-        };
-      }
       try {
-        const results = sqlSession.runQuery(code);
+        const activeSession = sqlSession || SqlSession.getSharedSession();
+        await activeSession.ensureReady();
+        const results = activeSession.runQuery(code);
         const duration = Math.round(performance.now() - startTime);
         
         let rowCount = 0;

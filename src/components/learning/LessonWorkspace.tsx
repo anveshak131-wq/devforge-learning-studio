@@ -64,27 +64,31 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
-  // Initialize SQL Session if SQL lesson
+  const getReadySqlSession = async (): Promise<SqlSession | undefined> => {
+    if (lesson.language !== 'sql') return undefined;
+    if (!sqlSessionRef.current) {
+      sqlSessionRef.current = new SqlSession();
+    }
+    await sqlSessionRef.current.ensureReady(lesson.initSqlSchema);
+    setSchemas(sqlSessionRef.current.getSchema());
+    return sqlSessionRef.current;
+  };
+
+  // Pre-initialize SQL Session if SQL lesson
   useEffect(() => {
     let active = true;
     if (lesson.language === 'sql') {
-      const session = new SqlSession();
-      session.init(lesson.initSqlSchema).then(() => {
-        if (active) {
-          sqlSessionRef.current = session;
+      getReadySqlSession().then((session) => {
+        if (active && session) {
           setSchemas(session.getSchema());
         }
       }).catch(err => {
-        console.error('Failed to init SQL session for lesson:', err);
+        console.error('Failed to pre-init SQL session:', err);
       });
     }
 
     return () => {
       active = false;
-      if (sqlSessionRef.current) {
-        sqlSessionRef.current.close();
-        sqlSessionRef.current = null;
-      }
     };
   }, [lesson.id, lesson.language, lesson.initSqlSchema]);
 
@@ -106,14 +110,15 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const handleRun = async () => {
     setIsRunning(true);
     try {
+      const session = await getReadySqlSession();
       const res = await CodeExecutor.executeCode(
         code, 
         lesson.language, 
-        sqlSessionRef.current || undefined
+        session
       );
       setExecutionResult(res);
-      if (sqlSessionRef.current) {
-        setSchemas(sqlSessionRef.current.getSchema());
+      if (session) {
+        setSchemas(session.getSchema());
       }
     } finally {
       setIsRunning(false);
@@ -125,10 +130,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     if (!lesson.workedExample) return;
     setIsRunning(true);
     try {
+      const session = await getReadySqlSession();
       const res = await CodeExecutor.executeCode(
         lesson.workedExample.code,
         lesson.language,
-        sqlSessionRef.current || undefined
+        session
       );
       setExecutionResult(res);
     } finally {
@@ -139,10 +145,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const handleVerify = async () => {
     setIsVerifying(true);
     try {
+      const session = await getReadySqlSession();
       const exec = await CodeExecutor.executeCode(
         code, 
         lesson.language, 
-        sqlSessionRef.current || undefined
+        session
       );
       setExecutionResult(exec);
 
@@ -150,7 +157,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         code, 
         lesson.language, 
         lesson.testCases, 
-        sqlSessionRef.current || undefined
+        session
       );
       setTestResults(tests);
 
