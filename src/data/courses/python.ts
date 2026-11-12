@@ -7,7 +7,7 @@ export const PYTHON_TRACK: Track = {
   language: 'python',
   icon: 'Terminal',
   color: 'from-emerald-400 to-teal-500',
-  tagline: 'From variables, loops, and list comprehensions to function decorators, *args/**kwargs, and generator pipelines.',
+  tagline: 'Learn Python concepts first with worked examples and real-world analogies, then build hands-on scripts.',
   description: 'Master Pythonic design. Learn dynamic data structures, slicing, list & dict comprehensions, higher-order functions, and advanced custom decorators with interactive in-browser execution.',
   lessons: [
     // TIER 1: FOUNDATIONS (ABSOLUTE BEGINNER)
@@ -22,30 +22,62 @@ export const PYTHON_TRACK: Track = {
       tierName: 'Foundations',
       estimatedMinutes: 8,
       xp: 40,
-      description: 'Start learning Python from scratch. Learn variable assignment, numbers, strings, and modern f-string formatting.',
-      concepts: ['Dynamic typing', 'Arithmetic operators', 'f-string interpolation: f"{var}"'],
+      description: 'Start learning Python from step zero. Learn variable assignment, numbers, strings, and modern f-string formatting.',
+      concepts: ['Dynamic variable assignment', 'Basic arithmetic: +, *, /', 'f-string interpolation: f"{var}"'],
+      analogy: 'Writing Python is like writing clean notes in your notebook. You do not need semicolons, brackets, or type keywords. To save a value, you simply write `box_name = value`.',
       explanationMarkdown: `
-### Welcome to Python!
-Python is renowned for its clean, readable syntax. You do not need semicolons or variable declaration keywords.
-
+### Step 1: Storing Data in Python
+In Python, creating a variable is as simple as:
 \`\`\`python
-player_name = "Alex"
-score = 45
-bonus = 15
-total = score + bonus
-print(f"Player {player_name} scored {total} points!")
+name = "Jordan"
+price = 19.99
+quantity = 3
 \`\`\`
 
-#### Challenge:
-Write a function \`format_receipt(item_name, price, tax_rate)\` that computes \`total = price + (price * tax_rate)\` and returns:
-\`"Receipt: {item_name} costs \${total}"\` rounded to 2 decimal places.
+Python automatically understands whether something is a number or text.
+
+---
+
+### Step 2: Formatted Strings (F-Strings)
+An **f-string** allows you to embed variables and math directly inside text by putting an \`f\` before your quotes and wrapping variables in \`{ ... }\`:
+
+\`\`\`python
+item = "Headphones"
+total = price * quantity
+print(f"Purchased {quantity}x {item} for a total of \${total}.")
+\`\`\`
       `,
+      workedExample: {
+        title: 'Worked Example: Generating a Coffee Order Receipt',
+        code: `coffee_type = "Latte"
+cup_price = 4.50
+tax_rate = 0.08
+
+# Calculate total with 8% sales tax
+final_total = round(cup_price * (1 + tax_rate), 2)
+
+message = f"Your order: 1x {coffee_type} costs \${final_total}"
+print(message)`,
+        explanation: '• Line 1-3: Stores coffee name, price, and tax rate.\n• Line 6: Uses round(..., 2) to keep 2 decimal places.\n• Line 8: Uses f"..." to insert coffee_type and final_total into the string.',
+        expectedOutput: 'Your order: 1x Latte costs $4.86'
+      },
+      commonMistakes: [
+        'Forgetting the letter `f` before the opening quote (e.g. `"{name}"` will print "{name}" literally rather than the variable value).',
+        'Mixing up indentations (Python uses spaces to organize code blocks instead of curly braces).'
+      ],
+      exerciseSteps: [
+        'Step 1: In `format_receipt(item_name, price, tax_rate)`, calculate `total = round(price + (price * tax_rate), 2)`.',
+        'Step 2: Return an f-string formatted as: `"Receipt: {item_name} costs ${total}"`.',
+        'Step 3: Click "Check Solution" to verify with test cases!'
+      ],
       initialCode: `def format_receipt(item_name, price, tax_rate):
-  # Calculate total and return formatted f-string
+  # 👉 Step 1: Calculate total including tax (rounded to 2 decimal places)
   total = round(price + (price * tax_rate), 2)
+
+  # 👉 Step 2: Return formatted f-string:
   return f"Receipt: {item_name} costs \${total}"
 
-# Test run:
+# 🧪 Test call:
 print(format_receipt("Coffee", 4.00, 0.10))
 `,
       solutionCode: `def format_receipt(item_name, price, tax_rate):
@@ -74,7 +106,7 @@ print(format_receipt("Coffee", 4.00, 0.10))
     // TIER 2: CORE DEVELOPER
     {
       id: 'py-t2-lists-dictionaries',
-      title: 'Core: Dictionary Lookups & Safe Key Retrieval',
+      title: 'Core: Dictionary Lookups & Safe Default Fallbacks',
       slug: 'dictionaries-lookups',
       language: 'python',
       category: '2. Core Concepts',
@@ -83,33 +115,64 @@ print(format_receipt("Coffee", 4.00, 0.10))
       tierName: 'Core',
       estimatedMinutes: 12,
       xp: 50,
-      description: 'Master key-value dictionaries, default values with .get(), and data restructuring.',
-      concepts: ['Dictionaries (dict)', 'dict.get(key, default)', 'Key existence checks'],
+      description: 'Master key-value dictionaries, default values with .get(), and safe data retrieval.',
+      concepts: ['Dictionaries (`{"key": "value"}`)', 'Safe access with `dict.get(key, default)`', 'Preventing KeyError crashes'],
+      analogy: 'Imagine a physical dictionary. If you look up a word that does not exist in standard dictionaries, the book burns up in flames (a KeyError crash!). Using `.get()` is like a polite librarian who checks for the word, and if it is missing, hands you a standard fallback card instead.',
       explanationMarkdown: `
-### Key-Value Dictionaries in Python
-Dictionaries store data in \`key: value\` pairs. Using \`dict.get(key, default)\` avoids \`KeyError\` exceptions when a key is absent!
-
+### Python Dictionaries
+Dictionaries store paired data using keys and values:
 \`\`\`python
-user = {"name": "Sara", "role": "admin"}
-user_role = user.get("role", "guest")
-user_avatar = user.get("avatar", "default.png")
+user = {
+  "name": "Sarah",
+  "role": "admin"
+}
 \`\`\`
 
-#### Challenge:
-Write a function \`merge_user_profile(user_dict, default_theme="dark")\`:
-- Returns an object/dict with:
-  - \`"name"\`: user_dict's name
-  - \`"role"\`: user_dict's role (defaults to \`"member"\` if missing)
-  - \`"theme"\`: user_dict's theme (defaults to \`default_theme\` if missing)
+If you ask for a key that does not exist like \`user["country"]\`, Python will throw a **KeyError** and crash your program!
+
+---
+
+### The Safe Way: \`.get(key, default)\`
+Using \`.get()\` lets you specify a fallback if the key is missing:
+\`\`\`python
+# If "theme" doesn't exist, it defaults to "dark" instead of crashing:
+theme = user.get("theme", "dark")
+\`\`\`
       `,
+      workedExample: {
+        title: 'Worked Example: Reading User Preferences Safely',
+        code: `settings = {
+  "notifications": True,
+  "volume": 80
+  # Notice "language" is not configured!
+}
+
+# Safely get language with fallback to "English"
+app_language = settings.get("language", "English")
+
+print(f"Loaded language: {app_language}")`,
+        explanation: '• Line 1-4: settings has notifications and volume, but no language key.\n• Line 7: settings.get("language", "English") sees that "language" is missing and safely returns "English".',
+        expectedOutput: 'Loaded language: English'
+      },
+      commonMistakes: [
+        'Accessing missing keys using square brackets `dict[key]` instead of `dict.get(key, default)`.',
+        'Confusing lists `[1, 2, 3]` (indexed by position 0, 1, 2) with dictionaries `{"a": 1}` (indexed by named keys).'
+      ],
+      exerciseSteps: [
+        'Step 1: In `merge_user_profile(user_dict, default_theme="dark")`, build a new dictionary.',
+        'Step 2: Read `"name"` from user_dict.',
+        'Step 3: Read `"role"` with `.get("role", "member")`.',
+        'Step 4: Read `"theme"` with `.get("theme", default_theme)`.'
+      ],
       initialCode: `def merge_user_profile(user_dict, default_theme="dark"):
-  # your implementation
+  # 👉 Build and return a safe profile dictionary:
   return {
     "name": user_dict.get("name"),
     "role": user_dict.get("role", "member"),
     "theme": user_dict.get("theme", default_theme)
   }
 
+# 🧪 Test call:
 print(merge_user_profile({"name": "Dan"}))
 `,
       solutionCode: `def merge_user_profile(user_dict, default_theme="dark"):
@@ -148,24 +211,51 @@ print(merge_user_profile({"name": "Dan"}))
       tierName: 'Intermediate',
       estimatedMinutes: 15,
       xp: 65,
-      description: 'Transform collections cleanly and expressively using Pythonic comprehensions.',
-      concepts: ['List comprehensions: [x for x in list if condition]', 'Data filtering & transformation', 'Set & dict comprehensions'],
+      description: 'Transform collections cleanly and expressively in a single line using Pythonic comprehensions.',
+      concepts: ['List comprehensions: `[expression for item in iterable if condition]`', 'Data filtering & transformation', 'Writing readable Pythonic code'],
+      analogy: 'Instead of building an empty box, looping through a warehouse, picking items one by one, checking them, and putting them in the box, a list comprehension is a high-speed express line: "Give me all positive even numbers multiplied by 2 in one swift command."',
       explanationMarkdown: `
 ### Pythonic Code: List Comprehensions
-List comprehensions provide an expressive syntax to create new lists from existing iterables:
-
+In other languages, filtering and transforming a list takes 5-6 lines of boilerplate:
 \`\`\`python
-numbers = [1, 2, 3, 4, 5, 6]
-evens_squared = [n ** 2 for n in numbers if n % 2 == 0]
-# [4, 16, 36]
+# The old, slow way:
+evens = []
+for n in numbers:
+  if n % 2 == 0:
+    evens.append(n * 2)
 \`\`\`
 
-#### Challenge:
-Write a function \`filter_and_double(numbers)\` that takes a list of integers and returns a new list containing only the positive even numbers, each multiplied by 2.
+In idiomatic Python, you express this in a single readable line:
+\`\`\`python
+# The Pythonic way:
+evens = [n * 2 for n in numbers if n % 2 == 0]
+\`\`\`
       `,
+      workedExample: {
+        title: 'Worked Example: Extracting Passing Grades',
+        code: `scores = [45, 88, 92, 59, 78, 95]
+
+# Keep only passing scores (>= 70) and add a 5-point curve
+curved_passing = [score + 5 for score in scores if score >= 70]
+
+print("Curved passing scores:", curved_passing)`,
+        explanation: '• for score in scores: loops through all 6 scores.\n• if score >= 70: filters out 45 and 59.\n• score + 5: adds 5 points to 88, 92, 78, 95.',
+        expectedOutput: 'Curved passing scores: [93, 97, 83, 100]'
+      },
+      commonMistakes: [
+        'Putting the `if` condition at the beginning instead of the end when filtering: `[x for x in list if condition]`.',
+        'Over-nesting comprehensions: if logic becomes too complex, break it into standard functions.'
+      ],
+      exerciseSteps: [
+        'Step 1: In `filter_and_double(numbers)`, write a list comprehension.',
+        'Step 2: Filter for numbers where `n > 0` and `n % 2 == 0` (positive evens).',
+        'Step 3: Double each matched number: `n * 2`.'
+      ],
       initialCode: `def filter_and_double(numbers):
+  # 👉 Write your list comprehension:
   return [n * 2 for n in numbers if n > 0 and n % 2 == 0]
 
+# 🧪 Test call:
 print(filter_and_double([-4, -2, 0, 1, 2, 3, 4, 5, 6]))
 `,
       solutionCode: `def filter_and_double(numbers):
@@ -191,7 +281,7 @@ print(filter_and_double([-4, -2, 0, 1, 2, 3, 4, 5, 6]))
     // TIER 4: ADVANCED
     {
       id: 'py-t4-args-kwargs-higher-order',
-      title: 'Advanced: Variadic Arguments (*args & **kwargs)',
+      title: 'Advanced: Flexible Functions (*args & **kwargs)',
       slug: 'args-kwargs',
       language: 'python',
       category: '4. Advanced Architecture',
@@ -200,31 +290,59 @@ print(filter_and_double([-4, -2, 0, 1, 2, 3, 4, 5, 6]))
       tierName: 'Advanced',
       estimatedMinutes: 20,
       xp: 85,
-      description: 'Write flexible APIs and function adapters that accept arbitrary positional and keyword arguments.',
-      concepts: ['*args positional unpacking', '**kwargs keyword unpacking', 'Function wrapping & forwarding'],
+      description: 'Write flexible functions and library APIs that accept arbitrary positional and keyword arguments.',
+      concepts: ['*args positional unpacking', '**kwargs keyword dictionary unpacking', 'Building flexible URL query formatters'],
+      analogy: '*args is like an open backpack where you can toss any number of items in order. **kwargs is like a filing cabinet where every item you hand in has a sticky note label attached to it.',
       explanationMarkdown: `
-### Variadic Functions: *args & **kwargs
-When building libraries or framework middleware, functions often need to accept arbitrary arguments:
+### What are *args and **kwargs?
+When writing frameworks or reusable utilities, you don't always know beforehand how many parameters a user will pass:
+- \`*args\`: Collects extra positional arguments into a tuple.
+- \`**kwargs\`: Collects extra named keyword arguments into a dictionary.
 
 \`\`\`python
-def make_tag(tag, *content, **attributes):
-  attrs_str = " ".join([f'{k}="{v}"' for k, v in attributes.items()])
-  inner = " ".join(content)
-  return f"<{tag} {attrs_str}>{inner}</{tag}>"
-\`\`\`
+def log_event(event_name, **details):
+  print(f"Event: {event_name}")
+  for key, value in details.items():
+    print(f"  {key} = {value}")
 
-#### Challenge:
-Write a function \`build_query_string(base_url, **params)\` that formats URL query parameters:
-- If no params are passed, return \`base_url\`.
-- Otherwise, format parameters sorted alphabetically by key as \`"key=value"\` joined with \`"&"\`, appended to \`base_url + "?"\`.
+log_event("USER_LOGIN", user_id=42, ip="127.0.0.1", browser="Chrome")
+\`\`\`
       `,
+      workedExample: {
+        title: 'Worked Example: Flexible HTML Tag Generator',
+        code: `def make_element(tag, content, **attrs):
+  # Format attributes as key="value"
+  formatted_attrs = " ".join([f'{k}="{v}"' for k, v in attrs.items()])
+  if formatted_attrs:
+    return f"<{tag} {formatted_attrs}>{content}</{tag}>"
+  return f"<{tag}>{content}</{tag}>"
+
+btn = make_element("button", "Submit Order", id="btn-submit", className="primary")
+print(btn)`,
+        explanation: '• **attrs absorbs any keyword arguments (id and className) into a dict.\n• The comprehension turns them into id="btn-submit" className="primary".',
+        expectedOutput: '<button id="btn-submit" className="primary">Submit Order</button>'
+      },
+      commonMistakes: [
+        'Putting `**kwargs` before `*args` (positional arguments must always precede keyword arguments in Python function signatures).',
+        'Mutating `kwargs` directly when passing them along to another function.'
+      ],
+      exerciseSteps: [
+        'Step 1: In `build_query_string(base_url, **params)`, check `if not params: return base_url`.',
+        'Step 2: Format pairs sorted by key: `[f"{k}={v}" for k, v in sorted(params.items())]`.',
+        'Step 3: Return `f"{base_url}?" + "&".join(pairs)`.'
+      ],
       initialCode: `def build_query_string(base_url, **params):
+  # 👉 Step 1: Return base_url if no params were passed:
   if not params:
     return base_url
-  # Sort keys and join
+
+  # 👉 Step 2: Format key=value pairs sorted by key:
   pairs = [f"{k}={v}" for k, v in sorted(params.items())]
+
+  # 👉 Step 3: Combine with ? and &:
   return f"{base_url}?" + "&".join(pairs)
 
+# 🧪 Test call:
 print(build_query_string("https://api.example.com", sort="asc", page=2))
 `,
       solutionCode: `def build_query_string(base_url, **params):
@@ -263,35 +381,56 @@ print(build_query_string("https://api.example.com", sort="asc", page=2))
       estimatedMinutes: 25,
       xp: 120,
       description: 'Understand Python function wrappers, closures, and the @decorator syntax for caching, authentication, and logging.',
-      concepts: ['Decorators as higher-order functions', 'Function closures', 'functools.wraps semantics', 'Wrapper execution interception'],
+      concepts: ['Decorators as higher-order functions', 'Function closures', 'Wrapper execution interception', 'Reusable metaprogramming'],
+      analogy: 'Imagine wrapping a gift box. The gift inside (the original function) doesn\'t change at all, but the wrapping paper and ribbon (the decorator) add beauty, security, or a tag before anyone opens the box.',
       explanationMarkdown: `
 ### What is a Python Decorator?
-A decorator is a callable that takes a function as an argument and extends its behavior without modifying the original function definition:
+A decorator takes a function as an argument, wraps extra behavior around it, and returns the wrapped version:
 
 \`\`\`python
-def log_execution(func):
+def log_call(func):
   def wrapper(*args, **kwargs):
     print(f"Calling: {func.__name__}")
-    result = func(*args, **kwargs)
-    print(f"Completed: {func.__name__}")
-    return result
+    return func(*args, **kwargs)
   return wrapper
 
-@log_execution
+@log_call
 def greet(name):
   return f"Hello, {name}"
 \`\`\`
-
-#### Challenge:
-Implement a decorator factory \`repeat_call(n)\`:
-- Takes an integer \`n\`.
-- Wraps a function \`func\`.
-- The returned wrapper executes \`func(*args, **kwargs)\` \`n\` times in a loop and returns the result of the final call!
       `,
+      workedExample: {
+        title: 'Worked Example: Building a Timer & Execution Logger Decorator',
+        code: `def notify(func):
+  def wrapper(*args, **kwargs):
+    print("🔔 Notification: Function starting...")
+    result = func(*args, **kwargs)
+    print("✅ Notification: Function finished.")
+    return result
+  return wrapper
+
+@notify
+def send_email(to):
+  return f"Email sent to {to}"
+
+print(send_email("alice@example.com"))`,
+        explanation: '• @notify wraps send_email.\n• When send_email is called, wrapper runs first, prints start, calls the real function, prints finish, and returns the result.',
+        expectedOutput: '🔔 Notification: Function starting...\n✅ Notification: Function finished.\nEmail sent to alice@example.com'
+      },
+      commonMistakes: [
+        'Forgetting to return the result of `func(*args, **kwargs)` from the wrapper, causing the decorated function to return None!',
+        'Forgetting to accept `*args, **kwargs` in the wrapper function.'
+      ],
+      exerciseSteps: [
+        'Step 1: Implement a decorator factory `repeat_call(n)` that takes integer `n`.',
+        'Step 2: It returns `decorator(func)`.',
+        'Step 3: Inside `wrapper(*args, **kwargs)`, run a loop `for _ in range(n): res = func(*args, **kwargs)`.',
+        'Step 4: Return `res`.'
+      ],
       initialCode: `def repeat_call(n):
   def decorator(func):
     def wrapper(*args, **kwargs):
-      # Execute func n times and return last result
+      # 👉 Execute func n times in a loop and return the last result:
       res = None
       for _ in range(n):
         res = func(*args, **kwargs)
@@ -299,15 +438,15 @@ Implement a decorator factory \`repeat_call(n)\`:
     return wrapper
   return decorator
 
-# Test run:
-calls = 0
-def inc():
-  global calls
-  calls += 1
-  return calls
+# 🧪 Test call:
+counter = 0
+def increment():
+  global counter
+  counter += 1
+  return counter
 
-wrapped = repeat_call(3)(inc)
-print("Final value:", wrapped())
+three_times = repeat_call(3)(increment)
+print("Final result after 3 runs:", three_times())
 `,
       solutionCode: `def repeat_call(n):
   def decorator(func):
@@ -320,8 +459,8 @@ print("Final value:", wrapped())
   return decorator
 `,
       hints: [
-        'Create three nested levels: repeat_call(n) -> decorator(func) -> wrapper(*args, **kwargs).',
-        'Inside wrapper, run a loop for `_ in range(n)`.'
+        'repeat_call(n) returns decorator(func) which returns wrapper(*args, **kwargs).',
+        'Run `for _ in range(n): res = func(*args, **kwargs)` and return res.'
       ],
       testCases: [
         {

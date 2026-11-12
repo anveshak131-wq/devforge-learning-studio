@@ -25,6 +25,15 @@ export interface Lesson {
   description: string;
   concepts: string[];
   explanationMarkdown: string;
+  analogy?: string; // Real-world intuitive analogy for beginners
+  workedExample?: {
+    title: string;
+    code: string;
+    explanation: string;
+    expectedOutput: string;
+  };
+  commonMistakes?: string[];
+  exerciseSteps?: string[];
   initialCode: string;
   solutionCode: string;
   hints: string[];

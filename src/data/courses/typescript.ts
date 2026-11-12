@@ -7,7 +7,7 @@ export const TYPESCRIPT_TRACK: Track = {
   language: 'typescript',
   icon: 'ShieldCheck',
   color: 'from-blue-600 to-indigo-600',
-  tagline: '5-tier static type system mastery: from annotations to generics, utility types, and conditional infer types.',
+  tagline: '5-tier static type system mastery: Learn contracts with worked examples first, then write type-safe code.',
   description: 'Level up your software engineering with TypeScript. Progress from primitive type annotations to interfaces, generic constraints, discriminated union state machines, and advanced conditional types with the infer keyword.',
   lessons: [
     // TIER 1: FOUNDATIONS (ABSOLUTE BEGINNER)
@@ -23,36 +23,64 @@ export const TYPESCRIPT_TRACK: Track = {
       estimatedMinutes: 10,
       xp: 40,
       description: 'Learn the core philosophy of TypeScript: adding static compile-time type annotations to variables and functions.',
-      concepts: ['Explicit type annotations (string, number, boolean)', 'Function return types', 'Tuples: [number, string]'],
+      concepts: ['Explicit type annotations (: string, : number)', 'Function return types', 'Fixed-length Tuples: [string, number, string]'],
+      analogy: 'Imagine ordering at a drive-thru. In JavaScript, you can ask for "ice cream" and the kitchen might accidentally hand you a hot soup without warning. In TypeScript, every cup has a rigid shape template: if you try to pour soup into an ice cream cone, the compiler stops you before you even leave the counter!',
       explanationMarkdown: `
-### What is TypeScript?
-TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It catches bugs before your code runs!
+### Step 1: Why TypeScript?
+JavaScript is dynamically typed, meaning type mistakes only crash your app when real users are using it.
+TypeScript adds static type annotations that check your code as you type:
 
 \`\`\`typescript
-const port: number = 3000;
-const appName: string = "DevForge";
-
-function calculateTax(subtotal: number, taxRate: number = 0.08): number {
-  return subtotal * taxRate;
-}
+let username: string = "Elena";
+let age: number = 25;
+let isProMember: boolean = true;
 \`\`\`
 
-#### Fixed-Length Tuples:
-A tuple is an array with fixed positions and specific types:
+If you later try to write \`username = 42;\`, TypeScript gives you an instant red underline:
+*Type 'number' is not assignable to type 'string'.*
+
+---
+
+### Step 2: Fixed-Length Tuples
+A standard array \`number[]\` can have any length.
+A **Tuple** is an array with an exact, fixed number of elements and specific types in each position:
 \`\`\`typescript
-type LatLng = [number, number];
-const coords: LatLng = [37.7749, -122.4194];
+// Exactly two elements: a string followed by a number
+type ItemRecord = [string, number];
+const product: ItemRecord = ["Keyboard", 79.99];
 \`\`\`
-
-#### Challenge:
-Implement a function \`createScorecard(student: string, score: number, isPassing: boolean): [string, number, string]\` that returns a tuple:
-\`[student, score, isPassing ? "PASSED" : "FAILED"]\`.
       `,
-      initialCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
-  // Return the typed 3-element tuple
-  
+      workedExample: {
+        title: 'Worked Example: Building a Coordinates Tuple',
+        code: `// A tuple holding [CityName, Latitude, Longitude]
+type GeoLocation = [string, number, number];
+
+function formatLocation(loc: GeoLocation): string {
+  const [city, lat, lng] = loc;
+  return \`\${city} is at coordinates (\${lat}, \${lng})\`;
 }
 
+const tokyo: GeoLocation = ["Tokyo", 35.6762, 139.6503];
+console.log(formatLocation(tokyo));`,
+        explanation: '• GeoLocation guarantees position 0 is text, and positions 1 & 2 are numbers.\n• If someone tries to pass ["Tokyo", "North", 139], TypeScript prevents the bug at compile-time!',
+        expectedOutput: 'Tokyo is at coordinates (35.6762, 139.6503)'
+      },
+      commonMistakes: [
+        'Confusing lowercase primitive types (`string`, `number`, `boolean`) with wrapper objects (`String`, `Number`). Always use lowercase `string` and `number` in TypeScript!',
+        'Trying to add a 4th element to a 3-element tuple.'
+      ],
+      exerciseSteps: [
+        'Step 1: In `createScorecard(student: string, score: number, isPassing: boolean)`, return a 3-element tuple.',
+        'Step 2: Position 0 is `student` (string).',
+        'Step 3: Position 1 is `score` (number).',
+        'Step 4: Position 2 is `isPassing ? "PASSED" : "FAILED"` (string).'
+      ],
+      initialCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
+  // 👉 Return the 3-element tuple:
+  return [student, score, isPassing ? "PASSED" : "FAILED"];
+}
+
+// 🧪 Test call:
 console.log(createScorecard("Jordan", 88, true));
 `,
       solutionCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
@@ -89,7 +117,7 @@ console.log(createScorecard("Jordan", 88, true));
     // TIER 2: CORE DEVELOPER
     {
       id: 'ts-t2-interfaces-contracts',
-      title: 'Core: Interfaces, Optional Properties & Readonly',
+      title: 'Core: Data Contracts with Interfaces & Optional Fields',
       slug: 'interfaces-contracts',
       language: 'typescript',
       category: '2. Core Concepts',
@@ -99,29 +127,50 @@ console.log(createScorecard("Jordan", 88, true));
       estimatedMinutes: 12,
       xp: 50,
       description: 'Define robust shape contracts for data using interfaces, readonly modifiers, and optional fields.',
-      concepts: ['interface keyword', 'Optional properties (?)', 'Readonly fields', 'Type safety'],
+      concepts: ['interface keyword', 'Optional properties with ?', 'Readonly properties', 'Enforcing object shapes'],
+      analogy: 'An interface is like an architectural blueprint. Before you start building a house, the blueprint specifies: it must have a roof, walls, and a front door. A swimming pool might be marked with a question mark (`pool?: boolean`) as optional.',
       explanationMarkdown: `
-### Data Shape Contracts
-Interfaces define the exact structure an object must satisfy:
+### What is an Interface?
+An \`interface\` defines the exact contract an object must honor:
 
 \`\`\`typescript
 interface UserProfile {
-  readonly id: string;
+  readonly id: string; // Cannot be modified after creation
   name: string;
-  avatarUrl?: string; // Optional
+  email: string;
+  avatarUrl?: string;  // The '?' marks this field as optional!
 }
 \`\`\`
 
-#### Challenge:
-1. Define an interface \`Book\`:
-   - \`title\`: string
-   - \`author\`: string
-   - \`pages\`: number
-   - \`isRead\` (optional): boolean
-2. Implement \`summarizeBook(book: Book): string\` that returns:
-   - \`"{title} by {author} ({pages} pages) - Read"\` if \`isRead\` is true
-   - \`"{title} by {author} ({pages} pages) - Unread"\` otherwise
+If any required property is missing or given the wrong type, TypeScript immediately notifies you.
       `,
+      workedExample: {
+        title: 'Worked Example: User Contact Card Contract',
+        code: `interface Contact {
+  name: string;
+  phone: string;
+  notes?: string; // Optional
+}
+
+function printContact(person: Contact): string {
+  const noteInfo = person.notes ? \` (Note: \${person.notes})\` : "";
+  return \`Contact: \${person.name} - \${person.phone}\${noteInfo}\`;
+}
+
+const c1: Contact = { name: "Alice", phone: "555-0199" };
+console.log(printContact(c1));`,
+        explanation: '• Contact defines name and phone as required, and notes as optional.\n• c1 does not have notes, but TypeScript accepts it happily because of the ? modifier.',
+        expectedOutput: 'Contact: Alice - 555-0199'
+      },
+      commonMistakes: [
+        'Trying to assign to a `readonly` property after initialization.',
+        'Assuming optional properties are guaranteed to exist without checking `if (obj.prop)` first.'
+      ],
+      exerciseSteps: [
+        'Step 1: Define an interface `Book` with properties: `title: string`, `author: string`, `pages: number`, `isRead?: boolean`.',
+        'Step 2: Implement `summarizeBook(book: Book): string`.',
+        'Step 3: Return `"{title} by {author} ({pages} pages) - {Read or Unread}"`.'
+      ],
       initialCode: `interface Book {
   title: string;
   author: string;
@@ -130,9 +179,12 @@ interface UserProfile {
 }
 
 function summarizeBook(book: Book): string {
-  // your implementation
+  // 👉 Check isRead and format string:
+  const status = book.isRead ? "Read" : "Unread";
+  return \`\${book.title} by \${book.author} (\${book.pages} pages) - \${status}\`;
 }
 
+// 🧪 Test call:
 console.log(summarizeBook({ title: "Atomic Habits", author: "James Clear", pages: 320, isRead: true }));
 `,
       solutionCode: `interface Book {
@@ -149,7 +201,7 @@ function summarizeBook(book: Book): string {
 `,
       hints: [
         'Check `book.isRead ? "Read" : "Unread"`.',
-        'Interpolate into template string `${book.title} by ${book.author} (${book.pages} pages) - ${status}`.'
+        'Return `${book.title} by ${book.author} (${book.pages} pages) - ${status}`.'
       ],
       testCases: [
         {
@@ -164,7 +216,7 @@ function summarizeBook(book: Book): string {
     // TIER 3: INTERMEDIATE
     {
       id: 'ts-t3-generics-constraints',
-      title: 'Intermediate: Generics & Keyof Constraints',
+      title: 'Intermediate: Generics & Keyof Property Constraints',
       slug: 'generics-constraints',
       language: 'typescript',
       category: '3. Intermediate',
@@ -173,27 +225,55 @@ function summarizeBook(book: Book): string {
       tierName: 'Intermediate',
       estimatedMinutes: 20,
       xp: 75,
-      description: 'Write flexible, reusable functions and data structures without losing type specificity.',
-      concepts: ['Generic type parameters (<T>)', 'Generic constraints (extends)', 'Keyof operator', 'Type inference'],
+      description: 'Write flexible, reusable functions without using `any` and without losing type safety.',
+      concepts: ['Generic type parameters (<T>)', 'Keyof operator', 'Generic constraints (extends)', 'Type preservation'],
+      analogy: 'Imagine a shipping crate with a clear glass window. A generic `<T>` is like saying: "This crate can hold anything (bikes, apples, laptops), but whatever you put into it, the window remembers its exact type, so when you unpack it, you don\'t just get a mystery object — you get your exact laptop back!"',
       explanationMarkdown: `
 ### Why Generics?
-Generics allow functions to work across arbitrary types while preserving concrete type safety (unlike using \`any\`):
-
+If you write a function with \`any\`, TypeScript loses all ability to autocomplete or check properties:
 \`\`\`typescript
-function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
-  return items.map(item => item[key]);
-}
+function badWrap(item: any): any { return item; }
+// badWrap("hello") returns any, so you lose autocomplete for string methods!
 \`\`\`
 
-#### Challenge:
-Implement the generic function \`pluck<T, K extends keyof T>(items: T[], key: K): T[K][]\` that extracts the value of a specified property from an array of objects.
+With a **Generic Parameter \`<T>\`**, the type is preserved dynamically:
+\`\`\`typescript
+function wrapInArray<T>(item: T): T[] {
+  return [item];
+}
+const nums = wrapInArray(42); // Type is number[]!
+\`\`\`
       `,
-      initialCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
-  // your implementation
+      workedExample: {
+        title: 'Worked Example: Safely Reading Object Keys with keyof',
+        code: `function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
 }
 
+const user = { id: 1, name: "Alice", role: "Admin" };
+const userName = getProperty(user, "name"); // Type is string!
+
+console.log("Extracted property:", userName);`,
+        explanation: '• K extends keyof T guarantees key must be one of "id", "name", or "role".\n• If you wrote getProperty(user, "password"), TypeScript immediately catches the error at compile-time!',
+        expectedOutput: 'Extracted property: Alice'
+      },
+      commonMistakes: [
+        'Using `any` instead of a generic parameter `<T>`.',
+        'Over-complicating generics when standard interfaces would suffice.'
+      ],
+      exerciseSteps: [
+        'Step 1: In `pluck<T, K extends keyof T>(items: T[], key: K): T[K][]`, map over `items`.',
+        'Step 2: Return `item[key]` for each element in the array.',
+        'Step 3: Click "Check Solution" to test extraction!'
+      ],
+      initialCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
+  // 👉 Extract the value of property [key] from each item:
+  return items.map(item => item[key]);
+}
+
+// 🧪 Test call:
 const users = [{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }];
-console.log(pluck(users, "name"));
+console.log("Plucked names:", pluck(users, "name"));
 `,
       solutionCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
   return items.map(item => item[key]);
@@ -230,9 +310,10 @@ console.log(pluck(users, "name"));
       xp: 90,
       description: 'Model real-world state machines cleanly using tagged/discriminated unions and pattern matching.',
       concepts: ['Discriminated union pattern', 'Literal discriminant (kind/status)', 'Type narrowing via switch/if'],
+      analogy: 'Imagine luggage tags at an airport. Every piece of luggage has a tag: "CarryOn", "CheckedBag", or "Oversized". As soon as baggage handlers see the tag "CarryOn", they instantly know without guessing that it has dimensions fitting into an overhead bin.',
       explanationMarkdown: `
-### Discriminated Unions
-A pattern where multiple object types share a common single-value property (the "discriminant"), allowing TypeScript to automatically narrow down the type inside conditional blocks:
+### What is a Discriminated Union?
+A discriminated union combines multiple object types that share a single common literal property (the "discriminant" or tag):
 
 \`\`\`typescript
 type NetworkState =
@@ -242,27 +323,53 @@ type NetworkState =
   | { status: 'error'; message: string };
 \`\`\`
 
-#### Challenge:
-Given a geometric shape union:
-\`\`\`typescript
-type Shape =
-  | { kind: 'circle'; radius: number }
-  | { kind: 'square'; size: number }
-  | { kind: 'rectangle'; width: number; height: number };
-\`\`\`
-Implement \`calculateArea(shape: Shape): number\`:
-- Circle: \`Math.PI * radius * radius\`
-- Square: \`size * size\`
-- Rectangle: \`width * height\`
+When you check \`if (state.status === 'success')\`, TypeScript automatically narrows the object so you can access \`state.data\` without any type casting!
       `,
+      workedExample: {
+        title: 'Worked Example: Notification Renderer State Machine',
+        code: `type Notification =
+  | { type: 'email'; address: string; subject: string }
+  | { type: 'sms'; phoneNumber: string };
+
+function dispatch(n: Notification): string {
+  switch (n.type) {
+    case 'email':
+      return \`Sending Email to \${n.address}: "\${n.subject}"\`;
+    case 'sms':
+      return \`Sending SMS to \${n.phoneNumber}\`;
+  }
+}
+
+console.log(dispatch({ type: 'sms', phoneNumber: '+1-555-0100' }));`,
+        explanation: '• Inside case "email", TypeScript knows n has .address and .subject.\n• Inside case "sms", TypeScript knows n has .phoneNumber.\n• If you add a new type and forget to handle it, TypeScript warns you!',
+        expectedOutput: 'Sending SMS to +1-555-0100'
+      },
+      commonMistakes: [
+        'Forgetting the break or return statement inside a switch block.',
+        'Not handling all possible cases in a union.'
+      ],
+      exerciseSteps: [
+        'Step 1: Review the `Shape` union (`circle`, `square`, `rectangle`).',
+        'Step 2: In `calculateArea(shape: Shape)` switch on `shape.kind`.',
+        'Step 3: Return `Math.PI * shape.radius * shape.radius` for circle, `shape.size * shape.size` for square, and `shape.width * shape.height` for rectangle.'
+      ],
       initialCode: `type Shape =
   | { kind: 'circle'; radius: number }
   | { kind: 'square'; size: number }
   | { kind: 'rectangle'; width: number; height: number };
 
 function calculateArea(shape: Shape): number {
-  // your implementation
+  // 👉 Switch on shape.kind to calculate area:
+  switch (shape.kind) {
+    case 'circle': return Math.PI * shape.radius * shape.radius;
+    case 'square': return shape.size * shape.size;
+    case 'rectangle': return shape.width * shape.height;
+  }
 }
+
+// 🧪 Test call:
+console.log("Square area:", calculateArea({ kind: 'square', size: 10 }));
+console.log("Rectangle area:", calculateArea({ kind: 'rectangle', width: 7, height: 4 }));
 `,
       solutionCode: `type Shape =
   | { kind: 'circle'; radius: number }
@@ -309,11 +416,12 @@ function calculateArea(shape: Shape): number {
       tierName: 'Masterclass',
       estimatedMinutes: 25,
       xp: 130,
-      description: 'The pinnacle of TypeScript: write type-level functions using conditional types, the infer keyword, and recursive type unwrapping.',
-      concepts: ['Conditional types (T extends U ? X : Y)', 'The infer keyword', 'Unwrapping Promise / Array types', 'Type Gymnastics'],
+      description: 'The pinnacle of TypeScript: write type-level functions using conditional types, the infer keyword, and type unboxing.',
+      concepts: ['Conditional types (T extends U ? X : Y)', 'The infer keyword', 'Type extraction and unboxing', 'Type gymnastics'],
+      analogy: 'Imagine an X-ray machine at a postal office. When a parcel comes through, you can\'t open it directly with your hands. Instead, the X-ray machine scans the inside: if it sees a Promise, it extracts the hidden diamond inside (`infer R`). If it is not a Promise, it leaves it as is.',
       explanationMarkdown: `
 ### Type-Level Programming: Conditional Types
-Just as functions in JavaScript take values and return values, generic types in TypeScript can take types and return types conditionally!
+Generic types in TypeScript can evaluate conditions using ternary syntax:
 
 \`\`\`typescript
 type IsString<T> = T extends string ? true : false;
@@ -321,23 +429,45 @@ type A = IsString<"hello">; // true
 type B = IsString<42>;      // false
 \`\`\`
 
-#### The \`infer\` Keyword
+---
+
+### The \`infer\` Keyword
 \`infer\` allows you to extract an unknown type variable from within another type structure:
 
 \`\`\`typescript
 type UnwrapPromise<T> = T extends Promise<infer R> ? R : T;
-type X = UnwrapPromise<Promise<number>>; // number
+type X = UnwrapPromise<Promise<number>>; // Extracts: number!
 \`\`\`
-
-#### Challenge:
-Create a function \`unwrapApiResponse<T>(payload: { status: 'success'; data: T } | { status: 'error'; error: string }): T | null\` that returns \`payload.data\` if \`status === 'success'\`, or \`null\` if \`status === 'error'\`.
-Also implement a helper function \`extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D\` that returns \`val\` when not null/undefined, otherwise \`fallback\`.
       `,
+      workedExample: {
+        title: 'Worked Example: Unwrapping Nested Array Elements',
+        code: `type ElementType<T> = T extends (infer U)[] ? U : T;
+
+type StringList = string[];
+type Unwrapped = ElementType<StringList>; // string
+
+function logFirstItem<T>(items: T[]): T | null {
+  return items.length > 0 ? items[0] : null;
+}
+
+console.log("Unwrapped item:", logFirstItem(["Alpha", "Beta"]));`,
+        explanation: '• ElementType checks if T is an array of something.\n• infer U dynamically captures whatever type is inside the array and extracts it.',
+        expectedOutput: 'Unwrapped item: Alpha'
+      },
+      commonMistakes: [
+        'Using `infer` outside of the `extends` clause of a conditional type (it is only valid in the extends check).',
+        'Creating overly deep recursive conditional types that can exceed the TypeScript compiler depth limit.'
+      ],
+      exerciseSteps: [
+        'Step 1: In `unwrapApiResponse<T>(payload)`, check `if (payload.status === "success") return payload.data`. Else return `null`.',
+        'Step 2: In `extractValueOrFallback<T, D>(val, fallback)`, return `val` if it is not null or undefined, else return `fallback`.'
+      ],
       initialCode: `type ApiResponse<T> =
   | { status: 'success'; data: T }
   | { status: 'error'; error: string };
 
 function unwrapApiResponse<T>(payload: ApiResponse<T>): T | null {
+  // 👉 Step 1: Return data if status is success, otherwise null:
   if (payload.status === 'success') {
     return payload.data;
   }
@@ -345,12 +475,13 @@ function unwrapApiResponse<T>(payload: ApiResponse<T>): T | null {
 }
 
 function extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D {
+  // 👉 Step 2: Return val if not null/undefined, else fallback:
   return val !== null && val !== undefined ? val : fallback;
 }
 
-// Test call:
+// 🧪 Test call:
 const good = unwrapApiResponse({ status: 'success', data: { score: 99 } });
-console.log("Unwrapped:", extractValueOrFallback(good?.score, 0));
+console.log("Extracted score:", extractValueOrFallback(good?.score, 0));
 `,
       solutionCode: `type ApiResponse<T> =
   | { status: 'success'; data: T }
