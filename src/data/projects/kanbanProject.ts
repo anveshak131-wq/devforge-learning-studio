@@ -6,6 +6,7 @@ export const KANBAN_PROJECT: GuidedProject = {
   slug: 'kanban-board',
   language: 'javascript',
   difficulty: 'Beginner',
+  tier: 2,
   estimatedHours: 1.5,
   xpReward: 250,
   tagline: 'Build a full-featured task management engine with state transitions, filtering, and local storage persistence.',

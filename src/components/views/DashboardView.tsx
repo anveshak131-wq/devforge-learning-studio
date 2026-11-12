@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Zap, 
   Database, 
@@ -9,14 +9,15 @@ import {
   Award, 
   Flame, 
   CheckCircle2, 
-  Play, 
   Layers, 
-  Code2, 
   Hammer,
   Clock,
-  TrendingUp
+  Brain,
+  GitFork,
+  HelpCircle,
+  Filter
 } from 'lucide-react';
-import { UserStats, Track, GuidedProject } from '../../types';
+import { UserStats, Track, TierLevel } from '../../types';
 import { ALL_TRACKS } from '../../data/courses';
 import { ALL_PROJECTS } from '../../data/projects';
 import { ALL_BADGES } from '../../data/badges';
@@ -25,24 +26,35 @@ import { ProgressStorage } from '../../services/progressStorage';
 interface DashboardViewProps {
   userStats: UserStats;
   onNavigate: (view: string, payload?: any) => void;
+  onOpenPlacementQuiz: () => void;
+  onOpenFlashcards: () => void;
 }
 
-export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavigate }) => {
+export const DashboardView: React.FC<DashboardViewProps> = ({
+  userStats,
+  onNavigate,
+  onOpenPlacementQuiz,
+  onOpenFlashcards
+}) => {
+  const [selectedTierFilter, setSelectedTierFilter] = useState<'all' | TierLevel>(
+    userStats.diagnosedTier || 'all'
+  );
+
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
 
-  // Calculate overall stats
   let totalLessons = 0;
   ALL_TRACKS.forEach(t => totalLessons += t.lessons.length);
   const completedLessonsCount = userStats.completedLessonIds.length;
-  const progressPercent = Math.round((completedLessonsCount / Math.max(1, totalLessons)) * 100);
 
   // Find next recommended lesson (first uncompleted)
   let nextRecommended: { track: Track; lesson: any } | null = null;
   for (const t of ALL_TRACKS) {
     for (const l of t.lessons) {
       if (!userStats.completedLessonIds.includes(l.id)) {
-        nextRecommended = { track: t, lesson: l };
-        break;
+        if (selectedTierFilter === 'all' || l.tier === selectedTierFilter) {
+          nextRecommended = { track: t, lesson: l };
+          break;
+        }
       }
     }
     if (nextRecommended) break;
@@ -57,7 +69,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
 
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-2">
-            <div className="flex items-center space-x-2">
+            <div className="flex flex-wrap items-center gap-2">
               <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
                 Level {levelInfo.level} Developer
               </span>
@@ -67,17 +79,41 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
               </span>
             </div>
             <h1 className="text-2xl md:text-3xl font-extrabold text-white tracking-tight">
-              Welcome to DevForge Studio
+              DevForge Academy: Zero to Masterclass
             </h1>
             <p className="text-sm text-slate-300 max-w-xl leading-relaxed">
-              Master JavaScript, SQL, TypeScript, and Python through hands-on coding challenges and real-world projects.
+              Whether you are writing your first line of code or mastering JavaScript Proxies, SQL Window Functions, and TypeScript type gymnastics — learn at your exact pace.
             </p>
+
+            <div className="pt-2 flex flex-wrap gap-2.5">
+              <button
+                onClick={onOpenPlacementQuiz}
+                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition"
+              >
+                <Brain className="w-3.5 h-3.5" />
+                <span>Diagnostic Placement Quiz</span>
+              </button>
+              <button
+                onClick={() => onNavigate('roadmap')}
+                className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center space-x-1.5 transition"
+              >
+                <GitFork className="w-3.5 h-3.5 text-cyan-400" />
+                <span>Visual Skill Tree</span>
+              </button>
+              <button
+                onClick={onOpenFlashcards}
+                className="px-3.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center space-x-1.5 transition"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Recall Flashcards</span>
+              </button>
+            </div>
           </div>
 
           {/* XP & Level progress card */}
           <div className="bg-slate-900/80 border border-slate-800 rounded-xl p-4 min-w-[240px] space-y-3">
             <div className="flex items-center justify-between text-xs">
-              <span className="text-slate-400 font-medium">Rank Progress</span>
+              <span className="text-slate-400 font-medium">Rank Progression</span>
               <span className="text-amber-400 font-mono font-bold">{userStats.xp} XP</span>
             </div>
             <div>
@@ -107,7 +143,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
               </div>
               <div>
                 <span className="text-[11px] font-bold text-indigo-400 uppercase tracking-wider">
-                  Recommended Next Step
+                  Recommended For You ({nextRecommended.lesson.tierName})
                 </span>
                 <h4 className="text-sm font-bold text-white">
                   {nextRecommended.lesson.title} ({nextRecommended.track.title})
@@ -126,13 +162,48 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
         )}
       </div>
 
+      {/* Tier Filter Selector: Beginner, Intermediate, Expert */}
+      <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div className="flex items-center space-x-2 text-xs text-slate-300 font-semibold">
+          <Filter className="w-4 h-4 text-indigo-400" />
+          <span>Curriculum Filter:</span>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {[
+            { id: 'all', label: 'All Levels (1 to 5)' },
+            { id: 1, label: '🐣 Tier 1: Foundations (Beginner)' },
+            { id: 3, label: '🚀 Tier 3: Intermediate' },
+            { id: 5, label: '🧙 Tier 5: Masterclass (Expert)' }
+          ].map(t => (
+            <button
+              key={t.id}
+              onClick={() => setSelectedTierFilter(t.id as any)}
+              className={`px-3 py-1 rounded-lg text-xs font-medium transition ${
+                selectedTierFilter === t.id
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
+              }`}
+            >
+              {t.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Language Tracks Section */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-white tracking-tight">Interactive Language Tracks</h2>
-            <p className="text-xs text-slate-400">Curated curricula with in-browser sandboxes and automated assertions</p>
+            <h2 className="text-lg font-bold text-white tracking-tight">Multi-Language Tracks</h2>
+            <p className="text-xs text-slate-400">Curricula featuring real-time WebAssembly runtimes and instant test runners</p>
           </div>
+          <button
+            onClick={() => onNavigate('tracks')}
+            className="text-xs text-indigo-400 hover:text-indigo-300 font-medium flex items-center space-x-1"
+          >
+            <span>View All Tracks</span>
+            <ArrowRight className="w-3.5 h-3.5" />
+          </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -157,7 +228,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
                       </div>
                     </div>
                     <span className="text-xs font-mono text-slate-400">
-                      {completedInTrack}/{track.lessons.length} Done
+                      {completedInTrack}/{track.lessons.length} Lessons
                     </span>
                   </div>
 
@@ -189,12 +260,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
         </div>
       </div>
 
-      {/* Guided Projects Section */}
+      {/* Guided Real-World Projects */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-lg font-bold text-white tracking-tight">Guided Real-World Projects</h2>
-            <p className="text-xs text-slate-400">Step-by-step milestones to construct production-ready applications</p>
+            <p className="text-xs text-slate-400">Construct complete software systems with step-by-step milestone verification</p>
           </div>
           <button
             onClick={() => onNavigate('projects')}
@@ -207,7 +278,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {ALL_PROJECTS.map(project => {
-            const completedCount = project.milestones.filter(m => userStats.completedMilestoneIds.includes(m.id)).length;
             const isCompleted = userStats.completedProjectIds.includes(project.id);
 
             return (
@@ -222,7 +292,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
                       <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-slate-800 text-indigo-400 border border-slate-700">
                         {project.language}
                       </span>
-                      <span className="px-2 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400">
+                      <span className="px-2.5 py-0.5 rounded text-[10px] bg-slate-800 text-slate-400">
                         {project.difficulty}
                       </span>
                     </div>
@@ -239,14 +309,6 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
                   <p className="text-xs text-slate-400 leading-relaxed">
                     {project.tagline}
                   </p>
-
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {project.skillsLearned.slice(0, 3).map((skill, sIdx) => (
-                      <span key={sIdx} className="text-[10px] px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
                 </div>
 
                 <div className="flex items-center justify-between pt-3 border-t border-slate-800/80 text-xs">
@@ -266,12 +328,12 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ userStats, onNavig
         </div>
       </div>
 
-      {/* Badges / Achievements Showcase */}
+      {/* Badges & Achievements */}
       <div className="space-y-4">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-bold text-white tracking-tight">Achievements & Skill Badges</h2>
-            <p className="text-xs text-slate-400">Earn badges as you write queries, type-safe structures, and build apps</p>
+            <h2 className="text-lg font-bold text-white tracking-tight">Achievements & Badges</h2>
+            <p className="text-xs text-slate-400">Unlock credentials as you master tiers and complete project milestones</p>
           </div>
         </div>
 

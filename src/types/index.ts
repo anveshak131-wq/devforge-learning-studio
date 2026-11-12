@@ -1,6 +1,8 @@
 export type Language = 'javascript' | 'typescript' | 'sql' | 'python' | 'html';
 
-export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced';
+export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
+
+export type TierLevel = 1 | 2 | 3 | 4 | 5;
 
 export interface TestCase {
   id: string;
@@ -16,6 +18,8 @@ export interface Lesson {
   language: Language;
   category: string;
   difficulty: Difficulty;
+  tier: TierLevel; // 1: Foundations, 2: Core, 3: Intermediate, 4: Advanced, 5: Masterclass
+  tierName: 'Foundations' | 'Core' | 'Intermediate' | 'Advanced' | 'Masterclass';
   estimatedMinutes: number;
   xp: number;
   description: string;
@@ -58,6 +62,7 @@ export interface GuidedProject {
   language: Language;
   secondaryLanguages?: Language[];
   difficulty: Difficulty;
+  tier?: TierLevel;
   estimatedHours: number;
   xpReward: number;
   tagline: string;
@@ -106,6 +111,8 @@ export interface UserStats {
   lastActiveDate: string;
   savedCode: Record<string, string>; // keyed by lessonId or milestoneId
   unlockedBadgeIds: string[];
+  diagnosedTier?: TierLevel;
+  reviewedFlashcardIds: string[];
 }
 
 export interface Badge {
@@ -116,4 +123,26 @@ export interface Badge {
   color: string;
   unlockedAt?: string;
   condition: (stats: UserStats) => boolean;
+}
+
+export interface Flashcard {
+  id: string;
+  language: Language;
+  tier: TierLevel;
+  category: string;
+  question: string;
+  codeSnippet?: string;
+  answerExplanation: string;
+  codeAnswer?: string;
+}
+
+export interface QuizQuestion {
+  id: string;
+  language: Language;
+  title: string;
+  scenario: string;
+  codeSnippet?: string;
+  options: { label: string; text: string; indicatesTier: TierLevel }[];
+  correctIndex: number;
+  explanation: string;
 }

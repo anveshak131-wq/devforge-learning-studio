@@ -9,22 +9,25 @@ import {
   ArrowRight, 
   Clock, 
   Award,
-  Search
+  Filter,
+  Brain
 } from 'lucide-react';
-import { Track, UserStats } from '../../types';
+import { Track, UserStats, TierLevel } from '../../types';
 import { ALL_TRACKS } from '../../data/courses';
 
 interface TracksCatalogViewProps {
   userStats: UserStats;
   onSelectLesson: (trackSlug: string, lessonId: string) => void;
+  onOpenPlacementQuiz: () => void;
 }
 
 export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
   userStats,
-  onSelectLesson
+  onSelectLesson,
+  onOpenPlacementQuiz
 }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
-  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [selectedTier, setSelectedTier] = useState<string>('all');
 
   const filteredTracks = ALL_TRACKS.filter(t => {
     if (selectedLanguage !== 'all' && t.language !== selectedLanguage) return false;
@@ -37,26 +40,63 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
           <h1 className="text-2xl font-extrabold text-white tracking-tight">
-            Curated Language Tracks
+            Comprehensive Course Tracks
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Step-by-step interactive lessons with real-time feedback and unit tests.
+            Zero to Masterclass: Choose your language and skill tier from absolute beginner to senior architect.
           </p>
         </div>
 
-        {/* Filter buttons */}
+        <button
+          onClick={onOpenPlacementQuiz}
+          className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-xs font-semibold text-slate-200 flex items-center space-x-1.5 transition self-start md:self-auto"
+        >
+          <Brain className="w-3.5 h-3.5 text-cyan-400" />
+          <span>Diagnostic Placement</span>
+        </button>
+      </div>
+
+      {/* Dual Filter Bars (Language & Tier) */}
+      <div className="p-4 rounded-xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row gap-4 justify-between">
+        {/* Language filter */}
         <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
+          <span className="text-xs text-slate-400 font-semibold mr-1">Language:</span>
           {['all', 'javascript', 'sql', 'typescript', 'python'].map(lang => (
             <button
               key={lang}
               onClick={() => setSelectedLanguage(lang)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium uppercase tracking-wider font-mono transition ${
+              className={`px-3 py-1 rounded-lg text-xs font-medium uppercase tracking-wider font-mono transition ${
                 selectedLanguage === lang
                   ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800'
+                  : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
               }`}
             >
               {lang}
+            </button>
+          ))}
+        </div>
+
+        {/* Tier filter */}
+        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
+          <span className="text-xs text-slate-400 font-semibold mr-1">Tier:</span>
+          {[
+            { id: 'all', label: 'All Tiers' },
+            { id: '1', label: 'T1: Foundations' },
+            { id: '2', label: 'T2: Core' },
+            { id: '3', label: 'T3: Intermediate' },
+            { id: '4', label: 'T4: Advanced' },
+            { id: '5', label: 'T5: Masterclass' }
+          ].map(t => (
+            <button
+              key={t.id}
+              onClick={() => setSelectedTier(t.id)}
+              className={`px-2.5 py-1 rounded-lg text-xs font-medium transition ${
+                selectedTier === t.id
+                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                  : 'bg-slate-800 text-slate-400 hover:text-white hover:bg-slate-700'
+              }`}
+            >
+              {t.label}
             </button>
           ))}
         </div>
@@ -65,6 +105,12 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
       {/* Tracks List */}
       <div className="space-y-8">
         {filteredTracks.map(track => {
+          const visibleLessons = track.lessons.filter(l => 
+            selectedTier === 'all' || String(l.tier) === selectedTier
+          );
+
+          if (visibleLessons.length === 0) return null;
+
           const completedCount = track.lessons.filter(l => userStats.completedLessonIds.includes(l.id)).length;
 
           return (
@@ -101,7 +147,7 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
 
               {/* Lesson Items Grid */}
               <div className="p-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-                {track.lessons.map((lesson, idx) => {
+                {visibleLessons.map((lesson, idx) => {
                   const isDone = userStats.completedLessonIds.includes(lesson.id);
 
                   return (
@@ -124,9 +170,11 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
                         </div>
                         <div>
                           <div className="flex items-center space-x-2">
-                            <span className="text-slate-500 font-mono text-[10px]">#{idx + 1}</span>
+                            <span className="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-800 text-indigo-300 font-bold border border-slate-700">
+                              T{lesson.tier}
+                            </span>
                             <span className="text-xs px-2 py-0.5 rounded bg-slate-800 text-slate-300 font-medium">
-                              {lesson.category}
+                              {lesson.tierName}
                             </span>
                           </div>
                           <h4 className="text-sm font-semibold text-white mt-1 hover:text-indigo-300 transition">

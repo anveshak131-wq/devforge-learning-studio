@@ -2,64 +2,138 @@ import { Track } from '../../types';
 
 export const TYPESCRIPT_TRACK: Track = {
   id: 'typescript',
-  title: 'TypeScript Professional Architecture',
+  title: 'TypeScript: Foundations to Type Gymnastics',
   slug: 'typescript',
   language: 'typescript',
   icon: 'ShieldCheck',
   color: 'from-blue-600 to-indigo-600',
-  tagline: 'Catch bugs at compile-time with robust static types, generics, and utility types.',
-  description: 'Level up from JavaScript to type-safe software engineering. Learn interfaces, discriminated unions, generic constraints, narrowing, and advanced utility types with instant live transpilation.',
+  tagline: '5-tier static type system mastery: from annotations to generics, utility types, and conditional infer types.',
+  description: 'Level up your software engineering with TypeScript. Progress from primitive type annotations to interfaces, generic constraints, discriminated union state machines, and advanced conditional types with the infer keyword.',
   lessons: [
+    // TIER 1: FOUNDATIONS (ABSOLUTE BEGINNER)
     {
-      id: 'ts-1-interfaces-types',
-      title: 'Strong Typing: Interfaces & Optional Properties',
-      slug: 'interfaces-type-aliases',
+      id: 'ts-t1-type-annotations',
+      title: 'Foundations: Explicit Type Annotations & Tuples',
+      slug: 'type-annotations',
       language: 'typescript',
-      category: 'Type Foundations',
+      category: '1. Foundations',
       difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 10,
+      xp: 40,
+      description: 'Learn the core philosophy of TypeScript: adding static compile-time type annotations to variables and functions.',
+      concepts: ['Explicit type annotations (string, number, boolean)', 'Function return types', 'Tuples: [number, string]'],
+      explanationMarkdown: `
+### What is TypeScript?
+TypeScript is a typed superset of JavaScript that compiles to plain JavaScript. It catches bugs before your code runs!
+
+\`\`\`typescript
+const port: number = 3000;
+const appName: string = "DevForge";
+
+function calculateTax(subtotal: number, taxRate: number = 0.08): number {
+  return subtotal * taxRate;
+}
+\`\`\`
+
+#### Fixed-Length Tuples:
+A tuple is an array with fixed positions and specific types:
+\`\`\`typescript
+type LatLng = [number, number];
+const coords: LatLng = [37.7749, -122.4194];
+\`\`\`
+
+#### Challenge:
+Implement a function \`createScorecard(student: string, score: number, isPassing: boolean): [string, number, string]\` that returns a tuple:
+\`[student, score, isPassing ? "PASSED" : "FAILED"]\`.
+      `,
+      initialCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
+  // Return the typed 3-element tuple
+  
+}
+
+console.log(createScorecard("Jordan", 88, true));
+`,
+      solutionCode: `function createScorecard(student: string, score: number, isPassing: boolean): [string, number, string] {
+  return [student, score, isPassing ? "PASSED" : "FAILED"];
+}
+
+console.log(createScorecard("Jordan", 88, true));
+`,
+      hints: [
+        'Return `[student, score, isPassing ? "PASSED" : "FAILED"]`.'
+      ],
+      testCases: [
+        {
+          id: 'tc-1',
+          description: 'Returns correct tuple with PASSED status',
+          testFn: `(() => {
+            const res = createScorecard('Jordan', 88, true);
+            return Array.isArray(res) && res[0] === 'Jordan' && res[1] === 88 && res[2] === 'PASSED';
+          })()`,
+          expectedMessage: 'Expected ["Jordan", 88, "PASSED"]'
+        },
+        {
+          id: 'tc-2',
+          description: 'Returns correct tuple with FAILED status',
+          testFn: `(() => {
+            const res = createScorecard('Sam', 45, false);
+            return res[2] === 'FAILED';
+          })()`,
+          expectedMessage: 'Expected status "FAILED"'
+        }
+      ]
+    },
+
+    // TIER 2: CORE DEVELOPER
+    {
+      id: 'ts-t2-interfaces-contracts',
+      title: 'Core: Interfaces, Optional Properties & Readonly',
+      slug: 'interfaces-contracts',
+      language: 'typescript',
+      category: '2. Core Concepts',
+      difficulty: 'Beginner',
+      tier: 2,
+      tierName: 'Core',
       estimatedMinutes: 12,
       xp: 50,
       description: 'Define robust shape contracts for data using interfaces, readonly modifiers, and optional fields.',
-      concepts: ['interface keyword', 'Optional properties (?)', 'Readonly fields', 'Function contracts'],
+      concepts: ['interface keyword', 'Optional properties (?)', 'Readonly fields', 'Type safety'],
       explanationMarkdown: `
-### Why TypeScript?
-JavaScript is dynamically typed, meaning type errors only surface at runtime. TypeScript provides compile-time guarantees:
+### Data Shape Contracts
+Interfaces define the exact structure an object must satisfy:
 
 \`\`\`typescript
 interface UserProfile {
   readonly id: string;
   name: string;
-  email: string;
   avatarUrl?: string; // Optional
-}
-
-function printUser(user: UserProfile): string {
-  return \`User: \${user.name} (\${user.email})\`;
 }
 \`\`\`
 
 #### Challenge:
-1. Define an interface named \`Book\` with properties:
+1. Define an interface \`Book\`:
    - \`title\`: string
    - \`author\`: string
    - \`pages\`: number
    - \`isRead\` (optional): boolean
-2. Implement a function \`summarizeBook(book: Book): string\` that returns:
+2. Implement \`summarizeBook(book: Book): string\` that returns:
    - \`"{title} by {author} ({pages} pages) - Read"\` if \`isRead\` is true
    - \`"{title} by {author} ({pages} pages) - Unread"\` otherwise
       `,
-      initialCode: `// Define the Book interface
-interface Book {
-  // your code here
+      initialCode: `interface Book {
+  title: string;
+  author: string;
+  pages: number;
+  isRead?: boolean;
 }
 
-// Implement summarizeBook
-function summarizeBook(book: any): string {
+function summarizeBook(book: Book): string {
   // your implementation
 }
 
-const b1 = { title: "Atomic Habits", author: "James Clear", pages: 320, isRead: true };
-console.log(summarizeBook(b1));
+console.log(summarizeBook({ title: "Atomic Habits", author: "James Clear", pages: 320, isRead: true }));
 `,
       solutionCode: `interface Book {
   title: string;
@@ -72,42 +146,92 @@ function summarizeBook(book: Book): string {
   const status = book.isRead ? "Read" : "Unread";
   return \`\${book.title} by \${book.author} (\${book.pages} pages) - \${status}\`;
 }
-
-const b1: Book = { title: "Atomic Habits", author: "James Clear", pages: 320, isRead: true };
-console.log(summarizeBook(b1));
 `,
       hints: [
-        'Define interface Book with title: string, author: string, pages: number, isRead?: boolean.',
-        'In summarizeBook, check `book.isRead ? "Read" : "Unread"` and interpolate into the template string.'
+        'Check `book.isRead ? "Read" : "Unread"`.',
+        'Interpolate into template string `${book.title} by ${book.author} (${book.pages} pages) - ${status}`.'
       ],
       testCases: [
         {
           id: 'tc-1',
-          description: 'Correctly summarizes read book',
+          description: 'Formats read book correctly',
           testFn: `summarizeBook({ title: 'Clean Code', author: 'Robert Martin', pages: 464, isRead: true }) === 'Clean Code by Robert Martin (464 pages) - Read'`,
           expectedMessage: 'Expected "Clean Code by Robert Martin (464 pages) - Read"'
-        },
-        {
-          id: 'tc-2',
-          description: 'Defaults to Unread if isRead is omitted or false',
-          testFn: `summarizeBook({ title: 'Refactoring', author: 'Martin Fowler', pages: 448 }) === 'Refactoring by Martin Fowler (448 pages) - Unread'`,
-          expectedMessage: 'Expected "Refactoring by Martin Fowler (448 pages) - Unread"'
         }
       ]
     },
+
+    // TIER 3: INTERMEDIATE
     {
-      id: 'ts-2-discriminated-unions',
-      title: 'Discriminated Unions & Exhaustive Narrowing',
+      id: 'ts-t3-generics-constraints',
+      title: 'Intermediate: Generics & Keyof Constraints',
+      slug: 'generics-constraints',
+      language: 'typescript',
+      category: '3. Intermediate',
+      difficulty: 'Intermediate',
+      tier: 3,
+      tierName: 'Intermediate',
+      estimatedMinutes: 20,
+      xp: 75,
+      description: 'Write flexible, reusable functions and data structures without losing type specificity.',
+      concepts: ['Generic type parameters (<T>)', 'Generic constraints (extends)', 'Keyof operator', 'Type inference'],
+      explanationMarkdown: `
+### Why Generics?
+Generics allow functions to work across arbitrary types while preserving concrete type safety (unlike using \`any\`):
+
+\`\`\`typescript
+function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
+  return items.map(item => item[key]);
+}
+\`\`\`
+
+#### Challenge:
+Implement the generic function \`pluck<T, K extends keyof T>(items: T[], key: K): T[K][]\` that extracts the value of a specified property from an array of objects.
+      `,
+      initialCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
+  // your implementation
+}
+
+const users = [{ id: 1, name: "Alice" }, { id: 2, name: "Bob" }];
+console.log(pluck(users, "name"));
+`,
+      solutionCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
+  return items.map(item => item[key]);
+}
+`,
+      hints: [
+        'Map over items and return `item[key]`.'
+      ],
+      testCases: [
+        {
+          id: 'tc-1',
+          description: 'Plucks string properties preserving types',
+          testFn: `(() => {
+            const arr = [{ x: 'one' }, { x: 'two' }];
+            const res = pluck(arr, 'x');
+            return Array.isArray(res) && res[0] === 'one' && res[1] === 'two';
+          })()`,
+          expectedMessage: 'Expected ["one", "two"]'
+        }
+      ]
+    },
+
+    // TIER 4: ADVANCED
+    {
+      id: 'ts-t4-discriminated-unions',
+      title: 'Advanced: Discriminated Unions & Exhaustive Narrowing',
       slug: 'discriminated-unions',
       language: 'typescript',
-      category: 'Type Safety',
-      difficulty: 'Intermediate',
-      estimatedMinutes: 18,
-      xp: 70,
+      category: '4. Advanced Architecture',
+      difficulty: 'Advanced',
+      tier: 4,
+      tierName: 'Advanced',
+      estimatedMinutes: 20,
+      xp: 90,
       description: 'Model real-world state machines cleanly using tagged/discriminated unions and pattern matching.',
-      concepts: ['Union types (|)', 'Literal types', 'Discriminant property (tag)', 'Narrowing with switch/if'],
+      concepts: ['Discriminated union pattern', 'Literal discriminant (kind/status)', 'Type narrowing via switch/if'],
       explanationMarkdown: `
-### What is a Discriminated Union?
+### Discriminated Unions
 A pattern where multiple object types share a common single-value property (the "discriminant"), allowing TypeScript to automatically narrow down the type inside conditional blocks:
 
 \`\`\`typescript
@@ -116,15 +240,6 @@ type NetworkState =
   | { status: 'loading' }
   | { status: 'success'; data: string[] }
   | { status: 'error'; message: string };
-
-function renderState(state: NetworkState) {
-  switch (state.status) {
-    case 'loading': return 'Fetching...';
-    case 'success': return \`Items count: \${state.data.length}\`;
-    case 'error': return \`Error: \${state.message}\`;
-    case 'idle': return 'Ready';
-  }
-}
 \`\`\`
 
 #### Challenge:
@@ -146,13 +261,8 @@ Implement \`calculateArea(shape: Shape): number\`:
   | { kind: 'rectangle'; width: number; height: number };
 
 function calculateArea(shape: Shape): number {
-  // Use switch(shape.kind) to calculate and return area
-  
+  // your implementation
 }
-
-console.log("Circle area:", calculateArea({ kind: 'circle', radius: 5 }));
-console.log("Square area:", calculateArea({ kind: 'square', size: 4 }));
-console.log("Rectangle area:", calculateArea({ kind: 'rectangle', width: 6, height: 3 }));
 `,
       solutionCode: `type Shape =
   | { kind: 'circle'; radius: number }
@@ -161,19 +271,15 @@ console.log("Rectangle area:", calculateArea({ kind: 'rectangle', width: 6, heig
 
 function calculateArea(shape: Shape): number {
   switch (shape.kind) {
-    case 'circle':
-      return Math.PI * shape.radius * shape.radius;
-    case 'square':
-      return shape.size * shape.size;
-    case 'rectangle':
-      return shape.width * shape.height;
+    case 'circle': return Math.PI * shape.radius * shape.radius;
+    case 'square': return shape.size * shape.size;
+    case 'rectangle': return shape.width * shape.height;
   }
 }
 `,
       hints: [
-        'Switch on shape.kind.',
-        'Inside `case "circle"`, TypeScript knows `shape` has `.radius`.',
-        'Inside `case "rectangle"`, TypeScript knows `shape` has `.width` and `.height`.'
+        'Switch on `shape.kind`.',
+        'In `case "circle"`, TypeScript auto-narrows to radius.'
       ],
       testCases: [
         {
@@ -187,215 +293,103 @@ function calculateArea(shape: Shape): number {
           description: 'Calculates rectangle area accurately',
           testFn: `calculateArea({ kind: 'rectangle', width: 7, height: 4 }) === 28`,
           expectedMessage: 'Expected 7 * 4 = 28'
-        },
-        {
-          id: 'tc-3',
-          description: 'Calculates circle area within tolerance',
-          testFn: `Math.abs(calculateArea({ kind: 'circle', radius: 10 }) - 314.159) < 0.1`,
-          expectedMessage: 'Expected circle area ~314.159'
         }
       ]
     },
+
+    // TIER 5: MASTERCLASS / EXPERT
     {
-      id: 'ts-3-generics-constraints',
-      title: 'Generics & Constraints: Reusable Type Abstractions',
-      slug: 'generics-constraints',
+      id: 'ts-t5-conditional-infer-types',
+      title: 'Masterclass: Conditional Types & The Infer Keyword',
+      slug: 'conditional-infer-types',
       language: 'typescript',
-      category: 'Advanced Architecture',
-      difficulty: 'Intermediate',
-      estimatedMinutes: 20,
-      xp: 85,
-      description: 'Write flexible, reusable functions and data structures without losing type specificity.',
-      concepts: ['Generic type parameters (<T>)', 'Generic constraints (extends)', 'Keyof operator', 'Type inference'],
+      category: '5. Masterclass & Internals',
+      difficulty: 'Expert',
+      tier: 5,
+      tierName: 'Masterclass',
+      estimatedMinutes: 25,
+      xp: 130,
+      description: 'The pinnacle of TypeScript: write type-level functions using conditional types, the infer keyword, and recursive type unwrapping.',
+      concepts: ['Conditional types (T extends U ? X : Y)', 'The infer keyword', 'Unwrapping Promise / Array types', 'Type Gymnastics'],
       explanationMarkdown: `
-### Why Generics?
-Generics allow functions and classes to work over a variety of types while preserving type safety (unlike using \`any\`):
+### Type-Level Programming: Conditional Types
+Just as functions in JavaScript take values and return values, generic types in TypeScript can take types and return types conditionally!
 
 \`\`\`typescript
-function wrapInArray<T>(value: T): T[] {
-  return [value];
-}
+type IsString<T> = T extends string ? true : false;
+type A = IsString<"hello">; // true
+type B = IsString<42>;      // false
+\`\`\`
 
-interface HasId {
-  id: string | number;
-}
+#### The \`infer\` Keyword
+\`infer\` allows you to extract an unknown type variable from within another type structure:
 
-function findById<T extends HasId>(items: T[], id: string | number): T | undefined {
-  return items.find(item => item.id === id);
-}
+\`\`\`typescript
+type UnwrapPromise<T> = T extends Promise<infer R> ? R : T;
+type X = UnwrapPromise<Promise<number>>; // number
 \`\`\`
 
 #### Challenge:
-Implement a generic function \`pluck<T, K extends keyof T>(items: T[], key: K): T[K][]\` that extracts the value of a specified property from an array of objects.
+Create a function \`unwrapApiResponse<T>(payload: { status: 'success'; data: T } | { status: 'error'; error: string }): T | null\` that returns \`payload.data\` if \`status === 'success'\`, or \`null\` if \`status === 'error'\`.
+Also implement a helper function \`extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D\` that returns \`val\` when not null/undefined, otherwise \`fallback\`.
       `,
-      initialCode: `// Implement generic pluck function
-function pluck(items: any[], key: any): any[] {
-  // your implementation
+      initialCode: `type ApiResponse<T> =
+  | { status: 'success'; data: T }
+  | { status: 'error'; error: string };
+
+function unwrapApiResponse<T>(payload: ApiResponse<T>): T | null {
+  if (payload.status === 'success') {
+    return payload.data;
+  }
+  return null;
 }
 
-const users = [
-  { id: 1, name: "Alice", role: "admin" },
-  { id: 2, name: "Bob", role: "member" },
-  { id: 3, name: "Charlie", role: "guest" }
-];
+function extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D {
+  return val !== null && val !== undefined ? val : fallback;
+}
 
-const names = pluck(users, "name");
-console.log("Plucked names:", names);
+// Test call:
+const good = unwrapApiResponse({ status: 'success', data: { score: 99 } });
+console.log("Unwrapped:", extractValueOrFallback(good?.score, 0));
 `,
-      solutionCode: `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][] {
-  return items.map(item => item[key]);
+      solutionCode: `type ApiResponse<T> =
+  | { status: 'success'; data: T }
+  | { status: 'error'; error: string };
+
+function unwrapApiResponse<T>(payload: ApiResponse<T>): T | null {
+  if (payload.status === 'success') {
+    return payload.data;
+  }
+  return null;
 }
 
-const users = [
-  { id: 1, name: "Alice", role: "admin" },
-  { id: 2, name: "Bob", role: "member" },
-  { id: 3, name: "Charlie", role: "guest" }
-];
-
-const names = pluck(users, "name");
-console.log("Plucked names:", names);
+function extractValueOrFallback<T, D>(val: T | null | undefined, fallback: D): T | D {
+  return val !== null && val !== undefined ? val : fallback;
+}
 `,
       hints: [
-        'The signature is `function pluck<T, K extends keyof T>(items: T[], key: K): T[K][]`',
-        'In the body, return `items.map(item => item[key]);`'
+        'Check `if (payload.status === "success") return payload.data; else return null;`.',
+        'In extractValueOrFallback, check `val !== null && val !== undefined ? val : fallback`.'
       ],
       testCases: [
         {
           id: 'tc-1',
-          description: 'Extracts string values correctly',
+          description: 'Unwraps data from success response',
           testFn: `(() => {
-            const arr = [{ x: 'one' }, { x: 'two' }];
-            const res = pluck(arr, 'x');
-            return Array.isArray(res) && res[0] === 'one' && res[1] === 'two';
+            const res = unwrapApiResponse({ status: 'success', data: 'TOKEN_123' });
+            return res === 'TOKEN_123';
           })()`,
-          expectedMessage: 'Expected ["one", "two"]'
+          expectedMessage: 'Expected "TOKEN_123"'
         },
         {
           id: 'tc-2',
-          description: 'Extracts numeric values correctly',
+          description: 'Returns fallback on error or null payload',
           testFn: `(() => {
-            const arr = [{ val: 10 }, { val: 20 }, { val: 30 }];
-            const res = pluck(arr, 'val');
-            return res.length === 3 && res[0] === 10 && res[2] === 30;
+            const errRes = unwrapApiResponse({ status: 'error', error: '404' });
+            const val = extractValueOrFallback(errRes, 'DEFAULT');
+            return val === 'DEFAULT';
           })()`,
-          expectedMessage: 'Expected [10, 20, 30]'
-        }
-      ]
-    },
-    {
-      id: 'ts-4-utility-types',
-      title: 'Advanced Utility Types: Partial, Pick, Omit & Record',
-      slug: 'utility-types',
-      language: 'typescript',
-      category: 'Advanced Architecture',
-      difficulty: 'Advanced',
-      estimatedMinutes: 20,
-      xp: 95,
-      description: 'Master TypeScript standard utility types for data transformation and mutation contracts.',
-      concepts: ['Partial<T>', 'Required<T>', 'Pick<T, K>', 'Omit<T, K>', 'Record<K, V>'],
-      explanationMarkdown: `
-### TypeScript Standard Utility Types
-TypeScript provides built-in transformations:
-- \`Partial<T>\`: Makes all properties optional (great for update payloads).
-- \`Pick<T, Keys>\`: Selects a subset of properties from T.
-- \`Omit<T, Keys>\`: Removes specific properties from T.
-- \`Record<Keys, Type>\`: Constructs an object type with specified key and value types.
-
-\`\`\`typescript
-interface User {
-  id: string;
-  name: string;
-  email: string;
-  passwordHash: string;
-}
-
-type UserUpdateDTO = Partial<Omit<User, 'id' | 'passwordHash'>>;
-\`\`\`
-
-#### Challenge:
-Given an interface \`Article\`:
-\`\`\`typescript
-interface Article {
-  id: string;
-  title: string;
-  content: string;
-  author: string;
-  published: boolean;
-}
-\`\`\`
-1. Write a function \`createArticleDraft(input: Pick<Article, 'title' | 'content'>): Article\` that takes only \`title\` and \`content\`, generates a default \`id\` (e.g. \`"art-" + Date.now()\`), sets \`author: "Anonymous"\`, and \`published: false\`.
-2. Write a function \`updateArticle(article: Article, changes: Partial<Omit<Article, 'id'>>): Article\` that applies the changes without allowing the \`id\` to be changed.
-      `,
-      initialCode: `interface Article {
-  id: string;
-  title: string;
-  content: string;
-  author: string;
-  published: boolean;
-}
-
-function createArticleDraft(input: Pick<Article, 'title' | 'content'>): Article {
-  // your implementation
-}
-
-function updateArticle(article: Article, changes: Partial<Omit<Article, 'id'>>): Article {
-  // your implementation
-}
-
-const draft = createArticleDraft({ title: "TypeScript Rocks", content: "..." });
-console.log("Created draft:", draft);
-const updated = updateArticle(draft, { published: true });
-console.log("Updated article:", updated);
-`,
-      solutionCode: `interface Article {
-  id: string;
-  title: string;
-  content: string;
-  author: string;
-  published: boolean;
-}
-
-function createArticleDraft(input: Pick<Article, 'title' | 'content'>): Article {
-  return {
-    id: "art-1",
-    title: input.title,
-    content: input.content,
-    author: "Anonymous",
-    published: false
-  };
-}
-
-function updateArticle(article: Article, changes: Partial<Omit<Article, 'id'>>): Article {
-  return {
-    ...article,
-    ...changes,
-    id: article.id // ensure id cannot be overwritten
-  };
-}
-`,
-      hints: [
-        'createArticleDraft returns an object with all Article fields: { id: "art-1", title: input.title, content: input.content, author: "Anonymous", published: false }.',
-        'updateArticle returns { ...article, ...changes, id: article.id }.'
-      ],
-      testCases: [
-        {
-          id: 'tc-1',
-          description: 'createArticleDraft sets default author and published to false',
-          testFn: `(() => {
-            const draft = createArticleDraft({ title: 'My Post', content: 'Hello' });
-            return draft.title === 'My Post' && draft.author === 'Anonymous' && draft.published === false;
-          })()`,
-          expectedMessage: 'Expected default author: Anonymous and published: false'
-        },
-        {
-          id: 'tc-2',
-          description: 'updateArticle merges updates while preserving id',
-          testFn: `(() => {
-            const orig: Article = { id: 'fixed-id', title: 'Old', content: 'Old', author: 'Dan', published: false };
-            const next = updateArticle(orig, { title: 'New Title', published: true });
-            return next.id === 'fixed-id' && next.title === 'New Title' && next.published === true && next.author === 'Dan';
-          })()`,
-          expectedMessage: 'Expected title updated to New Title and id preserved'
+          expectedMessage: 'Expected fallback "DEFAULT"'
         }
       ]
     }

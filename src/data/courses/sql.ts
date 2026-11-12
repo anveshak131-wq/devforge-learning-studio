@@ -3,24 +3,27 @@ import { SAMPLE_DATABASES } from '../sampleDatabases';
 
 export const SQL_TRACK: Track = {
   id: 'sql',
-  title: 'SQL & Relational Databases',
+  title: 'SQL: Foundations to Database Architect',
   slug: 'sql',
   language: 'sql',
   icon: 'Database',
   color: 'from-blue-500 to-cyan-500',
-  tagline: 'Run genuine SQLite inside your browser with schema inspection, joins, and aggregations.',
-  description: 'Master structured query language on real databases. Learn filtering, multi-table relational joins, grouping, subqueries, and window functions with instant interactive data tables.',
+  tagline: '5-tier relational database journey: from basic SELECT queries to multi-table joins, CTEs, and Window Functions.',
+  description: 'Master relational data engineering on real SQLite WebAssembly databases. Learn foundational queries, aggregations, relational normalization, CTE pipelines, and analytic window functions.',
   lessons: [
+    // TIER 1: FOUNDATIONS
     {
-      id: 'sql-1-select-filtering',
-      title: 'Filtering & Sorting: SELECT, WHERE, ORDER BY',
+      id: 'sql-t1-select-filtering',
+      title: 'Foundations: SELECT, WHERE & ORDER BY',
       slug: 'select-where-order',
       language: 'sql',
-      category: 'Query Basics',
+      category: '1. Foundations',
       difficulty: 'Beginner',
+      tier: 1,
+      tierName: 'Foundations',
       estimatedMinutes: 10,
-      xp: 50,
-      description: 'Filter rows using comparison operators and sort results in ascending or descending order.',
+      xp: 40,
+      description: 'Start with relational basics: retrieve records, filter by column criteria, and sort results.',
       concepts: ['SELECT specific columns', 'WHERE clause comparisons', 'ORDER BY and LIMIT'],
       initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
       explanationMarkdown: `
@@ -66,7 +69,6 @@ ORDER BY price DESC;
           description: 'Returns products in Electronics category with price > 100',
           testFn: `(() => {
             if (!values || values.length === 0) return false;
-            // Expected 3 items: 4K Ultra-Wide Monitor (499), Wireless Headphones (249.5), Mechanical Keyboard (129.99)
             return values.length === 3 && values[0][0] === '4K Ultra-Wide Monitor 34"';
           })()`,
           expectedMessage: 'Expected 3 products ordered from highest price to lowest'
@@ -79,15 +81,19 @@ ORDER BY price DESC;
         }
       ]
     },
+
+    // TIER 2: CORE DEVELOPER
     {
-      id: 'sql-2-aggregations-group-by',
-      title: 'Aggregations & Grouping: COUNT, SUM, GROUP BY',
+      id: 'sql-t2-aggregations-group-by',
+      title: 'Core: Aggregations & Grouping (COUNT, SUM, GROUP BY)',
       slug: 'group-by-aggregations',
       language: 'sql',
-      category: 'Data Analytics',
+      category: '2. Core Concepts',
       difficulty: 'Beginner',
+      tier: 2,
+      tierName: 'Core',
       estimatedMinutes: 15,
-      xp: 60,
+      xp: 55,
       description: 'Summarize metrics across categories using aggregate functions and GROUP BY.',
       concepts: ['COUNT, SUM, AVG functions', 'GROUP BY clause', 'HAVING vs WHERE', 'Aliases with AS'],
       initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
@@ -102,13 +108,11 @@ GROUP BY category
 HAVING item_count > 1;
 \`\`\`
 
-> **Note**: \`WHERE\` filters individual rows *before* grouping; \`HAVING\` filters groups *after* aggregation!
-
 #### Challenge:
 Write a query to calculate for each **category**:
 1. \`category\`
 2. Number of products as \`product_count\`
-3. Average price as \`average_price\` (round to 2 decimals or plain AVG)
+3. Average price as \`average_price\`
 4. Total stock as \`total_stock\`
 
 Only include categories that have **at least 2 products**. Order by \`total_stock\` descending.
@@ -120,7 +124,7 @@ SELECT
   AVG(price) AS average_price,
   SUM(stock) AS total_stock
 FROM products
--- Add GROUP BY and HAVING clauses here:
+-- Add GROUP BY and HAVING clauses:
 
 `,
       solutionCode: `SELECT 
@@ -135,7 +139,7 @@ ORDER BY total_stock DESC;
 `,
       hints: [
         'Group by `category`.',
-        'Use `HAVING COUNT(*) >= 2` to filter for categories with at least 2 items.',
+        'Use `HAVING COUNT(*) >= 2` to filter.',
         'Add `ORDER BY total_stock DESC;`.'
       ],
       testCases: [
@@ -148,22 +152,20 @@ ORDER BY total_stock DESC;
             return categories.includes('Electronics') && categories.includes('Office');
           })()`,
           expectedMessage: 'Expected Electronics and Office categories'
-        },
-        {
-          id: 'tc-2',
-          description: 'Calculates total_stock correctly',
-          testFn: `columns.map(c => c.toLowerCase()).includes('total_stock')`,
-          expectedMessage: 'Column total_stock must be present'
         }
       ]
     },
+
+    // TIER 3: INTERMEDIATE
     {
-      id: 'sql-3-relational-joins',
-      title: 'Relational Joins: INNER JOIN & Multi-Table Queries',
+      id: 'sql-t3-relational-joins',
+      title: 'Intermediate: Relational Multi-Table INNER JOINs',
       slug: 'inner-joins',
       language: 'sql',
-      category: 'Relational Modeling',
+      category: '3. Intermediate',
       difficulty: 'Intermediate',
+      tier: 3,
+      tierName: 'Intermediate',
       estimatedMinutes: 20,
       xp: 75,
       description: 'Connect related entities across primary and foreign keys to synthesize complete insights.',
@@ -225,29 +227,26 @@ ORDER BY o.total_amount DESC;
           description: 'Correctly matches delivered orders over 100 with user profile info',
           testFn: `(() => {
             if (!values || values.length === 0) return false;
-            // Charlie Zhang has order 1003 with 548.99 which should be first
             return values[0][1] === 'Charlie Zhang' && values[0][3] === 548.99;
           })()`,
           expectedMessage: 'Top order should be Charlie Zhang ($548.99)'
-        },
-        {
-          id: 'tc-2',
-          description: 'Only includes delivered orders',
-          testFn: `values.every(row => row[4] === 'delivered')`,
-          expectedMessage: 'All returned orders must have delivered status'
         }
       ]
     },
+
+    // TIER 4: ADVANCED
     {
-      id: 'sql-4-subqueries-cte',
-      title: 'Subqueries & CTEs (Common Table Expressions)',
+      id: 'sql-t4-subqueries-cte',
+      title: 'Advanced: Common Table Expressions (WITH CTE)',
       slug: 'subqueries-cte',
       language: 'sql',
-      category: 'Advanced SQL',
+      category: '4. Advanced Architecture',
       difficulty: 'Advanced',
+      tier: 4,
+      tierName: 'Advanced',
       estimatedMinutes: 25,
       xp: 90,
-      description: 'Write modular, readable SQL queries using CTEs (WITH clause) and scalar subqueries.',
+      description: 'Write modular, clean analytical pipelines using CTEs and subqueries.',
       concepts: ['WITH clause (CTEs)', 'Subqueries in WHERE clause', 'Analytical aggregations'],
       initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
       explanationMarkdown: `
@@ -267,21 +266,13 @@ JOIN HighSpenders hs ON u.id = hs.user_id;
 \`\`\`
 
 #### Challenge:
-Use a CTE named \`CustomerSpending\` to calculate the total spent by each user:
-\`\`\`sql
-WITH CustomerSpending AS (
-  SELECT user_id, SUM(total_amount) AS total_spent
-  FROM orders
-  GROUP BY user_id
-)
-\`\`\`
+Use a CTE named \`CustomerSpending\` to calculate \`user_id\` and \`SUM(total_amount) AS total_spent\`.
 Then select \`users.name\`, \`users.email\`, and \`CustomerSpending.total_spent\`.
 Filter to only show customers whose \`total_spent\` is **greater than 200**.
 Order by \`total_spent\` descending.
       `,
       initialCode: `-- Use WITH CustomerSpending AS (...)
 WITH CustomerSpending AS (
-  -- calculate user_id and total_spent
   SELECT user_id, SUM(total_amount) AS total_spent
   FROM orders
   GROUP BY user_id
@@ -311,10 +302,92 @@ ORDER BY cs.total_spent DESC;
           description: 'Returns customers with spending exceeding 200 ordered descending',
           testFn: `(() => {
             if (!values || values.length === 0) return false;
-            // Charlie Zhang (548.99), Alice Johnson (431.99), Diana Patel (249.50)
             return values.length >= 3 && values[0][0] === 'Charlie Zhang';
           })()`,
           expectedMessage: 'Charlie Zhang must be the highest spender in the list'
+        }
+      ]
+    },
+
+    // TIER 5: MASTERCLASS / EXPERT
+    {
+      id: 'sql-t5-window-functions',
+      title: 'Masterclass: Window Functions (ROW_NUMBER & PARTITION BY)',
+      slug: 'window-functions',
+      language: 'sql',
+      category: '5. Masterclass & Internals',
+      difficulty: 'Expert',
+      tier: 5,
+      tierName: 'Masterclass',
+      estimatedMinutes: 30,
+      xp: 130,
+      description: 'Master analytical SQL. Compute running totals, rankings, and partitioned metrics without collapsing rows.',
+      concepts: ['Window functions: OVER ()', 'PARTITION BY clause', 'ROW_NUMBER() vs RANK()', 'Analytical order preservation'],
+      initSqlSchema: SAMPLE_DATABASES.ecommerce.sql,
+      explanationMarkdown: `
+### What is a Window Function?
+Unlike \`GROUP BY\`, which collapses multiple rows into a single summary row, a **Window Function** computes values across a set of table rows that are related to the current row, **while retaining individual rows**!
+
+\`\`\`sql
+SELECT 
+  name, 
+  category, 
+  price,
+  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS category_rank
+FROM products;
+\`\`\`
+
+- \`PARTITION BY category\`: Divides rows into category groups.
+- \`ORDER BY price DESC\`: Sorts items inside each category from most expensive to least.
+- \`ROW_NUMBER()\`: Generates sequential 1, 2, 3... rank for each category!
+
+#### Challenge:
+Write a query to retrieve:
+- \`name\`
+- \`category\`
+- \`price\`
+- \`ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank\`
+From the \`products\` table.
+Order the overall result by \`category ASC\`, then \`price_rank ASC\`.
+      `,
+      initialCode: `-- Use ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC)
+SELECT 
+  name,
+  category,
+  price,
+  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank
+FROM products
+ORDER BY category ASC, price_rank ASC;
+`,
+      solutionCode: `SELECT 
+  name,
+  category,
+  price,
+  ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank
+FROM products
+ORDER BY category ASC, price_rank ASC;
+`,
+      hints: [
+        'Write `ROW_NUMBER() OVER (PARTITION BY category ORDER BY price DESC) AS price_rank`.',
+        'Add `ORDER BY category ASC, price_rank ASC;` at the end.'
+      ],
+      testCases: [
+        {
+          id: 'tc-1',
+          description: 'Ranks items inside each category correctly',
+          testFn: `(() => {
+            if (!values || values.length === 0) return false;
+            // First item should be 4K Ultra-Wide Monitor (Electronics rank 1) or Electronics
+            const electronicsRank1 = values.find(r => r[1] === 'Electronics' && r[3] === 1);
+            return electronicsRank1 && electronicsRank1[0] === '4K Ultra-Wide Monitor 34"';
+          })()`,
+          expectedMessage: '4K Ultra-Wide Monitor must be Electronics rank 1'
+        },
+        {
+          id: 'tc-2',
+          description: 'Calculates price_rank column for all products',
+          testFn: `columns.map(c => c.toLowerCase()).includes('price_rank')`,
+          expectedMessage: 'Column price_rank must be present'
         }
       ]
     }

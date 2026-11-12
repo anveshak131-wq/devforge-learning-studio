@@ -6,6 +6,7 @@ export const WEATHER_PROJECT: GuidedProject = {
   slug: 'weather-api-cache',
   language: 'typescript',
   difficulty: 'Intermediate',
+  tier: 4,
   estimatedHours: 2,
   xpReward: 300,
   tagline: 'Build a production-ready asynchronous API fetcher with TTL caching, error recovery, and data transformations.',

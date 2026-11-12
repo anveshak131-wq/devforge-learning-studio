@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { UserStats } from './types';
+import React, { useState } from 'react';
+import { UserStats, TierLevel } from './types';
 import { ProgressStorage } from './services/progressStorage';
 import { Navbar } from './components/layout/Navbar';
 import { DashboardView } from './components/views/DashboardView';
@@ -9,6 +9,9 @@ import { LessonWorkspace } from './components/learning/LessonWorkspace';
 import { ProjectWorkspace } from './components/learning/ProjectWorkspace';
 import { PlaygroundWorkspace } from './components/playground/PlaygroundWorkspace';
 import { QuickCheatSheetModal } from './components/views/QuickCheatSheetModal';
+import { PlacementQuizModal } from './components/views/PlacementQuizModal';
+import { FlashcardsModal } from './components/views/FlashcardsModal';
+import { RoadmapSkillTreeView } from './components/views/RoadmapSkillTreeView';
 import { ALL_TRACKS, getTrackBySlug, getLessonById } from './data/courses';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
 
@@ -16,9 +19,12 @@ export function App() {
   const [userStats, setUserStats] = useState<UserStats>(() => ProgressStorage.getStats());
   const [currentView, setCurrentView] = useState<string>('dashboard');
   const [viewPayload, setViewPayload] = useState<any>(null);
+  
+  // Modals state
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
+  const [isPlacementQuizOpen, setIsPlacementQuizOpen] = useState(false);
+  const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
 
-  // Sync stats updates
   const handleStatsUpdate = (newStats: UserStats) => {
     setUserStats({ ...newStats });
   };
@@ -68,10 +74,8 @@ export function App() {
         currentView={currentView}
         onNavigate={handleNavigate}
         userStats={userStats}
-        onResetProgress={() => {
-          const reset = ProgressStorage.resetProgress();
-          setUserStats(reset);
-        }}
+        onOpenFlashcards={() => setIsFlashcardsOpen(true)}
+        onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
       />
 
       {/* Main View Router */}
@@ -80,6 +84,18 @@ export function App() {
           <DashboardView
             userStats={userStats}
             onNavigate={handleNavigate}
+            onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
+            onOpenFlashcards={() => setIsFlashcardsOpen(true)}
+          />
+        )}
+
+        {currentView === 'roadmap' && (
+          <RoadmapSkillTreeView
+            userStats={userStats}
+            onSelectLesson={(trackSlug, lessonId) => {
+              handleNavigate('lesson', { trackSlug, lessonId });
+            }}
+            onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
           />
         )}
 
@@ -89,6 +105,7 @@ export function App() {
             onSelectLesson={(trackSlug, lessonId) => {
               handleNavigate('lesson', { trackSlug, lessonId });
             }}
+            onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
           />
         )}
 
@@ -132,6 +149,24 @@ export function App() {
       <QuickCheatSheetModal
         isOpen={isCheatSheetOpen}
         onClose={() => setIsCheatSheetOpen(false)}
+      />
+
+      {/* Diagnostic Placement Quiz Modal */}
+      <PlacementQuizModal
+        isOpen={isPlacementQuizOpen}
+        onClose={() => setIsPlacementQuizOpen(false)}
+        onTierSelected={(tier: TierLevel) => {
+          const updated = ProgressStorage.setDiagnosedTier(tier);
+          setUserStats(updated);
+          handleNavigate('tracks');
+        }}
+      />
+
+      {/* Spaced Repetition Flashcards Modal */}
+      <FlashcardsModal
+        isOpen={isFlashcardsOpen}
+        onClose={() => setIsFlashcardsOpen(false)}
+        onStatsUpdate={handleStatsUpdate}
       />
     </div>
   );

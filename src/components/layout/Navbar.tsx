@@ -2,14 +2,13 @@ import React from 'react';
 import { 
   Code2, 
   Flame, 
-  Trophy, 
-  Database, 
   BookOpen, 
   Layers, 
   Sparkles, 
   FileCode2,
-  ChevronRight,
-  RotateCcw
+  GitFork,
+  Brain,
+  HelpCircle
 } from 'lucide-react';
 import { UserStats } from '../../types';
 import { ProgressStorage } from '../../services/progressStorage';
@@ -18,20 +17,22 @@ interface NavbarProps {
   currentView: string;
   onNavigate: (view: string, payload?: any) => void;
   userStats: UserStats;
-  onResetProgress?: () => void;
+  onOpenFlashcards: () => void;
+  onOpenPlacementQuiz: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentView,
   onNavigate,
   userStats,
-  onResetProgress
+  onOpenFlashcards,
+  onOpenPlacementQuiz
 }) => {
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
 
   return (
     <header className="h-14 border-b border-slate-800 bg-slate-900/90 backdrop-blur-md px-4 flex items-center justify-between z-30 select-none">
-      {/* Brand */}
+      {/* Brand & Nav */}
       <div className="flex items-center space-x-6">
         <button
           onClick={() => onNavigate('dashboard')}
@@ -46,15 +47,15 @@ export const Navbar: React.FC<NavbarProps> = ({
             <div className="flex items-center space-x-1.5">
               <span className="font-bold text-base text-white tracking-tight">DevForge</span>
               <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
-                Studio
+                Academy
               </span>
             </div>
-            <p className="text-[10px] text-slate-400 -mt-0.5 hidden sm:block">Learn by Building</p>
+            <p className="text-[10px] text-slate-400 -mt-0.5 hidden sm:block">Zero to Masterclass</p>
           </div>
         </button>
 
         {/* Navigation Tabs */}
-        <nav className="hidden md:flex items-center space-x-1">
+        <nav className="hidden lg:flex items-center space-x-1">
           <button
             onClick={() => onNavigate('dashboard')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
@@ -68,6 +69,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
+            onClick={() => onNavigate('roadmap')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
+              currentView === 'roadmap'
+                ? 'bg-slate-800 text-indigo-400 border border-slate-700'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <GitFork className="w-3.5 h-3.5 text-cyan-400" />
+            <span>Skill Tree</span>
+          </button>
+
+          <button
             onClick={() => onNavigate('tracks')}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
               currentView === 'tracks' || currentView === 'lesson'
@@ -76,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
-            <span>Languages & Tracks</span>
+            <span>Courses</span>
           </button>
 
           <button
@@ -100,13 +113,33 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <FileCode2 className="w-3.5 h-3.5" />
-            <span>Playground & SQL Studio</span>
+            <span>Playground</span>
           </button>
         </nav>
       </div>
 
-      {/* User Progression Metrics */}
-      <div className="flex items-center space-x-3">
+      {/* User Progression Metrics & Utilities */}
+      <div className="flex items-center space-x-2.5">
+        {/* Flashcards Spaced Repetition Button */}
+        <button
+          onClick={onOpenFlashcards}
+          className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition"
+          title="Daily Concept Recall Flashcards"
+        >
+          <Brain className="w-3.5 h-3.5 text-indigo-400" />
+          <span>Recall</span>
+        </button>
+
+        {/* Diagnostic Placement Quiz CTA */}
+        <button
+          onClick={onOpenPlacementQuiz}
+          className="hidden md:flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition"
+          title="Test Your Level (Placement Diagnostic)"
+        >
+          <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
+          <span>Placement Test</span>
+        </button>
+
         {/* Streak */}
         <div 
           className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium"
@@ -132,8 +165,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </span>
               <span className="text-amber-400 font-mono font-medium">{userStats.xp} XP</span>
             </div>
-            {/* Progress bar */}
-            <div className="w-24 h-1.5 bg-slate-700 rounded-full mt-0.5 overflow-hidden">
+            <div className="w-20 h-1.5 bg-slate-700 rounded-full mt-0.5 overflow-hidden">
               <div 
                 className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full transition-all duration-500"
                 style={{ width: `${levelInfo.progressPercent}%` }}
@@ -142,11 +174,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
         </div>
 
-        {/* Quick Help / Cheatsheet button */}
+        {/* Cheatsheet button */}
         <button
           onClick={() => onNavigate('cheatsheet')}
           className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-          title="Quick Syntax Reference & Cheat Sheets"
+          title="Quick Syntax Reference"
         >
           <BookOpen className="w-4 h-4 text-cyan-400" />
         </button>

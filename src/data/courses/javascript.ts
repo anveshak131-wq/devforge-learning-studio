@@ -2,37 +2,106 @@ import { Track } from '../../types';
 
 export const JAVASCRIPT_TRACK: Track = {
   id: 'javascript',
-  title: 'JavaScript Modern Mastery',
+  title: 'JavaScript: Zero to Masterclass',
   slug: 'javascript',
   language: 'javascript',
   icon: 'Zap',
   color: 'from-amber-400 to-yellow-500',
-  tagline: 'From ES6+ fundamentals to asynchronous programming, functional patterns, and DOM.',
-  description: 'Master the language of the modern web. Learn modern syntax, functional array transformations, closures, promises, async/await, and event handling with hands-on live code exercises.',
+  tagline: 'Complete 5-tier roadmap: from absolute beginner basics to closures, event loop microtasks, and Proxy metaprogramming.',
+  description: 'Master JavaScript from your very first line of code to senior-level architectural mechanics. Includes primitive types, functional array pipelines, asynchronous event queues, and runtime metaprogramming.',
   lessons: [
+    // TIER 1: FOUNDATIONS (ABSOLUTE BEGINNER)
     {
-      id: 'js-1-es6-arrow-destructuring',
-      title: 'Modern ES6+: Destructuring & Arrow Functions',
-      slug: 'arrow-destructuring',
+      id: 'js-t1-variables-primitives',
+      title: 'Foundations: Variables, Types & String Formatting',
+      slug: 'variables-types',
       language: 'javascript',
-      category: 'Core Fundamentals',
+      category: '1. Foundations',
       difficulty: 'Beginner',
-      estimatedMinutes: 10,
-      xp: 50,
-      description: 'Learn concise arrow functions, object and array destructuring, and default parameter values.',
-      concepts: ['Arrow functions vs regular functions', 'Object destructuring with renaming', 'Array destructuring with rest operator'],
+      tier: 1,
+      tierName: 'Foundations',
+      estimatedMinutes: 8,
+      xp: 40,
+      description: 'Start at step zero. Learn how to store data using let/const, understand primitive types, and format dynamic strings.',
+      concepts: ['Variables (let vs const)', 'Data types: string, number, boolean', 'Template literals (`${var}`)'],
       explanationMarkdown: `
-### Why Modern JavaScript?
-ES6 revolutionized JavaScript by introducing concise syntax and cleaner data extraction.
+### Welcome to Coding! What is a Variable?
+A variable is a labeled container for storing data in your computer's memory.
 
-#### 1. Arrow Functions
-Arrow functions provide a shorter syntax and lexically bind the \`this\` keyword:
+In modern JavaScript:
+- \`const\`: Use for values that won't be reassigned.
+- \`let\`: Use for variables whose values will change over time.
+
 \`\`\`javascript
-const add = (a, b = 0) => a + b;
+const language = "JavaScript";
+let score = 100;
+score = score + 25; // Reassignment
 \`\`\`
 
-#### 2. Object & Array Destructuring
-Instead of \`const name = user.name;\`, unpack properties directly:
+#### Template Literals:
+Instead of cumbersome string concatenation with \`+\`, use backticks:
+\`\`\`javascript
+const name = "Alex";
+console.log(\`Hello, \${name}!\`);
+\`\`\`
+
+#### Challenge:
+Create a function \`generateWelcomeMessage(userName, startingPoints)\` that returns:
+\`"Welcome, {userName}! You start with {startingPoints * 2} bonus points."\`
+      `,
+      initialCode: `// Write your function below:
+function generateWelcomeMessage(userName, startingPoints) {
+  // Return the formatted string using template literals
+  
+}
+
+// Test call:
+console.log(generateWelcomeMessage("Robin", 50));
+`,
+      solutionCode: `function generateWelcomeMessage(userName, startingPoints) {
+  return \`Welcome, \${userName}! You start with \${startingPoints * 2} bonus points.\`;
+}
+
+console.log(generateWelcomeMessage("Robin", 50));
+`,
+      hints: [
+        'Use backticks (`) for template literals.',
+        'Calculate the bonus inside the interpolation: `${startingPoints * 2}`.'
+      ],
+      testCases: [
+        {
+          id: 'tc-1',
+          description: 'Calculates doubled points and formats string correctly',
+          testFn: `typeof generateWelcomeMessage === 'function' && generateWelcomeMessage('Robin', 50) === 'Welcome, Robin! You start with 100 bonus points.'`,
+          expectedMessage: 'Expected "Welcome, Robin! You start with 100 bonus points."'
+        },
+        {
+          id: 'tc-2',
+          description: 'Works with different usernames and amounts',
+          testFn: `generateWelcomeMessage('Dev', 10) === 'Welcome, Dev! You start with 20 bonus points.'`,
+          expectedMessage: 'Expected "Welcome, Dev! You start with 20 bonus points."'
+        }
+      ]
+    },
+
+    // TIER 2: CORE DEVELOPER
+    {
+      id: 'js-t2-arrow-destructuring',
+      title: 'Core: Modern ES6+ Destructuring & Default Values',
+      slug: 'arrow-destructuring',
+      language: 'javascript',
+      category: '2. Core Concepts',
+      difficulty: 'Beginner',
+      tier: 2,
+      tierName: 'Core',
+      estimatedMinutes: 12,
+      xp: 50,
+      description: 'Learn concise arrow functions, object and array destructuring, and fallback default values.',
+      concepts: ['Arrow functions', 'Object destructuring with renaming', 'Array destructuring with default parameters'],
+      explanationMarkdown: `
+### Modern Object & Array Unpacking
+Destructuring allows extracting multiple properties from objects and arrays in a single line.
+
 \`\`\`javascript
 const user = { id: 1, username: 'neo', role: 'admin' };
 const { username, role: userRole } = user;
@@ -40,324 +109,269 @@ console.log(username, userRole); // 'neo' 'admin'
 \`\`\`
 
 #### Challenge:
-Create a function named \`formatUserProfile(user)\` that takes an object with \`name\`, \`age\`, and optional \`country\` (default to \`'Unknown'\`), and returns a formatted string:
+Write \`formatUserProfile(user)\` which takes an object with \`name\`, \`age\`, and optional \`country\` (default to \`'Unknown'\`), and returns:
 \`"{name} is {age} years old from {country}"\`.
       `,
-      initialCode: `// Write your function here
-function formatUserProfile(user) {
-  // Use destructuring with default value for country
+      initialCode: `function formatUserProfile(user) {
+  // Destructure name, age, and country (default: 'Unknown')
   
 }
 
-// Test with sample data:
-const sampleUser = { name: "Sarah", age: 28, country: "Canada" };
-console.log(formatUserProfile(sampleUser));
+const sample = { name: "Sarah", age: 28, country: "Canada" };
+console.log(formatUserProfile(sample));
 `,
       solutionCode: `function formatUserProfile(user) {
   const { name, age, country = 'Unknown' } = user;
   return \`\${name} is \${age} years old from \${country}\`;
 }
 
-const sampleUser = { name: "Sarah", age: 28, country: "Canada" };
-console.log(formatUserProfile(sampleUser));
+const sample = { name: "Sarah", age: 28, country: "Canada" };
+console.log(formatUserProfile(sample));
 `,
       hints: [
-        'Destructure { name, age, country = "Unknown" } from the user parameter.',
-        'Use template literals with backticks: `${name} is ${age} years old from ${country}`'
+        'Destructure with `{ name, age, country = "Unknown" } = user;`',
+        'Return `${name} is ${age} years old from ${country}`'
       ],
       testCases: [
         {
           id: 'tc-1',
-          description: 'Correctly formats user with country specified',
-          testFn: `typeof formatUserProfile === 'function' && formatUserProfile({ name: 'Alex', age: 24, country: 'Japan' }) === 'Alex is 24 years old from Japan'`,
+          description: 'Formats user with all fields',
+          testFn: `formatUserProfile({ name: 'Alex', age: 24, country: 'Japan' }) === 'Alex is 24 years old from Japan'`,
           expectedMessage: 'Expected "Alex is 24 years old from Japan"'
         },
         {
           id: 'tc-2',
-          description: 'Defaults country to "Unknown" when not provided',
+          description: 'Defaults country to Unknown when omitted',
           testFn: `formatUserProfile({ name: 'Elena', age: 31 }) === 'Elena is 31 years old from Unknown'`,
           expectedMessage: 'Expected "Elena is 31 years old from Unknown"'
         }
       ]
     },
+
+    // TIER 3: INTERMEDIATE
     {
-      id: 'js-2-array-transformations',
-      title: 'Array Superpowers: Map, Filter, and Reduce',
+      id: 'js-t3-array-transformations',
+      title: 'Intermediate: Functional Array Pipelines (Map, Filter, Reduce)',
       slug: 'array-transformations',
       language: 'javascript',
-      category: 'Data Structures & Algorithms',
-      difficulty: 'Beginner',
+      category: '3. Intermediate',
+      difficulty: 'Intermediate',
+      tier: 3,
+      tierName: 'Intermediate',
       estimatedMinutes: 15,
-      xp: 60,
-      description: 'Transform collections without mutating original arrays using declarative methods.',
-      concepts: ['Pure functions', 'Array.map', 'Array.filter', 'Array.reduce accumulators'],
+      xp: 65,
+      description: 'Transform collections without mutation using declarative functional methods.',
+      concepts: ['Immutability', 'Array.map', 'Array.filter', 'Array.reduce accumulators'],
       explanationMarkdown: `
-### Functional Array Operations
-Declarative array methods allow you to express *what* data transformations you want rather than managing index counters.
+### Functional Array Pipelines
+Professional JavaScript favors pure functions and declarative transformations over imperative \`for\` loops.
 
 \`\`\`javascript
 const numbers = [1, 2, 3, 4, 5];
 const evens = numbers.filter(n => n % 2 === 0);
 const doubled = evens.map(n => n * 2);
-const sum = doubled.reduce((acc, curr) => acc + curr, 0);
+const total = doubled.reduce((sum, val) => sum + val, 0);
 \`\`\`
 
 #### Challenge:
-Write a function \`summarizeInventory(products)\` that receives an array of products \`{ name, category, price, inStock }\`.
-The function should:
-1. Filter only items that are **inStock: true**.
-2. Calculate total inventory value (\`sum of price\`).
-3. Return an object: \`{ inStockCount: number, totalValue: number }\`.
+Write \`summarizeInventory(products)\` that receives an array of items \`{ name, category, price, inStock }\`.
+1. Filter only items where \`inStock === true\`.
+2. Compute total inventory value using \`reduce\`.
+3. Return: \`{ inStockCount: number, totalValue: number }\`.
       `,
       initialCode: `function summarizeInventory(products) {
-  // 1. Filter in-stock products
-  // 2. Calculate count and total price using reduce
+  // your code here
   
 }
 
-// Sample test data
-const inventory = [
+const testData = [
   { name: "Mouse", price: 25, inStock: true },
   { name: "Keyboard", price: 80, inStock: false },
-  { name: "Monitor", price: 200, inStock: true },
-  { name: "Cable", price: 15, inStock: true }
+  { name: "Monitor", price: 200, inStock: true }
 ];
-
-console.log(summarizeInventory(inventory));
+console.log(summarizeInventory(testData));
 `,
       solutionCode: `function summarizeInventory(products) {
   const inStockItems = products.filter(item => item.inStock);
   const totalValue = inStockItems.reduce((acc, item) => acc + item.price, 0);
   return {
     inStockCount: inStockItems.length,
-    totalValue: totalValue
+    totalValue
   };
 }
-
-const inventory = [
-  { name: "Mouse", price: 25, inStock: true },
-  { name: "Keyboard", price: 80, inStock: false },
-  { name: "Monitor", price: 200, inStock: true },
-  { name: "Cable", price: 15, inStock: true }
-];
-
-console.log(summarizeInventory(inventory));
 `,
       hints: [
-        'Use products.filter(p => p.inStock) to keep only available items.',
-        'Use .reduce((sum, item) => sum + item.price, 0) on the filtered array to compute total value.',
-        'Return { inStockCount: inStockItems.length, totalValue }.'
+        'Use products.filter(p => p.inStock).',
+        'Use .reduce((sum, item) => sum + item.price, 0) for totalValue.'
       ],
       testCases: [
         {
           id: 'tc-1',
-          description: 'Calculates inStockCount and totalValue correctly for mixed items',
+          description: 'Calculates inStockCount and totalValue correctly',
           testFn: `(() => {
-            const data = [
-              { name: 'A', price: 10, inStock: true },
-              { name: 'B', price: 20, inStock: false },
-              { name: 'C', price: 30, inStock: true }
-            ];
+            const data = [{ price: 10, inStock: true }, { price: 20, inStock: false }, { price: 30, inStock: true }];
             const res = summarizeInventory(data);
             return res.inStockCount === 2 && res.totalValue === 40;
           })()`,
           expectedMessage: 'Expected { inStockCount: 2, totalValue: 40 }'
-        },
-        {
-          id: 'tc-2',
-          description: 'Handles empty product array gracefully',
-          testFn: `(() => {
-            const res = summarizeInventory([]);
-            return res.inStockCount === 0 && res.totalValue === 0;
-          })()`,
-          expectedMessage: 'Expected { inStockCount: 0, totalValue: 0 }'
         }
       ]
     },
+
+    // TIER 4: ADVANCED
     {
-      id: 'js-3-async-promises',
-      title: 'Asynchronous JavaScript: Promises & Async/Await',
-      slug: 'async-await-promises',
+      id: 'js-t4-async-promises-concurrency',
+      title: 'Advanced: Async/Await & Controlled Concurrency',
+      slug: 'async-concurrency',
       language: 'javascript',
-      category: 'Asynchronous Programming',
-      difficulty: 'Intermediate',
+      category: '4. Advanced Architecture',
+      difficulty: 'Advanced',
+      tier: 4,
+      tierName: 'Advanced',
       estimatedMinutes: 20,
-      xp: 75,
-      description: 'Master the event loop, handle asynchronous tasks with Promises, and write sequential async code with try/catch.',
-      concepts: ['Event loop', 'Promise states', 'async/await syntax', 'Parallel execution with Promise.all'],
+      xp: 85,
+      description: 'Master the event loop, handle asynchronous tasks with Promises, and write concurrent batch runners.',
+      concepts: ['Event loop', 'Promise states', 'Promise.all parallelization', 'Error handling with try/catch'],
       explanationMarkdown: `
 ### Mastering Asynchronous Flow
-JavaScript is single-threaded with an event loop. Non-blocking operations use Promises.
+JavaScript uses non-blocking I/O. Promises represent the eventual completion or failure of an asynchronous operation.
 
 \`\`\`javascript
-async function fetchUser(id) {
-  try {
-    const response = await fetch(\`/api/users/\${id}\`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    console.error("Failed to load user:", error);
-    throw error;
-  }
+async function fetchBatch(ids) {
+  const promises = ids.map(id => fetchUser(id));
+  return await Promise.all(promises);
 }
-\`\`\`
-
-#### Parallel Execution with \`Promise.all\`:
-When operations are independent, run them concurrently:
-\`\`\`javascript
-const [user, posts] = await Promise.all([
-  fetchUser(1),
-  fetchPosts(1)
-]);
 \`\`\`
 
 #### Challenge:
-Write an asynchronous function \`batchProcess(items, asyncFn)\` that maps over an array of items, runs \`asyncFn(item)\` concurrently on all of them using \`Promise.all\`, and returns an array of the results.
+Implement \`batchProcess(items, asyncFn)\` that maps over \`items\`, executes \`asyncFn(item)\` concurrently on all items using \`Promise.all\`, and returns an array of the results.
       `,
       initialCode: `async function batchProcess(items, asyncFn) {
-  // Use Promise.all to run asyncFn on every item in items concurrently
-  
+  // your implementation
 }
 
-// Sample helper
-const mockFetcher = (num) => new Promise(res => setTimeout(() => res(num * 10), 50));
-
-// Test run:
-batchProcess([1, 2, 3], mockFetcher).then(results => {
-  console.log("Processed results:", results);
-});
+const mockAsync = async (x) => x * 10;
+batchProcess([1, 2, 3], mockAsync).then(console.log);
 `,
       solutionCode: `async function batchProcess(items, asyncFn) {
   const promises = items.map(item => asyncFn(item));
   return await Promise.all(promises);
 }
-
-const mockFetcher = (num) => new Promise(res => setTimeout(() => res(num * 10), 50));
-batchProcess([1, 2, 3], mockFetcher).then(results => {
-  console.log("Processed results:", results);
-});
 `,
       hints: [
-        'items.map(item => asyncFn(item)) returns an array of promises.',
-        'Await Promise.all(promises) and return the resulting array.'
+        'items.map(item => asyncFn(item)) yields an array of Promises.',
+        'Await Promise.all(promises) and return.'
       ],
       testCases: [
         {
           id: 'tc-1',
-          description: 'Executes async function concurrently on all items and preserves order',
+          description: 'Concurrently evaluates async function on all inputs preserving order',
           testFn: `(async () => {
-            const doubleAsync = async (x) => x * 2;
-            const res = await batchProcess([5, 10, 15], doubleAsync);
-            return Array.isArray(res) && res[0] === 10 && res[1] === 20 && res[2] === 30;
+            const fn = async (n) => n * 2;
+            const res = await batchProcess([5, 10, 15], fn);
+            return res[0] === 10 && res[1] === 20 && res[2] === 30;
           })()`,
-          expectedMessage: 'Expected array [10, 20, 30]'
+          expectedMessage: 'Expected [10, 20, 30]'
         }
       ]
     },
+
+    // TIER 5: MASTERCLASS / EXPERT
     {
-      id: 'js-4-closures-currying',
-      title: 'Deep Closures & Function Factories',
-      slug: 'closures-currying',
+      id: 'js-t5-metaprogramming-proxy',
+      title: 'Masterclass: Metaprogramming with Proxies & Reflect API',
+      slug: 'proxy-reflect-metaprogramming',
       language: 'javascript',
-      category: 'Functional Patterns',
-      difficulty: 'Intermediate',
-      estimatedMinutes: 20,
-      xp: 80,
-      description: 'Harness the power of lexical scope, closures, and private state encapsulation.',
-      concepts: ['Lexical scoping', 'Closures', 'Data privacy', 'Higher-order functions'],
+      category: '5. Masterclass & Internals',
+      difficulty: 'Expert',
+      tier: 5,
+      tierName: 'Masterclass',
+      estimatedMinutes: 25,
+      xp: 120,
+      description: 'Enter the world of language internals. Build reactive observable state and schema validation using Proxy traps and Reflect.',
+      concepts: ['Proxy object', 'Reflect API', 'Trap interception (get, set)', 'Validation & immutability guards'],
       explanationMarkdown: `
-### What is a Closure?
-A closure is the combination of a function bundled together with references to its surrounding lexical environment.
-This allows inner functions to remember variables from outer scopes even after the outer function has executed!
+### Metaprogramming: Intercepting Fundamental Operations
+The \`Proxy\` object allows you to create a wrapper for another object and intercept fundamental operations like property lookup, assignment, enumeration, and function invocation.
 
 \`\`\`javascript
-function createCounter(initial = 0) {
-  let count = initial; // Private variable
-  return {
-    increment: () => ++count,
-    decrement: () => --count,
-    get: () => count
-  };
-}
+const target = { name: "Alice" };
+const handler = {
+  get(target, prop, receiver) {
+    console.log(\`Accessing property: \${String(prop)}\`);
+    return Reflect.get(target, prop, receiver);
+  },
+  set(target, prop, value, receiver) {
+    if (typeof value !== 'string') {
+      throw new TypeError("Property must be a string");
+    }
+    return Reflect.set(target, prop, value, receiver);
+  }
+};
+const proxy = new Proxy(target, handler);
 \`\`\`
 
 #### Challenge:
-Implement a function \`createRateLimiter(limit)\` that creates a rate-limited caller.
-The returned function accepts no arguments.
-- The first \`limit\` times it is called, it returns \`"OK"\`.
-- On subsequent calls beyond the limit, it returns \`"RATE_LIMITED"\`.
-- It should also have a method \`.reset()\` attached to it that resets the count back to 0.
+Implement a function \`createTypeSafeStore(initialObject, allowedTypes)\`:
+- \`allowedTypes\` is a map of property names to expected types, e.g. \`{ age: 'number', name: 'string' }\`.
+- Return a \`Proxy\` wrapping \`initialObject\` with a \`set\` trap:
+  - If a key being assigned is in \`allowedTypes\` and \`typeof value !== allowedTypes[key]\`, throw \`new TypeError(\`Invalid type for \${key}\`)\`.
+  - Otherwise, assign the property using \`Reflect.set\` and return \`true\`.
       `,
-      initialCode: `function createRateLimiter(limit) {
-  let calls = 0;
-
-  function limiter() {
-    // Check call count and increment
-    
-  }
-
-  limiter.reset = function() {
-    // Reset call counter
-    
-  };
-
-  return limiter;
+      initialCode: `function createTypeSafeStore(initialObject, allowedTypes) {
+  return new Proxy(initialObject, {
+    set(target, prop, value, receiver) {
+      // Check if prop is in allowedTypes and validate its typeof
+      // Throw TypeError on mismatch, otherwise Reflect.set
+      
+    }
+  });
 }
 
-const check = createRateLimiter(2);
-console.log(check()); // "OK"
-console.log(check()); // "OK"
-console.log(check()); // "RATE_LIMITED"
+// Test run:
+const store = createTypeSafeStore({ name: "Dan", age: 30 }, { name: "string", age: "number" });
+store.age = 31; // OK
+console.log("Updated age:", store.age);
 `,
-      solutionCode: `function createRateLimiter(limit) {
-  let calls = 0;
-
-  function limiter() {
-    if (calls < limit) {
-      calls++;
-      return "OK";
+      solutionCode: `function createTypeSafeStore(initialObject, allowedTypes) {
+  return new Proxy(initialObject, {
+    set(target, prop, value, receiver) {
+      if (prop in allowedTypes && typeof value !== allowedTypes[prop]) {
+        throw new TypeError(\`Invalid type for \${String(prop)}\`);
+      }
+      return Reflect.set(target, prop, value, receiver);
     }
-    return "RATE_LIMITED";
-  }
-
-  limiter.reset = function() {
-    calls = 0;
-  };
-
-  return limiter;
+  });
 }
 `,
       hints: [
-        'Keep a local variable `let calls = 0;` inside createRateLimiter.',
-        'In `limiter()`, if `calls < limit`, increment `calls` and return "OK", else return "RATE_LIMITED".',
-        'In `limiter.reset()`, set `calls = 0;`.'
+        'Check `if (prop in allowedTypes && typeof value !== allowedTypes[prop]) throw new TypeError("...");`',
+        'Return `Reflect.set(target, prop, value, receiver);`.'
       ],
       testCases: [
         {
           id: 'tc-1',
-          description: 'Allows calls up to limit then returns RATE_LIMITED',
+          description: 'Allows assignments matching specified schema types',
           testFn: `(() => {
-            const rl = createRateLimiter(3);
-            const r1 = rl();
-            const r2 = rl();
-            const r3 = rl();
-            const r4 = rl();
-            return r1 === 'OK' && r2 === 'OK' && r3 === 'OK' && r4 === 'RATE_LIMITED';
+            const s = createTypeSafeStore({ x: 10 }, { x: 'number' });
+            s.x = 20;
+            return s.x === 20;
           })()`,
-          expectedMessage: 'Expected 3 OKs followed by RATE_LIMITED'
+          expectedMessage: 'Expected valid assignment to succeed'
         },
         {
           id: 'tc-2',
-          description: 'Reset method restores quota',
+          description: 'Throws TypeError when assigning invalid type',
           testFn: `(() => {
-            const rl = createRateLimiter(1);
-            rl(); // 1
-            const locked = rl(); // RATE_LIMITED
-            rl.reset();
-            const unlocked = rl(); // OK
-            return locked === 'RATE_LIMITED' && unlocked === 'OK';
+            const s = createTypeSafeStore({ x: 10 }, { x: 'number' });
+            try {
+              s.x = 'twenty';
+              return false;
+            } catch (e) {
+              return e instanceof TypeError;
+            }
           })()`,
-          expectedMessage: 'Expected reset() to restore availability'
+          expectedMessage: 'Expected TypeError when assigning string to number property'
         }
       ]
     }

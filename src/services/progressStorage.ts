@@ -1,4 +1,4 @@
-import { UserStats } from '../types';
+import { UserStats, TierLevel } from '../types';
 
 const STORAGE_KEY = 'devforge_user_stats_v1';
 
@@ -10,7 +10,9 @@ const DEFAULT_STATS: UserStats = {
   streakDays: 1,
   lastActiveDate: new Date().toISOString().split('T')[0],
   savedCode: {},
-  unlockedBadgeIds: ['badge-welcome']
+  unlockedBadgeIds: ['badge-welcome'],
+  diagnosedTier: 1,
+  reviewedFlashcardIds: []
 };
 
 export class ProgressStorage {
@@ -22,6 +24,7 @@ export class ProgressStorage {
         return DEFAULT_STATS;
       }
       const parsed: UserStats = JSON.parse(data);
+      if (!parsed.reviewedFlashcardIds) parsed.reviewedFlashcardIds = [];
       this.updateStreakIfNeeded(parsed);
       return parsed;
     } catch {
@@ -96,6 +99,23 @@ export class ProgressStorage {
     return stats.savedCode[id] !== undefined ? stats.savedCode[id] : fallback;
   }
 
+  static markFlashcardReviewed(cardId: string): UserStats {
+    const stats = this.getStats();
+    if (!stats.reviewedFlashcardIds.includes(cardId)) {
+      stats.reviewedFlashcardIds.push(cardId);
+      stats.xp += 15;
+      this.saveStats(stats);
+    }
+    return stats;
+  }
+
+  static setDiagnosedTier(tier: TierLevel): UserStats {
+    const stats = this.getStats();
+    stats.diagnosedTier = tier;
+    this.saveStats(stats);
+    return stats;
+  }
+
   static resetProgress(): UserStats {
     localStorage.removeItem(STORAGE_KEY);
     return DEFAULT_STATS;
@@ -103,12 +123,12 @@ export class ProgressStorage {
 
   static getLevelInfo(xp: number): { level: number; title: string; nextLevelXp: number; progressPercent: number } {
     const levels = [
-      { level: 1, title: 'Novice Developer', minXp: 0, maxXp: 150 },
-      { level: 2, title: 'Apprentice Coder', minXp: 150, maxXp: 400 },
-      { level: 3, title: 'Skilled Engineer', minXp: 400, maxXp: 800 },
-      { level: 4, title: 'Fullstack Specialist', minXp: 800, maxXp: 1500 },
-      { level: 5, title: 'Software Architect', minXp: 1500, maxXp: 3000 },
-      { level: 6, title: 'Code Polyglot Master', minXp: 3000, maxXp: 6000 }
+      { level: 1, title: 'Novice Developer', minXp: 0, maxXp: 200 },
+      { level: 2, title: 'Apprentice Coder', minXp: 200, maxXp: 600 },
+      { level: 3, title: 'Skilled Engineer', minXp: 600, maxXp: 1200 },
+      { level: 4, title: 'Senior Architect', minXp: 1200, maxXp: 2200 },
+      { level: 5, title: 'Staff Systems Engineer', minXp: 2200, maxXp: 3800 },
+      { level: 6, title: 'Polyglot Principal Master', minXp: 3800, maxXp: 7500 }
     ];
 
     const current = levels.find(l => xp >= l.minXp && xp < l.maxXp) || levels[levels.length - 1];
