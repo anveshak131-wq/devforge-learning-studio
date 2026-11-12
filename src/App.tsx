@@ -1,6 +1,9 @@
-import React, { useState } from 'react';
-import { UserStats, TierLevel } from './types';
+import React, { useState, useEffect } from 'react';
+import confetti from 'canvas-confetti';
+import { UserStats, TierLevel, Track } from './types';
+import { User as UserType, Certificate } from './types/auth';
 import { ProgressStorage } from './services/progressStorage';
+import { AuthService } from './services/authService';
 import { Navbar } from './components/layout/Navbar';
 import { DashboardView } from './components/views/DashboardView';
 import { TracksCatalogView } from './components/views/TracksCatalogView';
@@ -12,11 +15,15 @@ import { QuickCheatSheetModal } from './components/views/QuickCheatSheetModal';
 import { PlacementQuizModal } from './components/views/PlacementQuizModal';
 import { FlashcardsModal } from './components/views/FlashcardsModal';
 import { RoadmapSkillTreeView } from './components/views/RoadmapSkillTreeView';
+import { CertificatesVaultView } from './components/views/CertificatesVaultView';
+import { AuthModal } from './components/auth/AuthModal';
+import { CertificateModal } from './components/certificate/CertificateModal';
 import { ALL_TRACKS, getTrackBySlug, getLessonById } from './data/courses';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
 
 export function App() {
   const [userStats, setUserStats] = useState<UserStats>(() => ProgressStorage.getStats());
+  const [currentUser, setCurrentUser] = useState<UserType | null>(() => AuthService.getCurrentUser());
   const [currentView, setCurrentView] = useState<string>('dashboard');
   const [viewPayload, setViewPayload] = useState<any>(null);
   
@@ -24,6 +31,12 @@ export function App() {
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
   const [isPlacementQuizOpen, setIsPlacementQuizOpen] = useState(false);
   const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
+  const [authModalConfig, setAuthModalConfig] = useState<{ title?: string; desc?: string; pendingTrack?: Track } | null>(null);
+
+  // Certificate Modal State
+  const [isCertModalOpen, setIsCertModalOpen] = useState(false);
+  const [activeCertificate, setActiveCertificate] = useState<Certificate | null>(null);
 
   const handleStatsUpdate = (newStats: UserStats) => {
     setUserStats({ ...newStats });
@@ -36,6 +49,44 @@ export function App() {
     }
     setCurrentView(view);
     setViewPayload(payload || null);
+  };
+
+  const handleClaimCertificate = (track: Track) => {
+    if (!currentUser) {
+      setAuthModalConfig({
+        title: 'Claim Your Course Certificate',
+        desc: `Create an account or sign in so your name is permanently stamped on your ${track.title} credential.`,
+        pendingTrack: track
+      });
+      setIsAuthModalOpen(true);
+    } else {
+      issueAndShowCertificate(track, currentUser);
+    }
+  };
+
+  const issueAndShowCertificate = (track: Track, user: UserType) => {
+    const skills = track.lessons.map(l => l.title);
+    const cert = AuthService.issueCertificate(track.id, track.title, track.language, skills);
+    setActiveCertificate(cert);
+    setIsCertModalOpen(true);
+    confetti({
+      particleCount: 120,
+      spread: 90,
+      origin: { y: 0.5 }
+    });
+  };
+
+  const handleAuthSuccess = (user: UserType) => {
+    setCurrentUser(user);
+    if (authModalConfig?.pendingTrack) {
+      issueAndShowCertificate(authModalConfig.pendingTrack, user);
+      setAuthModalConfig(null);
+    }
+  };
+
+  const handleLogout = () => {
+    AuthService.logout();
+    setCurrentUser(null);
   };
 
   // Determine active lesson / track
@@ -74,8 +125,14 @@ export function App() {
         currentView={currentView}
         onNavigate={handleNavigate}
         userStats={userStats}
+        currentUser={currentUser}
         onOpenFlashcards={() => setIsFlashcardsOpen(true)}
         onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
+        onOpenAuth={() => {
+          setAuthModalConfig(null);
+          setIsAuthModalOpen(true);
+        }}
+        onLogout={handleLogout}
       />
 
       {/* Main View Router */}
@@ -119,6 +176,7 @@ export function App() {
             onBackToTracks={() => handleNavigate('tracks')}
             userStats={userStats}
             onStatsUpdate={handleStatsUpdate}
+            onClaimCertificate={handleClaimCertificate}
           />
         )}
 
@@ -137,6 +195,25 @@ export function App() {
             onBackToProjects={() => handleNavigate('projects')}
             userStats={userStats}
             onStatsUpdate={handleStatsUpdate}
+          />
+        )}
+
+        {currentView === 'vault' && (
+          <CertificatesVaultView
+            currentUser={currentUser}
+            userStats={userStats}
+            onOpenAuth={() => {
+              setAuthModalConfig(null);
+              setIsAuthModalOpen(true);
+            }}
+            onViewCertificate={(cert) => {
+              setActiveCertificate(cert);
+              setIsCertModalOpen(true);
+            }}
+            onNavigateLesson={(trackSlug, lessonId) => {
+              handleNavigate('lesson', { trackSlug, lessonId });
+            }}
+            onUserUpdated={(u) => setCurrentUser(u)}
           />
         )}
 
@@ -167,6 +244,22 @@ export function App() {
         isOpen={isFlashcardsOpen}
         onClose={() => setIsFlashcardsOpen(false)}
         onStatsUpdate={handleStatsUpdate}
+      />
+
+      {/* Auth Modal (Sign Up / Sign In) */}
+      <AuthModal
+        isOpen={isAuthModalOpen}
+        onClose={() => setIsAuthModalOpen(false)}
+        onSuccess={handleAuthSuccess}
+        customTitle={authModalConfig?.title}
+        customDescription={authModalConfig?.desc}
+      />
+
+      {/* Verified Certificate Modal */}
+      <CertificateModal
+        isOpen={isCertModalOpen}
+        onClose={() => setIsCertModalOpen(false)}
+        certificate={activeCertificate}
       />
     </div>
   );

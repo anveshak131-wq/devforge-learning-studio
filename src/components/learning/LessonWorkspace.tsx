@@ -28,6 +28,7 @@ interface LessonWorkspaceProps {
   onBackToTracks: () => void;
   userStats: UserStats;
   onStatsUpdate: (stats: UserStats) => void;
+  onClaimCertificate?: (track: Track) => void;
 }
 
 export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
@@ -36,7 +37,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   onNavigateLesson,
   onBackToTracks,
   userStats,
-  onStatsUpdate
+  onStatsUpdate,
+  onClaimCertificate
 }) => {
   // Code state (retrieved from localStorage or lesson.initialCode)
   const [code, setCode] = useState<string>(() => 
@@ -361,6 +363,26 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
               >
                 <span>Continue to {nextLesson.title}</span>
                 <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          )}
+
+          {/* Full Course Completed - Certificate Claim Banner */}
+          {testResults && testResults.length > 0 && testResults.every(t => t.passed) && !nextLesson && onClaimCertificate && (
+            <div className="p-5 rounded-xl bg-gradient-to-r from-amber-950/70 via-slate-900 to-yellow-950/70 border border-amber-500/50 space-y-3 shadow-xl">
+              <div className="flex items-center space-x-2 text-amber-300 text-xs font-bold">
+                <Award className="w-5 h-5 text-amber-400" />
+                <span>Full Course Completed! You earned a Verified Certificate!</span>
+              </div>
+              <p className="text-xs text-slate-300 leading-relaxed">
+                You have passed all lessons and unit tests in <strong>{track.title}</strong>. Claim and download your personalized, cryptographically verified Certificate of Professional Mastery.
+              </p>
+              <button
+                onClick={() => onClaimCertificate(track)}
+                className="w-full py-2.5 px-4 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/30 transition"
+              >
+                <Award className="w-4 h-4" />
+                <span>Claim & Download Certificate</span>
               </button>
             </div>
           )}

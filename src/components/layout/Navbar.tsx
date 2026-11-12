@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { 
   Code2, 
   Flame, 
@@ -8,26 +8,38 @@ import {
   FileCode2,
   GitFork,
   Brain,
-  HelpCircle
+  Award,
+  User as UserIcon,
+  LogOut,
+  ChevronDown,
+  LogIn
 } from 'lucide-react';
 import { UserStats } from '../../types';
+import { User as UserType } from '../../types/auth';
 import { ProgressStorage } from '../../services/progressStorage';
 
 interface NavbarProps {
   currentView: string;
   onNavigate: (view: string, payload?: any) => void;
   userStats: UserStats;
+  currentUser: UserType | null;
   onOpenFlashcards: () => void;
   onOpenPlacementQuiz: () => void;
+  onOpenAuth: () => void;
+  onLogout: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
   currentView,
   onNavigate,
   userStats,
+  currentUser,
   onOpenFlashcards,
-  onOpenPlacementQuiz
+  onOpenPlacementQuiz,
+  onOpenAuth,
+  onLogout
 }) => {
+  const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
 
   return (
@@ -101,7 +113,19 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-            <span>Guided Projects</span>
+            <span>Projects</span>
+          </button>
+
+          <button
+            onClick={() => onNavigate('vault')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium transition flex items-center space-x-1.5 ${
+              currentView === 'vault'
+                ? 'bg-slate-800 text-amber-400 border border-slate-700'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <Award className="w-3.5 h-3.5 text-amber-400" />
+            <span>Certificates</span>
           </button>
 
           <button
@@ -118,9 +142,9 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
       </div>
 
-      {/* User Progression Metrics & Utilities */}
+      {/* User Progression Metrics & Auth */}
       <div className="flex items-center space-x-2.5">
-        {/* Flashcards Spaced Repetition Button */}
+        {/* Flashcards */}
         <button
           onClick={onOpenFlashcards}
           className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-xs font-medium transition"
@@ -128,16 +152,6 @@ export const Navbar: React.FC<NavbarProps> = ({
         >
           <Brain className="w-3.5 h-3.5 text-indigo-400" />
           <span>Recall</span>
-        </button>
-
-        {/* Diagnostic Placement Quiz CTA */}
-        <button
-          onClick={onOpenPlacementQuiz}
-          className="hidden md:flex items-center space-x-1 px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white text-xs font-medium transition"
-          title="Test Your Level (Placement Diagnostic)"
-        >
-          <HelpCircle className="w-3.5 h-3.5 text-cyan-400" />
-          <span>Placement Test</span>
         </button>
 
         {/* Streak */}
@@ -152,36 +166,78 @@ export const Navbar: React.FC<NavbarProps> = ({
         {/* Level and XP */}
         <div 
           onClick={() => onNavigate('dashboard')}
-          className="cursor-pointer hidden sm:flex items-center space-x-2 px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 hover:border-indigo-500/40 transition group"
+          className="cursor-pointer hidden sm:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 hover:border-indigo-500/40 transition group"
           title={`${userStats.xp} XP total. Next rank at ${levelInfo.nextLevelXp} XP`}
         >
-          <div className="w-6 h-6 rounded-md bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-[11px] font-bold text-indigo-300">
+          <div className="w-5 h-5 rounded bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-[10px] font-bold text-indigo-300">
             L{levelInfo.level}
           </div>
           <div>
-            <div className="flex items-center justify-between text-[11px] leading-tight space-x-2">
-              <span className="font-semibold text-slate-200 group-hover:text-indigo-300 transition">
-                {levelInfo.title}
+            <div className="flex items-center justify-between text-[10px] leading-tight space-x-1.5">
+              <span className="font-semibold text-slate-200 group-hover:text-indigo-300 transition truncate max-w-[80px]">
+                {levelInfo.title.split(' ')[0]}
               </span>
               <span className="text-amber-400 font-mono font-medium">{userStats.xp} XP</span>
             </div>
-            <div className="w-20 h-1.5 bg-slate-700 rounded-full mt-0.5 overflow-hidden">
+            <div className="w-16 h-1 bg-slate-700 rounded-full mt-0.5 overflow-hidden">
               <div 
-                className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full transition-all duration-500"
+                className="h-full bg-gradient-to-r from-indigo-500 to-cyan-400 rounded-full"
                 style={{ width: `${levelInfo.progressPercent}%` }}
               />
             </div>
           </div>
         </div>
 
-        {/* Cheatsheet button */}
-        <button
-          onClick={() => onNavigate('cheatsheet')}
-          className="p-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
-          title="Quick Syntax Reference"
-        >
-          <BookOpen className="w-4 h-4 text-cyan-400" />
-        </button>
+        {/* Auth / Account Profile Button */}
+        {currentUser ? (
+          <div className="relative">
+            <button
+              onClick={() => setProfileDropdownOpen(!profileDropdownOpen)}
+              className="flex items-center space-x-2 p-1.5 rounded-lg bg-slate-800 border border-slate-700 hover:border-indigo-500/50 transition"
+            >
+              <img
+                src={currentUser.avatarUrl}
+                alt={currentUser.fullName}
+                className="w-6 h-6 rounded-md bg-slate-950"
+              />
+              <span className="text-xs font-semibold text-white hidden md:inline truncate max-w-[100px]">
+                {currentUser.fullName.split(' ')[0]}
+              </span>
+              <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
+            </button>
+
+            {profileDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-1.5 z-50 text-xs">
+                <div className="px-3.5 py-2 border-b border-slate-800">
+                  <p className="font-bold text-white truncate">{currentUser.fullName}</p>
+                  <p className="text-[10px] text-slate-400 truncate">{currentUser.email}</p>
+                </div>
+                <button
+                  onClick={() => { setProfileDropdownOpen(false); onNavigate('vault'); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <Award className="w-4 h-4 text-amber-400" />
+                  <span>My Certificates</span>
+                </button>
+                <button
+                  onClick={() => { setProfileDropdownOpen(false); onLogout(); }}
+                  className="w-full px-3.5 py-2 text-left text-rose-300 hover:bg-rose-950/30 flex items-center space-x-2 border-t border-slate-800"
+                >
+                  <LogOut className="w-4 h-4" />
+                  <span>Sign Out</span>
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <button
+            onClick={onOpenAuth}
+            className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition"
+          >
+            <LogIn className="w-3.5 h-3.5" />
+            <span>Sign In</span>
+          </button>
+        )}
       </div>
     </header>
   );
