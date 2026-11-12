@@ -123,6 +123,10 @@ export class TestRunner {
             info: (...args) => {},
             table: (...args) => {}
           };
+          if (!Array.prototype.append) Array.prototype.append = function(x) { this.push(x); };
+          if (!String.prototype.lower) String.prototype.lower = function() { return this.toLowerCase(); };
+          if (!String.prototype.upper) String.prototype.upper = function() { return this.toUpperCase(); };
+          if (!String.prototype.strip) String.prototype.strip = function() { return this.trim(); };
           ${runnableCode};
           const logs = ${JSON.stringify(execResult.logs)};
           const returnValue = ${JSON.stringify(execResult.returnValue !== undefined ? execResult.returnValue : null)};

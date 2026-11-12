@@ -18,7 +18,9 @@ import {
   RotateCcw,
   HelpCircle,
   Terminal,
-  ExternalLink
+  ExternalLink,
+  Search,
+  ChevronDown
 } from 'lucide-react';
 import { Lesson, Track, ExecutionResult, TestResultItem, UserStats } from '../../types';
 import { CodeEditor } from '../editor/CodeEditor';
@@ -49,6 +51,17 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 }) => {
   // Course Outline Sidebar Drawer state
   const [isOutlineOpen, setIsOutlineOpen] = useState(false);
+  const [drawerSearch, setDrawerSearch] = useState('');
+  const [expandedCategories, setExpandedCategories] = useState<Record<string, boolean>>(() => ({
+    [lesson.category]: true
+  }));
+
+  // Auto-expand current category when lesson changes
+  useEffect(() => {
+    if (lesson?.category) {
+      setExpandedCategories(prev => ({ ...prev, [lesson.category]: true }));
+    }
+  }, [lesson.id, lesson.category]);
 
   // Code & Execution state
   const [code, setCode] = useState<string>(() => 
@@ -273,7 +286,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
       {/* Slide-out Course Outline Drawer */}
       {isOutlineOpen && (
-        <div className="absolute inset-y-0 left-0 w-80 bg-slate-900 border-r border-slate-800 z-30 shadow-2xl flex flex-col animate-in slide-in-from-left duration-200">
+        <div className="absolute inset-y-0 left-0 w-88 max-w-[90vw] sm:w-96 bg-slate-900 border-r border-slate-800 z-30 shadow-2xl flex flex-col animate-in slide-in-from-left duration-200">
           <div className="p-4 border-b border-slate-800 flex items-center justify-between">
             <div>
               <h3 className="font-bold text-sm text-white">{track.title}</h3>
@@ -287,38 +300,145 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             </button>
           </div>
 
-          <div className="flex-1 overflow-y-auto p-3 space-y-1.5">
-            {track.lessons.map((l, idx) => {
-              const isCurrent = l.id === lesson.id;
-              const isDone = userStats.completedLessonIds.includes(l.id);
-
-              return (
+          {/* Search box for 100-150 lessons */}
+          <div className="p-3 border-b border-slate-800/80 bg-slate-950/40">
+            <div className="relative">
+              <Search className="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2" />
+              <input
+                type="text"
+                value={drawerSearch}
+                onChange={e => setDrawerSearch(e.target.value)}
+                placeholder={`Search ${track.lessons.length} topics...`}
+                className="w-full bg-slate-900 text-xs text-white placeholder-slate-500 rounded-lg pl-8 pr-3 py-1.5 border border-slate-700/80 focus:outline-none focus:border-indigo-500"
+              />
+              {drawerSearch && (
                 <button
-                  key={l.id}
-                  onClick={() => {
-                    onNavigateLesson(l.id);
-                    setIsOutlineOpen(false);
-                  }}
-                  className={`w-full text-left p-2.5 rounded-xl text-xs flex items-center justify-between transition ${
-                    isCurrent
-                      ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/40 font-semibold'
-                      : isDone
-                      ? 'bg-slate-950/40 text-slate-300 hover:bg-slate-800/60'
-                      : 'text-slate-400 hover:bg-slate-800/60 hover:text-white'
-                  }`}
+                  onClick={() => setDrawerSearch('')}
+                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 text-xs"
                 >
-                  <div className="flex items-center space-x-2.5 truncate mr-2">
-                    {isDone ? (
-                      <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                    ) : (
-                      <Circle className={`w-4 h-4 shrink-0 ${isCurrent ? 'text-indigo-400' : 'text-slate-600'}`} />
-                    )}
-                    <span className="truncate">{l.title}</span>
-                  </div>
-                  <span className="text-[10px] font-mono text-slate-500 shrink-0">+{l.xp} XP</span>
+                  ×
                 </button>
-              );
-            })}
+              )}
+            </div>
+          </div>
+
+          <div className="flex-1 overflow-y-auto p-3 space-y-3">
+            {drawerSearch.trim() ? (
+              <div className="space-y-1">
+                {track.lessons
+                  .filter(l => 
+                    l.title.toLowerCase().includes(drawerSearch.toLowerCase()) ||
+                    l.description.toLowerCase().includes(drawerSearch.toLowerCase()) ||
+                    (l.concepts && l.concepts.some(c => c.toLowerCase().includes(drawerSearch.toLowerCase())))
+                  )
+                  .map((l) => {
+                    const isCurrent = l.id === lesson.id;
+                    const isDone = userStats.completedLessonIds.includes(l.id);
+                    return (
+                      <button
+                        key={l.id}
+                        onClick={() => {
+                          onNavigateLesson(l.id);
+                          setIsOutlineOpen(false);
+                        }}
+                        className={`w-full text-left p-2.5 rounded-xl text-xs flex items-center justify-between transition ${
+                          isCurrent
+                            ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/40 font-semibold'
+                            : isDone
+                            ? 'bg-slate-950/40 text-slate-300 hover:bg-slate-800/60'
+                            : 'text-slate-400 hover:bg-slate-800/60 hover:text-white'
+                        }`}
+                      >
+                        <div className="flex items-center space-x-2.5 truncate mr-2">
+                          {isDone ? (
+                            <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                          ) : (
+                            <Circle className={`w-4 h-4 shrink-0 ${isCurrent ? 'text-indigo-400' : 'text-slate-600'}`} />
+                          )}
+                          <span className="truncate">{l.title}</span>
+                        </div>
+                        <span className="text-[10px] font-mono text-slate-500 shrink-0">+{l.xp} XP</span>
+                      </button>
+                    );
+                  })}
+              </div>
+            ) : (
+              Object.entries(
+                track.lessons.reduce((acc, l) => {
+                  const cat = l.category || 'General';
+                  if (!acc[cat]) acc[cat] = [];
+                  acc[cat].push(l);
+                  return acc;
+                }, {} as Record<string, Lesson[]>)
+              ).map(([categoryName, catLessons]) => {
+                const isExpanded = expandedCategories[categoryName] ?? true;
+                const completedInCat = catLessons.filter(l => userStats.completedLessonIds.includes(l.id)).length;
+                const isCatDone = completedInCat === catLessons.length;
+                const hasActive = catLessons.some(l => l.id === lesson.id);
+
+                return (
+                  <div key={categoryName} className="rounded-xl border border-slate-800/80 bg-slate-950/40 overflow-hidden">
+                    <button
+                      onClick={() => setExpandedCategories(prev => ({ ...prev, [categoryName]: !isExpanded }))}
+                      className="w-full p-2.5 bg-slate-900/80 hover:bg-slate-800/60 text-left flex items-center justify-between transition"
+                    >
+                      <div className="flex items-center space-x-2 truncate mr-2">
+                        {isExpanded ? (
+                          <ChevronDown className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        ) : (
+                          <ChevronRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                        )}
+                        <span className={`text-xs font-bold truncate ${hasActive ? 'text-indigo-300' : 'text-slate-200'}`}>
+                          {categoryName}
+                        </span>
+                      </div>
+                      <span className={`text-[10px] font-mono px-2 py-0.5 rounded-full shrink-0 ${
+                        isCatDone 
+                          ? 'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20' 
+                          : 'bg-slate-800 text-slate-400'
+                      }`}>
+                        {completedInCat}/{catLessons.length}
+                      </span>
+                    </button>
+
+                    {isExpanded && (
+                      <div className="p-1.5 space-y-1">
+                        {catLessons.map((l) => {
+                          const isCurrent = l.id === lesson.id;
+                          const isDone = userStats.completedLessonIds.includes(l.id);
+                          return (
+                            <button
+                              key={l.id}
+                              onClick={() => {
+                                onNavigateLesson(l.id);
+                                setIsOutlineOpen(false);
+                              }}
+                              className={`w-full text-left p-2 rounded-lg text-xs flex items-center justify-between transition ${
+                                isCurrent
+                                  ? 'bg-indigo-600/20 text-indigo-300 border border-indigo-500/40 font-semibold'
+                                  : isDone
+                                  ? 'text-slate-300 hover:bg-slate-800/50'
+                                  : 'text-slate-400 hover:bg-slate-800/50 hover:text-white'
+                              }`}
+                            >
+                              <div className="flex items-center space-x-2 truncate mr-2">
+                                {isDone ? (
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                ) : (
+                                  <Circle className={`w-3.5 h-3.5 shrink-0 ${isCurrent ? 'text-indigo-400' : 'text-slate-600'}`} />
+                                )}
+                                <span className="truncate">{l.title}</span>
+                              </div>
+                              <span className="text-[10px] font-mono text-slate-500 shrink-0">+{l.xp} XP</span>
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                );
+              })
+            )}
           </div>
 
           <div className="p-3 border-t border-slate-800 bg-slate-950/60">

@@ -188,11 +188,26 @@ export class CodeExecutor {
         } else if (converted === 'else:') {
           converted = 'else {';
           indentStack.push(indent + 4);
+        } else if (converted.match(/^while\s+(.*?):$/)) {
+          converted = converted.replace(/^while\s+(.*?):$/, 'while ($1) {');
+          indentStack.push(indent + 4);
         } else if (converted.match(/^for\s+([a-zA-Z0-9_]+)\s+in\s+(.*?):$/)) {
           converted = converted.replace(/^for\s+([a-zA-Z0-9_]+)\s+in\s+(.*?):$/, 'for (const $1 of $2) {');
           indentStack.push(indent + 4);
         } else if (converted.match(/^def\s+([a-zA-Z0-9_]+)\s*\((.*?)\):$/)) {
           converted = converted.replace(/^def\s+([a-zA-Z0-9_]+)\s*\((.*?)\):$/, 'function $1($2) {');
+          indentStack.push(indent + 4);
+        } else if (converted.match(/^class\s+([a-zA-Z0-9_]+)(?:\((.*?)\))?:$/)) {
+          converted = converted.replace(/^class\s+([a-zA-Z0-9_]+)(?:\((.*?)\))?:$/, 'class $1 {');
+          indentStack.push(indent + 4);
+        } else if (converted === 'try:') {
+          converted = 'try {';
+          indentStack.push(indent + 4);
+        } else if (converted.match(/^except(?:\s+.*)?:$/)) {
+          converted = 'catch (e) {';
+          indentStack.push(indent + 4);
+        } else if (converted === 'finally:') {
+          converted = 'finally {';
           indentStack.push(indent + 4);
         } else if (
           converted.match(/^[a-zA-Z0-9_]+\s*=\s*.+/) &&
@@ -227,6 +242,10 @@ export class CodeExecutor {
 
       try {
         const runner = new Function('customConsole', `
+          if (!Array.prototype.append) Array.prototype.append = function(x) { this.push(x); };
+          if (!String.prototype.lower) String.prototype.lower = function() { return this.toLowerCase(); };
+          if (!String.prototype.upper) String.prototype.upper = function() { return this.toUpperCase(); };
+          if (!String.prototype.strip) String.prototype.strip = function() { return this.trim(); };
           try {
             ${runnableJs}
           } catch(e) {
