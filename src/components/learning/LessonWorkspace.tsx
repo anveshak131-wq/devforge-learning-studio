@@ -482,7 +482,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                 </span>
               </div>
 
-              {AuthService.isAdmin() && onOpenAdmin && (
+              {AuthService.isAdmin() && AuthService.isAdminSessionActive() && onOpenAdmin && (
                 <button
                   onClick={() => onOpenAdmin(track.slug, lesson.id)}
                   className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-[11px] font-semibold flex items-center space-x-1 transition shadow-sm"

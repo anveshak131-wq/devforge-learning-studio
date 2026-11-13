@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { UserStats, TierLevel, Track } from './types';
-import { User as UserType, Certificate } from './types/auth';
+import { User as UserType, Certificate, AdminSession } from './types/auth';
 import { ProgressStorage } from './services/progressStorage';
 import { AuthService } from './services/authService';
 import { Navbar } from './components/layout/Navbar';
@@ -28,6 +28,7 @@ export function App() {
   const [allTracks, setAllTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [userStats, setUserStats] = useState<UserStats>(() => ProgressStorage.getStats());
   const [currentUser, setCurrentUser] = useState<UserType | null>(() => AuthService.getCurrentUser());
+  const [adminSession, setAdminSession] = useState<AdminSession | null>(() => AdminSecurityService.getActiveSession());
   const [currentView, setCurrentView] = useState<string>('dashboard');
   const [viewPayload, setViewPayload] = useState<any>(null);
 
@@ -36,6 +37,32 @@ export function App() {
     return CourseStorageService.subscribe(() => {
       setAllTracks(CourseStorageService.getTracks());
     });
+  }, []);
+
+  // Secret URL listener for Admin Access (#admin or ?admin=true or ?view=admin)
+  useEffect(() => {
+    const checkUrlForAdmin = () => {
+      const hash = window.location.hash.toLowerCase();
+      const search = window.location.search.toLowerCase();
+      if (hash.includes('admin') || search.includes('admin')) {
+        setCurrentView('admin');
+      }
+    };
+    checkUrlForAdmin();
+    window.addEventListener('hashchange', checkUrlForAdmin);
+    return () => window.removeEventListener('hashchange', checkUrlForAdmin);
+  }, []);
+
+  // Global Secret Keyboard Shortcut for Admins: Ctrl+Shift+A or Cmd+Shift+A
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
+        e.preventDefault();
+        setCurrentView('admin');
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
   
   // Modals state
@@ -235,28 +262,46 @@ export function App() {
           <PlaygroundWorkspace />
         )}
 
-        {/* Protected Super Administrator Portal */}
+        {/* Protected Super Administrator Portal (Secret Admin Gateway) */}
         {currentView === 'admin' && (
-          AdminSecurityService.getActiveSession() ? (
+          adminSession ? (
             <AdminPortalView
               onNavigateLesson={(trackSlug, lessonId) => {
                 handleNavigate('lesson', { trackSlug, lessonId });
               }}
-              onCloseAdmin={() => handleNavigate('dashboard')}
+              onCloseAdmin={() => {
+                setAdminSession(null);
+                AdminSecurityService.destroySession();
+                handleNavigate('dashboard');
+              }}
               targetLessonId={viewPayload?.lessonId}
               targetTrackSlug={viewPayload?.trackSlug}
             />
           ) : (
             <AdminLockScreen
-              onUnlocked={() => {
-                // Rerender view once unlocked
-                setCurrentView('admin');
+              onUnlocked={(session) => {
+                setAdminSession(session);
+                setCurrentUser(AuthService.getCurrentUser());
               }}
               onCancel={() => handleNavigate('dashboard')}
             />
           )
         )}
       </main>
+
+      {/* Discreet Platform Footer (Hidden during admin & lesson views) */}
+      {currentView !== 'admin' && currentView !== 'lesson' && (
+        <footer className="py-3 px-6 border-t border-slate-900 bg-slate-950 flex items-center justify-between text-[11px] text-slate-500 font-mono select-none">
+          <span>© 2026 DevForge Learning Studio. All rights reserved.</span>
+          <button
+            onClick={() => handleNavigate('admin')}
+            className="text-slate-700 hover:text-slate-400 p-1 transition"
+            title="Admin Access (Ctrl+Shift+A)"
+          >
+            •
+          </button>
+        </footer>
+      )}
 
       {/* Cheatsheet Modal */}
       <QuickCheatSheetModal
