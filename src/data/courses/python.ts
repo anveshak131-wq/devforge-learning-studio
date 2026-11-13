@@ -11,16 +11,20 @@ import { pythonModule9Lessons } from './python/module9_sets_tuples';
 import { pythonModule10Lessons } from './python/module10_comprehensions';
 import { pythonModule11Lessons } from './python/module11_classes';
 import { pythonModule12Lessons } from './python/module12_capstones';
+import { pythonModule13Lessons } from './python/module13_file_io';
+import { pythonModule14Lessons } from './python/module14_generators';
+import { pythonModule15Lessons } from './python/module15_decorators';
+import { pythonModule16Lessons } from './python/module16_async_mastery';
 
 export const PYTHON_TRACK: Track = {
   id: 'python',
-  title: 'Python: Beginner to Pro (110 Topics)',
+  title: 'Python: Beginner to Pro (150 Topics)',
   slug: 'python',
   language: 'python',
   icon: 'Terminal',
   color: 'from-emerald-400 to-teal-500',
   tagline: "The world's most popular language for beginners, data science, and AI — made easy with simple steps.",
-  description: 'A complete 110-lesson roadmap through Python: syntax, operators, string methods, control flow, loops, functions, lists, dictionaries, tuples, sets, comprehensions, OOP classes, and real-world capstones.',
+  description: 'A complete 150-lesson roadmap through Python: syntax, operators, strings, control flow, loops, functions, lists, dictionaries, tuples, sets, comprehensions, OOP classes, file I/O, generators, decorators, and real-world capstones.',
   lessons: [
     ...pythonModule1Lessons,
     ...pythonModule2Lessons,
@@ -34,5 +38,9 @@ export const PYTHON_TRACK: Track = {
     ...pythonModule10Lessons,
     ...pythonModule11Lessons,
     ...pythonModule12Lessons,
+    ...pythonModule13Lessons,
+    ...pythonModule14Lessons,
+    ...pythonModule15Lessons,
+    ...pythonModule16Lessons,
   ],
 };

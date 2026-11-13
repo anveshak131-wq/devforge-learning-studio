@@ -1,4 +1,18 @@
-export type Language = 'javascript' | 'typescript' | 'sql' | 'python' | 'html';
+export type Language = 
+  | 'javascript' 
+  | 'typescript' 
+  | 'sql' 
+  | 'python' 
+  | 'html'
+  | 'css'
+  | 'react'
+  | 'nodejs'
+  | 'git'
+  | 'dsa'
+  | 'docker'
+  | 'bash'
+  | 'golang'
+  | 'rust';
 
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
 

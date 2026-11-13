@@ -16,6 +16,7 @@ import { Certificate, User as UserType } from '../../types/auth';
 import { UserStats } from '../../types';
 import { ALL_TRACKS } from '../../data/courses';
 import { AuthService } from '../../services/authService';
+import { LanguageIcon } from '../common/LanguageIcon';
 
 interface CertificatesVaultViewProps {
   currentUser: UserType | null;
@@ -203,8 +204,9 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
               >
                 <div className="space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider font-mono">
-                      {track.language}
+                    <span className="text-xs font-bold text-indigo-400 uppercase tracking-wider font-mono flex items-center space-x-1.5">
+                      <LanguageIcon language={track.language} className="w-3.5 h-3.5" />
+                      <span>{track.language}</span>
                     </span>
                     <span className="text-xs font-mono text-slate-400">
                       {completedCount}/{total} Lessons

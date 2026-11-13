@@ -75,11 +75,27 @@ export class CodeExecutor {
       return this.executePython(code, startTime);
     }
 
-    // JavaScript or TypeScript
+    if (language === 'bash' || language === 'git' || language === 'docker') {
+      return this.executeShell(code, startTime);
+    }
+
+    if (language === 'golang') {
+      return this.executeGolang(code, startTime);
+    }
+
+    if (language === 'rust') {
+      return this.executeRust(code, startTime);
+    }
+
+    if (language === 'html' || language === 'css') {
+      return this.executeWeb(code, language, startTime);
+    }
+
+    // JavaScript, TypeScript, React, Node.js, DSA
     let runnableJs = code;
     let transpiledCode: string | undefined = undefined;
 
-    if (language === 'typescript') {
+    if (language === 'typescript' || language === 'react' || language === 'nodejs' || language === 'dsa') {
       try {
         const compiled = transform(code, {
           transforms: ['typescript', 'jsx'],
@@ -91,13 +107,13 @@ export class CodeExecutor {
         const duration = Math.round(performance.now() - startTime);
         logs.push({
           type: 'error',
-          args: [`TypeScript Transpile Error: ${err.message}`],
+          args: [`${language} Transpile Error: ${err.message}`],
           timestamp: Date.now()
         });
         return {
           success: false,
           logs,
-          error: `TypeScript Syntax Error: ${err.message}`,
+          error: `${language} Syntax Error: ${err.message}`,
           executionTimeMs: duration
         };
       }
@@ -278,6 +294,129 @@ export class CodeExecutor {
         logs: [{ type: 'error', args: [err.message], timestamp: Date.now() }],
         error: err.message,
         executionTimeMs: duration
+      };
+    }
+  }
+
+  /**
+   * Shell / Bash / Git / Docker Command Simulator
+   */
+  private static executeShell(code: string, startTime: number): ExecutionResult {
+    const logs: ConsoleOutputMessage[] = [];
+    const lines = code.split('\n');
+
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+
+      if (line.startsWith('echo ')) {
+        const text = line.substring(5).replace(/^['"]|['"]$/g, '');
+        logs.push({ type: 'log', args: [text], timestamp: Date.now() });
+      } else if (line.startsWith('git status')) {
+        logs.push({ type: 'log', args: ['On branch main\nYour branch is up to date with \'origin/main\'.\n\nNothing to commit, working tree clean'], timestamp: Date.now() });
+      } else if (line.startsWith('git commit')) {
+        logs.push({ type: 'log', args: ['[main 7e8f9a0] ' + (line.match(/-m\s+["'](.*?)["']/)?.[1] || 'Commit changes') + '\n 1 file changed, 1 insertion(+)'], timestamp: Date.now() });
+      } else if (line.startsWith('git branch')) {
+        logs.push({ type: 'log', args: ['* main\n  feature/login'], timestamp: Date.now() });
+      } else if (line.startsWith('git log')) {
+        logs.push({ type: 'log', args: ['commit 7e8f9a0 (HEAD -> main)\nAuthor: DevForge User <user@devforge.io>\nDate:   Today\n\n    Initial commit'], timestamp: Date.now() });
+      } else if (line.startsWith('docker build')) {
+        logs.push({ type: 'log', args: ['Step 1/3 : FROM node:20-alpine\nStep 2/3 : COPY . .\nStep 3/3 : CMD ["npm", "start"]\nSuccessfully built 8b4c2e'], timestamp: Date.now() });
+      } else if (line.startsWith('docker run') || line.startsWith('docker ps')) {
+        logs.push({ type: 'log', args: ['CONTAINER ID   IMAGE          STATUS         PORTS\n8b4c2e11a2f3   my-app:latest  Up 2 minutes   0.0.0.0:3000->3000/tcp'], timestamp: Date.now() });
+      } else if (line.startsWith('ls')) {
+        logs.push({ type: 'log', args: ['Dockerfile  README.md  package.json  src/'], timestamp: Date.now() });
+      } else if (line.startsWith('pwd')) {
+        logs.push({ type: 'log', args: ['/workspace/devforge'], timestamp: Date.now() });
+      } else {
+        logs.push({ type: 'log', args: [`$ ${line}`], timestamp: Date.now() });
+      }
+    }
+
+    const duration = Math.round(performance.now() - startTime);
+    return {
+      success: true,
+      logs,
+      executionTimeMs: duration
+    };
+  }
+
+  /**
+   * Golang Simulator / Transpiler
+   */
+  private static executeGolang(code: string, startTime: number): ExecutionResult {
+    let js = code
+      .replace(/package\s+[a-zA-Z0-9_]+/g, '// package')
+      .replace(/import\s+(\(.*?\)|"[^"]*")/gs, '// imports')
+      .replace(/fmt\.Println\((.*?)\)/g, 'customConsole.log($1)')
+      .replace(/fmt\.Printf\((.*?)\)/g, 'customConsole.log($1)')
+      .replace(/func\s+main\s*\(\)\s*\{/g, '(function() {')
+      .replace(/([a-zA-Z0-9_]+)\s*:=\s*/g, 'let $1 = ');
+
+    return this.runJsFunction(js, startTime, 'Go');
+  }
+
+  /**
+   * Rust Simulator / Transpiler
+   */
+  private static executeRust(code: string, startTime: number): ExecutionResult {
+    let js = code
+      .replace(/println!\s*\((.*?)\);/g, 'customConsole.log($1);')
+      .replace(/print!\s*\((.*?)\);/g, 'customConsole.log($1);')
+      .replace(/fn\s+main\s*\(\)\s*\{/g, '(function() {')
+      .replace(/let\s+mut\s+/g, 'let ');
+
+    return this.runJsFunction(js, startTime, 'Rust');
+  }
+
+  /**
+   * HTML & CSS Preview / Inspector
+   */
+  private static executeWeb(code: string, language: 'html' | 'css', startTime: number): ExecutionResult {
+    const logs: ConsoleOutputMessage[] = [
+      {
+        type: 'log',
+        args: [`[${language.toUpperCase()} Document Parsed Successfully]\n${code.slice(0, 150)}${code.length > 150 ? '...' : ''}`],
+        timestamp: Date.now()
+      }
+    ];
+    return {
+      success: true,
+      logs,
+      returnValue: code,
+      executionTimeMs: Math.round(performance.now() - startTime)
+    };
+  }
+
+  private static runJsFunction(runnableJs: string, startTime: number, langName: string): ExecutionResult {
+    const logs: ConsoleOutputMessage[] = [];
+    const customConsole = {
+      log: (...args: any[]) => logs.push({ type: 'log', args: args.map(formatArg), timestamp: Date.now() }),
+      error: (...args: any[]) => logs.push({ type: 'error', args: args.map(formatArg), timestamp: Date.now() })
+    };
+
+    try {
+      const runner = new Function('customConsole', `
+        try {
+          ${runnableJs}
+        } catch(e) {
+          customConsole.error("${langName} Error: " + e.message);
+          throw e;
+        }
+      `);
+      runner(customConsole);
+      return {
+        success: true,
+        logs,
+        transpiledCode: runnableJs,
+        executionTimeMs: Math.round(performance.now() - startTime)
+      };
+    } catch (e: any) {
+      return {
+        success: false,
+        logs,
+        error: e.message,
+        executionTimeMs: Math.round(performance.now() - startTime)
       };
     }
   }

@@ -129,7 +129,139 @@ print(top_students)
     }
   </script>
 </body>
-</html>`
+</html>`,
+
+  css: `/* Modern Responsive CSS Grid & Flexbox Studio */
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.card {
+  background: linear-gradient(135deg, #1e293b, #0f172a);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.4);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 25px 30px -5px rgba(99, 102, 241, 0.25);
+}`,
+
+  react: `// React 18+ Functional Component & State Studio
+import React, { useState, useEffect } from 'react';
+
+function UserActivityFeed() {
+  const [activities, setActivities] = useState([
+    { id: 1, action: "Solved 3 SQL Challenges", timestamp: "5m ago" },
+    { id: 2, action: "Earned JavaScript Pro Certificate", timestamp: "1h ago" }
+  ]);
+
+  return (
+    <div className="p-6 bg-slate-900 rounded-2xl border border-slate-800">
+      <h2 className="text-lg font-bold text-white mb-4">Live Activity Feed</h2>
+      <ul className="space-y-3">
+        {activities.map(a => (
+          <li key={a.id} className="text-sm text-slate-300 flex justify-between">
+            <span>{a.action}</span>
+            <span className="text-xs text-indigo-400">{a.timestamp}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+console.log("React Component Rendered Cleanly!");`,
+
+  nodejs: `// Node.js Backend & API Handler Studio
+const http = require('http');
+
+const server = http.createServer((req, res) => {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({
+    status: 'online',
+    uptime: process.uptime(),
+    timestamp: new Date().toISOString()
+  }));
+});
+
+console.log("Node.js Microservice Architecture Initialized!");`,
+
+  git: `# Git Version Control Terminal
+git init
+git add .
+git commit -m "feat: initial commit of enterprise learning engine"
+git status
+git branch -M main`,
+
+  dsa: `// Data Structures & Algorithms (DSA) Studio
+// Binary Search Implementation: O(log N) Time Complexity
+
+function binarySearch(arr, target) {
+  let left = 0;
+  let right = arr.length - 1;
+
+  while (left <= right) {
+    const mid = Math.floor((left + right) / 2);
+    if (arr[mid] === target) return mid;
+    if (arr[mid] < target) left = mid + 1;
+    else right = mid - 1;
+  }
+  return -1;
+}
+
+const sortedList = [10, 24, 35, 48, 59, 72, 85, 99];
+const index = binarySearch(sortedList, 59);
+console.log("Target 59 found at sorted index:", index);`,
+
+  docker: `# Dockerfile & Container Orchestration
+FROM node:20-alpine AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["node", "server.js"]`,
+
+  bash: `#!/usr/bin/env bash
+# Linux Shell Automation Script
+echo "=== System Health Diagnostic ==="
+DATE=$(date +"%Y-%m-%d %H:%M:%S")
+echo "Audit Timestamp: $DATE"
+echo "Active Working Directory: $(pwd)"
+echo "Listing repository files:"
+ls -la`,
+
+  golang: `package main
+
+import "fmt"
+
+func main() {
+    message := "Welcome to Go (Golang) Engineering!"
+    fmt.Println(message)
+    
+    scores := []int{95, 88, 100, 92}
+    total := 0
+    for _, s := range scores {
+        total += s
+    }
+    fmt.Println("Average Score:", total / len(scores))
+}`,
+
+  rust: `fn main() {
+    let language = "Rust";
+    println!("Systems Programming with {}", language);
+    
+    let numbers = vec![1, 2, 3, 4, 5];
+    let sum: i32 = numbers.iter().sum();
+    println!("Vector Sum: {}", sum);
+}`
 };
 
 export const PlaygroundWorkspace: React.FC = () => {

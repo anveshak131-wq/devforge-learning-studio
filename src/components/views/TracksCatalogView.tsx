@@ -1,23 +1,17 @@
 import React, { useState } from 'react';
 import { 
-  Zap, 
-  Database, 
-  ShieldCheck, 
-  Terminal, 
   CheckCircle2, 
   Circle, 
   ArrowRight, 
   Clock, 
-  Award,
-  Play,
-  Search,
-  ChevronDown,
-  ChevronRight,
-  Layers,
-  Sparkles
+  Play, 
+  Search, 
+  ChevronDown, 
+  ChevronRight 
 } from 'lucide-react';
 import { Track, UserStats, Lesson } from '../../types';
 import { ALL_TRACKS } from '../../data/courses';
+import { LanguageIcon } from '../common/LanguageIcon';
 
 interface TracksCatalogViewProps {
   userStats: UserStats;
@@ -28,7 +22,6 @@ interface TracksCatalogViewProps {
 export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
   userStats,
   onSelectLesson,
-  onOpenPlacementQuiz
 }) => {
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -57,53 +50,64 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
   return (
     <div className="h-[calc(100vh-3.5rem)] overflow-y-auto bg-slate-950 p-6 md:p-8 space-y-8 font-sans">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div>
-          <div className="flex items-center space-x-2">
-            <h1 className="text-2xl font-extrabold text-white tracking-tight">
-              Interactive Programming Curriculum
-            </h1>
-            <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold">
-              {totalAllLessons}+ In-Depth Topics
-            </span>
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div className="flex items-center space-x-2">
+              <h1 className="text-2xl font-extrabold text-white tracking-tight">
+                Interactive Programming Curriculum
+              </h1>
+              <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold">
+                {totalAllLessons}+ In-Depth Topics Across {ALL_TRACKS.length} Tracks
+              </span>
+            </div>
+            <p className="text-xs text-slate-400 mt-1 max-w-2xl">
+              From absolute beginner to expert level. Each topic features real-world analogies, run-ready worked examples, interactive practice with instant verification, and certification.
+            </p>
           </div>
-          <p className="text-xs text-slate-400 mt-1 max-w-2xl">
-            From absolute beginner to expert level. Each topic features real-world analogies, run-ready worked examples, interactive practice with instant verification, and certification.
-          </p>
         </div>
 
-        {/* Language Tabs */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1 bg-slate-900 p-1.5 rounded-xl border border-slate-800 shrink-0">
-          {[
-            { id: 'all', label: 'All Courses' },
-            { id: 'javascript', label: 'JavaScript (150)' },
-            { id: 'python', label: 'Python (110)' },
-            { id: 'sql', label: 'SQL' },
-            { id: 'typescript', label: 'TypeScript' }
-          ].map(tab => (
-            <button
-              key={tab.id}
-              onClick={() => setSelectedLanguage(tab.id)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition ${
-                selectedLanguage === tab.id
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'text-slate-400 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+        {/* Language Tabs Filter */}
+        <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 pt-1 max-w-full scrollbar-thin scrollbar-thumb-slate-800">
+          <button
+            onClick={() => setSelectedLanguage('all')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition shrink-0 ${
+              selectedLanguage === 'all'
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+            }`}
+          >
+            All Tracks ({totalAllLessons})
+          </button>
+          {ALL_TRACKS.map(track => {
+            const shortName = track.title.split(':')[0].replace(/\(.*?\)/g, '').trim();
+            const isSelected = selectedLanguage === track.language;
+            return (
+              <button
+                key={track.id}
+                onClick={() => setSelectedLanguage(track.language)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition shrink-0 flex items-center space-x-1.5 ${
+                  isSelected
+                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                    : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+                }`}
+              >
+                <LanguageIcon language={track.language} className="w-3.5 h-3.5" />
+                <span>{shortName} ({track.lessons.length})</span>
+              </button>
+            );
+          })}
         </div>
       </div>
 
-      {/* Global Search across 260+ topics */}
+      {/* Global Search across all topics */}
       <div className="relative">
         <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
         <input
           type="text"
           value={searchQuery}
           onChange={e => setSearchQuery(e.target.value)}
-          placeholder={`Search across ${totalAllLessons} interactive topics (e.g., loops, classes, async/await, dictionaries, arrays, joins)...`}
+          placeholder={`Search across ${totalAllLessons} interactive topics (e.g., loops, classes, async/await, dictionaries, arrays, joins, docker, rust)...`}
           className="w-full bg-slate-900/90 text-sm text-white placeholder-slate-500 rounded-xl pl-10 pr-10 py-2.5 border border-slate-800 focus:outline-none focus:border-indigo-500 shadow-inner"
         />
         {searchQuery && (
@@ -139,10 +143,7 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
                 <div className="flex items-center space-x-3.5">
                   <div className={`w-12 h-12 rounded-xl bg-gradient-to-tr ${track.color} p-[1px]`}>
                     <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
-                      {track.language === 'javascript' && <Zap className="w-6 h-6 text-amber-400" />}
-                      {track.language === 'sql' && <Database className="w-6 h-6 text-cyan-400" />}
-                      {track.language === 'typescript' && <ShieldCheck className="w-6 h-6 text-indigo-400" />}
-                      {track.language === 'python' && <Terminal className="w-6 h-6 text-emerald-400" />}
+                      <LanguageIcon language={track.language} className="w-6 h-6" />
                     </div>
                   </div>
                   <div>

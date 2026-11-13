@@ -111,7 +111,8 @@ export class TestRunner {
 
     // Now test against user scope
     // We execute the transpiled JS along with each test assertion
-    const runnableCode = execResult.transpiledCode || code;
+    const isScriptingOrMarkup = language === 'html' || language === 'css' || language === 'bash' || language === 'git' || language === 'docker';
+    const runnableCode = isScriptingOrMarkup ? '' : (execResult.transpiledCode || (language === 'javascript' ? code : ''));
 
     for (const tc of testCases) {
       try {
@@ -123,13 +124,14 @@ export class TestRunner {
             info: (...args) => {},
             table: (...args) => {}
           };
+          const code = ${JSON.stringify(code)};
+          const logs = ${JSON.stringify(execResult.logs)};
+          const returnValue = ${JSON.stringify(execResult.returnValue !== undefined ? execResult.returnValue : null)};
           if (!Array.prototype.append) Array.prototype.append = function(x) { this.push(x); };
           if (!String.prototype.lower) String.prototype.lower = function() { return this.toLowerCase(); };
           if (!String.prototype.upper) String.prototype.upper = function() { return this.toUpperCase(); };
           if (!String.prototype.strip) String.prototype.strip = function() { return this.trim(); };
-          ${runnableCode};
-          const logs = ${JSON.stringify(execResult.logs)};
-          const returnValue = ${JSON.stringify(execResult.returnValue !== undefined ? execResult.returnValue : null)};
+          ${runnableCode}
           return (${tc.testFn});
         `;
 

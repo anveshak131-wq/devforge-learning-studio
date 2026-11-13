@@ -3,19 +3,11 @@ import {
   CheckCircle2, 
   Circle, 
   ArrowRight, 
-  Lock, 
-  Sparkles, 
-  Award, 
-  Layers, 
-  ChevronRight,
-  Brain,
-  ShieldCheck,
-  Zap,
-  Database,
-  Terminal
+  Brain 
 } from 'lucide-react';
 import { ALL_TRACKS } from '../../data/courses';
 import { UserStats, TierLevel, Language } from '../../types';
+import { LanguageIcon } from '../common/LanguageIcon';
 
 interface RoadmapSkillTreeViewProps {
   userStats: UserStats;
@@ -36,31 +28,31 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
     {
       level: 1,
       name: 'Tier 1: Foundations (Zero-to-One)',
-      description: 'Absolute beginner fundamentals: variables, primitive data types, string formatting, and first functions.',
+      description: 'Absolute beginner fundamentals: syntax, data types, environment setup, and basic operations.',
       badgeColor: 'bg-emerald-500/10 text-emerald-300 border-emerald-500/20'
     },
     {
       level: 2,
       name: 'Tier 2: Core Language Concepts',
-      description: 'Object modeling, array destructuring, key-value lookups, and flow control.',
+      description: 'Control flow, core functions, data structures, and idiomatic conventions.',
       badgeColor: 'bg-blue-500/10 text-blue-300 border-blue-500/20'
     },
     {
       level: 3,
       name: 'Tier 3: Intermediate Mastery',
-      description: 'Functional pipelines (map/filter/reduce), async promises, relational joins, and generic contracts.',
+      description: 'Advanced collections, modules, error handling paradigms, and functional pipelines.',
       badgeColor: 'bg-indigo-500/10 text-indigo-300 border-indigo-500/20'
     },
     {
       level: 4,
       name: 'Tier 4: Advanced Architecture',
-      description: 'Closures, concurrency orchestration, SQL Common Table Expressions, and discriminated unions.',
+      description: 'Asynchronous workflows, memory safety, interfaces/traits, and system design patterns.',
       badgeColor: 'bg-purple-500/10 text-purple-300 border-purple-500/20'
     },
     {
       level: 5,
-      name: 'Tier 5: Masterclass & Internals',
-      description: 'JavaScript Proxies & Reflect, SQL Window Functions, Python Decorators, and TypeScript infer type gymnastics.',
+      name: 'Tier 5: Masterclass & Systems Capstone',
+      description: 'Production deployment, concurrency orchestration, high-performance optimizations, and real-world microservices.',
       badgeColor: 'bg-amber-500/10 text-amber-300 border-amber-500/20'
     }
   ];
@@ -78,7 +70,7 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
           </div>
           <h1 className="text-2xl font-extrabold text-white">Engineering Mastery Tree</h1>
           <p className="text-xs text-slate-300 max-w-xl">
-            A structured visual roadmap inspired by roadmap.sh and Execute Program. Start at your current skill tier or test your level with the diagnostic quiz.
+            A structured visual roadmap across 14 industry tracks. Start at your current skill tier or test your level with the diagnostic quiz.
           </p>
         </div>
 
@@ -92,24 +84,25 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
       </div>
 
       {/* Language Switcher Bar */}
-      <div className="flex items-center space-x-2 border-b border-slate-800 pb-4 overflow-x-auto">
-        {(['javascript', 'sql', 'typescript', 'python'] as Language[]).map(lang => (
-          <button
-            key={lang}
-            onClick={() => setSelectedLanguage(lang)}
-            className={`px-4 py-2 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider flex items-center space-x-2 transition ${
-              selectedLanguage === lang
-                ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
-                : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
-            }`}
-          >
-            {lang === 'javascript' && <Zap className="w-4 h-4 text-amber-400" />}
-            {lang === 'sql' && <Database className="w-4 h-4 text-cyan-400" />}
-            {lang === 'typescript' && <ShieldCheck className="w-4 h-4 text-indigo-400" />}
-            {lang === 'python' && <Terminal className="w-4 h-4 text-emerald-400" />}
-            <span>{lang}</span>
-          </button>
-        ))}
+      <div className="flex items-center space-x-2 border-b border-slate-800 pb-4 overflow-x-auto max-w-full scrollbar-thin scrollbar-thumb-slate-800">
+        {ALL_TRACKS.map(t => {
+          const isSelected = selectedLanguage === t.language;
+          const shortName = t.title.split(':')[0].replace(/\(.*?\)/g, '').trim();
+          return (
+            <button
+              key={t.id}
+              onClick={() => setSelectedLanguage(t.language)}
+              className={`px-3 py-2 rounded-xl text-xs font-mono font-semibold uppercase tracking-wider flex items-center space-x-2 shrink-0 transition ${
+                isSelected
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30'
+                  : 'bg-slate-900 text-slate-400 hover:text-white hover:bg-slate-800 border border-slate-800'
+              }`}
+            >
+              <LanguageIcon language={t.language} className="w-3.5 h-3.5" />
+              <span>{shortName}</span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Visual Roadmap Flow */}
@@ -117,7 +110,6 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
         {tiers.map((tier, tIdx) => {
           const lessonsInTier = track.lessons.filter(l => l.tier === tier.level);
           const completedInTier = lessonsInTier.filter(l => userStats.completedLessonIds.includes(l.id)).length;
-          const isTierUnlocked = tIdx === 0 || track.lessons.some(l => l.tier === tier.level - 1 && userStats.completedLessonIds.includes(l.id)) || (userStats.diagnosedTier && userStats.diagnosedTier >= tier.level);
 
           return (
             <div key={tier.level} className="relative">
@@ -150,8 +142,8 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
                 </div>
 
                 {/* Lessons in this tier */}
-                <div className="grid grid-cols-1 gap-2.5 pt-2">
-                  {lessonsInTier.map((lesson, lIdx) => {
+                <div className="grid grid-cols-1 gap-2.5 pt-2 max-h-96 overflow-y-auto pr-1">
+                  {lessonsInTier.map((lesson) => {
                     const isDone = userStats.completedLessonIds.includes(lesson.id);
 
                     return (
@@ -164,14 +156,14 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
                             : 'bg-slate-950/70 border-slate-800 hover:border-indigo-500/50 hover:bg-slate-900/60'
                         }`}
                       >
-                        <div className="flex items-center space-x-3">
+                        <div className="flex items-center space-x-3 min-w-0">
                           {isDone ? (
                             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
                           ) : (
                             <Circle className="w-4 h-4 text-slate-600 shrink-0" />
                           )}
-                          <div>
-                            <span className="text-xs font-bold text-slate-200 hover:text-indigo-300 transition">
+                          <div className="min-w-0">
+                            <span className="text-xs font-bold text-slate-200 hover:text-indigo-300 transition truncate block">
                               {lesson.title}
                             </span>
                             <p className="text-[11px] text-slate-400 line-clamp-1">{lesson.description}</p>

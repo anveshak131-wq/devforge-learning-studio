@@ -19,6 +19,7 @@ import { UserStats, Track } from '../../types';
 import { ALL_TRACKS } from '../../data/courses';
 import { ALL_PROJECTS } from '../../data/projects';
 import { ProgressStorage } from '../../services/progressStorage';
+import { LanguageIcon } from '../common/LanguageIcon';
 
 interface DashboardViewProps {
   userStats: UserStats;
@@ -188,10 +189,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
                   <div className="flex items-center justify-between">
                     <div className={`w-11 h-11 rounded-xl bg-gradient-to-tr ${track.color} p-[1px]`}>
                       <div className="w-full h-full bg-slate-950 rounded-[11px] flex items-center justify-center">
-                        {track.language === 'javascript' && <Zap className="w-6 h-6 text-amber-400" />}
-                        {track.language === 'sql' && <Database className="w-6 h-6 text-cyan-400" />}
-                        {track.language === 'typescript' && <ShieldCheck className="w-6 h-6 text-indigo-400" />}
-                        {track.language === 'python' && <Terminal className="w-6 h-6 text-emerald-400" />}
+                        <LanguageIcon language={track.language} className="w-6 h-6" />
                       </div>
                     </div>
                     <span className="text-xs font-mono text-slate-400 font-semibold">
