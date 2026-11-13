@@ -136,9 +136,15 @@ export class CourseStorageService {
         localStorage.setItem(CUSTOM_LESSONS_STORAGE, JSON.stringify(customLessons));
       }
 
+      const auditAction = updatedLesson.media?.type === 'slides' 
+        ? 'update_slides' 
+        : (updatedLesson.media?.type === 'video' || updatedLesson.videoUrl) 
+        ? 'update_video' 
+        : 'update_lesson';
+
       AdminSecurityService.logAudit({
         adminEmail,
-        action: updatedLesson.videoUrl ? 'update_video' : 'update_lesson',
+        action: auditAction,
         details: `Saved changes to lesson "${updatedLesson.title}" (Track: ${trackId}).`,
         trackId,
         lessonId: updatedLesson.id
@@ -280,7 +286,7 @@ export class CourseStorageService {
   /**
    * Total custom lessons count
    */
-  static getStats(): { modifiedCount: number; newCount: number; videoCount: number } {
+  static getStats(): { modifiedCount: number; newCount: number; videoCount: number; slidesCount: number } {
     const customLessons = this.getCustomLessons();
     const newLessonsMap = this.getNewLessons();
     
@@ -288,17 +294,20 @@ export class CourseStorageService {
     Object.values(newLessonsMap).forEach(list => newCount += list.length);
 
     let videoCount = 0;
+    let slidesCount = 0;
     const allTracks = this.getTracks();
     allTracks.forEach(t => {
       t.lessons.forEach(l => {
-        if (l.videoUrl) videoCount++;
+        if (l.media?.type === 'slides') slidesCount++;
+        else if (l.media?.type === 'video' || l.videoUrl) videoCount++;
       });
     });
 
     return {
       modifiedCount: Object.keys(customLessons).length,
       newCount,
-      videoCount
+      videoCount,
+      slidesCount
     };
   }
 

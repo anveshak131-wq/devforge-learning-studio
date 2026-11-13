@@ -32,16 +32,29 @@ import {
   FileText,
   Copy,
   Check,
-  Link2
+  Link2,
+  Presentation,
+  FileUp,
+  FileSpreadsheet,
+  X
 } from 'lucide-react';
-import { Track, Lesson, WorkedExampleItem, Difficulty, TierLevel } from '../../types';
+import { Track, Lesson, WorkedExampleItem, Difficulty, TierLevel, LessonMedia, LectureMediaType, SlidesSourceType } from '../../types';
 import { User, AdminAuditLog } from '../../types/auth';
 import { CourseStorageService } from '../../services/courseStorageService';
 import { AdminSecurityService } from '../../services/adminSecurityService';
 import { AuthService } from '../../services/authService';
 import { LanguageIcon } from '../common/LanguageIcon';
 import { YouTubePlayer } from '../video/YouTubePlayer';
+import { LectureMediaViewer } from '../media/LectureMediaViewer';
 import { isValidYoutubeUrl, extractYoutubeId } from '../../utils/youtube';
+import { 
+  extractGoogleSlidesEmbedUrl, 
+  isValidGoogleSlidesUrl, 
+  SAMPLE_SLIDE_DECKS, 
+  formatFileSize, 
+  resolveMediaSlot 
+} from '../../utils/slides';
+import { SlideStorageService } from '../../services/slideStorageService';
 
 interface AdminPortalViewProps {
   onNavigateLesson: (trackSlug: string, lessonId: string) => void;
@@ -82,6 +95,12 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const [newStealthSlug, setNewStealthSlug] = useState<string>('');
   const [slugStatus, setSlugStatus] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
+
+  // Slide upload & Media Studio state
+  const [isUploadingSlide, setIsUploadingSlide] = useState(false);
+  const slideFileInputRef = React.useRef<HTMLInputElement>(null);
+  const [mediaStudioFilter, setMediaStudioFilter] = useState<'all' | 'slides' | 'video' | 'none'>('all');
+  const [mediaStudioSearch, setMediaStudioSearch] = useState<string>('');
 
   const currentUser = AuthService.getCurrentUser();
   const currentSession = AdminSecurityService.getActiveSession();
@@ -248,6 +267,166 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
     setFormData({ ...formData, additionalExamples: list });
   };
 
+  // Lecture Media Slot Handlers
+  const handleSetMediaType = (mediaType: LectureMediaType) => {
+    if (!formData) return;
+    if (mediaType === 'none') {
+      setFormData({
+        ...formData,
+        videoUrl: undefined,
+        media: { type: 'none' }
+      });
+      showToast('Media set to None (Interactive Text Only).', 'info');
+    } else if (mediaType === 'slides') {
+      const existingSlides = formData.media?.type === 'slides' ? formData.media : undefined;
+      setFormData({
+        ...formData,
+        videoUrl: undefined,
+        media: {
+          type: 'slides',
+          slidesSourceType: existingSlides?.slidesSourceType || 'google_slides',
+          slidesUrl: existingSlides?.slidesUrl || '',
+          slidesRawInput: existingSlides?.slidesRawInput || '',
+          slidesFileBlobId: existingSlides?.slidesFileBlobId,
+          slidesFileName: existingSlides?.slidesFileName,
+          slidesFileSize: existingSlides?.slidesFileSize,
+          slidesTitle: existingSlides?.slidesTitle || `${formData.title} - Slide Deck`
+        }
+      });
+      showToast('Media switched to Slide Presentation mode.', 'info');
+    } else if (mediaType === 'video') {
+      const existingVideo = formData.media?.type === 'video' ? formData.media?.videoUrl : formData.videoUrl;
+      setFormData({
+        ...formData,
+        videoUrl: existingVideo || '',
+        media: {
+          type: 'video',
+          videoUrl: existingVideo || '',
+          videoTitle: `${formData.title} - Video Lecture`
+        }
+      });
+      showToast('Media switched to Video Walkthrough mode.', 'info');
+    }
+  };
+
+  const handleSetSlidesSourceType = (sourceType: SlidesSourceType) => {
+    if (!formData || !formData.media) return;
+    setFormData({
+      ...formData,
+      media: {
+        ...formData.media,
+        slidesSourceType: sourceType
+      }
+    });
+  };
+
+  const handleGoogleSlidesUrlChange = (input: string) => {
+    if (!formData) return;
+    const embed = extractGoogleSlidesEmbedUrl(input);
+    setFormData({
+      ...formData,
+      media: {
+        type: 'slides',
+        slidesSourceType: 'google_slides',
+        slidesRawInput: input,
+        slidesUrl: embed || input,
+        slidesTitle: `${formData.title} - Google Slides`
+      }
+    });
+  };
+
+  const handleSlideFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !formData) return;
+
+    if (file.size > 50 * 1024 * 1024) {
+      showToast('Slide file is too large. Max file size is 50MB.', 'error');
+      return;
+    }
+
+    setIsUploadingSlide(true);
+    try {
+      const fileId = `slide_${formData.id}_${Date.now()}`;
+      const res = await SlideStorageService.saveSlideFile(fileId, file, {
+        name: file.name,
+        size: file.size,
+        type: file.type
+      });
+
+      if (res.success) {
+        setFormData({
+          ...formData,
+          media: {
+            type: 'slides',
+            slidesSourceType: 'pdf_upload',
+            slidesFileBlobId: fileId,
+            slidesFileName: file.name,
+            slidesFileSize: file.size,
+            slidesTitle: `${formData.title} (${file.name})`
+          }
+        });
+        showToast(`Uploaded slide deck "${file.name}"!`, 'success');
+      } else {
+        showToast(res.error || 'Failed to store slide file.', 'error');
+      }
+    } catch (err: any) {
+      showToast(err?.message || 'Upload failed', 'error');
+    } finally {
+      setIsUploadingSlide(false);
+      if (slideFileInputRef.current) {
+        slideFileInputRef.current.value = '';
+      }
+    }
+  };
+
+  const handleRemoveSlideFile = async () => {
+    if (!formData || !formData.media?.slidesFileBlobId) return;
+    await SlideStorageService.deleteSlideFile(formData.media.slidesFileBlobId);
+    setFormData({
+      ...formData,
+      media: {
+        type: 'slides',
+        slidesSourceType: 'pdf_upload',
+        slidesFileBlobId: undefined,
+        slidesFileName: undefined,
+        slidesFileSize: undefined,
+        slidesTitle: undefined
+      }
+    });
+    showToast('Uploaded slide presentation removed.', 'info');
+  };
+
+  const handleInsertDemoSlideDeck = (sampleIndex: number = 0) => {
+    if (!formData) return;
+    const sample = SAMPLE_SLIDE_DECKS[sampleIndex] || SAMPLE_SLIDE_DECKS[0];
+    setFormData({
+      ...formData,
+      media: {
+        type: 'slides',
+        slidesSourceType: 'google_slides',
+        slidesRawInput: sample.url,
+        slidesUrl: sample.url,
+        slidesTitle: sample.title
+      }
+    });
+    showToast(`Inserted sample presentation: "${sample.title}"`, 'success');
+  };
+
+  const handleInsertDemoVideo = () => {
+    if (!formData) return;
+    const demoUrl = 'https://www.youtube.com/watch?v=PkZNo7MFNFg';
+    setFormData({
+      ...formData,
+      videoUrl: demoUrl,
+      media: {
+        type: 'video',
+        videoUrl: demoUrl,
+        videoTitle: `${formData.title} - Demo Video Lecture`
+      }
+    });
+    showToast('Inserted demo YouTube video URL.', 'success');
+  };
+
   // Master Key Change
   const handleChangeMasterKey = (e: React.FormEvent) => {
     e.preventDefault();
@@ -370,7 +549,13 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
             <span className="text-white font-bold">{tracks.length}</span>
           </div>
 
-          <div className="hidden md:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">
+          <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">
+            <Presentation className="w-3.5 h-3.5 text-amber-400" />
+            <span className="text-slate-400">Slides:</span>
+            <span className="text-white font-bold">{stats.slidesCount || 0}</span>
+          </div>
+
+          <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-slate-950 border border-slate-800">
             <Film className="w-3.5 h-3.5 text-red-400" />
             <span className="text-slate-400">Videos:</span>
             <span className="text-white font-bold">{stats.videoCount}</span>
@@ -414,12 +599,12 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
           onClick={() => setActiveTab('video_studio')}
           className={`px-4 py-2.5 text-xs font-bold flex items-center space-x-2 border-b-2 transition ${
             activeTab === 'video_studio'
-              ? 'border-red-500 text-white bg-slate-800/40'
+              ? 'border-amber-500 text-white bg-slate-800/40'
               : 'border-transparent text-slate-400 hover:text-white hover:bg-slate-800/20'
           }`}
         >
-          <Film className="w-4 h-4 text-red-400" />
-          <span>Video Studio & YouTube Hub</span>
+          <Presentation className="w-4 h-4 text-amber-400" />
+          <span>Lecture Media Studio (Slides & Videos)</span>
         </button>
 
         <button
@@ -640,74 +825,379 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
 
                   {/* Form Fields Scrollable Area */}
                   <div className="flex-1 overflow-y-auto p-6 space-y-8 max-w-5xl">
-                    {/* SECTION 1: YOUTUBE VIDEO INTEGRATION */}
-                    <div className="p-5 rounded-2xl bg-slate-900/70 border border-red-500/30 space-y-4 shadow-xl">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2">
-                          <span className="w-7 h-7 rounded-lg bg-red-600/20 border border-red-500/40 flex items-center justify-center text-red-400">
-                            <Film className="w-4 h-4" />
-                          </span>
-                          <div>
-                            <h3 className="text-sm font-bold text-white flex items-center space-x-2">
-                              <span>Course Video Lecture (YouTube Integration)</span>
-                              <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-red-500/10 text-red-400 border border-red-500/20">
-                                YouTube Player
+                    {/* SECTION 1: MULTI-MODAL LECTURE MEDIA SLOT */}
+                    {(() => {
+                      const activeSlot = resolveMediaSlot(formData.media, formData.videoUrl);
+                      const currentType = activeSlot.type;
+                      const activeMedia = activeSlot.media;
+                      const isGoogleSlides = activeMedia.slidesSourceType === 'google_slides' || (!activeMedia.slidesSourceType && !!activeMedia.slidesUrl);
+
+                      return (
+                        <div className="p-5 rounded-2xl bg-slate-900/80 border border-amber-500/30 space-y-5 shadow-2xl">
+                          {/* Header with Mode Selector */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                            <div className="flex items-center space-x-2.5">
+                              <span className="w-8 h-8 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                                <Presentation className="w-4 h-4" />
                               </span>
-                            </h3>
-                            <p className="text-[11px] text-slate-400">
-                              Record a walkthrough for this topic, upload to YouTube (Public or Unlisted), and paste the link below.
-                            </p>
+                              <div>
+                                <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                                  <span>Lecture Media Slot</span>
+                                  <span className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase ${
+                                    currentType === 'slides' 
+                                      ? 'bg-amber-500/10 text-amber-300 border border-amber-500/30'
+                                      : currentType === 'video'
+                                      ? 'bg-red-500/10 text-red-300 border border-red-500/30'
+                                      : 'bg-slate-800 text-slate-400'
+                                  }`}>
+                                    {currentType === 'slides' ? 'Slides Mode' : currentType === 'video' ? 'Video Mode' : 'Text-Only Mode'}
+                                  </span>
+                                </h3>
+                                <p className="text-[11px] text-slate-400">
+                                  Choose how learners engage with this topic: Interactive Slide Presentation (PPT / Google Slides), Video Walkthrough, or Pure Reading.
+                                </p>
+                              </div>
+                            </div>
+
+                            {/* Multi-modal 3-Way Segmented Control */}
+                            <div className="flex items-center rounded-xl bg-slate-950 p-1 border border-slate-800 shrink-0">
+                              <button
+                                type="button"
+                                onClick={() => handleSetMediaType('slides')}
+                                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                                  currentType === 'slides'
+                                    ? 'bg-amber-500 text-slate-950 shadow-md'
+                                    : 'text-slate-400 hover:text-white'
+                                }`}
+                              >
+                                <Presentation className="w-3.5 h-3.5" />
+                                <span>Slides Deck</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => handleSetMediaType('video')}
+                                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                                  currentType === 'video'
+                                    ? 'bg-red-600 text-white shadow-md'
+                                    : 'text-slate-400 hover:text-white'
+                                }`}
+                              >
+                                <Film className="w-3.5 h-3.5" />
+                                <span>Video</span>
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={() => handleSetMediaType('none')}
+                                className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                                  currentType === 'none'
+                                    ? 'bg-slate-800 text-white'
+                                    : 'text-slate-400 hover:text-white'
+                                }`}
+                              >
+                                <span>None</span>
+                              </button>
+                            </div>
                           </div>
-                        </div>
 
-                        {formData.videoUrl && isValidYoutubeUrl(formData.videoUrl) && (
-                          <span className="text-xs text-emerald-400 font-semibold flex items-center space-x-1">
-                            <CheckCircle2 className="w-3.5 h-3.5" />
-                            <span>Valid YouTube Stream</span>
-                          </span>
-                        )}
-                      </div>
+                          {/* SUB-SECTION A: SLIDES DECK CONFIGURATION */}
+                          {currentType === 'slides' && (
+                            <div className="space-y-4 pt-1 border-t border-slate-800/80">
+                              {/* Slide Source Type Pills */}
+                              <div className="flex flex-wrap items-center gap-2">
+                                <span className="text-xs font-semibold text-slate-400 mr-1">Source Format:</span>
+                                <button
+                                  type="button"
+                                  onClick={() => handleSetSlidesSourceType('google_slides')}
+                                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
+                                    isGoogleSlides 
+                                      ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40' 
+                                      : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-white'
+                                  }`}
+                                >
+                                  Google Slides (Cloud Embed)
+                                </button>
 
-                      <div className="space-y-2">
-                        <label className="block text-xs font-semibold text-slate-300">
-                          YouTube Video URL or Video ID
-                        </label>
-                        <div className="flex items-center space-x-2">
-                          <input
-                            type="text"
-                            value={formData.videoUrl || ''}
-                            onChange={e => setFormData({ ...formData, videoUrl: e.target.value })}
-                            placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or youtu.be/VIDEO_ID"
-                            className="flex-1 bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-red-500 font-mono"
-                          />
-                          {formData.videoUrl && (
-                            <button
-                              onClick={() => setFormData({ ...formData, videoUrl: '' })}
-                              className="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white text-xs"
-                            >
-                              Clear
-                            </button>
+                                <button
+                                  type="button"
+                                  onClick={() => handleSetSlidesSourceType('pdf_upload')}
+                                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
+                                    activeMedia.slidesSourceType === 'pdf_upload'
+                                      ? 'bg-indigo-500/20 text-indigo-300 border border-indigo-500/40'
+                                      : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-white'
+                                  }`}
+                                >
+                                  Upload PDF / PPT Deck
+                                </button>
+
+                                <button
+                                  type="button"
+                                  onClick={() => handleSetSlidesSourceType('pdf_url')}
+                                  className={`px-2.5 py-1 rounded-lg text-xs font-semibold transition ${
+                                    activeMedia.slidesSourceType === 'pdf_url'
+                                      ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40'
+                                      : 'bg-slate-950 text-slate-400 border border-slate-800 hover:text-white'
+                                  }`}
+                                >
+                                  External PDF Link
+                                </button>
+                              </div>
+
+                              {/* Google Slides Input */}
+                              {isGoogleSlides && (
+                                <div className="space-y-2">
+                                  <div className="flex items-center justify-between">
+                                    <label className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
+                                      <span>Google Slides Share / Embed Link</span>
+                                      {isValidGoogleSlidesUrl(activeMedia.slidesUrl) && (
+                                        <span className="text-[10px] text-emerald-400 font-bold flex items-center space-x-1 ml-2">
+                                          <CheckCircle2 className="w-3 h-3" />
+                                          <span>Valid Presentation Link</span>
+                                        </span>
+                                      )}
+                                    </label>
+
+                                    <div className="flex items-center space-x-2">
+                                      <button
+                                        type="button"
+                                        onClick={() => handleInsertDemoSlideDeck(0)}
+                                        className="text-[11px] text-amber-400 hover:text-amber-300 transition"
+                                      >
+                                        Try Sample JS Deck
+                                      </button>
+                                      <span className="text-slate-600">•</span>
+                                      <button
+                                        type="button"
+                                        onClick={() => handleInsertDemoSlideDeck(1)}
+                                        className="text-[11px] text-amber-400 hover:text-amber-300 transition"
+                                      >
+                                        Try Sample SQL Deck
+                                      </button>
+                                    </div>
+                                  </div>
+
+                                  <div className="flex items-center space-x-2">
+                                    <input
+                                      type="text"
+                                      value={activeMedia.slidesRawInput || activeMedia.slidesUrl || ''}
+                                      onChange={e => handleGoogleSlidesUrlChange(e.target.value)}
+                                      placeholder="Paste Google Slides share link, publish-to-web URL, or <iframe> snippet..."
+                                      className="flex-1 bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-amber-500 font-mono"
+                                    />
+                                    {(activeMedia.slidesUrl || activeMedia.slidesRawInput) && (
+                                      <button
+                                        type="button"
+                                        onClick={() => handleGoogleSlidesUrlChange('')}
+                                        className="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white text-xs"
+                                      >
+                                        Clear
+                                      </button>
+                                    )}
+                                  </div>
+
+                                  <p className="text-[11px] text-slate-400">
+                                    Tip: In Google Slides, click <strong className="text-slate-300">File ➔ Share ➔ Publish to web</strong>, then copy the link or embed snippet. DevForge automatically formats it into a presentation player.
+                                  </p>
+                                </div>
+                              )}
+
+                              {/* Upload Local Slide Deck (PDF/PPT) */}
+                              {activeMedia.slidesSourceType === 'pdf_upload' && (
+                                <div className="space-y-3">
+                                  <input
+                                    type="file"
+                                    ref={slideFileInputRef}
+                                    accept=".pdf,.pptx,.ppt,application/pdf,application/vnd.openxmlformats-officedocument.presentationml.presentation"
+                                    onChange={handleSlideFileUpload}
+                                    className="hidden"
+                                  />
+
+                                  {activeMedia.slidesFileBlobId ? (
+                                    <div className="p-4 rounded-xl bg-slate-950 border border-indigo-500/30 flex items-center justify-between">
+                                      <div className="flex items-center space-x-3">
+                                        <div className="w-10 h-10 rounded-lg bg-indigo-500/20 text-indigo-400 flex items-center justify-center">
+                                          <Presentation className="w-5 h-5" />
+                                        </div>
+                                        <div>
+                                          <h4 className="text-xs font-bold text-white">
+                                            {activeMedia.slidesFileName || 'Attached Slide Deck'}
+                                          </h4>
+                                          <p className="text-[11px] text-slate-400">
+                                            Stored locally in browser media vault • {formatFileSize(activeMedia.slidesFileSize)}
+                                          </p>
+                                        </div>
+                                      </div>
+
+                                      <div className="flex items-center space-x-2">
+                                        <button
+                                          type="button"
+                                          onClick={() => slideFileInputRef.current?.click()}
+                                          disabled={isUploadingSlide}
+                                          className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-xs text-white font-semibold transition"
+                                        >
+                                          Replace Deck
+                                        </button>
+                                        <button
+                                          type="button"
+                                          onClick={handleRemoveSlideFile}
+                                          className="p-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 transition"
+                                          title="Remove file"
+                                        >
+                                          <Trash2 className="w-4 h-4" />
+                                        </button>
+                                      </div>
+                                    </div>
+                                  ) : (
+                                    <div
+                                      onClick={() => slideFileInputRef.current?.click()}
+                                      className="p-6 rounded-xl bg-slate-950/60 border-2 border-dashed border-slate-800 hover:border-indigo-500/50 cursor-pointer text-center space-y-2 transition group"
+                                    >
+                                      <div className="w-10 h-10 rounded-full bg-slate-900 mx-auto flex items-center justify-center text-slate-400 group-hover:text-indigo-400 transition">
+                                        <FileUp className="w-5 h-5" />
+                                      </div>
+                                      <div>
+                                        <p className="text-xs font-bold text-white">
+                                          {isUploadingSlide ? 'Storing slide presentation...' : 'Click or drop PDF / PPT slide deck here'}
+                                        </p>
+                                        <p className="text-[11px] text-slate-500 mt-0.5">
+                                          Supported formats: .pdf (recommended for instant viewing), .pptx, .ppt up to 50MB.
+                                        </p>
+                                      </div>
+                                    </div>
+                                  )}
+                                </div>
+                              )}
+
+                              {/* External PDF Link */}
+                              {activeMedia.slidesSourceType === 'pdf_url' && (
+                                <div className="space-y-2">
+                                  <label className="text-xs font-semibold text-slate-300">
+                                    Direct PDF Presentation Link
+                                  </label>
+                                  <input
+                                    type="url"
+                                    value={activeMedia.slidesUrl || ''}
+                                    onChange={e => setFormData({
+                                      ...formData,
+                                      media: {
+                                        ...activeMedia,
+                                        type: 'slides',
+                                        slidesSourceType: 'pdf_url',
+                                        slidesUrl: e.target.value.trim()
+                                      }
+                                    })}
+                                    placeholder="https://example.com/presentations/javascript-lecture.pdf"
+                                    className="w-full bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono"
+                                  />
+                                </div>
+                              )}
+
+                              {/* Live Slide Preview */}
+                              {(activeMedia.slidesUrl || activeMedia.slidesFileBlobId) && (
+                                <div className="pt-2">
+                                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                                    Live Slide Deck Player Preview
+                                  </span>
+                                  <LectureMediaViewer
+                                    media={activeMedia}
+                                    lessonTitle={`${formData.title} Slide Preview`}
+                                    className="max-w-3xl"
+                                  />
+                                </div>
+                              )}
+                            </div>
+                          )}
+
+                          {/* SUB-SECTION B: YOUTUBE VIDEO CONFIGURATION */}
+                          {currentType === 'video' && (
+                            <div className="space-y-3 pt-1 border-t border-slate-800/80">
+                              <div className="flex items-center justify-between">
+                                <label className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
+                                  <span>YouTube Video Watch URL or Video ID</span>
+                                  {formData.videoUrl && isValidYoutubeUrl(formData.videoUrl) && (
+                                    <span className="text-[10px] text-emerald-400 font-bold flex items-center space-x-1 ml-2">
+                                      <CheckCircle2 className="w-3 h-3" />
+                                      <span>Valid YouTube Stream</span>
+                                    </span>
+                                  )}
+                                </label>
+
+                                <button
+                                  type="button"
+                                  onClick={handleInsertDemoVideo}
+                                  className="text-[11px] text-red-400 hover:text-red-300 transition"
+                                >
+                                  Insert Demo Video
+                                </button>
+                              </div>
+
+                              <div className="flex items-center space-x-2">
+                                <input
+                                  type="text"
+                                  value={formData.videoUrl || activeMedia.videoUrl || ''}
+                                  onChange={e => {
+                                    const val = e.target.value;
+                                    setFormData({
+                                      ...formData,
+                                      videoUrl: val,
+                                      media: {
+                                        type: 'video',
+                                        videoUrl: val,
+                                        videoTitle: `${formData.title} - Video Lecture`
+                                      }
+                                    });
+                                  }}
+                                  placeholder="e.g. https://www.youtube.com/watch?v=PkZNo7MFNFg or youtu.be/VIDEO_ID"
+                                  className="flex-1 bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-red-500 font-mono"
+                                />
+                                {(formData.videoUrl || activeMedia.videoUrl) && (
+                                  <button
+                                    type="button"
+                                    onClick={() => {
+                                      setFormData({
+                                        ...formData,
+                                        videoUrl: '',
+                                        media: { type: 'video', videoUrl: '' }
+                                      });
+                                    }}
+                                    className="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white text-xs"
+                                  >
+                                    Clear
+                                  </button>
+                                )}
+                              </div>
+
+                              {/* Live Video Preview in Editor */}
+                              {(formData.videoUrl || activeMedia.videoUrl) && (
+                                <div className="pt-2">
+                                  <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+                                    Live Stream Player Preview
+                                  </span>
+                                  <YouTubePlayer
+                                    url={formData.videoUrl || activeMedia.videoUrl}
+                                    title={`${formData.title} Lecture Preview`}
+                                    className="max-w-2xl"
+                                  />
+                                </div>
+                              )}
+                            </div>
+                          )}
+
+                          {/* SUB-SECTION C: NONE (TEXT ONLY) */}
+                          {currentType === 'none' && (
+                            <div className="p-4 rounded-xl bg-slate-950/60 border border-slate-800/80 text-center space-y-1">
+                              <p className="text-xs font-semibold text-slate-300">
+                                📖 Pure Interactive Code & Text Lesson
+                              </p>
+                              <p className="text-[11px] text-slate-400 max-w-md mx-auto">
+                                No slides or video lecture will be shown. Learners will focus 100% on reading the concept breakdown, worked examples, and executing their coding mission.
+                              </p>
+                            </div>
                           )}
                         </div>
-                        <p className="text-[11px] text-slate-500">
-                          Supports full YouTube URLs, short <code className="text-cyan-300">youtu.be</code> links, YouTube Shorts, or raw 11-character video IDs.
-                        </p>
-                      </div>
-
-                      {/* Live Video Preview in Editor */}
-                      {formData.videoUrl && (
-                        <div className="pt-2">
-                          <span className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
-                            Live Stream Player Preview
-                          </span>
-                          <YouTubePlayer
-                            url={formData.videoUrl}
-                            title={`${formData.title} Lecture Preview`}
-                            className="max-w-2xl"
-                          />
-                        </div>
-                      )}
-                    </div>
+                      );
+                    })()}
 
                     {/* SECTION 2: CORE METADATA */}
                     <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
@@ -1143,110 +1633,314 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         )}
 
         {/* ================================================================= */}
-        {/* TAB 2: VIDEO STUDIO & YOUTUBE HUB */}
+        {/* TAB 2: CURRICULUM MEDIA STUDIO (SLIDES & VIDEO HUB) */}
         {/* ================================================================= */}
         {activeTab === 'video_studio' && (
           <div className="h-full overflow-y-auto p-6 space-y-6 max-w-6xl mx-auto">
-            {/* YouTube Studio Guide Banner */}
-            <div className="p-6 rounded-2xl bg-gradient-to-r from-red-950/40 via-slate-900 to-slate-900 border border-red-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
+            {/* Media Studio Guide & Launchpad Banner */}
+            <div className="p-6 rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-900 border border-amber-500/30 flex flex-col md:flex-row md:items-center justify-between gap-4 shadow-xl">
               <div className="space-y-1">
                 <div className="flex items-center space-x-2">
-                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-red-600 text-white">
-                    YouTube Studio Guide
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500 text-slate-950">
+                    Media Studio Hub
                   </span>
-                  <span className="text-xs text-slate-400">Stream Courses Seamlessly</span>
+                  <span className="text-xs text-slate-400">Multi-Modal Lecture Decks</span>
                 </div>
-                <h2 className="text-xl font-bold text-white">Create & Publish Videos to Courses</h2>
+                <h2 className="text-xl font-bold text-white">Attach Slide Decks (PPT/Google Slides) or Video Walkthroughs</h2>
                 <p className="text-xs text-slate-300 max-w-2xl leading-relaxed">
-                  Record short 2-5 minute focused concept breakdowns. Upload to your YouTube channel as <strong>Unlisted</strong> or <strong>Public</strong>, then paste the link directly into the course topics below. DevForge automatically embeds and plays them inline without ads or external interruptions.
+                  Power your lessons with visual learning. Embed <strong>Google Slides</strong> presentations, upload <strong>PDF slide decks</strong>, or link <strong>YouTube walkthroughs</strong>. Learners can click through slide decks at their own pace or stream video tutorials inline.
                 </p>
               </div>
 
-              <a
-                href="https://studio.youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center space-x-2 transition shadow-lg shadow-red-600/30 shrink-0"
-              >
-                <span>Open YouTube Studio</span>
-                <ExternalLink className="w-3.5 h-3.5" />
-              </a>
+              <div className="flex items-center space-x-2.5 shrink-0">
+                <a
+                  href="https://docs.google.com/presentation/u/0/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 text-slate-950 text-xs font-bold flex items-center space-x-1.5 transition shadow-lg shadow-amber-500/20"
+                >
+                  <Presentation className="w-3.5 h-3.5" />
+                  <span>Google Slides</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+
+                <a
+                  href="https://studio.youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="px-3.5 py-2.5 rounded-xl bg-red-600 hover:bg-red-500 text-white text-xs font-bold flex items-center space-x-1.5 transition shadow-lg shadow-red-600/20"
+                >
+                  <Film className="w-3.5 h-3.5" />
+                  <span>YouTube Studio</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </div>
             </div>
 
-            {/* Quick Video Linker Table */}
+            {/* Quick Media Linker & Curriculum Overview */}
             <div className="rounded-2xl bg-slate-900/60 border border-slate-800 p-5 space-y-4 shadow-xl">
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div>
-                  <h3 className="text-base font-bold text-white">Quick Video Linker</h3>
-                  <p className="text-xs text-slate-400">Paste YouTube URLs directly across topics</p>
-                </div>
-
-                <div className="flex items-center space-x-2">
+              {/* Toolbar: Track Selector & Search / Filter */}
+              <div className="flex flex-col md:flex-row md:items-center justify-between gap-3">
+                <div className="flex items-center space-x-3">
                   <select
                     value={selectedTrackId}
                     onChange={e => setSelectedTrackId(e.target.value)}
-                    className="bg-slate-950 text-white text-xs font-semibold rounded-xl px-3 py-2 border border-slate-800"
+                    className="bg-slate-950 text-white text-xs font-semibold rounded-xl px-3.5 py-2 border border-slate-800 focus:outline-none focus:border-amber-500"
                   >
                     {tracks.map(t => (
                       <option key={t.id} value={t.id}>
-                        {t.title}
+                        {t.title} ({t.lessons.length} topics)
                       </option>
                     ))}
                   </select>
+
+                  <div className="relative">
+                    <Search className="w-3.5 h-3.5 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+                    <input
+                      type="text"
+                      value={mediaStudioSearch}
+                      onChange={e => setMediaStudioSearch(e.target.value)}
+                      placeholder="Search topics by title..."
+                      className="bg-slate-950 text-white text-xs rounded-xl pl-9 pr-3 py-2 border border-slate-800 focus:outline-none focus:border-amber-500 w-48 sm:w-64"
+                    />
+                  </div>
+                </div>
+
+                {/* Filter Pills */}
+                <div className="flex items-center rounded-xl bg-slate-950 p-1 border border-slate-800 text-xs">
+                  <button
+                    onClick={() => setMediaStudioFilter('all')}
+                    className={`px-2.5 py-1 rounded-lg font-semibold transition ${
+                      mediaStudioFilter === 'all' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    All ({currentTrack.lessons.length})
+                  </button>
+
+                  <button
+                    onClick={() => setMediaStudioFilter('slides')}
+                    className={`px-2.5 py-1 rounded-lg font-semibold flex items-center space-x-1 transition ${
+                      mediaStudioFilter === 'slides' ? 'bg-amber-500/20 text-amber-300' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    <Presentation className="w-3 h-3 text-amber-400" />
+                    <span>Slides</span>
+                  </button>
+
+                  <button
+                    onClick={() => setMediaStudioFilter('video')}
+                    className={`px-2.5 py-1 rounded-lg font-semibold flex items-center space-x-1 transition ${
+                      mediaStudioFilter === 'video' ? 'bg-red-500/20 text-red-300' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    <Film className="w-3 h-3 text-red-400" />
+                    <span>Videos</span>
+                  </button>
+
+                  <button
+                    onClick={() => setMediaStudioFilter('none')}
+                    className={`px-2.5 py-1 rounded-lg font-semibold transition ${
+                      mediaStudioFilter === 'none' ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
+                    }`}
+                  >
+                    Text Only
+                  </button>
                 </div>
               </div>
 
-              <div className="space-y-2 max-h-[500px] overflow-y-auto pr-1">
-                {currentTrack.lessons.slice(0, 30).map(lesson => {
-                  const hasVideo = !!lesson.videoUrl;
+              {/* Topics List with Interactive Media Slot Control */}
+              <div className="space-y-2.5 max-h-[600px] overflow-y-auto pr-1">
+                {currentTrack.lessons
+                  .filter(lesson => {
+                    const slot = resolveMediaSlot(lesson.media, lesson.videoUrl);
+                    if (mediaStudioFilter === 'slides' && slot.type !== 'slides') return false;
+                    if (mediaStudioFilter === 'video' && slot.type !== 'video') return false;
+                    if (mediaStudioFilter === 'none' && slot.type !== 'none') return false;
+                    if (mediaStudioSearch.trim()) {
+                      const q = mediaStudioSearch.toLowerCase();
+                      return lesson.title.toLowerCase().includes(q) || lesson.category.toLowerCase().includes(q);
+                    }
+                    return true;
+                  })
+                  .map(lesson => {
+                    const slot = resolveMediaSlot(lesson.media, lesson.videoUrl);
+                    const isSlides = slot.type === 'slides';
+                    const isVideo = slot.type === 'video';
 
-                  return (
-                    <div
-                      key={lesson.id}
-                      className="p-3 rounded-xl bg-slate-950/80 border border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-3"
-                    >
-                      <div className="min-w-0 flex-1">
-                        <div className="flex items-center space-x-2">
-                          <span className="text-[10px] font-mono text-slate-400 bg-slate-900 px-1.5 py-0.5 rounded">
-                            T{lesson.tier}
-                          </span>
-                          <h4 className="text-xs font-semibold text-white truncate">
-                            {lesson.title}
-                          </h4>
+                    return (
+                      <div
+                        key={lesson.id}
+                        className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800/80 hover:border-slate-700/80 transition flex flex-col lg:flex-row lg:items-center justify-between gap-3"
+                      >
+                        {/* Left: Topic Info */}
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center space-x-2">
+                            <span className="text-[10px] font-mono text-slate-400 bg-slate-900 px-1.5 py-0.5 rounded border border-slate-800">
+                              T{lesson.tier}
+                            </span>
+                            <h4 className="text-xs font-bold text-white truncate max-w-sm sm:max-w-md">
+                              {lesson.title}
+                            </h4>
+
+                            <span className={`px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase ${
+                              isSlides 
+                                ? 'bg-amber-500/10 text-amber-300 border border-amber-500/20' 
+                                : isVideo 
+                                ? 'bg-red-500/10 text-red-300 border border-red-500/20' 
+                                : 'bg-slate-900 text-slate-500 border border-slate-800'
+                            }`}>
+                              {isSlides ? 'Slides Attached' : isVideo ? 'Video Attached' : 'Text Only'}
+                            </span>
+                          </div>
+                          <p className="text-[10px] text-slate-400 mt-0.5">{lesson.category} • {lesson.description}</p>
                         </div>
-                        <p className="text-[10px] text-slate-400 mt-0.5">{lesson.category}</p>
-                      </div>
 
-                      <div className="flex items-center space-x-2 w-full md:w-96">
-                        <input
-                          type="text"
-                          defaultValue={lesson.videoUrl || ''}
-                          onBlur={e => {
-                            const val = e.target.value.trim();
-                            if (val !== (lesson.videoUrl || '')) {
-                              CourseStorageService.saveLesson(currentTrack.id, {
-                                ...lesson,
-                                videoUrl: val || undefined
-                              });
-                              showToast(`Video URL updated for "${lesson.title}"`, 'success');
-                            }
-                          }}
-                          placeholder="Paste YouTube link here..."
-                          className="flex-1 bg-slate-900 text-xs text-white rounded-lg px-3 py-1.5 border border-slate-800 focus:outline-none focus:border-red-500 font-mono"
-                        />
-                        {hasVideo && (
+                        {/* Right: Quick Media Linker & Actions */}
+                        <div className="flex items-center space-x-2 w-full lg:w-auto shrink-0">
+                          {/* Segmented Mode Picker */}
+                          <div className="flex items-center rounded-lg bg-slate-900 p-0.5 border border-slate-800 text-[11px]">
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated: Lesson = {
+                                  ...lesson,
+                                  media: {
+                                    type: 'slides',
+                                    slidesSourceType: 'google_slides',
+                                    slidesUrl: SAMPLE_SLIDE_DECKS[0].url,
+                                    slidesTitle: `${lesson.title} - Slide Deck`
+                                  },
+                                  videoUrl: undefined
+                                };
+                                CourseStorageService.saveLesson(currentTrack.id, updated);
+                                showToast(`Attached Google Slides deck to "${lesson.title}"`, 'success');
+                              }}
+                              className={`px-2 py-1 rounded font-semibold transition ${
+                                isSlides ? 'bg-amber-500 text-slate-950' : 'text-slate-400 hover:text-white'
+                              }`}
+                              title="Attach Slides Deck"
+                            >
+                              <Presentation className="w-3 h-3 inline mr-1" />
+                              Slides
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated: Lesson = {
+                                  ...lesson,
+                                  media: {
+                                    type: 'video',
+                                    videoUrl: 'https://www.youtube.com/watch?v=PkZNo7MFNFg',
+                                    videoTitle: `${lesson.title} - Video Lecture`
+                                  },
+                                  videoUrl: 'https://www.youtube.com/watch?v=PkZNo7MFNFg'
+                                };
+                                CourseStorageService.saveLesson(currentTrack.id, updated);
+                                showToast(`Attached Video walkthrough to "${lesson.title}"`, 'success');
+                              }}
+                              className={`px-2 py-1 rounded font-semibold transition ${
+                                isVideo ? 'bg-red-600 text-white' : 'text-slate-400 hover:text-white'
+                              }`}
+                              title="Attach YouTube Video"
+                            >
+                              <Film className="w-3 h-3 inline mr-1" />
+                              Video
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() => {
+                                const updated: Lesson = {
+                                  ...lesson,
+                                  media: { type: 'none' },
+                                  videoUrl: undefined
+                                };
+                                CourseStorageService.saveLesson(currentTrack.id, updated);
+                                showToast(`Cleared media from "${lesson.title}"`, 'info');
+                              }}
+                              className={`px-2 py-1 rounded font-semibold transition ${
+                                !isSlides && !isVideo ? 'bg-slate-800 text-white' : 'text-slate-400 hover:text-white'
+                              }`}
+                              title="Set to Text-Only (No media)"
+                            >
+                              None
+                            </button>
+                          </div>
+
+                          {/* Quick URL Input for active media */}
+                          {isSlides && (
+                            <input
+                              type="text"
+                              defaultValue={lesson.media?.slidesRawInput || lesson.media?.slidesUrl || ''}
+                              onBlur={e => {
+                                const val = e.target.value.trim();
+                                const embed = extractGoogleSlidesEmbedUrl(val);
+                                const updated: Lesson = {
+                                  ...lesson,
+                                  media: {
+                                    type: 'slides',
+                                    slidesSourceType: 'google_slides',
+                                    slidesRawInput: val,
+                                    slidesUrl: embed || val,
+                                    slidesTitle: `${lesson.title} - Slide Deck`
+                                  }
+                                };
+                                CourseStorageService.saveLesson(currentTrack.id, updated);
+                                showToast(`Updated slide deck for "${lesson.title}"`, 'success');
+                              }}
+                              placeholder="Google Slides share/embed link..."
+                              className="w-48 sm:w-64 bg-slate-900 text-xs text-amber-300 rounded-lg px-2.5 py-1.5 border border-slate-800 focus:outline-none focus:border-amber-500 font-mono"
+                            />
+                          )}
+
+                          {isVideo && (
+                            <input
+                              type="text"
+                              defaultValue={lesson.media?.videoUrl || lesson.videoUrl || ''}
+                              onBlur={e => {
+                                const val = e.target.value.trim();
+                                const updated: Lesson = {
+                                  ...lesson,
+                                  media: {
+                                    type: 'video',
+                                    videoUrl: val,
+                                    videoTitle: `${lesson.title} - Video Lecture`
+                                  },
+                                  videoUrl: val || undefined
+                                };
+                                CourseStorageService.saveLesson(currentTrack.id, updated);
+                                showToast(`Updated video URL for "${lesson.title}"`, 'success');
+                              }}
+                              placeholder="YouTube URL or video ID..."
+                              className="w-48 sm:w-64 bg-slate-900 text-xs text-red-300 rounded-lg px-2.5 py-1.5 border border-slate-800 focus:outline-none focus:border-red-500 font-mono"
+                            />
+                          )}
+
+                          {/* Preview in Lesson Workspace */}
                           <button
                             onClick={() => onNavigateLesson(currentTrack.slug, lesson.id)}
-                            className="p-1.5 rounded-lg bg-red-600/20 text-red-400 hover:bg-red-600/30 text-xs"
-                            title="Play in lesson view"
+                            className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition"
+                            title="Open in Lesson Workspace to preview"
                           >
-                            <Play className="w-3.5 h-3.5 fill-red-400" />
+                            <ExternalLink className="w-3.5 h-3.5" />
                           </button>
-                        )}
+
+                          {/* Edit Full Topic */}
+                          <button
+                            onClick={() => {
+                              setSelectedLessonId(lesson.id);
+                              setActiveTab('editor');
+                            }}
+                            className="p-1.5 rounded-lg bg-indigo-600/20 text-indigo-300 hover:bg-indigo-600/30 transition text-xs font-semibold"
+                            title="Open in Full Curriculum Editor"
+                          >
+                            <BookOpen className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })}
               </div>
             </div>
           </div>

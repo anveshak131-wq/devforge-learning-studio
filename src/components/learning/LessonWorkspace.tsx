@@ -30,6 +30,7 @@ import { TestRunner } from '../../services/testRunner';
 import { SqlSession, TableSchema } from '../../services/sqlEngine';
 import { ProgressStorage } from '../../services/progressStorage';
 import { YouTubePlayer } from '../video/YouTubePlayer';
+import { LectureMediaViewer } from '../media/LectureMediaViewer';
 import { AuthService } from '../../services/authService';
 
 interface LessonWorkspaceProps {
@@ -498,14 +499,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             <p className="text-xs text-slate-300 leading-relaxed">{lesson.description}</p>
           </div>
 
-          {/* YouTube Video Player (Embedded course lecture if added by admin) */}
-          {lesson.videoUrl && (
-            <YouTubePlayer
-              url={lesson.videoUrl}
-              title={`${lesson.title} - Video Lecture`}
-              className="mt-2"
-            />
-          )}
+          {/* Lecture Media Slot (Interactive Slide Deck or Video Walkthrough) */}
+          <LectureMediaViewer
+            media={lesson.media}
+            legacyVideoUrl={lesson.videoUrl}
+            lessonTitle={lesson.title}
+            className="mt-2"
+          />
 
           {/* Real-World Analogy */}
           {lesson.analogy && (

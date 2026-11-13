@@ -32,6 +32,25 @@ export interface WorkedExampleItem {
   expectedOutput: string;
 }
 
+export type LectureMediaType = 'none' | 'slides' | 'video';
+
+export type SlidesSourceType = 'google_slides' | 'pdf_upload' | 'pdf_url' | 'office_pptx';
+
+export interface LessonMedia {
+  type: LectureMediaType; // 'none' | 'slides' | 'video'
+  // Slide presentation properties
+  slidesSourceType?: SlidesSourceType;
+  slidesUrl?: string; // Google Slides embed URL or public PDF/PPT URL
+  slidesRawInput?: string; // Original URL or iframe pasted by admin
+  slidesTitle?: string;
+  slidesFileBlobId?: string; // IndexedDB storage key for uploaded PDF / slide files
+  slidesFileName?: string;
+  slidesFileSize?: number;
+  // Video properties
+  videoUrl?: string; // YouTube watch URL or ID
+  videoTitle?: string;
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -47,7 +66,8 @@ export interface Lesson {
   concepts: string[];
   explanationMarkdown: string;
   analogy?: string; // Real-world intuitive analogy for beginners
-  videoUrl?: string; // YouTube or video lecture URL added by admin
+  media?: LessonMedia; // Multi-modal lecture media slot (slides deck, video, or none)
+  videoUrl?: string; // Legacy YouTube or video lecture URL (for backward compatibility)
   workedExample?: WorkedExampleItem;
   additionalExamples?: WorkedExampleItem[]; // Extra worked examples added by admin
   commonMistakes?: string[];

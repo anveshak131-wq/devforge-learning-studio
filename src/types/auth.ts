@@ -28,6 +28,8 @@ export interface AdminAuditLog {
     | 'update_lesson'
     | 'delete_lesson'
     | 'update_video'
+    | 'update_slides'
+    | 'update_media'
     | 'add_example'
     | 'reset_lesson'
     | 'reset_track'
