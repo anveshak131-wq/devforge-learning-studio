@@ -22,17 +22,19 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Greeting function",
       "code": "def cheer():\n    print(\"Hooray!\")\ncheer()",
-      "explanation": "\u2022 Calls cheer() to execute the body.",
+      "explanation": "• Calls cheer() to execute the body.",
       "expectedOutput": "Hooray!"
     },
     "exerciseSteps": [
       "Define `def welcome(): print(\"Welcome!\")`.",
       "Call `welcome()`."
     ],
-    "initialCode": "def welcome():\n    print(\"Welcome!\")\nwelcome()\n",
+    "initialCode": "# Step 1: Define 'def welcome(): print(\"Welcome!\")'\ndef welcome():\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call 'welcome()'\n# TODO: Write code below\n",
     "solutionCode": "def welcome():\n    print(\"Welcome!\")\nwelcome()\n",
     "hints": [
-      "Define with `def welcome():`"
+      "Concept: Package reusable blocks of logic into named functions using def function_name():. Think of it like: Creating a recipe card: you write down the steps once, and cook it whenever you want.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def welcome(): print(\"Welcome!\")`.\n2. Call `welcome()`.\nKey Tip: Define with `def welcome():`"
     ],
     "testCases": [
       {
@@ -63,17 +65,19 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Squaring a number",
       "code": "def print_square(n):\n    print(n * n)\nprint_square(4)",
-      "explanation": "\u2022 4 * 4 = 16.",
+      "explanation": "• 4 * 4 = 16.",
       "expectedOutput": "16"
     },
     "exerciseSteps": [
       "Define `def say_name(name): print(\"I am \" + name)`.",
       "Call `say_name(\"DevForge\")`."
     ],
-    "initialCode": "def say_name(name):\n    print(\"I am \" + name)\nsay_name(\"DevForge\")\n",
+    "initialCode": "# Step 1: Define 'def say_name(name): print(\"I am \" + name)'\ndef say_name(name):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call 'say_name(\"DevForge\")'\n# TODO: Write code below\n",
     "solutionCode": "def say_name(name):\n    print(\"I am \" + name)\nsay_name(\"DevForge\")\n",
     "hints": [
-      "Pass `\"DevForge\"` to `say_name`"
+      "Concept: Accept inputs to make functions dynamic and customizable. Think of it like: A blender: the recipe takes whatever fruit (argument) you drop in.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def say_name(name): print(\"I am \" + name)`.\n2. Call `say_name(\"DevForge\")`.\nKey Tip: Pass `\"DevForge\"` to `say_name`"
     ],
     "testCases": [
       {
@@ -104,7 +108,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Doubler function",
       "code": "def double(x):\n    return x * 2\nans = double(15)\nprint(ans)",
-      "explanation": "\u2022 Returns 30.",
+      "explanation": "• Returns 30.",
       "expectedOutput": "30"
     },
     "exerciseSteps": [
@@ -112,10 +116,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Compute `total = multiply(6, 7)`.",
       "Print `total`."
     ],
-    "initialCode": "def multiply(a, b):\n    return a * b\ntotal = multiply(6, 7)\nprint(total)\n",
+    "initialCode": "# Step 1: Define 'def multiply(a, b): return a * b'\ndef multiply(a, b):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Compute 'total = multiply(6, 7)'\n# TODO: Write code below\n\n# Step 3: Print 'total'\n# TODO: Write code below\n",
     "solutionCode": "def multiply(a, b):\n    return a * b\ntotal = multiply(6, 7)\nprint(total)\n",
     "hints": [
-      "Use `return a * b`"
+      "Concept: Send computed values back to the caller using the return keyword. Think of it like: A soda vending machine: you insert coins, and it returns a cold drink into your hands.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def multiply(a, b): return a * b`.\n2. Compute `total = multiply(6, 7)`.\n3. Print `total`.\nKey Tip: Use `return a * b`"
     ],
     "testCases": [
       {
@@ -146,7 +152,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Power with default exponent",
       "code": "def power(base, exp=2):\n    return base ** exp\nprint(power(5))",
-      "explanation": "\u2022 5^2 = 25.",
+      "explanation": "• 5^2 = 25.",
       "expectedOutput": "25"
     },
     "exerciseSteps": [
@@ -154,10 +160,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Call `msg = greet_user()`.",
       "Print `msg`."
     ],
-    "initialCode": "def greet_user(name=\"Guest\"):\n    return \"Hi, \" + name\nmsg = greet_user()\nprint(msg)\n",
+    "initialCode": "# Step 1: Define 'def greet_user(name=\"Guest\"): return \"Hi, \" + name'\ndef greet_user(name=\"Guest\"):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call 'msg = greet_user()'\n# TODO: Write code below\n\n# Step 3: Print 'msg'\n# TODO: Write code below\n",
     "solutionCode": "def greet_user(name=\"Guest\"):\n    return \"Hi, \" + name\nmsg = greet_user()\nprint(msg)\n",
     "hints": [
-      "Set default `name=\"Guest\"`"
+      "Concept: Supply fallback values that apply when arguments are omitted. Think of it like: Ordering coffee: if you don't specify whole milk vs oat milk, the cafe defaults to whole milk.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def greet_user(name=\"Guest\"): return \"Hi, \" + name`.\n2. Call `msg = greet_user()`.\n3. Print `msg`.\nKey Tip: Set default `name=\"Guest\"`"
     ],
     "testCases": [
       {
@@ -188,7 +196,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: User profile generator",
       "code": "def profile(username, role):\n    return f\"{username}:{role}\"\nprint(profile(role=\"admin\", username=\"sam\"))",
-      "explanation": "\u2022 Matches arguments by name.",
+      "explanation": "• Matches arguments by name.",
       "expectedOutput": "sam:admin"
     },
     "exerciseSteps": [
@@ -196,10 +204,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Call with keyword args: `btn = make_tag(text=\"Click\", tag=\"button\")`.",
       "Print `btn`."
     ],
-    "initialCode": "def make_tag(tag, text):\n    return f\"<{tag}>{text}</{tag}>\"\nbtn = make_tag(text=\"Click\", tag=\"button\")\nprint(btn)\n",
+    "initialCode": "# Step 1: Define 'def make_tag(tag, text): return f\"<{tag}>{text}</{tag}>\"'\ndef make_tag(tag, text):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call with keyword args: 'btn = make_tag(text=\"Click\", tag=\"button\")'\n# TODO: Write code below\n\n# Step 3: Print 'btn'\n# TODO: Write code below\n",
     "solutionCode": "def make_tag(tag, text):\n    return f\"<{tag}>{text}</{tag}>\"\nbtn = make_tag(text=\"Click\", tag=\"button\")\nprint(btn)\n",
     "hints": [
-      "Pass `text=\"Click\"` and `tag=\"button\"`"
+      "Concept: Pass arguments by explicit parameter name in any order: fn(key=val). Think of it like: Labeling shipping boxes clearly so it doesn't matter which order they get stacked into the truck.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def make_tag(tag, text): return f\"<{tag}>{text}</{tag}>\"`.\n2. Call with keyword args: `btn = make_tag(text=\"Click\", tag=\"button\")`.\n3. Print `btn`.\nKey Tip: Pass `text=\"Click\"` and `tag=\"button\"`"
     ],
     "testCases": [
       {
@@ -230,7 +240,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Reading global variable",
       "code": "multiplier = 3\ndef triple(n):\n    return n * multiplier\nprint(triple(5))",
-      "explanation": "\u2022 Reads global multiplier (3 * 5 = 15).",
+      "explanation": "• Reads global multiplier (3 * 5 = 15).",
       "expectedOutput": "15"
     },
     "exerciseSteps": [
@@ -238,10 +248,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Define `def calc(base): return base + bonus`.",
       "Assign `payout = calc(50)` and print it."
     ],
-    "initialCode": "bonus = 10\ndef calc(base):\n    return base + bonus\npayout = calc(50)\nprint(payout)\n",
+    "initialCode": "# Step 1: Create global 'bonus = 10'\n# TODO: Write code below\n\n# Step 2: Define 'def calc(base): return base + bonus'\ndef calc(base):\n    # TODO: Implement function body\n    pass\n\n# Step 3: Assign 'payout = calc(50)' and print it\n# TODO: Write code below\n",
     "solutionCode": "bonus = 10\ndef calc(base):\n    return base + bonus\npayout = calc(50)\nprint(payout)\n",
     "hints": [
-      "Add `bonus` to `base` inside calc"
+      "Concept: Understand how variables defined inside functions are isolated from the outside world. Think of it like: A private notebook inside your backpack (local) versus the whiteboard at the front of the classroom (global).",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Create global `bonus = 10`.\n2. Define `def calc(base): return base + bonus`.\n3. Assign `payout = calc(50)` and print it.\nKey Tip: Add `bonus` to `base` inside calc"
     ],
     "testCases": [
       {
@@ -272,17 +284,19 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Documented function",
       "code": "def area(w, h):\n    \"\"\"Calculates rectangle area.\"\"\"\n    return w * h\nprint(area(3, 4))",
-      "explanation": "\u2022 3 * 4 = 12.",
+      "explanation": "• 3 * 4 = 12.",
       "expectedOutput": "12"
     },
     "exerciseSteps": [
       "Define function with docstring: `def add(a, b): \"\"\"Adds numbers.\"\"\" return a + b`.",
       "Call `res = add(10, 5)` and print `res`."
     ],
-    "initialCode": "def add(a, b):\n    \"\"\"Adds numbers.\"\"\"\n    return a + b\nres = add(10, 5)\nprint(res)\n",
+    "initialCode": "# Step 1: Define function with docstring: 'def add(a, b): \"\"\"Adds numbers.\"\"\" return a + b'\ndef add(a, b):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call 'res = add(10, 5)' and print 'res'\n# TODO: Write code below\n",
     "solutionCode": "def add(a, b):\n    \"\"\"Adds numbers.\"\"\"\n    return a + b\nres = add(10, 5)\nprint(res)\n",
     "hints": [
-      "Use triple quotes for docstrings"
+      "Concept: Document your functions using triple-quoted docstrings. Think of it like: The instruction manual booklet included inside an electronics product box.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define function with docstring: `def add(a, b): \"\"\"Adds numbers.\"\"\" return a + b`.\n2. Call `res = add(10, 5)` and print `res`.\nKey Tip: Use triple quotes for docstrings"
     ],
     "testCases": [
       {
@@ -313,7 +327,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Lambda adder",
       "code": "add = lambda a, b: a + b\nprint(add(3, 4))",
-      "explanation": "\u2022 Returns 7.",
+      "explanation": "• Returns 7.",
       "expectedOutput": "7"
     },
     "exerciseSteps": [
@@ -321,10 +335,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Compute `val = square(6)`.",
       "Print `val`."
     ],
-    "initialCode": "square = lambda x: x ** 2\nval = square(6)\nprint(val)\n",
+    "initialCode": "# Step 1: Define 'square = lambda x: x ** 2'\n# TODO: Write code below\n\n# Step 2: Compute 'val = square(6)'\n# TODO: Write code below\n\n# Step 3: Print 'val'\n# TODO: Write code below\n",
     "solutionCode": "square = lambda x: x ** 2\nval = square(6)\nprint(val)\n",
     "hints": [
-      "Use `lambda x: x ** 2`"
+      "Concept: Construct small, disposable inline functions using the lambda keyword: lambda x: x * 2. Think of it like: A disposable sticky note for a quick note, rather than a bound textbook.",
+      "Syntax Blueprint: Anonymous lambda function syntax: `lambda arg1, arg2: expression`.",
+      "Step-by-Step Target:\n1. Define `square = lambda x: x ** 2`.\n2. Compute `val = square(6)`.\n3. Print `val`.\nKey Tip: Use `lambda x: x ** 2`"
     ],
     "testCases": [
       {
@@ -356,7 +372,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Coordinates",
       "code": "def get_coords():\n    return 100, 200\nx, y = get_coords()\nprint(f\"{x},{y}\")",
-      "explanation": "\u2022 Unpacks 100 into x and 200 into y.",
+      "explanation": "• Unpacks 100 into x and 200 into y.",
       "expectedOutput": "100,200"
     },
     "exerciseSteps": [
@@ -364,10 +380,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Unpack `score, rank = get_stats()`.",
       "Print `score`."
     ],
-    "initialCode": "def get_stats():\n    return 10, 20\nscore, rank = get_stats()\nprint(score)\n",
+    "initialCode": "# Step 1: Define 'def get_stats(): return 10, 20'\ndef get_stats():\n    # TODO: Implement function body\n    pass\n\n# Step 2: Unpack 'score, rank = get_stats()'\n# TODO: Write code below\n\n# Step 3: Print 'score'\n# TODO: Write code below\n",
     "solutionCode": "def get_stats():\n    return 10, 20\nscore, rank = get_stats()\nprint(score)\n",
     "hints": [
-      "Return `10, 20`"
+      "Concept: Return two or more results from a function separated by commas. Think of it like: A fast food combo meal: one order returns both a burger and fries in the same bag.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def get_stats(): return 10, 20`.\n2. Unpack `score, rank = get_stats()`.\n3. Print `score`.\nKey Tip: Return `10, 20`"
     ],
     "testCases": [
       {
@@ -398,7 +416,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Custom transformer",
       "code": "def transform(fn, x):\n    return fn(x)\nans = transform(lambda n: n * 3, 5)\nprint(ans)",
-      "explanation": "\u2022 Multiplies 5 by 3 to get 15.",
+      "explanation": "• Multiplies 5 by 3 to get 15.",
       "expectedOutput": "15"
     },
     "exerciseSteps": [
@@ -406,10 +424,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Pass a doubler: `res = run_fn(lambda x: x * 2, 8)`.",
       "Print `res`."
     ],
-    "initialCode": "def run_fn(fn, val):\n    return fn(val)\nres = run_fn(lambda x: x * 2, 8)\nprint(res)\n",
+    "initialCode": "# Step 1: Define 'def run_fn(fn, val): return fn(val)'\n# TODO: Write code below\n\n# Step 2: Pass a doubler: 'res = run_fn(lambda x: x * 2, 8)'\n# TODO: Write code below\n\n# Step 3: Print 'res'\n# TODO: Write code below\n",
     "solutionCode": "def run_fn(fn, val):\n    return fn(val)\nres = run_fn(lambda x: x * 2, 8)\nprint(res)\n",
     "hints": [
-      "Use `fn(val)` inside run_fn"
+      "Concept: Pass functions into other functions as first-class citizens. Think of it like: Handing an instruction sheet to an assistant: 'Execute this procedure on whatever package arrives.'",
+      "Syntax Blueprint: Anonymous lambda function syntax: `lambda arg1, arg2: expression`.",
+      "Step-by-Step Target:\n1. Define `def run_fn(fn, val): return fn(val)`.\n2. Pass a doubler: `res = run_fn(lambda x: x * 2, 8)`.\n3. Print `res`.\nKey Tip: Use `fn(val)` inside run_fn"
     ],
     "testCases": [
       {
@@ -441,7 +461,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Pure Area",
       "code": "def circle_area(r): return 3.14 * r * r\nprint(circle_area(2))",
-      "explanation": "\u2022 Returns 12.56 without side effects.",
+      "explanation": "• Returns 12.56 without side effects.",
       "expectedOutput": "12.56"
     },
     "exerciseSteps": [
@@ -449,10 +469,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Call `name = get_full_name(\"Guido\", \"Rossum\")`.",
       "Print `name`."
     ],
-    "initialCode": "def get_full_name(f, l):\n    return f + \" \" + l\nname = get_full_name(\"Guido\", \"Rossum\")\nprint(name)\n",
+    "initialCode": "# Step 1: Write a pure function 'def get_full_name(f, l): return f + \" \" + l'\ndef get_full_name(f, l):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call 'name = get_full_name(\"Guido\", \"Rossum\")'\n# TODO: Write code below\n\n# Step 3: Print 'name'\n# TODO: Write code below\n",
     "solutionCode": "def get_full_name(f, l):\n    return f + \" \" + l\nname = get_full_name(\"Guido\", \"Rossum\")\nprint(name)\n",
     "hints": [
-      "Return `f + \" \" + l`"
+      "Concept: Write deterministic pure functions that only depend on arguments and avoid external mutations. Think of it like: A pocket calculator: pressing 5 + 5 always outputs 10 and never changes your bank account.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Write a pure function `def get_full_name(f, l): return f + \" \" + l`.\n2. Call `name = get_full_name(\"Guido\", \"Rossum\")`.\n3. Print `name`.\nKey Tip: Return `f + \" \" + l`"
     ],
     "testCases": [
       {
@@ -484,7 +506,7 @@ export const pythonModule6Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Recursive factorial",
       "code": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)\nprint(factorial(4))",
-      "explanation": "\u2022 4 * 3 * 2 * 1 = 24.",
+      "explanation": "• 4 * 3 * 2 * 1 = 24.",
       "expectedOutput": "24"
     },
     "exerciseSteps": [
@@ -492,10 +514,12 @@ export const pythonModule6Lessons: Lesson[] = [
       "Calculate `total = sum_to_zero(3)` (3 + 2 + 1 + 0 = 6).",
       "Print `total`."
     ],
-    "initialCode": "def sum_to_zero(n):\n    if n <= 0:\n        return 0\n    return n + sum_to_zero(n - 1)\ntotal = sum_to_zero(3)\nprint(total)\n",
+    "initialCode": "# Step 1: Define 'def sum_to_zero(n): if n <= 0: return 0; return n + sum_to_zero(n - 1)'\ndef sum_to_zero(n):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Calculate 'total = sum_to_zero(3)' (3 + 2 + 1 + 0 = 6)\n# TODO: Write code below\n\n# Step 3: Print 'total'\n# TODO: Write code below\n",
     "solutionCode": "def sum_to_zero(n):\n    if n <= 0:\n        return 0\n    return n + sum_to_zero(n - 1)\ntotal = sum_to_zero(3)\nprint(total)\n",
     "hints": [
-      "Base case: `if n <= 0: return 0`"
+      "Concept: Solve problems by having a function call itself with a terminating base case. Think of it like: Russian nesting Matryoshka dolls: opening one doll reveals a smaller doll until you reach the solid baby doll at the center.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def sum_to_zero(n): if n <= 0: return 0; return n + sum_to_zero(n - 1)`.\n2. Calculate `total = sum_to_zero(3)` (3 + 2 + 1 + 0 = 6).\n3. Print `total`.\nKey Tip: Base case: `if n <= 0: return 0`"
     ],
     "testCases": [
       {

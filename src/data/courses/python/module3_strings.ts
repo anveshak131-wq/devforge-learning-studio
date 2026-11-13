@@ -22,7 +22,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Password length",
       "code": "pwd = \"secret123\"\nprint(len(pwd))",
-      "explanation": "\u2022 9 characters in length.",
+      "explanation": "• 9 characters in length.",
       "expectedOutput": "9"
     },
     "exerciseSteps": [
@@ -30,10 +30,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Calculate length: `count = len(username)`.",
       "Print `count`."
     ],
-    "initialCode": "username = \"coder101\"\ncount = len(username)\nprint(count)\n",
+    "initialCode": "# Step 1: Create variable 'username' and set it to \"coder101\"\n# TODO: Write code below\n\n# Step 2: Calculate length: 'count = len(username)'\n# TODO: Write code below\n\n# Step 3: Print 'count'\n# TODO: Write code below\n",
     "solutionCode": "username = \"coder101\"\ncount = len(username)\nprint(count)\n",
     "hints": [
-      "Use `len(username)`"
+      "Concept: Measure character counts in any string using the universal len() function. Think of it like: A Twitter character counter showing how long your tweet is.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `username = \"coder101\"`.\n2. Calculate length: `count = len(username)`.\n3. Print `count`.\nKey Tip: Use `len(username)`"
     ],
     "testCases": [
       {
@@ -64,7 +66,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Score display",
       "code": "score = 95\nmsg = f\"High Score: {score}\"\nprint(msg)",
-      "explanation": "\u2022 Injects 95 directly into msg.",
+      "explanation": "• Injects 95 directly into msg.",
       "expectedOutput": "High Score: 95"
     },
     "exerciseSteps": [
@@ -73,10 +75,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Create `receipt = f\"{item}: ${price}\"`.",
       "Print `receipt`."
     ],
-    "initialCode": "item = \"Coffee\"\nprice = 4\nreceipt = f\"{item}: ${price}\"\nprint(receipt)\n",
+    "initialCode": "# Step 1: Create variable 'item' and set it to \"Coffee\"\n# TODO: Write code below\n\n# Step 2: Create variable 'price' and set it to 4\n# TODO: Write code below\n\n# Step 3: Create variable 'receipt' and set it to f\"{item}: ${price}\"\n# TODO: Write code below\n\n# Step 4: Print 'receipt'\n# TODO: Write code below\n",
     "solutionCode": "item = \"Coffee\"\nprice = 4\nreceipt = f\"{item}: ${price}\"\nprint(receipt)\n",
     "hints": [
-      "Use `f\"{item}: ${price}\"`"
+      "Concept: Inject variables and expressions directly into text using prefixed f-strings f\"{var}\". Think of it like: A fill-in-the-blank greeting card where curly braces hold the recipient's name.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `item = \"Coffee\"`.\n2. Create `price = 4`.\n3. Create `receipt = f\"{item}: ${price}\"`.\n4. Print `receipt`.\nKey Tip: Use `f\"{item}: ${price}\"`"
     ],
     "testCases": [
       {
@@ -107,7 +111,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Loud shouting",
       "code": "shout = \"hello\".upper()\nprint(shout)",
-      "explanation": "\u2022 Converts to HELLO.",
+      "explanation": "• Converts to HELLO.",
       "expectedOutput": "HELLO"
     },
     "exerciseSteps": [
@@ -115,10 +119,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Convert to uppercase: `loud_city = raw_city.upper()`.",
       "Print `loud_city`."
     ],
-    "initialCode": "raw_city = \"London\"\nloud_city = raw_city.upper()\nprint(loud_city)\n",
+    "initialCode": "# Step 1: Create variable 'raw_city' and set it to \"London\"\n# TODO: Write code below\n\n# Step 2: Convert to uppercase: 'loud_city = raw_city.upper()'\n# TODO: Write code below\n\n# Step 3: Print 'loud_city'\n# TODO: Write code below\n",
     "solutionCode": "raw_city = \"London\"\nloud_city = raw_city.upper()\nprint(loud_city)\n",
     "hints": [
-      "Call `raw_city.upper()`"
+      "Concept: Normalize string casing for case-insensitive matching. Think of it like: Toggling Caps Lock on a keyboard.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `raw_city = \"London\"`.\n2. Convert to uppercase: `loud_city = raw_city.upper()`.\n3. Print `loud_city`.\nKey Tip: Call `raw_city.upper()`"
     ],
     "testCases": [
       {
@@ -149,7 +155,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Cleaned search query",
       "code": "query = \"  python 3  \".strip()\nprint(query)",
-      "explanation": "\u2022 Removes extra whitespace around string.",
+      "explanation": "• Removes extra whitespace around string.",
       "expectedOutput": "python 3"
     },
     "exerciseSteps": [
@@ -157,10 +163,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Clean it: `clean_input = dirty_input.strip()`.",
       "Print `clean_input`."
     ],
-    "initialCode": "dirty_input = \"   devforge   \"\nclean_input = dirty_input.strip()\nprint(clean_input)\n",
+    "initialCode": "# Step 1: Create variable 'dirty_input' and set it to \"   devforge   \"\n# TODO: Write code below\n\n# Step 2: Clean it: 'clean_input = dirty_input.strip()'\n# TODO: Write code below\n\n# Step 3: Print 'clean_input'\n# TODO: Write code below\n",
     "solutionCode": "dirty_input = \"   devforge   \"\nclean_input = dirty_input.strip()\nprint(clean_input)\n",
     "hints": [
-      "Call `.strip()` on dirty_input"
+      "Concept: Trim accidental leading and trailing whitespace from user input. Think of it like: Clipping overgrown hedges along the boundaries of a lawn.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `dirty_input = \"   devforge   \"`.\n2. Clean it: `clean_input = dirty_input.strip()`.\n3. Print `clean_input`.\nKey Tip: Call `.strip()` on dirty_input"
     ],
     "testCases": [
       {
@@ -191,7 +199,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Email validation",
       "code": "email = \"test@site.com\"\nhas_at = \"@\" in email\nprint(has_at)",
-      "explanation": "\u2022 Returns True.",
+      "explanation": "• Returns True.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -199,10 +207,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Check if `\"https\"` is in url: `is_secure = \"https\" in url`.",
       "Print `is_secure`."
     ],
-    "initialCode": "url = \"https://google.com\"\nis_secure = \"https\" in url\nprint(is_secure)\n",
+    "initialCode": "# Step 1: Create variable 'url' and set it to \"https://google.com\"\n# TODO: Write code below\n\n# Step 2: Check if '\"https\"' is in url: 'is_secure = \"https\" in url'\n# TODO: Write code below\n\n# Step 3: Print 'is_secure'\n# TODO: Write code below\n",
     "solutionCode": "url = \"https://google.com\"\nis_secure = \"https\" in url\nprint(is_secure)\n",
     "hints": [
-      "Use `\"https\" in url`"
+      "Concept: Check if a piece of text exists inside a larger string using the in keyword. Think of it like: Using Ctrl+F in a document to see if a word appears.",
+      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Step-by-Step Target:\n1. Create `url = \"https://google.com\"`.\n2. Check if `\"https\"` is in url: `is_secure = \"https\" in url`.\n3. Print `is_secure`.\nKey Tip: Use `\"https\" in url`"
     ],
     "testCases": [
       {
@@ -233,7 +243,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Fixing typo",
       "code": "msg = \"helo world\".replace(\"helo\", \"hello\")\nprint(msg)",
-      "explanation": "\u2022 Replaces helo with hello.",
+      "explanation": "• Replaces helo with hello.",
       "expectedOutput": "hello world"
     },
     "exerciseSteps": [
@@ -241,10 +251,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Replace `\"USER\"` with `\"Anvesh\"`: `personalized = template.replace(\"USER\", \"Anvesh\")`.",
       "Print `personalized`."
     ],
-    "initialCode": "template = \"Hello USER\"\npersonalized = template.replace(\"USER\", \"Anvesh\")\nprint(personalized)\n",
+    "initialCode": "# Step 1: Create variable 'template' and set it to \"Hello USER\"\n# TODO: Write code below\n\n# Step 2: Replace '\"USER\"' with '\"Anvesh\"': 'personalized = template.replace(\"USER\", \"Anvesh\")'\n# TODO: Write code below\n\n# Step 3: Print 'personalized'\n# TODO: Write code below\n",
     "solutionCode": "template = \"Hello USER\"\npersonalized = template.replace(\"USER\", \"Anvesh\")\nprint(personalized)\n",
     "hints": [
-      "Use `template.replace(\"USER\", \"Anvesh\")`"
+      "Concept: Substitute occurrences of a word with another using .replace(old, new). Think of it like: Find-and-replace in a word processor.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `template = \"Hello USER\"`.\n2. Replace `\"USER\"` with `\"Anvesh\"`: `personalized = template.replace(\"USER\", \"Anvesh\")`.\n3. Print `personalized`.\nKey Tip: Use `template.replace(\"USER\", \"Anvesh\")`"
     ],
     "testCases": [
       {
@@ -275,7 +287,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Splitting words",
       "code": "items = \"apple banana cherry\".split(\" \")\nprint(len(items))",
-      "explanation": "\u2022 Returns list of 3 items.",
+      "explanation": "• Returns list of 3 items.",
       "expectedOutput": "3"
     },
     "exerciseSteps": [
@@ -283,10 +295,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Split by comma: `techs = csv_line.split(\",\")`.",
       "Print `techs`."
     ],
-    "initialCode": "csv_line = \"HTML,CSS,JS\"\ntechs = csv_line.split(\",\")\nprint(techs)\n",
+    "initialCode": "# Step 1: Create variable 'csv_line' and set it to \"HTML,CSS,JS\"\n# TODO: Write code below\n\n# Step 2: Split by comma: 'techs = csv_line.split(\",\")'\n# TODO: Write code below\n\n# Step 3: Print 'techs'\n# TODO: Write code below\n",
     "solutionCode": "csv_line = \"HTML,CSS,JS\"\ntechs = csv_line.split(\",\")\nprint(techs)\n",
     "hints": [
-      "Use `csv_line.split(\",\")`"
+      "Concept: Break down sentences into words or parse CSV values using .split(). Think of it like: Cutting a loaf of bread into individual slices.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `csv_line = \"HTML,CSS,JS\"`.\n2. Split by comma: `techs = csv_line.split(\",\")`.\n3. Print `techs`.\nKey Tip: Use `csv_line.split(\",\")`"
     ],
     "testCases": [
       {
@@ -317,7 +331,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Path assembly",
       "code": "parts = [\"usr\", \"bin\", \"python\"]\npath = \"/\".join(parts)\nprint(path)",
-      "explanation": "\u2022 Joins with slash.",
+      "explanation": "• Joins with slash.",
       "expectedOutput": "usr/bin/python"
     },
     "exerciseSteps": [
@@ -325,10 +339,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Join with hyphens: `slug = \"-\".join(words)`.",
       "Print `slug`."
     ],
-    "initialCode": "words = [\"learn\", \"python\", \"now\"]\nslug = \"-\".join(words)\nprint(slug)\n",
+    "initialCode": "# Step 1: Create variable 'words' and set it to [\"learn\", \"python\", \"now\"]\n# TODO: Write code below\n\n# Step 2: Join with hyphens: 'slug = \"-\".join(words)'\n# TODO: Write code below\n\n# Step 3: Print 'slug'\n# TODO: Write code below\n",
     "solutionCode": "words = [\"learn\", \"python\", \"now\"]\nslug = \"-\".join(words)\nprint(slug)\n",
     "hints": [
-      "Use `\"-\".join(words)`"
+      "Concept: Glues list elements together with a delimiter using delimiter.join(list). Think of it like: Stringing beads onto a necklace chain.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `words = [\"learn\", \"python\", \"now\"]`.\n2. Join with hyphens: `slug = \"-\".join(words)`.\n3. Print `slug`.\nKey Tip: Use `\"-\".join(words)`"
     ],
     "testCases": [
       {
@@ -359,7 +375,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: First and last letter",
       "code": "s = \"Planet\"\nprint(s[0] + s[-1])",
-      "explanation": "\u2022 P + t = Pt.",
+      "explanation": "• P + t = Pt.",
       "expectedOutput": "Pt"
     },
     "exerciseSteps": [
@@ -368,10 +384,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Get last letter: `last = lang[-1]`.",
       "Print `first + last`."
     ],
-    "initialCode": "lang = \"Python\"\nfirst = lang[0]\nlast = lang[-1]\nprint(first + last)\n",
+    "initialCode": "# Step 1: Create variable 'lang' and set it to \"Python\"\n# TODO: Write code below\n\n# Step 2: Get first letter: 'first = lang[0]'\n# TODO: Write code below\n\n# Step 3: Get last letter: 'last = lang[-1]'\n# TODO: Write code below\n\n# Step 4: Print 'first + last'\n# TODO: Write code below\n",
     "solutionCode": "lang = \"Python\"\nfirst = lang[0]\nlast = lang[-1]\nprint(first + last)\n",
     "hints": [
-      "Use `lang[0]` and `lang[-1]`"
+      "Concept: Access characters by zero-based index or from the end with negative indices like -1. Think of it like: Reading a calendar from Monday (day 0) or checking yesterday relative to tomorrow.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `lang = \"Python\"`.\n2. Get first letter: `first = lang[0]`.\n3. Get last letter: `last = lang[-1]`.\n4. Print `first + last`.\nKey Tip: Use `lang[0]` and `lang[-1]`"
     ],
     "testCases": [
       {
@@ -402,7 +420,7 @@ export const pythonModule3Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Prefix extraction",
       "code": "code = \"DEV-123\"\nprefix = code[0:3]\nprint(prefix)",
-      "explanation": "\u2022 Extracts DEV.",
+      "explanation": "• Extracts DEV.",
       "expectedOutput": "DEV"
     },
     "exerciseSteps": [
@@ -410,10 +428,12 @@ export const pythonModule3Lessons: Lesson[] = [
       "Slice the name: `name = domain[0:6]`.",
       "Print `name`."
     ],
-    "initialCode": "domain = \"github.com\"\nname = domain[0:6]\nprint(name)\n",
+    "initialCode": "# Step 1: Create variable 'domain' and set it to \"github.com\"\n# TODO: Write code below\n\n# Step 2: Slice the name: 'name = domain[0:6]'\n# TODO: Write code below\n\n# Step 3: Print 'name'\n# TODO: Write code below\n",
     "solutionCode": "domain = \"github.com\"\nname = domain[0:6]\nprint(name)\n",
     "hints": [
-      "Slice with `[0:6]`"
+      "Concept: Extract substrings with slice notation [start:stop] without mutating original string. Think of it like: Cutting a slice of pizza from 12 o'clock to 3 o'clock.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `domain = \"github.com\"`.\n2. Slice the name: `name = domain[0:6]`.\n3. Print `name`.\nKey Tip: Slice with `[0:6]`"
     ],
     "testCases": [
       {

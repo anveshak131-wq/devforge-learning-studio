@@ -187,6 +187,22 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
     }
   };
 
+  // Handle Auto-Scaffold starter code from exercise steps
+  const handleAutoScaffoldStarterCode = () => {
+    if (!formData) return;
+    const steps = formData.exerciseSteps || [];
+    let scaffold = '';
+    for (let i = 0; i < steps.length; i++) {
+      const stepText = steps[i].replace(/`/g, "'").replace(/\.$/, '').trim();
+      scaffold += `# Step ${i + 1}: ${stepText}\n# TODO: Write code below\n\n`;
+    }
+    setFormData({
+      ...formData,
+      initialCode: scaffold.trim() + '\n'
+    });
+    showToast('Starter initial code scaffolded from exercise steps!', 'info');
+  };
+
   // Handle Create New Topic
   const handleCreateNewTopic = (e: React.FormEvent) => {
     e.preventDefault();
@@ -1529,16 +1545,48 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
 
                     {/* SECTION 6: CODING EXERCISE, STARTER CODE & SOLUTION */}
                     <div className="p-5 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4">
-                      <h3 className="text-sm font-bold text-white flex items-center space-x-2">
-                        <Code2 className="w-4 h-4 text-emerald-400" />
-                        <span>Interactive Exercise & Starter / Solution Code</span>
-                      </h3>
+                      <div className="flex items-center justify-between">
+                        <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                          <Code2 className="w-4 h-4 text-emerald-400" />
+                          <span>Interactive Exercise & Starter / Solution Code</span>
+                        </h3>
+                        <button
+                          type="button"
+                          onClick={handleAutoScaffoldStarterCode}
+                          className="px-2.5 py-1 rounded-lg bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 text-indigo-300 text-xs font-medium flex items-center space-x-1.5 transition-colors"
+                        >
+                          <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+                          <span>Auto-Scaffold Starter Code</span>
+                        </button>
+                      </div>
+
+                      {formData.initialCode && formData.solutionCode && formData.initialCode.trim() === formData.solutionCode.trim() && (
+                        <div className="p-3 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-xs flex items-center justify-between">
+                          <div className="flex items-center space-x-2">
+                            <AlertTriangle className="w-4 h-4 text-amber-400 shrink-0" />
+                            <span>
+                              <strong>Warning:</strong> Starter code is identical to solution code! Learners will receive direct answers without writing code.
+                            </span>
+                          </div>
+                          <button
+                            type="button"
+                            onClick={handleAutoScaffoldStarterCode}
+                            className="ml-3 px-2.5 py-1 rounded bg-amber-600 hover:bg-amber-500 text-white font-medium text-xs shrink-0 flex items-center space-x-1 shadow-sm"
+                          >
+                            <Sparkles className="w-3.5 h-3.5" />
+                            <span>Fix with Auto-Scaffold</span>
+                          </button>
+                        </div>
+                      )}
 
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="block text-xs font-semibold text-slate-300 mb-1">
-                            Starter Initial Code (Shown to Student)
-                          </label>
+                          <div className="flex items-center justify-between mb-1">
+                            <label className="text-xs font-semibold text-slate-300">
+                              Starter Initial Code (Shown to Student)
+                            </label>
+                            <span className="text-[11px] text-cyan-400/80"># TODO Scaffold</span>
+                          </div>
                           <textarea
                             rows={8}
                             value={formData.initialCode}
@@ -1548,9 +1596,12 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                         </div>
 
                         <div>
-                          <label className="block text-xs font-semibold text-slate-300 mb-1">
-                            Complete Solution Code
-                          </label>
+                          <div className="flex items-center justify-between mb-1">
+                            <label className="text-xs font-semibold text-slate-300">
+                              Complete Solution Code
+                            </label>
+                            <span className="text-[11px] text-emerald-400/80">Verified Answer</span>
+                          </div>
                           <textarea
                             rows={8}
                             value={formData.solutionCode}

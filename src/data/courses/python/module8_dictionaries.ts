@@ -22,17 +22,19 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Capital cities",
       "code": "capitals = {\"France\": \"Paris\", \"Japan\": \"Tokyo\"}\nprint(capitals[\"Japan\"])",
-      "explanation": "\u2022 Retrieves Tokyo.",
+      "explanation": "• Retrieves Tokyo.",
       "expectedOutput": "Tokyo"
     },
     "exerciseSteps": [
       "Create `car = {\"make\": \"Ford\", \"year\": 2021}`.",
       "Print `car[\"make\"]`."
     ],
-    "initialCode": "car = {\"make\": \"Ford\", \"year\": 2021}\nprint(car[\"make\"])\n",
+    "initialCode": "# Step 1: Create variable 'car' and set it to {\"make\": \"Ford\", \"year\": 2021}\n# TODO: Write code below\n\n# Step 2: Print 'car[\"make\"]'\n# TODO: Write code below\n",
     "solutionCode": "car = {\"make\": \"Ford\", \"year\": 2021}\nprint(car[\"make\"])\n",
     "hints": [
-      "Use `car[\"make\"]`"
+      "Concept: Store labeled data inside curly braces with key: value mapping. Think of it like: A physical Oxford English dictionary: you look up a word (key) to find its definition (value).",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `car = {\"make\": \"Ford\", \"year\": 2021}`.\n2. Print `car[\"make\"]`.\nKey Tip: Use `car[\"make\"]`"
     ],
     "testCases": [
       {
@@ -63,7 +65,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Fallback port",
       "code": "config = {\"host\": \"localhost\"}\nport = config.get(\"port\", 8080)\nprint(port)",
-      "explanation": "\u2022 Falls back to 8080.",
+      "explanation": "• Falls back to 8080.",
       "expectedOutput": "8080"
     },
     "exerciseSteps": [
@@ -71,10 +73,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Get font size with fallback: `font = settings.get(\"font_size\", 14)`.",
       "Print `font`."
     ],
-    "initialCode": "settings = {\"theme\": \"dark\"}\nfont = settings.get(\"font_size\", 14)\nprint(font)\n",
+    "initialCode": "# Step 1: Create variable 'settings' and set it to {\"theme\": \"dark\"}\n# TODO: Write code below\n\n# Step 2: Get font size with fallback: 'font = settings.get(\"font_size\", 14)'\n# TODO: Write code below\n\n# Step 3: Print 'font'\n# TODO: Write code below\n",
     "solutionCode": "settings = {\"theme\": \"dark\"}\nfont = settings.get(\"font_size\", 14)\nprint(font)\n",
     "hints": [
-      "Use `settings.get(\"font_size\", 14)`"
+      "Concept: Prevent KeyError crashes by providing safe default fallbacks using .get(). Think of it like: Checking a coat check tag: if the hook is empty, the attendant politely hands you a voucher instead of shouting an error.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `settings = {\"theme\": \"dark\"}`.\n2. Get font size with fallback: `font = settings.get(\"font_size\", 14)`.\n3. Print `font`.\nKey Tip: Use `settings.get(\"font_size\", 14)`"
     ],
     "testCases": [
       {
@@ -105,7 +109,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Updating score",
       "code": "game = {\"score\": 10}\ngame[\"score\"] = 20\nprint(game[\"score\"])",
-      "explanation": "\u2022 Updated to 20.",
+      "explanation": "• Updated to 20.",
       "expectedOutput": "20"
     },
     "exerciseSteps": [
@@ -113,10 +117,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Add `hero[\"city\"] = \"Gotham\"`.",
       "Print `hero[\"city\"]`."
     ],
-    "initialCode": "hero = {\"name\": \"Batman\"}\nhero[\"city\"] = \"Gotham\"\nprint(hero[\"city\"])\n",
+    "initialCode": "# Step 1: Create variable 'hero' and set it to {\"name\": \"Batman\"}\n# TODO: Write code below\n\n# Step 2: Add 'hero[\"city\"] = \"Gotham\"'\n# TODO: Write code below\n\n# Step 3: Print 'hero[\"city\"]'\n# TODO: Write code below\n",
     "solutionCode": "hero = {\"name\": \"Batman\"}\nhero[\"city\"] = \"Gotham\"\nprint(hero[\"city\"])\n",
     "hints": [
-      "Assign `hero[\"city\"] = \"Gotham\"`"
+      "Concept: Assign new keys or update existing values using dict[key] = value. Think of it like: Writing a new contact's phone number into your address book.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `hero = {\"name\": \"Batman\"}`.\n2. Add `hero[\"city\"] = \"Gotham\"`.\n3. Print `hero[\"city\"]`.\nKey Tip: Assign `hero[\"city\"] = \"Gotham\"`"
     ],
     "testCases": [
       {
@@ -147,7 +153,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Popping key",
       "code": "record = {\"id\": 1, \"draft\": True}\nrecord.pop(\"draft\")\nprint(len(record))",
-      "explanation": "\u2022 Length reduced to 1.",
+      "explanation": "• Length reduced to 1.",
       "expectedOutput": "1"
     },
     "exerciseSteps": [
@@ -155,10 +161,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Delete expired with `del session[\"expired\"]`.",
       "Print `session`."
     ],
-    "initialCode": "session = {\"id\": 99, \"expired\": False}\ndel session[\"expired\"]\nprint(session)\n",
+    "initialCode": "# Step 1: Create variable 'session' and set it to {\"id\": 99, \"expired\": False}\n# TODO: Write code below\n\n# Step 2: Delete expired with 'del session[\"expired\"]'\n# TODO: Write code below\n\n# Step 3: Print 'session'\n# TODO: Write code below\n",
     "solutionCode": "session = {\"id\": 99, \"expired\": False}\ndel session[\"expired\"]\nprint(session)\n",
     "hints": [
-      "Use `del session[\"expired\"]`"
+      "Concept: Remove entries from dictionaries cleanly using del dict[key] or dict.pop(key). Think of it like: Using an eraser to wipe off an old phone number from your contact card.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `session = {\"id\": 99, \"expired\": False}`.\n2. Delete expired with `del session[\"expired\"]`.\n3. Print `session`.\nKey Tip: Use `del session[\"expired\"]`"
     ],
     "testCases": [
       {
@@ -189,7 +197,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Summing values",
       "code": "cart = {\"apple\": 2, \"bread\": 3}\nprint(sum(cart.values()))",
-      "explanation": "\u2022 2 + 3 = 5.",
+      "explanation": "• 2 + 3 = 5.",
       "expectedOutput": "5"
     },
     "exerciseSteps": [
@@ -197,10 +205,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Get total stock: `total_stock = sum(inventory.values())`.",
       "Print `total_stock`."
     ],
-    "initialCode": "inventory = {\"shirts\": 5, \"pants\": 3}\ntotal_stock = sum(inventory.values())\nprint(total_stock)\n",
+    "initialCode": "# Step 1: Create variable 'inventory' and set it to {\"shirts\": 5, \"pants\": 3}\n# TODO: Write code below\n\n# Step 2: Get total stock: 'total_stock = sum(inventory.values())'\n# TODO: Write code below\n\n# Step 3: Print 'total_stock'\n# TODO: Write code below\n",
     "solutionCode": "inventory = {\"shirts\": 5, \"pants\": 3}\ntotal_stock = sum(inventory.values())\nprint(total_stock)\n",
     "hints": [
-      "Use `sum(inventory.values())`"
+      "Concept: Extract all keys or all values from a dictionary into iterable views. Think of it like: Extracting just the employee names (keys) or just their salary numbers (values).",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `inventory = {\"shirts\": 5, \"pants\": 3}`.\n2. Get total stock: `total_stock = sum(inventory.values())`.\n3. Print `total_stock`.\nKey Tip: Use `sum(inventory.values())`"
     ],
     "testCases": [
       {
@@ -231,17 +241,19 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Displaying pairs",
       "code": "user = {\"name\": \"Amy\", \"role\": \"Admin\"}\nfor k, v in user.items():\n    print(f\"{k}={v}\")",
-      "explanation": "\u2022 name=Amy, role=Admin.",
+      "explanation": "• name=Amy, role=Admin.",
       "expectedOutput": "name=Amy\nrole=Admin"
     },
     "exerciseSteps": [
       "Create `stats = {\"hp\": 100, \"mp\": 50}`.",
       "For `k, v in stats.items(): print(f\"{k}:{v}\")`."
     ],
-    "initialCode": "stats = {\"hp\": 100, \"mp\": 50}\nfor k, v in stats.items():\n    print(f\"{k}:{v}\")\n",
+    "initialCode": "# Step 1: Create variable 'stats' and set it to {\"hp\": 100, \"mp\": 50}\n# TODO: Write code below\n\n# Step 2: For 'k, v in stats.items(): print(f\"{k}:{v}\")'\n# TODO: Write code below\n",
     "solutionCode": "stats = {\"hp\": 100, \"mp\": 50}\nfor k, v in stats.items():\n    print(f\"{k}:{v}\")\n",
     "hints": [
-      "Loop with `for k, v in stats.items():`"
+      "Concept: Loop through both keys and values simultaneously with for key, val in dict.items(). Think of it like: Reading a flashcard: reading the question on the front (key) and the answer on the back (value).",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `stats = {\"hp\": 100, \"mp\": 50}`.\n2. For `k, v in stats.items(): print(f\"{k}:{v}\")`.\nKey Tip: Loop with `for k, v in stats.items():`"
     ],
     "testCases": [
       {
@@ -272,7 +284,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Server config",
       "code": "server = {\"db\": {\"host\": \"localhost\", \"port\": 5432}}\nprint(server[\"db\"][\"port\"])",
-      "explanation": "\u2022 Retrieves 5432.",
+      "explanation": "• Retrieves 5432.",
       "expectedOutput": "5432"
     },
     "exerciseSteps": [
@@ -280,10 +292,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Access email: `email = client[\"profile\"][\"email\"]`.",
       "Print `email`."
     ],
-    "initialCode": "client = {\"profile\": {\"email\": \"test@dev.io\"}}\nemail = client[\"profile\"][\"email\"]\nprint(email)\n",
+    "initialCode": "# Step 1: Create variable 'client' and set it to {\"profile\": {\"email\": \"test@dev.io\"}}\n# TODO: Write code below\n\n# Step 2: Access email: 'email = client[\"profile\"][\"email\"]'\n# TODO: Write code below\n\n# Step 3: Print 'email'\n# TODO: Write code below\n",
     "solutionCode": "client = {\"profile\": {\"email\": \"test@dev.io\"}}\nemail = client[\"profile\"][\"email\"]\nprint(email)\n",
     "hints": [
-      "Access `client[\"profile\"][\"email\"]`"
+      "Concept: Model complex nested data like JSON by nesting dictionaries within dictionaries. Think of it like: A filing cabinet: opening drawer 1, inside folder 'Finance', inside file 'Report'.",
+      "Syntax Blueprint: Decorate functions by placing `@decorator_name` on the line immediately preceding the `def` statement.",
+      "Step-by-Step Target:\n1. Create `client = {\"profile\": {\"email\": \"test@dev.io\"}}`.\n2. Access email: `email = client[\"profile\"][\"email\"]`.\n3. Print `email`.\nKey Tip: Access `client[\"profile\"][\"email\"]`"
     ],
     "testCases": [
       {
@@ -314,7 +328,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Checking key",
       "code": "user = {\"username\": \"dev99\"}\nhas_email = \"email\" in user\nprint(has_email)",
-      "explanation": "\u2022 Returns False.",
+      "explanation": "• Returns False.",
       "expectedOutput": "False"
     },
     "exerciseSteps": [
@@ -322,10 +336,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Check if `\"price\"` in fruit: `has_price = \"price\" in fruit`.",
       "Print `has_price`."
     ],
-    "initialCode": "fruit = {\"name\": \"Apple\", \"price\": 2}\nhas_price = \"price\" in fruit\nprint(has_price)\n",
+    "initialCode": "# Step 1: Create variable 'fruit' and set it to {\"name\": \"Apple\", \"price\": 2}\n# TODO: Write code below\n\n# Step 2: Check if '\"price\"' in fruit: 'has_price = \"price\" in fruit'\n# TODO: Write code below\n\n# Step 3: Print 'has_price'\n# TODO: Write code below\n",
     "solutionCode": "fruit = {\"name\": \"Apple\", \"price\": 2}\nhas_price = \"price\" in fruit\nprint(has_price)\n",
     "hints": [
-      "Use `\"price\" in fruit`"
+      "Concept: Check if a key exists in a dictionary using the in operator before reading it. Think of it like: Checking if a locker number is assigned on the master roster.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `fruit = {\"name\": \"Apple\", \"price\": 2}`.\n2. Check if `\"price\"` in fruit: `has_price = \"price\" in fruit`.\n3. Print `has_price`.\nKey Tip: Use `\"price\" in fruit`"
     ],
     "testCases": [
       {
@@ -356,7 +372,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Merging dicts",
       "code": "a = {\"x\": 1}\na.update({\"y\": 2})\nprint(len(a))",
-      "explanation": "\u2022 a now has 2 keys.",
+      "explanation": "• a now has 2 keys.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
@@ -364,10 +380,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Update with `user.update({\"role\": \"editor\"})`.",
       "Print `user[\"role\"]`."
     ],
-    "initialCode": "user = {\"id\": 1}\nuser.update({\"role\": \"editor\"})\nprint(user[\"role\"])\n",
+    "initialCode": "# Step 1: Create variable 'user' and set it to {\"id\": 1}\n# TODO: Write code below\n\n# Step 2: Update with 'user.update({\"role\": \"editor\"})'\n# TODO: Write code below\n\n# Step 3: Print 'user[\"role\"]'\n# TODO: Write code below\n",
     "solutionCode": "user = {\"id\": 1}\nuser.update({\"role\": \"editor\"})\nprint(user[\"role\"])\n",
     "hints": [
-      "Call `user.update({\"role\": \"editor\"})`"
+      "Concept: Merge another dictionary into an existing one using dict.update(other). Think of it like: Updating a customer file with new contact details sent from another department.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `user = {\"id\": 1}`.\n2. Update with `user.update({\"role\": \"editor\"})`.\n3. Print `user[\"role\"]`.\nKey Tip: Call `user.update({\"role\": \"editor\"})`"
     ],
     "testCases": [
       {
@@ -398,7 +416,7 @@ export const pythonModule8Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Resetting cache",
       "code": "cache = {\"a\": 1}\ncache.clear()\nprint(len(cache))",
-      "explanation": "\u2022 Returns 0.",
+      "explanation": "• Returns 0.",
       "expectedOutput": "0"
     },
     "exerciseSteps": [
@@ -406,10 +424,12 @@ export const pythonModule8Lessons: Lesson[] = [
       "Clear it with `temp_data.clear()`.",
       "Print `temp_data`."
     ],
-    "initialCode": "temp_data = {\"x\": 10, \"y\": 20}\ntemp_data.clear()\nprint(temp_data)\n",
+    "initialCode": "# Step 1: Create variable 'temp_data' and set it to {\"x\": 10, \"y\": 20}\n# TODO: Write code below\n\n# Step 2: Clear it with 'temp_data.clear()'\n# TODO: Write code below\n\n# Step 3: Print 'temp_data'\n# TODO: Write code below\n",
     "solutionCode": "temp_data = {\"x\": 10, \"y\": 20}\ntemp_data.clear()\nprint(temp_data)\n",
     "hints": [
-      "Call `temp_data.clear()`"
+      "Concept: Empty all key-value entries from a dictionary in place using .clear(). Think of it like: Wiping a whiteboard completely clean at the end of class.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `temp_data = {\"x\": 10, \"y\": 20}`.\n2. Clear it with `temp_data.clear()`.\n3. Print `temp_data`.\nKey Tip: Call `temp_data.clear()`"
     ],
     "testCases": [
       {

@@ -22,7 +22,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Age check",
       "code": "age = 20\nstatus = \"minor\"\nif age >= 18:\n    status = \"adult\"\nprint(status)",
-      "explanation": "\u2022 Sets status to adult because 20 >= 18.",
+      "explanation": "• Sets status to adult because 20 >= 18.",
       "expectedOutput": "adult"
     },
     "exerciseSteps": [
@@ -30,10 +30,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "Create `result = \"pass\"`.",
       "If `score >= 50:`, print `result`."
     ],
-    "initialCode": "score = 80\nresult = \"pass\"\nif score >= 50:\n    print(result)\n",
+    "initialCode": "# Step 1: Create variable 'score' and set it to 80\n# TODO: Write code below\n\n# Step 2: Create variable 'result' and set it to \"pass\"\n# TODO: Write code below\n\n# Step 3: If 'score >= 50:', print 'result'\n# TODO: Write code below\n",
     "solutionCode": "score = 80\nresult = \"pass\"\nif score >= 50:\n    print(result)\n",
     "hints": [
-      "Indent the print statement under the if"
+      "Concept: Execute blocks of code conditionally using the if statement and 4-space indentation. Think of it like: A railroad switch track: the train only takes the branch if the switch lever is set to ON.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Create `score = 80`.\n2. Create `result = \"pass\"`.\n3. If `score >= 50:`, print `result`.\nKey Tip: Indent the print statement under the if"
     ],
     "testCases": [
       {
@@ -64,7 +66,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Odd or Even",
       "code": "n = 7\nif n % 2 == 0:\n    ans = \"even\"\nelse:\n    ans = \"odd\"\nprint(ans)",
-      "explanation": "\u2022 7 % 2 is 1, so else branch runs.",
+      "explanation": "• 7 % 2 is 1, so else branch runs.",
       "expectedOutput": "odd"
     },
     "exerciseSteps": [
@@ -72,10 +74,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "If `coins >= 5: outcome = \"ride\"` else: `outcome = \"need more\"`.",
       "Print `outcome`."
     ],
-    "initialCode": "coins = 3\nif coins >= 5:\n    outcome = \"ride\"\nelse:\n    outcome = \"need more\"\nprint(outcome)\n",
+    "initialCode": "# Step 1: Create variable 'coins' and set it to 3\n# TODO: Write code below\n\n# Step 2: If 'coins >= 5: outcome = \"ride\"' else: 'outcome = \"need more\"'\n# TODO: Write code below\n\n# Step 3: Print 'outcome'\n# TODO: Write code below\n",
     "solutionCode": "coins = 3\nif coins >= 5:\n    outcome = \"ride\"\nelse:\n    outcome = \"need more\"\nprint(outcome)\n",
     "hints": [
-      "Set `outcome = \"need more\"` in the else block"
+      "Concept: Provide a default fallback branch that executes when the if condition evaluates to False. Think of it like: A traffic fork: if you have the toll pass take Express, else take the Standard lane.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Create `coins = 3`.\n2. If `coins >= 5: outcome = \"ride\"` else: `outcome = \"need more\"`.\n3. Print `outcome`.\nKey Tip: Set `outcome = \"need more\"` in the else block"
     ],
     "testCases": [
       {
@@ -106,7 +110,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Traffic signal",
       "code": "light = \"yellow\"\nif light == \"green\":\n    action = \"go\"\nelif light == \"yellow\":\n    action = \"slow\"\nelse:\n    action = \"stop\"\nprint(action)",
-      "explanation": "\u2022 Light matches yellow, sets action to slow.",
+      "explanation": "• Light matches yellow, sets action to slow.",
       "expectedOutput": "slow"
     },
     "exerciseSteps": [
@@ -114,10 +118,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "If `battery > 50: level = \"high\"`, elif `battery > 20: level = \"medium\"`, else: `level = \"low\"`.",
       "Print `level`."
     ],
-    "initialCode": "battery = 15\nif battery > 50:\n    level = \"high\"\nelif battery > 20:\n    level = \"medium\"\nelse:\n    level = \"low\"\nprint(level)\n",
+    "initialCode": "# Step 1: Create variable 'battery' and set it to 15\n# TODO: Write code below\n\n# Step 2: If 'battery > 50: level = \"high\"', elif 'battery > 20: level = \"medium\"', else: 'level = \"low\"'\n# TODO: Write code below\n\n# Step 3: Print 'level'\n# TODO: Write code below\n",
     "solutionCode": "battery = 15\nif battery > 50:\n    level = \"high\"\nelif battery > 20:\n    level = \"medium\"\nelse:\n    level = \"low\"\nprint(level)\n",
     "hints": [
-      "Use `elif battery > 20:` and `else:`"
+      "Concept: Chain multiple mutually exclusive checks using elif (short for else if). Think of it like: A traffic light: Green means Go, elif Yellow means Slow, else Red means Stop.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Create `battery = 15`.\n2. If `battery > 50: level = \"high\"`, elif `battery > 20: level = \"medium\"`, else: `level = \"low\"`.\n3. Print `level`.\nKey Tip: Use `elif battery > 20:` and `else:`"
     ],
     "testCases": [
       {
@@ -148,7 +154,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Qualified applicant",
       "code": "degree = True\nexp = 3\nqualified = False\nif degree:\n    if exp >= 2:\n        qualified = True\nprint(qualified)",
-      "explanation": "\u2022 Both conditions met.",
+      "explanation": "• Both conditions met.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -157,10 +163,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "If `has_ticket:` and if `has_id:`, set `admitted = True`.",
       "Print `admitted`."
     ],
-    "initialCode": "has_ticket = True\nhas_id = True\nadmitted = False\nif has_ticket:\n    if has_id:\n        admitted = True\nprint(admitted)\n",
+    "initialCode": "# Step 1: Create variable 'has_ticket' and set it to True\n# TODO: Write code below\n\n# Step 2: Create variable 'has_id' and set it to True\n# TODO: Write code below\n\n# Step 3: If 'has_ticket:' and if 'has_id:', set 'admitted = True'\n# TODO: Write code below\n\n# Step 4: Print 'admitted'\n# TODO: Write code below\n",
     "solutionCode": "has_ticket = True\nhas_id = True\nadmitted = False\nif has_ticket:\n    if has_id:\n        admitted = True\nprint(admitted)\n",
     "hints": [
-      "Indent second if inside the first"
+      "Concept: Place if statements inside other if blocks for hierarchical decision making. Think of it like: Entering a secure building: first pass the lobby gate, THEN scan your badge at the executive floor elevator.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Create `has_ticket = True`.\n2. Create `has_id = True`.\n3. If `has_ticket:` and if `has_id:`, set `admitted = True`.\n4. Print `admitted`.\nKey Tip: Indent second if inside the first"
     ],
     "testCases": [
       {
@@ -191,7 +199,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Non-empty string check",
       "code": "username = \"\"\nif username:\n    msg = \"valid\"\nelse:\n    msg = \"empty\"\nprint(msg)",
-      "explanation": "\u2022 Empty string is falsy.",
+      "explanation": "• Empty string is falsy.",
       "expectedOutput": "empty"
     },
     "exerciseSteps": [
@@ -199,10 +207,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "If `cart:`, set `has_items = True` else: `has_items = False`.",
       "Print `has_items`."
     ],
-    "initialCode": "cart = []\nif cart:\n    has_items = True\nelse:\n    has_items = False\nprint(has_items)\n",
+    "initialCode": "# Step 1: Create variable 'cart' and set it to []\n# TODO: Write code below\n\n# Step 2: If 'cart:', set 'has_items = True' else: 'has_items = False'\n# TODO: Write code below\n\n# Step 3: Print 'has_items'\n# TODO: Write code below\n",
     "solutionCode": "cart = []\nif cart:\n    has_items = True\nelse:\n    has_items = False\nprint(has_items)\n",
     "hints": [
-      "Empty list `[]` evaluates to False"
+      "Concept: Understand what evaluates to False in Python (0, '', None, [], {}) vs True. Think of it like: An empty wallet is falsy; a wallet with even a single coin is truthy.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Create `cart = []`.\n2. If `cart:`, set `has_items = True` else: `has_items = False`.\n3. Print `has_items`.\nKey Tip: Empty list `[]` evaluates to False"
     ],
     "testCases": [
       {
@@ -233,7 +243,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Discount label",
       "code": "points = 120\nlevel = \"VIP\" if points > 100 else \"Standard\"\nprint(level)",
-      "explanation": "\u2022 Evaluates to VIP.",
+      "explanation": "• Evaluates to VIP.",
       "expectedOutput": "VIP"
     },
     "exerciseSteps": [
@@ -241,10 +251,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "Create `verdict = \"pass\" if score >= 60 else \"fail\"`.",
       "Print `verdict`."
     ],
-    "initialCode": "score = 75\nverdict = \"pass\" if score >= 60 else \"fail\"\nprint(verdict)\n",
+    "initialCode": "# Step 1: Create variable 'score' and set it to 75\n# TODO: Write code below\n\n# Step 2: Create variable 'verdict' and set it to \"pass\" if score >= 60 else \"fail\"\n# TODO: Write code below\n\n# Step 3: Print 'verdict'\n# TODO: Write code below\n",
     "solutionCode": "score = 75\nverdict = \"pass\" if score >= 60 else \"fail\"\nprint(verdict)\n",
     "hints": [
-      "Use `\"pass\" if score >= 60 else \"fail\"`"
+      "Concept: Assign variables with concise one-line conditionals: value_if_true if cond else value_if_false. Think of it like: A fast decision: 'umbrella if raining else sunglasses'.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Create `score = 75`.\n2. Create `verdict = \"pass\" if score >= 60 else \"fail\"`.\n3. Print `verdict`.\nKey Tip: Use `\"pass\" if score >= 60 else \"fail\"`"
     ],
     "testCases": [
       {
@@ -275,7 +287,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Teenager range check",
       "code": "age = 15\nis_teen = 13 <= age <= 19\nprint(is_teen)",
-      "explanation": "\u2022 13 <= 15 <= 19 is True.",
+      "explanation": "• 13 <= 15 <= 19 is True.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -283,10 +295,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "Check if within 9 to 17: `is_work_hour = 9 <= hour <= 17`.",
       "Print `is_work_hour`."
     ],
-    "initialCode": "hour = 14\nis_work_hour = 9 <= hour <= 17\nprint(is_work_hour)\n",
+    "initialCode": "# Step 1: Create variable 'hour' and set it to 14\n# TODO: Write code below\n\n# Step 2: Check if within 9 to 17: 'is_work_hour = 9 <= hour <= 17'\n# TODO: Write code below\n\n# Step 3: Print 'is_work_hour'\n# TODO: Write code below\n",
     "solutionCode": "hour = 14\nis_work_hour = 9 <= hour <= 17\nprint(is_work_hour)\n",
     "hints": [
-      "Use `9 <= hour <= 17`"
+      "Concept: Chain multiple numerical comparisons naturally like in standard mathematics. Think of it like: Reading a thermometer comfort zone: 68 <= temp <= 74.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `hour = 14`.\n2. Check if within 9 to 17: `is_work_hour = 9 <= hour <= 17`.\n3. Print `is_work_hour`.\nKey Tip: Use `9 <= hour <= 17`"
     ],
     "testCases": [
       {
@@ -317,7 +331,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Allowed colors",
       "code": "palette = [\"red\", \"green\", \"blue\"]\nvalid = \"purple\" not in palette\nprint(valid)",
-      "explanation": "\u2022 purple is not in palette, returns True.",
+      "explanation": "• purple is not in palette, returns True.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -326,10 +340,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "Check `can_edit = role in allowed`.",
       "Print `can_edit`."
     ],
-    "initialCode": "allowed = [\"admin\", \"editor\"]\nrole = \"guest\"\ncan_edit = role in allowed\nprint(can_edit)\n",
+    "initialCode": "# Step 1: Create variable 'allowed' and set it to [\"admin\", \"editor\"]\n# TODO: Write code below\n\n# Step 2: Create variable 'role' and set it to \"guest\"\n# TODO: Write code below\n\n# Step 3: Check 'can_edit = role in allowed'\n# TODO: Write code below\n\n# Step 4: Print 'can_edit'\n# TODO: Write code below\n",
     "solutionCode": "allowed = [\"admin\", \"editor\"]\nrole = \"guest\"\ncan_edit = role in allowed\nprint(can_edit)\n",
     "hints": [
-      "Use `role in allowed`"
+      "Concept: Check if an item exists or does not exist inside a list, tuple, or string. Think of it like: Checking a guest list: 'Is Alex on the list? Yes. Is Mallory on the banned list?'",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `allowed = [\"admin\", \"editor\"]`.\n2. Create `role = \"guest\"`.\n3. Check `can_edit = role in allowed`.\n4. Print `can_edit`.\nKey Tip: Use `role in allowed`"
     ],
     "testCases": [
       {
@@ -361,7 +377,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Checking None",
       "code": "response = None\nis_empty = response is None\nprint(is_empty)",
-      "explanation": "\u2022 Returns True.",
+      "explanation": "• Returns True.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -369,10 +385,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "Check if None: `is_missing = payload is None`.",
       "Print `is_missing`."
     ],
-    "initialCode": "payload = None\nis_missing = payload is None\nprint(is_missing)\n",
+    "initialCode": "# Step 1: Create variable 'payload' and set it to None\n# TODO: Write code below\n\n# Step 2: Check if None: 'is_missing = payload is None'\n# TODO: Write code below\n\n# Step 3: Print 'is_missing'\n# TODO: Write code below\n",
     "solutionCode": "payload = None\nis_missing = payload is None\nprint(is_missing)\n",
     "hints": [
-      "Use `payload is None`"
+      "Concept: Understand the difference between identical memory location (is) and value equality (==). Think of it like: Two identical paperback books: they have the same text (==), but they are not the same physical copy (is).",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `payload = None`.\n2. Check if None: `is_missing = payload is None`.\n3. Print `is_missing`.\nKey Tip: Use `payload is None`"
     ],
     "testCases": [
       {
@@ -403,7 +421,7 @@ export const pythonModule4Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Valid empty branch",
       "code": "status = \"ok\"\nif status == \"ok\":\n    pass\nprint(status)",
-      "explanation": "\u2022 pass prevents an IndentationError.",
+      "explanation": "• pass prevents an IndentationError.",
       "expectedOutput": "ok"
     },
     "exerciseSteps": [
@@ -411,10 +429,12 @@ export const pythonModule4Lessons: Lesson[] = [
       "Create `state = \"done\"`.",
       "Print `state`."
     ],
-    "initialCode": "if 5 > 2:\n    pass\nstate = \"done\"\nprint(state)\n",
+    "initialCode": "# Step 1: Write an if statement with 'pass': 'if 5 > 2: pass'\n# TODO: Write code below\n\n# Step 2: Create variable 'state' and set it to \"done\"\n# TODO: Write code below\n\n# Step 3: Print 'state'\n# TODO: Write code below\n",
     "solutionCode": "if 5 > 2:\n    pass\nstate = \"done\"\nprint(state)\n",
     "hints": [
-      "Indent `pass` inside the if block"
+      "Concept: Use pass as a syntactic placeholder where code is required but no action is needed. Think of it like: A 'Pardon Our Dust / Under Construction' sign occupying an empty storefront.",
+      "Syntax Blueprint: Branch logic with `if condition:` followed by 4-space indented blocks. Optional branches: `elif condition:` and `else:`.",
+      "Step-by-Step Target:\n1. Write an if statement with `pass`: `if 5 > 2: pass`.\n2. Create `state = \"done\"`.\n3. Print `state`.\nKey Tip: Indent `pass` inside the if block"
     ],
     "testCases": [
       {

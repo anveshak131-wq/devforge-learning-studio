@@ -23,7 +23,7 @@ export const pythonModule12Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Boiling point conversion",
       "code": "c = 100\nf = (c * 9/5) + 32\nprint(f)",
-      "explanation": "\u2022 100C is 212F.",
+      "explanation": "• 100C is 212F.",
       "expectedOutput": "212.0"
     },
     "exerciseSteps": [
@@ -31,10 +31,12 @@ export const pythonModule12Lessons: Lesson[] = [
       "Instantiate `t = Temperature(25)`.",
       "Print `t.to_fahrenheit()`."
     ],
-    "initialCode": "class Temperature:\n    def __init__(self, celsius):\n        self.celsius = celsius\n    def to_fahrenheit(self):\n        return (self.celsius * 9 / 5) + 32\n    def to_kelvin(self):\n        return self.celsius + 273.15\nt = Temperature(25)\nprint(t.to_fahrenheit())\n",
+    "initialCode": "# Step 1: Define 'class Temperature: def __init__(self, celsius): self.celsius = celsius; def to_fahrenheit(self): return (self.celsius * 9 / 5) + 32; def to_kelvin(self): return self.celsius + 273.15'\nclass Temperature:\n    def __init__(self, celsius):\n        # TODO: Implement method body\n        pass\n\n    def to_fahrenheit(self):\n        # TODO: Implement method body\n        pass\n\n    def to_kelvin(self):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Instantiate 't = Temperature(25)'\n# TODO: Write code below\n\n# Step 3: Print 't.to_fahrenheit()'\n# TODO: Write code below\n",
     "solutionCode": "class Temperature:\n    def __init__(self, celsius):\n        self.celsius = celsius\n    def to_fahrenheit(self):\n        return (self.celsius * 9 / 5) + 32\n    def to_kelvin(self):\n        return self.celsius + 273.15\nt = Temperature(25)\nprint(t.to_fahrenheit())\n",
     "hints": [
-      "Return `(self.celsius * 9 / 5) + 32`"
+      "Concept: Construct a temperature conversion engine converting Celsius, Fahrenheit, and Kelvin. Think of it like: A meteorological weather station sensor converting raw measurements into regional forecast standards.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class Temperature: def __init__(self, celsius): self.celsius = celsius; def to_fahrenheit(self): return (self.celsius * 9 / 5) + 32; def to_kelvin(self): return self.celsius + 273.15`.\n2. Instantiate `t = Temperature(25)`.\n3. Print `t.to_fahrenheit()`.\nKey Tip: Return `(self.celsius * 9 / 5) + 32`"
     ],
     "testCases": [
       {
@@ -66,7 +68,7 @@ export const pythonModule12Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Counting word pairs",
       "code": "words = [\"a\", \"b\", \"a\"]\ncounts = {}\nfor w in words:\n    counts[w] = counts.get(w, 0) + 1\nprint(counts[\"a\"])",
-      "explanation": "\u2022 'a' appears twice.",
+      "explanation": "• 'a' appears twice.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
@@ -74,10 +76,12 @@ export const pythonModule12Lessons: Lesson[] = [
       "Test with `res = count_words(\"code code python\")`.",
       "Print `res[\"code\"]`."
     ],
-    "initialCode": "def count_words(text):\n    words = text.lower().split(\" \")\n    counts = {}\n    for w in words:\n        counts[w] = counts.get(w, 0) + 1\n    return counts\nres = count_words(\"code code python\")\nprint(res[\"code\"])\n",
+    "initialCode": "# Step 1: Write 'def count_words(text): words = text.lower().split(\" \"); counts = {}; for w in words: counts[w] = counts.get(w, 0) + 1; return counts'\ndef count_words(text):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Test with 'res = count_words(\"code code python\")'\n# TODO: Write code below\n\n# Step 3: Print 'res[\"code\"]'\n# TODO: Write code below\n",
     "solutionCode": "def count_words(text):\n    words = text.lower().split(\" \")\n    counts = {}\n    for w in words:\n        counts[w] = counts.get(w, 0) + 1\n    return counts\nres = count_words(\"code code python\")\nprint(res[\"code\"])\n",
     "hints": [
-      "Use `counts.get(w, 0) + 1`"
+      "Concept: Analyze text passages and compute a frequency dictionary mapping words to their occurrence count. Think of it like: A search engine indexer counting keyword occurrences to rank web page relevance.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Write `def count_words(text): words = text.lower().split(\" \"); counts = {}; for w in words: counts[w] = counts.get(w, 0) + 1; return counts`.\n2. Test with `res = count_words(\"code code python\")`.\n3. Print `res[\"code\"]`.\nKey Tip: Use `counts.get(w, 0) + 1`"
     ],
     "testCases": [
       {
@@ -109,7 +113,7 @@ export const pythonModule12Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Cart subtotal",
       "code": "items = [{\"price\": 20, \"qty\": 2}, {\"price\": 10, \"qty\": 1}]\nsubtotal = sum(i[\"price\"] * i[\"qty\"] for i in items)\nprint(subtotal)",
-      "explanation": "\u2022 40 + 10 = 50.",
+      "explanation": "• 40 + 10 = 50.",
       "expectedOutput": "50"
     },
     "exerciseSteps": [
@@ -118,10 +122,12 @@ export const pythonModule12Lessons: Lesson[] = [
       "Add item: `c.add(\"Keyboard\", 50, 2)`.",
       "Print `c.get_total()`."
     ],
-    "initialCode": "class ShoppingCart:\n    def __init__(self):\n        self.items = []\n    def add(self, name, price, qty=1):\n        self.items.append({\"name\": name, \"price\": price, \"qty\": qty})\n    def get_total(self):\n        return sum(i[\"price\"] * i[\"qty\"] for i in self.items)\nc = ShoppingCart()\nc.add(\"Keyboard\", 50, 2)\nprint(c.get_total())\n",
+    "initialCode": "# Step 1: Define 'class ShoppingCart: def __init__(self): self.items = []; def add(self, name, price, qty=1): self.items.append({\"price\": price, \"qty\": qty}); def get_total(self): return sum(i[\"price\"] * i[\"qty\"] for i in self.items)'\nclass ShoppingCart:\n    def __init__(self):\n        # TODO: Implement method body\n        pass\n\n    def add(self, name, price, qty=1):\n        # TODO: Implement method body\n        pass\n\n    def get_total(self):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Create variable 'c' and set it to ShoppingCart()\n# TODO: Write code below\n\n# Step 3: Add item: 'c.add(\"Keyboard\", 50, 2)'\n# TODO: Write code below\n\n# Step 4: Print 'c.get_total()'\n# TODO: Write code below\n",
     "solutionCode": "class ShoppingCart:\n    def __init__(self):\n        self.items = []\n    def add(self, name, price, qty=1):\n        self.items.append({\"name\": name, \"price\": price, \"qty\": qty})\n    def get_total(self):\n        return sum(i[\"price\"] * i[\"qty\"] for i in self.items)\nc = ShoppingCart()\nc.add(\"Keyboard\", 50, 2)\nprint(c.get_total())\n",
     "hints": [
-      "Total is `50 * 2 = 100`"
+      "Concept: Construct an e-commerce shopping cart class calculating itemized subtotals, discounts, and final receipts. Think of it like: A point-of-sale cash register at a retail checkout counter.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class ShoppingCart: def __init__(self): self.items = []; def add(self, name, price, qty=1): self.items.append({\"price\": price, \"qty\": qty}); def get_total(self): return sum(i[\"price\"] * i[\"qty\"] for i in self.items)`.\n2. Create `c = ShoppingCart()`.\n3. Add item: `c.add(\"Keyboard\", 50, 2)`.\n4. Print `c.get_total()`.\nKey Tip: Total is `50 * 2 = 100`"
     ],
     "testCases": [
       {
@@ -153,7 +159,7 @@ export const pythonModule12Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Lookup contact",
       "code": "contacts = {\"Alice\": \"555-0100\"}\nprint(contacts.get(\"Alice\"))",
-      "explanation": "\u2022 Retrieves 555-0100.",
+      "explanation": "• Retrieves 555-0100.",
       "expectedOutput": "555-0100"
     },
     "exerciseSteps": [
@@ -161,10 +167,12 @@ export const pythonModule12Lessons: Lesson[] = [
       "Instantiate book, add `\"Sarah\"` with phone `\"555-1234\"`.",
       "Print `book.get(\"Sarah\")`."
     ],
-    "initialCode": "class ContactBook:\n    def __init__(self):\n        self.contacts = {}\n    def add(self, name, phone):\n        self.contacts[name] = phone\n    def get(self, name):\n        return self.contacts.get(name, \"Not found\")\nbook = ContactBook()\nbook.add(\"Sarah\", \"555-1234\")\nprint(book.get(\"Sarah\"))\n",
+    "initialCode": "# Step 1: Define 'class ContactBook: def __init__(self): self.contacts = {}; def add(self, name, phone): self.contacts[name] = phone; def get(self, name): return self.contacts.get(name, \"Not found\")'\nclass ContactBook:\n    def __init__(self):\n        # TODO: Implement method body\n        pass\n\n    def add(self, name, phone):\n        # TODO: Implement method body\n        pass\n\n    def get(self, name):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Instantiate book, add '\"Sarah\"' with phone '\"555-1234\"'\n# TODO: Write code below\n\n# Step 3: Print 'book.get(\"Sarah\")'\n# TODO: Write code below\n",
     "solutionCode": "class ContactBook:\n    def __init__(self):\n        self.contacts = {}\n    def add(self, name, phone):\n        self.contacts[name] = phone\n    def get(self, name):\n        return self.contacts.get(name, \"Not found\")\nbook = ContactBook()\nbook.add(\"Sarah\", \"555-1234\")\nprint(book.get(\"Sarah\"))\n",
     "hints": [
-      "Use `book.contacts[name] = phone`"
+      "Concept: Build an in-memory contact book application with Add, Search, and Delete operations. Think of it like: The smartphone Contacts app allowing you to save, lookup, and delete telephone numbers.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class ContactBook: def __init__(self): self.contacts = {}; def add(self, name, phone): self.contacts[name] = phone; def get(self, name): return self.contacts.get(name, \"Not found\")`.\n2. Instantiate book, add `\"Sarah\"` with phone `\"555-1234\"`.\n3. Print `book.get(\"Sarah\")`.\nKey Tip: Use `book.contacts[name] = phone`"
     ],
     "testCases": [
       {
@@ -197,7 +205,7 @@ export const pythonModule12Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Average grade calculation",
       "code": "grades = [85, 90, 95]\navg = sum(grades) / len(grades)\nprint(f\"Class Average: {avg}\")",
-      "explanation": "\u2022 270 / 3 = 90.0.",
+      "explanation": "• 270 / 3 = 90.0.",
       "expectedOutput": "Class Average: 90.0"
     },
     "exerciseSteps": [
@@ -205,10 +213,12 @@ export const pythonModule12Lessons: Lesson[] = [
       "Instantiate gradebook, add `\"Leo\": 90` and `\"Sam\": 80`.",
       "Compute average: `avg = gb.get_average()` and print `avg`."
     ],
-    "initialCode": "class Gradebook:\n    def __init__(self):\n        self.grades = {}\n    def add(self, name, score):\n        self.grades[name] = score\n    def get_average(self):\n        vals = list(self.grades.values())\n        return sum(vals) / len(vals)\ngb = Gradebook()\ngb.add(\"Leo\", 90)\ngb.add(\"Sam\", 80)\navg = gb.get_average()\nprint(avg)\n",
+    "initialCode": "# Step 1: Define 'class Gradebook: def __init__(self): self.grades = {}; def add(self, name, score): self.grades[name] = score; def get_average(self): vals = list(self.grades.values()); return sum(vals) / len(vals)'\nclass Gradebook:\n    def __init__(self):\n        # TODO: Implement method body\n        pass\n\n    def add(self, name, score):\n        # TODO: Implement method body\n        pass\n\n    def get_average(self):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Instantiate gradebook, add '\"Leo\": 90' and '\"Sam\": 80'\n# TODO: Write code below\n\n# Step 3: Compute average: 'avg = gb.get_average()' and print 'avg'\n# TODO: Write code below\n",
     "solutionCode": "class Gradebook:\n    def __init__(self):\n        self.grades = {}\n    def add(self, name, score):\n        self.grades[name] = score\n    def get_average(self):\n        vals = list(self.grades.values())\n        return sum(vals) / len(vals)\ngb = Gradebook()\ngb.add(\"Leo\", 90)\ngb.add(\"Sam\", 80)\navg = gb.get_average()\nprint(avg)\n",
     "hints": [
-      "Average of 90 and 80 is 85"
+      "Concept: Construct an academic gradebook recording student marks, class averages, high scores, and letter grade distributions. Think of it like: A university professor's grade reporting spreadsheet calculating curve averages and passing honors.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class Gradebook: def __init__(self): self.grades = {}; def add(self, name, score): self.grades[name] = score; def get_average(self): vals = list(self.grades.values()); return sum(vals) / len(vals)`.\n2. Instantiate gradebook, add `\"Leo\": 90` and `\"Sam\": 80`.\n3. Compute average: `avg = gb.get_average()` and print `avg`.\nKey Tip: Average of 90 and 80 is 85"
     ],
     "testCases": [
       {

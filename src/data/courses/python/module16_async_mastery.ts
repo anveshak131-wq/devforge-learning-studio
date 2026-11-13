@@ -22,17 +22,19 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Coroutine declaration",
       "code": "status = \"async_ready\"\nprint(status)",
-      "explanation": "\u2022 Confirms async.",
+      "explanation": "• Confirms async.",
       "expectedOutput": "async_ready"
     },
     "exerciseSteps": [
       "Create `async_state = \"active\"`.",
       "Print `async_state`."
     ],
-    "initialCode": "async_state = \"active\"\nprint(async_state)\n",
+    "initialCode": "# Step 1: Create variable 'async_state' and set it to \"active\"\n# TODO: Write code below\n\n# Step 2: Print 'async_state'\n# TODO: Write code below\n",
     "solutionCode": "async_state = \"active\"\nprint(async_state)\n",
     "hints": [
-      "Assign `async_state = \"active\"`"
+      "Concept: Declare asynchronous coroutines that run concurrently using async def. Think of it like: A restaurant chef boiling water for pasta while chopping vegetables, rather than staring at the pot for 10 minutes.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `async_state = \"active\"`.\n2. Print `async_state`.\nKey Tip: Assign `async_state = \"active\"`"
     ],
     "testCases": [
       {
@@ -63,17 +65,19 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Sequential steps",
       "code": "step1 = \"loaded\"\nstep2 = \"processed\"\nprint(f\"{step1} -> {step2}\")",
-      "explanation": "\u2022 Sequential async flow.",
+      "explanation": "• Sequential async flow.",
       "expectedOutput": "loaded -> processed"
     },
     "exerciseSteps": [
       "Create `result = \"success\"`.",
       "Print `result`."
     ],
-    "initialCode": "result = \"success\"\nprint(result)\n",
+    "initialCode": "# Step 1: Create variable 'result' and set it to \"success\"\n# TODO: Write code below\n\n# Step 2: Print 'result'\n# TODO: Write code below\n",
     "solutionCode": "result = \"success\"\nprint(result)\n",
     "hints": [
-      "Print `result`"
+      "Concept: Pause coroutine execution cleanly until an asynchronous I/O operation finishes. Think of it like: Waiting for an elevator: you step aside and let other people walk down the hallway until the doors open.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `result = \"success\"`.\n2. Print `result`.\nKey Tip: Print `result`"
     ],
     "testCases": [
       {
@@ -104,7 +108,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Aggregate results",
       "code": "task_results = [10, 20, 30]\ntotal = sum(task_results)\nprint(total)",
-      "explanation": "\u2022 60.",
+      "explanation": "• 60.",
       "expectedOutput": "60"
     },
     "exerciseSteps": [
@@ -112,10 +116,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Compute `total = sum(task_outputs)`.",
       "Print `total`."
     ],
-    "initialCode": "task_outputs = [100, 200]\ntotal = sum(task_outputs)\nprint(total)\n",
+    "initialCode": "# Step 1: Create variable 'task_outputs' and set it to [100, 200]\n# TODO: Write code below\n\n# Step 2: Compute 'total = sum(task_outputs)'\n# TODO: Write code below\n\n# Step 3: Print 'total'\n# TODO: Write code below\n",
     "solutionCode": "task_outputs = [100, 200]\ntotal = sum(task_outputs)\nprint(total)\n",
     "hints": [
-      "Total of 100 and 200 is 300"
+      "Concept: Run multiple asynchronous tasks concurrently and aggregate all their return values. Think of it like: Sending 5 letters in the mail simultaneously: they travel concurrently instead of waiting for the first letter to arrive before sending the second.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `task_outputs = [100, 200]`.\n2. Compute `total = sum(task_outputs)`.\n3. Print `total`.\nKey Tip: Total of 100 and 200 is 300"
     ],
     "testCases": [
       {
@@ -147,7 +153,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Digit check",
       "code": "text = \"User123\"\nhas_digit = any(c.isdigit() for c in text)\nprint(has_digit)",
-      "explanation": "\u2022 True.",
+      "explanation": "• True.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -155,10 +161,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Check if starts with \"DEV\": `is_dev = code.startswith(\"DEV\")`.",
       "Print `is_dev`."
     ],
-    "initialCode": "code = \"DEV-99\"\nis_dev = code.startswith(\"DEV\")\nprint(is_dev)\n",
+    "initialCode": "# Step 1: Create variable 'code' and set it to \"DEV-99\"\n# TODO: Write code below\n\n# Step 2: Check if starts with \"DEV\": 'is_dev = code.startswith(\"DEV\")'\n# TODO: Write code below\n\n# Step 3: Print 'is_dev'\n# TODO: Write code below\n",
     "solutionCode": "code = \"DEV-99\"\nis_dev = code.startswith(\"DEV\")\nprint(is_dev)\n",
     "hints": [
-      "Use `code.startswith(\"DEV\")`"
+      "Concept: Search, validate, and extract string patterns using regular expressions. Think of it like: A metal detector set to beep only when it detects gold rings on a beach.",
+      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Step-by-Step Target:\n1. Create `code = \"DEV-99\"`.\n2. Check if starts with \"DEV\": `is_dev = code.startswith(\"DEV\")`.\n3. Print `is_dev`.\nKey Tip: Use `code.startswith(\"DEV\")`"
     ],
     "testCases": [
       {
@@ -189,7 +197,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Typed function",
       "code": "def add(a: int, b: int) -> int:\n    return a + b\nprint(add(5, 5))",
-      "explanation": "\u2022 10.",
+      "explanation": "• 10.",
       "expectedOutput": "10"
     },
     "exerciseSteps": [
@@ -197,10 +205,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Call `res = square(7)`.",
       "Print `res`."
     ],
-    "initialCode": "def square(n: int) -> int:\n    return n * n\nres = square(7)\nprint(res)\n",
+    "initialCode": "# Step 1: Define 'def square(n: int) -> int: return n * n'\ndef square(n: int) -> int:\n    # TODO: Implement function body\n    pass\n\n# Step 2: Call 'res = square(7)'\n# TODO: Write code below\n\n# Step 3: Print 'res'\n# TODO: Write code below\n",
     "solutionCode": "def square(n: int) -> int:\n    return n * n\nres = square(7)\nprint(res)\n",
     "hints": [
-      "Square of 7 is 49"
+      "Concept: Annotate variables, parameters, and return types with PEP 484 type hints. Think of it like: Labeling chemical bottles with their exact formula to prevent accidental mixing.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def square(n: int) -> int: return n * n`.\n2. Call `res = square(7)`.\n3. Print `res`.\nKey Tip: Square of 7 is 49"
     ],
     "testCases": [
       {
@@ -232,7 +242,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Token payload",
       "code": "session = {\"user_id\": 101, \"role\": \"admin\", \"valid\": True}\nprint(session[\"role\"])",
-      "explanation": "\u2022 admin.",
+      "explanation": "• admin.",
       "expectedOutput": "admin"
     },
     "exerciseSteps": [
@@ -240,10 +250,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Create token: `tok = create_token(42, \"admin\")`.",
       "Print `tok[\"role\"]`."
     ],
-    "initialCode": "def create_token(user_id, role):\n    return {\"user_id\": user_id, \"role\": role, \"active\": True}\ntok = create_token(42, \"admin\")\nprint(tok[\"role\"])\n",
+    "initialCode": "# Step 1: Define 'def create_token(user_id, role): return {\"user_id\": user_id, \"role\": role, \"active\": True}'\ndef create_token(user_id, role):\n    # TODO: Implement function body\n    pass\n\n# Step 2: Create token: 'tok = create_token(42, \"admin\")'\n# TODO: Write code below\n\n# Step 3: Print 'tok[\"role\"]'\n# TODO: Write code below\n",
     "solutionCode": "def create_token(user_id, role):\n    return {\"user_id\": user_id, \"role\": role, \"active\": True}\ntok = create_token(42, \"admin\")\nprint(tok[\"role\"])\n",
     "hints": [
-      "Return dictionary with user_id, role, and active"
+      "Concept: Construct an authentication session token encoder tracking user ID, role, and expiration. Think of it like: A digital conference wristband that encodes the attendee's name and VIP lounge access privileges.",
+      "Syntax Blueprint: Define functions with `def function_name(param):`, indent the body, and return a value with `return`. Call it using `function_name(arg)`.",
+      "Step-by-Step Target:\n1. Define `def create_token(user_id, role): return {\"user_id\": user_id, \"role\": role, \"active\": True}`.\n2. Create token: `tok = create_token(42, \"admin\")`.\n3. Print `tok[\"role\"]`.\nKey Tip: Return dictionary with user_id, role, and active"
     ],
     "testCases": [
       {
@@ -275,7 +287,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Limit check",
       "code": "requests = 4\nallowed = requests < 5\nprint(allowed)",
-      "explanation": "\u2022 True.",
+      "explanation": "• True.",
       "expectedOutput": "True"
     },
     "exerciseSteps": [
@@ -284,10 +296,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Make 2 requests, then verify 3rd request returns `False`.",
       "Print `rl.request()`."
     ],
-    "initialCode": "class RateLimiter:\n    def __init__(self, limit):\n        self.limit = limit\n        self.count = 0\n    def request(self):\n        if self.count < self.limit:\n            self.count += 1\n            return True\n        return False\nrl = RateLimiter(2)\nrl.request()\nrl.request()\nblocked = rl.request()\nprint(blocked)\n",
+    "initialCode": "# Step 1: Define 'class RateLimiter: def __init__(self, limit): self.limit = limit; self.count = 0; def request(self): if self.count < self.limit: self.count += 1; return True; return False'\nclass RateLimiter:\n    def __init__(self, limit):\n        # TODO: Implement method body\n        pass\n\n    def request(self):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Create variable 'rl' and set it to RateLimiter(2)\n# TODO: Write code below\n\n# Step 3: Make 2 requests, then verify 3rd request returns 'False'\n# TODO: Write code below\n\n# Step 4: Print 'rl.request()'\n# TODO: Write code below\n",
     "solutionCode": "class RateLimiter:\n    def __init__(self, limit):\n        self.limit = limit\n        self.count = 0\n    def request(self):\n        if self.count < self.limit:\n            self.count += 1\n            return True\n        return False\nrl = RateLimiter(2)\nrl.request()\nrl.request()\nblocked = rl.request()\nprint(blocked)\n",
     "hints": [
-      "The 3rd request should return False"
+      "Concept: Implement a token bucket rate limiter class preventing server denial of service. Think of it like: An hourglass timer at an amusement park: only 5 visitors can enter the ride per minute.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class RateLimiter: def __init__(self, limit): self.limit = limit; self.count = 0; def request(self): if self.count < self.limit: self.count += 1; return True; return False`.\n2. Create `rl = RateLimiter(2)`.\n3. Make 2 requests, then verify 3rd request returns `False`.\n4. Print `rl.request()`.\nKey Tip: The 3rd request should return False"
     ],
     "testCases": [
       {
@@ -319,7 +333,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Handler dispatch",
       "code": "handlers = [lambda x: x * 2]\nprint(handlers[0](10))",
-      "explanation": "\u2022 20.",
+      "explanation": "• 20.",
       "expectedOutput": "20"
     },
     "exerciseSteps": [
@@ -327,10 +341,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Register a handler `bus = EventBus(); bus.on(\"score\", lambda s: s + 10)`.",
       "Emit `res = bus.emit(\"score\", 50)` and print `res[0]`."
     ],
-    "initialCode": "class EventBus:\n    def __init__(self):\n        self.events = {}\n    def on(self, event, fn):\n        self.events.setdefault(event, []).append(fn)\n    def emit(self, event, data):\n        return [fn(data) for fn in self.events.get(event, [])]\nbus = EventBus()\nbus.on(\"score\", lambda s: s + 10)\nres = bus.emit(\"score\", 50)\nprint(res[0])\n",
+    "initialCode": "# Step 1: Define 'class EventBus: def __init__(self): self.events = {}; def on(self, event, fn): self.events.setdefault(event, []).append(fn); def emit(self, event, data): return [fn(data) for fn in self.events.get(event, [])]'\nclass EventBus:\n    def __init__(self):\n        # TODO: Implement method body\n        pass\n\n    def on(self, event, fn):\n        # TODO: Implement method body\n        pass\n\n    def emit(self, event, data):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Register a handler 'bus = EventBus(); bus.on(\"score\", lambda s: s + 10)'\n# TODO: Write code below\n\n# Step 3: Emit 'res = bus.emit(\"score\", 50)' and print 'res[0]'\n# TODO: Write code below\n",
     "solutionCode": "class EventBus:\n    def __init__(self):\n        self.events = {}\n    def on(self, event, fn):\n        self.events.setdefault(event, []).append(fn)\n    def emit(self, event, data):\n        return [fn(data) for fn in self.events.get(event, [])]\nbus = EventBus()\nbus.on(\"score\", lambda s: s + 10)\nres = bus.emit(\"score\", 50)\nprint(res[0])\n",
     "hints": [
-      "res[0] will be 60"
+      "Concept: Build an event bus allowing detached microservices to publish and subscribe to named topics. Think of it like: A radio transmission tower: the station broadcasts music to whatever radio receivers happen to be tuned to 98.5 FM.",
+      "Syntax Blueprint: Anonymous lambda function syntax: `lambda arg1, arg2: expression`.",
+      "Step-by-Step Target:\n1. Define `class EventBus: def __init__(self): self.events = {}; def on(self, event, fn): self.events.setdefault(event, []).append(fn); def emit(self, event, data): return [fn(data) for fn in self.events.get(event, [])]`.\n2. Register a handler `bus = EventBus(); bus.on(\"score\", lambda s: s + 10)`.\n3. Emit `res = bus.emit(\"score\", 50)` and print `res[0]`.\nKey Tip: res[0] will be 60"
     ],
     "testCases": [
       {
@@ -361,7 +377,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Block record",
       "code": "block = {\"index\": 1, \"prev\": \"0000\", \"data\": \"Genesis\"}\nprint(block[\"data\"])",
-      "explanation": "\u2022 Genesis.",
+      "explanation": "• Genesis.",
       "expectedOutput": "Genesis"
     },
     "exerciseSteps": [
@@ -369,10 +385,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Instantiate `b1 = Block(1, \"Deposit 100\", \"0xGENESIS\")`.",
       "Print `b1.prev_hash`."
     ],
-    "initialCode": "class Block:\n    def __init__(self, idx, data, prev_hash):\n        self.idx = idx\n        self.data = data\n        self.prev_hash = prev_hash\nb1 = Block(1, \"Deposit 100\", \"0xGENESIS\")\nprint(b1.prev_hash)\n",
+    "initialCode": "# Step 1: Define 'class Block: def __init__(self, idx, data, prev_hash): self.idx = idx; self.data = data; self.prev_hash = prev_hash'\nclass Block:\n    def __init__(self, idx, data, prev_hash):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Instantiate 'b1 = Block(1, \"Deposit 100\", \"0xGENESIS\")'\n# TODO: Write code below\n\n# Step 3: Print 'b1.prev_hash'\n# TODO: Write code below\n",
     "solutionCode": "class Block:\n    def __init__(self, idx, data, prev_hash):\n        self.idx = idx\n        self.data = data\n        self.prev_hash = prev_hash\nb1 = Block(1, \"Deposit 100\", \"0xGENESIS\")\nprint(b1.prev_hash)\n",
     "hints": [
-      "b1.prev_hash is 0xGENESIS"
+      "Concept: Construct an immutable chain of blocks where each entry references the previous block's hash signature. Think of it like: A notary journal where every new legal page has a unique stamp referencing the seal of the preceding page.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class Block: def __init__(self, idx, data, prev_hash): self.idx = idx; self.data = data; self.prev_hash = prev_hash`.\n2. Instantiate `b1 = Block(1, \"Deposit 100\", \"0xGENESIS\")`.\n3. Print `b1.prev_hash`.\nKey Tip: b1.prev_hash is 0xGENESIS"
     ],
     "testCases": [
       {
@@ -404,7 +422,7 @@ export const pythonModule16Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Total metrics",
       "code": "vals = [100, 200, 300]\navg = sum(vals) / len(vals)\nprint(f\"Avg: {avg}\")",
-      "explanation": "\u2022 200.0.",
+      "explanation": "• 200.0.",
       "expectedOutput": "Avg: 200.0"
     },
     "exerciseSteps": [
@@ -412,10 +430,12 @@ export const pythonModule16Lessons: Lesson[] = [
       "Create engine, record 10, 20, 30.",
       "Get `res = engine.summary()` and print `res[\"avg\"]`."
     ],
-    "initialCode": "class AnalyticsEngine:\n    def __init__(self):\n        self.metrics = []\n    def record(self, v):\n        self.metrics.append(v)\n    def summary(self):\n        return {\n            \"count\": len(self.metrics),\n            \"total\": sum(self.metrics),\n            \"avg\": sum(self.metrics) / len(self.metrics)\n        }\nengine = AnalyticsEngine()\nengine.record(10)\nengine.record(20)\nengine.record(30)\nres = engine.summary()\nprint(res[\"avg\"])\n",
+    "initialCode": "# Step 1: Define 'class AnalyticsEngine: def __init__(self): self.metrics = []; def record(self, v): self.metrics.append(v); def summary(self): return {\"count\": len(self.metrics), \"total\": sum(self.metrics), \"avg\": sum(self.metrics)/len(self.metrics)}'\nclass AnalyticsEngine:\n    def __init__(self):\n        # TODO: Implement method body\n        pass\n\n    def record(self, v):\n        # TODO: Implement method body\n        pass\n\n    def summary(self):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Create engine, record 10, 20, 30\n# TODO: Write code below\n\n# Step 3: Get 'res = engine.summary()' and print 'res[\"avg\"]'\n# TODO: Write code below\n",
     "solutionCode": "class AnalyticsEngine:\n    def __init__(self):\n        self.metrics = []\n    def record(self, v):\n        self.metrics.append(v)\n    def summary(self):\n        return {\n            \"count\": len(self.metrics),\n            \"total\": sum(self.metrics),\n            \"avg\": sum(self.metrics) / len(self.metrics)\n        }\nengine = AnalyticsEngine()\nengine.record(10)\nengine.record(20)\nengine.record(30)\nres = engine.summary()\nprint(res[\"avg\"])\n",
     "hints": [
-      "res[\"avg\"] is 20.0"
+      "Concept: Construct an end-to-end analytics engine aggregating user metrics, outlier detection, and summary reports. Think of it like: The central analytics dashboard at a global tech company computing real-time revenue, active users, and platform health.",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class AnalyticsEngine: def __init__(self): self.metrics = []; def record(self, v): self.metrics.append(v); def summary(self): return {\"count\": len(self.metrics), \"total\": sum(self.metrics), \"avg\": sum(self.metrics)/len(self.metrics)}`.\n2. Create engine, record 10, 20, 30.\n3. Get `res = engine.summary()` and print `res[\"avg\"]`.\nKey Tip: res[\"avg\"] is 20.0"
     ],
     "testCases": [
       {

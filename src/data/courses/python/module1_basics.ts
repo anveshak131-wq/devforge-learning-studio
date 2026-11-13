@@ -23,17 +23,19 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Friendly Greeting",
       "code": "print(\"Hello, World!\")",
-      "explanation": "\u2022 Displays Hello, World! on the screen.",
+      "explanation": "• Displays Hello, World! on the screen.",
       "expectedOutput": "Hello, World!"
     },
     "exerciseSteps": [
       "Type `print(\"Hello, World!\")` in the editor.",
       "Click Check Answer."
     ],
-    "initialCode": "print(\"Hello, World!\")\n",
+    "initialCode": "# Step 1: Type 'print(\"Hello, World!\")' in the editor\n# TODO: Write code below\n\n# Step 2: Click Check Answer\n# TODO: Write code below\n",
     "solutionCode": "print(\"Hello, World!\")\n",
     "hints": [
-      "Use `print(\"Hello, World!\")`"
+      "Concept: Write your first Python command! Learn how to display text on the screen using print(). Think of it like: Speaking into a megaphone: print() broadcasts your words to the computer screen.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Type `print(\"Hello, World!\")` in the editor.\n2. Click Check Answer.\nKey Tip: Use `print(\"Hello, World!\")`"
     ],
     "testCases": [
       {
@@ -64,17 +66,19 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Storing City",
       "code": "city = \"Tokyo\"\nprint(city)",
-      "explanation": "\u2022 Stores Tokyo and prints it.",
+      "explanation": "• Stores Tokyo and prints it.",
       "expectedOutput": "Tokyo"
     },
     "exerciseSteps": [
       "Create `hero = \"Spider-Man\"`.",
       "Print `hero`."
     ],
-    "initialCode": "hero = \"Spider-Man\"\nprint(hero)\n",
+    "initialCode": "# Step 1: Create variable 'hero' and set it to \"Spider-Man\"\n# TODO: Write code below\n\n# Step 2: Print 'hero'\n# TODO: Write code below\n",
     "solutionCode": "hero = \"Spider-Man\"\nprint(hero)\n",
     "hints": [
-      "Write `hero = \"Spider-Man\"` and `print(hero)`"
+      "Concept: Store numbers and words in memory by assigning them to variable names. Think of it like: A labeled storage box: put a toy inside and write 'favorite_toy' on the outside.",
+      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Step-by-Step Target:\n1. Create `hero = \"Spider-Man\"`.\n2. Print `hero`.\nKey Tip: Write `hero = \"Spider-Man\"` and `print(hero)`"
     ],
     "testCases": [
       {
@@ -105,7 +109,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Documented Code",
       "code": "# Calculate total\ntotal = 50\nprint(total)",
-      "explanation": "\u2022 The # line is ignored by Python.",
+      "explanation": "• The # line is ignored by Python.",
       "expectedOutput": "50"
     },
     "exerciseSteps": [
@@ -113,10 +117,12 @@ export const pythonModule1Lessons: Lesson[] = [
       "Assign `score = 99`.",
       "Print `score`."
     ],
-    "initialCode": "# My first score\nscore = 99\nprint(score)\n",
+    "initialCode": "# Step 1: Add a comment '# My first score'\n# TODO: Write code below\n\n# Step 2: Assign 'score = 99'\n# TODO: Write code below\n\n# Step 3: Print 'score'\n# TODO: Write code below\n",
     "solutionCode": "# My first score\nscore = 99\nprint(score)\n",
     "hints": [
-      "Start the comment line with `#`"
+      "Concept: Leave notes for human readers using the # symbol that Python ignores. Think of it like: Sticky notes on a cookbook page: helpful for the chef, but not part of the dish.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Add a comment `# My first score`.\n2. Assign `score = 99`.\n3. Print `score`.\nKey Tip: Start the comment line with `#`"
     ],
     "testCases": [
       {
@@ -147,17 +153,19 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Greeting",
       "code": "greeting = \"Hi \" + \"Friend\"\nprint(greeting)",
-      "explanation": "\u2022 Combines two strings.",
+      "explanation": "• Combines two strings.",
       "expectedOutput": "Hi Friend"
     },
     "exerciseSteps": [
       "Create `greeting = \"Hello \" + \"Python\"`.",
       "Print `greeting`."
     ],
-    "initialCode": "greeting = \"Hello \" + \"Python\"\nprint(greeting)\n",
+    "initialCode": "# Step 1: Create variable 'greeting' and set it to \"Hello \" + \"Python\"\n# TODO: Write code below\n\n# Step 2: Print 'greeting'\n# TODO: Write code below\n",
     "solutionCode": "greeting = \"Hello \" + \"Python\"\nprint(greeting)\n",
     "hints": [
-      "Use the `+` operator between strings"
+      "Concept: Create strings with single or double quotes and combine them with +. Think of it like: Snapping Lego bricks together to build a longer sentence.",
+      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Step-by-Step Target:\n1. Create `greeting = \"Hello \" + \"Python\"`.\n2. Print `greeting`.\nKey Tip: Use the `+` operator between strings"
     ],
     "testCases": [
       {
@@ -188,7 +196,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Store price",
       "code": "cost = 12.50\nprint(cost)",
-      "explanation": "\u2022 Stores decimal float.",
+      "explanation": "• Stores decimal float.",
       "expectedOutput": "12.5"
     },
     "exerciseSteps": [
@@ -196,10 +204,12 @@ export const pythonModule1Lessons: Lesson[] = [
       "Assign float `height = 5.9`.",
       "Print `age`."
     ],
-    "initialCode": "age = 25\nheight = 5.9\nprint(age)\n",
+    "initialCode": "# Step 1: Assign integer 25 to variable 'age'\n# TODO: Write code below\n\n# Step 2: Assign float 5.9 to variable 'height'\n# TODO: Write code below\n\n# Step 3: Print 'age'\n# TODO: Write code below\n",
     "solutionCode": "age = 25\nheight = 5.9\nprint(age)\n",
     "hints": [
-      "Create `age = 25` and `height = 5.9`"
+      "Concept: Distinguish between whole integers (int) and decimal numbers (float). Think of it like: Counting whole coins (int) versus reading the exact dollar and cent price on a tag (float).",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Assign integer `age = 25`.\n2. Assign float `height = 5.9`.\n3. Print `age`.\nKey Tip: Create `age = 25` and `height = 5.9`"
     ],
     "testCases": [
       {
@@ -231,17 +241,19 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Game status",
       "code": "game_over = False\nprint(game_over)",
-      "explanation": "\u2022 Prints false.",
+      "explanation": "• Prints false.",
       "expectedOutput": "False"
     },
     "exerciseSteps": [
       "Create `is_active = True`.",
       "Print `is_active`."
     ],
-    "initialCode": "is_active = True\nprint(is_active)\n",
+    "initialCode": "# Step 1: Create variable 'is_active' and set it to True\n# TODO: Write code below\n\n# Step 2: Print 'is_active'\n# TODO: Write code below\n",
     "solutionCode": "is_active = True\nprint(is_active)\n",
     "hints": [
-      "Remember Capital T: `True`"
+      "Concept: Use Capitalized True and False to represent yes/no binary facts. Think of it like: A light switch that can only be either flipped ON or flipped OFF.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `is_active = True`.\n2. Print `is_active`.\nKey Tip: Remember Capital T: `True`"
     ],
     "testCases": [
       {
@@ -272,17 +284,19 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Inspecting string",
       "code": "word = \"Python\"\nprint(type(word))",
-      "explanation": "\u2022 Returns str.",
+      "explanation": "• Returns str.",
       "expectedOutput": "str"
     },
     "exerciseSteps": [
       "Create `value = 100`.",
       "Print `type(value)`."
     ],
-    "initialCode": "value = 100\nprint(type(value))\n",
+    "initialCode": "# Step 1: Create variable 'value' and set it to 100\n# TODO: Write code below\n\n# Step 2: Print 'type(value)'\n# TODO: Write code below\n",
     "solutionCode": "value = 100\nprint(type(value))\n",
     "hints": [
-      "Pass value to `type(value)`"
+      "Concept: Inspect what kind of data is stored in any variable using type(). Think of it like: Reading the nutrition facts label on a package to see what ingredients are inside.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `value = 100`.\n2. Print `type(value)`.\nKey Tip: Pass value to `type(value)`"
     ],
     "testCases": [
       {
@@ -314,7 +328,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Converting string to int",
       "code": "s = \"10\"\nn = int(s) + 5\nprint(n)",
-      "explanation": "\u2022 10 + 5 = 15.",
+      "explanation": "• 10 + 5 = 15.",
       "expectedOutput": "15"
     },
     "exerciseSteps": [
@@ -322,10 +336,12 @@ export const pythonModule1Lessons: Lesson[] = [
       "Convert to integer with `num = int(raw_str)`.",
       "Print `num + 5`."
     ],
-    "initialCode": "raw_str = \"20\"\nnum = int(raw_str)\nprint(num + 5)\n",
+    "initialCode": "# Step 1: Create variable 'raw_str' and set it to \"20\"\n# TODO: Write code below\n\n# Step 2: Convert to integer with 'num = int(raw_str)'\n# TODO: Write code below\n\n# Step 3: Print 'num + 5'\n# TODO: Write code below\n",
     "solutionCode": "raw_str = \"20\"\nnum = int(raw_str)\nprint(num + 5)\n",
     "hints": [
-      "Use `int(raw_str)`"
+      "Concept: Convert strings into numbers or numbers into strings with casting functions. Think of it like: Melting an ice cube (solid) into liquid water: same matter, converted into a different format.",
+      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Step-by-Step Target:\n1. Create `raw_str = \"20\"`.\n2. Convert to integer with `num = int(raw_str)`.\n3. Print `num + 5`.\nKey Tip: Use `int(raw_str)`"
     ],
     "testCases": [
       {
@@ -356,17 +372,19 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Clean variable name",
       "code": "max_speed_mph = 65\nprint(max_speed_mph)",
-      "explanation": "\u2022 Follows snake_case convention.",
+      "explanation": "• Follows snake_case convention.",
       "expectedOutput": "65"
     },
     "exerciseSteps": [
       "Create `user_score_total = 350`.",
       "Print `user_score_total`."
     ],
-    "initialCode": "user_score_total = 350\nprint(user_score_total)\n",
+    "initialCode": "# Step 1: Create variable 'user_score_total' and set it to 350\n# TODO: Write code below\n\n# Step 2: Print 'user_score_total'\n# TODO: Write code below\n",
     "solutionCode": "user_score_total = 350\nprint(user_score_total)\n",
     "hints": [
-      "Separate words with underscores: `user_score_total`"
+      "Concept: Follow PEP 8 guidelines: use lowercase words separated by underscores for variables. Think of it like: Road sign conventions: consistent formatting makes every sign immediately readable at 60 mph.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `user_score_total = 350`.\n2. Print `user_score_total`.\nKey Tip: Separate words with underscores: `user_score_total`"
     ],
     "testCases": [
       {
@@ -397,7 +415,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: User record",
       "code": "name = \"Sarah\"\nlevel = 1\nactive = True\nprint(name)",
-      "explanation": "\u2022 Defines all core fields.",
+      "explanation": "• Defines all core fields.",
       "expectedOutput": "Sarah"
     },
     "exerciseSteps": [
@@ -406,10 +424,12 @@ export const pythonModule1Lessons: Lesson[] = [
       "Create `player_active = True`.",
       "Print `player_name`."
     ],
-    "initialCode": "player_name = \"Nova\"\nplayer_xp = 1500\nplayer_active = True\nprint(player_name)\n",
+    "initialCode": "# Step 1: Create variable 'player_name' and set it to \"Nova\"\n# TODO: Write code below\n\n# Step 2: Create variable 'player_xp' and set it to 1500\n# TODO: Write code below\n\n# Step 3: Create variable 'player_active' and set it to True\n# TODO: Write code below\n\n# Step 4: Print 'player_name'\n# TODO: Write code below\n",
     "solutionCode": "player_name = \"Nova\"\nplayer_xp = 1500\nplayer_active = True\nprint(player_name)\n",
     "hints": [
-      "Assign each variable on its own line"
+      "Concept: Combine variables, strings, integers, and booleans to build a complete user profile. Think of it like: Printing a completed ID badge with photo, name, employee number, and clearance level.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `player_name = \"Nova\"`.\n2. Create `player_xp = 1500`.\n3. Create `player_active = True`.\n4. Print `player_name`.\nKey Tip: Assign each variable on its own line"
     ],
     "testCases": [
       {

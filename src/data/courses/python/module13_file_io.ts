@@ -22,17 +22,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Mode selection",
       "code": "mode = 'w'\nprint(f\"Opening in {mode} mode\")",
-      "explanation": "\u2022 Sets mode.",
+      "explanation": "• Sets mode.",
       "expectedOutput": "Opening in w mode"
     },
     "exerciseSteps": [
       "Create `mode = \"r\"`.",
       "Print `mode`."
     ],
-    "initialCode": "mode = \"r\"\nprint(mode)\n",
+    "initialCode": "# Step 1: Create variable 'mode' and set it to \"r\"\n# TODO: Write code below\n\n# Step 2: Print 'mode'\n# TODO: Write code below\n",
     "solutionCode": "mode = \"r\"\nprint(mode)\n",
     "hints": [
-      "Assign `mode = \"r\"`"
+      "Concept: Learn the standard file access modes in Python: read ('r'), write ('w'), and append ('a'). Think of it like: A physical guestbook: reading it (r), tearing out all pages to start fresh (w), or writing a new name on the next blank line (a).",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `mode = \"r\"`.\n2. Print `mode`.\nKey Tip: Assign `mode = \"r\"`"
     ],
     "testCases": [
       {
@@ -63,17 +65,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Mock context manager status",
       "code": "closed = True\nprint(f\"File closed safely: {closed}\")",
-      "explanation": "\u2022 Confirms safe close.",
+      "explanation": "• Confirms safe close.",
       "expectedOutput": "File closed safely: True"
     },
     "exerciseSteps": [
       "Create `is_closed = True`.",
       "Print `is_closed`."
     ],
-    "initialCode": "is_closed = True\nprint(is_closed)\n",
+    "initialCode": "# Step 1: Create variable 'is_closed' and set it to True\n# TODO: Write code below\n\n# Step 2: Print 'is_closed'\n# TODO: Write code below\n",
     "solutionCode": "is_closed = True\nprint(is_closed)\n",
     "hints": [
-      "Set `is_closed = True`"
+      "Concept: Use the with statement to automatically close and clean up file handles and resources. Think of it like: An automatic self-closing door: no matter how you leave the room, the door shuts and locks securely behind you.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `is_closed = True`.\n2. Print `is_closed`.\nKey Tip: Set `is_closed = True`"
     ],
     "testCases": [
       {
@@ -104,17 +108,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Stripping lines",
       "code": "raw_lines = [\"  alpha  \", \"  beta  \"]\nclean = [l.strip() for l in raw_lines]\nprint(clean[0])",
-      "explanation": "\u2022 Strips whitespace.",
+      "explanation": "• Strips whitespace.",
       "expectedOutput": "alpha"
     },
     "exerciseSteps": [
       "Create `lines = [\"user1\", \"user2\"]`.",
       "Print `len(lines)`."
     ],
-    "initialCode": "lines = [\"user1\", \"user2\"]\nprint(len(lines))\n",
+    "initialCode": "# Step 1: Create variable 'lines' and set it to [\"user1\", \"user2\"]\n# TODO: Write code below\n\n# Step 2: Print 'len(lines)'\n# TODO: Write code below\n",
     "solutionCode": "lines = [\"user1\", \"user2\"]\nprint(len(lines))\n",
     "hints": [
-      "Use `len(lines)`"
+      "Concept: Process text files line-by-line efficiently using list of lines. Think of it like: Reading a grocery list item by item down the page.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `lines = [\"user1\", \"user2\"]`.\n2. Print `len(lines)`.\nKey Tip: Use `len(lines)`"
     ],
     "testCases": [
       {
@@ -145,17 +151,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Formatted entry",
       "code": "entry = \"[INFO] App started\"\nprint(entry)",
-      "explanation": "\u2022 Formatted log entry.",
+      "explanation": "• Formatted log entry.",
       "expectedOutput": "[INFO] App started"
     },
     "exerciseSteps": [
       "Create `log = \"Status: OK\"`.",
       "Print `log`."
     ],
-    "initialCode": "log = \"Status: OK\"\nprint(log)\n",
+    "initialCode": "# Step 1: Create variable 'log' and set it to \"Status: OK\"\n# TODO: Write code below\n\n# Step 2: Print 'log'\n# TODO: Write code below\n",
     "solutionCode": "log = \"Status: OK\"\nprint(log)\n",
     "hints": [
-      "Assign `log = \"Status: OK\"`"
+      "Concept: Output formatted strings into file buffers with .write(text). Think of it like: Pressing ink into paper with a typewriter.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `log = \"Status: OK\"`.\n2. Print `log`.\nKey Tip: Assign `log = \"Status: OK\"`"
     ],
     "testCases": [
       {
@@ -186,17 +194,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Dict to string representation",
       "code": "payload = {\"status\": 200}\nprint(payload[\"status\"])",
-      "explanation": "\u2022 200.",
+      "explanation": "• 200.",
       "expectedOutput": "200"
     },
     "exerciseSteps": [
       "Create `record = {\"active\": True, \"id\": 42}`.",
       "Print `record[\"id\"]`."
     ],
-    "initialCode": "record = {\"active\": True, \"id\": 42}\nprint(record[\"id\"])\n",
+    "initialCode": "# Step 1: Create variable 'record' and set it to {\"active\": True, \"id\": 42}\n# TODO: Write code below\n\n# Step 2: Print 'record[\"id\"]'\n# TODO: Write code below\n",
     "solutionCode": "record = {\"active\": True, \"id\": 42}\nprint(record[\"id\"])\n",
     "hints": [
-      "Access `record[\"id\"]`"
+      "Concept: Convert Python dictionaries and lists into universal JSON string representation. Think of it like: Translating an English speech into Esperanto so anyone in the world can understand it.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `record = {\"active\": True, \"id\": 42}`.\n2. Print `record[\"id\"]`.\nKey Tip: Access `record[\"id\"]`"
     ],
     "testCases": [
       {
@@ -227,17 +237,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Parsed response",
       "code": "user = {\"username\": \"dev\", \"score\": 100}\nprint(user[\"username\"])",
-      "explanation": "\u2022 Accesses parsed username.",
+      "explanation": "• Accesses parsed username.",
       "expectedOutput": "dev"
     },
     "exerciseSteps": [
       "Create `res = {\"token\": \"abc-123\", \"ok\": True}`.",
       "Print `res[\"token\"]`."
     ],
-    "initialCode": "res = {\"token\": \"abc-123\", \"ok\": True}\nprint(res[\"token\"])\n",
+    "initialCode": "# Step 1: Create variable 'res' and set it to {\"token\": \"abc-123\", \"ok\": True}\n# TODO: Write code below\n\n# Step 2: Print 'res[\"token\"]'\n# TODO: Write code below\n",
     "solutionCode": "res = {\"token\": \"abc-123\", \"ok\": True}\nprint(res[\"token\"])\n",
     "hints": [
-      "Access `res[\"token\"]`"
+      "Concept: Parse JSON strings into native Python dictionaries and lists. Think of it like: Unpacking a flat-packed desk delivered from IKEA into actual wooden furniture.",
+      "Syntax Blueprint: Dictionaries store key-value mappings: `my_dict = {\"key\": value}`. Access or modify values via `my_dict[\"key\"]`.",
+      "Step-by-Step Target:\n1. Create `res = {\"token\": \"abc-123\", \"ok\": True}`.\n2. Print `res[\"token\"]`.\nKey Tip: Access `res[\"token\"]`"
     ],
     "testCases": [
       {
@@ -268,17 +280,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Splitting CSV row",
       "code": "row = \"Apple,1.50,10\".split(\",\")\nprint(row[0])",
-      "explanation": "\u2022 Apple.",
+      "explanation": "• Apple.",
       "expectedOutput": "Apple"
     },
     "exerciseSteps": [
       "Create `row = \"Alice,Engineering,Lead\".split(\",\")`.",
       "Print `row[1]`."
     ],
-    "initialCode": "row = \"Alice,Engineering,Lead\".split(\",\")\nprint(row[1])\n",
+    "initialCode": "# Step 1: Create variable 'row' and set it to \"Alice,Engineering,Lead\".split(\",\")\n# TODO: Write code below\n\n# Step 2: Print 'row[1]'\n# TODO: Write code below\n",
     "solutionCode": "row = \"Alice,Engineering,Lead\".split(\",\")\nprint(row[1])\n",
     "hints": [
-      "Index 1 is Engineering"
+      "Concept: Parse comma-separated values into structured rows of data. Think of it like: Reading columns of an Excel spreadsheet row by row.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `row = \"Alice,Engineering,Lead\".split(\",\")`.\n2. Print `row[1]`.\nKey Tip: Index 1 is Engineering"
     ],
     "testCases": [
       {
@@ -309,17 +323,19 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Enter/Exit Class",
       "code": "class Timer:\n    def __enter__(self): return \"started\"\n    def __exit__(self, a, b, c): pass\nt = Timer()\nprint(t.__enter__())",
-      "explanation": "\u2022 Returns started.",
+      "explanation": "• Returns started.",
       "expectedOutput": "started"
     },
     "exerciseSteps": [
       "Define `class Lock: def __enter__(self): return \"locked\"; def __exit__(self, a, b, c): pass`.",
       "Create `l = Lock()` and print `l.__enter__()`."
     ],
-    "initialCode": "class Lock:\n    def __enter__(self):\n        return \"locked\"\n    def __exit__(self, a, b, c):\n        pass\nl = Lock()\nprint(l.__enter__())\n",
+    "initialCode": "# Step 1: Define 'class Lock: def __enter__(self): return \"locked\"; def __exit__(self, a, b, c): pass'\nclass Lock:\n    def __enter__(self):\n        # TODO: Implement method body\n        pass\n\n    def __exit__(self, a, b, c):\n        # TODO: Implement method body\n        pass\n\n# Step 2: Create 'l = Lock()' and print 'l.__enter__()'\n# TODO: Write code below\n",
     "solutionCode": "class Lock:\n    def __enter__(self):\n        return \"locked\"\n    def __exit__(self, a, b, c):\n        pass\nl = Lock()\nprint(l.__enter__())\n",
     "hints": [
-      "Define `__enter__` returning \"locked\""
+      "Concept: Equip custom classes with context manager superpowers using __enter__ and __exit__ methods. Think of it like: Entering a museum (getting your hand stamped) and exiting (returning audio headphones at the door).",
+      "Syntax Blueprint: Define a class with `class ClassName:` and constructor `def __init__(self, ...): self.x = x`. Instantiate with `obj = ClassName()`.",
+      "Step-by-Step Target:\n1. Define `class Lock: def __enter__(self): return \"locked\"; def __exit__(self, a, b, c): pass`.\n2. Create `l = Lock()` and print `l.__enter__()`.\nKey Tip: Define `__enter__` returning \"locked\""
     ],
     "testCases": [
       {
@@ -350,7 +366,7 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Joining paths",
       "code": "parts = [\"home\", \"user\", \"docs\"]\nfull = \"/\".join(parts)\nprint(full)",
-      "explanation": "\u2022 home/user/docs.",
+      "explanation": "• home/user/docs.",
       "expectedOutput": "home/user/docs"
     },
     "exerciseSteps": [
@@ -358,10 +374,12 @@ export const pythonModule13Lessons: Lesson[] = [
       "Check if ends with `.py`: `is_py = filename.endswith(\".py\")`.",
       "Print `is_py`."
     ],
-    "initialCode": "filename = \"app.py\"\nis_py = filename.endswith(\".py\")\nprint(is_py)\n",
+    "initialCode": "# Step 1: Create variable 'filename' and set it to \"app.py\"\n# TODO: Write code below\n\n# Step 2: Check if ends with '.py': 'is_py = filename.endswith(\".py\")'\n# TODO: Write code below\n\n# Step 3: Print 'is_py'\n# TODO: Write code below\n",
     "solutionCode": "filename = \"app.py\"\nis_py = filename.endswith(\".py\")\nprint(is_py)\n",
     "hints": [
-      "Use `filename.endswith(\".py\")`"
+      "Concept: Join and manage filesystem paths cleanly across Windows, macOS, and Linux. Think of it like: Writing down turn-by-turn driving directions to a destination address.",
+      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
+      "Step-by-Step Target:\n1. Create `filename = \"app.py\"`.\n2. Check if ends with `.py`: `is_py = filename.endswith(\".py\")`.\n3. Print `is_py`.\nKey Tip: Use `filename.endswith(\".py\")`"
     ],
     "testCases": [
       {
@@ -392,7 +410,7 @@ export const pythonModule13Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Extension grouping",
       "code": "files = [\"a.py\", \"b.py\", \"c.txt\"]\npy_count = sum(1 for f in files if f.endswith(\".py\"))\nprint(py_count)",
-      "explanation": "\u2022 2 python files.",
+      "explanation": "• 2 python files.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
@@ -400,10 +418,12 @@ export const pythonModule13Lessons: Lesson[] = [
       "Count JS files: `js_count = sum(1 for f in files if f.endswith(\".js\"))`.",
       "Print `js_count`."
     ],
-    "initialCode": "files = [\"index.html\", \"style.css\", \"app.js\", \"test.js\"]\njs_count = sum(1 for f in files if f.endswith(\".js\"))\nprint(js_count)\n",
+    "initialCode": "# Step 1: Create variable 'files' and set it to [\"index.html\", \"style.css\", \"app.js\", \"test.js\"]\n# TODO: Write code below\n\n# Step 2: Count JS files: 'js_count = sum(1 for f in files if f.endswith(\".js\"))'\n# TODO: Write code below\n\n# Step 3: Print 'js_count'\n# TODO: Write code below\n",
     "solutionCode": "files = [\"index.html\", \"style.css\", \"app.js\", \"test.js\"]\njs_count = sum(1 for f in files if f.endswith(\".js\"))\nprint(js_count)\n",
     "hints": [
-      "Check `.endswith(\".js\")`"
+      "Concept: Scan a collection of filenames, categorize by extension, and compute file counts. Think of it like: An office manager organizing a cabinet by sorting documents into PDF, DOC, and TXT folders.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `files = [\"index.html\", \"style.css\", \"app.js\", \"test.js\"]`.\n2. Count JS files: `js_count = sum(1 for f in files if f.endswith(\".js\"))`.\n3. Print `js_count`.\nKey Tip: Check `.endswith(\".js\")`"
     ],
     "testCases": [
       {

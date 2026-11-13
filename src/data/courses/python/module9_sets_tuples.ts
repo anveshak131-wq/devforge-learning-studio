@@ -22,17 +22,19 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Screen resolution tuple",
       "code": "res = (1920, 1080)\nprint(res[0])",
-      "explanation": "\u2022 1920.",
+      "explanation": "• 1920.",
       "expectedOutput": "1920"
     },
     "exerciseSteps": [
       "Create `rgb = (255, 0, 128)`.",
       "Print `rgb[0]`."
     ],
-    "initialCode": "rgb = (255, 0, 128)\nprint(rgb[0])\n",
+    "initialCode": "# Step 1: Create variable 'rgb' and set it to (255, 0, 128)\n# TODO: Write code below\n\n# Step 2: Print 'rgb[0]'\n# TODO: Write code below\n",
     "solutionCode": "rgb = (255, 0, 128)\nprint(rgb[0])\n",
     "hints": [
-      "Use parentheses `(255, 0, 128)`"
+      "Concept: Store fixed, unchangeable ordered sequences inside parentheses (x, y). Think of it like: GPS coordinates engraved on a stone monument: latitude and longitude never change.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `rgb = (255, 0, 128)`.\n2. Print `rgb[0]`.\nKey Tip: Use parentheses `(255, 0, 128)`"
     ],
     "testCases": [
       {
@@ -63,7 +65,7 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Swapping variables",
       "code": "x = 1\ny = 2\nx, y = y, x\nprint(x)",
-      "explanation": "\u2022 Swaps x and y cleanly.",
+      "explanation": "• Swaps x and y cleanly.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
@@ -71,10 +73,12 @@ export const pythonModule9Lessons: Lesson[] = [
       "Unpack `x, y = point`.",
       "Print `x + y`."
     ],
-    "initialCode": "point = (5, 9)\nx, y = point\nprint(x + y)\n",
+    "initialCode": "# Step 1: Create variable 'point' and set it to (5, 9)\n# TODO: Write code below\n\n# Step 2: Unpack 'x, y = point'\n# TODO: Write code below\n\n# Step 3: Print 'x + y'\n# TODO: Write code below\n",
     "solutionCode": "point = (5, 9)\nx, y = point\nprint(x + y)\n",
     "hints": [
-      "Unpack with `x, y = point`"
+      "Concept: Unpack elements from a tuple directly into separate variables. Think of it like: Unzipping a dual-compartment lunchbox into a sandwich and a juice box.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `point = (5, 9)`.\n2. Unpack `x, y = point`.\n3. Print `x + y`.\nKey Tip: Unpack with `x, y = point`"
     ],
     "testCases": [
       {
@@ -105,17 +109,19 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Removing duplicate tags",
       "code": "tags = set([\"python\", \"web\", \"python\"])\nprint(len(tags))",
-      "explanation": "\u2022 Length is 2.",
+      "explanation": "• Length is 2.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
       "Create a set from `[10, 20, 20, 30]`: `unique = set([10, 20, 20, 30])`.",
       "Print `len(unique)`."
     ],
-    "initialCode": "unique = set([10, 20, 20, 30])\nprint(len(unique))\n",
+    "initialCode": "# Step 1: Create a set from '[10, 20, 20, 30]': 'unique = set([10, 20, 20, 30])'\n# TODO: Write code below\n\n# Step 2: Print 'len(unique)'\n# TODO: Write code below\n",
     "solutionCode": "unique = set([10, 20, 20, 30])\nprint(len(unique))\n",
     "hints": [
-      "Use `set([10, 20, 20, 30])`"
+      "Concept: Store unordered collections of strictly unique values where duplicates are discarded. Think of it like: A bag of unique colored marbles: dropping in a second red marble does not create a new color in the collection.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create a set from `[10, 20, 20, 30]`: `unique = set([10, 20, 20, 30])`.\n2. Print `len(unique)`.\nKey Tip: Use `set([10, 20, 20, 30])`"
     ],
     "testCases": [
       {
@@ -146,7 +152,7 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Unique visitor set",
       "code": "visitors = set()\nvisitors.add(\"ip_1\")\nvisitors.add(\"ip_1\")\nprint(len(visitors))",
-      "explanation": "\u2022 Only 1 unique item stored.",
+      "explanation": "• Only 1 unique item stored.",
       "expectedOutput": "1"
     },
     "exerciseSteps": [
@@ -154,10 +160,12 @@ export const pythonModule9Lessons: Lesson[] = [
       "Add CSS with `skills.add(\"CSS\")`.",
       "Print `len(skills)`."
     ],
-    "initialCode": "skills = set([\"HTML\"])\nskills.add(\"CSS\")\nprint(len(skills))\n",
+    "initialCode": "# Step 1: Create variable 'skills' and set it to set([\"HTML\"])\n# TODO: Write code below\n\n# Step 2: Add CSS with 'skills.add(\"CSS\")'\n# TODO: Write code below\n\n# Step 3: Print 'len(skills)'\n# TODO: Write code below\n",
     "solutionCode": "skills = set([\"HTML\"])\nskills.add(\"CSS\")\nprint(len(skills))\n",
     "hints": [
-      "Use `skills.add(\"CSS\")`"
+      "Concept: Add new elements to a set with .add() and remove them safely with .discard(). Think of it like: Adding a name to a club membership roll.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `skills = set([\"HTML\"])`.\n2. Add CSS with `skills.add(\"CSS\")`.\n3. Print `len(skills)`.\nKey Tip: Use `skills.add(\"CSS\")`"
     ],
     "testCases": [
       {
@@ -188,7 +196,7 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Common interests",
       "code": "p1 = set([\"music\", \"art\"])\np2 = set([\"art\", \"sports\"])\ncommon = p1 & p2\nprint(len(common))",
-      "explanation": "\u2022 1 shared interest (art).",
+      "explanation": "• 1 shared interest (art).",
       "expectedOutput": "1"
     },
     "exerciseSteps": [
@@ -197,10 +205,12 @@ export const pythonModule9Lessons: Lesson[] = [
       "Compute intersection: `both = team1 & team2`.",
       "Print `both`."
     ],
-    "initialCode": "team1 = set([\"Alice\", \"Bob\"])\nteam2 = set([\"Bob\", \"Charlie\"])\nboth = team1 & team2\nprint(both)\n",
+    "initialCode": "# Step 1: Create variable 'team1' and set it to set([\"Alice\", \"Bob\"])\n# TODO: Write code below\n\n# Step 2: Create variable 'team2' and set it to set([\"Bob\", \"Charlie\"])\n# TODO: Write code below\n\n# Step 3: Compute intersection: 'both = team1 & team2'\n# TODO: Write code below\n\n# Step 4: Print 'both'\n# TODO: Write code below\n",
     "solutionCode": "team1 = set([\"Alice\", \"Bob\"])\nteam2 = set([\"Bob\", \"Charlie\"])\nboth = team1 & team2\nprint(both)\n",
     "hints": [
-      "Use `team1 & team2`"
+      "Concept: Compute overlapping shared elements or combined totals between two sets. Think of it like: A Venn diagram: the overlapping center region is intersection (&), and the whole combined area is union (|).",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `team1 = set([\"Alice\", \"Bob\"])`.\n2. Create `team2 = set([\"Bob\", \"Charlie\"])`.\n3. Compute intersection: `both = team1 & team2`.\n4. Print `both`.\nKey Tip: Use `team1 & team2`"
     ],
     "testCases": [
       {
@@ -231,7 +241,7 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Clean list",
       "code": "tags = [\"js\", \"py\", \"js\"]\nunique_tags = list(set(tags))\nprint(len(unique_tags))",
-      "explanation": "\u2022 Reduces 3 to 2.",
+      "explanation": "• Reduces 3 to 2.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
@@ -239,10 +249,12 @@ export const pythonModule9Lessons: Lesson[] = [
       "Deduplicate: `unique_ids = list(set(raw_ids))`.",
       "Print `len(unique_ids)`."
     ],
-    "initialCode": "raw_ids = [101, 102, 101, 103]\nunique_ids = list(set(raw_ids))\nprint(len(unique_ids))\n",
+    "initialCode": "# Step 1: Create variable 'raw_ids' and set it to [101, 102, 101, 103]\n# TODO: Write code below\n\n# Step 2: Deduplicate: 'unique_ids = list(set(raw_ids))'\n# TODO: Write code below\n\n# Step 3: Print 'len(unique_ids)'\n# TODO: Write code below\n",
     "solutionCode": "raw_ids = [101, 102, 101, 103]\nunique_ids = list(set(raw_ids))\nprint(len(unique_ids))\n",
     "hints": [
-      "Use `list(set(raw_ids))`"
+      "Concept: Remove duplicates from any list in one clean line by casting to set and back to list. Think of it like: Passing a bag of duplicate tokens through a scanner that only registers distinct colors.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `raw_ids = [101, 102, 101, 103]`.\n2. Deduplicate: `unique_ids = list(set(raw_ids))`.\n3. Print `len(unique_ids)`.\nKey Tip: Use `list(set(raw_ids))`"
     ],
     "testCases": [
       {
@@ -273,17 +285,19 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Fixed directions",
       "code": "DIRECTIONS = (\"N\", \"S\", \"E\", \"W\")\nprint(len(DIRECTIONS))",
-      "explanation": "\u2022 4 constant cardinal directions.",
+      "explanation": "• 4 constant cardinal directions.",
       "expectedOutput": "4"
     },
     "exerciseSteps": [
       "Create `STATUS_CODES = (200, 404, 500)`.",
       "Print `STATUS_CODES[0]`."
     ],
-    "initialCode": "STATUS_CODES = (200, 404, 500)\nprint(STATUS_CODES[0])\n",
+    "initialCode": "# Step 1: Create variable 'STATUS_CODES' and set it to (200, 404, 500)\n# TODO: Write code below\n\n# Step 2: Print 'STATUS_CODES[0]'\n# TODO: Write code below\n",
     "solutionCode": "STATUS_CODES = (200, 404, 500)\nprint(STATUS_CODES[0])\n",
     "hints": [
-      "Access index `0`"
+      "Concept: Protect critical reference configurations against accidental mutation by using tuples instead of lists. Think of it like: Laminating a sign so that nobody can write or erase anything on it.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `STATUS_CODES = (200, 404, 500)`.\n2. Print `STATUS_CODES[0]`.\nKey Tip: Access index `0`"
     ],
     "testCases": [
       {
@@ -314,7 +328,7 @@ export const pythonModule9Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Unanswered questions",
       "code": "all_q = set([1, 2, 3])\nanswered = set([1, 2])\nleft = all_q - answered\nprint(len(left))",
-      "explanation": "\u2022 1 question remains.",
+      "explanation": "• 1 question remains.",
       "expectedOutput": "1"
     },
     "exerciseSteps": [
@@ -323,10 +337,12 @@ export const pythonModule9Lessons: Lesson[] = [
       "Compute `remaining = all_tasks - done`.",
       "Print `len(remaining)`."
     ],
-    "initialCode": "all_tasks = set([\"clean\", \"cook\", \"read\"])\ndone = set([\"clean\"])\nremaining = all_tasks - done\nprint(len(remaining))\n",
+    "initialCode": "# Step 1: Create variable 'all_tasks' and set it to set([\"clean\", \"cook\", \"read\"])\n# TODO: Write code below\n\n# Step 2: Create variable 'done' and set it to set([\"clean\"])\n# TODO: Write code below\n\n# Step 3: Compute 'remaining = all_tasks - done'\n# TODO: Write code below\n\n# Step 4: Print 'len(remaining)'\n# TODO: Write code below\n",
     "solutionCode": "all_tasks = set([\"clean\", \"cook\", \"read\"])\ndone = set([\"clean\"])\nremaining = all_tasks - done\nprint(len(remaining))\n",
     "hints": [
-      "Use `all_tasks - done`"
+      "Concept: Find items present in set A that are not in set B using the subtraction operator -. Think of it like: A checklist of required tasks minus completed tasks shows you exactly what tasks remain to be done.",
+      "Syntax Blueprint: Tuples are immutable ordered sequences defined with parentheses: `my_tuple = (item1, item2)`. Access elements via index: `my_tuple[0]`.",
+      "Step-by-Step Target:\n1. Create `all_tasks = set([\"clean\", \"cook\", \"read\"])`.\n2. Create `done = set([\"clean\"])`.\n3. Compute `remaining = all_tasks - done`.\n4. Print `len(remaining)`.\nKey Tip: Use `all_tasks - done`"
     ],
     "testCases": [
       {

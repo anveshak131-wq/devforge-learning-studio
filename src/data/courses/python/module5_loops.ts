@@ -22,17 +22,19 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Printing items",
       "code": "animals = [\"cat\", \"dog\"]\nfor a in animals:\n    print(a)",
-      "explanation": "\u2022 Logs cat and dog.",
+      "explanation": "• Logs cat and dog.",
       "expectedOutput": "cat\ndog"
     },
     "exerciseSteps": [
       "Create `colors = [\"red\", \"green\", \"blue\"]`.",
       "Loop through colors with `for color in colors:` and print each."
     ],
-    "initialCode": "colors = [\"red\", \"green\", \"blue\"]\nfor color in colors:\n    print(color)\n",
+    "initialCode": "# Step 1: Create variable 'colors' and set it to [\"red\", \"green\", \"blue\"]\n# TODO: Write code below\n\n# Step 2: Loop through colors with 'for color in colors:' and print each\n# TODO: Write code below\n",
     "solutionCode": "colors = [\"red\", \"green\", \"blue\"]\nfor color in colors:\n    print(color)\n",
     "hints": [
-      "Write `for color in colors:`"
+      "Concept: Loop directly through each element in a list without manual index counters. Think of it like: Dealing cards one-by-one from a deck to each player at the table.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `colors = [\"red\", \"green\", \"blue\"]`.\n2. Loop through colors with `for color in colors:` and print each.\nKey Tip: Write `for color in colors:`"
     ],
     "testCases": [
       {
@@ -63,17 +65,19 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Loop 3 times",
       "code": "for i in range(3):\n    print(f\"Lap {i}\")",
-      "explanation": "\u2022 Logs Lap 0, Lap 1, Lap 2.",
+      "explanation": "• Logs Lap 0, Lap 1, Lap 2.",
       "expectedOutput": "Lap 0\nLap 1\nLap 2"
     },
     "exerciseSteps": [
       "Loop 4 times using `range(4)`.",
       "Print each number `i`."
     ],
-    "initialCode": "for i in range(4):\n    print(i)\n",
+    "initialCode": "# Step 1: Loop 4 times using 'range(4)'\n# TODO: Write code below\n\n# Step 2: Print each number 'i'\n# TODO: Write code below\n",
     "solutionCode": "for i in range(4):\n    print(i)\n",
     "hints": [
-      "Use `for i in range(4):`"
+      "Concept: Generate numeric sequences starting from 0 up to stop (exclusive). Think of it like: Counting laps around a track from lap 0 to lap 4.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Loop 4 times using `range(4)`.\n2. Print each number `i`.\nKey Tip: Use `for i in range(4):`"
     ],
     "testCases": [
       {
@@ -104,17 +108,19 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Skip by 5",
       "code": "for n in range(5, 20, 5):\n    print(n)",
-      "explanation": "\u2022 Prints 5, 10, 15.",
+      "explanation": "• Prints 5, 10, 15.",
       "expectedOutput": "5\n10\n15"
     },
     "exerciseSteps": [
       "Loop from 1 to 6 with `for i in range(1, 6):`.",
       "Print each `i`."
     ],
-    "initialCode": "for i in range(1, 6):\n    print(i)\n",
+    "initialCode": "# Step 1: Loop from 1 to 6 with 'for i in range(1, 6):'\n# TODO: Write code below\n\n# Step 2: Print each 'i'\n# TODO: Write code below\n",
     "solutionCode": "for i in range(1, 6):\n    print(i)\n",
     "hints": [
-      "Use `range(1, 6)`"
+      "Concept: Specify custom starting points and skip steps in range generation. Think of it like: Skipping every other step while taking the stairs: 1, 3, 5, 7.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Loop from 1 to 6 with `for i in range(1, 6):`.\n2. Print each `i`.\nKey Tip: Use `range(1, 6)`"
     ],
     "testCases": [
       {
@@ -145,17 +151,19 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Countdown",
       "code": "n = 3\nwhile n > 0:\n    print(n)\n    n -= 1",
-      "explanation": "\u2022 Logs 3, 2, 1.",
+      "explanation": "• Logs 3, 2, 1.",
       "expectedOutput": "3\n2\n1"
     },
     "exerciseSteps": [
       "Create `counter = 1`.",
       "While `counter <= 3:`, print `counter` and increment `counter += 1`."
     ],
-    "initialCode": "counter = 1\nwhile counter <= 3:\n    print(counter)\n    counter += 1\n",
+    "initialCode": "# Step 1: Create variable 'counter' and set it to 1\n# TODO: Write code below\n\n# Step 2: While 'counter <= 3:', print 'counter' and increment 'counter += 1'\n# TODO: Write code below\n",
     "solutionCode": "counter = 1\nwhile counter <= 3:\n    print(counter)\n    counter += 1\n",
     "hints": [
-      "Remember to increment `counter += 1` inside loop"
+      "Concept: Execute statements repeatedly as long as a boolean condition remains True. Think of it like: Driving a car: keep driving WHILE the gas tank is not empty.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `counter = 1`.\n2. While `counter <= 3:`, print `counter` and increment `counter += 1`.\nKey Tip: Remember to increment `counter += 1` inside loop"
     ],
     "testCases": [
       {
@@ -186,7 +194,7 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Stopping at target",
       "code": "found = 0\nfor x in [10, 20, 30]:\n    if x == 20:\n        found = x\n        break\nprint(found)",
-      "explanation": "\u2022 Breaks after finding 20.",
+      "explanation": "• Breaks after finding 20.",
       "expectedOutput": "20"
     },
     "exerciseSteps": [
@@ -194,10 +202,12 @@ export const pythonModule5Lessons: Lesson[] = [
       "If number is 3, set `target = 3` and `break`.",
       "Print `target`."
     ],
-    "initialCode": "target = 0\nfor num in [1, 2, 3, 4]:\n    if num == 3:\n        target = num\n        break\nprint(target)\n",
+    "initialCode": "# Step 1: Loop through '[1, 2, 3, 4]'\n# TODO: Write code below\n\n# Step 2: If number is 3, set 'target = 3' and 'break'\n# TODO: Write code below\n\n# Step 3: Print 'target'\n# TODO: Write code below\n",
     "solutionCode": "target = 0\nfor num in [1, 2, 3, 4]:\n    if num == 3:\n        target = num\n        break\nprint(target)\n",
     "hints": [
-      "Use `break` inside the if block"
+      "Concept: Terminate and break out of a loop immediately when a target condition is met. Think of it like: Finding your car keys in a drawer: once you find them, you stop searching immediately.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Loop through `[1, 2, 3, 4]`.\n2. If number is 3, set `target = 3` and `break`.\n3. Print `target`.\nKey Tip: Use `break` inside the if block"
     ],
     "testCases": [
       {
@@ -228,7 +238,7 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Skipping odds",
       "code": "evens = []\nfor i in range(6):\n    if i % 2 != 0:\n        continue\n    evens.append(i)\nprint(len(evens))",
-      "explanation": "\u2022 Collects 0, 2, 4 (length 3).",
+      "explanation": "• Collects 0, 2, 4 (length 3).",
       "expectedOutput": "3"
     },
     "exerciseSteps": [
@@ -236,10 +246,12 @@ export const pythonModule5Lessons: Lesson[] = [
       "Loop `range(6)`: if `i % 2 == 0: continue`, else `odds.append(i)`.",
       "Print `odds`."
     ],
-    "initialCode": "odds = []\nfor i in range(6):\n    if i % 2 == 0:\n        continue\n    odds.append(i)\nprint(odds)\n",
+    "initialCode": "# Step 1: Create variable 'odds' and set it to []\n# TODO: Write code below\n\n# Step 2: Loop 'range(6)': if 'i % 2 == 0: continue', else 'odds.append(i)'\n# TODO: Write code below\n\n# Step 3: Print 'odds'\n# TODO: Write code below\n",
     "solutionCode": "odds = []\nfor i in range(6):\n    if i % 2 == 0:\n        continue\n    odds.append(i)\nprint(odds)\n",
     "hints": [
-      "Use `continue` when `i % 2 == 0`"
+      "Concept: Skip the rest of the current iteration and jump straight to the next cycle. Think of it like: Inspecting fruit at an orchard: if an apple has a blemish, toss it aside and continue to the next apple.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `odds = []`.\n2. Loop `range(6)`: if `i % 2 == 0: continue`, else `odds.append(i)`.\n3. Print `odds`.\nKey Tip: Use `continue` when `i % 2 == 0`"
     ],
     "testCases": [
       {
@@ -270,17 +282,19 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Ranking items",
       "code": "medals = [\"Gold\", \"Silver\"]\nfor rank, medal in enumerate(medals):\n    print(f\"{rank + 1}: {medal}\")",
-      "explanation": "\u2022 1: Gold, 2: Silver.",
+      "explanation": "• 1: Gold, 2: Silver.",
       "expectedOutput": "1: Gold\n2: Silver"
     },
     "exerciseSteps": [
       "Create `langs = [\"Python\", \"JavaScript\"]`.",
       "Loop with `for idx, lang in enumerate(langs): print(f\"{idx}: {lang}\")`."
     ],
-    "initialCode": "langs = [\"Python\", \"JavaScript\"]\nfor idx, lang in enumerate(langs):\n    print(f\"{idx}: {lang}\")\n",
+    "initialCode": "# Step 1: Create variable 'langs' and set it to [\"Python\", \"JavaScript\"]\n# TODO: Write code below\n\n# Step 2: Loop with 'for idx, lang in enumerate(langs): print(f\"{idx}: {lang}\")'\n# TODO: Write code below\n",
     "solutionCode": "langs = [\"Python\", \"JavaScript\"]\nfor idx, lang in enumerate(langs):\n    print(f\"{idx}: {lang}\")\n",
     "hints": [
-      "Unpack `idx, lang in enumerate(langs)`"
+      "Concept: Access both the item index and its value simultaneously using enumerate(collection). Think of it like: Printing a numbered leaderboard: each runner gets their finishing rank number alongside their name.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `langs = [\"Python\", \"JavaScript\"]`.\n2. Loop with `for idx, lang in enumerate(langs): print(f\"{idx}: {lang}\")`.\nKey Tip: Unpack `idx, lang in enumerate(langs)`"
     ],
     "testCases": [
       {
@@ -311,7 +325,7 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Counting vowels",
       "code": "vowels = 0\nfor char in \"hello\":\n    if char in \"aeiou\":\n        vowels += 1\nprint(vowels)",
-      "explanation": "\u2022 e and o = 2 vowels.",
+      "explanation": "• e and o = 2 vowels.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
@@ -319,10 +333,12 @@ export const pythonModule5Lessons: Lesson[] = [
       "Loop through word and count letters: `count = 0; for c in word: count += 1`.",
       "Print `count`."
     ],
-    "initialCode": "word = \"Python\"\ncount = 0\nfor c in word:\n    count += 1\nprint(count)\n",
+    "initialCode": "# Step 1: Create variable 'word' and set it to \"Python\"\n# TODO: Write code below\n\n# Step 2: Loop through word and count letters: 'count = 0; for c in word: count += 1'\n# TODO: Write code below\n\n# Step 3: Print 'count'\n# TODO: Write code below\n",
     "solutionCode": "word = \"Python\"\ncount = 0\nfor c in word:\n    count += 1\nprint(count)\n",
     "hints": [
-      "Increment `count += 1` in each loop"
+      "Concept: Iterate directly over strings to inspect or transform individual characters. Think of it like: Reading a book letter by letter with a magnifying glass.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `word = \"Python\"`.\n2. Loop through word and count letters: `count = 0; for c in word: count += 1`.\n3. Print `count`.\nKey Tip: Increment `count += 1` in each loop"
     ],
     "testCases": [
       {
@@ -353,7 +369,7 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Summing numbers",
       "code": "sum_val = 0\nfor n in [1, 2, 3, 4]:\n    sum_val += n\nprint(sum_val)",
-      "explanation": "\u2022 1+2+3+4 = 10.",
+      "explanation": "• 1+2+3+4 = 10.",
       "expectedOutput": "10"
     },
     "exerciseSteps": [
@@ -361,10 +377,12 @@ export const pythonModule5Lessons: Lesson[] = [
       "For `x` in `[5, 10, 15]: total += x`.",
       "Print `total`."
     ],
-    "initialCode": "total = 0\nfor x in [5, 10, 15]:\n    total += x\nprint(total)\n",
+    "initialCode": "# Step 1: Create variable 'total' and set it to 0\n# TODO: Write code below\n\n# Step 2: For 'x' in '[5, 10, 15]: total += x'\n# TODO: Write code below\n\n# Step 3: Print 'total'\n# TODO: Write code below\n",
     "solutionCode": "total = 0\nfor x in [5, 10, 15]:\n    total += x\nprint(total)\n",
     "hints": [
-      "Add `x` to `total` on each iteration"
+      "Concept: Build running totals or aggregated strings by accumulating results across loop iterations. Think of it like: A piggy bank: you start with $0 and drop in a coin on every day of the week.",
+      "Syntax Blueprint: List comprehension syntax: `[expr for item in iterable]` or `[expr for item in iterable if condition]`.",
+      "Step-by-Step Target:\n1. Create `total = 0`.\n2. For `x` in `[5, 10, 15]: total += x`.\n3. Print `total`.\nKey Tip: Add `x` to `total` on each iteration"
     ],
     "testCases": [
       {
@@ -395,7 +413,7 @@ export const pythonModule5Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Grid pairs",
       "code": "pairs = []\nfor i in [1, 2]:\n    for j in [\"a\", \"b\"]:\n        pairs.append(f\"{i}{j}\")\nprint(len(pairs))",
-      "explanation": "\u2022 Generates 4 pairs: 1a, 1b, 2a, 2b.",
+      "explanation": "• Generates 4 pairs: 1a, 1b, 2a, 2b.",
       "expectedOutput": "4"
     },
     "exerciseSteps": [
@@ -403,10 +421,12 @@ export const pythonModule5Lessons: Lesson[] = [
       "For `r` in `range(2)` and for `c` in `range(3)`: `grid.append(f\"{r}-{c}\")`.",
       "Print `len(grid)`."
     ],
-    "initialCode": "grid = []\nfor r in range(2):\n    for c in range(3):\n        grid.append(f\"{r}-{c}\")\nprint(len(grid))\n",
+    "initialCode": "# Step 1: Create variable 'grid' and set it to []\n# TODO: Write code below\n\n# Step 2: For 'r' in 'range(2)' and for 'c' in 'range(3)': 'grid.append(f\"{r}-{c}\")'\n# TODO: Write code below\n\n# Step 3: Print 'len(grid)'\n# TODO: Write code below\n",
     "solutionCode": "grid = []\nfor r in range(2):\n    for c in range(3):\n        grid.append(f\"{r}-{c}\")\nprint(len(grid))\n",
     "hints": [
-      "2 rows times 3 columns = 6 elements"
+      "Concept: Loop within loops to traverse 2D grids, tables, and nested data structures. Think of it like: A clock: the minute hand must complete 60 ticks for every single tick of the hour hand.",
+      "Syntax Blueprint: Loop over sequences with `for item in sequence:` and indent the body. For condition loops, use `while condition:`.",
+      "Step-by-Step Target:\n1. Create `grid = []`.\n2. For `r` in `range(2)` and for `c` in `range(3)`: `grid.append(f\"{r}-{c}\")`.\n3. Print `len(grid)`.\nKey Tip: 2 rows times 3 columns = 6 elements"
     ],
     "testCases": [
       {

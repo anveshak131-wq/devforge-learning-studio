@@ -71,9 +71,28 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     }
   }, [lesson.id, lesson.category]);
 
+  // Helper to retrieve saved code, resetting stale pre-filled solutions if uncompleted
+  const getInitialEditorCode = (currentLesson: Lesson): string => {
+    const saved = ProgressStorage.getSavedCode(currentLesson.id, currentLesson.initialCode);
+    const stats = ProgressStorage.getStats();
+    const isCompleted = stats.completedLessonIds.includes(currentLesson.id);
+
+    // If user hasn't completed the lesson, but saved code exactly matches solutionCode
+    // while initialCode is now scaffolded differently, reset to the starter scaffold
+    if (
+      !isCompleted &&
+      saved.trim() === currentLesson.solutionCode.trim() &&
+      currentLesson.initialCode.trim() !== currentLesson.solutionCode.trim()
+    ) {
+      ProgressStorage.saveCode(currentLesson.id, currentLesson.initialCode);
+      return currentLesson.initialCode;
+    }
+    return saved;
+  };
+
   // Code & Execution state
   const [code, setCode] = useState<string>(() => 
-    ProgressStorage.getSavedCode(lesson.id, lesson.initialCode)
+    getInitialEditorCode(lesson)
   );
   const [isRunning, setIsRunning] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
@@ -116,7 +135,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
   // When lesson changes, reset state
   useEffect(() => {
-    setCode(ProgressStorage.getSavedCode(lesson.id, lesson.initialCode));
+    setCode(getInitialEditorCode(lesson));
     setExecutionResult(null);
     setTestResults(null);
     setUnlockedHints(0);
@@ -835,14 +854,23 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
             {unlockedHints > 0 && (
               <div className="space-y-1.5">
-                {lesson.hints.slice(0, unlockedHints).map((hint, hIdx) => (
-                  <div
-                    key={hIdx}
-                    className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-200 text-xs leading-relaxed"
-                  >
-                    <strong>Hint {hIdx + 1}:</strong> {hint}
-                  </div>
-                ))}
+                {lesson.hints.slice(0, unlockedHints).map((hint, hIdx) => {
+                  const tierLabels = [
+                    'Tier 1: Concept Nudge',
+                    'Tier 2: Syntax Blueprint',
+                    'Tier 3: Step-by-Step Guidance'
+                  ];
+                  const label = tierLabels[hIdx] || `Hint ${hIdx + 1}`;
+                  return (
+                    <div
+                      key={hIdx}
+                      className="p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20 text-amber-200 text-xs leading-relaxed whitespace-pre-line"
+                    >
+                      <strong className="text-amber-300 block mb-0.5">{label}</strong>
+                      <div>{hint}</div>
+                    </div>
+                  );
+                })}
               </div>
             )}
           </div>

@@ -22,7 +22,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: First element",
       "code": "fruits = [\"apple\", \"banana\"]\nprint(fruits[0])",
-      "explanation": "\u2022 Index 0 retrieves apple.",
+      "explanation": "• Index 0 retrieves apple.",
       "expectedOutput": "apple"
     },
     "exerciseSteps": [
@@ -30,10 +30,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Get first score: `first = scores[0]`.",
       "Print `first`."
     ],
-    "initialCode": "scores = [100, 90, 80]\nfirst = scores[0]\nprint(first)\n",
+    "initialCode": "# Step 1: Create variable 'scores' and set it to [100, 90, 80]\n# TODO: Write code below\n\n# Step 2: Get first score: 'first = scores[0]'\n# TODO: Write code below\n\n# Step 3: Print 'first'\n# TODO: Write code below\n",
     "solutionCode": "scores = [100, 90, 80]\nfirst = scores[0]\nprint(first)\n",
     "hints": [
-      "Access `scores[0]`"
+      "Concept: Store ordered collections of elements inside square brackets []. Think of it like: A grocery shopping list with items written line-by-line.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `scores = [100, 90, 80]`.\n2. Get first score: `first = scores[0]`.\n3. Print `first`.\nKey Tip: Access `scores[0]`"
     ],
     "testCases": [
       {
@@ -64,7 +66,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Last element",
       "code": "cities = [\"Paris\", \"Rome\", \"Tokyo\"]\nprint(cities[-1])",
-      "explanation": "\u2022 Retrieves Tokyo.",
+      "explanation": "• Retrieves Tokyo.",
       "expectedOutput": "Tokyo"
     },
     "exerciseSteps": [
@@ -72,10 +74,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Access last item: `last_planet = planets[-1]`.",
       "Print `last_planet`."
     ],
-    "initialCode": "planets = [\"Mercury\", \"Venus\", \"Earth\"]\nlast_planet = planets[-1]\nprint(last_planet)\n",
+    "initialCode": "# Step 1: Create variable 'planets' and set it to [\"Mercury\", \"Venus\", \"Earth\"]\n# TODO: Write code below\n\n# Step 2: Access last item: 'last_planet = planets[-1]'\n# TODO: Write code below\n\n# Step 3: Print 'last_planet'\n# TODO: Write code below\n",
     "solutionCode": "planets = [\"Mercury\", \"Venus\", \"Earth\"]\nlast_planet = planets[-1]\nprint(last_planet)\n",
     "hints": [
-      "Use `planets[-1]`"
+      "Concept: Access items counting backwards from the end using -1, -2, etc. Think of it like: Looking at the caboose of a train: it's car -1.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `planets = [\"Mercury\", \"Venus\", \"Earth\"]`.\n2. Access last item: `last_planet = planets[-1]`.\n3. Print `last_planet`.\nKey Tip: Use `planets[-1]`"
     ],
     "testCases": [
       {
@@ -106,7 +110,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Appending score",
       "code": "vals = [1, 2]\nvals.append(3)\nprint(len(vals))",
-      "explanation": "\u2022 Increases list length to 3.",
+      "explanation": "• Increases list length to 3.",
       "expectedOutput": "3"
     },
     "exerciseSteps": [
@@ -114,10 +118,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Append `\"Code\"` with `tasks.append(\"Code\")`.",
       "Print `tasks`."
     ],
-    "initialCode": "tasks = [\"Email\"]\ntasks.append(\"Code\")\nprint(tasks)\n",
+    "initialCode": "# Step 1: Create variable 'tasks' and set it to [\"Email\"]\n# TODO: Write code below\n\n# Step 2: Append '\"Code\"' with 'tasks.append(\"Code\")'\n# TODO: Write code below\n\n# Step 3: Print 'tasks'\n# TODO: Write code below\n",
     "solutionCode": "tasks = [\"Email\"]\ntasks.append(\"Code\")\nprint(tasks)\n",
     "hints": [
-      "Use `tasks.append(\"Code\")`"
+      "Concept: Add new elements to the very end of an existing list with .append(item). Think of it like: Adding a new box to the back of a delivery truck.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `tasks = [\"Email\"]`.\n2. Append `\"Code\"` with `tasks.append(\"Code\")`.\n3. Print `tasks`.\nKey Tip: Use `tasks.append(\"Code\")`"
     ],
     "testCases": [
       {
@@ -148,7 +154,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Popping item",
       "code": "deck = [10, 20]\ntop = deck.pop()\nprint(top)",
-      "explanation": "\u2022 Returns 20.",
+      "explanation": "• Returns 20.",
       "expectedOutput": "20"
     },
     "exerciseSteps": [
@@ -156,10 +162,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Pop last item: `used_item = inventory.pop()`.",
       "Print `used_item`."
     ],
-    "initialCode": "inventory = [\"Sword\", \"Shield\", \"Potion\"]\nused_item = inventory.pop()\nprint(used_item)\n",
+    "initialCode": "# Step 1: Create variable 'inventory' and set it to [\"Sword\", \"Shield\", \"Potion\"]\n# TODO: Write code below\n\n# Step 2: Pop last item: 'used_item = inventory.pop()'\n# TODO: Write code below\n\n# Step 3: Print 'used_item'\n# TODO: Write code below\n",
     "solutionCode": "inventory = [\"Sword\", \"Shield\", \"Potion\"]\nused_item = inventory.pop()\nprint(used_item)\n",
     "hints": [
-      "Use `inventory.pop()`"
+      "Concept: Remove and return the last item (or an item at a specific index) using .pop(). Think of it like: Taking the top plate off a stack of clean plates.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `inventory = [\"Sword\", \"Shield\", \"Potion\"]`.\n2. Pop last item: `used_item = inventory.pop()`.\n3. Print `used_item`.\nKey Tip: Use `inventory.pop()`"
     ],
     "testCases": [
       {
@@ -190,7 +198,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: First two items",
       "code": "podium = [\"Gold\", \"Silver\", \"Bronze\"]\ntop_two = podium[0:2]\nprint(top_two[1])",
-      "explanation": "\u2022 Silver.",
+      "explanation": "• Silver.",
       "expectedOutput": "Silver"
     },
     "exerciseSteps": [
@@ -198,10 +206,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Slice middle items: `middle = letters[1:3]`.",
       "Print `middle`."
     ],
-    "initialCode": "letters = [\"a\", \"b\", \"c\", \"d\"]\nmiddle = letters[1:3]\nprint(middle)\n",
+    "initialCode": "# Step 1: Create variable 'letters' and set it to [\"a\", \"b\", \"c\", \"d\"]\n# TODO: Write code below\n\n# Step 2: Slice middle items: 'middle = letters[1:3]'\n# TODO: Write code below\n\n# Step 3: Print 'middle'\n# TODO: Write code below\n",
     "solutionCode": "letters = [\"a\", \"b\", \"c\", \"d\"]\nmiddle = letters[1:3]\nprint(middle)\n",
     "hints": [
-      "Use `letters[1:3]`"
+      "Concept: Extract portions of a list into a brand new sublist using slice notation. Think of it like: Taking cards 2 through 4 from a deck of cards to form a hand.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `letters = [\"a\", \"b\", \"c\", \"d\"]`.\n2. Slice middle items: `middle = letters[1:3]`.\n3. Print `middle`.\nKey Tip: Use `letters[1:3]`"
     ],
     "testCases": [
       {
@@ -232,7 +242,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Temperature extremes",
       "code": "temps = [68, 75, 82, 60]\nprint(max(temps))",
-      "explanation": "\u2022 Returns 82.",
+      "explanation": "• Returns 82.",
       "expectedOutput": "82"
     },
     "exerciseSteps": [
@@ -240,10 +250,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Find lowest: `lowest = min(prices)`.",
       "Print `lowest`."
     ],
-    "initialCode": "prices = [19, 99, 5, 45]\nlowest = min(prices)\nprint(lowest)\n",
+    "initialCode": "# Step 1: Create variable 'prices' and set it to [19, 99, 5, 45]\n# TODO: Write code below\n\n# Step 2: Find lowest: 'lowest = min(prices)'\n# TODO: Write code below\n\n# Step 3: Print 'lowest'\n# TODO: Write code below\n",
     "solutionCode": "prices = [19, 99, 5, 45]\nlowest = min(prices)\nprint(lowest)\n",
     "hints": [
-      "Use `min(prices)`"
+      "Concept: Find the smallest or largest item in any sequence instantly. Think of it like: Scanning a price sheet to immediately spot the cheapest and most expensive items.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `prices = [19, 99, 5, 45]`.\n2. Find lowest: `lowest = min(prices)`.\n3. Print `lowest`.\nKey Tip: Use `min(prices)`"
     ],
     "testCases": [
       {
@@ -274,7 +286,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Calculating average",
       "code": "nums = [10, 20, 30]\navg = sum(nums) / len(nums)\nprint(avg)",
-      "explanation": "\u2022 60 / 3 = 20.0.",
+      "explanation": "• 60 / 3 = 20.0.",
       "expectedOutput": "20.0"
     },
     "exerciseSteps": [
@@ -282,10 +294,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Total points: `total = sum(points)`.",
       "Print `total`."
     ],
-    "initialCode": "points = [25, 50, 75]\ntotal = sum(points)\nprint(total)\n",
+    "initialCode": "# Step 1: Create variable 'points' and set it to [25, 50, 75]\n# TODO: Write code below\n\n# Step 2: Total points: 'total = sum(points)'\n# TODO: Write code below\n\n# Step 3: Print 'total'\n# TODO: Write code below\n",
     "solutionCode": "points = [25, 50, 75]\ntotal = sum(points)\nprint(total)\n",
     "hints": [
-      "Use `sum(points)`"
+      "Concept: Sum all numeric elements in a list with a single built-in function call. Think of it like: A cash register hitting the Subtotal button to add all scanned prices together.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `points = [25, 50, 75]`.\n2. Total points: `total = sum(points)`.\n3. Print `total`.\nKey Tip: Use `sum(points)`"
     ],
     "testCases": [
       {
@@ -316,7 +330,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Sorted names",
       "code": "names = [\"Charlie\", \"Alice\", \"Bob\"]\nnames.sort()\nprint(names[0])",
-      "explanation": "\u2022 Alice is sorted to index 0.",
+      "explanation": "• Alice is sorted to index 0.",
       "expectedOutput": "Alice"
     },
     "exerciseSteps": [
@@ -324,10 +338,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Sort in place with `scores.sort()`.",
       "Print `scores`."
     ],
-    "initialCode": "scores = [88, 72, 95, 60]\nscores.sort()\nprint(scores)\n",
+    "initialCode": "# Step 1: Create variable 'scores' and set it to [88, 72, 95, 60]\n# TODO: Write code below\n\n# Step 2: Sort in place with 'scores.sort()'\n# TODO: Write code below\n\n# Step 3: Print 'scores'\n# TODO: Write code below\n",
     "solutionCode": "scores = [88, 72, 95, 60]\nscores.sort()\nprint(scores)\n",
     "hints": [
-      "Call `scores.sort()`"
+      "Concept: Sort numbers and strings in ascending order using .sort() (in-place) or sorted() (returns new list). Think of it like: Alphabetizing books on a library shelf.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `scores = [88, 72, 95, 60]`.\n2. Sort in place with `scores.sort()`.\n3. Print `scores`.\nKey Tip: Call `scores.sort()`"
     ],
     "testCases": [
       {
@@ -358,7 +374,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Reversing list",
       "code": "chars = [\"a\", \"b\", \"c\"]\nchars.reverse()\nprint(chars[0])",
-      "explanation": "\u2022 Index 0 is now 'c'.",
+      "explanation": "• Index 0 is now 'c'.",
       "expectedOutput": "c"
     },
     "exerciseSteps": [
@@ -366,10 +382,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Reverse it with `countdown.reverse()`.",
       "Print `countdown`."
     ],
-    "initialCode": "countdown = [1, 2, 3]\ncountdown.reverse()\nprint(countdown)\n",
+    "initialCode": "# Step 1: Create variable 'countdown' and set it to [1, 2, 3]\n# TODO: Write code below\n\n# Step 2: Reverse it with 'countdown.reverse()'\n# TODO: Write code below\n\n# Step 3: Print 'countdown'\n# TODO: Write code below\n",
     "solutionCode": "countdown = [1, 2, 3]\ncountdown.reverse()\nprint(countdown)\n",
     "hints": [
-      "Call `countdown.reverse()`"
+      "Concept: Invert the order of items in a list or string. Think of it like: Running a video tape in reverse rewind.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `countdown = [1, 2, 3]`.\n2. Reverse it with `countdown.reverse()`.\n3. Print `countdown`.\nKey Tip: Call `countdown.reverse()`"
     ],
     "testCases": [
       {
@@ -400,17 +418,19 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Merging team rosters",
       "code": "team_a = [\"Alice\"]\nteam_b = [\"Bob\"]\nall_players = team_a + team_b\nprint(len(all_players))",
-      "explanation": "\u2022 Total length is 2.",
+      "explanation": "• Total length is 2.",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
       "Create `default_flags = [False] * 4`.",
       "Print `default_flags`."
     ],
-    "initialCode": "default_flags = [False] * 4\nprint(default_flags)\n",
+    "initialCode": "# Step 1: Create variable 'default_flags' and set it to [False] * 4\n# TODO: Write code below\n\n# Step 2: Print 'default_flags'\n# TODO: Write code below\n",
     "solutionCode": "default_flags = [False] * 4\nprint(default_flags)\n",
     "hints": [
-      "Use `[False] * 4`"
+      "Concept: Combine lists with + and repeat items with * replication. Think of it like: Cloning 5 blank questionnaire forms instantly: `['blank'] * 5`.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `default_flags = [False] * 4`.\n2. Print `default_flags`.\nKey Tip: Use `[False] * 4`"
     ],
     "testCases": [
       {
@@ -441,7 +461,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Counting matches",
       "code": "votes = [\"yes\", \"no\", \"yes\", \"yes\"]\nprint(votes.count(\"yes\"))",
-      "explanation": "\u2022 Returns 3.",
+      "explanation": "• Returns 3.",
       "expectedOutput": "3"
     },
     "exerciseSteps": [
@@ -449,10 +469,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Count tens: `num_tens = scores.count(10)`.",
       "Print `num_tens`."
     ],
-    "initialCode": "scores = [10, 20, 10, 30, 10]\nnum_tens = scores.count(10)\nprint(num_tens)\n",
+    "initialCode": "# Step 1: Create variable 'scores' and set it to [10, 20, 10, 30, 10]\n# TODO: Write code below\n\n# Step 2: Count tens: 'num_tens = scores.count(10)'\n# TODO: Write code below\n\n# Step 3: Print 'num_tens'\n# TODO: Write code below\n",
     "solutionCode": "scores = [10, 20, 10, 30, 10]\nnum_tens = scores.count(10)\nprint(num_tens)\n",
     "hints": [
-      "Use `scores.count(10)`"
+      "Concept: Find how many times an element appears with .count() and locate its index with .index(). Think of it like: Counting how many Aces are in a hand of poker cards.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `scores = [10, 20, 10, 30, 10]`.\n2. Count tens: `num_tens = scores.count(10)`.\n3. Print `num_tens`.\nKey Tip: Use `scores.count(10)`"
     ],
     "testCases": [
       {
@@ -483,7 +505,7 @@ export const pythonModule7Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Inserting at head",
       "code": "queue = [2, 3]\nqueue.insert(0, 1)\nprint(queue[0])",
-      "explanation": "\u2022 1 is now at index 0.",
+      "explanation": "• 1 is now at index 0.",
       "expectedOutput": "1"
     },
     "exerciseSteps": [
@@ -491,10 +513,12 @@ export const pythonModule7Lessons: Lesson[] = [
       "Insert 2 at index 1: `ranks.insert(1, 2)`.",
       "Print `ranks`."
     ],
-    "initialCode": "ranks = [1, 3]\nranks.insert(1, 2)\nprint(ranks)\n",
+    "initialCode": "# Step 1: Create variable 'ranks' and set it to [1, 3]\n# TODO: Write code below\n\n# Step 2: Insert 2 at index 1: 'ranks.insert(1, 2)'\n# TODO: Write code below\n\n# Step 3: Print 'ranks'\n# TODO: Write code below\n",
     "solutionCode": "ranks = [1, 3]\nranks.insert(1, 2)\nprint(ranks)\n",
     "hints": [
-      "Use `ranks.insert(1, 2)`"
+      "Concept: Insert elements into any index position and delete specific values by content. Think of it like: Inserting a bookmark at page 45 of a book, or erasing a typo.",
+      "Syntax Blueprint: Lists store ordered items in square brackets: `my_list = [1, 2, 3]`. Access items with `my_list[index]` and append with `my_list.append(item)`.",
+      "Step-by-Step Target:\n1. Create `ranks = [1, 3]`.\n2. Insert 2 at index 1: `ranks.insert(1, 2)`.\n3. Print `ranks`.\nKey Tip: Use `ranks.insert(1, 2)`"
     ],
     "testCases": [
       {

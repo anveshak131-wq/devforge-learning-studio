@@ -22,7 +22,7 @@ export const pythonModule10Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Doubling numbers",
       "code": "doubled = [n * 2 for n in [1, 2, 3]]\nprint(doubled[1])",
-      "explanation": "\u2022 2 * 2 = 4.",
+      "explanation": "• 2 * 2 = 4.",
       "expectedOutput": "4"
     },
     "exerciseSteps": [
@@ -30,10 +30,12 @@ export const pythonModule10Lessons: Lesson[] = [
       "Double them using `doubles = [x * 2 for x in [1, 2, 3]]`.",
       "Print `doubles`."
     ],
-    "initialCode": "doubles = [x * 2 for x in [1, 2, 3]]\nprint(doubles)\n",
+    "initialCode": "# Step 1: Create a list of numbers '[1, 2, 3]'\n# TODO: Write code below\n\n# Step 2: Double them using 'doubles = [x * 2 for x in [1, 2, 3]]'\n# TODO: Write code below\n\n# Step 3: Print 'doubles'\n# TODO: Write code below\n",
     "solutionCode": "doubles = [x * 2 for x in [1, 2, 3]]\nprint(doubles)\n",
     "hints": [
-      "Use `[x * 2 for x in [1, 2, 3]]`"
+      "Concept: Construct new lists concisely in a single line using [expr for item in iterable]. Think of it like: An automated stamping machine: feed raw metal sheets in and it outputs stamped coins in one fluid line.",
+      "Syntax Blueprint: List comprehension syntax: `[expr for item in iterable]` or `[expr for item in iterable if condition]`.",
+      "Step-by-Step Target:\n1. Create a list of numbers `[1, 2, 3]`.\n2. Double them using `doubles = [x * 2 for x in [1, 2, 3]]`.\n3. Print `doubles`.\nKey Tip: Use `[x * 2 for x in [1, 2, 3]]`"
     ],
     "testCases": [
       {
@@ -64,17 +66,19 @@ export const pythonModule10Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Filtering positive values",
       "code": "raw = [-5, 10, -2, 20]\npos = [x for x in raw if x > 0]\nprint(len(pos))",
-      "explanation": "\u2022 10 and 20 (length 2).",
+      "explanation": "• 10 and 20 (length 2).",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
       "Filter numbers >= 10: `big_nums = [x for x in [5, 12, 8, 25] if x >= 10]`.",
       "Print `big_nums`."
     ],
-    "initialCode": "big_nums = [x for x in [5, 12, 8, 25] if x >= 10]\nprint(big_nums)\n",
+    "initialCode": "# Step 1: Filter numbers >= 10: 'big_nums = [x for x in [5, 12, 8, 25] if x >= 10]'\n# TODO: Write code below\n\n# Step 2: Print 'big_nums'\n# TODO: Write code below\n",
     "solutionCode": "big_nums = [x for x in [5, 12, 8, 25] if x >= 10]\nprint(big_nums)\n",
     "hints": [
-      "Add `if x >= 10` at the end"
+      "Concept: Filter elements directly inside a list comprehension using trailing if conditions. Think of it like: A coin sorter: only quarters pass into the coin tube; dimes and pennies drop into the reject tray.",
+      "Syntax Blueprint: List comprehension syntax: `[expr for item in iterable]` or `[expr for item in iterable if condition]`.",
+      "Step-by-Step Target:\n1. Filter numbers >= 10: `big_nums = [x for x in [5, 12, 8, 25] if x >= 10]`.\n2. Print `big_nums`.\nKey Tip: Add `if x >= 10` at the end"
     ],
     "testCases": [
       {
@@ -105,7 +109,7 @@ export const pythonModule10Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Stripping inputs",
       "code": "raw = [\"  a  \", \"  b  \"]\nclean = [s.strip() for s in raw]\nprint(clean[0])",
-      "explanation": "\u2022 Strips whitespace.",
+      "explanation": "• Strips whitespace.",
       "expectedOutput": "a"
     },
     "exerciseSteps": [
@@ -113,10 +117,12 @@ export const pythonModule10Lessons: Lesson[] = [
       "Convert to uppercase: `loud_names = [n.upper() for n in names]`.",
       "Print `loud_names`."
     ],
-    "initialCode": "names = [\"alice\", \"bob\"]\nloud_names = [n.upper() for n in names]\nprint(loud_names)\n",
+    "initialCode": "# Step 1: Create variable 'names' and set it to [\"alice\", \"bob\"]\n# TODO: Write code below\n\n# Step 2: Convert to uppercase: 'loud_names = [n.upper() for n in names]'\n# TODO: Write code below\n\n# Step 3: Print 'loud_names'\n# TODO: Write code below\n",
     "solutionCode": "names = [\"alice\", \"bob\"]\nloud_names = [n.upper() for n in names]\nprint(loud_names)\n",
     "hints": [
-      "Use `[n.upper() for n in names]`"
+      "Concept: Apply string functions across entire lists in one clean expression. Think of it like: Running an entire batch of text files through an automatic spell checker.",
+      "Syntax Blueprint: List comprehension syntax: `[expr for item in iterable]` or `[expr for item in iterable if condition]`.",
+      "Step-by-Step Target:\n1. Create `names = [\"alice\", \"bob\"]`.\n2. Convert to uppercase: `loud_names = [n.upper() for n in names]`.\n3. Print `loud_names`.\nKey Tip: Use `[n.upper() for n in names]`"
     ],
     "testCases": [
       {
@@ -147,17 +153,19 @@ export const pythonModule10Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Square lookup table",
       "code": "squares = {n: n * n for n in [1, 2, 3]}\nprint(squares[3])",
-      "explanation": "\u2022 3: 9.",
+      "explanation": "• 3: 9.",
       "expectedOutput": "9"
     },
     "exerciseSteps": [
       "Create square lookup: `square_map = {x: x ** 2 for x in [2, 4]}`.",
       "Print `square_map[4]`."
     ],
-    "initialCode": "square_map = {x: x ** 2 for x in [2, 4]}\nprint(square_map[4])\n",
+    "initialCode": "# Step 1: Create square lookup: 'square_map = {x: x ** 2 for x in [2, 4]}'\n# TODO: Write code below\n\n# Step 2: Print 'square_map[4]'\n# TODO: Write code below\n",
     "solutionCode": "square_map = {x: x ** 2 for x in [2, 4]}\nprint(square_map[4])\n",
     "hints": [
-      "Use `{x: x ** 2 for x in [2, 4]}`"
+      "Concept: Generate key-value mappings dynamically using {key_expr: val_expr for x in iterable}. Think of it like: Creating an index catalog of products and prices with an automated macro.",
+      "Syntax Blueprint: Dictionary comprehension syntax: `{k_expr: v_expr for item in iterable if condition}`.",
+      "Step-by-Step Target:\n1. Create square lookup: `square_map = {x: x ** 2 for x in [2, 4]}`.\n2. Print `square_map[4]`.\nKey Tip: Use `{x: x ** 2 for x in [2, 4]}`"
     ],
     "testCases": [
       {
@@ -188,17 +196,19 @@ export const pythonModule10Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Unique word lengths",
       "code": "words = [\"hi\", \"to\", \"python\"]\nlens = {len(w) for w in words}\nprint(len(lens))",
-      "explanation": "\u2022 2 and 6 (length 2).",
+      "explanation": "• 2 and 6 (length 2).",
       "expectedOutput": "2"
     },
     "exerciseSteps": [
       "Extract lengths: `unique_lens = {len(x) for x in [\"cat\", \"dog\", \"bird\"]}`.",
       "Print `unique_lens`."
     ],
-    "initialCode": "unique_lens = {len(x) for x in [\"cat\", \"dog\", \"bird\"]}\nprint(unique_lens)\n",
+    "initialCode": "# Step 1: Extract lengths: 'unique_lens = {len(x) for x in [\"cat\", \"dog\", \"bird\"]}'\n# TODO: Write code below\n\n# Step 2: Print 'unique_lens'\n# TODO: Write code below\n",
     "solutionCode": "unique_lens = {len(x) for x in [\"cat\", \"dog\", \"bird\"]}\nprint(unique_lens)\n",
     "hints": [
-      "Use `{len(x) for x in [\"cat\", \"dog\", \"bird\"]}`"
+      "Concept: Construct unique sets dynamically with comprehension syntax using curly braces {expr for ...}. Think of it like: Filtering an ingredient list down to unique dietary categories.",
+      "Syntax Blueprint: Set comprehension syntax: `{expr for item in iterable if condition}`.",
+      "Step-by-Step Target:\n1. Extract lengths: `unique_lens = {len(x) for x in [\"cat\", \"dog\", \"bird\"]}`.\n2. Print `unique_lens`.\nKey Tip: Use `{len(x) for x in [\"cat\", \"dog\", \"bird\"]}`"
     ],
     "testCases": [
       {
@@ -229,7 +239,7 @@ export const pythonModule10Lessons: Lesson[] = [
     "workedExample": {
       "title": "Worked Example: Flat 2x2 grid",
       "code": "grid = [[10, 20], [30, 40]]\nall_vals = [x for row in grid for x in row]\nprint(len(all_vals))",
-      "explanation": "\u2022 Flattened to 4 items.",
+      "explanation": "• Flattened to 4 items.",
       "expectedOutput": "4"
     },
     "exerciseSteps": [
@@ -237,10 +247,12 @@ export const pythonModule10Lessons: Lesson[] = [
       "Flatten with `flat = [x for row in matrix for x in row]`.",
       "Print `flat`."
     ],
-    "initialCode": "matrix = [[1, 2], [3, 4]]\nflat = [x for row in matrix for x in row]\nprint(flat)\n",
+    "initialCode": "# Step 1: Create variable 'matrix' and set it to [[1, 2], [3, 4]]\n# TODO: Write code below\n\n# Step 2: Flatten with 'flat = [x for row in matrix for x in row]'\n# TODO: Write code below\n\n# Step 3: Print 'flat'\n# TODO: Write code below\n",
     "solutionCode": "matrix = [[1, 2], [3, 4]]\nflat = [x for row in matrix for x in row]\nprint(flat)\n",
     "hints": [
-      "Use `[x for row in matrix for x in row]`"
+      "Concept: Flatten 2D matrices into single flat lists in one expressive line. Think of it like: Emptying a 6-egg carton into a single flat frying pan.",
+      "Syntax Blueprint: List comprehension syntax: `[expr for item in iterable]` or `[expr for item in iterable if condition]`.",
+      "Step-by-Step Target:\n1. Create `matrix = [[1, 2], [3, 4]]`.\n2. Flatten with `flat = [x for row in matrix for x in row]`.\n3. Print `flat`.\nKey Tip: Use `[x for row in matrix for x in row]`"
     ],
     "testCases": [
       {
