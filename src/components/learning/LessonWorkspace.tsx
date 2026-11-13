@@ -77,6 +77,15 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     const stats = ProgressStorage.getStats();
     const isCompleted = stats.completedLessonIds.includes(currentLesson.id);
 
+    // If Python lesson has stale JS syntax (e.g. console.log or // 👉) in localStorage from cross-track cache
+    if (
+      currentLesson.language === 'python' &&
+      (saved.includes('console.log') || saved.includes('// 👉') || saved.includes('function ') || saved.includes('const ') || saved.includes('let '))
+    ) {
+      ProgressStorage.saveCode(currentLesson.id, currentLesson.initialCode);
+      return currentLesson.initialCode;
+    }
+
     // If user hasn't completed the lesson, but saved code exactly matches solutionCode
     // while initialCode is now scaffolded differently, reset to the starter scaffold
     if (

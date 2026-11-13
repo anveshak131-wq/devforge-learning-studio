@@ -81,7 +81,18 @@ export class CourseStorageService {
         .filter(l => !deletedIds.has(l.id))
         .map(baseLesson => {
           if (customLessons[baseLesson.id]) {
-            return { ...baseLesson, ...customLessons[baseLesson.id] };
+            const custom = customLessons[baseLesson.id];
+            // If custom override has stale pre-filled initialCode === solutionCode,
+            // but baseLesson has a clean scaffold, discard the stale pre-filled initialCode
+            if (
+              custom.initialCode &&
+              custom.solutionCode &&
+              custom.initialCode.trim() === custom.solutionCode.trim() &&
+              baseLesson.initialCode.trim() !== baseLesson.solutionCode.trim()
+            ) {
+              return { ...baseLesson, ...custom, initialCode: baseLesson.initialCode };
+            }
+            return { ...baseLesson, ...custom };
           }
           return baseLesson;
         });

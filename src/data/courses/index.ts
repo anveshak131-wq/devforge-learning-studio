@@ -15,8 +15,8 @@ import { GOLANG_TRACK } from './golang';
 import { RUST_TRACK } from './rust';
 
 export const ALL_TRACKS: Track[] = [
-  JAVASCRIPT_TRACK,
   PYTHON_TRACK,
+  JAVASCRIPT_TRACK,
   TYPESCRIPT_TRACK,
   SQL_TRACK,
   REACT_TRACK,

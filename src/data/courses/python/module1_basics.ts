@@ -27,15 +27,15 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "Hello, World!"
     },
     "exerciseSteps": [
-      "Type `print(\"Hello, World!\")` in the editor.",
-      "Click Check Answer."
+      "Print \"Hello, World!\" to the screen using print().",
+      "Click Check Answer to test."
     ],
-    "initialCode": "# Step 1: Type 'print(\"Hello, World!\")' in the editor\n# TODO: Write code below\n\n# Step 2: Click Check Answer\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Print \"Hello, World!\" to the screen using print()\n# TODO: Write code below\n\n",
     "solutionCode": "print(\"Hello, World!\")\n",
     "hints": [
       "Concept: Write your first Python command! Learn how to display text on the screen using print(). Think of it like: Speaking into a megaphone: print() broadcasts your words to the computer screen.",
-      "Syntax Blueprint: Assign values to variables with `variable_name = value`. Output or inspect results in the console using `print(variable_name)`.",
-      "Step-by-Step Target:\n1. Type `print(\"Hello, World!\")` in the editor.\n2. Click Check Answer.\nKey Tip: Use `print(\"Hello, World!\")`"
+      "Syntax Blueprint: Call `print(\"your message\")` with quotes around the text you want to display.",
+      "Step-by-Step Target:\n1. Type `print(\"Hello, World!\")` in the editor.\n2. Click Check Answer to verify."
     ],
     "testCases": [
       {
