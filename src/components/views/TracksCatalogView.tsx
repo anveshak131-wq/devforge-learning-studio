@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CheckCircle2, 
   Circle, 
@@ -10,7 +10,7 @@ import {
   ChevronRight 
 } from 'lucide-react';
 import { Track, UserStats, Lesson } from '../../types';
-import { ALL_TRACKS } from '../../data/courses';
+import { CourseStorageService } from '../../services/courseStorageService';
 import { LanguageIcon } from '../common/LanguageIcon';
 
 interface TracksCatalogViewProps {
@@ -23,9 +23,16 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
   userStats,
   onSelectLesson,
 }) => {
+  const [tracks, setTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [selectedLanguage, setSelectedLanguage] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>({});
+
+  useEffect(() => {
+    return CourseStorageService.subscribe(() => {
+      setTracks(CourseStorageService.getTracks());
+    });
+  }, []);
 
   const toggleModule = (moduleKey: string) => {
     setExpandedModules(prev => ({
@@ -40,9 +47,9 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
     return defaultOpen;
   };
 
-  const totalAllLessons = ALL_TRACKS.reduce((sum, t) => sum + t.lessons.length, 0);
+  const totalAllLessons = tracks.reduce((sum, t) => sum + t.lessons.length, 0);
 
-  const filteredTracks = ALL_TRACKS.filter(t => {
+  const filteredTracks = tracks.filter(t => {
     if (selectedLanguage !== 'all' && t.language !== selectedLanguage) return false;
     return true;
   });
@@ -58,7 +65,7 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
                 Interactive Programming Curriculum
               </h1>
               <span className="px-2.5 py-0.5 rounded-full bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 text-xs font-semibold">
-                {totalAllLessons}+ In-Depth Topics Across {ALL_TRACKS.length} Tracks
+                {totalAllLessons}+ In-Depth Topics Across {tracks.length} Tracks
               </span>
             </div>
             <p className="text-xs text-slate-400 mt-1 max-w-2xl">
@@ -79,7 +86,7 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
           >
             All Tracks ({totalAllLessons})
           </button>
-          {ALL_TRACKS.map(track => {
+          {tracks.map(track => {
             const shortName = track.title.split(':')[0].replace(/\(.*?\)/g, '').trim();
             const isSelected = selectedLanguage === track.language;
             return (

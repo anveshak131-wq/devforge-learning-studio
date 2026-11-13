@@ -29,6 +29,8 @@ import { CodeExecutor } from '../../services/codeExecutor';
 import { TestRunner } from '../../services/testRunner';
 import { SqlSession, TableSchema } from '../../services/sqlEngine';
 import { ProgressStorage } from '../../services/progressStorage';
+import { YouTubePlayer } from '../video/YouTubePlayer';
+import { AuthService } from '../../services/authService';
 
 interface LessonWorkspaceProps {
   track: Track;
@@ -38,6 +40,7 @@ interface LessonWorkspaceProps {
   userStats: UserStats;
   onStatsUpdate: (stats: UserStats) => void;
   onClaimCertificate?: (track: Track) => void;
+  onOpenAdmin?: (trackSlug: string, lessonId: string) => void;
 }
 
 export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
@@ -47,7 +50,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   onBackToTracks,
   userStats,
   onStatsUpdate,
-  onClaimCertificate
+  onClaimCertificate,
+  onOpenAdmin
 }) => {
   // Course Outline Sidebar Drawer state
   const [isOutlineOpen, setIsOutlineOpen] = useState(false);
@@ -138,14 +142,15 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     }
   };
 
-  // Run the Worked Example in the console
-  const handleRunWorkedExample = async () => {
-    if (!lesson.workedExample) return;
+  // Run the Worked Example (or any additional example) in the console
+  const handleRunWorkedExample = async (targetCode?: string) => {
+    const codeToRun = targetCode || lesson.workedExample?.code;
+    if (!codeToRun) return;
     setIsRunning(true);
     try {
       const session = await getReadySqlSession();
       const res = await CodeExecutor.executeCode(
-        lesson.workedExample.code,
+        codeToRun,
         lesson.language,
         session
       );
@@ -463,22 +468,44 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         <div className="lg:col-span-5 h-full overflow-y-auto border-r border-slate-800 p-5 space-y-6 bg-slate-900/40">
           {/* Header Title & Badges */}
           <div className="space-y-2">
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
-                Lesson {currentIndex + 1} of {track.lessons.length}
-              </span>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700">
-                {lesson.category}
-              </span>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 flex items-center space-x-1">
-                <Award className="w-3 h-3" />
-                <span>+{lesson.xp} XP</span>
-              </span>
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex flex-wrap items-center gap-2">
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-semibold bg-indigo-500/10 text-indigo-300 border border-indigo-500/20">
+                  Lesson {currentIndex + 1} of {track.lessons.length}
+                </span>
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-medium bg-slate-800 text-slate-300 border border-slate-700">
+                  {lesson.category}
+                </span>
+                <span className="px-2 py-0.5 rounded-md text-[10px] font-mono text-amber-400 bg-amber-500/10 border border-amber-500/20 flex items-center space-x-1">
+                  <Award className="w-3 h-3" />
+                  <span>+{lesson.xp} XP</span>
+                </span>
+              </div>
+
+              {AuthService.isAdmin() && onOpenAdmin && (
+                <button
+                  onClick={() => onOpenAdmin(track.slug, lesson.id)}
+                  className="px-2.5 py-1 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/30 text-[11px] font-semibold flex items-center space-x-1 transition shadow-sm"
+                  title="Open this lesson in the Admin Portal"
+                >
+                  <Code2 className="w-3.5 h-3.5" />
+                  <span>Admin Edit</span>
+                </button>
+              )}
             </div>
 
             <h1 className="text-xl font-extrabold text-white tracking-tight">{lesson.title}</h1>
             <p className="text-xs text-slate-300 leading-relaxed">{lesson.description}</p>
           </div>
+
+          {/* YouTube Video Player (Embedded course lecture if added by admin) */}
+          {lesson.videoUrl && (
+            <YouTubePlayer
+              url={lesson.videoUrl}
+              title={`${lesson.title} - Video Lecture`}
+              className="mt-2"
+            />
+          )}
 
           {/* Real-World Analogy */}
           {lesson.analogy && (
@@ -529,7 +556,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                   <span>{lesson.workedExample.title}</span>
                 </span>
                 <button
-                  onClick={handleRunWorkedExample}
+                  onClick={() => handleRunWorkedExample()}
                   className="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold flex items-center space-x-1 shadow transition"
                   title="Run this example in the console"
                 >
@@ -557,6 +584,54 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                   {lesson.workedExample.expectedOutput}
                 </code>
               </div>
+            </div>
+          )}
+
+          {/* Additional Worked Examples (Added by Admins) */}
+          {lesson.additionalExamples && lesson.additionalExamples.length > 0 && (
+            <div className="space-y-3">
+              {lesson.additionalExamples.map((ex, exIdx) => (
+                <div key={exIdx} className="p-4 rounded-xl bg-slate-900/90 border border-slate-800 space-y-3 shadow-md">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-bold text-indigo-300 flex items-center space-x-1.5">
+                      <BookOpen className="w-4 h-4 text-cyan-400" />
+                      <span>{ex.title || `Worked Example ${exIdx + 2}`}</span>
+                    </span>
+                    <button
+                      onClick={() => handleRunWorkedExample(ex.code)}
+                      className="px-2.5 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-[11px] font-semibold flex items-center space-x-1 shadow transition"
+                      title="Run this example in the console"
+                    >
+                      <Play className="w-3 h-3 fill-white" />
+                      <span>Run Example</span>
+                    </button>
+                  </div>
+
+                  <pre className="p-3 rounded-lg bg-slate-950 border border-slate-800 text-emerald-300 font-mono text-xs overflow-x-auto">
+                    <code>{ex.code}</code>
+                  </pre>
+
+                  {ex.explanation && (
+                    <div className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800/80 space-y-1">
+                      <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+                        How it works:
+                      </span>
+                      <p className="text-xs text-slate-300 whitespace-pre-wrap leading-relaxed">
+                        {ex.explanation}
+                      </p>
+                    </div>
+                  )}
+
+                  {ex.expectedOutput && (
+                    <div className="text-[11px] text-slate-400 flex items-center space-x-2">
+                      <span className="font-semibold text-slate-500">Output:</span>
+                      <code className="text-amber-300 font-mono bg-slate-950 px-2 py-0.5 rounded border border-slate-800 text-[11px]">
+                        {ex.expectedOutput}
+                      </code>
+                    </div>
+                  )}
+                </div>
+              ))}
             </div>
           )}
 

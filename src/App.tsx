@@ -18,14 +18,25 @@ import { RoadmapSkillTreeView } from './components/views/RoadmapSkillTreeView';
 import { CertificatesVaultView } from './components/views/CertificatesVaultView';
 import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
-import { ALL_TRACKS, getTrackBySlug, getLessonById } from './data/courses';
+import { AdminPortalView } from './components/admin/AdminPortalView';
+import { AdminLockScreen } from './components/admin/AdminLockScreen';
+import { CourseStorageService } from './services/courseStorageService';
+import { AdminSecurityService } from './services/adminSecurityService';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
 
 export function App() {
+  const [allTracks, setAllTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [userStats, setUserStats] = useState<UserStats>(() => ProgressStorage.getStats());
   const [currentUser, setCurrentUser] = useState<UserType | null>(() => AuthService.getCurrentUser());
   const [currentView, setCurrentView] = useState<string>('dashboard');
   const [viewPayload, setViewPayload] = useState<any>(null);
+
+  // Subscribe to live curriculum edits made by Admin
+  useEffect(() => {
+    return CourseStorageService.subscribe(() => {
+      setAllTracks(CourseStorageService.getTracks());
+    });
+  }, []);
   
   // Modals state
   const [isCheatSheetOpen, setIsCheatSheetOpen] = useState(false);
@@ -90,18 +101,18 @@ export function App() {
   };
 
   // Determine active lesson / track
-  let activeTrack = ALL_TRACKS[0];
-  let activeLesson = ALL_TRACKS[0].lessons[0];
+  let activeTrack = allTracks[0];
+  let activeLesson = allTracks[0]?.lessons[0];
 
   if (currentView === 'lesson' && viewPayload) {
     if (viewPayload.lessonId) {
-      const match = getLessonById(viewPayload.lessonId);
+      const match = CourseStorageService.getLessonById(viewPayload.lessonId);
       if (match) {
         activeTrack = match.track;
         activeLesson = match.lesson;
       }
     } else if (viewPayload.trackSlug) {
-      const track = getTrackBySlug(viewPayload.trackSlug);
+      const track = CourseStorageService.getTrackBySlug(viewPayload.trackSlug);
       if (track) {
         activeTrack = track;
         activeLesson = track.lessons[0];
@@ -177,6 +188,9 @@ export function App() {
             userStats={userStats}
             onStatsUpdate={handleStatsUpdate}
             onClaimCertificate={handleClaimCertificate}
+            onOpenAdmin={(trackSlug, lessonId) => {
+              handleNavigate('admin', { trackSlug, lessonId });
+            }}
           />
         )}
 
@@ -219,6 +233,28 @@ export function App() {
 
         {currentView === 'playground' && (
           <PlaygroundWorkspace />
+        )}
+
+        {/* Protected Super Administrator Portal */}
+        {currentView === 'admin' && (
+          AdminSecurityService.getActiveSession() ? (
+            <AdminPortalView
+              onNavigateLesson={(trackSlug, lessonId) => {
+                handleNavigate('lesson', { trackSlug, lessonId });
+              }}
+              onCloseAdmin={() => handleNavigate('dashboard')}
+              targetLessonId={viewPayload?.lessonId}
+              targetTrackSlug={viewPayload?.trackSlug}
+            />
+          ) : (
+            <AdminLockScreen
+              onUnlocked={() => {
+                // Rerender view once unlocked
+                setCurrentView('admin');
+              }}
+              onCancel={() => handleNavigate('dashboard')}
+            />
+          )
         )}
       </main>
 

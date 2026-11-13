@@ -24,6 +24,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [fullName, setFullName] = useState('');
+  const [adminKey, setAdminKey] = useState('');
+  const [showAdminKeyField, setShowAdminKeyField] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
 
@@ -36,7 +38,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
     try {
       if (mode === 'signup') {
-        const res = await AuthService.register(email, password, fullName);
+        const res = await AuthService.register(email, password, fullName, adminKey || undefined);
         if (!res.success) {
           setError(res.error || 'Registration failed');
           return;
@@ -65,7 +67,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     setError(null);
     setLoading(true);
     try {
-      // Create or log into demo account
+      // Create or log into demo student account
       const demoEmail = 'student@devforge.academy';
       const demoPass = 'password123';
       let res = await AuthService.login(demoEmail, demoPass);
@@ -75,6 +77,25 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       if (res.user) {
         onSuccess(res.user);
         onClose();
+      }
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleAdminDemoLogin = async () => {
+    setError(null);
+    setLoading(true);
+    try {
+      // Log into super admin account
+      const adminEmail = 'admin@devforge.academy';
+      const adminPass = 'AdminPass2026!';
+      const res = await AuthService.login(adminEmail, adminPass);
+      if (res.user) {
+        onSuccess(res.user);
+        onClose();
+      } else {
+        setError(res.error || 'Failed to sign in as admin');
       }
     } finally {
       setLoading(false);
@@ -189,6 +210,43 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </div>
           </div>
 
+          {mode === 'signup' && (
+            <div className="pt-1">
+              {!showAdminKeyField ? (
+                <button
+                  type="button"
+                  onClick={() => setShowAdminKeyField(true)}
+                  className="text-[11px] text-amber-400/80 hover:text-amber-300 transition"
+                >
+                  + Have an Admin Master Key?
+                </button>
+              ) : (
+                <div className="space-y-1 p-2.5 rounded-lg bg-amber-500/10 border border-amber-500/20">
+                  <label className="text-[11px] font-semibold text-amber-300 flex items-center justify-between">
+                    <span>Admin Master Security Key</span>
+                    <button
+                      type="button"
+                      onClick={() => setShowAdminKeyField(false)}
+                      className="text-[10px] text-slate-400 hover:text-white"
+                    >
+                      Hide
+                    </button>
+                  </label>
+                  <input
+                    type="password"
+                    value={adminKey}
+                    onChange={(e) => setAdminKey(e.target.value)}
+                    placeholder="Enter DEVFORGE_ADMIN_2026..."
+                    className="w-full bg-slate-950 border border-amber-500/40 rounded-lg px-2.5 py-1.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-amber-400 font-mono"
+                  />
+                  <p className="text-[10px] text-amber-200/70">
+                    Entering a valid key will elevate this account to Super Administrator upon creation.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
+
           <button
             type="submit"
             disabled={loading}
@@ -198,14 +256,21 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             <ArrowRight className="w-4 h-4" />
           </button>
 
-          {/* Quick Demo Login Option */}
-          <div className="pt-2 text-center">
+          {/* Quick Demo Login Options */}
+          <div className="pt-2 flex flex-col space-y-1.5 text-center">
             <button
               type="button"
               onClick={handleDemoLogin}
               className="text-xs text-slate-400 hover:text-indigo-300 underline transition"
             >
-              Or click here to test with a 1-click Demo Account
+              1-Click Demo Learner Account (Alex Rivers)
+            </button>
+            <button
+              type="button"
+              onClick={handleAdminDemoLogin}
+              className="text-xs text-amber-400/90 hover:text-amber-300 underline transition font-medium"
+            >
+              1-Click Demo Administrator Account (DevForge SuperAdmin)
             </button>
           </div>
         </form>

@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import { Certificate, User as UserType } from '../../types/auth';
 import { UserStats } from '../../types';
-import { ALL_TRACKS } from '../../data/courses';
+import { CourseStorageService } from '../../services/courseStorageService';
 import { AuthService } from '../../services/authService';
 import { LanguageIcon } from '../common/LanguageIcon';
 
@@ -191,7 +191,7 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
         </h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {ALL_TRACKS.map(track => {
+          {CourseStorageService.getTracks().map(track => {
             const completedCount = track.lessons.filter(l => userStats.completedLessonIds.includes(l.id)).length;
             const total = track.lessons.length;
             const isCompleted = completedCount === total;

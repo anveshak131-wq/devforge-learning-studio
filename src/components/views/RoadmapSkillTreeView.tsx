@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   CheckCircle2, 
   Circle, 
   ArrowRight, 
   Brain 
 } from 'lucide-react';
-import { ALL_TRACKS } from '../../data/courses';
-import { UserStats, TierLevel, Language } from '../../types';
+import { CourseStorageService } from '../../services/courseStorageService';
+import { UserStats, TierLevel, Language, Track } from '../../types';
 import { LanguageIcon } from '../common/LanguageIcon';
 
 interface RoadmapSkillTreeViewProps {
@@ -20,9 +20,16 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
   onSelectLesson,
   onOpenPlacementQuiz
 }) => {
+  const [tracks, setTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [selectedLanguage, setSelectedLanguage] = useState<Language>('javascript');
 
-  const track = ALL_TRACKS.find(t => t.language === selectedLanguage) || ALL_TRACKS[0];
+  useEffect(() => {
+    return CourseStorageService.subscribe(() => {
+      setTracks(CourseStorageService.getTracks());
+    });
+  }, []);
+
+  const track = tracks.find(t => t.language === selectedLanguage) || tracks[0];
 
   const tiers: { level: TierLevel; name: string; description: string; badgeColor: string }[] = [
     {
@@ -85,7 +92,7 @@ export const RoadmapSkillTreeView: React.FC<RoadmapSkillTreeViewProps> = ({
 
       {/* Language Switcher Bar */}
       <div className="flex items-center space-x-2 border-b border-slate-800 pb-4 overflow-x-auto max-w-full scrollbar-thin scrollbar-thumb-slate-800">
-        {ALL_TRACKS.map(t => {
+        {tracks.map(t => {
           const isSelected = selectedLanguage === t.language;
           const shortName = t.title.split(':')[0].replace(/\(.*?\)/g, '').trim();
           return (

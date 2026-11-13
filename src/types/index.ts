@@ -25,6 +25,13 @@ export interface TestCase {
   expectedMessage?: string;
 }
 
+export interface WorkedExampleItem {
+  title: string;
+  code: string;
+  explanation: string;
+  expectedOutput: string;
+}
+
 export interface Lesson {
   id: string;
   title: string;
@@ -40,12 +47,9 @@ export interface Lesson {
   concepts: string[];
   explanationMarkdown: string;
   analogy?: string; // Real-world intuitive analogy for beginners
-  workedExample?: {
-    title: string;
-    code: string;
-    explanation: string;
-    expectedOutput: string;
-  };
+  videoUrl?: string; // YouTube or video lecture URL added by admin
+  workedExample?: WorkedExampleItem;
+  additionalExamples?: WorkedExampleItem[]; // Extra worked examples added by admin
   commonMistakes?: string[];
   exerciseSteps?: string[];
   initialCode: string;

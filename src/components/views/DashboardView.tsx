@@ -16,7 +16,7 @@ import {
   FileCode2
 } from 'lucide-react';
 import { UserStats, Track } from '../../types';
-import { ALL_TRACKS } from '../../data/courses';
+import { CourseStorageService } from '../../services/courseStorageService';
 import { ALL_PROJECTS } from '../../data/projects';
 import { ProgressStorage } from '../../services/progressStorage';
 import { LanguageIcon } from '../common/LanguageIcon';
@@ -34,15 +34,16 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
   onOpenPlacementQuiz,
   onOpenFlashcards
 }) => {
+  const tracks = CourseStorageService.getTracks();
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
 
   let totalLessons = 0;
-  ALL_TRACKS.forEach(t => totalLessons += t.lessons.length);
+  tracks.forEach(t => totalLessons += t.lessons.length);
   const completedLessonsCount = userStats.completedLessonIds.length;
 
   // Find next recommended lesson (first uncompleted)
   let nextRecommended: { track: Track; lesson: any } | null = null;
-  for (const t of ALL_TRACKS) {
+  for (const t of tracks) {
     for (const l of t.lessons) {
       if (!userStats.completedLessonIds.includes(l.id)) {
         nextRecommended = { track: t, lesson: l };
@@ -174,7 +175,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          {ALL_TRACKS.map(track => {
+          {tracks.map(track => {
             const completedInTrack = track.lessons.filter(l => userStats.completedLessonIds.includes(l.id)).length;
             const trackPercent = Math.round((completedInTrack / track.lessons.length) * 100);
             const targetLesson = track.lessons.find(l => !userStats.completedLessonIds.includes(l.id)) || track.lessons[0];

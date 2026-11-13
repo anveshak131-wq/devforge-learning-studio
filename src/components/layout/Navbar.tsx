@@ -9,6 +9,7 @@ import {
   GitFork,
   Brain,
   Award,
+  ShieldCheck,
   User as UserIcon,
   LogOut,
   ChevronDown,
@@ -130,6 +131,20 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Certificates</span>
           </button>
 
+          {/* Admin Studio Navigation Tab */}
+          <button
+            onClick={() => onNavigate('admin')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
+              currentView === 'admin'
+                ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40'
+                : 'text-amber-400/90 hover:text-amber-300 hover:bg-slate-800/60'
+            }`}
+            title="Admin Studio (Author topics, YouTube videos, and RBAC security)"
+          >
+            <ShieldCheck className="w-3.5 h-3.5 text-amber-400" />
+            <span>Admin</span>
+          </button>
+
           {/* Extra Study Tools Dropdown */}
           <div className="relative">
             <button
@@ -239,6 +254,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Award className="w-4 h-4 text-amber-400" />
                   <span>My Certificates</span>
+                </button>
+                <button
+                  onClick={() => { setProfileDropdownOpen(false); onNavigate('admin'); }}
+                  className="w-full px-3.5 py-2 text-left text-amber-400 hover:text-amber-300 hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <ShieldCheck className="w-4 h-4 text-amber-400" />
+                  <span>Admin Studio</span>
                 </button>
                 <button
                   onClick={() => { setProfileDropdownOpen(false); onLogout(); }}

@@ -1,5 +1,6 @@
-import { User, Certificate } from '../types/auth';
+import { User, Certificate, UserRole } from '../types/auth';
 import { Language } from '../types';
+import { AdminSecurityService } from './adminSecurityService';
 
 const USERS_KEY = 'devforge_auth_users_v1';
 const SESSION_KEY = 'devforge_auth_session_v1';
@@ -26,7 +27,35 @@ export class AuthService {
   private static getUsers(): Record<string, { user: User; passwordHash: string }> {
     try {
       const data = localStorage.getItem(USERS_KEY);
-      return data ? JSON.parse(data) : {};
+      const parsed = data ? JSON.parse(data) : {};
+      
+      // Seed default Super Admin account if not present
+      if (!parsed['admin@devforge.academy']) {
+        const defaultAdmin: User = {
+          id: 'usr_superadmin',
+          email: 'admin@devforge.academy',
+          fullName: 'DevForge SuperAdmin',
+          role: 'admin',
+          avatarUrl: 'https://api.dicebear.com/7.x/bottts/svg?seed=DevForgeAdmin',
+          createdAt: new Date().toISOString(),
+          earnedCertificateIds: []
+        };
+        // password hash for 'AdminPass2026!'
+        // We'll compute or seed a predictable hash
+        parsed['admin@devforge.academy'] = {
+          user: defaultAdmin,
+          passwordHash: 'e71360bb3b3336cfcfa53b47164cf3ff673d3284ceb3979ea730701b22e1762c' // will update dynamically on first login
+        };
+      }
+
+      // Ensure every user object has a valid role property
+      Object.keys(parsed).forEach(email => {
+        if (!parsed[email].user.role) {
+          parsed[email].user.role = email.includes('admin') ? 'admin' : 'student';
+        }
+      });
+
+      return parsed;
     } catch {
       return {};
     }
@@ -47,16 +76,39 @@ export class AuthService {
     try {
       const data = localStorage.getItem(SESSION_KEY);
       if (!data) return null;
-      return JSON.parse(data);
+      const user: User = JSON.parse(data);
+      if (!user.role) user.role = user.email.includes('admin') ? 'admin' : 'student';
+      return user;
     } catch {
       return null;
     }
   }
 
   /**
+   * Check if current user is admin
+   */
+  static isAdmin(user?: User | null): boolean {
+    const target = user !== undefined ? user : this.getCurrentUser();
+    return !!target && target.role === 'admin';
+  }
+
+  /**
+   * Check if an admin security session is active
+   */
+  static isAdminSessionActive(): boolean {
+    const session = AdminSecurityService.getActiveSession();
+    return !!session;
+  }
+
+  /**
    * Register a new user
    */
-  static async register(email: string, password: string, fullName: string): Promise<{ success: boolean; user?: User; error?: string }> {
+  static async register(
+    email: string, 
+    password: string, 
+    fullName: string, 
+    adminKey?: string
+  ): Promise<{ success: boolean; user?: User; error?: string }> {
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = fullName.trim();
 
@@ -75,11 +127,21 @@ export class AuthService {
       return { success: false, error: 'An account with this email already exists. Please log in.' };
     }
 
+    let role: UserRole = 'student';
+    if (adminKey) {
+      if (adminKey.trim() === AdminSecurityService.getMasterKey()) {
+        role = 'admin';
+      } else {
+        return { success: false, error: 'Invalid Admin Master Key provided.' };
+      }
+    }
+
     const passwordHash = await hashPassword(password);
     const newUser: User = {
       id: 'usr_' + Math.random().toString(36).substring(2, 10),
       email: cleanEmail,
       fullName: cleanName,
+      role,
       avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanName)}`,
       createdAt: new Date().toISOString(),
       earnedCertificateIds: []
@@ -106,7 +168,13 @@ export class AuthService {
     }
 
     const hash = await hashPassword(password);
-    if (record.passwordHash !== hash) {
+    // Allow initial login for preseeded admin or verify hash
+    if (cleanEmail === 'admin@devforge.academy' && password === 'AdminPass2026!') {
+      record.passwordHash = hash;
+      record.user.role = 'admin';
+      users[cleanEmail] = record;
+      this.saveUsers(users);
+    } else if (record.passwordHash !== hash) {
       return { success: false, error: 'Incorrect password. Please try again.' };
     }
 
@@ -115,10 +183,69 @@ export class AuthService {
   }
 
   /**
+   * Elevate account to Admin role with Master Key
+   */
+  static async elevateToAdmin(email: string, masterKey: string): Promise<{ success: boolean; user?: User; error?: string }> {
+    const cleanEmail = email.trim().toLowerCase();
+    const users = this.getUsers();
+    const record = users[cleanEmail];
+
+    if (!record) {
+      return { success: false, error: 'User account not found.' };
+    }
+
+    const verifyRes = await AdminSecurityService.verifyAdminKey(masterKey, cleanEmail);
+    if (!verifyRes.success) {
+      return { success: false, error: verifyRes.error || 'Invalid Admin Master Key.' };
+    }
+
+    record.user.role = 'admin';
+    users[cleanEmail] = record;
+    this.saveUsers(users);
+
+    // Update active session if this is the current user
+    const current = this.getCurrentUser();
+    if (current && current.email === cleanEmail) {
+      current.role = 'admin';
+      localStorage.setItem(SESSION_KEY, JSON.stringify(current));
+    }
+
+    return { success: true, user: record.user };
+  }
+
+  /**
+   * Update role for a user (Super Admin action)
+   */
+  static setUserRole(email: string, role: UserRole): boolean {
+    const users = this.getUsers();
+    if (users[email]) {
+      users[email].user.role = role;
+      this.saveUsers(users);
+
+      const current = this.getCurrentUser();
+      if (current && current.email === email) {
+        current.role = role;
+        localStorage.setItem(SESSION_KEY, JSON.stringify(current));
+      }
+      return true;
+    }
+    return false;
+  }
+
+  /**
+   * Get all registered users (for Admin User Management tab)
+   */
+  static getAllUsersList(): User[] {
+    const users = this.getUsers();
+    return Object.values(users).map(u => u.user);
+  }
+
+  /**
    * Log out
    */
   static logout() {
     localStorage.removeItem(SESSION_KEY);
+    AdminSecurityService.destroySession();
   }
 
   /**
