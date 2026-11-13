@@ -20,6 +20,7 @@ import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
 import { AdminPortalView } from './components/admin/AdminPortalView';
 import { AdminLockScreen } from './components/admin/AdminLockScreen';
+import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
 import { CourseStorageService } from './services/courseStorageService';
 import { AdminSecurityService } from './services/adminSecurityService';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
@@ -39,18 +40,38 @@ export function App() {
     });
   }, []);
 
-  // Secret URL listener for Admin Access (#admin or ?admin=true or ?view=admin)
+  // Stealth URL Gateway & Decoy Trap Listener
   useEffect(() => {
-    const checkUrlForAdmin = () => {
-      const hash = window.location.hash.toLowerCase();
-      const search = window.location.search.toLowerCase();
-      if (hash.includes('admin') || search.includes('admin')) {
+    const handleUrlRouting = () => {
+      const hash = window.location.hash || '';
+      const search = window.location.search || '';
+      const combined = (hash + ' ' + search).toLowerCase();
+
+      // Check if visitor/crawler visited a decoy admin path (#admin, /admin, ?admin, etc.)
+      if (AdminSecurityService.isDecoyAdminPath(combined)) {
+        setCurrentView('decoy_404');
+        return;
+      }
+
+      // Check if matching private stealth slug (#forge-ops-9842 or custom slug)
+      if (AdminSecurityService.isStealthSlugMatch(hash) || AdminSecurityService.isStealthSlugMatch(search)) {
         setCurrentView('admin');
+
+        // Immediately scrub the secret slug from the browser address bar so it cannot be copied/seen in history
+        try {
+          const currentSlug = AdminSecurityService.getStealthSlug();
+          const cleanSearch = window.location.search.replace(new RegExp(`[\\?&]${currentSlug}(=[^&]*)?`, 'gi'), '');
+          window.history.replaceState(null, '', window.location.pathname + (cleanSearch || ''));
+        } catch {
+          // ignore
+        }
+        return;
       }
     };
-    checkUrlForAdmin();
-    window.addEventListener('hashchange', checkUrlForAdmin);
-    return () => window.removeEventListener('hashchange', checkUrlForAdmin);
+
+    handleUrlRouting();
+    window.addEventListener('hashchange', handleUrlRouting);
+    return () => window.removeEventListener('hashchange', handleUrlRouting);
   }, []);
 
   // Global Secret Keyboard Shortcut for Admins: Ctrl+Shift+A or Cmd+Shift+A
@@ -84,6 +105,11 @@ export function App() {
     if (view === 'cheatsheet') {
       setIsCheatSheetOpen(true);
       return;
+    }
+    if (window.location.hash) {
+      try {
+        window.history.replaceState(null, '', window.location.pathname);
+      } catch {}
     }
     setCurrentView(view);
     setViewPayload(payload || null);
@@ -262,6 +288,11 @@ export function App() {
           <PlaygroundWorkspace />
         )}
 
+        {/* Decoy 404 Honeypot Trap for intruders trying #admin, /admin, etc. */}
+        {currentView === 'decoy_404' && (
+          <DecoyNotFoundView onBackHome={() => handleNavigate('dashboard')} />
+        )}
+
         {/* Protected Super Administrator Portal (Secret Admin Gateway) */}
         {currentView === 'admin' && (
           adminSession ? (
@@ -289,17 +320,11 @@ export function App() {
         )}
       </main>
 
-      {/* Discreet Platform Footer (Hidden during admin & lesson views) */}
-      {currentView !== 'admin' && currentView !== 'lesson' && (
+      {/* Platform Footer (Completely clean of any admin hints or triggers) */}
+      {currentView !== 'admin' && currentView !== 'lesson' && currentView !== 'decoy_404' && (
         <footer className="py-3 px-6 border-t border-slate-900 bg-slate-950 flex items-center justify-between text-[11px] text-slate-500 font-mono select-none">
           <span>© 2026 DevForge Learning Studio. All rights reserved.</span>
-          <button
-            onClick={() => handleNavigate('admin')}
-            className="text-slate-700 hover:text-slate-400 p-1 transition"
-            title="Admin Access (Ctrl+Shift+A)"
-          >
-            •
-          </button>
+          <span className="text-slate-600">Enterprise Coding Curriculum</span>
         </footer>
       )}
 

@@ -29,7 +29,10 @@ import {
   LogOut,
   FolderPlus,
   HelpCircle,
-  FileText
+  FileText,
+  Copy,
+  Check,
+  Link2
 } from 'lucide-react';
 import { Track, Lesson, WorkedExampleItem, Difficulty, TierLevel } from '../../types';
 import { User, AdminAuditLog } from '../../types/auth';
@@ -75,6 +78,10 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const [oldMasterKey, setOldMasterKey] = useState('');
   const [newMasterKey, setNewMasterKey] = useState('');
   const [keyChangeStatus, setKeyChangeStatus] = useState<string | null>(null);
+  const [stealthSlug, setStealthSlug] = useState<string>(() => AdminSecurityService.getStealthSlug());
+  const [newStealthSlug, setNewStealthSlug] = useState<string>('');
+  const [slugStatus, setSlugStatus] = useState<string | null>(null);
+  const [copiedLink, setCopiedLink] = useState(false);
 
   const currentUser = AuthService.getCurrentUser();
   const currentSession = AdminSecurityService.getActiveSession();
@@ -254,6 +261,35 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
     } else {
       setKeyChangeStatus(res.error || 'Failed to update Master Key.');
     }
+  };
+
+  // Stealth Slug Management
+  const handleUpdateStealthSlug = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newStealthSlug.trim() || newStealthSlug.trim().length < 4) {
+      setSlugStatus('Slug must be at least 4 characters long.');
+      return;
+    }
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    const ok = AdminSecurityService.setStealthSlug(newStealthSlug, adminEmail);
+    if (ok) {
+      const updated = AdminSecurityService.getStealthSlug();
+      setStealthSlug(updated);
+      setNewStealthSlug('');
+      setSlugStatus(`Stealth URL slug updated to "${updated}".`);
+      showToast('Stealth URL slug updated successfully.', 'success');
+    } else {
+      setSlugStatus('Failed to update slug. Use only letters, numbers, hyphens or underscores.');
+    }
+  };
+
+  const handleCopyStealthUrl = () => {
+    const origin = window.location.origin;
+    const url = `${origin}/#${stealthSlug}`;
+    navigator.clipboard.writeText(url);
+    setCopiedLink(true);
+    showToast('Stealth Admin URL copied to clipboard!', 'info');
+    setTimeout(() => setCopiedLink(false), 2500);
   };
 
   // Export / Import
@@ -1221,6 +1257,115 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         {/* ================================================================= */}
         {activeTab === 'security' && (
           <div className="h-full overflow-y-auto p-6 space-y-6 max-w-6xl mx-auto">
+            {/* Stealth Access & Decoy Honeypot Configuration */}
+            <div className="rounded-2xl bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950 border border-amber-500/30 p-5 space-y-4 shadow-2xl relative overflow-hidden">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center space-x-2">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                      Stealth Defense & Anti-Discovery
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-white mt-1 flex items-center space-x-2">
+                    <ShieldCheck className="w-4 h-4 text-amber-400" />
+                    <span>Private Admin Stealth Gateway & Decoy Honeypot</span>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    No public links or buttons exist anywhere on the platform. All probing attempts are trapped.
+                  </p>
+                </div>
+              </div>
+
+              {/* 4 Multi-layered Defense Mechanisms */}
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-3 pt-1">
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+                  <div className="flex items-center space-x-2 text-rose-400 text-xs font-bold">
+                    <AlertTriangle className="w-3.5 h-3.5" />
+                    <span>Decoy 404 Honeypot</span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-tight">
+                    Visiting <code className="text-rose-300 font-mono">#admin</code> or <code className="text-rose-300 font-mono">/admin</code> renders a realistic 404 "Page Not Found".
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+                  <div className="flex items-center space-x-2 text-cyan-400 text-xs font-bold">
+                    <Link2 className="w-3.5 h-3.5" />
+                    <span>Stealth Slug Cloaking</span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-tight">
+                    Opening via stealth slug instantly wipes the hash from the browser address bar via <code className="text-cyan-300 font-mono">replaceState</code>.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+                  <div className="flex items-center space-x-2 text-amber-400 text-xs font-bold">
+                    <Sparkles className="w-3.5 h-3.5" />
+                    <span>Secret 5-Tap Gesture</span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-tight">
+                    Tapping the top-left DevForge logo 5 times in 2.5 seconds unlocks the admin gateway without any link.
+                  </p>
+                </div>
+
+                <div className="p-3 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1">
+                  <div className="flex items-center space-x-2 text-indigo-400 text-xs font-bold">
+                    <Code2 className="w-3.5 h-3.5" />
+                    <span>Global Shortcut</span>
+                  </div>
+                  <p className="text-[11px] text-slate-400 leading-tight">
+                    Press <kbd className="px-1 py-0.5 rounded bg-slate-800 text-slate-200 font-mono text-[10px]">Ctrl+Shift+A</kbd> or <kbd className="px-1 py-0.5 rounded bg-slate-800 text-slate-200 font-mono text-[10px]">Cmd+Shift+A</kbd> anywhere.
+                  </p>
+                </div>
+              </div>
+
+              {/* Current Stealth Link Display & Copy */}
+              <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                <div className="flex items-center justify-between">
+                  <label className="text-xs font-semibold text-slate-300">
+                    Your Current Stealth Access URL (Keep Private):
+                  </label>
+                  <button
+                    onClick={handleCopyStealthUrl}
+                    className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center space-x-1.5 transition shadow"
+                  >
+                    {copiedLink ? <Check className="w-3.5 h-3.5 text-emerald-300" /> : <Copy className="w-3.5 h-3.5" />}
+                    <span>{copiedLink ? 'Copied to Clipboard!' : 'Copy Stealth URL'}</span>
+                  </button>
+                </div>
+                <div className="p-2.5 rounded-lg bg-slate-900 border border-slate-800 font-mono text-xs text-amber-300 break-all select-all">
+                  {typeof window !== 'undefined' ? `${window.location.origin}/#${stealthSlug}` : `https://devforge-65f.pages.dev/#${stealthSlug}`}
+                </div>
+              </div>
+
+              {/* Change Stealth Slug Form */}
+              <form onSubmit={handleUpdateStealthSlug} className="pt-2 flex flex-col sm:flex-row items-center gap-3">
+                <div className="flex-1 w-full">
+                  <label className="block text-xs font-semibold text-slate-300 mb-1">
+                    Customize Secret Slug (e.g. forge-ops-9842, delta-studio-419)
+                  </label>
+                  <input
+                    type="text"
+                    value={newStealthSlug}
+                    onChange={e => setNewStealthSlug(e.target.value)}
+                    placeholder={`Current: ${stealthSlug}`}
+                    className="w-full bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-amber-500 font-mono"
+                  />
+                </div>
+                <div className="sm:self-end w-full sm:w-auto">
+                  <button
+                    type="submit"
+                    className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold transition border border-slate-700"
+                  >
+                    Update Secret Slug
+                  </button>
+                </div>
+              </form>
+              {slugStatus && (
+                <p className="text-xs text-amber-400 font-medium">{slugStatus}</p>
+              )}
+            </div>
+
             {/* Master Key Card */}
             <div className="rounded-2xl bg-slate-900/60 border border-slate-800 p-5 space-y-4 shadow-xl">
               <div className="flex items-center justify-between">

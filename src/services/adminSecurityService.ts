@@ -4,9 +4,12 @@ const ADMIN_MASTER_KEY_STORAGE = 'devforge_admin_master_key_v1';
 const ADMIN_SESSION_STORAGE = 'devforge_admin_session_v1';
 const ADMIN_FAILED_ATTEMPTS_STORAGE = 'devforge_admin_failed_attempts_v1';
 const ADMIN_AUDIT_LOGS_STORAGE = 'devforge_admin_audit_logs_v1';
+const ADMIN_STEALTH_SLUG_STORAGE = 'devforge_stealth_slug_v1';
 
 // Default Master Key (Can be changed by Admin in Security Settings)
 const DEFAULT_MASTER_KEY = 'DEVFORGE_ADMIN_2026';
+// Default Stealth URL Slug (e.g. #forge-ops-9842)
+const DEFAULT_STEALTH_SLUG = 'forge-ops-9842';
 
 // Security constraints
 const MAX_FAILED_ATTEMPTS = 5;
@@ -56,6 +59,50 @@ export class AdminSecurityService {
     });
 
     return { success: true };
+  }
+
+  /**
+   * Get configured Stealth URL slug
+   */
+  static getStealthSlug(): string {
+    try {
+      return localStorage.getItem(ADMIN_STEALTH_SLUG_STORAGE) || DEFAULT_STEALTH_SLUG;
+    } catch {
+      return DEFAULT_STEALTH_SLUG;
+    }
+  }
+
+  /**
+   * Update Stealth URL slug
+   */
+  static setStealthSlug(newSlug: string, adminEmail: string): boolean {
+    const clean = newSlug.trim().toLowerCase().replace(/[^a-z0-9_-]/g, '');
+    if (!clean || clean.length < 4) return false;
+    localStorage.setItem(ADMIN_STEALTH_SLUG_STORAGE, clean);
+    this.logAudit({
+      adminEmail,
+      action: 'update_lesson',
+      details: `Updated Admin Stealth URL slug to "${clean}".`
+    });
+    return true;
+  }
+
+  /**
+   * Check if a URL hash or query matches the secret stealth slug
+   */
+  static isStealthSlugMatch(input: string): boolean {
+    const slug = this.getStealthSlug().toLowerCase();
+    const clean = input.trim().toLowerCase().replace(/^#|^\/|^\?/, '');
+    return clean.includes(slug);
+  }
+
+  /**
+   * Check if an input is a common/decoy admin path that should be blocked with 404
+   */
+  static isDecoyAdminPath(input: string): boolean {
+    const lower = input.trim().toLowerCase();
+    const decoyList = ['admin', '#admin', '/admin', '?admin', 'wp-admin', 'administrator', 'backend', 'login/admin'];
+    return decoyList.some(d => lower.includes(d));
   }
 
   /**

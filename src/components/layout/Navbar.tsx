@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { 
   Code2, 
   Flame, 
@@ -43,14 +43,35 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
+  const [logoClickCount, setLogoClickCount] = useState(0);
+  const logoTimerRef = useRef<any>(null);
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
+
+  // Secret 5-Tap on Logo: opens Admin Portal stealthily
+  const handleLogoClick = () => {
+    onNavigate('dashboard');
+
+    setLogoClickCount(prev => {
+      const next = prev + 1;
+      if (next >= 5) {
+        onNavigate('admin');
+        return 0;
+      }
+      return next;
+    });
+
+    clearTimeout(logoTimerRef.current);
+    logoTimerRef.current = setTimeout(() => {
+      setLogoClickCount(0);
+    }, 2500);
+  };
 
   return (
     <header className="h-14 border-b border-slate-800 bg-slate-900/90 backdrop-blur-md px-4 flex items-center justify-between z-30 select-none">
       {/* Brand & Main Navigation */}
       <div className="flex items-center space-x-6">
         <button
-          onClick={() => onNavigate('dashboard')}
+          onClick={handleLogoClick}
           className="flex items-center space-x-2.5 group text-left"
         >
           <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 p-[1px] shadow-lg shadow-indigo-500/20 group-hover:shadow-indigo-500/40 transition">
