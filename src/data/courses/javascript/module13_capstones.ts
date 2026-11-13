@@ -34,7 +34,7 @@ export const module13Lessons: Lesson[] = [
       "Instantiate `const temp = new Temperature(25);`.",
       "Print `temp.fahrenheit`."
     ],
-    "initialCode": "class Temperature {\n  constructor(celsius) {\n    this.celsius = celsius;\n  }\n  get fahrenheit() {\n    return (this.celsius * 9 / 5) + 32;\n  }\n  get kelvin() {\n    return this.celsius + 273.15;\n  }\n}\nconst temp = new Temperature(25);\nconsole.log(temp.fahrenheit);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Temperature {\n  constructor(celsius) {\n    this.celsius = celsius;\n  }\n  get fahrenheit() {\n    return (this.celsius * 9 / 5) + 32;\n  }\n  get kelvin() {\n    return this.celsius + 273.15;\n  }\n}\nconst temp = new Temperature(25);\nconsole.log(temp.fahrenheit);\n",
     "hints": [
       "Remember C to F formula: `(this.celsius * 9/5) + 32`"
@@ -82,7 +82,7 @@ export const module13Lessons: Lesson[] = [
       "Return `{ isValid: boolean, score: number }` where score is count of passed rules (0 to 4).",
       "Test with `let result = validatePassword(\"Secur3P@ss\");` and print `result.isValid`."
     ],
-    "initialCode": "function validatePassword(pass) {\n  let rules = [\n    pass.length >= 8,\n    /[A-Z]/.test(pass),\n    /[a-z]/.test(pass),\n    /[0-9]/.test(pass)\n  ];\n  let score = rules.filter(Boolean).length;\n  return {\n    isValid: score === 4,\n    score\n  };\n}\nlet result = validatePassword(\"Secur3P@ss\");\nconsole.log(result.isValid);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function validatePassword(pass) {\n  let rules = [\n    pass.length >= 8,\n    /[A-Z]/.test(pass),\n    /[a-z]/.test(pass),\n    /[0-9]/.test(pass)\n  ];\n  let score = rules.filter(Boolean).length;\n  return {\n    isValid: score === 4,\n    score\n  };\n}\nlet result = validatePassword(\"Secur3P@ss\");\nconsole.log(result.isValid);\n",
     "hints": [
       "Filter true values using `rules.filter(Boolean).length`"
@@ -132,7 +132,7 @@ export const module13Lessons: Lesson[] = [
       "Add `getTotal(discountPercent = 0)` that computes `subtotal * (1 - discountPercent / 100)`.",
       "Instantiate cart, add a 100-dollar item, apply a 20% discount coupon, and print total."
     ],
-    "initialCode": "class ShoppingCart {\n  constructor() {\n    this.items = [];\n  }\n  addItem(name, price, qty = 1) {\n    this.items.push({ name, price, qty });\n  }\n  getTotal(discountPercent = 0) {\n    let subtotal = this.items.reduce((sum, item) => sum + item.price * item.qty, 0);\n    return subtotal * (1 - discountPercent / 100);\n  }\n}\nconst cart = new ShoppingCart();\ncart.addItem(\"Shoes\", 100, 1);\nlet total = cart.getTotal(20);\nconsole.log(total);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class ShoppingCart {\n  constructor() {\n    this.items = [];\n  }\n  addItem(name, price, qty = 1) {\n    this.items.push({ name, price, qty });\n  }\n  getTotal(discountPercent = 0) {\n    let subtotal = this.items.reduce((sum, item) => sum + item.price * item.qty, 0);\n    return subtotal * (1 - discountPercent / 100);\n  }\n}\nconst cart = new ShoppingCart();\ncart.addItem(\"Shoes\", 100, 1);\nlet total = cart.getTotal(20);\nconsole.log(total);\n",
     "hints": [
       "Apply discount formula `subtotal * (1 - discountPercent / 100)`"
@@ -182,7 +182,7 @@ export const module13Lessons: Lesson[] = [
       "Add `toggleTask(id)` finding task by ID and flipping its completed boolean.",
       "Add `addTask('Code')`, toggle it, and print its completed status."
     ],
-    "initialCode": "class TaskManager {\n  constructor() {\n    this.tasks = [];\n    this.nextId = 1;\n  }\n  addTask(title) {\n    const task = { id: this.nextId++, title, completed: false };\n    this.tasks.push(task);\n    return task;\n  }\n  toggleTask(id) {\n    const task = this.tasks.find(t => t.id === id);\n    if (task) task.completed = !task.completed;\n    return task;\n  }\n  getCompleted() {\n    return this.tasks.filter(t => t.completed);\n  }\n}\nconst tm = new TaskManager();\nlet t1 = tm.addTask(\"Learn JavaScript\");\ntm.toggleTask(t1.id);\nconsole.log(t1.completed);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class TaskManager {\n  constructor() {\n    this.tasks = [];\n    this.nextId = 1;\n  }\n  addTask(title) {\n    const task = { id: this.nextId++, title, completed: false };\n    this.tasks.push(task);\n    return task;\n  }\n  toggleTask(id) {\n    const task = this.tasks.find(t => t.id === id);\n    if (task) task.completed = !task.completed;\n    return task;\n  }\n  getCompleted() {\n    return this.tasks.filter(t => t.completed);\n  }\n}\nconst tm = new TaskManager();\nlet t1 = tm.addTask(\"Learn JavaScript\");\ntm.toggleTask(t1.id);\nconsole.log(t1.completed);\n",
     "hints": [
       "Find task with `this.tasks.find(t => t.id === id)`"
@@ -231,7 +231,7 @@ export const module13Lessons: Lesson[] = [
       "Add `getBalance()`: sums income, subtracts expenses, returns net balance.",
       "Record income of 5000, expense of 2000, and print `ledger.getBalance()`."
     ],
-    "initialCode": "class FinancialLedger {\n  constructor() {\n    this.entries = [];\n  }\n  addEntry(type, category, amount) {\n    this.entries.push({ type, category, amount });\n  }\n  getBalance() {\n    return this.entries.reduce((acc, entry) => {\n      return entry.type === \"income\" ? acc + entry.amount : acc - entry.amount;\n    }, 0);\n  }\n}\nconst ledger = new FinancialLedger();\nledger.addEntry(\"income\", \"Salary\", 5000);\nledger.addEntry(\"expense\", \"Rent\", 2000);\nlet balance = ledger.getBalance();\nconsole.log(balance);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class FinancialLedger {\n  constructor() {\n    this.entries = [];\n  }\n  addEntry(type, category, amount) {\n    this.entries.push({ type, category, amount });\n  }\n  getBalance() {\n    return this.entries.reduce((acc, entry) => {\n      return entry.type === \"income\" ? acc + entry.amount : acc - entry.amount;\n    }, 0);\n  }\n}\nconst ledger = new FinancialLedger();\nledger.addEntry(\"income\", \"Salary\", 5000);\nledger.addEntry(\"expense\", \"Rent\", 2000);\nlet balance = ledger.getBalance();\nconsole.log(balance);\n",
     "hints": [
       "Use `.reduce()` to add income and subtract expenses"

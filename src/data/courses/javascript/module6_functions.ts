@@ -29,7 +29,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define `function alertUser() { console.log(\"Alert!\"); }`.",
       "Call `alertUser();`."
     ],
-    "initialCode": "function alertUser() {\n  console.log(\"Alert!\");\n}\nalertUser();\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function alertUser() {\n  console.log(\"Alert!\");\n}\nalertUser();\n",
     "hints": [
       "Write `alertUser();` to call it"
@@ -70,7 +70,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define `function cheer(team)` that prints `'Go ' + team + '!'`.",
       "Call `cheer('Tigers')`."
     ],
-    "initialCode": "function cheer(team) {\n  console.log(\"Go \" + team + \"!\");\n}\ncheer(\"Tigers\");\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function cheer(team) {\n  console.log(\"Go \" + team + \"!\");\n}\ncheer(\"Tigers\");\n",
     "hints": [
       "Write `cheer(\"Tigers\");`"
@@ -111,7 +111,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define `function add(a, b) { return a + b; }`.",
       "Test with `console.log(add(10, 5));`."
     ],
-    "initialCode": "function add(a, b) {\n  return a + b;\n}\nconsole.log(add(10, 5));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function add(a, b) {\n  return a + b;\n}\nconsole.log(add(10, 5));\n",
     "hints": [
       "Return `a + b`"
@@ -152,7 +152,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define `function sayHi(user = \"Friend\") { return \"Hi \" + user; }`.",
       "Test calling `sayHi()`."
     ],
-    "initialCode": "function sayHi(user = \"Friend\") {\n  return \"Hi \" + user;\n}\nconsole.log(sayHi());\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function sayHi(user = \"Friend\") {\n  return \"Hi \" + user;\n}\nconsole.log(sayHi());\n",
     "hints": [
       "Write `user = \"Friend\"` in parameter list"
@@ -193,7 +193,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Write `function countWords(...words) { return words.length; }`.",
       "Test with `countWords('a', 'b')`."
     ],
-    "initialCode": "function countWords(...words) {\n  return words.length;\n}\nconsole.log(countWords('a', 'b'));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function countWords(...words) {\n  return words.length;\n}\nconsole.log(countWords('a', 'b'));\n",
     "hints": [
       "Use `...words` as parameter"
@@ -234,7 +234,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Assign `const sub = function(a, b) { return a - b; };`.",
       "Test with `console.log(sub(10, 4));`."
     ],
-    "initialCode": "const sub = function(a, b) {\n  return a - b;\n};\nconsole.log(sub(10, 4));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "const sub = function(a, b) {\n  return a - b;\n};\nconsole.log(sub(10, 4));\n",
     "hints": [
       "Write `const sub = function(a, b) { return a - b; };`"
@@ -275,7 +275,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Create arrow function `const triple = (x) => { return x * 3; };`.",
       "Print `triple(4)`."
     ],
-    "initialCode": "const triple = (x) => {\n  return x * 3;\n};\nconsole.log(triple(4));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "const triple = (x) => {\n  return x * 3;\n};\nconsole.log(triple(4));\n",
     "hints": [
       "Write `const triple = (x) => { return x * 3; };`"
@@ -315,7 +315,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define concise arrow `const addOne = x => x + 1;`.",
       "Test with `console.log(addOne(9));`."
     ],
-    "initialCode": "const addOne = x => x + 1;\nconsole.log(addOne(9));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "const addOne = x => x + 1;\nconsole.log(addOne(9));\n",
     "hints": [
       "Write `const addOne = x => x + 1;`"
@@ -358,7 +358,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define function `getApp()` that returns `app`.",
       "Print `getApp()`."
     ],
-    "initialCode": "let app = \"ChatApp\";\nfunction getApp() {\n  return app;\n}\nconsole.log(getApp());\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let app = \"ChatApp\";\nfunction getApp() {\n  return app;\n}\nconsole.log(getApp());\n",
     "hints": [
       "Return global `app` from `getApp()`"
@@ -399,7 +399,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Look at the code.",
       "Confirm `let x = 10;` is declared in global scope so `console.log(x);` works."
     ],
-    "initialCode": "let x = 10;\nif (true) {\n  console.log(x);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let x = 10;\nif (true) {\n  console.log(x);\n}\n",
     "hints": [
       "Run the code"
@@ -440,7 +440,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Define `function applyOp(n, fn) { return fn(n); }`.",
       "Call `applyOp(5, x => x * 10)` and log."
     ],
-    "initialCode": "function applyOp(n, fn) {\n  return fn(n);\n}\nconsole.log(applyOp(5, x => x * 10));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function applyOp(n, fn) {\n  return fn(n);\n}\nconsole.log(applyOp(5, x => x * 10));\n",
     "hints": [
       "Write `applyOp(n, fn)` that calls `fn(n)`"
@@ -481,7 +481,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Complete `makeMultiplier(factor)` that returns `n => n * factor`.",
       "Test with `const triple = makeMultiplier(3); triple(4)` (12)."
     ],
-    "initialCode": "function makeMultiplier(factor) {\n  return function(n) {\n    return n * factor;\n  };\n}\nconst triple = makeMultiplier(3);\nconsole.log(triple(4));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function makeMultiplier(factor) {\n  return function(n) {\n    return n * factor;\n  };\n}\nconst triple = makeMultiplier(3);\nconsole.log(triple(4));\n",
     "hints": [
       "Return an inner function that multiplies `n * factor`"
@@ -522,7 +522,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Write a pure function `cube(n) { return n ** 3; }`.",
       "Test with `console.log(cube(3));`."
     ],
-    "initialCode": "function cube(n) {\n  return n ** 3;\n}\nconsole.log(cube(3));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function cube(n) {\n  return n ** 3;\n}\nconsole.log(cube(3));\n",
     "hints": [
       "Return `n ** 3`"
@@ -564,7 +564,7 @@ export const MODULE_6_LESSONS: Lesson[] = [
       "Complete `factorial(n)`. If `n <= 1` return 1, else return `n * factorial(n - 1)`.",
       "Test with `factorial(3)` (6)."
     ],
-    "initialCode": "function factorial(n) {\n  if (n <= 1) return 1;\n  return n * factorial(n - 1);\n}\nconsole.log(factorial(3));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function factorial(n) {\n  if (n <= 1) return 1;\n  return n * factorial(n - 1);\n}\nconsole.log(factorial(3));\n",
     "hints": [
       "Return `n * factorial(n - 1)`"

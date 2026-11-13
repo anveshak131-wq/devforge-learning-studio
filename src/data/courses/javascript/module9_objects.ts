@@ -29,7 +29,7 @@ export const module9Lessons: Lesson[] = [
       "Create an object `let car = { make: \"Tesla\", model: \"Model 3\", year: 2024 };`.",
       "Print `car.make`."
     ],
-    "initialCode": "let car = { make: \"Tesla\", model: \"Model 3\", year: 2024 };\nconsole.log(car.make);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let car = { make: \"Tesla\", model: \"Model 3\", year: 2024 };\nconsole.log(car.make);\n",
     "hints": [
       "Use curly braces `{ make: \"Tesla\", model: \"Model 3\", year: 2024 }`"
@@ -72,7 +72,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let field = \"username\";`.",
       "Print `profile[field]`."
     ],
-    "initialCode": "let profile = { username: \"coder99\", email: \"code@test.io\" };\nlet field = \"username\";\nconsole.log(profile[field]);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let profile = { username: \"coder99\", email: \"code@test.io\" };\nlet field = \"username\";\nconsole.log(profile[field]);\n",
     "hints": [
       "Use `profile[field]`"
@@ -114,7 +114,7 @@ export const module9Lessons: Lesson[] = [
       "Add `hero.nemesis = \"Joker\";`.",
       "Print `hero.nemesis`."
     ],
-    "initialCode": "let hero = { name: \"Batman\", city: \"Gotham\" };\nhero.nemesis = \"Joker\";\nconsole.log(hero.nemesis);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let hero = { name: \"Batman\", city: \"Gotham\" };\nhero.nemesis = \"Joker\";\nconsole.log(hero.nemesis);\n",
     "hints": [
       "Assign `hero.nemesis = \"Joker\";`"
@@ -155,7 +155,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let greeter = { name: \"Sam\", greet() { return \"Hello, \" + this.name; } };`.",
       "Call `greeter.greet()` and print it."
     ],
-    "initialCode": "let greeter = {\n  name: \"Sam\",\n  greet() {\n    return \"Hello, \" + this.name;\n  }\n};\nconsole.log(greeter.greet());\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let greeter = {\n  name: \"Sam\",\n  greet() {\n    return \"Hello, \" + this.name;\n  }\n};\nconsole.log(greeter.greet());\n",
     "hints": [
       "Use `this.name` inside greet()"
@@ -197,7 +197,7 @@ export const module9Lessons: Lesson[] = [
       "Destructure `const { username, level } = player;`.",
       "Print `${username} is level ${level}`."
     ],
-    "initialCode": "const player = { username: \"PixelKnight\", level: 42 };\nconst { username, level } = player;\nconsole.log(`${username} is level ${level}`);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "const player = { username: \"PixelKnight\", level: 42 };\nconst { username, level } = player;\nconsole.log(`${username} is level ${level}`);\n",
     "hints": [
       "Use `const { username, level } = player;`"
@@ -240,7 +240,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let adminUser = { ...baseUser, role: \"admin\" };`.",
       "Print `adminUser.role`."
     ],
-    "initialCode": "let baseUser = { role: \"user\", status: \"active\" };\nlet adminUser = { ...baseUser, role: \"admin\" };\nconsole.log(adminUser.role);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let baseUser = { role: \"user\", status: \"active\" };\nlet adminUser = { ...baseUser, role: \"admin\" };\nconsole.log(adminUser.role);\n",
     "hints": [
       "Spread baseUser and override role: `role: 'admin'`"
@@ -283,7 +283,7 @@ export const module9Lessons: Lesson[] = [
       "Get keys with `let fruits = Object.keys(inventory);`.",
       "Print `fruits`."
     ],
-    "initialCode": "let inventory = { apples: 5, oranges: 8, bananas: 12 };\nlet fruits = Object.keys(inventory);\nconsole.log(fruits);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let inventory = { apples: 5, oranges: 8, bananas: 12 };\nlet fruits = Object.keys(inventory);\nconsole.log(fruits);\n",
     "hints": [
       "Use `Object.keys(inventory)`"
@@ -324,7 +324,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let user = { profile: { contact: { email: \"user@test.org\" } } };`.",
       "Print `user.profile.contact.email`."
     ],
-    "initialCode": "let user = { profile: { contact: { email: \"user@test.org\" } } };\nconsole.log(user.profile.contact.email);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let user = { profile: { contact: { email: \"user@test.org\" } } };\nconsole.log(user.profile.contact.email);\n",
     "hints": [
       "Access `user.profile.contact.email`"
@@ -366,7 +366,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let street = client.details?.address?.street;`.",
       "Print `street`."
     ],
-    "initialCode": "let client = { details: null };\nlet street = client.details?.address?.street;\nconsole.log(street);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let client = { details: null };\nlet street = client.details?.address?.street;\nconsole.log(street);\n",
     "hints": [
       "Use `client.details?.address?.street`"
@@ -408,7 +408,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let volume = userVolume ?? 50;`.",
       "Print `volume`."
     ],
-    "initialCode": "let userVolume = 0;\nlet volume = userVolume ?? 50;\nconsole.log(volume);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let userVolume = 0;\nlet volume = userVolume ?? 50;\nconsole.log(volume);\n",
     "hints": [
       "Use `userVolume ?? 50`"
@@ -450,7 +450,7 @@ export const module9Lessons: Lesson[] = [
       "Check if `\"price\"` is in `product` using `Object.hasOwn(product, \"price\")`.",
       "Assign to `let hasPrice` and print it."
     ],
-    "initialCode": "let product = { name: \"Lamp\", price: 25 };\nlet hasPrice = Object.hasOwn(product, \"price\");\nconsole.log(hasPrice);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let product = { name: \"Lamp\", price: 25 };\nlet hasPrice = Object.hasOwn(product, \"price\");\nconsole.log(hasPrice);\n",
     "hints": [
       "Use `Object.hasOwn(product, \"price\")`"
@@ -492,7 +492,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let frozen = Object.isFrozen(state);`.",
       "Print `frozen`."
     ],
-    "initialCode": "const state = Object.freeze({ status: \"READY\" });\nlet frozen = Object.isFrozen(state);\nconsole.log(frozen);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "const state = Object.freeze({ status: \"READY\" });\nlet frozen = Object.isFrozen(state);\nconsole.log(frozen);\n",
     "hints": [
       "Use `Object.freeze` and `Object.isFrozen`"
@@ -534,7 +534,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let game = { [prop]: 100 };`.",
       "Print `game.score`."
     ],
-    "initialCode": "let prop = \"score\";\nlet game = { [prop]: 100 };\nconsole.log(game.score);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let prop = \"score\";\nlet game = { [prop]: 100 };\nconsole.log(game.score);\n",
     "hints": [
       "Wrap the key in square brackets `[prop]: 100`"
@@ -576,7 +576,7 @@ export const module9Lessons: Lesson[] = [
       "Create `let updated = Object.assign({}, user, { verified: true });`.",
       "Print `updated.verified`."
     ],
-    "initialCode": "let user = { id: 10 };\nlet updated = Object.assign({}, user, { verified: true });\nconsole.log(updated.verified);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let user = { id: 10 };\nlet updated = Object.assign({}, user, { verified: true });\nconsole.log(updated.verified);\n",
     "hints": [
       "Use `Object.assign({}, user, { verified: true })`"

@@ -30,7 +30,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `interface HasLength { length: number; } function logLength<T extends HasLength>(item: T): number { return item.length; } let len = logLength('TypeScript');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface HasLength { length: number; } function logLength<T extends HasLength>(item: T): number { return item.length; } let len = logLength('TypeScript');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface HasLength { length: number; } function logLength<T extends HasLength>(item: T): number { return item.length; } let len = logLength('TypeScript');\n",
     "hints": [
       "Write: interface HasLength { length: number; } function logLength<T extends HasLength>(item: T): number { return item.length; } let len = logLength('TypeScript');"
@@ -72,7 +72,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `function addOrConcat<T extends string | number>(a: T, b: T): any { return (a as any) + (b as any); } let out = addOrConcat(10, 20);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction addOrConcat<T extends string | number>(a: T, b: T): any { return (a as any) + (b as any); } let out = addOrConcat(10, 20);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function addOrConcat<T extends string | number>(a: T, b: T): any { return (a as any) + (b as any); } let out = addOrConcat(10, 20);\n",
     "hints": [
       "Write: function addOrConcat<T extends string | number>(a: T, b: T): any { return (a as any) + (b as any); } let out = addOrConcat(10, 20);"
@@ -114,7 +114,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `interface User { id: number; name: string; } type UserKey = keyof User; let k: UserKey = 'name';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface User { id: number; name: string; } type UserKey = keyof User; let k: UserKey = 'name';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface User { id: number; name: string; } type UserKey = keyof User; let k: UserKey = 'name';\n",
     "hints": [
       "Write: interface User { id: number; name: string; } type UserKey = keyof User; let k: UserKey = 'name';"
@@ -156,7 +156,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `interface Product { id: string; price: number; } type PriceType = Product['price']; let p: PriceType = 49.99;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Product { id: string; price: number; } type PriceType = Product['price']; let p: PriceType = 49.99;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Product { id: string; price: number; } type PriceType = Product['price']; let p: PriceType = 49.99;\n",
     "hints": [
       "Write: interface Product { id: string; price: number; } type PriceType = Product['price']; let p: PriceType = 49.99;"
@@ -198,7 +198,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] { return obj[key]; } let user = { name: 'Alice', age: 25 }; let uName = getProperty(user, 'name');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction getProperty<T, K extends keyof T>(obj: T, key: K): T[K] { return obj[key]; } let user = { name: 'Alice', age: 25 }; let uName = getProperty(user, 'name');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] { return obj[key]; } let user = { name: 'Alice', age: 25 }; let uName = getProperty(user, 'name');\n",
     "hints": [
       "Write: function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] { return obj[key]; } let user = { name: 'Alice', age: 25 }; let uName = getProperty(user, 'name');"
@@ -240,7 +240,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `function copyProp<T, K extends keyof T>(target: T, source: T, key: K): void { target[key] = source[key]; } let a = { x: 1 }; let b = { x: 2 }; copyProp(a, b, 'x');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction copyProp<T, K extends keyof T>(target: T, source: T, key: K): void { target[key] = source[key]; } let a = { x: 1 }; let b = { x: 2 }; copyProp(a, b, 'x');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function copyProp<T, K extends keyof T>(target: T, source: T, key: K): void { target[key] = source[key]; } let a = { x: 1 }; let b = { x: 2 }; copyProp(a, b, 'x');\n",
     "hints": [
       "Write: function copyProp<T, K extends keyof T>(target: T, source: T, key: K): void { target[key] = source[key]; } let a = { x: 1 }; let b = { x: 2 }; copyProp(a, b, 'x');"
@@ -282,7 +282,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `interface HasId { id: number; } interface HasName { name: string; } function printInfo<T extends HasId & HasName>(item: T): string { return `${item.id}: ${item.name}`; } let res = printInfo({ id: 1, name: 'Root' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface HasId { id: number; } interface HasName { name: string; } function printInfo<T extends HasId & HasName>(item: T): string { return `${item.id}: ${item.name}`; } let res = printInfo({ id: 1, name: 'Root' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface HasId { id: number; } interface HasName { name: string; } function printInfo<T extends HasId & HasName>(item: T): string { return `${item.id}: ${item.name}`; } let res = printInfo({ id: 1, name: 'Root' });\n",
     "hints": [
       "Write: interface HasId { id: number; } interface HasName { name: string; } function printInfo<T extends HasId & HasName>(item: T): string { return `${item.id}: ${item.name}`; } let res = printInfo({ id: 1, name: 'Root' });"
@@ -324,7 +324,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `type IsString<T> = T extends string ? true : false; let isStr: IsString<'hello'> = true;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype IsString<T> = T extends string ? true : false; let isStr: IsString<'hello'> = true;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type IsString<T> = T extends string ? true : false; let isStr: IsString<'hello'> = true;\n",
     "hints": [
       "Write: type IsString<T> = T extends string ? true : false; let isStr: IsString<'hello'> = true;"
@@ -366,7 +366,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `type Dict = { [key: string]: boolean }; type DictKeys = keyof Dict; let k: DictKeys = 'anyKey';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Dict = { [key: string]: boolean }; type DictKeys = keyof Dict; let k: DictKeys = 'anyKey';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Dict = { [key: string]: boolean }; type DictKeys = keyof Dict; let k: DictKeys = 'anyKey';\n",
     "hints": [
       "Write: type Dict = { [key: string]: boolean }; type DictKeys = keyof Dict; let k: DictKeys = 'anyKey';"
@@ -408,7 +408,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `function setProp<T, K extends keyof T>(obj: T, key: K, val: T[K]): void { obj[key] = val; } let person = { score: 10 }; setProp(person, 'score', 50);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction setProp<T, K extends keyof T>(obj: T, key: K, val: T[K]): void { obj[key] = val; } let person = { score: 10 }; setProp(person, 'score', 50);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function setProp<T, K extends keyof T>(obj: T, key: K, val: T[K]): void { obj[key] = val; } let person = { score: 10 }; setProp(person, 'score', 50);\n",
     "hints": [
       "Write: function setProp<T, K extends keyof T>(obj: T, key: K, val: T[K]): void { obj[key] = val; } let person = { score: 10 }; setProp(person, 'score', 50);"
@@ -450,7 +450,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `function head<T extends any[]>(tuple: T): T[0] { return tuple[0]; } let h = head([10, 'string']);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction head<T extends any[]>(tuple: T): T[0] { return tuple[0]; } let h = head([10, 'string']);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function head<T extends any[]>(tuple: T): T[0] { return tuple[0]; } let h = head([10, 'string']);\n",
     "hints": [
       "Write: function head<T extends any[]>(tuple: T): T[0] { return tuple[0]; } let h = head([10, 'string']);"
@@ -492,7 +492,7 @@ export const tsModule8Lessons: Lesson[] = [
       "Enter the code: `type EventMap = { click: { x: number; y: number }; focus: { target: string } }; function dispatch<K extends keyof EventMap>(event: K, payload: EventMap[K]): K { return event; } let evt = dispatch('click', { x: 10, y: 20 });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype EventMap = { click: { x: number; y: number }; focus: { target: string } }; function dispatch<K extends keyof EventMap>(event: K, payload: EventMap[K]): K { return event; } let evt = dispatch('click', { x: 10, y: 20 });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type EventMap = { click: { x: number; y: number }; focus: { target: string } }; function dispatch<K extends keyof EventMap>(event: K, payload: EventMap[K]): K { return event; } let evt = dispatch('click', { x: 10, y: 20 });\n",
     "hints": [
       "Write: type EventMap = { click: { x: number; y: number }; focus: { target: string } }; function dispatch<K extends keyof EventMap>(event: K, payload: EventMap[K]): K { return event; } let evt = dispatch('click', { x: 10, y: 20 });"

@@ -30,7 +30,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type TypeName<T> = T extends string ? 'string' : T extends number ? 'number' : 'other'; let t1: TypeName<'abc'> = 'string';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype TypeName<T> = T extends string ? 'string' : T extends number ? 'number' : 'other'; let t1: TypeName<'abc'> = 'string';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type TypeName<T> = T extends string ? 'string' : T extends number ? 'number' : 'other'; let t1: TypeName<'abc'> = 'string';\n",
     "hints": [
       "Write: type TypeName<T> = T extends string ? 'string' : T extends number ? 'number' : 'other'; let t1: TypeName<'abc'> = 'string';"
@@ -72,7 +72,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type ToArray<T> = T extends any ? T[] : never; type StrNumArr = ToArray<string | number>; let arr: StrNumArr = ['a', 'b'];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype ToArray<T> = T extends any ? T[] : never; type StrNumArr = ToArray<string | number>; let arr: StrNumArr = ['a', 'b'];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type ToArray<T> = T extends any ? T[] : never; type StrNumArr = ToArray<string | number>; let arr: StrNumArr = ['a', 'b'];\n",
     "hints": [
       "Write: type ToArray<T> = T extends any ? T[] : never; type StrNumArr = ToArray<string | number>; let arr: StrNumArr = ['a', 'b'];"
@@ -114,7 +114,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type Flatten<T> = T extends (infer Item)[] ? Item : T; type ElementType = Flatten<number[]>; let n: ElementType = 42;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Flatten<T> = T extends (infer Item)[] ? Item : T; type ElementType = Flatten<number[]>; let n: ElementType = 42;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Flatten<T> = T extends (infer Item)[] ? Item : T; type ElementType = Flatten<number[]>; let n: ElementType = 42;\n",
     "hints": [
       "Write: type Flatten<T> = T extends (infer Item)[] ? Item : T; type ElementType = Flatten<number[]>; let n: ElementType = 42;"
@@ -156,7 +156,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type MyAwaited<T> = T extends Promise<infer R> ? R : T; type StringType = MyAwaited<Promise<string>>; let text: StringType = 'unwrapped';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype MyAwaited<T> = T extends Promise<infer R> ? R : T; type StringType = MyAwaited<Promise<string>>; let text: StringType = 'unwrapped';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type MyAwaited<T> = T extends Promise<infer R> ? R : T; type StringType = MyAwaited<Promise<string>>; let text: StringType = 'unwrapped';\n",
     "hints": [
       "Write: type MyAwaited<T> = T extends Promise<infer R> ? R : T; type StringType = MyAwaited<Promise<string>>; let text: StringType = 'unwrapped';"
@@ -198,7 +198,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type Features = 'audio' | 'video'; type FeatureFlags = { [K in Features]: boolean }; let flags: FeatureFlags = { audio: true, video: false };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Features = 'audio' | 'video'; type FeatureFlags = { [K in Features]: boolean }; let flags: FeatureFlags = { audio: true, video: false };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Features = 'audio' | 'video'; type FeatureFlags = { [K in Features]: boolean }; let flags: FeatureFlags = { audio: true, video: false };\n",
     "hints": [
       "Write: type Features = 'audio' | 'video'; type FeatureFlags = { [K in Features]: boolean }; let flags: FeatureFlags = { audio: true, video: false };"
@@ -240,7 +240,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type MutableRequired<T> = { -readonly [K in keyof T]-?: T[K] }; interface Locked { readonly id?: number; } type Clean = MutableRequired<Locked>; let c: Clean = { id: 10 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype MutableRequired<T> = { -readonly [K in keyof T]-?: T[K] }; interface Locked { readonly id?: number; } type Clean = MutableRequired<Locked>; let c: Clean = { id: 10 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type MutableRequired<T> = { -readonly [K in keyof T]-?: T[K] }; interface Locked { readonly id?: number; } type Clean = MutableRequired<Locked>; let c: Clean = { id: 10 };\n",
     "hints": [
       "Write: type MutableRequired<T> = { -readonly [K in keyof T]-?: T[K] }; interface Locked { readonly id?: number; } type Clean = MutableRequired<Locked>; let c: Clean = { id: 10 };"
@@ -282,7 +282,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] }; interface Person { name: string; } let p: Getters<Person> = { getName: () => 'Alice' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] }; interface Person { name: string; } let p: Getters<Person> = { getName: () => 'Alice' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] }; interface Person { name: string; } let p: Getters<Person> = { getName: () => 'Alice' };\n",
     "hints": [
       "Write: type Getters<T> = { [K in keyof T as `get${Capitalize<string & K>}`]: () => T[K] }; interface Person { name: string; } let p: Getters<Person> = { getName: () => 'Alice' };"
@@ -324,7 +324,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type EventType = 'click' | 'hover'; type EventHandler = `on${Capitalize<EventType>}`; let handler: EventHandler = 'onClick';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype EventType = 'click' | 'hover'; type EventHandler = `on${Capitalize<EventType>}`; let handler: EventHandler = 'onClick';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type EventType = 'click' | 'hover'; type EventHandler = `on${Capitalize<EventType>}`; let handler: EventHandler = 'onClick';\n",
     "hints": [
       "Write: type EventType = 'click' | 'hover'; type EventHandler = `on${Capitalize<EventType>}`; let handler: EventHandler = 'onClick';"
@@ -366,7 +366,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type Loud = Uppercase<'hello'>; let word: Loud = 'HELLO';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Loud = Uppercase<'hello'>; let word: Loud = 'HELLO';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Loud = Uppercase<'hello'>; let word: Loud = 'HELLO';\n",
     "hints": [
       "Write: type Loud = Uppercase<'hello'>; let word: Loud = 'HELLO';"
@@ -408,7 +408,7 @@ export const tsModule11Lessons: Lesson[] = [
       "Enter the code: `type Entity = 'user' | 'order'; type Crud = 'create' | 'delete'; type Action = `${Entity}_${Crud}`; let act: Action = 'user_create';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Entity = 'user' | 'order'; type Crud = 'create' | 'delete'; type Action = `${Entity}_${Crud}`; let act: Action = 'user_create';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Entity = 'user' | 'order'; type Crud = 'create' | 'delete'; type Action = `${Entity}_${Crud}`; let act: Action = 'user_create';\n",
     "hints": [
       "Write: type Entity = 'user' | 'order'; type Crud = 'create' | 'delete'; type Action = `${Entity}_${Crud}`; let act: Action = 'user_create';"

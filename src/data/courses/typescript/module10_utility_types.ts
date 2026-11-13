@@ -30,7 +30,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface User { id: number; name: string; email: string; } function updateUser(id: number, fields: Partial<User>): number { return id; } let res = updateUser(1, { name: 'New Name' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface User { id: number; name: string; email: string; } function updateUser(id: number, fields: Partial<User>): number { return id; } let res = updateUser(1, { name: 'New Name' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface User { id: number; name: string; email: string; } function updateUser(id: number, fields: Partial<User>): number { return id; } let res = updateUser(1, { name: 'New Name' });\n",
     "hints": [
       "Write: interface User { id: number; name: string; email: string; } function updateUser(id: number, fields: Partial<User>): number { return id; } let res = updateUser(1, { name: 'New Name' });"
@@ -72,7 +72,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface Props { theme?: string; fontSize?: number; } type StrictProps = Required<Props>; let p: StrictProps = { theme: 'dark', fontSize: 16 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Props { theme?: string; fontSize?: number; } type StrictProps = Required<Props>; let p: StrictProps = { theme: 'dark', fontSize: 16 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Props { theme?: string; fontSize?: number; } type StrictProps = Required<Props>; let p: StrictProps = { theme: 'dark', fontSize: 16 };\n",
     "hints": [
       "Write: interface Props { theme?: string; fontSize?: number; } type StrictProps = Required<Props>; let p: StrictProps = { theme: 'dark', fontSize: 16 };"
@@ -114,7 +114,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface Point { x: number; y: number; } const pt: Readonly<Point> = { x: 10, y: 20 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Point { x: number; y: number; } const pt: Readonly<Point> = { x: 10, y: 20 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Point { x: number; y: number; } const pt: Readonly<Point> = { x: 10, y: 20 };\n",
     "hints": [
       "Write: interface Point { x: number; y: number; } const pt: Readonly<Point> = { x: 10, y: 20 };"
@@ -156,7 +156,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `type Role = 'admin' | 'user' | 'guest'; const rolePermissions: Record<Role, string[]> = { admin: ['read', 'write'], user: ['read'], guest: [] };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Role = 'admin' | 'user' | 'guest'; const rolePermissions: Record<Role, string[]> = { admin: ['read', 'write'], user: ['read'], guest: [] };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Role = 'admin' | 'user' | 'guest'; const rolePermissions: Record<Role, string[]> = { admin: ['read', 'write'], user: ['read'], guest: [] };\n",
     "hints": [
       "Write: type Role = 'admin' | 'user' | 'guest'; const rolePermissions: Record<Role, string[]> = { admin: ['read', 'write'], user: ['read'], guest: [] };"
@@ -198,7 +198,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface Article { id: number; title: string; content: string; author: string; } type ArticlePreview = Pick<Article, 'id' | 'title'>; let prev: ArticlePreview = { id: 1, title: 'Learn TS' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Article { id: number; title: string; content: string; author: string; } type ArticlePreview = Pick<Article, 'id' | 'title'>; let prev: ArticlePreview = { id: 1, title: 'Learn TS' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Article { id: number; title: string; content: string; author: string; } type ArticlePreview = Pick<Article, 'id' | 'title'>; let prev: ArticlePreview = { id: 1, title: 'Learn TS' };\n",
     "hints": [
       "Write: interface Article { id: number; title: string; content: string; author: string; } type ArticlePreview = Pick<Article, 'id' | 'title'>; let prev: ArticlePreview = { id: 1, title: 'Learn TS' };"
@@ -240,7 +240,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface User { id: number; name: string; passwordHash: string; } type SafeUser = Omit<User, 'passwordHash'>; let safe: SafeUser = { id: 1, name: 'Alice' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface User { id: number; name: string; passwordHash: string; } type SafeUser = Omit<User, 'passwordHash'>; let safe: SafeUser = { id: 1, name: 'Alice' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface User { id: number; name: string; passwordHash: string; } type SafeUser = Omit<User, 'passwordHash'>; let safe: SafeUser = { id: 1, name: 'Alice' };\n",
     "hints": [
       "Write: interface User { id: number; name: string; passwordHash: string; } type SafeUser = Omit<User, 'passwordHash'>; let safe: SafeUser = { id: 1, name: 'Alice' };"
@@ -282,7 +282,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `type T0 = 'a' | 'b' | 'c'; type T1 = Exclude<T0, 'a'>; let letter: T1 = 'b';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype T0 = 'a' | 'b' | 'c'; type T1 = Exclude<T0, 'a'>; let letter: T1 = 'b';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type T0 = 'a' | 'b' | 'c'; type T1 = Exclude<T0, 'a'>; let letter: T1 = 'b';\n",
     "hints": [
       "Write: type T0 = 'a' | 'b' | 'c'; type T1 = Exclude<T0, 'a'>; let letter: T1 = 'b';"
@@ -324,7 +324,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `type T0 = 'a' | 'b' | 'c'; type T1 = Extract<T0, 'a' | 'f'>; let letter: T1 = 'a';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype T0 = 'a' | 'b' | 'c'; type T1 = Extract<T0, 'a' | 'f'>; let letter: T1 = 'a';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type T0 = 'a' | 'b' | 'c'; type T1 = Extract<T0, 'a' | 'f'>; let letter: T1 = 'a';\n",
     "hints": [
       "Write: type T0 = 'a' | 'b' | 'c'; type T1 = Extract<T0, 'a' | 'f'>; let letter: T1 = 'a';"
@@ -366,7 +366,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `type Nullable = string | number | null | undefined; type Pure = NonNullable<Nullable>; let val: Pure = 'clean';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Nullable = string | number | null | undefined; type Pure = NonNullable<Nullable>; let val: Pure = 'clean';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Nullable = string | number | null | undefined; type Pure = NonNullable<Nullable>; let val: Pure = 'clean';\n",
     "hints": [
       "Write: type Nullable = string | number | null | undefined; type Pure = NonNullable<Nullable>; let val: Pure = 'clean';"
@@ -408,7 +408,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `function save(id: string, count: number): boolean { return true; } type SaveArgs = Parameters<typeof save>; let args: SaveArgs = ['item-1', 5];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction save(id: string, count: number): boolean { return true; } type SaveArgs = Parameters<typeof save>; let args: SaveArgs = ['item-1', 5];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function save(id: string, count: number): boolean { return true; } type SaveArgs = Parameters<typeof save>; let args: SaveArgs = ['item-1', 5];\n",
     "hints": [
       "Write: function save(id: string, count: number): boolean { return true; } type SaveArgs = Parameters<typeof save>; let args: SaveArgs = ['item-1', 5];"
@@ -450,7 +450,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `function compute(): { score: number; passed: boolean } { return { score: 95, passed: true }; } type ComputeResult = ReturnType<typeof compute>; let res: ComputeResult = { score: 95, passed: true };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction compute(): { score: number; passed: boolean } { return { score: 95, passed: true }; } type ComputeResult = ReturnType<typeof compute>; let res: ComputeResult = { score: 95, passed: true };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function compute(): { score: number; passed: boolean } { return { score: 95, passed: true }; } type ComputeResult = ReturnType<typeof compute>; let res: ComputeResult = { score: 95, passed: true };\n",
     "hints": [
       "Write: function compute(): { score: number; passed: boolean } { return { score: 95, passed: true }; } type ComputeResult = ReturnType<typeof compute>; let res: ComputeResult = { score: 95, passed: true };"
@@ -492,7 +492,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `type Prom = Promise<string>; type Unwrapped = Awaited<Prom>; let s: Unwrapped = 'ready';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Prom = Promise<string>; type Unwrapped = Awaited<Prom>; let s: Unwrapped = 'ready';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Prom = Promise<string>; type Unwrapped = Awaited<Prom>; let s: Unwrapped = 'ready';\n",
     "hints": [
       "Write: type Prom = Promise<string>; type Unwrapped = Awaited<Prom>; let s: Unwrapped = 'ready';"
@@ -534,7 +534,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface Settings { theme: string; } type SafePartial = Readonly<Partial<Settings>>; let s: SafePartial = { theme: 'light' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Settings { theme: string; } type SafePartial = Readonly<Partial<Settings>>; let s: SafePartial = { theme: 'light' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Settings { theme: string; } type SafePartial = Readonly<Partial<Settings>>; let s: SafePartial = { theme: 'light' };\n",
     "hints": [
       "Write: interface Settings { theme: string; } type SafePartial = Readonly<Partial<Settings>>; let s: SafePartial = { theme: 'light' };"
@@ -576,7 +576,7 @@ export const tsModule10Lessons: Lesson[] = [
       "Enter the code: `interface UserProfile { id: string; name: string; email: string; avatarUrl: string; } type UpdateProfileDTO = Partial<Omit<UserProfile, 'id'>>; let dto: UpdateProfileDTO = { name: 'Updated' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface UserProfile { id: string; name: string; email: string; avatarUrl: string; } type UpdateProfileDTO = Partial<Omit<UserProfile, 'id'>>; let dto: UpdateProfileDTO = { name: 'Updated' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface UserProfile { id: string; name: string; email: string; avatarUrl: string; } type UpdateProfileDTO = Partial<Omit<UserProfile, 'id'>>; let dto: UpdateProfileDTO = { name: 'Updated' };\n",
     "hints": [
       "Write: interface UserProfile { id: string; name: string; email: string; avatarUrl: string; } type UpdateProfileDTO = Partial<Omit<UserProfile, 'id'>>; let dto: UpdateProfileDTO = { name: 'Updated' };"

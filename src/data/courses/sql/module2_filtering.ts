@@ -30,7 +30,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE country = 'USA';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE country = 'USA';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE country = 'USA';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE country = 'USA';"
@@ -73,7 +73,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE role <> 'admin';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE role <> 'admin';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE role <> 'admin';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE role <> 'admin';"
@@ -116,7 +116,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products WHERE price > 100;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products WHERE price > 100;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products WHERE price > 100;\n",
     "hints": [
       "Execute: SELECT * FROM products WHERE price > 100;"
@@ -159,7 +159,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products WHERE stock <= 20;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products WHERE stock <= 20;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products WHERE stock <= 20;\n",
     "hints": [
       "Execute: SELECT * FROM products WHERE stock <= 20;"
@@ -202,7 +202,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE country = 'USA' AND role = 'admin';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE country = 'USA' AND role = 'admin';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE country = 'USA' AND role = 'admin';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE country = 'USA' AND role = 'admin';"
@@ -245,7 +245,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE country = 'UK' OR country = 'Ireland';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE country = 'UK' OR country = 'Ireland';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE country = 'UK' OR country = 'Ireland';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE country = 'UK' OR country = 'Ireland';"
@@ -288,7 +288,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products WHERE price BETWEEN 100 AND 300;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products WHERE price BETWEEN 100 AND 300;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products WHERE price BETWEEN 100 AND 300;\n",
     "hints": [
       "Execute: SELECT * FROM products WHERE price BETWEEN 100 AND 300;"
@@ -331,7 +331,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE country IN ('USA', 'UK', 'Japan');`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE country IN ('USA', 'UK', 'Japan');\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE country IN ('USA', 'UK', 'Japan');\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE country IN ('USA', 'UK', 'Japan');"
@@ -374,7 +374,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE country NOT IN ('USA');`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE country NOT IN ('USA');\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE country NOT IN ('USA');\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE country NOT IN ('USA');"
@@ -417,7 +417,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders WHERE status = 'completed';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders WHERE status = 'completed';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders WHERE status = 'completed';\n",
     "hints": [
       "Execute: SELECT * FROM orders WHERE status = 'completed';"
@@ -460,7 +460,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders WHERE amount >= 200 AND status = 'pending';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders WHERE amount >= 200 AND status = 'pending';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders WHERE amount >= 200 AND status = 'pending';\n",
     "hints": [
       "Execute: SELECT * FROM orders WHERE amount >= 200 AND status = 'pending';"
@@ -503,7 +503,7 @@ export const sqlModule2Lessons: Lesson[] = [
       "Write the query: `SELECT name, email FROM users WHERE role = 'member' AND country = 'USA';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, email FROM users WHERE role = 'member' AND country = 'USA';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, email FROM users WHERE role = 'member' AND country = 'USA';\n",
     "hints": [
       "Execute: SELECT name, email FROM users WHERE role = 'member' AND country = 'USA';"

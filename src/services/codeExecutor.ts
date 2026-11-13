@@ -123,6 +123,12 @@ export class CodeExecutor {
       // Create a function with safe scope and console binding
       // We wrap inside an async function so users can use top-level await!
       const wrappedCode = `
+        const React = {
+          createElement: (type, props, ...children) => {
+            const normalizedChildren = children.length === 1 ? children[0] : (children.length === 0 ? undefined : children);
+            return { type, props: { ...(props || {}), children: normalizedChildren } };
+          }
+        };
         return (async function(console) {
           ${runnableJs}
         })(customConsole);
@@ -350,8 +356,11 @@ export class CodeExecutor {
       .replace(/import\s+(\(.*?\)|"[^"]*")/gs, '// imports')
       .replace(/fmt\.Println\((.*?)\)/g, 'customConsole.log($1)')
       .replace(/fmt\.Printf\((.*?)\)/g, 'customConsole.log($1)')
-      .replace(/func\s+main\s*\(\)\s*\{/g, '(function() {')
-      .replace(/([a-zA-Z0-9_]+)\s*:=\s*/g, 'let $1 = ');
+      .replace(/func\s+main\s*\(\)\s*\{/g, 'function main() {')
+      .replace(/var\s+([a-zA-Z0-9_]+)\s+[a-zA-Z0-9_\[\]*]+\s*=/g, 'var $1 =')
+      .replace(/([a-zA-Z0-9_]+)\s*:=\s*/g, 'var $1 = ');
+
+    js += '\nif (typeof main === "function") { main(); }';
 
     return this.runJsFunction(js, startTime, 'Go');
   }
@@ -363,8 +372,12 @@ export class CodeExecutor {
     let js = code
       .replace(/println!\s*\((.*?)\);/g, 'customConsole.log($1);')
       .replace(/print!\s*\((.*?)\);/g, 'customConsole.log($1);')
-      .replace(/fn\s+main\s*\(\)\s*\{/g, '(function() {')
-      .replace(/let\s+mut\s+/g, 'let ');
+      .replace(/fn\s+main\s*\(\)\s*\{/g, 'function main() {')
+      .replace(/let\s+mut\s+/g, 'var ')
+      .replace(/let\s+/g, 'var ')
+      .replace(/\.len\(\)/g, '.length');
+
+    js += '\nif (typeof main === "function") { main(); }';
 
     return this.runJsFunction(js, startTime, 'Rust');
   }

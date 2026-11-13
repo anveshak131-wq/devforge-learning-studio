@@ -30,7 +30,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT DATE('now') AS today_date;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT DATE('now') AS today_date;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT DATE('now') AS today_date;\n",
     "hints": [
       "Execute: SELECT DATE('now') AS today_date;"
@@ -73,7 +73,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT order_date, strftime('%Y', order_date) AS order_year FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT order_date, strftime('%Y', order_date) AS order_year FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT order_date, strftime('%Y', order_date) AS order_year FROM orders;\n",
     "hints": [
       "Execute: SELECT order_date, strftime('%Y', order_date) AS order_year FROM orders;"
@@ -116,7 +116,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT order_date, strftime('%m', order_date) AS order_month FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT order_date, strftime('%m', order_date) AS order_month FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT order_date, strftime('%m', order_date) AS order_month FROM orders;\n",
     "hints": [
       "Execute: SELECT order_date, strftime('%m', order_date) AS order_month FROM orders;"
@@ -159,7 +159,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT order_date, DATE(order_date, '+7 days') AS due_date FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT order_date, DATE(order_date, '+7 days') AS due_date FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT order_date, DATE(order_date, '+7 days') AS due_date FROM orders;\n",
     "hints": [
       "Execute: SELECT order_date, DATE(order_date, '+7 days') AS due_date FROM orders;"
@@ -202,7 +202,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT DATE('now', '-1 month') AS last_month;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT DATE('now', '-1 month') AS last_month;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT DATE('now', '-1 month') AS last_month;\n",
     "hints": [
       "Execute: SELECT DATE('now', '-1 month') AS last_month;"
@@ -245,7 +245,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders WHERE order_date = '2023-06-01';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders WHERE order_date = '2023-06-01';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders WHERE order_date = '2023-06-01';\n",
     "hints": [
       "Execute: SELECT * FROM orders WHERE order_date = '2023-06-01';"
@@ -288,7 +288,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders WHERE order_date BETWEEN '2023-06-01' AND '2023-06-05';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders WHERE order_date BETWEEN '2023-06-01' AND '2023-06-05';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders WHERE order_date BETWEEN '2023-06-01' AND '2023-06-05';\n",
     "hints": [
       "Execute: SELECT * FROM orders WHERE order_date BETWEEN '2023-06-01' AND '2023-06-05';"
@@ -331,7 +331,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT id, ROUND(JULIANDAY('2023-06-30') - JULIANDAY(order_date)) AS days_ago FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, ROUND(JULIANDAY('2023-06-30') - JULIANDAY(order_date)) AS days_ago FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, ROUND(JULIANDAY('2023-06-30') - JULIANDAY(order_date)) AS days_ago FROM orders;\n",
     "hints": [
       "Execute: SELECT id, ROUND(JULIANDAY('2023-06-30') - JULIANDAY(order_date)) AS days_ago FROM orders;"
@@ -374,7 +374,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT strftime('%Y-%m', order_date) AS period, SUM(amount) AS revenue FROM orders GROUP BY period;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT strftime('%Y-%m', order_date) AS period, SUM(amount) AS revenue FROM orders GROUP BY period;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT strftime('%Y-%m', order_date) AS period, SUM(amount) AS revenue FROM orders GROUP BY period;\n",
     "hints": [
       "Execute: SELECT strftime('%Y-%m', order_date) AS period, SUM(amount) AS revenue FROM orders GROUP BY period;"
@@ -417,7 +417,7 @@ export const sqlModule10Lessons: Lesson[] = [
       "Write the query: `SELECT strftime('%m', order_date) AS month, COUNT(*) AS total_orders FROM orders GROUP BY month;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT strftime('%m', order_date) AS month, COUNT(*) AS total_orders FROM orders GROUP BY month;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT strftime('%m', order_date) AS month, COUNT(*) AS total_orders FROM orders GROUP BY month;\n",
     "hints": [
       "Execute: SELECT strftime('%m', order_date) AS month, COUNT(*) AS total_orders FROM orders GROUP BY month;"

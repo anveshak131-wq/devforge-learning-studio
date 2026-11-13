@@ -29,7 +29,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Look at `let isSunny = true;`.",
       "If `isSunny`, print `\"Wear sunglasses\"`."
     ],
-    "initialCode": "let isSunny = true;\nif (isSunny) {\n  console.log(\"Wear sunglasses\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isSunny = true;\nif (isSunny) {\n  console.log(\"Wear sunglasses\");\n}\n",
     "hints": [
       "Write `if (isSunny) { console.log(\"Wear sunglasses\"); }`"
@@ -70,7 +70,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Check `let balance = 5;`.",
       "If balance >= 10 print 'Can buy', else print 'Need more cash'."
     ],
-    "initialCode": "let balance = 5;\nif (balance >= 10) {\n  console.log(\"Can buy\");\n} else {\n  console.log(\"Need more cash\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let balance = 5;\nif (balance >= 10) {\n  console.log(\"Can buy\");\n} else {\n  console.log(\"Need more cash\");\n}\n",
     "hints": [
       "Write `else { console.log(\"Need more cash\"); }`"
@@ -111,7 +111,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Look at `let temp = 35;`.",
       "If temp > 30 print 'Hot', else if temp > 15 print 'Warm', else print 'Cold'."
     ],
-    "initialCode": "let temp = 35;\nif (temp > 30) {\n  console.log(\"Hot\");\n} else if (temp > 15) {\n  console.log(\"Warm\");\n} else {\n  console.log(\"Cold\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let temp = 35;\nif (temp > 30) {\n  console.log(\"Hot\");\n} else if (temp > 15) {\n  console.log(\"Warm\");\n} else {\n  console.log(\"Cold\");\n}\n",
     "hints": [
       "Write `if (temp > 30) { console.log(\"Hot\"); }`"
@@ -152,7 +152,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Check if `battery > 20 && hasSignal === true`.",
       "If so, print 'Call allowed'."
     ],
-    "initialCode": "let battery = 50;\nlet hasSignal = true;\nif (battery > 20 && hasSignal) {\n  console.log(\"Call allowed\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let battery = 50;\nlet hasSignal = true;\nif (battery > 20 && hasSignal) {\n  console.log(\"Call allowed\");\n}\n",
     "hints": [
       "Use `battery > 20 && hasSignal`"
@@ -193,7 +193,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Check if `isStudent || isSenior`.",
       "Print 'Discount granted'."
     ],
-    "initialCode": "let isStudent = true;\nlet isSenior = false;\nif (isStudent || isSenior) {\n  console.log(\"Discount granted\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isStudent = true;\nlet isSenior = false;\nif (isStudent || isSenior) {\n  console.log(\"Discount granted\");\n}\n",
     "hints": [
       "Write `if (isStudent || isSenior) { ... }`"
@@ -233,7 +233,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
     "exerciseSteps": [
       "Check `if (!isMuted)` print 'Audio playing'."
     ],
-    "initialCode": "let isMuted = false;\nif (!isMuted) {\n  console.log(\"Audio playing\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isMuted = false;\nif (!isMuted) {\n  console.log(\"Audio playing\");\n}\n",
     "hints": [
       "Write `if (!isMuted) { ... }`"
@@ -274,7 +274,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Look at `let message = \"Notice\";`.",
       "If `message` (truthy), print 'Has content'."
     ],
-    "initialCode": "let message = \"Notice\";\nif (message) {\n  console.log(\"Has content\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let message = \"Notice\";\nif (message) {\n  console.log(\"Has content\");\n}\n",
     "hints": [
       "Write `if (message) { ... }`"
@@ -315,7 +315,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Use ternary to assign `status`: `isMember ? 'VIP' : 'Guest'`. Assign to `let status = isMember ? 'VIP' : 'Guest';`.",
       "Print `status`."
     ],
-    "initialCode": "let isMember = true;\nlet status = isMember ? \"VIP\" : \"Guest\";\nconsole.log(status);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isMember = true;\nlet status = isMember ? \"VIP\" : \"Guest\";\nconsole.log(status);\n",
     "hints": [
       "Use `isMember ? \"VIP\" : \"Guest\"`"
@@ -355,7 +355,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Look at `let rank = 1;`.",
       "Use `switch (rank)` to print `'Gold'` on case 1, with a `break;`."
     ],
-    "initialCode": "let rank = 1;\nswitch (rank) {\n  case 1:\n    console.log(\"Gold\");\n    break;\n  default:\n    console.log(\"Participant\");\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let rank = 1;\nswitch (rank) {\n  case 1:\n    console.log(\"Gold\");\n    break;\n  default:\n    console.log(\"Participant\");\n}\n",
     "hints": [
       "Write `case 1: console.log(\"Gold\"); break;`"
@@ -395,7 +395,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Look at `let mode = 'stealth';`.",
       "When no case matches, print 'Default mode' in `default:`."
     ],
-    "initialCode": "let mode = 'stealth';\nswitch (mode) {\n  case 'normal': console.log('Normal'); break;\n  default: console.log('Default mode');\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let mode = 'stealth';\nswitch (mode) {\n  case 'normal': console.log('Normal'); break;\n  default: console.log('Default mode');\n}\n",
     "hints": [
       "default runs when normal does not match"
@@ -437,7 +437,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Provide fallback 3000: `let port = customPort ?? 3000;`.",
       "Print `port`."
     ],
-    "initialCode": "let customPort = null;\nlet port = customPort ?? 3000;\nconsole.log(port);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let customPort = null;\nlet port = customPort ?? 3000;\nconsole.log(port);\n",
     "hints": [
       "Write `let port = customPort ?? 3000;`"
@@ -478,7 +478,7 @@ export const MODULE_4_LESSONS: Lesson[] = [
       "Access `car.engine?.horsepower` safely. Assign to `let hp = car.engine?.horsepower;`.",
       "Print `hp`."
     ],
-    "initialCode": "let car = { make: \"Tesla\" };\nlet hp = car.engine?.horsepower;\nconsole.log(hp);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let car = { make: \"Tesla\" };\nlet hp = car.engine?.horsepower;\nconsole.log(hp);\n",
     "hints": [
       "Use `car.engine?.horsepower`"

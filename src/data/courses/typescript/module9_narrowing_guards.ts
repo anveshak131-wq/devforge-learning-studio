@@ -30,7 +30,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `interface Fish { swim(): string; } function isFish(pet: any): pet is Fish { return pet && typeof pet.swim === 'function'; } let res = isFish({ swim: () => 'swimming' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Fish { swim(): string; } function isFish(pet: any): pet is Fish { return pet && typeof pet.swim === 'function'; } let res = isFish({ swim: () => 'swimming' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Fish { swim(): string; } function isFish(pet: any): pet is Fish { return pet && typeof pet.swim === 'function'; } let res = isFish({ swim: () => 'swimming' });\n",
     "hints": [
       "Write: interface Fish { swim(): string; } function isFish(pet: any): pet is Fish { return pet && typeof pet.swim === 'function'; } let res = isFish({ swim: () => 'swimming' });"
@@ -72,7 +72,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `const mixed: (string | number)[] = ['a', 1, 'b', 2]; const strings = mixed.filter((x): x is string => typeof x === 'string');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst mixed: (string | number)[] = ['a', 1, 'b', 2]; const strings = mixed.filter((x): x is string => typeof x === 'string');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const mixed: (string | number)[] = ['a', 1, 'b', 2]; const strings = mixed.filter((x): x is string => typeof x === 'string');\n",
     "hints": [
       "Write: const mixed: (string | number)[] = ['a', 1, 'b', 2]; const strings = mixed.filter((x): x is string => typeof x === 'string');"
@@ -114,7 +114,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `function assertDefined<T>(val: T | null | undefined): asserts val is T { if (val === null || val === undefined) throw new Error('Nil'); } let x: string | null = 'hello'; assertDefined(x);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction assertDefined<T>(val: T | null | undefined): asserts val is T { if (val === null || val === undefined) throw new Error('Nil'); } let x: string | null = 'hello'; assertDefined(x);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function assertDefined<T>(val: T | null | undefined): asserts val is T { if (val === null || val === undefined) throw new Error('Nil'); } let x: string | null = 'hello'; assertDefined(x);\n",
     "hints": [
       "Write: function assertDefined<T>(val: T | null | undefined): asserts val is T { if (val === null || val === undefined) throw new Error('Nil'); } let x: string | null = 'hello'; assertDefined(x);"
@@ -156,7 +156,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `function assertNever(x: never): never { throw new Error('Unhandled: ' + x); }`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction assertNever(x: never): never { throw new Error('Unhandled: ' + x); }\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function assertNever(x: never): never { throw new Error('Unhandled: ' + x); }\n",
     "hints": [
       "Write: function assertNever(x: never): never { throw new Error('Unhandled: ' + x); }"
@@ -198,7 +198,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `type Shape = { kind: 'circle'; r: number } | { kind: 'square'; size: number }; function area(s: Shape): number { switch(s.kind) { case 'circle': return 3.14 * s.r * s.r; case 'square': return s.size * s.size; } } let a = area({ kind: 'square', size: 5 });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Shape = { kind: 'circle'; r: number } | { kind: 'square'; size: number }; function area(s: Shape): number { switch(s.kind) { case 'circle': return 3.14 * s.r * s.r; case 'square': return s.size * s.size; } } let a = area({ kind: 'square', size: 5 });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Shape = { kind: 'circle'; r: number } | { kind: 'square'; size: number }; function area(s: Shape): number { switch(s.kind) { case 'circle': return 3.14 * s.r * s.r; case 'square': return s.size * s.size; } } let a = area({ kind: 'square', size: 5 });\n",
     "hints": [
       "Write: type Shape = { kind: 'circle'; r: number } | { kind: 'square'; size: number }; function area(s: Shape): number { switch(s.kind) { case 'circle': return 3.14 * s.r * s.r; case 'square': return s.size * s.size; } } let a = area({ kind: 'square', size: 5 });"
@@ -240,7 +240,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `type Admin = { privileges: string[] }; type Member = { email: string }; function getRole(u: Admin | Member): string { if ('privileges' in u) return 'Admin'; return 'Member'; } let r = getRole({ privileges: ['root'] });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Admin = { privileges: string[] }; type Member = { email: string }; function getRole(u: Admin | Member): string { if ('privileges' in u) return 'Admin'; return 'Member'; } let r = getRole({ privileges: ['root'] });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Admin = { privileges: string[] }; type Member = { email: string }; function getRole(u: Admin | Member): string { if ('privileges' in u) return 'Admin'; return 'Member'; } let r = getRole({ privileges: ['root'] });\n",
     "hints": [
       "Write: type Admin = { privileges: string[] }; type Member = { email: string }; function getRole(u: Admin | Member): string { if ('privileges' in u) return 'Admin'; return 'Member'; } let r = getRole({ privileges: ['root'] });"
@@ -282,7 +282,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `function getName(u: { name: string } | null | undefined): string { return u?.name ?? 'Anonymous'; } let n = getName({ name: 'Sam' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction getName(u: { name: string } | null | undefined): string { return u?.name ?? 'Anonymous'; } let n = getName({ name: 'Sam' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function getName(u: { name: string } | null | undefined): string { return u?.name ?? 'Anonymous'; } let n = getName({ name: 'Sam' });\n",
     "hints": [
       "Write: function getName(u: { name: string } | null | undefined): string { return u?.name ?? 'Anonymous'; } let n = getName({ name: 'Sam' });"
@@ -324,7 +324,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `type Status = 'active' | 'inactive'; function check(s: Status) { if (s === 'active') return true; return false; } let isActive = check('active');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Status = 'active' | 'inactive'; function check(s: Status) { if (s === 'active') return true; return false; } let isActive = check('active');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Status = 'active' | 'inactive'; function check(s: Status) { if (s === 'active') return true; return false; } let isActive = check('active');\n",
     "hints": [
       "Write: type Status = 'active' | 'inactive'; function check(s: Status) { if (s === 'active') return true; return false; } let isActive = check('active');"
@@ -366,7 +366,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `function count(input: string | string[]): number { if (Array.isArray(input)) return input.length; return 1; } let c = count(['a', 'b', 'c']);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction count(input: string | string[]): number { if (Array.isArray(input)) return input.length; return 1; } let c = count(['a', 'b', 'c']);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function count(input: string | string[]): number { if (Array.isArray(input)) return input.length; return 1; } let c = count(['a', 'b', 'c']);\n",
     "hints": [
       "Write: function count(input: string | string[]): number { if (Array.isArray(input)) return input.length; return 1; } let c = count(['a', 'b', 'c']);"
@@ -408,7 +408,7 @@ export const tsModule9Lessons: Lesson[] = [
       "Enter the code: `interface SafeRecord { id: string; valid: boolean; } function sanitize(data: unknown): SafeRecord { if (typeof data === 'object' && data !== null && 'id' in data) { return { id: String((data as any).id), valid: true }; } return { id: '', valid: false }; } let sanitized = sanitize({ id: 'rec-123' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface SafeRecord { id: string; valid: boolean; } function sanitize(data: unknown): SafeRecord { if (typeof data === 'object' && data !== null && 'id' in data) { return { id: String((data as any).id), valid: true }; } return { id: '', valid: false }; } let sanitized = sanitize({ id: 'rec-123' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface SafeRecord { id: string; valid: boolean; } function sanitize(data: unknown): SafeRecord { if (typeof data === 'object' && data !== null && 'id' in data) { return { id: String((data as any).id), valid: true }; } return { id: '', valid: false }; } let sanitized = sanitize({ id: 'rec-123' });\n",
     "hints": [
       "Write: interface SafeRecord { id: string; valid: boolean; } function sanitize(data: unknown): SafeRecord { if (typeof data === 'object' && data !== null && 'id' in data) { return { id: String((data as any).id), valid: true }; } return { id: '', valid: false }; } let sanitized = sanitize({ id: 'rec-123' });"

@@ -39,7 +39,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "// UI = f(state)\nfunction renderGreeting(name) {\n  return `Hello, ${name}!`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function renderGreeting(name) {\n  return `Hello, ${name}!`;\n}\nconst output = renderGreeting('DevForge');",
     "hints": [
       "Write:\nfunction renderGreeting(name) {\n  return `Hello, ${name}!`;\n}\nconst output = renderGreeting('DevForge');"
@@ -81,7 +81,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Welcome() {\n  return <h1>Hello React 19!</h1>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Welcome() {\n  return <h1>Hello React 19!</h1>;\n}\nconst element = Welcome();",
     "hints": [
       "Write:\nfunction Welcome() {\n  return <h1>Hello React 19!</h1>;\n}\nconst element = Welcome();"
@@ -123,7 +123,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function UserCard() {\n  const user = 'Alex';\n  return <h2>Member: {user.toUpperCase()}</h2>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function UserCard() {\n  const user = 'Alex';\n  return <h2>Member: {user.toUpperCase()}</h2>;\n}\nconst card = UserCard();",
     "hints": [
       "Write:\nfunction UserCard() {\n  const user = 'Alex';\n  return <h2>Member: {user.toUpperCase()}</h2>;\n}\nconst card = UserCard();"
@@ -165,7 +165,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Avatar() {\n  return <img className=\"avatar-img\" src=\"avatar.png\" alt=\"User\" />;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Avatar() {\n  return <img className=\"avatar-img\" src=\"avatar.png\" alt=\"User\" />;\n}",
     "hints": [
       "Write:\nfunction Avatar() {\n  return <img className=\"avatar-img\" src=\"avatar.png\" alt=\"User\" />;\n}"
@@ -207,7 +207,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function PostHeader() {\n  return (\n    <>\n      <h1>Title</h1>\n      <p>Subtitle</p>\n    </>\n  );\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function PostHeader() {\n  return (\n    <>\n      <h1>Title</h1>\n      <p>Subtitle</p>\n    </>\n  );\n}",
     "hints": [
       "Write:\nfunction PostHeader() {\n  return (\n    <>\n      <h1>Title</h1>\n      <p>Subtitle</p>\n    </>\n  );\n}"
@@ -249,7 +249,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Header() {\n  return <header>DevForge Academy</header>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Header() {\n  return <header>DevForge Academy</header>;\n}",
     "hints": [
       "Write:\nfunction Header() {\n  return <header>DevForge Academy</header>;\n}"
@@ -291,7 +291,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function doubleXP(xp) {\n  return xp * 2;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function doubleXP(xp) {\n  return xp * 2;\n}\nconst res = doubleXP(50);",
     "hints": [
       "Write:\nfunction doubleXP(xp) {\n  return xp * 2;\n}\nconst res = doubleXP(50);"
@@ -333,7 +333,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Button() {\n  return <button>Click me</button>;\n}\nconst ExportedButton = Button;",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Button() {\n  return <button>Click me</button>;\n}\nconst ExportedButton = Button;",
     "hints": [
       "Write:\nfunction Button() {\n  return <button>Click me</button>;\n}\nconst ExportedButton = Button;"
@@ -375,7 +375,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function StatusBadge({ isOnline }) {\n  return <span>{isOnline ? 'Online' : 'Offline'}</span>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function StatusBadge({ isOnline }) {\n  return <span>{isOnline ? 'Online' : 'Offline'}</span>;\n}\nconst onlineView = StatusBadge({ isOnline: true });",
     "hints": [
       "Write:\nfunction StatusBadge({ isOnline }) {\n  return <span>{isOnline ? 'Online' : 'Offline'}</span>;\n}\nconst onlineView = StatusBadge({ isOnline: true });"
@@ -417,7 +417,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Notification({ count }) {\n  return <div>{count > 0 && <span className=\"badge\">{count}</span>}</div>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Notification({ count }) {\n  return <div>{count > 0 && <span className=\"badge\">{count}</span>}</div>;\n}",
     "hints": [
       "Write:\nfunction Notification({ count }) {\n  return <div>{count > 0 && <span className=\"badge\">{count}</span>}</div>;\n}"
@@ -459,7 +459,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function TechList() {\n  const techs = ['HTML', 'CSS', 'React'];\n  return <ul>{techs.map(t => <li key={t}>{t}</li>)}</ul>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function TechList() {\n  const techs = ['HTML', 'CSS', 'React'];\n  return <ul>{techs.map(t => <li key={t}>{t}</li>)}</ul>;\n}",
     "hints": [
       "Write:\nfunction TechList() {\n  const techs = ['HTML', 'CSS', 'React'];\n  return <ul>{techs.map(t => <li key={t}>{t}</li>)}</ul>;\n}"
@@ -501,7 +501,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "const items = [{ id: 'item-1', name: 'Book' }];\nconst listElements = items.map(i => ({ key: i.id, label: i.name }));",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "const items = [{ id: 'item-1', name: 'Book' }];\nconst listElements = items.map(i => ({ key: i.id, label: i.name }));",
     "hints": [
       "Write:\nconst items = [{ id: 'item-1', name: 'Book' }];\nconst listElements = items.map(i => ({ key: i.id, label: i.name }));"
@@ -543,7 +543,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function validateKey(id) {\n  return typeof id === 'string' && id.length > 0 && !id.startsWith('index-');\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function validateKey(id) {\n  return typeof id === 'string' && id.length > 0 && !id.startsWith('index-');\n}\nconst valid = validateKey('usr-101');",
     "hints": [
       "Write:\nfunction validateKey(id) {\n  return typeof id === 'string' && id.length > 0 && !id.startsWith('index-');\n}\nconst valid = validateKey('usr-101');"
@@ -585,7 +585,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createElementMock(type, props, children) {\n  return { type, props: { ...props, children } };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createElementMock(type, props, children) {\n  return { type, props: { ...props, children } };\n}\nconst vdom = createElementMock('h1', { id: 'title' }, 'Hello');",
     "hints": [
       "Write:\nfunction createElementMock(type, props, children) {\n  return { type, props: { ...props, children } };\n}\nconst vdom = createElementMock('h1', { id: 'title' }, 'Hello');"
@@ -627,7 +627,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function AppShell() {\n  return <main className=\"app\"><h1>DevForge</h1></main>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function AppShell() {\n  return <main className=\"app\"><h1>DevForge</h1></main>;\n}",
     "hints": [
       "Write:\nfunction AppShell() {\n  return <main className=\"app\"><h1>DevForge</h1></main>;\n}"
@@ -669,7 +669,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Welcome(props) {\n  return <h2>Welcome, {props.username}</h2>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Welcome(props) {\n  return <h2>Welcome, {props.username}</h2>;\n}\nconst res = Welcome({ username: 'Sam' });",
     "hints": [
       "Write:\nfunction Welcome(props) {\n  return <h2>Welcome, {props.username}</h2>;\n}\nconst res = Welcome({ username: 'Sam' });"
@@ -711,7 +711,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ProfileCard({ name, role }) {\n  return <div>{name} - {role}</div>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ProfileCard({ name, role }) {\n  return <div>{name} - {role}</div>;\n}\nconst res = ProfileCard({ name: 'Alex', role: 'Dev' });",
     "hints": [
       "Write:\nfunction ProfileCard({ name, role }) {\n  return <div>{name} - {role}</div>;\n}\nconst res = ProfileCard({ name: 'Alex', role: 'Dev' });"
@@ -753,7 +753,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Avatar({ size = 48, src }) {\n  return <img width={size} height={size} src={src} />;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Avatar({ size = 48, src }) {\n  return <img width={size} height={size} src={src} />;\n}",
     "hints": [
       "Write:\nfunction Avatar({ size = 48, src }) {\n  return <img width={size} height={size} src={src} />;\n}"
@@ -795,7 +795,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Card({ children }) {\n  return <div className=\"card-box\">{children}</div>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Card({ children }) {\n  return <div className=\"card-box\">{children}</div>;\n}",
     "hints": [
       "Write:\nfunction Card({ children }) {\n  return <div className=\"card-box\">{children}</div>;\n}"
@@ -837,7 +837,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ActionButton({ onClick, label }) {\n  return <button onClick={onClick}>{label}</button>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ActionButton({ onClick, label }) {\n  return <button onClick={onClick}>{label}</button>;\n}",
     "hints": [
       "Write:\nfunction ActionButton({ onClick, label }) {\n  return <button onClick={onClick}>{label}</button>;\n}"
@@ -879,7 +879,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function CounterButton({ onIncrement }) {\n  return <button onClick={() => onIncrement(1)}>+1</button>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function CounterButton({ onIncrement }) {\n  return <button onClick={() => onIncrement(1)}>+1</button>;\n}",
     "hints": [
       "Write:\nfunction CounterButton({ onIncrement }) {\n  return <button onClick={() => onIncrement(1)}>+1</button>;\n}"
@@ -921,7 +921,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Input(props) {\n  return <input className=\"form-input\" {...props} />;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Input(props) {\n  return <input className=\"form-input\" {...props} />;\n}",
     "hints": [
       "Write:\nfunction Input(props) {\n  return <input className=\"form-input\" {...props} />;\n}"
@@ -963,7 +963,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function GrandParent() {\n  const user = 'Sarah';\n  return { user };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function GrandParent() {\n  const user = 'Sarah';\n  return { user };\n}\nconst data = GrandParent();",
     "hints": [
       "Write:\nfunction GrandParent() {\n  const user = 'Sarah';\n  return { user };\n}\nconst data = GrandParent();"
@@ -1005,7 +1005,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function UserView({ name, xp }) {\n  return <div>{name}: {xp} XP</div>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function UserView({ name, xp }) {\n  return <div>{name}: {xp} XP</div>;\n}",
     "hints": [
       "Write:\nfunction UserView({ name, xp }) {\n  return <div>{name}: {xp} XP</div>;\n}"
@@ -1047,7 +1047,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ModalLayout({ header, body, footer }) {\n  return <div className=\"modal\">{header}{body}{footer}</div>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ModalLayout({ header, body, footer }) {\n  return <div className=\"modal\">{header}{body}{footer}</div>;\n}",
     "hints": [
       "Write:\nfunction ModalLayout({ header, body, footer }) {\n  return <div className=\"modal\">{header}{body}{footer}</div>;\n}"
@@ -1089,7 +1089,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function Dialog(props) {\n  return <div className=\"dialog\" {...props} />;\n}\nfunction ConfirmDialog(props) {\n  return <Dialog className=\"dialog-confirm\" {...props} />;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function Dialog(props) {\n  return <div className=\"dialog\" {...props} />;\n}\nfunction ConfirmDialog(props) {\n  return <Dialog className=\"dialog-confirm\" {...props} />;\n}",
     "hints": [
       "Write:\nfunction Dialog(props) {\n  return <div className=\"dialog\" {...props} />;\n}\nfunction ConfirmDialog(props) {\n  return <Dialog className=\"dialog-confirm\" {...props} />;\n}"
@@ -1131,7 +1131,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function MouseTracker({ render }) {\n  const coords = { x: 100, y: 200 };\n  return render(coords);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function MouseTracker({ render }) {\n  const coords = { x: 100, y: 200 };\n  return render(coords);\n}\nconst res = MouseTracker({ render: c => `(${c.x}, ${c.y})` });",
     "hints": [
       "Write:\nfunction MouseTracker({ render }) {\n  const coords = { x: 100, y: 200 };\n  return render(coords);\n}\nconst res = MouseTracker({ render: c => `(${c.x}, ${c.y})` });"
@@ -1173,7 +1173,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function processProps(props) {\n  // Props must be treated as strictly read-only!\n  return { ...props, processed: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function processProps(props) {\n  return { ...props, processed: true };\n}\nconst res = processProps({ id: 1 });",
     "hints": [
       "Write:\nfunction processProps(props) {\n  return { ...props, processed: true };\n}\nconst res = processProps({ id: 1 });"
@@ -1215,7 +1215,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function validateUser(props) {\n  if (!props.username) throw new Error('Missing username');\n  return true;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function validateUser(props) {\n  if (!props.username) throw new Error('Missing username');\n  return true;\n}\nconst ok = validateUser({ username: 'Sarah' });",
     "hints": [
       "Write:\nfunction validateUser(props) {\n  if (!props.username) throw new Error('Missing username');\n  return true;\n}\nconst ok = validateUser({ username: 'Sarah' });"
@@ -1257,7 +1257,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function CardShell({ title, children }) {\n  return <article><h3>{title}</h3><div>{children}</div></article>;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function CardShell({ title, children }) {\n  return <article><h3>{title}</h3><div>{children}</div></article>;\n}",
     "hints": [
       "Write:\nfunction CardShell({ title, children }) {\n  return <article><h3>{title}</h3><div>{children}</div></article>;\n}"
@@ -1299,7 +1299,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createCounter(initial = 0) {\n  let count = initial;\n  const setCount = (val) => { count = val; return count; };\n  return [() => count, setCount];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createCounter(initial = 0) {\n  let count = initial;\n  const setCount = (val) => { count = val; return count; };\n  return [() => count, setCount];\n}\nconst [getCount, setCount] = createCounter(5);",
     "hints": [
       "Write:\nfunction createCounter(initial = 0) {\n  let count = initial;\n  const setCount = (val) => { count = val; return count; };\n  return [() => count, setCount];\n}\nconst [getCount, setCount] = createCounter(5);"
@@ -1341,7 +1341,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function compareStateVsVar() {\n  let normalVar = 0;\n  normalVar += 1;\n  return normalVar;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function compareStateVsVar() {\n  let normalVar = 0;\n  normalVar += 1;\n  return normalVar;\n}\nconst val = compareStateVsVar();",
     "hints": [
       "Write:\nfunction compareStateVsVar() {\n  let normalVar = 0;\n  normalVar += 1;\n  return normalVar;\n}\nconst val = compareStateVsVar();"
@@ -1383,7 +1383,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simulateStateUpdate(oldState, newState) {\n  return { shouldRerender: oldState !== newState, state: newState };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function simulateStateUpdate(oldState, newState) {\n  return { shouldRerender: oldState !== newState, state: newState };\n}\nconst res = simulateStateUpdate(0, 1);",
     "hints": [
       "Write:\nfunction simulateStateUpdate(oldState, newState) {\n  return { shouldRerender: oldState !== newState, state: newState };\n}\nconst res = simulateStateUpdate(0, 1);"
@@ -1425,7 +1425,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function incrementState(prev) {\n  return prev + 1;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function incrementState(prev) {\n  return prev + 1;\n}\nlet count = 0;\ncount = incrementState(count);\ncount = incrementState(count);",
     "hints": [
       "Write:\nfunction incrementState(prev) {\n  return prev + 1;\n}\nlet count = 0;\ncount = incrementState(count);\ncount = incrementState(count);"
@@ -1467,7 +1467,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function initUserState() {\n  return { name: 'Sarah', online: true, score: 100 };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function initUserState() {\n  return { name: 'Sarah', online: true, score: 100 };\n}\nconst state = initUserState();",
     "hints": [
       "Write:\nfunction initUserState() {\n  return { name: 'Sarah', online: true, score: 100 };\n}\nconst state = initUserState();"
@@ -1509,7 +1509,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function updateUserBio(user, newBio) {\n  return { ...user, bio: newBio };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function updateUserBio(user, newBio) {\n  return { ...user, bio: newBio };\n}\nconst updated = updateUserBio({ id: 1, bio: 'old' }, 'new');",
     "hints": [
       "Write:\nfunction updateUserBio(user, newBio) {\n  return { ...user, bio: newBio };\n}\nconst updated = updateUserBio({ id: 1, bio: 'old' }, 'new');"
@@ -1551,7 +1551,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function addItem(list, item) {\n  return [...list, item];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function addItem(list, item) {\n  return [...list, item];\n}\nconst items = addItem(['A'], 'B');",
     "hints": [
       "Write:\nfunction addItem(list, item) {\n  return [...list, item];\n}\nconst items = addItem(['A'], 'B');"
@@ -1593,7 +1593,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function removeItem(list, idToRemove) {\n  return list.filter(item => item.id !== idToRemove);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function removeItem(list, idToRemove) {\n  return list.filter(item => item.id !== idToRemove);\n}\nconst items = removeItem([{ id: 1 }, { id: 2 }], 1);",
     "hints": [
       "Write:\nfunction removeItem(list, idToRemove) {\n  return list.filter(item => item.id !== idToRemove);\n}\nconst items = removeItem([{ id: 1 }, { id: 2 }], 1);"
@@ -1635,7 +1635,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function toggleTodo(todos, id) {\n  return todos.map(t => t.id === id ? { ...t, done: !t.done } : t);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function toggleTodo(todos, id) {\n  return todos.map(t => t.id === id ? { ...t, done: !t.done } : t);\n}\nconst list = toggleTodo([{ id: 1, done: false }], 1);",
     "hints": [
       "Write:\nfunction toggleTodo(todos, id) {\n  return todos.map(t => t.id === id ? { ...t, done: !t.done } : t);\n}\nconst list = toggleTodo([{ id: 1, done: false }], 1);"
@@ -1677,7 +1677,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getSharedCount(count) {\n  return { display: `Count: ${count}`, canReset: count > 0 };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function getSharedCount(count) {\n  return { display: `Count: ${count}`, canReset: count > 0 };\n}\nconst res = getSharedCount(10);",
     "hints": [
       "Write:\nfunction getSharedCount(count) {\n  return { display: `Count: ${count}`, canReset: count > 0 };\n}\nconst res = getSharedCount(10);"
@@ -1719,7 +1719,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function calculateTotals(items) {\n  const total = items.reduce((sum, item) => sum + item.price, 0);\n  return { itemCount: items.length, total };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function calculateTotals(items) {\n  const total = items.reduce((sum, item) => sum + item.price, 0);\n  return { itemCount: items.length, total };\n}\nconst totals = calculateTotals([{ price: 10 }, { price: 20 }]);",
     "hints": [
       "Write:\nfunction calculateTotals(items) {\n  const total = items.reduce((sum, item) => sum + item.price, 0);\n  return { itemCount: items.length, total };\n}\nconst totals = calculateTotals([{ price: 10 }, { price: 20 }]);"
@@ -1761,7 +1761,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function handleInputChange(currentVal, newVal) {\n  return newVal;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function handleInputChange(currentVal, newVal) {\n  return newVal;\n}\nconst nextVal = handleInputChange('old', 'new');",
     "hints": [
       "Write:\nfunction handleInputChange(currentVal, newVal) {\n  return newVal;\n}\nconst nextVal = handleInputChange('old', 'new');"
@@ -1803,7 +1803,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function updateFormField(formData, field, value) {\n  return { ...formData, [field]: value };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function updateFormField(formData, field, value) {\n  return { ...formData, [field]: value };\n}\nconst form = updateFormField({ email: '' }, 'email', 'user@test.com');",
     "hints": [
       "Write:\nfunction updateFormField(formData, field, value) {\n  return { ...formData, [field]: value };\n}\nconst form = updateFormField({ email: '' }, 'email', 'user@test.com');"
@@ -1845,7 +1845,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getComponentKey(userId) {\n  return `user-profile-${userId}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function getComponentKey(userId) {\n  return `user-profile-${userId}`;\n}\nconst k = getComponentKey(42);",
     "hints": [
       "Write:\nfunction getComponentKey(userId) {\n  return `user-profile-${userId}`;\n}\nconst k = getComponentKey(42);"
@@ -1887,7 +1887,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function batchUpdates() {\n  return { batched: true, renders: 1 };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function batchUpdates() {\n  return { batched: true, renders: 1 };\n}\nconst b = batchUpdates();",
     "hints": [
       "Write:\nfunction batchUpdates() {\n  return { batched: true, renders: 1 };\n}\nconst b = batchUpdates();"
@@ -1929,7 +1929,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function logSideEffect(action) {\n  return `Effect triggered: ${action}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function logSideEffect(action) {\n  return `Effect triggered: ${action}`;\n}\nconst log = logSideEffect('fetch');",
     "hints": [
       "Write:\nfunction logSideEffect(action) {\n  return `Effect triggered: ${action}`;\n}\nconst log = logSideEffect('fetch');"
@@ -1971,7 +1971,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function effectConfig(depArray) {\n  return { deps: depArray, isConfigured: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function effectConfig(depArray) {\n  return { deps: depArray, isConfigured: true };\n}\nconst cfg = effectConfig(['id']);",
     "hints": [
       "Write:\nfunction effectConfig(depArray) {\n  return { deps: depArray, isConfigured: true };\n}\nconst cfg = effectConfig(['id']);"
@@ -2013,7 +2013,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function runOnMount() {\n  return { mounted: true, ranOnce: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function runOnMount() {\n  return { mounted: true, ranOnce: true };\n}\nconst res = runOnMount();",
     "hints": [
       "Write:\nfunction runOnMount() {\n  return { mounted: true, ranOnce: true };\n}\nconst res = runOnMount();"
@@ -2055,7 +2055,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function shouldRunEffect(prevDeps, nextDeps) {\n  return prevDeps.some((dep, i) => !Object.is(dep, nextDeps[i]));\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function shouldRunEffect(prevDeps, nextDeps) {\n  return prevDeps.some((dep, i) => !Object.is(dep, nextDeps[i]));\n}\nconst changed = shouldRunEffect([1], [2]);",
     "hints": [
       "Write:\nfunction shouldRunEffect(prevDeps, nextDeps) {\n  return prevDeps.some((dep, i) => !Object.is(dep, nextDeps[i]));\n}\nconst changed = shouldRunEffect([1], [2]);"
@@ -2097,7 +2097,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function setupSubscription() {\n  return function cleanup() { return 'unsubscribed'; };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function setupSubscription() {\n  return function cleanup() { return 'unsubscribed'; };\n}\nconst cleanupFn = setupSubscription();",
     "hints": [
       "Write:\nfunction setupSubscription() {\n  return function cleanup() { return 'unsubscribed'; };\n}\nconst cleanupFn = setupSubscription();"
@@ -2139,7 +2139,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function mockFetchData(url) {\n  return { data: 'records', from: url };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "async function mockFetchData(url) {\n  return { data: 'records', from: url };\n}\nconst fetchPromise = mockFetchData('/api/courses');",
     "hints": [
       "Write:\nasync function mockFetchData(url) {\n  return { data: 'records', from: url };\n}\nconst fetchPromise = mockFetchData('/api/courses');"
@@ -2181,7 +2181,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function initAsyncState() {\n  return { data: null, isLoading: true, error: null };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function initAsyncState() {\n  return { data: null, isLoading: true, error: null };\n}\nconst state = initAsyncState();",
     "hints": [
       "Write:\nfunction initAsyncState() {\n  return { data: null, isLoading: true, error: null };\n}\nconst state = initAsyncState();"
@@ -2223,7 +2223,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createAbortSignal() {\n  const controller = new AbortController();\n  return controller.signal;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createAbortSignal() {\n  const controller = new AbortController();\n  return controller.signal;\n}\nconst signal = createAbortSignal();",
     "hints": [
       "Write:\nfunction createAbortSignal() {\n  const controller = new AbortController();\n  return controller.signal;\n}\nconst signal = createAbortSignal();"
@@ -2265,7 +2265,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function hasStableDependency(dep) {\n  return typeof dep !== 'object' || dep !== null;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function hasStableDependency(dep) {\n  return typeof dep !== 'object' || dep !== null;\n}\nconst stable = hasStableDependency('user-1');",
     "hints": [
       "Write:\nfunction hasStableDependency(dep) {\n  return typeof dep !== 'object' || dep !== null;\n}\nconst stable = hasStableDependency('user-1');"
@@ -2307,7 +2307,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function updateTitle(title) {\n  return `DevForge - ${title}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function updateTitle(title) {\n  return `DevForge - ${title}`;\n}\nconst t = updateTitle('Lesson 1');",
     "hints": [
       "Write:\nfunction updateTitle(title) {\n  return `DevForge - ${title}`;\n}\nconst t = updateTitle('Lesson 1');"
@@ -2349,7 +2349,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function persistToStorage(key, value) {\n  return { key, json: JSON.stringify(value) };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function persistToStorage(key, value) {\n  return { key, json: JSON.stringify(value) };\n}\nconst saved = persistToStorage('theme', 'dark');",
     "hints": [
       "Write:\nfunction persistToStorage(key, value) {\n  return { key, json: JSON.stringify(value) };\n}\nconst saved = persistToStorage('theme', 'dark');"
@@ -2391,7 +2391,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function addWindowListener(eventName, fn) {\n  return () => `Removed ${eventName}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function addWindowListener(eventName, fn) {\n  return () => `Removed ${eventName}`;\n}\nconst remove = addWindowListener('resize', () => {});",
     "hints": [
       "Write:\nfunction addWindowListener(eventName, fn) {\n  return () => `Removed ${eventName}`;\n}\nconst remove = addWindowListener('resize', () => {});"
@@ -2433,7 +2433,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function measureElement(width) {\n  return { width, measuredBeforePaint: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function measureElement(width) {\n  return { width, measuredBeforePaint: true };\n}\nconst m = measureElement(300);",
     "hints": [
       "Write:\nfunction measureElement(width) {\n  return { width, measuredBeforePaint: true };\n}\nconst m = measureElement(300);"
@@ -2475,7 +2475,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createEffectEvent(fn) {\n  return (...args) => fn(...args);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createEffectEvent(fn) {\n  return (...args) => fn(...args);\n}\nconst handler = createEffectEvent((x) => x * 2);",
     "hints": [
       "Write:\nfunction createEffectEvent(fn) {\n  return (...args) => fn(...args);\n}\nconst handler = createEffectEvent((x) => x * 2);"
@@ -2517,7 +2517,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function deriveStateDirectly(firstName, lastName) {\n  return `${firstName} ${lastName}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function deriveStateDirectly(firstName, lastName) {\n  return `${firstName} ${lastName}`;\n}\nconst fullName = deriveStateDirectly('Ada', 'Lovelace');",
     "hints": [
       "Write:\nfunction deriveStateDirectly(firstName, lastName) {\n  return `${firstName} ${lastName}`;\n}\nconst fullName = deriveStateDirectly('Ada', 'Lovelace');"
@@ -2559,7 +2559,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createRef(initialVal = null) {\n  return { current: initialVal };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createRef(initialVal = null) {\n  return { current: initialVal };\n}\nconst ref = createRef(100);",
     "hints": [
       "Write:\nfunction createRef(initialVal = null) {\n  return { current: initialVal };\n}\nconst ref = createRef(100);"
@@ -2601,7 +2601,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkRefReRender() {\n  return { causesReRender: false };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function checkRefReRender() {\n  return { causesReRender: false };\n}\nconst res = checkRefReRender();",
     "hints": [
       "Write:\nfunction checkRefReRender() {\n  return { causesReRender: false };\n}\nconst res = checkRefReRender();"
@@ -2643,7 +2643,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function attachDomRef() {\n  const inputRef = { current: null };\n  return inputRef;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function attachDomRef() {\n  const inputRef = { current: null };\n  return inputRef;\n}\nconst ref = attachDomRef();",
     "hints": [
       "Write:\nfunction attachDomRef() {\n  const inputRef = { current: null };\n  return inputRef;\n}\nconst ref = attachDomRef();"
@@ -2685,7 +2685,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function focusElement(el) {\n  return { focused: true, tag: el };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function focusElement(el) {\n  return { focused: true, tag: el };\n}\nconst f = focusElement('input');",
     "hints": [
       "Write:\nfunction focusElement(el) {\n  return { focused: true, tag: el };\n}\nconst f = focusElement('input');"
@@ -2727,7 +2727,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function scrollIntoViewMock(elementId) {\n  return `Scrolled to ${elementId}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function scrollIntoViewMock(elementId) {\n  return `Scrolled to ${elementId}`;\n}\nconst s = scrollIntoViewMock('comment-99');",
     "hints": [
       "Write:\nfunction scrollIntoViewMock(elementId) {\n  return `Scrolled to ${elementId}`;\n}\nconst s = scrollIntoViewMock('comment-99');"
@@ -2769,7 +2769,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getElementRect(el) {\n  return { width: 400, height: 250, top: 100 };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function getElementRect(el) {\n  return { width: 400, height: 250, top: 100 };\n}\nconst rect = getElementRect('box');",
     "hints": [
       "Write:\nfunction getElementRect(el) {\n  return { width: 400, height: 250, top: 100 };\n}\nconst rect = getElementRect('box');"
@@ -2811,7 +2811,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function storeTimerId(id) {\n  const timerRef = { current: id };\n  return timerRef.current;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function storeTimerId(id) {\n  const timerRef = { current: id };\n  return timerRef.current;\n}\nconst tid = storeTimerId(12345);",
     "hints": [
       "Write:\nfunction storeTimerId(id) {\n  const timerRef = { current: id };\n  return timerRef.current;\n}\nconst tid = storeTimerId(12345);"
@@ -2853,7 +2853,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function trackPrevious(currentVal, prevRef) {\n  const prev = prevRef.current;\n  prevRef.current = currentVal;\n  return prev;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function trackPrevious(currentVal, prevRef) {\n  const prev = prevRef.current;\n  prevRef.current = currentVal;\n  return prev;\n}\nconst pRef = { current: 'old' };\nconst was = trackPrevious('new', pRef);",
     "hints": [
       "Write:\nfunction trackPrevious(currentVal, prevRef) {\n  const prev = prevRef.current;\n  prevRef.current = currentVal;\n  return prev;\n}\nconst pRef = { current: 'old' };\nconst was = trackPrevious('new', pRef);"
@@ -2895,7 +2895,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkMounted(isMountedRef) {\n  return isMountedRef.current === true;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function checkMounted(isMountedRef) {\n  return isMountedRef.current === true;\n}\nconst ok = checkMounted({ current: true });",
     "hints": [
       "Write:\nfunction checkMounted(isMountedRef) {\n  return isMountedRef.current === true;\n}\nconst ok = checkMounted({ current: true });"
@@ -2937,7 +2937,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function readUncontrolledInput(ref) {\n  return ref.current ? ref.current.value : '';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function readUncontrolledInput(ref) {\n  return ref.current ? ref.current.value : '';\n}\nconst val = readUncontrolledInput({ current: { value: 'SecretKey' } });",
     "hints": [
       "Write:\nfunction readUncontrolledInput(ref) {\n  return ref.current ? ref.current.value : '';\n}\nconst val = readUncontrolledInput({ current: { value: 'SecretKey' } });"
@@ -2979,7 +2979,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createCustomHandle(methods) {\n  return { ...methods, isHandle: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createCustomHandle(methods) {\n  return { ...methods, isHandle: true };\n}\nconst handle = createCustomHandle({ reset: () => 'done' });",
     "hints": [
       "Write:\nfunction createCustomHandle(methods) {\n  return { ...methods, isHandle: true };\n}\nconst handle = createCustomHandle({ reset: () => 'done' });"
@@ -3021,7 +3021,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ForwardedButton(props, ref) {\n  return { props, hasRef: Boolean(ref) };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ForwardedButton(props, ref) {\n  return { props, hasRef: Boolean(ref) };\n}\nconst res = ForwardedButton({}, { current: null });",
     "hints": [
       "Write:\nfunction ForwardedButton(props, ref) {\n  return { props, hasRef: Boolean(ref) };\n}\nconst res = ForwardedButton({}, { current: null });"
@@ -3063,7 +3063,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isClickOutside(containerEl, targetEl) {\n  return !containerEl.contains(targetEl);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function isClickOutside(containerEl, targetEl) {\n  return !containerEl.contains(targetEl);\n}\nconst outside = isClickOutside({ contains: () => false }, {});",
     "hints": [
       "Write:\nfunction isClickOutside(containerEl, targetEl) {\n  return !containerEl.contains(targetEl);\n}\nconst outside = isClickOutside({ contains: () => false }, {});"
@@ -3105,7 +3105,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createRefCallback() {\n  let node = null;\n  return (el) => { node = el; return node; };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createRefCallback() {\n  let node = null;\n  return (el) => { node = el; return node; };\n}\nconst cb = createRefCallback();",
     "hints": [
       "Write:\nfunction createRefCallback() {\n  let node = null;\n  return (el) => { node = el; return node; };\n}\nconst cb = createRefCallback();"
@@ -3147,7 +3147,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function safeRefAccess(ref) {\n  if (!ref || !ref.current) return 'fallback';\n  return 'ready';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function safeRefAccess(ref) {\n  if (!ref || !ref.current) return 'fallback';\n  return 'ready';\n}\nconst res = safeRefAccess({ current: null });",
     "hints": [
       "Write:\nfunction safeRefAccess(ref) {\n  if (!ref || !ref.current) return 'fallback';\n  return 'ready';\n}\nconst res = safeRefAccess({ current: null });"
@@ -3189,7 +3189,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createContextMock(defaultValue) {\n  return { defaultValue, isContext: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createContextMock(defaultValue) {\n  return { defaultValue, isContext: true };\n}\nconst ctx = createContextMock('dark');",
     "hints": [
       "Write:\nfunction createContextMock(defaultValue) {\n  return { defaultValue, isContext: true };\n}\nconst ctx = createContextMock('dark');"
@@ -3231,7 +3231,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "const ThemeContext = { name: 'Theme', default: 'light' };",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "const ThemeContext = { name: 'Theme', default: 'light' };",
     "hints": [
       "Write:\nconst ThemeContext = { name: 'Theme', default: 'light' };"
@@ -3273,7 +3273,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ProviderMock(value, children) {\n  return { value, children };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ProviderMock(value, children) {\n  return { value, children };\n}\nconst p = ProviderMock('user-1', 'children');",
     "hints": [
       "Write:\nfunction ProviderMock(value, children) {\n  return { value, children };\n}\nconst p = ProviderMock('user-1', 'children');"
@@ -3315,7 +3315,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function consumeContextMock(ctxValue) {\n  return `Consumed: ${ctxValue}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function consumeContextMock(ctxValue) {\n  return `Consumed: ${ctxValue}`;\n}\nconst val = consumeContextMock('theme-dark');",
     "hints": [
       "Write:\nfunction consumeContextMock(ctxValue) {\n  return `Consumed: ${ctxValue}`;\n}\nconst val = consumeContextMock('theme-dark');"
@@ -3357,7 +3357,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createCustomProvider(initialState) {\n  return { state: initialState, isProvider: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createCustomProvider(initialState) {\n  return { state: initialState, isProvider: true };\n}\nconst prov = createCustomProvider({ user: 'Sarah' });",
     "hints": [
       "Write:\nfunction createCustomProvider(initialState) {\n  return { state: initialState, isProvider: true };\n}\nconst prov = createCustomProvider({ user: 'Sarah' });"
@@ -3399,7 +3399,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useThemeHook(theme) {\n  if (!theme) throw new Error('useTheme must be used within ThemeProvider');\n  return theme;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useThemeHook(theme) {\n  if (!theme) throw new Error('useTheme must be used within ThemeProvider');\n  return theme;\n}\nconst active = useThemeHook('dark');",
     "hints": [
       "Write:\nfunction useThemeHook(theme) {\n  if (!theme) throw new Error('useTheme must be used within ThemeProvider');\n  return theme;\n}\nconst active = useThemeHook('dark');"
@@ -3441,7 +3441,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createDynamicContext(initial) {\n  let val = initial;\n  return { get: () => val, set: (n) => { val = n; } };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createDynamicContext(initial) {\n  let val = initial;\n  return { get: () => val, set: (n) => { val = n; } };\n}\nconst dynamicCtx = createDynamicContext('light');\ndynamicCtx.set('dark');",
     "hints": [
       "Write:\nfunction createDynamicContext(initial) {\n  let val = initial;\n  return { get: () => val, set: (n) => { val = n; } };\n}\nconst dynamicCtx = createDynamicContext('light');\ndynamicCtx.set('dark');"
@@ -3483,7 +3483,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function toggleTheme(current) {\n  return current === 'dark' ? 'light' : 'dark';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function toggleTheme(current) {\n  return current === 'dark' ? 'light' : 'dark';\n}\nconst next = toggleTheme('light');",
     "hints": [
       "Write:\nfunction toggleTheme(current) {\n  return current === 'dark' ? 'light' : 'dark';\n}\nconst next = toggleTheme('light');"
@@ -3525,7 +3525,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function authReducer(state, action) {\n  if (action.type === 'LOGIN') return { user: action.payload, isAuthenticated: true };\n  return { user: null, isAuthenticated: false };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function authReducer(state, action) {\n  if (action.type === 'LOGIN') return { user: action.payload, isAuthenticated: true };\n  return { user: null, isAuthenticated: false };\n}\nconst state = authReducer({}, { type: 'LOGIN', payload: 'Sarah' });",
     "hints": [
       "Write:\nfunction authReducer(state, action) {\n  if (action.type === 'LOGIN') return { user: action.payload, isAuthenticated: true };\n  return { user: null, isAuthenticated: false };\n}\nconst state = authReducer({}, { type: 'LOGIN', payload: 'Sarah' });"
@@ -3567,7 +3567,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function cartManager(cart, item) {\n  return [...cart, item];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function cartManager(cart, item) {\n  return [...cart, item];\n}\nconst updatedCart = cartManager([], { id: 'c1', price: 50 });",
     "hints": [
       "Write:\nfunction cartManager(cart, item) {\n  return [...cart, item];\n}\nconst updatedCart = cartManager([], { id: 'c1', price: 50 });"
@@ -3609,7 +3609,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkContextConsumers(hasChanged) {\n  return { reRenderAllConsumers: hasChanged };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function checkContextConsumers(hasChanged) {\n  return { reRenderAllConsumers: hasChanged };\n}\nconst res = checkContextConsumers(true);",
     "hints": [
       "Write:\nfunction checkContextConsumers(hasChanged) {\n  return { reRenderAllConsumers: hasChanged };\n}\nconst res = checkContextConsumers(true);"
@@ -3651,7 +3651,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function splitContexts() {\n  return { StateContext: {}, DispatchContext: {} };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function splitContexts() {\n  return { StateContext: {}, DispatchContext: {} };\n}\nconst ctxs = splitContexts();",
     "hints": [
       "Write:\nfunction splitContexts() {\n  return { StateContext: {}, DispatchContext: {} };\n}\nconst ctxs = splitContexts();"
@@ -3693,7 +3693,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function memoizeProviderValue(user, theme) {\n  return { user, theme };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function memoizeProviderValue(user, theme) {\n  return { user, theme };\n}\nconst val = memoizeProviderValue('Alex', 'dark');",
     "hints": [
       "Write:\nfunction memoizeProviderValue(user, theme) {\n  return { user, theme };\n}\nconst val = memoizeProviderValue('Alex', 'dark');"
@@ -3735,7 +3735,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function evaluateStateTool(scale) {\n  return scale === 'simple' ? 'Context' : 'Zustand/Redux';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function evaluateStateTool(scale) {\n  return scale === 'simple' ? 'Context' : 'Zustand/Redux';\n}\nconst tool = evaluateStateTool('complex');",
     "hints": [
       "Write:\nfunction evaluateStateTool(scale) {\n  return scale === 'simple' ? 'Context' : 'Zustand/Redux';\n}\nconst tool = evaluateStateTool('complex');"
@@ -3777,7 +3777,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function GlobalProvidersMock({ children }) {\n  return { wrapped: true, children };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function GlobalProvidersMock({ children }) {\n  return { wrapped: true, children };\n}\nconst tree = GlobalProvidersMock({ children: 'App' });",
     "hints": [
       "Write:\nfunction GlobalProvidersMock({ children }) {\n  return { wrapped: true, children };\n}\nconst tree = GlobalProvidersMock({ children: 'App' });"
@@ -3819,7 +3819,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function reducer(state, action) {\n  switch (action.type) {\n    case 'INC': return state + 1;\n    default: return state;\n  }\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function reducer(state, action) {\n  switch (action.type) {\n    case 'INC': return state + 1;\n    default: return state;\n  }\n}\nconst s = reducer(0, { type: 'INC' });",
     "hints": [
       "Write:\nfunction reducer(state, action) {\n  switch (action.type) {\n    case 'INC': return state + 1;\n    default: return state;\n  }\n}\nconst s = reducer(0, { type: 'INC' });"
@@ -3861,7 +3861,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createAction(type, payload) {\n  return { type, payload };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createAction(type, payload) {\n  return { type, payload };\n}\nconst action = createAction('SET_USER', { name: 'Sarah' });",
     "hints": [
       "Write:\nfunction createAction(type, payload) {\n  return { type, payload };\n}\nconst action = createAction('SET_USER', { name: 'Sarah' });"
@@ -3903,7 +3903,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function pureAdd(state, num) {\n  return state + num; // No mutations, no random numbers, no API calls!\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function pureAdd(state, num) {\n  return state + num;\n}\nconst res = pureAdd(10, 5);",
     "hints": [
       "Write:\nfunction pureAdd(state, num) {\n  return state + num;\n}\nconst res = pureAdd(10, 5);"
@@ -3945,7 +3945,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function taskReducer(state, action) {\n  switch (action.type) {\n    case 'ADD': return [...state, action.payload];\n    case 'RESET': return [];\n    default: return state;\n  }\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function taskReducer(state, action) {\n  switch (action.type) {\n    case 'ADD': return [...state, action.payload];\n    case 'RESET': return [];\n    default: return state;\n  }\n}\nconst s = taskReducer([], { type: 'ADD', payload: 'Learn Reducer' });",
     "hints": [
       "Write:\nfunction taskReducer(state, action) {\n  switch (action.type) {\n    case 'ADD': return [...state, action.payload];\n    case 'RESET': return [];\n    default: return state;\n  }\n}\nconst s = taskReducer([], { type: 'ADD', payload: 'Learn Reducer' });"
@@ -3987,7 +3987,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function initReducerState(initialCount) {\n  return { count: initialCount, history: [initialCount] };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function initReducerState(initialCount) {\n  return { count: initialCount, history: [initialCount] };\n}\nconst init = initReducerState(5);",
     "hints": [
       "Write:\nfunction initReducerState(initialCount) {\n  return { count: initialCount, history: [initialCount] };\n}\nconst init = initReducerState(5);"
@@ -4029,7 +4029,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function dispatchContextMock() {\n  return { state: { count: 0 }, dispatch: (action) => action };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function dispatchContextMock() {\n  return { state: { count: 0 }, dispatch: (action) => action };\n}\nconst ctx = dispatchContextMock();",
     "hints": [
       "Write:\nfunction dispatchContextMock() {\n  return { state: { count: 0 }, dispatch: (action) => action };\n}\nconst ctx = dispatchContextMock();"
@@ -4071,7 +4071,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function undoableReducer(state, action) {\n  if (action.type === 'UNDO') {\n    const previous = state.past[state.past.length - 1];\n    return { past: state.past.slice(0, -1), present: previous, future: [state.present, ...state.future] };\n  }\n  return state;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function undoableReducer(state, action) {\n  if (action.type === 'UNDO') {\n    const previous = state.past[state.past.length - 1];\n    return { past: state.past.slice(0, -1), present: previous, future: [state.present, ...state.future] };\n  }\n  return state;\n}\nconst s = undoableReducer({ past: ['a'], present: 'b', future: [] }, { type: 'UNDO' });",
     "hints": [
       "Write:\nfunction undoableReducer(state, action) {\n  if (action.type === 'UNDO') {\n    const previous = state.past[state.past.length - 1];\n    return { past: state.past.slice(0, -1), present: previous, future: [state.present, ...state.future] };\n  }\n  return state;\n}\nconst s = undoableReducer({ past: ['a'], present: 'b', future: [] }, { type: 'UNDO' });"
@@ -4113,7 +4113,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function wizardReducer(state, action) {\n  switch (action.type) {\n    case 'NEXT_STEP': return { ...state, step: state.step + 1 };\n    case 'SET_DATA': return { ...state, data: { ...state.data, ...action.payload } };\n    default: return state;\n  }\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function wizardReducer(state, action) {\n  switch (action.type) {\n    case 'NEXT_STEP': return { ...state, step: state.step + 1 };\n    case 'SET_DATA': return { ...state, data: { ...state.data, ...action.payload } };\n    default: return state;\n  }\n}\nconst w = wizardReducer({ step: 1, data: {} }, { type: 'NEXT_STEP' });",
     "hints": [
       "Write:\nfunction wizardReducer(state, action) {\n  switch (action.type) {\n    case 'NEXT_STEP': return { ...state, step: state.step + 1 };\n    case 'SET_DATA': return { ...state, data: { ...state.data, ...action.payload } };\n    default: return state;\n  }\n}\nconst w = wizardReducer({ step: 1, data: {} }, { type: 'NEXT_STEP' });"
@@ -4155,7 +4155,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function asyncFetchReducer(state, action) {\n  switch (action.type) {\n    case 'START': return { ...state, loading: true };\n    case 'SUCCESS': return { loading: false, data: action.payload, error: null };\n    case 'FAIL': return { loading: false, data: null, error: action.payload };\n    default: return state;\n  }\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function asyncFetchReducer(state, action) {\n  switch (action.type) {\n    case 'START': return { ...state, loading: true };\n    case 'SUCCESS': return { loading: false, data: action.payload, error: null };\n    case 'FAIL': return { loading: false, data: null, error: action.payload };\n    default: return state;\n  }\n}\nconst s = asyncFetchReducer({}, { type: 'SUCCESS', payload: ['user1'] });",
     "hints": [
       "Write:\nfunction asyncFetchReducer(state, action) {\n  switch (action.type) {\n    case 'START': return { ...state, loading: true };\n    case 'SUCCESS': return { loading: false, data: action.payload, error: null };\n    case 'FAIL': return { loading: false, data: null, error: action.payload };\n    default: return state;\n  }\n}\nconst s = asyncFetchReducer({}, { type: 'SUCCESS', payload: ['user1'] });"
@@ -4197,7 +4197,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function logAction(state, action) {\n  const next = { ...state, lastAction: action.type };\n  return next;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function logAction(state, action) {\n  const next = { ...state, lastAction: action.type };\n  return next;\n}\nconst logged = logAction({}, { type: 'SUBMIT' });",
     "hints": [
       "Write:\nfunction logAction(state, action) {\n  const next = { ...state, lastAction: action.type };\n  return next;\n}\nconst logged = logAction({}, { type: 'SUBMIT' });"
@@ -4239,7 +4239,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function combineReducersMock(r1, r2) {\n  return (state = {}, action) => ({ user: r1(state.user, action), items: r2(state.items, action) });\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function combineReducersMock(r1, r2) {\n  return (state = {}, action) => ({ user: r1(state.user, action), items: r2(state.items, action) });\n}\nconst root = combineReducersMock((s = 'user') => s, (s = []) => s);\nconst state = root(undefined, {});",
     "hints": [
       "Write:\nfunction combineReducersMock(r1, r2) {\n  return (state = {}, action) => ({ user: r1(state.user, action), items: r2(state.items, action) });\n}\nconst root = combineReducersMock((s = 'user') => s, (s = []) => s);\nconst state = root(undefined, {});"
@@ -4281,7 +4281,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function addTodoAction(title) {\n  return { type: 'ADD_TODO', payload: { id: Date.now(), title, completed: false } };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function addTodoAction(title) {\n  return { type: 'ADD_TODO', payload: { id: 1, title, completed: false } };\n}\nconst action = addTodoAction('Master React');",
     "hints": [
       "Write:\nfunction addTodoAction(title) {\n  return { type: 'ADD_TODO', payload: { id: 1, title, completed: false } };\n}\nconst action = addTodoAction('Master React');"
@@ -4323,7 +4323,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function handleTypedAction(action) {\n  if (action.type === 'INCREMENT') return action.by;\n  return 0;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function handleTypedAction(action) {\n  if (action.type === 'INCREMENT') return action.by;\n  return 0;\n}\nconst by = handleTypedAction({ type: 'INCREMENT', by: 5 });",
     "hints": [
       "Write:\nfunction handleTypedAction(action) {\n  if (action.type === 'INCREMENT') return action.by;\n  return 0;\n}\nconst by = handleTypedAction({ type: 'INCREMENT', by: 5 });"
@@ -4365,7 +4365,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function chooseStateTool(complexity) {\n  return complexity > 3 ? 'useReducer' : 'useState';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function chooseStateTool(complexity) {\n  return complexity > 3 ? 'useReducer' : 'useState';\n}\nconst choice = chooseStateTool(5);",
     "hints": [
       "Write:\nfunction chooseStateTool(complexity) {\n  return complexity > 3 ? 'useReducer' : 'useState';\n}\nconst choice = chooseStateTool(5);"
@@ -4407,7 +4407,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function inventoryReducer(state, action) {\n  if (action.type === 'RESTOCK') return { ...state, stock: state.stock + action.qty };\n  return state;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function inventoryReducer(state, action) {\n  if (action.type === 'RESTOCK') return { ...state, stock: state.stock + action.qty };\n  return state;\n}\nconst inv = inventoryReducer({ stock: 10 }, { type: 'RESTOCK', qty: 25 });",
     "hints": [
       "Write:\nfunction inventoryReducer(state, action) {\n  if (action.type === 'RESTOCK') return { ...state, stock: state.stock + action.qty };\n  return state;\n}\nconst inv = inventoryReducer({ stock: 10 }, { type: 'RESTOCK', qty: 25 });"
@@ -4449,7 +4449,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getRenderReasons() {\n  return ['State changed', 'Parent re-rendered', 'Context changed', 'Props changed'];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function getRenderReasons() {\n  return ['State changed', 'Parent re-rendered', 'Context changed', 'Props changed'];\n}\nconst reasons = getRenderReasons();",
     "hints": [
       "Write:\nfunction getRenderReasons() {\n  return ['State changed', 'Parent re-rendered', 'Context changed', 'Props changed'];\n}\nconst reasons = getRenderReasons();"
@@ -4491,7 +4491,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function memoMock(componentFn) {\n  return { component: componentFn, isMemoized: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function memoMock(componentFn) {\n  return { component: componentFn, isMemoized: true };\n}\nconst Memoized = memoMock(() => null);",
     "hints": [
       "Write:\nfunction memoMock(componentFn) {\n  return { component: componentFn, isMemoized: true };\n}\nconst Memoized = memoMock(() => null);"
@@ -4533,7 +4533,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function arePropsEqual(prevProps, nextProps) {\n  return prevProps.id === nextProps.id;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function arePropsEqual(prevProps, nextProps) {\n  return prevProps.id === nextProps.id;\n}\nconst same = arePropsEqual({ id: 1 }, { id: 1 });",
     "hints": [
       "Write:\nfunction arePropsEqual(prevProps, nextProps) {\n  return prevProps.id === nextProps.id;\n}\nconst same = arePropsEqual({ id: 1 }, { id: 1 });"
@@ -4575,7 +4575,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function computeFactorial(n) {\n  return n <= 1 ? 1 : n * computeFactorial(n - 1);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function computeFactorial(n) {\n  return n <= 1 ? 1 : n * computeFactorial(n - 1);\n}\nconst fact = computeFactorial(5);",
     "hints": [
       "Write:\nfunction computeFactorial(n) {\n  return n <= 1 ? 1 : n * computeFactorial(n - 1);\n}\nconst fact = computeFactorial(5);"
@@ -4617,7 +4617,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simpleSum(a, b) {\n  return a + b; // Too cheap to justify memoization overhead!\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function simpleSum(a, b) {\n  return a + b;\n}\nconst sum = simpleSum(2, 3);",
     "hints": [
       "Write:\nfunction simpleSum(a, b) {\n  return a + b;\n}\nconst sum = simpleSum(2, 3);"
@@ -4659,7 +4659,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function memoizeCallback(fn) {\n  return { fn, cached: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function memoizeCallback(fn) {\n  return { fn, cached: true };\n}\nconst cb = memoizeCallback(() => 42);",
     "hints": [
       "Write:\nfunction memoizeCallback(fn) {\n  return { fn, cached: true };\n}\nconst cb = memoizeCallback(() => 42);"
@@ -4701,7 +4701,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkDepsExhaustive(deps) {\n  return deps.every(d => d !== undefined);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function checkDepsExhaustive(deps) {\n  return deps.every(d => d !== undefined);\n}\nconst valid = checkDepsExhaustive([1, 'a', true]);",
     "hints": [
       "Write:\nfunction checkDepsExhaustive(deps) {\n  return deps.every(d => d !== undefined);\n}\nconst valid = checkDepsExhaustive([1, 'a', true]);"
@@ -4743,7 +4743,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function profileMetrics() {\n  return { renderTimeMs: 1.2, commitCount: 1 };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function profileMetrics() {\n  return { renderTimeMs: 1.2, commitCount: 1 };\n}\nconst metrics = profileMetrics();",
     "hints": [
       "Write:\nfunction profileMetrics() {\n  return { renderTimeMs: 1.2, commitCount: 1 };\n}\nconst metrics = profileMetrics();"
@@ -4785,7 +4785,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function lazyLoadComponent(name) {\n  return { name, isLazy: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function lazyLoadComponent(name) {\n  return { name, isLazy: true };\n}\nconst Comp = lazyLoadComponent('DashboardChart');",
     "hints": [
       "Write:\nfunction lazyLoadComponent(name) {\n  return { name, isLazy: true };\n}\nconst Comp = lazyLoadComponent('DashboardChart');"
@@ -4827,7 +4827,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function renderSkeleton() {\n  return '<div class=\"skeleton-loader\"></div>';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function renderSkeleton() {\n  return '<div class=\"skeleton-loader\"></div>';\n}\nconst html = renderSkeleton();",
     "hints": [
       "Write:\nfunction renderSkeleton() {\n  return '<div class=\"skeleton-loader\"></div>';\n}\nconst html = renderSkeleton();"
@@ -4869,7 +4869,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function calculateVisibleRange(scrollTop, itemHeight, viewportHeight) {\n  const start = Math.floor(scrollTop / itemHeight);\n  const count = Math.ceil(viewportHeight / itemHeight);\n  return { start, end: start + count };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function calculateVisibleRange(scrollTop, itemHeight, viewportHeight) {\n  const start = Math.floor(scrollTop / itemHeight);\n  const count = Math.ceil(viewportHeight / itemHeight);\n  return { start, end: start + count };\n}\nconst range = calculateVisibleRange(200, 50, 400);",
     "hints": [
       "Write:\nfunction calculateVisibleRange(scrollTop, itemHeight, viewportHeight) {\n  const start = Math.floor(scrollTop / itemHeight);\n  const count = Math.ceil(viewportHeight / itemHeight);\n  return { start, end: start + count };\n}\nconst range = calculateVisibleRange(200, 50, 400);"
@@ -4911,7 +4911,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function transitionState(isPending) {\n  return { isPending, nonBlocking: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function transitionState(isPending) {\n  return { isPending, nonBlocking: true };\n}\nconst t = transitionState(false);",
     "hints": [
       "Write:\nfunction transitionState(isPending) {\n  return { isPending, nonBlocking: true };\n}\nconst t = transitionState(false);"
@@ -4953,7 +4953,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function deferValueMock(input) {\n  return { current: input, deferred: input };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function deferValueMock(input) {\n  return { current: input, deferred: input };\n}\nconst d = deferValueMock('query');",
     "hints": [
       "Write:\nfunction deferValueMock(input) {\n  return { current: input, deferred: input };\n}\nconst d = deferValueMock('query');"
@@ -4995,7 +4995,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function handlerCache() {\n  const handler = () => 'stable';\n  return handler;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function handlerCache() {\n  const handler = () => 'stable';\n  return handler;\n}\nconst h = handlerCache();",
     "hints": [
       "Write:\nfunction handlerCache() {\n  const handler = () => 'stable';\n  return handler;\n}\nconst h = handlerCache();"
@@ -5037,7 +5037,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function splitStores() {\n  return { userStore: 'user', cartStore: 'cart' };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function splitStores() {\n  return { userStore: 'user', cartStore: 'cart' };\n}\nconst stores = splitStores();",
     "hints": [
       "Write:\nfunction splitStores() {\n  return { userStore: 'user', cartStore: 'cart' };\n}\nconst stores = splitStores();"
@@ -5079,7 +5079,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ContainerWithChild({ child }) {\n  return { rendered: true, child };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ContainerWithChild({ child }) {\n  return { rendered: true, child };\n}\nconst res = ContainerWithChild({ child: 'Heavy' });",
     "hints": [
       "Write:\nfunction ContainerWithChild({ child }) {\n  return { rendered: true, child };\n}\nconst res = ContainerWithChild({ child: 'Heavy' });"
@@ -5121,7 +5121,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function compilerAutoMemo() {\n  return { autoMemoized: true, noDepsNeeded: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function compilerAutoMemo() {\n  return { autoMemoized: true, noDepsNeeded: true };\n}\nconst c = compilerAutoMemo();",
     "hints": [
       "Write:\nfunction compilerAutoMemo() {\n  return { autoMemoized: true, noDepsNeeded: true };\n}\nconst c = compilerAutoMemo();"
@@ -5163,7 +5163,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function frameRateMonitor(fps) {\n  return fps >= 60 ? 'Smooth' : 'Lagging';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function frameRateMonitor(fps) {\n  return fps >= 60 ? 'Smooth' : 'Lagging';\n}\nconst status = frameRateMonitor(60);",
     "hints": [
       "Write:\nfunction frameRateMonitor(fps) {\n  return fps >= 60 ? 'Smooth' : 'Lagging';\n}\nconst status = frameRateMonitor(60);"
@@ -5205,7 +5205,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkHookRules(callLocation) {\n  return callLocation === 'top-level';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function checkHookRules(callLocation) {\n  return callLocation === 'top-level';\n}\nconst valid = checkHookRules('top-level');",
     "hints": [
       "Write:\nfunction checkHookRules(callLocation) {\n  return callLocation === 'top-level';\n}\nconst valid = checkHookRules('top-level');"
@@ -5247,7 +5247,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useToggleLogic(initial = false) {\n  let on = initial;\n  const toggle = () => { on = !on; return on; };\n  return [() => on, toggle];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useToggleLogic(initial = false) {\n  let on = initial;\n  const toggle = () => { on = !on; return on; };\n  return [() => on, toggle];\n}\nconst [isOn, toggle] = useToggleLogic(false);\nconst next = toggle();",
     "hints": [
       "Write:\nfunction useToggleLogic(initial = false) {\n  let on = initial;\n  const toggle = () => { on = !on; return on; };\n  return [() => on, toggle];\n}\nconst [isOn, toggle] = useToggleLogic(false);\nconst next = toggle();"
@@ -5289,7 +5289,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useStorageMock(key, val) {\n  return { key, val, synced: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useStorageMock(key, val) {\n  return { key, val, synced: true };\n}\nconst hook = useStorageMock('theme', 'dark');",
     "hints": [
       "Write:\nfunction useStorageMock(key, val) {\n  return { key, val, synced: true };\n}\nconst hook = useStorageMock('theme', 'dark');"
@@ -5331,7 +5331,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useWindowSizeMock() {\n  return { width: 1024, height: 768 };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useWindowSizeMock() {\n  return { width: 1024, height: 768 };\n}\nconst sz = useWindowSizeMock();",
     "hints": [
       "Write:\nfunction useWindowSizeMock() {\n  return { width: 1024, height: 768 };\n}\nconst sz = useWindowSizeMock();"
@@ -5373,7 +5373,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function debounceLogic(val, delay) {\n  return { debouncedValue: val, delay };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function debounceLogic(val, delay) {\n  return { debouncedValue: val, delay };\n}\nconst d = debounceLogic('search', 300);",
     "hints": [
       "Write:\nfunction debounceLogic(val, delay) {\n  return { debouncedValue: val, delay };\n}\nconst d = debounceLogic('search', 300);"
@@ -5415,7 +5415,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useAsyncMock(url) {\n  return { url, loading: false, data: ['res'] };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useAsyncMock(url) {\n  return { url, loading: false, data: ['res'] };\n}\nconst query = useAsyncMock('/api');",
     "hints": [
       "Write:\nfunction useAsyncMock(url) {\n  return { url, loading: false, data: ['res'] };\n}\nconst query = useAsyncMock('/api');"
@@ -5457,7 +5457,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useMediaQueryMock(query) {\n  return query === '(min-width: 768px)';\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useMediaQueryMock(query) {\n  return query === '(min-width: 768px)';\n}\nconst isDesktop = useMediaQueryMock('(min-width: 768px)');",
     "hints": [
       "Write:\nfunction useMediaQueryMock(query) {\n  return query === '(min-width: 768px)';\n}\nconst isDesktop = useMediaQueryMock('(min-width: 768px)');"
@@ -5499,7 +5499,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useClickOutsideMock() {\n  return { attached: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useClickOutsideMock() {\n  return { attached: true };\n}\nconst hook = useClickOutsideMock();",
     "hints": [
       "Write:\nfunction useClickOutsideMock() {\n  return { attached: true };\n}\nconst hook = useClickOutsideMock();"
@@ -5541,7 +5541,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useIntervalMock(callback, delay) {\n  return { active: delay !== null };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useIntervalMock(callback, delay) {\n  return { active: delay !== null };\n}\nconst timer = useIntervalMock(() => {}, 1000);",
     "hints": [
       "Write:\nfunction useIntervalMock(callback, delay) {\n  return { active: delay !== null };\n}\nconst timer = useIntervalMock(() => {}, 1000);"
@@ -5583,7 +5583,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function usePrevMock(curr) {\n  return curr === 'now' ? 'before' : null;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function usePrevMock(curr) {\n  return curr === 'now' ? 'before' : null;\n}\nconst prev = usePrevMock('now');",
     "hints": [
       "Write:\nfunction usePrevMock(curr) {\n  return curr === 'now' ? 'before' : null;\n}\nconst prev = usePrevMock('now');"
@@ -5625,7 +5625,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useFormMock(initialValues) {\n  return { values: initialValues, errors: {}, isValid: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useFormMock(initialValues) {\n  return { values: initialValues, errors: {}, isValid: true };\n}\nconst form = useFormMock({ name: '' });",
     "hints": [
       "Write:\nfunction useFormMock(initialValues) {\n  return { values: initialValues, errors: {}, isValid: true };\n}\nconst form = useFormMock({ name: '' });"
@@ -5667,7 +5667,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useAuthenticatedUser(token) {\n  return { token, hasAccess: Boolean(token) };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useAuthenticatedUser(token) {\n  return { token, hasAccess: Boolean(token) };\n}\nconst auth = useAuthenticatedUser('jwt-secret');",
     "hints": [
       "Write:\nfunction useAuthenticatedUser(token) {\n  return { token, hasAccess: Boolean(token) };\n}\nconst auth = useAuthenticatedUser('jwt-secret');"
@@ -5709,7 +5709,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function testHookMock(hookFn) {\n  const result = hookFn();\n  return { result, passed: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function testHookMock(hookFn) {\n  const result = hookFn();\n  return { result, passed: true };\n}\nconst test = testHookMock(() => 'hook-value');",
     "hints": [
       "Write:\nfunction testHookMock(hookFn) {\n  const result = hookFn();\n  return { result, passed: true };\n}\nconst test = testHookMock(() => 'hook-value');"
@@ -5751,7 +5751,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function packageHook(name, version) {\n  return { name, version, isNpmReady: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function packageHook(name, version) {\n  return { name, version, isNpmReady: true };\n}\nconst pkg = packageHook('use-custom', '1.0.0');",
     "hints": [
       "Write:\nfunction packageHook(name, version) {\n  return { name, version, isNpmReady: true };\n}\nconst pkg = packageHook('use-custom', '1.0.0');"
@@ -5793,7 +5793,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function hookInterfaceDesign() {\n  return { tupleForSingles: [true, () => {}], objectForMany: { data: 1, loading: false, refetch: () => {} } };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function hookInterfaceDesign() {\n  return { tupleForSingles: [true, () => {}], objectForMany: { data: 1, loading: false, refetch: () => {} } };\n}\nconst iface = hookInterfaceDesign();",
     "hints": [
       "Write:\nfunction hookInterfaceDesign() {\n  return { tupleForSingles: [true, () => {}], objectForMany: { data: 1, loading: false, refetch: () => {} } };\n}\nconst iface = hookInterfaceDesign();"
@@ -5835,7 +5835,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createEnterpriseHooksSuite() {\n  return { isProductionGrade: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createEnterpriseHooksSuite() {\n  return { isProductionGrade: true };\n}\nconst suite = createEnterpriseHooksSuite();",
     "hints": [
       "Write:\nfunction createEnterpriseHooksSuite() {\n  return { isProductionGrade: true };\n}\nconst suite = createEnterpriseHooksSuite();"
@@ -5877,7 +5877,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function react19Overview() {\n  return { actions: true, useHook: true, serverComponents: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function react19Overview() {\n  return { actions: true, useHook: true, serverComponents: true };\n}\nconst r19 = react19Overview();",
     "hints": [
       "Write:\nfunction react19Overview() {\n  return { actions: true, useHook: true, serverComponents: true };\n}\nconst r19 = react19Overview();"
@@ -5919,7 +5919,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function readPromiseWithUse(resolvedValue) {\n  return `Resolved: ${resolvedValue}`;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function readPromiseWithUse(resolvedValue) {\n  return `Resolved: ${resolvedValue}`;\n}\nconst res = readPromiseWithUse('Data');",
     "hints": [
       "Write:\nfunction readPromiseWithUse(resolvedValue) {\n  return `Resolved: ${resolvedValue}`;\n}\nconst res = readPromiseWithUse('Data');"
@@ -5961,7 +5961,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function readContextWithUse(ctx) {\n  return ctx.theme;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function readContextWithUse(ctx) {\n  return ctx.theme;\n}\nconst theme = readContextWithUse({ theme: 'emerald' });",
     "hints": [
       "Write:\nfunction readContextWithUse(ctx) {\n  return ctx.theme;\n}\nconst theme = readContextWithUse({ theme: 'emerald' });"
@@ -6003,7 +6003,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function runAction(actionFn, data) {\n  return actionFn(data);\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function runAction(actionFn, data) {\n  return actionFn(data);\n}\nconst outcome = runAction((d) => `Updated ${d}`, 'profile');",
     "hints": [
       "Write:\nfunction runAction(actionFn, data) {\n  return actionFn(data);\n}\nconst outcome = runAction((d) => `Updated ${d}`, 'profile');"
@@ -6045,7 +6045,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useActionStateMock(action, initialState) {\n  return [initialState, (data) => data, false];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useActionStateMock(action, initialState) {\n  return [initialState, (data) => data, false];\n}\nconst [state, formAction, isPending] = useActionStateMock(() => {}, { count: 0 });",
     "hints": [
       "Write:\nfunction useActionStateMock(action, initialState) {\n  return [initialState, (data) => data, false];\n}\nconst [state, formAction, isPending] = useActionStateMock(() => {}, { count: 0 });"
@@ -6087,7 +6087,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useFormStatusMock() {\n  return { pending: false, data: null, method: 'POST' };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useFormStatusMock() {\n  return { pending: false, data: null, method: 'POST' };\n}\nconst status = useFormStatusMock();",
     "hints": [
       "Write:\nfunction useFormStatusMock() {\n  return { pending: false, data: null, method: 'POST' };\n}\nconst status = useFormStatusMock();"
@@ -6129,7 +6129,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function useOptimisticMock(current, updateFn) {\n  return [current, (optimisticVal) => updateFn(current, optimisticVal)];\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function useOptimisticMock(current, updateFn) {\n  return [current, (optimisticVal) => updateFn(current, optimisticVal)];\n}\nconst [optState, setOpt] = useOptimisticMock(['msg1'], (curr, val) => [...curr, val]);",
     "hints": [
       "Write:\nfunction useOptimisticMock(current, updateFn) {\n  return [current, (optimisticVal) => updateFn(current, optimisticVal)];\n}\nconst [optState, setOpt] = useOptimisticMock(['msg1'], (curr, val) => [...curr, val]);"
@@ -6171,7 +6171,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ModernComponent({ ref, label }) {\n  return { ref, label, noForwardRefNeeded: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function ModernComponent({ ref, label }) {\n  return { ref, label, noForwardRefNeeded: true };\n}\nconst comp = ModernComponent({ ref: {}, label: 'Input' });",
     "hints": [
       "Write:\nfunction ModernComponent({ ref, label }) {\n  return { ref, label, noForwardRefNeeded: true };\n}\nconst comp = ModernComponent({ ref: {}, label: 'Input' });"
@@ -6213,7 +6213,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class ErrorBoundaryMock {\n  static getDerivedStateFromError(error) {\n    return { hasError: true, errorMsg: error.message };\n  }\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "class ErrorBoundaryMock {\n  static getDerivedStateFromError(error) {\n    return { hasError: true, errorMsg: error.message };\n  }\n}\nconst errState = ErrorBoundaryMock.getDerivedStateFromError(new Error('Crash'));",
     "hints": [
       "Write:\nclass ErrorBoundaryMock {\n  static getDerivedStateFromError(error) {\n    return { hasError: true, errorMsg: error.message };\n  }\n}\nconst errState = ErrorBoundaryMock.getDerivedStateFromError(new Error('Crash'));"
@@ -6255,7 +6255,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function portalMock(node, target) {\n  return { node, target, isPortaled: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function portalMock(node, target) {\n  return { node, target, isPortaled: true };\n}\nconst p = portalMock('Modal', 'document.body');",
     "hints": [
       "Write:\nfunction portalMock(node, target) {\n  return { node, target, isPortaled: true };\n}\nconst p = portalMock('Modal', 'document.body');"
@@ -6297,7 +6297,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createHeadlessSelect() {\n  return { getButtonProps: () => ({ 'aria-expanded': false }), getItemProps: (i) => ({ role: 'option' }) };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function createHeadlessSelect() {\n  return { getButtonProps: () => ({ 'aria-expanded': false }), getItemProps: (i) => ({ role: 'option' }) };\n}\nconst select = createHeadlessSelect();",
     "hints": [
       "Write:\nfunction createHeadlessSelect() {\n  return { getButtonProps: () => ({ 'aria-expanded': false }), getItemProps: (i) => ({ role: 'option' }) };\n}\nconst select = createHeadlessSelect();"
@@ -6339,7 +6339,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "const Tabs = { Tab: () => 'Tab', Panel: () => 'Panel' };",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "const Tabs = { Tab: () => 'Tab', Panel: () => 'Panel' };",
     "hints": [
       "Write:\nconst Tabs = { Tab: () => 'Tab', Panel: () => 'Panel' };"
@@ -6381,7 +6381,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function stateReducerInversion(state, action, customReducer) {\n  return customReducer ? customReducer(state, action) : state;\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function stateReducerInversion(state, action, customReducer) {\n  return customReducer ? customReducer(state, action) : state;\n}\nconst res = stateReducerInversion(1, { type: 'ADD' }, (s) => s + 10);",
     "hints": [
       "Write:\nfunction stateReducerInversion(state, action, customReducer) {\n  return customReducer ? customReducer(state, action) : state;\n}\nconst res = stateReducerInversion(1, { type: 'ADD' }, (s) => s + 10);"
@@ -6423,7 +6423,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rscArchitecture() {\n  return { executesOn: 'Server', zeroClientBundle: true };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function rscArchitecture() {\n  return { executesOn: 'Server', zeroClientBundle: true };\n}\nconst rsc = rscArchitecture();",
     "hints": [
       "Write:\nfunction rscArchitecture() {\n  return { executesOn: 'Server', zeroClientBundle: true };\n}\nconst rsc = rscArchitecture();"
@@ -6465,7 +6465,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function queryStateMock() {\n  return { data: ['cached'], isLoading: false, isStale: false };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function queryStateMock() {\n  return { data: ['cached'], isLoading: false, isStale: false };\n}\nconst q = queryStateMock();",
     "hints": [
       "Write:\nfunction queryStateMock() {\n  return { data: ['cached'], isLoading: false, isStale: false };\n}\nconst q = queryStateMock();"
@@ -6507,7 +6507,7 @@ export const REACT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function assembleProductionApp() {\n  return { status: 'Production-Ready', architecture: 'React 19 Enterprise' };\n}",
+    "initialCode": "// Step 1: Write your React component or hook below\n// TODO: Write code below\n",
     "solutionCode": "function assembleProductionApp() {\n  return { status: 'Production-Ready', architecture: 'React 19 Enterprise' };\n}\nconst app = assembleProductionApp();",
     "hints": [
       "Write:\nfunction assembleProductionApp() {\n  return { status: 'Production-Ready', architecture: 'React 19 Enterprise' };\n}\nconst app = assembleProductionApp();"

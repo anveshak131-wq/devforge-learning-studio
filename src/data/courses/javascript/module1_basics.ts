@@ -33,9 +33,7 @@ console.log("Welcome to JavaScript!");
       'Print "Hello, World!" to the screen using console.log().',
       'Click "Check Answer" to test.'
     ],
-    initialCode: `// 👉 Step 1: Print "Hello, World!" below:
-console.log("Hello, World!");
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `console.log("Hello, World!");
 `,
     hints: ['Write `console.log("Hello, World!");`'],
@@ -85,9 +83,7 @@ console.log(score);`,
       'Add a single-line comment starting with `//` on line 1.',
       'Print `"Comments active"` using `console.log("Comments active");`.'
     ],
-    initialCode: `// This is my comment
-console.log("Comments active");
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `// This is my comment
 console.log("Comments active");
 `,
@@ -136,10 +132,7 @@ console.log(points);`,
       'Update `coins = 50;`.',
       'Print `coins`.'
     ],
-    initialCode: `let coins = 10;
-coins = 50;
-console.log(coins);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let coins = 10;
 coins = 50;
 console.log(coins);
@@ -187,9 +180,7 @@ console.log(appTitle);`,
       'Create `const maxLives = 3;`.',
       'Print `maxLives`.'
     ],
-    initialCode: `const maxLives = 3;
-console.log(maxLives);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `const maxLives = 3;
 console.log(maxLives);
 `,
@@ -239,11 +230,7 @@ console.log(greeting);`,
       'Create `let location = city + ", " + country;`.',
       'Print `location`.'
     ],
-    initialCode: `let city = "Tokyo";
-let country = "Japan";
-let location = city + ", " + country;
-console.log(location);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let city = "Tokyo";
 let country = "Japan";
 let location = city + ", " + country;
@@ -293,9 +280,7 @@ console.log(price);`,
       'Create `let userAge = 25;`.',
       'Print `userAge`.'
     ],
-    initialCode: `let userAge = 25;
-console.log(userAge);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let userAge = 25;
 console.log(userAge);
 `,
@@ -342,9 +327,7 @@ console.log("Playing: " + isPlaying);`,
       'Create `let isVerified = true;`.',
       'Print `isVerified`.'
     ],
-    initialCode: `let isVerified = true;
-console.log(isVerified);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let isVerified = true;
 console.log(isVerified);
 `,
@@ -394,9 +377,7 @@ console.log(activeUser);`,
       'Create `let selectedItem = null;`.',
       'Print `selectedItem`.'
     ],
-    initialCode: `let selectedItem = null;
-console.log(selectedItem);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let selectedItem = null;
 console.log(selectedItem);
 `,
@@ -444,13 +425,7 @@ console.log(\`User \${user} has role: \${role}\`);`,
       'Look at `hero = "Robin"` and `level = 10`.',
       'Use backticks to format: `Hero ${hero} is level ${level}` and log it.'
     ],
-    initialCode: `let hero = "Robin";
-let level = 10;
-
-// 👉 Step 1: Format string with backticks:
-let message = \`Hero \${hero} is level \${level}\`;
-console.log(message);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let hero = "Robin";
 let level = 10;
 let message = \`Hero \${hero} is level \${level}\`;
@@ -499,10 +474,7 @@ console.log(word.length);`,
       'Create `let count = codeWord.length;`.',
       'Print `count`.'
     ],
-    initialCode: `let codeWord = "Supercalifragilistic";
-let count = codeWord.length;
-console.log(count);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let codeWord = "Supercalifragilistic";
 let count = codeWord.length;
 console.log(count);
@@ -551,10 +523,7 @@ console.log(typeof val);`,
       'Create `let resultType = typeof active;`.',
       'Print `resultType`.'
     ],
-    initialCode: `let active = true;
-let resultType = typeof active;
-console.log(resultType);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `let active = true;
 let resultType = typeof active;
 console.log(resultType);
@@ -606,11 +575,7 @@ console.log(badge);`,
       'Create `let card = `Member: ${handle} (ID: ${memberId})`;`.',
       'Print `card` to complete Module 1!'
     ],
-    initialCode: `const memberId = 404;
-let handle = "coder_neo";
-let card = \`Member: \${handle} (ID: \${memberId})\`;
-console.log(card);
-`,
+    initialCode: `// Step 1: Write your JavaScript code below\n// TODO: Write code below\n`,
     solutionCode: `const memberId = 404;
 let handle = "coder_neo";
 let card = \`Member: \${handle} (ID: \${memberId})\`;

@@ -30,7 +30,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `let id: string | number = 'user-101'; id = 101;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet id: string | number = 'user-101'; id = 101;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let id: string | number = 'user-101'; id = 101;\n",
     "hints": [
       "Write: let id: string | number = 'user-101'; id = 101;"
@@ -72,7 +72,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `type HasName = { name: string }; type HasAge = { age: number }; type Person = HasName & HasAge; let p: Person = { name: 'Eve', age: 24 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype HasName = { name: string }; type HasAge = { age: number }; type Person = HasName & HasAge; let p: Person = { name: 'Eve', age: 24 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type HasName = { name: string }; type HasAge = { age: number }; type Person = HasName & HasAge; let p: Person = { name: 'Eve', age: 24 };\n",
     "hints": [
       "Write: type HasName = { name: string }; type HasAge = { age: number }; type Person = HasName & HasAge; let p: Person = { name: 'Eve', age: 24 };"
@@ -114,7 +114,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `type Success = { status: 'success'; data: string }; type Failure = { status: 'error'; message: string }; type Result = Success | Failure; let r: Result = { status: 'success', data: 'OK' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Success = { status: 'success'; data: string }; type Failure = { status: 'error'; message: string }; type Result = Success | Failure; let r: Result = { status: 'success', data: 'OK' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Success = { status: 'success'; data: string }; type Failure = { status: 'error'; message: string }; type Result = Success | Failure; let r: Result = { status: 'success', data: 'OK' };\n",
     "hints": [
       "Write: type Success = { status: 'success'; data: string }; type Failure = { status: 'error'; message: string }; type Result = Success | Failure; let r: Result = { status: 'success', data: 'OK' };"
@@ -156,7 +156,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `function stringify(val: string | number): string { if (typeof val === 'number') return String(val); return val; } let s = stringify(42);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction stringify(val: string | number): string { if (typeof val === 'number') return String(val); return val; } let s = stringify(42);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function stringify(val: string | number): string { if (typeof val === 'number') return String(val); return val; } let s = stringify(42);\n",
     "hints": [
       "Write: function stringify(val: string | number): string { if (typeof val === 'number') return String(val); return val; } let s = stringify(42);"
@@ -198,7 +198,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `function formatInput(val: string | Date): string { if (val instanceof Date) return val.toISOString(); return val; } let out = formatInput('custom');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction formatInput(val: string | Date): string { if (val instanceof Date) return val.toISOString(); return val; } let out = formatInput('custom');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function formatInput(val: string | Date): string { if (val instanceof Date) return val.toISOString(); return val; } let out = formatInput('custom');\n",
     "hints": [
       "Write: function formatInput(val: string | Date): string { if (val instanceof Date) return val.toISOString(); return val; } let out = formatInput('custom');"
@@ -240,7 +240,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `type Cat = { meow(): string }; type Dog = { bark(): string }; function speak(pet: Cat | Dog) { if ('meow' in pet) return pet.meow(); return pet.bark(); } let sound = speak({ meow: () => 'meow' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Cat = { meow(): string }; type Dog = { bark(): string }; function speak(pet: Cat | Dog) { if ('meow' in pet) return pet.meow(); return pet.bark(); } let sound = speak({ meow: () => 'meow' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Cat = { meow(): string }; type Dog = { bark(): string }; function speak(pet: Cat | Dog) { if ('meow' in pet) return pet.meow(); return pet.bark(); } let sound = speak({ meow: () => 'meow' });\n",
     "hints": [
       "Write: type Cat = { meow(): string }; type Dog = { bark(): string }; function speak(pet: Cat | Dog) { if ('meow' in pet) return pet.meow(); return pet.bark(); } let sound = speak({ meow: () => 'meow' });"
@@ -282,7 +282,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `function printLen(str: string | null): number { if (str) return str.length; return 0; } let len = printLen('hello');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction printLen(str: string | null): number { if (str) return str.length; return 0; } let len = printLen('hello');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function printLen(str: string | null): number { if (str) return str.length; return 0; } let len = printLen('hello');\n",
     "hints": [
       "Write: function printLen(str: string | null): number { if (str) return str.length; return 0; } let len = printLen('hello');"
@@ -324,7 +324,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `function compare(x: string | number, y: string | boolean) { if (x === y) return 'identical'; return 'different'; } let res = compare('test', 'test');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction compare(x: string | number, y: string | boolean) { if (x === y) return 'identical'; return 'different'; } let res = compare('test', 'test');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function compare(x: string | number, y: string | boolean) { if (x === y) return 'identical'; return 'different'; } let res = compare('test', 'test');\n",
     "hints": [
       "Write: function compare(x: string | number, y: string | boolean) { if (x === y) return 'identical'; return 'different'; } let res = compare('test', 'test');"
@@ -366,7 +366,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `type Action = 'start' | 'stop'; function handle(a: Action) { switch(a) { case 'start': return 1; case 'stop': return 0; } } let code = handle('start');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Action = 'start' | 'stop'; function handle(a: Action) { switch(a) { case 'start': return 1; case 'stop': return 0; } } let code = handle('start');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Action = 'start' | 'stop'; function handle(a: Action) { switch(a) { case 'start': return 1; case 'stop': return 0; } } let code = handle('start');\n",
     "hints": [
       "Write: type Action = 'start' | 'stop'; function handle(a: Action) { switch(a) { case 'start': return 1; case 'stop': return 0; } } let code = handle('start');"
@@ -408,7 +408,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `function isString(val: unknown): val is string { return typeof val === 'string'; } let check = isString('hello');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction isString(val: unknown): val is string { return typeof val === 'string'; } let check = isString('hello');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function isString(val: unknown): val is string { return typeof val === 'string'; } let check = isString('hello');\n",
     "hints": [
       "Write: function isString(val: unknown): val is string { return typeof val === 'string'; } let check = isString('hello');"
@@ -450,7 +450,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `function assertNumber(val: any): asserts val is number { if (typeof val !== 'number') throw new Error('Not number'); } let n = 10; assertNumber(n);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction assertNumber(val: any): asserts val is number { if (typeof val !== 'number') throw new Error('Not number'); } let n = 10; assertNumber(n);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function assertNumber(val: any): asserts val is number { if (typeof val !== 'number') throw new Error('Not number'); } let n = 10; assertNumber(n);\n",
     "hints": [
       "Write: function assertNumber(val: any): asserts val is number { if (typeof val !== 'number') throw new Error('Not number'); } let n = 10; assertNumber(n);"
@@ -492,7 +492,7 @@ export const tsModule5Lessons: Lesson[] = [
       "Enter the code: `type State = { status: 'idle' } | { status: 'loading' } | { status: 'ready'; data: string }; let curr: State = { status: 'ready', data: 'Done' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype State = { status: 'idle' } | { status: 'loading' } | { status: 'ready'; data: string }; let curr: State = { status: 'ready', data: 'Done' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type State = { status: 'idle' } | { status: 'loading' } | { status: 'ready'; data: string }; let curr: State = { status: 'ready', data: 'Done' };\n",
     "hints": [
       "Write: type State = { status: 'idle' } | { status: 'loading' } | { status: 'ready'; data: string }; let curr: State = { status: 'ready', data: 'Done' };"

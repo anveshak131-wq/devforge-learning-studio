@@ -29,7 +29,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Check if `[1, 3, 5, 8]` has any even number with `.some(n => n % 2 === 0)`. Assign to `let hasEven`.",
       "Print `hasEven`."
     ],
-    "initialCode": "let hasEven = [1, 3, 5, 8].some(n => n % 2 === 0);\nconsole.log(hasEven);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let hasEven = [1, 3, 5, 8].some(n => n % 2 === 0);\nconsole.log(hasEven);\n",
     "hints": [
       "Write `.some(n => n % 2 === 0)`"
@@ -70,7 +70,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Check if all in `[10, 20, 30]` are `>= 10`. Assign to `let allTens = [10, 20, 30].every(x => x >= 10);`.",
       "Print `allTens`."
     ],
-    "initialCode": "let allTens = [10, 20, 30].every(x => x >= 10);\nconsole.log(allTens);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let allTens = [10, 20, 30].every(x => x >= 10);\nconsole.log(allTens);\n",
     "hints": [
       "Use `.every(x => x >= 10)`"
@@ -111,7 +111,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Sort `[30, 10, 20]` ascending with `.sort((a, b) => a - b);`. Assign to `let sorted`.",
       "Print `sorted`."
     ],
-    "initialCode": "let sorted = [30, 10, 20].sort((a, b) => a - b);\nconsole.log(sorted);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let sorted = [30, 10, 20].sort((a, b) => a - b);\nconsole.log(sorted);\n",
     "hints": [
       "Write `.sort((a, b) => a - b)`"
@@ -151,7 +151,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Flatten `[[10, 20], [30, 40]]` using `.flat()`. Assign to `let flatArr`.",
       "Print `flatArr.length`."
     ],
-    "initialCode": "let flatArr = [[10, 20], [30, 40]].flat();\nconsole.log(flatArr.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let flatArr = [[10, 20], [30, 40]].flat();\nconsole.log(flatArr.length);\n",
     "hints": [
       "Call `.flat()`"
@@ -192,7 +192,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Use `.flatMap(x => [x, x])` on `[1, 2]`. Assign to `let doubledList`.",
       "Print `doubledList`."
     ],
-    "initialCode": "let doubledList = [1, 2].flatMap(x => [x, x]);\nconsole.log(doubledList);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let doubledList = [1, 2].flatMap(x => [x, x]);\nconsole.log(doubledList);\n",
     "hints": [
       "Use `.flatMap(x => [x, x])`"
@@ -233,7 +233,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Destructure `const [first, second] = [\"A\", \"B\"];`.",
       "Print `first + second`."
     ],
-    "initialCode": "const [first, second] = [\"A\", \"B\"];\nconsole.log(first + second);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "const [first, second] = [\"A\", \"B\"];\nconsole.log(first + second);\n",
     "hints": [
       "Write `const [first, second] = [\"A\", \"B\"];`"
@@ -274,7 +274,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Destructure `let [top, ...others] = [100, 80, 70];`.",
       "Print `others.length`."
     ],
-    "initialCode": "let [top, ...others] = [100, 80, 70];\nconsole.log(others.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let [top, ...others] = [100, 80, 70];\nconsole.log(others.length);\n",
     "hints": [
       "Write `let [top, ...others] = [100, 80, 70];`"
@@ -315,7 +315,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Combine `[1, 2]` and `[3, 4]` using spread: `let all = [...[1, 2], ...[3, 4]];`.",
       "Print `all.length`."
     ],
-    "initialCode": "let all = [...[1, 2], ...[3, 4]];\nconsole.log(all.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let all = [...[1, 2], ...[3, 4]];\nconsole.log(all.length);\n",
     "hints": [
       "Write `let all = [...[1, 2], ...[3, 4]];`"
@@ -355,7 +355,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Convert `'Dev'` into an array using `Array.from('Dev')`. Assign to `let arr`.",
       "Print `arr.length`."
     ],
-    "initialCode": "let arr = Array.from('Dev');\nconsole.log(arr.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let arr = Array.from('Dev');\nconsole.log(arr.length);\n",
     "hints": [
       "Use `Array.from('Dev')`"
@@ -396,7 +396,7 @@ export const MODULE_8_LESSONS: Lesson[] = [
       "Check `Array.isArray(['test'])`. Assign to `let check`.",
       "Print `check`."
     ],
-    "initialCode": "let check = Array.isArray(['test']);\nconsole.log(check);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let check = Array.isArray(['test']);\nconsole.log(check);\n",
     "hints": [
       "Use `Array.isArray(['test'])`"

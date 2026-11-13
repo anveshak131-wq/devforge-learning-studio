@@ -30,7 +30,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT name, price, (SELECT AVG(price) FROM products) AS avg_price FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price, (SELECT AVG(price) FROM products) AS avg_price FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price, (SELECT AVG(price) FROM products) AS avg_price FROM products;\n",
     "hints": [
       "Execute: SELECT name, price, (SELECT AVG(price) FROM products) AS avg_price FROM products;"
@@ -73,7 +73,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT name, price - (SELECT AVG(price) FROM products) AS diff FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price - (SELECT AVG(price) FROM products) AS diff FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price - (SELECT AVG(price) FROM products) AS diff FROM products;\n",
     "hints": [
       "Execute: SELECT name, price - (SELECT AVG(price) FROM products) AS diff FROM products;"
@@ -116,7 +116,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);\n",
     "hints": [
       "Execute: SELECT * FROM products WHERE price > (SELECT AVG(price) FROM products);"
@@ -159,7 +159,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE id IN (SELECT user_id FROM orders WHERE status = 'completed');`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE id IN (SELECT user_id FROM orders WHERE status = 'completed');\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE id IN (SELECT user_id FROM orders WHERE status = 'completed');\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE id IN (SELECT user_id FROM orders WHERE status = 'completed');"
@@ -202,7 +202,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE id NOT IN (SELECT user_id FROM orders);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE id NOT IN (SELECT user_id FROM orders);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE id NOT IN (SELECT user_id FROM orders);\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE id NOT IN (SELECT user_id FROM orders);"
@@ -245,7 +245,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT AVG(amount) AS avg_completed FROM (SELECT amount FROM orders WHERE status = 'completed') sub;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT AVG(amount) AS avg_completed FROM (SELECT amount FROM orders WHERE status = 'completed') sub;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT AVG(amount) AS avg_completed FROM (SELECT amount FROM orders WHERE status = 'completed') sub;\n",
     "hints": [
       "Execute: SELECT AVG(amount) AS avg_completed FROM (SELECT amount FROM orders WHERE status = 'completed') sub;"
@@ -288,7 +288,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT u.name FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);\n",
     "hints": [
       "Execute: SELECT u.name FROM users u WHERE EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);"
@@ -331,7 +331,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT u.name FROM users u WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name FROM users u WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name FROM users u WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);\n",
     "hints": [
       "Execute: SELECT u.name FROM users u WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.user_id = u.id);"
@@ -374,7 +374,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT o.id, o.amount FROM orders o WHERE o.amount >= (SELECT AVG(amount) FROM orders);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT o.id, o.amount FROM orders o WHERE o.amount >= (SELECT AVG(amount) FROM orders);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT o.id, o.amount FROM orders o WHERE o.amount >= (SELECT AVG(amount) FROM orders);\n",
     "hints": [
       "Execute: SELECT o.id, o.amount FROM orders o WHERE o.amount >= (SELECT AVG(amount) FROM orders);"
@@ -417,7 +417,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders WHERE amount = (SELECT MAX(amount) FROM orders);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders WHERE amount = (SELECT MAX(amount) FROM orders);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders WHERE amount = (SELECT MAX(amount) FROM orders);\n",
     "hints": [
       "Execute: SELECT * FROM orders WHERE amount = (SELECT MAX(amount) FROM orders);"
@@ -460,7 +460,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT name, category, price FROM products WHERE price >= 200;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, category, price FROM products WHERE price >= 200;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, category, price FROM products WHERE price >= 200;\n",
     "hints": [
       "Execute: SELECT name, category, price FROM products WHERE price >= 200;"
@@ -503,7 +503,7 @@ export const sqlModule7Lessons: Lesson[] = [
       "Write the query: `SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE amount > (SELECT AVG(amount) FROM orders));`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE amount > (SELECT AVG(amount) FROM orders));\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE amount > (SELECT AVG(amount) FROM orders));\n",
     "hints": [
       "Execute: SELECT name FROM users WHERE id IN (SELECT user_id FROM orders WHERE amount > (SELECT AVG(amount) FROM orders));"

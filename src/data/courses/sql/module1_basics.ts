@@ -30,7 +30,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users;\n",
     "hints": [
       "Execute: SELECT * FROM users;"
@@ -73,7 +73,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT name, email FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, email FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, email FROM users;\n",
     "hints": [
       "Execute: SELECT name, email FROM users;"
@@ -116,7 +116,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT name AS full_name FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name AS full_name FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name AS full_name FROM users;\n",
     "hints": [
       "Execute: SELECT name AS full_name FROM users;"
@@ -159,7 +159,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT DISTINCT country FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT DISTINCT country FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT DISTINCT country FROM users;\n",
     "hints": [
       "Execute: SELECT DISTINCT country FROM users;"
@@ -202,7 +202,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products LIMIT 3;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products LIMIT 3;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products LIMIT 3;\n",
     "hints": [
       "Execute: SELECT * FROM products LIMIT 3;"
@@ -245,7 +245,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products LIMIT 3 OFFSET 2;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products LIMIT 3 OFFSET 2;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products LIMIT 3 OFFSET 2;\n",
     "hints": [
       "Execute: SELECT * FROM products LIMIT 3 OFFSET 2;"
@@ -288,7 +288,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT name, price * stock AS total_value FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price * stock AS total_value FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price * stock AS total_value FROM products;\n",
     "hints": [
       "Execute: SELECT name, price * stock AS total_value FROM products;"
@@ -331,7 +331,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT name, 'Customer' AS user_type FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, 'Customer' AS user_type FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, 'Customer' AS user_type FROM users;\n",
     "hints": [
       "Execute: SELECT name, 'Customer' AS user_type FROM users;"
@@ -374,7 +374,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT name, price FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price FROM products;\n",
     "hints": [
       "Execute: SELECT name, price FROM products;"
@@ -417,7 +417,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, status FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, status FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, status FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, status FROM orders;"
@@ -460,7 +460,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `-- Query all active users\nSELECT * FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\n-- Query all active users\nSELECT * FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "-- Query all active users\nSELECT * FROM users;\n",
     "hints": [
       "Execute: -- Query all active users\nSELECT * FROM users;"
@@ -503,7 +503,7 @@ export const sqlModule1Lessons: Lesson[] = [
       "Write the query: `SELECT name, role, country FROM users LIMIT 4;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, role, country FROM users LIMIT 4;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, role, country FROM users LIMIT 4;\n",
     "hints": [
       "Execute: SELECT name, role, country FROM users LIMIT 4;"

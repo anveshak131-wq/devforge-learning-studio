@@ -39,7 +39,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    println!(\"Hello, DevForge Rustaceans!\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Hello, DevForge Rustaceans!\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Hello, DevForge Rustaceans!\");\n}"
@@ -81,8 +81,8 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "// Cargo commands:\n// cargo new my_app\n// cargo check\n// cargo build --release\nfn main() {\n    println!(\"Cargo initialized\");\n}",
-    "solutionCode": "fn main() {\n    println!(\"Cargo initialized\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Print Cargo confirmation\n    // TODO: Write code below\n}\n",
+    "solutionCode": "fn main() {\n    println!(\"Cargo initialized\");\n}\n",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Cargo initialized\");\n}"
     ],
@@ -90,7 +90,7 @@ export const RUST_TRACK: Track = {
       {
         "id": "rust-2-tc-1",
         "description": "Verifies correct implementation for Cargo: Rust's Official Package Manager & Build Tool",
-        "testFn": "code.includes('Cargo') || code.includes('println!')"
+        "testFn": "logs.some(l => l.args.join(' ').toLowerCase().includes('cargo'))"
       }
     ]
   },
@@ -123,7 +123,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    println!(\"Execution begins at main\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Execution begins at main\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Execution begins at main\");\n}"
@@ -165,7 +165,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut score = 100;\n    score += 50;\n    println!(\"Score: {}\", score);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut score = 100;\n    score += 50;\n    println!(\"Score: {}\", score);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut score = 100;\n    score += 50;\n    println!(\"Score: {}\", score);\n}"
@@ -207,7 +207,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let spaces = \"   \";\n    let spaces = spaces.len();\n    println!(\"Spaces count: {}\", spaces);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let spaces = \"   \";\n    let spaces = spaces.len();\n    println!(\"Spaces count: {}\", spaces);\n}",
     "hints": [
       "Write:\nfn main() {\n    let spaces = \"   \";\n    let spaces = spaces.len();\n    println!(\"Spaces count: {}\", spaces);\n}"
@@ -249,7 +249,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "const MAX_POINTS: u32 = 100_000;\n\nfn main() {\n    println!(\"Max: {}\", MAX_POINTS);\n}",
+    "initialCode": "const MAX_POINTS: u32 = 100_000;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "const MAX_POINTS: u32 = 100_000;\n\nfn main() {\n    println!(\"Max: {}\", MAX_POINTS);\n}",
     "hints": [
       "Write:\nconst MAX_POINTS: u32 = 100_000;\n\nfn main() {\n    println!(\"Max: {}\", MAX_POINTS);\n}"
@@ -291,7 +291,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let small: i8 = -128;\n    let counter: usize = 42;\n    println!(\"{} {}\", small, counter);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let small: i8 = -128;\n    let counter: usize = 42;\n    println!(\"{} {}\", small, counter);\n}",
     "hints": [
       "Write:\nfn main() {\n    let small: i8 = -128;\n    let counter: usize = 42;\n    println!(\"{} {}\", small, counter);\n}"
@@ -333,7 +333,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let num: u8 = 255;\n    let wrapped = num.wrapping_add(1);\n    println!(\"Wrapped: {}\", wrapped);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let num: u8 = 255;\n    let wrapped = num.wrapping_add(1);\n    println!(\"Wrapped: {}\", wrapped);\n}",
     "hints": [
       "Write:\nfn main() {\n    let num: u8 = 255;\n    let wrapped = num.wrapping_add(1);\n    println!(\"Wrapped: {}\", wrapped);\n}"
@@ -375,7 +375,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let pi: f64 = 3.141592653589793;\n    let ratio: f32 = 2.5;\n    println!(\"Pi: {}, Ratio: {}\", pi, ratio);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let pi: f64 = 3.141592653589793;\n    let ratio: f32 = 2.5;\n    println!(\"Pi: {}, Ratio: {}\", pi, ratio);\n}",
     "hints": [
       "Write:\nfn main() {\n    let pi: f64 = 3.141592653589793;\n    let ratio: f32 = 2.5;\n    println!(\"Pi: {}, Ratio: {}\", pi, ratio);\n}"
@@ -417,7 +417,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let is_active = true;\n    let is_verified: bool = false;\n    let can_access = is_active && !is_verified;\n    println!(\"Access: {}\", can_access);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let is_active = true;\n    let is_verified: bool = false;\n    let can_access = is_active && !is_verified;\n    println!(\"Access: {}\", can_access);\n}",
     "hints": [
       "Write:\nfn main() {\n    let is_active = true;\n    let is_verified: bool = false;\n    let can_access = is_active && !is_verified;\n    println!(\"Access: {}\", can_access);\n}"
@@ -459,7 +459,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let heart = '\u2764';\n    let letter: char = 'Z';\n    println!(\"{} {}\", heart, letter);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let heart = '\u2764';\n    let letter: char = 'Z';\n    println!(\"{} {}\", heart, letter);\n}",
     "hints": [
       "Write:\nfn main() {\n    let heart = '\u2764';\n    let letter: char = 'Z';\n    println!(\"{} {}\", heart, letter);\n}"
@@ -501,7 +501,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let point: (i32, f64, &str) = (500, 6.4, \"origin\");\n    let (x, y, label) = point;\n    println!(\"{} {} {}\", x, y, label);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let point: (i32, f64, &str) = (500, 6.4, \"origin\");\n    let (x, y, label) = point;\n    println!(\"{} {} {}\", x, y, label);\n}",
     "hints": [
       "Write:\nfn main() {\n    let point: (i32, f64, &str) = (500, 6.4, \"origin\");\n    let (x, y, label) = point;\n    println!(\"{} {} {}\", x, y, label);\n}"
@@ -543,7 +543,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn do_nothing() -> () {\n    // Implicitly returns unit ()\n}\n\nfn main() {\n    let res = do_nothing();\n    println!(\"{:?}\", res);\n}",
+    "initialCode": "fn do_nothing() -> () {\n    // Implicitly returns unit ()\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn do_nothing() -> () {\n}\n\nfn main() {\n    let res = do_nothing();\n    println!(\"{:?}\", res);\n}",
     "hints": [
       "Write:\nfn do_nothing() -> () {\n}\n\nfn main() {\n    let res = do_nothing();\n    println!(\"{:?}\", res);\n}"
@@ -585,7 +585,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let numbers: [i32; 4] = [10, 20, 30, 40];\n    println!(\"First: {}, Len: {}\", numbers[0], numbers.len());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let numbers: [i32; 4] = [10, 20, 30, 40];\n    println!(\"First: {}, Len: {}\", numbers[0], numbers.len());\n}",
     "hints": [
       "Write:\nfn main() {\n    let numbers: [i32; 4] = [10, 20, 30, 40];\n    println!(\"First: {}, Len: {}\", numbers[0], numbers.len());\n}"
@@ -627,7 +627,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let system = \"DevForge Rust Core\";\n    let version = 1.80;\n    println!(\"Ready: {} v{}\", system, version);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let system = \"DevForge Rust Core\";\n    let version = 1.80;\n    println!(\"Ready: {} v{}\", system, version);\n}",
     "hints": [
       "Write:\nfn main() {\n    let system = \"DevForge Rust Core\";\n    let version = 1.80;\n    println!(\"Ready: {} v{}\", system, version);\n}"
@@ -669,7 +669,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // 1. Each value has an owner variable.\n    // 2. Only one owner at any time.\n    // 3. When owner goes out of scope, value is dropped.\n    println!(\"Ownership rules loaded\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Ownership rules loaded\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Ownership rules loaded\");\n}"
@@ -711,7 +711,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let stack_val = 42; // Fast, fixed size on Stack\n    let heap_val = String::from(\"Allocated on Heap\");\n    println!(\"{} - {}\", stack_val, heap_val);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let stack_val = 42;\n    let heap_val = String::from(\"Allocated on Heap\");\n    println!(\"{} - {}\", stack_val, heap_val);\n}",
     "hints": [
       "Write:\nfn main() {\n    let stack_val = 42;\n    let heap_val = String::from(\"Allocated on Heap\");\n    println!(\"{} - {}\", stack_val, heap_val);\n}"
@@ -753,7 +753,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut s = String::from(\"hello\");\n    s.push_str(\", world\");\n    println!(\"{}\", s);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut s = String::from(\"hello\");\n    s.push_str(\", world\");\n    println!(\"{}\", s);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut s = String::from(\"hello\");\n    s.push_str(\", world\");\n    println!(\"{}\", s);\n}"
@@ -795,7 +795,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1; // s1 MOVES to s2; s1 is invalidated!\n    println!(\"{}\", s2);\n    // println!(\"{}\", s1); // COMPILE ERROR!\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1;\n    println!(\"{}\", s2);\n}",
     "hints": [
       "Write:\nfn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1;\n    println!(\"{}\", s2);\n}"
@@ -837,7 +837,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1.clone(); // Full heap duplication\n    println!(\"s1: {}, s2: {}\", s1, s2);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1.clone();\n    println!(\"s1: {}, s2: {}\", s1, s2);\n}",
     "hints": [
       "Write:\nfn main() {\n    let s1 = String::from(\"hello\");\n    let s2 = s1.clone();\n    println!(\"s1: {}, s2: {}\", s1, s2);\n}"
@@ -879,7 +879,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let x = 5;\n    let y = x; // Copied, not moved!\n    println!(\"x: {}, y: {}\", x, y);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let x = 5;\n    let y = x;\n    println!(\"x: {}, y: {}\", x, y);\n}",
     "hints": [
       "Write:\nfn main() {\n    let x = 5;\n    let y = x;\n    println!(\"x: {}, y: {}\", x, y);\n}"
@@ -921,7 +921,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn take_ownership(s: String) {\n    println!(\"Consumed: {}\", s);\n}\n\nfn main() {\n    let name = String::from(\"Ferris\");\n    take_ownership(name);\n    // 'name' is moved and cannot be used here!\n}",
+    "initialCode": "fn take_ownership(s: String) {\n    println!(\"Consumed: {}\", s);\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn take_ownership(s: String) {\n    println!(\"Consumed: {}\", s);\n}\n\nfn main() {\n    let name = String::from(\"Ferris\");\n    take_ownership(name);\n}",
     "hints": [
       "Write:\nfn take_ownership(s: String) {\n    println!(\"Consumed: {}\", s);\n}\n\nfn main() {\n    let name = String::from(\"Ferris\");\n    take_ownership(name);\n}"
@@ -963,7 +963,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn give_ownership() -> String {\n    String::from(\"Generated in function\")\n}\n\nfn main() {\n    let received = give_ownership();\n    println!(\"{}\", received);\n}",
+    "initialCode": "fn give_ownership() -> String {\n    String::from(\"Generated in function\")\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn give_ownership() -> String {\n    String::from(\"Generated in function\")\n}\n\nfn main() {\n    let received = give_ownership();\n    println!(\"{}\", received);\n}",
     "hints": [
       "Write:\nfn give_ownership() -> String {\n    String::from(\"Generated in function\")\n}\n\nfn main() {\n    let received = give_ownership();\n    println!(\"{}\", received);\n}"
@@ -1005,7 +1005,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    {\n        let inner = String::from(\"temporary\");\n        println!(\"{}\", inner);\n    } // inner is automatically deallocated HERE!\n    println!(\"Scope closed\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    {\n        let inner = String::from(\"temporary\");\n        println!(\"{}\", inner);\n    }\n    println!(\"Scope closed\");\n}",
     "hints": [
       "Write:\nfn main() {\n    {\n        let inner = String::from(\"temporary\");\n        println!(\"{}\", inner);\n    }\n    println!(\"Scope closed\");\n}"
@@ -1047,7 +1047,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let item = String::from(\"heavy asset\");\n    drop(item); // Manually released early\n    println!(\"Dropped early\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let item = String::from(\"heavy asset\");\n    drop(item);\n    println!(\"Dropped early\");\n}",
     "hints": [
       "Write:\nfn main() {\n    let item = String::from(\"heavy asset\");\n    drop(item);\n    println!(\"Dropped early\");\n}"
@@ -1089,7 +1089,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct CustomSmartPointer {\n    data: String,\n}\n\nimpl Drop for CustomSmartPointer {\n    fn drop(&mut self) {\n        println!(\"Dropping: {}\", self.data);\n    }\n}\n\nfn main() {\n    let _c = CustomSmartPointer { data: String::from(\"my stuff\") };\n}",
+    "initialCode": "struct CustomSmartPointer {\n    data: String,\n}\n\nimpl Drop for CustomSmartPointer {\n    fn drop(&mut self) {\n        println!(\"Dropping: {}\", self.data);\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct CustomSmartPointer {\n    data: String,\n}\n\nimpl Drop for CustomSmartPointer {\n    fn drop(&mut self) {\n        println!(\"Dropping: {}\", self.data);\n    }\n}\n\nfn main() {\n    let _c = CustomSmartPointer { data: String::from(\"my stuff\") };\n}",
     "hints": [
       "Write:\nstruct CustomSmartPointer {\n    data: String,\n}\n\nimpl Drop for CustomSmartPointer {\n    fn drop(&mut self) {\n        println!(\"Dropping: {}\", self.data);\n    }\n}\n\nfn main() {\n    let _c = CustomSmartPointer { data: String::from(\"my stuff\") };\n}"
@@ -1131,7 +1131,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let original = String::from(\"safe data\");\n    let moved = original;\n    println!(\"Moved cleanly: {}\", moved);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let original = String::from(\"safe data\");\n    let moved = original;\n    println!(\"Moved cleanly: {}\", moved);\n}",
     "hints": [
       "Write:\nfn main() {\n    let original = String::from(\"safe data\");\n    let moved = original;\n    println!(\"Moved cleanly: {}\", moved);\n}"
@@ -1173,7 +1173,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut vector = Vec::new();\n    for i in 0..5 {\n        vector.push(i * 10);\n    }\n    println!(\"Capacity: {}, Len: {}\", vector.capacity(), vector.len());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut vector = Vec::new();\n    for i in 0..5 {\n        vector.push(i * 10);\n    }\n    println!(\"Capacity: {}, Len: {}\", vector.capacity(), vector.len());\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut vector = Vec::new();\n    for i in 0..5 {\n        vector.push(i * 10);\n    }\n    println!(\"Capacity: {}, Len: {}\", vector.capacity(), vector.len());\n}"
@@ -1215,7 +1215,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let s = String::from(\"leaked safely\");\n    std::mem::forget(s); // Prevents drop from running!\n    println!(\"Forgotten\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s = String::from(\"leaked safely\");\n    std::mem::forget(s);\n    println!(\"Forgotten\");\n}",
     "hints": [
       "Write:\nfn main() {\n    let s = String::from(\"leaked safely\");\n    std::mem::forget(s);\n    println!(\"Forgotten\");\n}"
@@ -1257,7 +1257,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let greeting = String::from(\"DevForge Ownership Mastered\");\n    println!(\"{}\", greeting);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let greeting = String::from(\"DevForge Ownership Mastered\");\n    println!(\"{}\", greeting);\n}",
     "hints": [
       "Write:\nfn main() {\n    let greeting = String::from(\"DevForge Ownership Mastered\");\n    println!(\"{}\", greeting);\n}"
@@ -1299,7 +1299,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn calculate_length(s: &String) -> usize {\n    s.len()\n}\n\nfn main() {\n    let s = String::from(\"hello\");\n    let len = calculate_length(&s); // Borrowing, not moving!\n    println!(\"Length of '{}' is {}\", s, len);\n}",
+    "initialCode": "fn calculate_length(s: &String) -> usize {\n    s.len()\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn calculate_length(s: &String) -> usize {\n    s.len()\n}\n\nfn main() {\n    let s = String::from(\"hello\");\n    let len = calculate_length(&s);\n    println!(\"Length of '{}' is {}\", s, len);\n}",
     "hints": [
       "Write:\nfn calculate_length(s: &String) -> usize {\n    s.len()\n}\n\nfn main() {\n    let s = String::from(\"hello\");\n    let len = calculate_length(&s);\n    println!(\"Length of '{}' is {}\", s, len);\n}"
@@ -1341,7 +1341,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn append_world(s: &mut String) {\n    s.push_str(\", world!\");\n}\n\nfn main() {\n    let mut message = String::from(\"Hello\");\n    append_world(&mut message);\n    println!(\"{}\", message);\n}",
+    "initialCode": "fn append_world(s: &mut String) {\n    s.push_str(\", world!\");\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn append_world(s: &mut String) {\n    s.push_str(\", world!\");\n}\n\nfn main() {\n    let mut message = String::from(\"Hello\");\n    append_world(&mut message);\n    println!(\"{}\", message);\n}",
     "hints": [
       "Write:\nfn append_world(s: &mut String) {\n    s.push_str(\", world!\");\n}\n\nfn main() {\n    let mut message = String::from(\"Hello\");\n    append_world(&mut message);\n    println!(\"{}\", message);\n}"
@@ -1383,7 +1383,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // In Rust at any given time, you can have either:\n    // 1. One mutable reference (&mut T), OR\n    // 2. Any number of immutable references (&T)\n    println!(\"Aliasing XOR Mutability verified\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Aliasing XOR Mutability verified\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Aliasing XOR Mutability verified\");\n}"
@@ -1425,7 +1425,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut val = 10;\n    {\n        let r1 = &mut val;\n        *r1 += 5;\n    }\n    let r2 = &val;\n    println!(\"Safe: {}\", r2);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut val = 10;\n    {\n        let r1 = &mut val;\n        *r1 += 5;\n    }\n    let r2 = &val;\n    println!(\"Safe: {}\", r2);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut val = 10;\n    {\n        let r1 = &mut val;\n        *r1 += 5;\n    }\n    let r2 = &val;\n    println!(\"Safe: {}\", r2);\n}"
@@ -1467,7 +1467,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // Rust compiler rejects returning references to local variables\n    let s = String::from(\"safe\");\n    let r = &s;\n    println!(\"{}\", r);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s = String::from(\"safe\");\n    let r = &s;\n    println!(\"{}\", r);\n}",
     "hints": [
       "Write:\nfn main() {\n    let s = String::from(\"safe\");\n    let r = &s;\n    println!(\"{}\", r);\n}"
@@ -1509,7 +1509,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut x = 10;\n    let r1 = &x;\n    println!(\"Read: {}\", r1); // r1's lifetime ends here!\n    let r2 = &mut x;          // Allowed thanks to NLL!\n    *r2 += 20;\n    println!(\"Mutated: {}\", r2);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut x = 10;\n    let r1 = &x;\n    println!(\"Read: {}\", r1);\n    let r2 = &mut x;\n    *r2 += 20;\n    println!(\"Mutated: {}\", r2);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut x = 10;\n    let r1 = &x;\n    println!(\"Read: {}\", r1);\n    let r2 = &mut x;\n    *r2 += 20;\n    println!(\"Mutated: {}\", r2);\n}"
@@ -1551,7 +1551,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let greeting = String::from(\"hello world\");\n    let hello: &str = &greeting[0..5];\n    let world: &str = &greeting[6..11];\n    println!(\"{} - {}\", hello, world);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let greeting = String::from(\"hello world\");\n    let hello: &str = &greeting[0..5];\n    let world: &str = &greeting[6..11];\n    println!(\"{} - {}\", hello, world);\n}",
     "hints": [
       "Write:\nfn main() {\n    let greeting = String::from(\"hello world\");\n    let hello: &str = &greeting[0..5];\n    let world: &str = &greeting[6..11];\n    println!(\"{} - {}\", hello, world);\n}"
@@ -1593,7 +1593,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let arr = [1, 2, 3, 4, 5];\n    let slice: &[i32] = &arr[1..4]; // [2, 3, 4]\n    println!(\"Slice length: {}, first: {}\", slice.len(), slice[0]);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let arr = [1, 2, 3, 4, 5];\n    let slice: &[i32] = &arr[1..4];\n    println!(\"Slice length: {}, first: {}\", slice.len(), slice[0]);\n}",
     "hints": [
       "Write:\nfn main() {\n    let arr = [1, 2, 3, 4, 5];\n    let slice: &[i32] = &arr[1..4];\n    println!(\"Slice length: {}, first: {}\", slice.len(), slice[0]);\n}"
@@ -1635,7 +1635,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}\n\nfn main() {\n    let s1 = \"short\";\n    let s2 = \"longer string\";\n    println!(\"Longest: {}\", longest(s1, s2));\n}",
+    "initialCode": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}\n\nfn main() {\n    let s1 = \"short\";\n    let s2 = \"longer string\";\n    println!(\"Longest: {}\", longest(s1, s2));\n}",
     "hints": [
       "Write:\nfn longest<'a>(x: &'a str, y: &'a str) -> &'a str {\n    if x.len() > y.len() { x } else { y }\n}\n\nfn main() {\n    let s1 = \"short\";\n    let s2 = \"longer string\";\n    println!(\"Longest: {}\", longest(s1, s2));\n}"
@@ -1677,7 +1677,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn first_word(s: &str) -> &str {\n    s.split_whitespace().next().unwrap_or(\"\")\n}\n\nfn main() {\n    let word = first_word(\"DevForge Rust Rules\");\n    println!(\"First: {}\", word);\n}",
+    "initialCode": "fn first_word(s: &str) -> &str {\n    s.split_whitespace().next().unwrap_or(\"\")\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn first_word(s: &str) -> &str {\n    s.split_whitespace().next().unwrap_or(\"\")\n}\n\nfn main() {\n    let word = first_word(\"DevForge Rust Rules\");\n    println!(\"First: {}\", word);\n}",
     "hints": [
       "Write:\nfn first_word(s: &str) -> &str {\n    s.split_whitespace().next().unwrap_or(\"\")\n}\n\nfn main() {\n    let word = first_word(\"DevForge Rust Rules\");\n    println!(\"First: {}\", word);\n}"
@@ -1719,7 +1719,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Highlight<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let text = String::from(\"Critical system alerts\");\n    let h = Highlight { part: &text[0..8] };\n    println!(\"Highlighted: {}\", h.part);\n}",
+    "initialCode": "struct Highlight<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Highlight<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let text = String::from(\"Critical system alerts\");\n    let h = Highlight { part: &text[0..8] };\n    println!(\"Highlighted: {}\", h.part);\n}",
     "hints": [
       "Write:\nstruct Highlight<'a> {\n    part: &'a str,\n}\n\nfn main() {\n    let text = String::from(\"Critical system alerts\");\n    let h = Highlight { part: &text[0..8] };\n    println!(\"Highlighted: {}\", h.part);\n}"
@@ -1761,7 +1761,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let banner: &'static str = \"DevForge Official Platform\";\n    println!(\"{}\", banner);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let banner: &'static str = \"DevForge Official Platform\";\n    println!(\"{}\", banner);\n}",
     "hints": [
       "Write:\nfn main() {\n    let banner: &'static str = \"DevForge Official Platform\";\n    println!(\"{}\", banner);\n}"
@@ -1803,7 +1803,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Container {\n    header: String,\n    count: i32,\n}\n\nfn main() {\n    let mut c = Container { header: String::from(\"Test\"), count: 0 };\n    let h = &mut c.header;\n    let cnt = &mut c.count;\n    *cnt += 1;\n    println!(\"{} - {}\", h, cnt);\n}",
+    "initialCode": "struct Container {\n    header: String,\n    count: i32,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Container {\n    header: String,\n    count: i32,\n}\n\nfn main() {\n    let mut c = Container { header: String::from(\"Test\"), count: 0 };\n    let h = &mut c.header;\n    let cnt = &mut c.count;\n    *cnt += 1;\n    println!(\"{} - {}\", h, cnt);\n}",
     "hints": [
       "Write:\nstruct Container {\n    header: String,\n    count: i32,\n}\n\nfn main() {\n    let mut c = Container { header: String::from(\"Test\"), count: 0 };\n    let h = &mut c.header;\n    let cnt = &mut c.count;\n    *cnt += 1;\n    println!(\"{} - {}\", h, cnt);\n}"
@@ -1845,7 +1845,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut v = vec![1, 2, 3];\n    let first = v[0]; // Copy value rather than borrowing while mutating!\n    v.push(4);\n    println!(\"First: {}, Vec len: {}\", first, v.len());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut v = vec![1, 2, 3];\n    let first = v[0];\n    v.push(4);\n    println!(\"First: {}, Vec len: {}\", first, v.len());\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut v = vec![1, 2, 3];\n    let first = v[0];\n    v.push(4);\n    println!(\"First: {}, Vec len: {}\", first, v.len());\n}"
@@ -1887,7 +1887,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let status = String::from(\"Borrowing & Lifetimes Mastered\");\n    let r = &status;\n    println!(\"{}\", r);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let status = String::from(\"Borrowing & Lifetimes Mastered\");\n    let r = &status;\n    println!(\"{}\", r);\n}",
     "hints": [
       "Write:\nfn main() {\n    let status = String::from(\"Borrowing & Lifetimes Mastered\");\n    let r = &status;\n    println!(\"{}\", r);\n}"
@@ -1929,7 +1929,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct User {\n    username: String,\n    email: String,\n    sign_in_count: u64,\n    active: bool,\n}\n\nfn main() {\n    let u = User {\n        username: String::from(\"alex\"),\n        email: String::from(\"alex@devforge.io\"),\n        sign_in_count: 1,\n        active: true,\n    };\n    println!(\"User: {}\", u.username);\n}",
+    "initialCode": "struct User {\n    username: String,\n    email: String,\n    sign_in_count: u64,\n    active: bool,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct User {\n    username: String,\n    email: String,\n    sign_in_count: u64,\n    active: bool,\n}\n\nfn main() {\n    let u = User {\n        username: String::from(\"alex\"),\n        email: String::from(\"alex@devforge.io\"),\n        sign_in_count: 1,\n        active: true,\n    };\n    println!(\"User: {}\", u.username);\n}",
     "hints": [
       "Write:\nstruct User {\n    username: String,\n    email: String,\n    sign_in_count: u64,\n    active: bool,\n}\n\nfn main() {\n    let u = User {\n        username: String::from(\"alex\"),\n        email: String::from(\"alex@devforge.io\"),\n        sign_in_count: 1,\n        active: true,\n    };\n    println!(\"User: {}\", u.username);\n}"
@@ -1971,7 +1971,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Point { x: i32, y: i32 }\n\nfn build_point(x: i32, y: i32) -> Point {\n    Point { x, y } // Field init shorthand!\n}\n\nfn main() {\n    let p = build_point(10, 20);\n    println!(\"{}, {}\", p.x, p.y);\n}",
+    "initialCode": "struct Point { x: i32, y: i32 }\n\nfn build_point(x: i32, y: i32) -> Point {\n    Point { x, y } // Field init shorthand!\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Point { x: i32, y: i32 }\n\nfn build_point(x: i32, y: i32) -> Point {\n    Point { x, y }\n}\n\nfn main() {\n    let p = build_point(10, 20);\n    println!(\"{}, {}\", p.x, p.y);\n}",
     "hints": [
       "Write:\nstruct Point { x: i32, y: i32 }\n\nfn build_point(x: i32, y: i32) -> Point {\n    Point { x, y }\n}\n\nfn main() {\n    let p = build_point(10, 20);\n    println!(\"{}, {}\", p.x, p.y);\n}"
@@ -2013,7 +2013,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Config {\n    theme: String,\n    timeout: u32,\n    verbose: bool,\n}\n\nfn main() {\n    let base = Config { theme: String::from(\"dark\"), timeout: 30, verbose: false };\n    let custom = Config { timeout: 60, ..base };\n    println!(\"Custom timeout: {}, theme: {}\", custom.timeout, custom.theme);\n}",
+    "initialCode": "struct Config {\n    theme: String,\n    timeout: u32,\n    verbose: bool,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Config {\n    theme: String,\n    timeout: u32,\n    verbose: bool,\n}\n\nfn main() {\n    let base = Config { theme: String::from(\"dark\"), timeout: 30, verbose: false };\n    let custom = Config { timeout: 60, ..base };\n    println!(\"Custom timeout: {}, theme: {}\", custom.timeout, custom.theme);\n}",
     "hints": [
       "Write:\nstruct Config {\n    theme: String,\n    timeout: u32,\n    verbose: bool,\n}\n\nfn main() {\n    let base = Config { theme: String::from(\"dark\"), timeout: 30, verbose: false };\n    let custom = Config { timeout: 60, ..base };\n    println!(\"Custom timeout: {}, theme: {}\", custom.timeout, custom.theme);\n}"
@@ -2055,7 +2055,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Color(i32, i32, i32);\nstruct Meters(f64);\n\nfn main() {\n    let black = Color(0, 0, 0);\n    let distance = Meters(150.5);\n    println!(\"RGB: {}, {}, {}\", black.0, black.1, black.2);\n    println!(\"Distance: {}\", distance.0);\n}",
+    "initialCode": "struct Color(i32, i32, i32);\nstruct Meters(f64);\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Color(i32, i32, i32);\nstruct Meters(f64);\n\nfn main() {\n    let black = Color(0, 0, 0);\n    let distance = Meters(150.5);\n    println!(\"RGB: {}, {}, {}\", black.0, black.1, black.2);\n    println!(\"Distance: {}\", distance.0);\n}",
     "hints": [
       "Write:\nstruct Color(i32, i32, i32);\nstruct Meters(f64);\n\nfn main() {\n    let black = Color(0, 0, 0);\n    let distance = Meters(150.5);\n    println!(\"RGB: {}, {}, {}\", black.0, black.1, black.2);\n    println!(\"Distance: {}\", distance.0);\n}"
@@ -2097,7 +2097,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct AlwaysEqual;\n\nfn main() {\n    let _subject = AlwaysEqual;\n    println!(\"Zero sized struct instantiated\");\n}",
+    "initialCode": "struct AlwaysEqual;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct AlwaysEqual;\n\nfn main() {\n    let _subject = AlwaysEqual;\n    println!(\"Zero sized struct instantiated\");\n}",
     "hints": [
       "Write:\nstruct AlwaysEqual;\n\nfn main() {\n    let _subject = AlwaysEqual;\n    println!(\"Zero sized struct instantiated\");\n}"
@@ -2139,7 +2139,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Rectangle {\n    width: u32,\n    height: u32,\n}\n\nimpl Rectangle {\n    fn area(&self) -> u32 {\n        self.width * self.height\n    }\n}\n\nfn main() {\n    let rect = Rectangle { width: 30, height: 50 };\n    println!(\"Area: {}\", rect.area());\n}",
+    "initialCode": "struct Rectangle {\n    width: u32,\n    height: u32,\n}\n\nimpl Rectangle {\n    fn area(&self) -> u32 {\n        self.width * self.height\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Rectangle {\n    width: u32,\n    height: u32,\n}\n\nimpl Rectangle {\n    fn area(&self) -> u32 {\n        self.width * self.height\n    }\n}\n\nfn main() {\n    let rect = Rectangle { width: 30, height: 50 };\n    println!(\"Area: {}\", rect.area());\n}",
     "hints": [
       "Write:\nstruct Rectangle {\n    width: u32,\n    height: u32,\n}\n\nimpl Rectangle {\n    fn area(&self) -> u32 {\n        self.width * self.height\n    }\n}\n\nfn main() {\n    let rect = Rectangle { width: 30, height: 50 };\n    println!(\"Area: {}\", rect.area());\n}"
@@ -2181,7 +2181,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Counter {\n    count: u32,\n}\n\nimpl Counter {\n    fn increment(&mut self) {\n        self.count += 1;\n    }\n}\n\nfn main() {\n    let mut c = Counter { count: 0 };\n    c.increment();\n    println!(\"Count: {}\", c.count);\n}",
+    "initialCode": "struct Counter {\n    count: u32,\n}\n\nimpl Counter {\n    fn increment(&mut self) {\n        self.count += 1;\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Counter {\n    count: u32,\n}\n\nimpl Counter {\n    fn increment(&mut self) {\n        self.count += 1;\n    }\n}\n\nfn main() {\n    let mut c = Counter { count: 0 };\n    c.increment();\n    println!(\"Count: {}\", c.count);\n}",
     "hints": [
       "Write:\nstruct Counter {\n    count: u32,\n}\n\nimpl Counter {\n    fn increment(&mut self) {\n        self.count += 1;\n    }\n}\n\nfn main() {\n    let mut c = Counter { count: 0 };\n    c.increment();\n    println!(\"Count: {}\", c.count);\n}"
@@ -2223,7 +2223,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Square {\n    side: u32,\n}\n\nimpl Square {\n    fn new(side: u32) -> Self {\n        Square { side }\n    }\n}\n\nfn main() {\n    let sq = Square::new(20);\n    println!(\"Square side: {}\", sq.side);\n}",
+    "initialCode": "struct Square {\n    side: u32,\n}\n\nimpl Square {\n    fn new(side: u32) -> Self {\n        Square { side }\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Square {\n    side: u32,\n}\n\nimpl Square {\n    fn new(side: u32) -> Self {\n        Square { side }\n    }\n}\n\nfn main() {\n    let sq = Square::new(20);\n    println!(\"Square side: {}\", sq.side);\n}",
     "hints": [
       "Write:\nstruct Square {\n    side: u32,\n}\n\nimpl Square {\n    fn new(side: u32) -> Self {\n        Square { side }\n    }\n}\n\nfn main() {\n    let sq = Square::new(20);\n    println!(\"Square side: {}\", sq.side);\n}"
@@ -2265,7 +2265,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Robot {\n    id: u32,\n}\nimpl Robot {\n    fn id(&self) -> u32 { self.id }\n}\nimpl Robot {\n    fn ping(&self) { println!(\"Pong\"); }\n}\n\nfn main() {\n    let r = Robot { id: 7 };\n    r.ping();\n}",
+    "initialCode": "struct Robot {\n    id: u32,\n}\nimpl Robot {\n    fn id(&self) -> u32 { self.id }\n}\nimpl Robot {\n    fn ping(&self) { println!(\"Pong\"); }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Robot {\n    id: u32,\n}\nimpl Robot {\n    fn id(&self) -> u32 { self.id }\n}\nimpl Robot {\n    fn ping(&self) { println!(\"Pong\"); }\n}\n\nfn main() {\n    let r = Robot { id: 7 };\n    r.ping();\n}",
     "hints": [
       "Write:\nstruct Robot {\n    id: u32,\n}\nimpl Robot {\n    fn id(&self) -> u32 { self.id }\n}\nimpl Robot {\n    fn ping(&self) { println!(\"Pong\"); }\n}\n\nfn main() {\n    let r = Robot { id: 7 };\n    r.ping();\n}"
@@ -2307,7 +2307,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "#[derive(Debug, Clone, PartialEq)]\nstruct Metric {\n    name: String,\n    value: f64,\n}\n\nfn main() {\n    let m = Metric { name: String::from(\"cpu\"), value: 45.2 };\n    println!(\"{:?}\", m);\n}",
+    "initialCode": "#[derive(Debug, Clone, PartialEq)]\nstruct Metric {\n    name: String,\n    value: f64,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "#[derive(Debug, Clone, PartialEq)]\nstruct Metric {\n    name: String,\n    value: f64,\n}\n\nfn main() {\n    let m = Metric { name: String::from(\"cpu\"), value: 45.2 };\n    println!(\"{:?}\", m);\n}",
     "hints": [
       "Write:\n#[derive(Debug, Clone, PartialEq)]\nstruct Metric {\n    name: String,\n    value: f64,\n}\n\nfn main() {\n    let m = Metric { name: String::from(\"cpu\"), value: 45.2 };\n    println!(\"{:?}\", m);\n}"
@@ -2349,7 +2349,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum WebEvent {\n    PageLoad,\n    KeyPress(char),\n    Click { x: i64, y: i64 },\n}\n\nfn main() {\n    let _load = WebEvent::PageLoad;\n    let _press = WebEvent::KeyPress('q');\n    println!(\"Events created\");\n}",
+    "initialCode": "enum WebEvent {\n    PageLoad,\n    KeyPress(char),\n    Click { x: i64, y: i64 },\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum WebEvent {\n    PageLoad,\n    KeyPress(char),\n    Click { x: i64, y: i64 },\n}\n\nfn main() {\n    let _load = WebEvent::PageLoad;\n    let _press = WebEvent::KeyPress('q');\n    println!(\"Events created\");\n}",
     "hints": [
       "Write:\nenum WebEvent {\n    PageLoad,\n    KeyPress(char),\n    Click { x: i64, y: i64 },\n}\n\nfn main() {\n    let _load = WebEvent::PageLoad;\n    let _press = WebEvent::KeyPress('q');\n    println!(\"Events created\");\n}"
@@ -2391,7 +2391,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn find_user(id: i32) -> Option<String> {\n    if id == 1 { Some(String::from(\"Alice\")) } else { None }\n}\n\nfn main() {\n    let user = find_user(1);\n    println!(\"Found: {:?}\", user);\n}",
+    "initialCode": "fn find_user(id: i32) -> Option<String> {\n    if id == 1 { Some(String::from(\"Alice\")) } else { None }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn find_user(id: i32) -> Option<String> {\n    if id == 1 { Some(String::from(\"Alice\")) } else { None }\n}\n\nfn main() {\n    let user = find_user(1);\n    println!(\"Found: {:?}\", user);\n}",
     "hints": [
       "Write:\nfn find_user(id: i32) -> Option<String> {\n    if id == 1 { Some(String::from(\"Alice\")) } else { None }\n}\n\nfn main() {\n    let user = find_user(1);\n    println!(\"Found: {:?}\", user);\n}"
@@ -2433,7 +2433,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum TrafficLight {\n    Red,\n    Yellow,\n    Green,\n}\n\nimpl TrafficLight {\n    fn time_seconds(&self) -> u32 {\n        match self {\n            TrafficLight::Red => 60,\n            TrafficLight::Yellow => 5,\n            TrafficLight::Green => 45,\n        }\n    }\n}\n\nfn main() {\n    let light = TrafficLight::Red;\n    println!(\"Seconds: {}\", light.time_seconds());\n}",
+    "initialCode": "enum TrafficLight {\n    Red,\n    Yellow,\n    Green,\n}\n\nimpl TrafficLight {\n    fn time_seconds(&self) -> u32 {\n        match self {\n            TrafficLight::Red => 60,\n            TrafficLight::Yellow => 5,\n            TrafficLight::Green => 45,\n        }\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum TrafficLight {\n    Red,\n    Yellow,\n    Green,\n}\n\nimpl TrafficLight {\n    fn time_seconds(&self) -> u32 {\n        match self {\n            TrafficLight::Red => 60,\n            TrafficLight::Yellow => 5,\n            TrafficLight::Green => 45,\n        }\n    }\n}\n\nfn main() {\n    let light = TrafficLight::Red;\n    println!(\"Seconds: {}\", light.time_seconds());\n}",
     "hints": [
       "Write:\nenum TrafficLight {\n    Red,\n    Yellow,\n    Green,\n}\n\nimpl TrafficLight {\n    fn time_seconds(&self) -> u32 {\n        match self {\n            TrafficLight::Red => 60,\n            TrafficLight::Yellow => 5,\n            TrafficLight::Green => 45,\n        }\n    }\n}\n\nfn main() {\n    let light = TrafficLight::Red;\n    println!(\"Seconds: {}\", light.time_seconds());\n}"
@@ -2475,7 +2475,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    use std::mem::size_of;\n    println!(\"Option<&i32> size: {} bytes\", size_of::<Option<&i32>>());\n    println!(\"&i32 size: {} bytes\", size_of::<&i32>());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    use std::mem::size_of;\n    println!(\"Option<&i32> size: {} bytes\", size_of::<Option<&i32>>());\n    println!(\"&i32 size: {} bytes\", size_of::<&i32>());\n}",
     "hints": [
       "Write:\nfn main() {\n    use std::mem::size_of;\n    println!(\"Option<&i32> size: {} bytes\", size_of::<Option<&i32>>());\n    println!(\"&i32 size: {} bytes\", size_of::<&i32>());\n}"
@@ -2517,7 +2517,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Engine {\n    horsepower: u32,\n}\n\nfn main() {\n    let e = Engine { horsepower: 450 };\n    println!(\"Engine ready: {} HP\", e.horsepower);\n}",
+    "initialCode": "struct Engine {\n    horsepower: u32,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Engine {\n    horsepower: u32,\n}\n\nfn main() {\n    let e = Engine { horsepower: 450 };\n    println!(\"Engine ready: {} HP\", e.horsepower);\n}",
     "hints": [
       "Write:\nstruct Engine {\n    horsepower: u32,\n}\n\nfn main() {\n    let e = Engine { horsepower: 450 };\n    println!(\"Engine ready: {} HP\", e.horsepower);\n}"
@@ -2559,7 +2559,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum Coin { Penny, Nickel, Dime, Quarter }\n\nfn value_in_cents(coin: Coin) -> u8 {\n    match coin {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n        Coin::Quarter => 25,\n    }\n}\n\nfn main() {\n    println!(\"Dime: {}c\", value_in_cents(Coin::Dime));\n}",
+    "initialCode": "enum Coin { Penny, Nickel, Dime, Quarter }\n\nfn value_in_cents(coin: Coin) -> u8 {\n    match coin {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n        Coin::Quarter => 25,\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum Coin { Penny, Nickel, Dime, Quarter }\n\nfn value_in_cents(coin: Coin) -> u8 {\n    match coin {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n        Coin::Quarter => 25,\n    }\n}\n\nfn main() {\n    println!(\"Dime: {}c\", value_in_cents(Coin::Dime));\n}",
     "hints": [
       "Write:\nenum Coin { Penny, Nickel, Dime, Quarter }\n\nfn value_in_cents(coin: Coin) -> u8 {\n    match coin {\n        Coin::Penny => 1,\n        Coin::Nickel => 5,\n        Coin::Dime => 10,\n        Coin::Quarter => 25,\n    }\n}\n\nfn main() {\n    println!(\"Dime: {}c\", value_in_cents(Coin::Dime));\n}"
@@ -2601,7 +2601,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn plus_one(x: Option<i32>) -> Option<i32> {\n    match x {\n        None => None,\n        Some(i) => Some(i + 1),\n    }\n}\n\nfn main() {\n    println!(\"{:?}\", plus_one(Some(5)));\n}",
+    "initialCode": "fn plus_one(x: Option<i32>) -> Option<i32> {\n    match x {\n        None => None,\n        Some(i) => Some(i + 1),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn plus_one(x: Option<i32>) -> Option<i32> {\n    match x {\n        None => None,\n        Some(i) => Some(i + 1),\n    }\n}\n\nfn main() {\n    println!(\"{:?}\", plus_one(Some(5)));\n}",
     "hints": [
       "Write:\nfn plus_one(x: Option<i32>) -> Option<i32> {\n    match x {\n        None => None,\n        Some(i) => Some(i + 1),\n    }\n}\n\nfn main() {\n    println!(\"{:?}\", plus_one(Some(5)));\n}"
@@ -2643,7 +2643,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn describe_dice(roll: u8) {\n    match roll {\n        1 => println!(\"Critical miss\"),\n        6 => println!(\"Critical hit\"),\n        _ => println!(\"Normal roll\"),\n    }\n}\n\nfn main() {\n    describe_dice(4);\n}",
+    "initialCode": "fn describe_dice(roll: u8) {\n    match roll {\n        1 => println!(\"Critical miss\"),\n        6 => println!(\"Critical hit\"),\n        _ => println!(\"Normal roll\"),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn describe_dice(roll: u8) {\n    match roll {\n        1 => println!(\"Critical miss\"),\n        6 => println!(\"Critical hit\"),\n        _ => println!(\"Normal roll\"),\n    }\n}\n\nfn main() {\n    describe_dice(4);\n}",
     "hints": [
       "Write:\nfn describe_dice(roll: u8) {\n    match roll {\n        1 => println!(\"Critical miss\"),\n        6 => println!(\"Critical hit\"),\n        _ => println!(\"Normal roll\"),\n    }\n}\n\nfn main() {\n    describe_dice(4);\n}"
@@ -2685,7 +2685,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let config_max: Option<u32> = Some(100);\n    if let Some(max) = config_max {\n        println!(\"The maximum is {}\", max);\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let config_max: Option<u32> = Some(100);\n    if let Some(max) = config_max {\n        println!(\"The maximum is {}\", max);\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    let config_max: Option<u32> = Some(100);\n    if let Some(max) = config_max {\n        println!(\"The maximum is {}\", max);\n    }\n}"
@@ -2727,7 +2727,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut stack = vec![1, 2, 3];\n    while let Some(top) = stack.pop() {\n        println!(\"Popped: {}\", top);\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut stack = vec![1, 2, 3];\n    while let Some(top) = stack.pop() {\n        println!(\"Popped: {}\", top);\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut stack = vec![1, 2, 3];\n    while let Some(top) = stack.pop() {\n        println!(\"Popped: {}\", top);\n    }\n}"
@@ -2769,7 +2769,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn is_vowel(c: char) -> bool {\n    match c {\n        'a' | 'e' | 'i' | 'o' | 'u' => true,\n        _ => false,\n    }\n}\n\nfn main() {\n    println!(\"is 'e' vowel? {}\", is_vowel('e'));\n}",
+    "initialCode": "fn is_vowel(c: char) -> bool {\n    match c {\n        'a' | 'e' | 'i' | 'o' | 'u' => true,\n        _ => false,\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn is_vowel(c: char) -> bool {\n    match c {\n        'a' | 'e' | 'i' | 'o' | 'u' => true,\n        _ => false,\n    }\n}\n\nfn main() {\n    println!(\"is 'e' vowel? {}\", is_vowel('e'));\n}",
     "hints": [
       "Write:\nfn is_vowel(c: char) -> bool {\n    match c {\n        'a' | 'e' | 'i' | 'o' | 'u' => true,\n        _ => false,\n    }\n}\n\nfn main() {\n    println!(\"is 'e' vowel? {}\", is_vowel('e'));\n}"
@@ -2811,7 +2811,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn categorize_age(age: u32) -> &'static str {\n    match age {\n        0..=12 => \"Child\",\n        13..=19 => \"Teenager\",\n        20..=64 => \"Adult\",\n        _ => \"Senior\",\n    }\n}\n\nfn main() {\n    println!(\"Age 15: {}\", categorize_age(15));\n}",
+    "initialCode": "fn categorize_age(age: u32) -> &'static str {\n    match age {\n        0..=12 => \"Child\",\n        13..=19 => \"Teenager\",\n        20..=64 => \"Adult\",\n        _ => \"Senior\",\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn categorize_age(age: u32) -> &'static str {\n    match age {\n        0..=12 => \"Child\",\n        13..=19 => \"Teenager\",\n        20..=64 => \"Adult\",\n        _ => \"Senior\",\n    }\n}\n\nfn main() {\n    println!(\"Age 15: {}\", categorize_age(15));\n}",
     "hints": [
       "Write:\nfn categorize_age(age: u32) -> &'static str {\n    match age {\n        0..=12 => \"Child\",\n        13..=19 => \"Teenager\",\n        20..=64 => \"Adult\",\n        _ => \"Senior\",\n    }\n}\n\nfn main() {\n    println!(\"Age 15: {}\", categorize_age(15));\n}"
@@ -2853,7 +2853,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Point { x: i32, y: i32 }\n\nfn describe_point(p: Point) {\n    match p {\n        Point { x: 0, y: 0 } => println!(\"At the origin\"),\n        Point { x, y: 0 } => println!(\"On x-axis at {}\", x),\n        Point { x: 0, y } => println!(\"On y-axis at {}\", y),\n        Point { x, y } => println!(\"At ({}, {})\", x, y),\n    }\n}\n\nfn main() {\n    describe_point(Point { x: 5, y: 0 });\n}",
+    "initialCode": "struct Point { x: i32, y: i32 }\n\nfn describe_point(p: Point) {\n    match p {\n        Point { x: 0, y: 0 } => println!(\"At the origin\"),\n        Point { x, y: 0 } => println!(\"On x-axis at {}\", x),\n        Point { x: 0, y } => println!(\"On y-axis at {}\", y),\n        Point { x, y } => println!(\"At ({}, {})\", x, y),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Point { x: i32, y: i32 }\n\nfn describe_point(p: Point) {\n    match p {\n        Point { x: 0, y: 0 } => println!(\"At the origin\"),\n        Point { x, y: 0 } => println!(\"On x-axis at {}\", x),\n        Point { x: 0, y } => println!(\"On y-axis at {}\", y),\n        Point { x, y } => println!(\"At ({}, {})\", x, y),\n    }\n}\n\nfn main() {\n    describe_point(Point { x: 5, y: 0 });\n}",
     "hints": [
       "Write:\nstruct Point { x: i32, y: i32 }\n\nfn describe_point(p: Point) {\n    match p {\n        Point { x: 0, y: 0 } => println!(\"At the origin\"),\n        Point { x, y: 0 } => println!(\"On x-axis at {}\", x),\n        Point { x: 0, y } => println!(\"On y-axis at {}\", y),\n        Point { x, y } => println!(\"At ({}, {})\", x, y),\n    }\n}\n\nfn main() {\n    describe_point(Point { x: 5, y: 0 });\n}"
@@ -2895,7 +2895,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\nfn process_msg(msg: Message) {\n    match msg {\n        Message::Quit => println!(\"Quit\"),\n        Message::Move { x, y } => println!(\"Move to {}, {}\", x, y),\n        Message::Write(text) => println!(\"Text: {}\", text),\n    }\n}\n\nfn main() {\n    process_msg(Message::Write(String::from(\"hello\")));\n}",
+    "initialCode": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\nfn process_msg(msg: Message) {\n    match msg {\n        Message::Quit => println!(\"Quit\"),\n        Message::Move { x, y } => println!(\"Move to {}, {}\", x, y),\n        Message::Write(text) => println!(\"Text: {}\", text),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\nfn process_msg(msg: Message) {\n    match msg {\n        Message::Quit => println!(\"Quit\"),\n        Message::Move { x, y } => println!(\"Move to {}, {}\", x, y),\n        Message::Write(text) => println!(\"Text: {}\", text),\n    }\n}\n\nfn main() {\n    process_msg(Message::Write(String::from(\"hello\")));\n}",
     "hints": [
       "Write:\nenum Message {\n    Quit,\n    Move { x: i32, y: i32 },\n    Write(String),\n}\n\nfn process_msg(msg: Message) {\n    match msg {\n        Message::Quit => println!(\"Quit\"),\n        Message::Move { x, y } => println!(\"Move to {}, {}\", x, y),\n        Message::Write(text) => println!(\"Text: {}\", text),\n    }\n}\n\nfn main() {\n    process_msg(Message::Write(String::from(\"hello\")));\n}"
@@ -2937,7 +2937,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Dimensions { width: u32, height: u32, depth: u32 }\n\nfn check_width(d: Dimensions) {\n    match d {\n        Dimensions { width, .. } => println!(\"Width is {}\", width),\n    }\n}\n\nfn main() {\n    check_width(Dimensions { width: 10, height: 20, depth: 30 });\n}",
+    "initialCode": "struct Dimensions { width: u32, height: u32, depth: u32 }\n\nfn check_width(d: Dimensions) {\n    match d {\n        Dimensions { width, .. } => println!(\"Width is {}\", width),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Dimensions { width: u32, height: u32, depth: u32 }\n\nfn check_width(d: Dimensions) {\n    match d {\n        Dimensions { width, .. } => println!(\"Width is {}\", width),\n    }\n}\n\nfn main() {\n    check_width(Dimensions { width: 10, height: 20, depth: 30 });\n}",
     "hints": [
       "Write:\nstruct Dimensions { width: u32, height: u32, depth: u32 }\n\nfn check_width(d: Dimensions) {\n    match d {\n        Dimensions { width, .. } => println!(\"Width is {}\", width),\n    }\n}\n\nfn main() {\n    check_width(Dimensions { width: 10, height: 20, depth: 30 });\n}"
@@ -2979,7 +2979,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn describe_number(num: Option<i32>) {\n    match num {\n        Some(x) if x % 2 == 0 => println!(\"Even number: {}\", x),\n        Some(x) => println!(\"Odd number: {}\", x),\n        None => println!(\"No number\"),\n    }\n}\n\nfn main() {\n    describe_number(Some(4));\n}",
+    "initialCode": "fn describe_number(num: Option<i32>) {\n    match num {\n        Some(x) if x % 2 == 0 => println!(\"Even number: {}\", x),\n        Some(x) => println!(\"Odd number: {}\", x),\n        None => println!(\"No number\"),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn describe_number(num: Option<i32>) {\n    match num {\n        Some(x) if x % 2 == 0 => println!(\"Even number: {}\", x),\n        Some(x) => println!(\"Odd number: {}\", x),\n        None => println!(\"No number\"),\n    }\n}\n\nfn main() {\n    describe_number(Some(4));\n}",
     "hints": [
       "Write:\nfn describe_number(num: Option<i32>) {\n    match num {\n        Some(x) if x % 2 == 0 => println!(\"Even number: {}\", x),\n        Some(x) => println!(\"Odd number: {}\", x),\n        None => println!(\"No number\"),\n    }\n}\n\nfn main() {\n    describe_number(Some(4));\n}"
@@ -3021,7 +3021,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum Signal {\n    Ping { id: i32 },\n}\n\nfn test_signal(s: Signal) {\n    match s {\n        Signal::Ping { id: id_val @ 1..=10 } => println!(\"Low priority ping: {}\", id_val),\n        Signal::Ping { id } => println!(\"High priority ping: {}\", id),\n    }\n}\n\nfn main() {\n    test_signal(Signal::Ping { id: 5 });\n}",
+    "initialCode": "enum Signal {\n    Ping { id: i32 },\n}\n\nfn test_signal(s: Signal) {\n    match s {\n        Signal::Ping { id: id_val @ 1..=10 } => println!(\"Low priority ping: {}\", id_val),\n        Signal::Ping { id } => println!(\"High priority ping: {}\", id),\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum Signal {\n    Ping { id: i32 },\n}\n\nfn test_signal(s: Signal) {\n    match s {\n        Signal::Ping { id: id_val @ 1..=10 } => println!(\"Low priority ping: {}\", id_val),\n        Signal::Ping { id } => println!(\"High priority ping: {}\", id),\n    }\n}\n\nfn main() {\n    test_signal(Signal::Ping { id: 5 });\n}",
     "hints": [
       "Write:\nenum Signal {\n    Ping { id: i32 },\n}\n\nfn test_signal(s: Signal) {\n    match s {\n        Signal::Ping { id: id_val @ 1..=10 } => println!(\"Low priority ping: {}\", id_val),\n        Signal::Ping { id } => println!(\"High priority ping: {}\", id),\n    }\n}\n\nfn main() {\n    test_signal(Signal::Ping { id: 5 });\n}"
@@ -3063,7 +3063,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut counter = 0;\n    let result = loop {\n        counter += 1;\n        if counter == 10 {\n            break counter * 2;\n        }\n    };\n    println!(\"Result: {}\", result);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut counter = 0;\n    let result = loop {\n        counter += 1;\n        if counter == 10 {\n            break counter * 2;\n        }\n    };\n    println!(\"Result: {}\", result);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut counter = 0;\n    let result = loop {\n        counter += 1;\n        if counter == 10 {\n            break counter * 2;\n        }\n    };\n    println!(\"Result: {}\", result);\n}"
@@ -3105,7 +3105,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    'outer: for i in 1..=3 {\n        for j in 1..=3 {\n            if i == 2 && j == 2 {\n                break 'outer;\n            }\n            println!(\"i: {}, j: {}\", i, j);\n        }\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    'outer: for i in 1..=3 {\n        for j in 1..=3 {\n            if i == 2 && j == 2 {\n                break 'outer;\n            }\n            println!(\"i: {}, j: {}\", i, j);\n        }\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    'outer: for i in 1..=3 {\n        for j in 1..=3 {\n            if i == 2 && j == 2 {\n                break 'outer;\n            }\n            println!(\"i: {}, j: {}\", i, j);\n        }\n    }\n}"
@@ -3147,7 +3147,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let val = Some(42);\n    if let Some(x) = val {\n        println!(\"Pattern matched: {}\", x);\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let val = Some(42);\n    if let Some(x) = val {\n        println!(\"Pattern matched: {}\", x);\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    let val = Some(42);\n    if let Some(x) = val {\n        println!(\"Pattern matched: {}\", x);\n    }\n}"
@@ -3189,7 +3189,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut v: Vec<i32> = Vec::new();\n    v.push(1);\n    v.push(2);\n    v.push(3);\n    println!(\"Vec: {:?}\", v);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut v: Vec<i32> = Vec::new();\n    v.push(1);\n    v.push(2);\n    v.push(3);\n    println!(\"Vec: {:?}\", v);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut v: Vec<i32> = Vec::new();\n    v.push(1);\n    v.push(2);\n    v.push(3);\n    println!(\"Vec: {:?}\", v);\n}"
@@ -3231,7 +3231,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let v = vec![10, 20, 30, 40];\n    println!(\"Length: {}, Capacity: {}\", v.len(), v.capacity());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let v = vec![10, 20, 30, 40];\n    println!(\"Length: {}, Capacity: {}\", v.len(), v.capacity());\n}",
     "hints": [
       "Write:\nfn main() {\n    let v = vec![10, 20, 30, 40];\n    println!(\"Length: {}, Capacity: {}\", v.len(), v.capacity());\n}"
@@ -3273,7 +3273,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let v = vec![10, 20, 30];\n    let third = v[2];\n    let maybe_fourth = v.get(3); // Returns None safely instead of panicking!\n    println!(\"Third: {}, Fourth: {:?}\", third, maybe_fourth);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let v = vec![10, 20, 30];\n    let third = v[2];\n    let maybe_fourth = v.get(3);\n    println!(\"Third: {}, Fourth: {:?}\", third, maybe_fourth);\n}",
     "hints": [
       "Write:\nfn main() {\n    let v = vec![10, 20, 30];\n    let third = v[2];\n    let maybe_fourth = v.get(3);\n    println!(\"Third: {}, Fourth: {:?}\", third, maybe_fourth);\n}"
@@ -3315,7 +3315,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut v = vec![1, 2, 3];\n    for i in &mut v {\n        *i *= 10;\n    }\n    for i in &v {\n        println!(\"{}\", i);\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut v = vec![1, 2, 3];\n    for i in &mut v {\n        *i *= 10;\n    }\n    for i in &v {\n        println!(\"{}\", i);\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut v = vec![1, 2, 3];\n    for i in &mut v {\n        *i *= 10;\n    }\n    for i in &v {\n        println!(\"{}\", i);\n    }\n}"
@@ -3357,7 +3357,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum SpreadsheetCell {\n    Int(i32),\n    Float(f64),\n    Text(String),\n}\n\nfn main() {\n    let row = vec![\n        SpreadsheetCell::Int(3),\n        SpreadsheetCell::Text(String::from(\"blue\")),\n        SpreadsheetCell::Float(10.12),\n    ];\n    println!(\"Row cells count: {}\", row.len());\n}",
+    "initialCode": "enum SpreadsheetCell {\n    Int(i32),\n    Float(f64),\n    Text(String),\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum SpreadsheetCell {\n    Int(i32),\n    Float(f64),\n    Text(String),\n}\n\nfn main() {\n    let row = vec![\n        SpreadsheetCell::Int(3),\n        SpreadsheetCell::Text(String::from(\"blue\")),\n        SpreadsheetCell::Float(10.12),\n    ];\n    println!(\"Row cells count: {}\", row.len());\n}",
     "hints": [
       "Write:\nenum SpreadsheetCell {\n    Int(i32),\n    Float(f64),\n    Text(String),\n}\n\nfn main() {\n    let row = vec![\n        SpreadsheetCell::Int(3),\n        SpreadsheetCell::Text(String::from(\"blue\")),\n        SpreadsheetCell::Float(10.12),\n    ];\n    println!(\"Row cells count: {}\", row.len());\n}"
@@ -3399,7 +3399,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let hello = String::from(\"\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435\");\n    println!(\"Byte length: {}\", hello.len()); // UTF-8 bytes != character count!\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let hello = String::from(\"\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435\");\n    println!(\"Byte length: {}\", hello.len());\n}",
     "hints": [
       "Write:\nfn main() {\n    let hello = String::from(\"\u0417\u0434\u0440\u0430\u0432\u0441\u0442\u0432\u0443\u0439\u0442\u0435\");\n    println!(\"Byte length: {}\", hello.len());\n}"
@@ -3441,7 +3441,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let s1 = String::from(\"tic\");\n    let s2 = String::from(\"tac\");\n    let s3 = String::from(\"toe\");\n    let s = format!(\"{}-{}-{}\", s1, s2, s3); // Doesn't take ownership!\n    println!(\"{}\", s);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s1 = String::from(\"tic\");\n    let s2 = String::from(\"tac\");\n    let s3 = String::from(\"toe\");\n    let s = format!(\"{}-{}-{}\", s1, s2, s3);\n    println!(\"{}\", s);\n}",
     "hints": [
       "Write:\nfn main() {\n    let s1 = String::from(\"tic\");\n    let s2 = String::from(\"tac\");\n    let s3 = String::from(\"toe\");\n    let s = format!(\"{}-{}-{}\", s1, s2, s3);\n    println!(\"{}\", s);\n}"
@@ -3483,7 +3483,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let s = \"hello\";\n    for c in s.chars() {\n        print!(\"{} \", c);\n    }\n    println!();\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s = \"hello\";\n    for c in s.chars() {\n        print!(\"{} \", c);\n    }\n    println!();\n}",
     "hints": [
       "Write:\nfn main() {\n    let s = \"hello\";\n    for c in s.chars() {\n        print!(\"{} \", c);\n    }\n    println!();\n}"
@@ -3525,7 +3525,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let s = \"Rust \u2764\";\n    println!(\"Chars count: {}\", s.chars().count());\n    println!(\"Bytes count: {}\", s.bytes().count());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let s = \"Rust \u2764\";\n    println!(\"Chars count: {}\", s.chars().count());\n    println!(\"Bytes count: {}\", s.bytes().count());\n}",
     "hints": [
       "Write:\nfn main() {\n    let s = \"Rust \u2764\";\n    println!(\"Chars count: {}\", s.chars().count());\n    println!(\"Bytes count: {}\", s.bytes().count());\n}"
@@ -3567,7 +3567,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert(String::from(\"Blue\"), 10);\n    scores.insert(String::from(\"Yellow\"), 50);\n    println!(\"Blue score: {:?}\", scores.get(\"Blue\"));\n}",
+    "initialCode": "use std::collections::HashMap;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert(String::from(\"Blue\"), 10);\n    scores.insert(String::from(\"Yellow\"), 50);\n    println!(\"Blue score: {:?}\", scores.get(\"Blue\"));\n}",
     "hints": [
       "Write:\nuse std::collections::HashMap;\n\nfn main() {\n    let mut scores = HashMap::new();\n    scores.insert(String::from(\"Blue\"), 10);\n    scores.insert(String::from(\"Yellow\"), 50);\n    println!(\"Blue score: {:?}\", scores.get(\"Blue\"));\n}"
@@ -3609,7 +3609,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::collections::HashMap;\n\nfn main() {\n    let text = \"hello world wonderful world\";\n    let mut map = HashMap::new();\n    for word in text.split_whitespace() {\n        let count = map.entry(word).or_insert(0);\n        *count += 1;\n    }\n    println!(\"Word counts: {:?}\", map);\n}",
+    "initialCode": "use std::collections::HashMap;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::collections::HashMap;\n\nfn main() {\n    let text = \"hello world wonderful world\";\n    let mut map = HashMap::new();\n    for word in text.split_whitespace() {\n        let count = map.entry(word).or_insert(0);\n        *count += 1;\n    }\n    println!(\"Word counts: {:?}\", map);\n}",
     "hints": [
       "Write:\nuse std::collections::HashMap;\n\nfn main() {\n    let text = \"hello world wonderful world\";\n    let mut map = HashMap::new();\n    for word in text.split_whitespace() {\n        let count = map.entry(word).or_insert(0);\n        *count += 1;\n    }\n    println!(\"Word counts: {:?}\", map);\n}"
@@ -3651,7 +3651,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::collections::VecDeque;\n\nfn main() {\n    let mut q = VecDeque::new();\n    q.push_back(10);\n    q.push_front(5);\n    println!(\"Front: {:?}, Back: {:?}\", q.pop_front(), q.pop_back());\n}",
+    "initialCode": "use std::collections::VecDeque;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::collections::VecDeque;\n\nfn main() {\n    let mut q = VecDeque::new();\n    q.push_back(10);\n    q.push_front(5);\n    println!(\"Front: {:?}, Back: {:?}\", q.pop_front(), q.pop_back());\n}",
     "hints": [
       "Write:\nuse std::collections::VecDeque;\n\nfn main() {\n    let mut q = VecDeque::new();\n    q.push_back(10);\n    q.push_front(5);\n    println!(\"Front: {:?}, Back: {:?}\", q.pop_front(), q.pop_back());\n}"
@@ -3693,7 +3693,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::collections::BTreeMap;\n\nfn main() {\n    let mut map = BTreeMap::new();\n    map.insert(3, \"three\");\n    map.insert(1, \"one\");\n    map.insert(2, \"two\");\n    for (k, v) in &map {\n        println!(\"{}: {}\", k, v); // Printed in sorted order!\n    }\n}",
+    "initialCode": "use std::collections::BTreeMap;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::collections::BTreeMap;\n\nfn main() {\n    let mut map = BTreeMap::new();\n    map.insert(3, \"three\");\n    map.insert(1, \"one\");\n    map.insert(2, \"two\");\n    for (k, v) in &map {\n        println!(\"{}: {}\", k, v);\n    }\n}",
     "hints": [
       "Write:\nuse std::collections::BTreeMap;\n\nfn main() {\n    let mut map = BTreeMap::new();\n    map.insert(3, \"three\");\n    map.insert(1, \"one\");\n    map.insert(2, \"two\");\n    for (k, v) in &map {\n        println!(\"{}: {}\", k, v);\n    }\n}"
@@ -3735,7 +3735,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::collections::HashSet;\n\nfn main() {\n    let mut set = HashSet::new();\n    set.insert(\"admin\");\n    set.insert(\"editor\");\n    println!(\"Has admin? {}\", set.contains(\"admin\"));\n}",
+    "initialCode": "use std::collections::HashSet;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::collections::HashSet;\n\nfn main() {\n    let mut set = HashSet::new();\n    set.insert(\"admin\");\n    set.insert(\"editor\");\n    println!(\"Has admin? {}\", set.contains(\"admin\"));\n}",
     "hints": [
       "Write:\nuse std::collections::HashSet;\n\nfn main() {\n    let mut set = HashSet::new();\n    set.insert(\"admin\");\n    set.insert(\"editor\");\n    println!(\"Has admin? {}\", set.contains(\"admin\"));\n}"
@@ -3777,7 +3777,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    println!(\"Collections ready: {} items\", nums.len());\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    println!(\"Collections ready: {} items\", nums.len());\n}",
     "hints": [
       "Write:\nfn main() {\n    let nums = vec![1, 2, 3, 4, 5];\n    println!(\"Collections ready: {} items\", nums.len());\n}"
@@ -3819,7 +3819,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut largest = &list[0];\n    for item in list {\n        if item > largest { largest = item; }\n    }\n    largest\n}\n\nfn main() {\n    let nums = [34, 50, 25, 100, 65];\n    println!(\"Largest: {}\", largest(&nums));\n}",
+    "initialCode": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut largest = &list[0];\n    for item in list {\n        if item > largest { largest = item; }\n    }\n    largest\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut largest = &list[0];\n    for item in list {\n        if item > largest { largest = item; }\n    }\n    largest\n}\n\nfn main() {\n    let nums = [34, 50, 25, 100, 65];\n    println!(\"Largest: {}\", largest(&nums));\n}",
     "hints": [
       "Write:\nfn largest<T: PartialOrd>(list: &[T]) -> &T {\n    let mut largest = &list[0];\n    for item in list {\n        if item > largest { largest = item; }\n    }\n    largest\n}\n\nfn main() {\n    let nums = [34, 50, 25, 100, 65];\n    println!(\"Largest: {}\", largest(&nums));\n}"
@@ -3861,7 +3861,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Point<T> {\n    x: T,\n    y: T,\n}\n\nfn main() {\n    let integer_pt = Point { x: 5, y: 10 };\n    let float_pt = Point { x: 1.0, y: 4.0 };\n    println!(\"{}, {}\", integer_pt.x, float_pt.x);\n}",
+    "initialCode": "struct Point<T> {\n    x: T,\n    y: T,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Point<T> {\n    x: T,\n    y: T,\n}\n\nfn main() {\n    let integer_pt = Point { x: 5, y: 10 };\n    let float_pt = Point { x: 1.0, y: 4.0 };\n    println!(\"{}, {}\", integer_pt.x, float_pt.x);\n}",
     "hints": [
       "Write:\nstruct Point<T> {\n    x: T,\n    y: T,\n}\n\nfn main() {\n    let integer_pt = Point { x: 5, y: 10 };\n    let float_pt = Point { x: 1.0, y: 4.0 };\n    println!(\"{}, {}\", integer_pt.x, float_pt.x);\n}"
@@ -3903,7 +3903,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // Rust compiles generic code into specialized machine code for each concrete type\n    // Zero runtime performance penalty compared to hand-written functions!\n    println!(\"Monomorphization explained\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Monomorphization explained\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Monomorphization explained\");\n}"
@@ -3945,7 +3945,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "trait Summary {\n    fn summarize(&self) -> String;\n}\n\nstruct Article { headline: String }\nimpl Summary for Article {\n    fn summarize(&self) -> String {\n        format!(\"Headline: {}\", self.headline)\n    }\n}\n\nfn main() {\n    let a = Article { headline: String::from(\"Rust 2026 Released\") };\n    println!(\"{}\", a.summarize());\n}",
+    "initialCode": "trait Summary {\n    fn summarize(&self) -> String;\n}\n\nstruct Article { headline: String }\nimpl Summary for Article {\n    fn summarize(&self) -> String {\n        format!(\"Headline: {}\", self.headline)\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "trait Summary {\n    fn summarize(&self) -> String;\n}\n\nstruct Article { headline: String }\nimpl Summary for Article {\n    fn summarize(&self) -> String {\n        format!(\"Headline: {}\", self.headline)\n    }\n}\n\nfn main() {\n    let a = Article { headline: String::from(\"Rust 2026 Released\") };\n    println!(\"{}\", a.summarize());\n}",
     "hints": [
       "Write:\ntrait Summary {\n    fn summarize(&self) -> String;\n}\n\nstruct Article { headline: String }\nimpl Summary for Article {\n    fn summarize(&self) -> String {\n        format!(\"Headline: {}\", self.headline)\n    }\n}\n\nfn main() {\n    let a = Article { headline: String::from(\"Rust 2026 Released\") };\n    println!(\"{}\", a.summarize());\n}"
@@ -3987,7 +3987,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "trait Greet {\n    fn greeting(&self) -> String {\n        String::from(\"Hello, stranger!\") // Default implementation\n    }\n}\n\nstruct Guest;\nimpl Greet for Guest {}\n\nfn main() {\n    let g = Guest;\n    println!(\"{}\", g.greeting());\n}",
+    "initialCode": "trait Greet {\n    fn greeting(&self) -> String {\n        String::from(\"Hello, stranger!\") // Default implementation\n    }\n}\n\nstruct Guest;\nimpl Greet for Guest {}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "trait Greet {\n    fn greeting(&self) -> String {\n        String::from(\"Hello, stranger!\")\n    }\n}\n\nstruct Guest;\nimpl Greet for Guest {}\n\nfn main() {\n    let g = Guest;\n    println!(\"{}\", g.greeting());\n}",
     "hints": [
       "Write:\ntrait Greet {\n    fn greeting(&self) -> String {\n        String::from(\"Hello, stranger!\")\n    }\n}\n\nstruct Guest;\nimpl Greet for Guest {}\n\nfn main() {\n    let g = Guest;\n    println!(\"{}\", g.greeting());\n}"
@@ -4029,7 +4029,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "trait Printable { fn print(&self); }\nimpl Printable for i32 { fn print(&self) { println!(\"{}\", self); } }\n\nfn show(item: &impl Printable) {\n    item.print();\n}\n\nfn main() {\n    show(&42);\n}",
+    "initialCode": "trait Printable { fn print(&self); }\nimpl Printable for i32 { fn print(&self) { println!(\"{}\", self); } }\n\nfn show(item: &impl Printable) {\n    item.print();\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "trait Printable { fn print(&self); }\nimpl Printable for i32 { fn print(&self) { println!(\"{}\", self); } }\n\nfn show(item: &impl Printable) {\n    item.print();\n}\n\nfn main() {\n    show(&42);\n}",
     "hints": [
       "Write:\ntrait Printable { fn print(&self); }\nimpl Printable for i32 { fn print(&self) { println!(\"{}\", self); } }\n\nfn show(item: &impl Printable) {\n    item.print();\n}\n\nfn main() {\n    show(&42);\n}"
@@ -4071,7 +4071,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn notify<T: std::fmt::Display + Clone>(item: &T) {\n    println!(\"Item: {}\", item);\n}\n\nfn main() {\n    notify(&\"Verified message\");\n}",
+    "initialCode": "fn notify<T: std::fmt::Display + Clone>(item: &T) {\n    println!(\"Item: {}\", item);\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn notify<T: std::fmt::Display + Clone>(item: &T) {\n    println!(\"Item: {}\", item);\n}\n\nfn main() {\n    notify(&\"Verified message\");\n}",
     "hints": [
       "Write:\nfn notify<T: std::fmt::Display + Clone>(item: &T) {\n    println!(\"Item: {}\", item);\n}\n\nfn main() {\n    notify(&\"Verified message\");\n}"
@@ -4113,7 +4113,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::fmt::{Debug, Display};\n\nfn print_data<T, U>(t: &T, u: &U)\nwhere\n    T: Display + Clone,\n    U: Clone + Debug,\n{\n    println!(\"t: {}, u: {:?}\", t, u);\n}\n\nfn main() {\n    print_data(&\"data\", &100);\n}",
+    "initialCode": "use std::fmt::{Debug, Display};\n\nfn print_data<T, U>(t: &T, u: &U)\nwhere\n    T: Display + Clone,\n    U: Clone + Debug,\n{\n    println!(\"t: {}, u: {:?}\", t, u);\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::fmt::{Debug, Display};\n\nfn print_data<T, U>(t: &T, u: &U)\nwhere\n    T: Display + Clone,\n    U: Clone + Debug,\n{\n    println!(\"t: {}, u: {:?}\", t, u);\n}\n\nfn main() {\n    print_data(&\"data\", &100);\n}",
     "hints": [
       "Write:\nuse std::fmt::{Debug, Display};\n\nfn print_data<T, U>(t: &T, u: &U)\nwhere\n    T: Display + Clone,\n    U: Clone + Debug,\n{\n    println!(\"t: {}, u: {:?}\", t, u);\n}\n\nfn main() {\n    print_data(&\"data\", &100);\n}"
@@ -4155,7 +4155,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn make_counter() -> impl Fn(i32) -> i32 {\n    |x| x + 1\n}\n\nfn main() {\n    let add_one = make_counter();\n    println!(\"{}\", add_one(10));\n}",
+    "initialCode": "fn make_counter() -> impl Fn(i32) -> i32 {\n    |x| x + 1\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn make_counter() -> impl Fn(i32) -> i32 {\n    |x| x + 1\n}\n\nfn main() {\n    let add_one = make_counter();\n    println!(\"{}\", add_one(10));\n}",
     "hints": [
       "Write:\nfn make_counter() -> impl Fn(i32) -> i32 {\n    |x| x + 1\n}\n\nfn main() {\n    let add_one = make_counter();\n    println!(\"{}\", add_one(10));\n}"
@@ -4197,7 +4197,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "trait Generator {\n    type Output;\n    fn next_val(&mut self) -> Option<Self::Output>;\n}\n\nstruct SimpleGen(u32);\nimpl Generator for SimpleGen {\n    type Output = u32;\n    fn next_val(&mut self) -> Option<Self::Output> {\n        self.0 += 1;\n        Some(self.0)\n    }\n}\n\nfn main() {\n    let mut g = SimpleGen(0);\n    println!(\"Generated: {:?}\", g.next_val());\n}",
+    "initialCode": "trait Generator {\n    type Output;\n    fn next_val(&mut self) -> Option<Self::Output>;\n}\n\nstruct SimpleGen(u32);\nimpl Generator for SimpleGen {\n    type Output = u32;\n    fn next_val(&mut self) -> Option<Self::Output> {\n        self.0 += 1;\n        Some(self.0)\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "trait Generator {\n    type Output;\n    fn next_val(&mut self) -> Option<Self::Output>;\n}\n\nstruct SimpleGen(u32);\nimpl Generator for SimpleGen {\n    type Output = u32;\n    fn next_val(&mut self) -> Option<Self::Output> {\n        self.0 += 1;\n        Some(self.0)\n    }\n}\n\nfn main() {\n    let mut g = SimpleGen(0);\n    println!(\"Generated: {:?}\", g.next_val());\n}",
     "hints": [
       "Write:\ntrait Generator {\n    type Output;\n    fn next_val(&mut self) -> Option<Self::Output>;\n}\n\nstruct SimpleGen(u32);\nimpl Generator for SimpleGen {\n    type Output = u32;\n    fn next_val(&mut self) -> Option<Self::Output> {\n        self.0 += 1;\n        Some(self.0)\n    }\n}\n\nfn main() {\n    let mut g = SimpleGen(0);\n    println!(\"Generated: {:?}\", g.next_val());\n}"
@@ -4239,7 +4239,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point { x: i32, y: i32 }\n\nimpl Add for Point {\n    type Output = Point;\n    fn add(self, other: Point) -> Point {\n        Point { x: self.x + other.x, y: self.y + other.y }\n    }\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = Point { x: 3, y: 4 };\n    println!(\"Sum: {:?}\", p1 + p2);\n}",
+    "initialCode": "use std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point { x: i32, y: i32 }\n\nimpl Add for Point {\n    type Output = Point;\n    fn add(self, other: Point) -> Point {\n        Point { x: self.x + other.x, y: self.y + other.y }\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point { x: i32, y: i32 }\n\nimpl Add for Point {\n    type Output = Point;\n    fn add(self, other: Point) -> Point {\n        Point { x: self.x + other.x, y: self.y + other.y }\n    }\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = Point { x: 3, y: 4 };\n    println!(\"Sum: {:?}\", p1 + p2);\n}",
     "hints": [
       "Write:\nuse std::ops::Add;\n\n#[derive(Debug, PartialEq)]\nstruct Point { x: i32, y: i32 }\n\nimpl Add for Point {\n    type Output = Point;\n    fn add(self, other: Point) -> Point {\n        Point { x: self.x + other.x, y: self.y + other.y }\n    }\n}\n\nfn main() {\n    let p1 = Point { x: 1, y: 2 };\n    let p2 = Point { x: 3, y: 4 };\n    println!(\"Sum: {:?}\", p1 + p2);\n}"
@@ -4281,7 +4281,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "trait Speaker { fn speak(&self); }\nstruct Dog; impl Speaker for Dog { fn speak(&self) { println!(\"Woof!\"); } }\nstruct Cat; impl Speaker for Cat { fn speak(&self) { println!(\"Meow!\"); } }\n\nfn main() {\n    let animals: Vec<Box<dyn Speaker>> = vec![Box::new(Dog), Box::new(Cat)];\n    for a in animals { a.speak(); }\n}",
+    "initialCode": "trait Speaker { fn speak(&self); }\nstruct Dog; impl Speaker for Dog { fn speak(&self) { println!(\"Woof!\"); } }\nstruct Cat; impl Speaker for Cat { fn speak(&self) { println!(\"Meow!\"); } }\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "trait Speaker { fn speak(&self); }\nstruct Dog; impl Speaker for Dog { fn speak(&self) { println!(\"Woof!\"); } }\nstruct Cat; impl Speaker for Cat { fn speak(&self) { println!(\"Meow!\"); } }\n\nfn main() {\n    let animals: Vec<Box<dyn Speaker>> = vec![Box::new(Dog), Box::new(Cat)];\n    for a in animals { a.speak(); }\n}",
     "hints": [
       "Write:\ntrait Speaker { fn speak(&self); }\nstruct Dog; impl Speaker for Dog { fn speak(&self) { println!(\"Woof!\"); } }\nstruct Cat; impl Speaker for Cat { fn speak(&self) { println!(\"Meow!\"); } }\n\nfn main() {\n    let animals: Vec<Box<dyn Speaker>> = vec![Box::new(Dog), Box::new(Cat)];\n    for a in animals { a.speak(); }\n}"
@@ -4323,7 +4323,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // Static dispatch (generics, impl Trait): zero runtime cost, inlineable, larger binary size\n    // Dynamic dispatch (dyn Trait): vtable lookup overhead, smaller binary, enables heterogeneous collections\n    println!(\"Dispatch trade-offs verified\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Dispatch trade-offs verified\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Dispatch trade-offs verified\");\n}"
@@ -4365,7 +4365,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::fmt::Display;\n\ntrait Printable: Display {\n    fn print_header(&self) {\n        println!(\"*** {} ***\", self);\n    }\n}\n\nimpl Printable for String {}\n\nfn main() {\n    let s = String::from(\"DevForge\");\n    s.print_header();\n}",
+    "initialCode": "use std::fmt::Display;\n\ntrait Printable: Display {\n    fn print_header(&self) {\n        println!(\"*** {} ***\", self);\n    }\n}\n\nimpl Printable for String {}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::fmt::Display;\n\ntrait Printable: Display {\n    fn print_header(&self) {\n        println!(\"*** {} ***\", self);\n    }\n}\n\nimpl Printable for String {}\n\nfn main() {\n    let s = String::from(\"DevForge\");\n    s.print_header();\n}",
     "hints": [
       "Write:\nuse std::fmt::Display;\n\ntrait Printable: Display {\n    fn print_header(&self) {\n        println!(\"*** {} ***\", self);\n    }\n}\n\nimpl Printable for String {}\n\nfn main() {\n    let s = String::from(\"DevForge\");\n    s.print_header();\n}"
@@ -4407,7 +4407,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let status = \"Generics & Traits Mastered\";\n    println!(\"{}\", status);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let status = \"Generics & Traits Mastered\";\n    println!(\"{}\", status);\n}",
     "hints": [
       "Write:\nfn main() {\n    let status = \"Generics & Traits Mastered\";\n    println!(\"{}\", status);\n}"
@@ -4449,7 +4449,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // panic!(\"Critical failure!\");\n    println!(\"Safe execution\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Safe execution\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Safe execution\");\n}"
@@ -4491,7 +4491,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"Division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10.0, 2.0) {\n        Ok(res) => println!(\"Result: {}\", res),\n        Err(err) => println!(\"Error: {}\", err),\n    }\n}",
+    "initialCode": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"Division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"Division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10.0, 2.0) {\n        Ok(res) => println!(\"Result: {}\", res),\n        Err(err) => println!(\"Error: {}\", err),\n    }\n}",
     "hints": [
       "Write:\nfn divide(a: f64, b: f64) -> Result<f64, String> {\n    if b == 0.0 {\n        Err(String::from(\"Division by zero\"))\n    } else {\n        Ok(a / b)\n    }\n}\n\nfn main() {\n    match divide(10.0, 2.0) {\n        Ok(res) => println!(\"Result: {}\", res),\n        Err(err) => println!(\"Error: {}\", err),\n    }\n}"
@@ -4533,7 +4533,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let valid: Result<i32, &str> = Ok(42);\n    let val = valid.expect(\"Failed to unwrap valid value\");\n    println!(\"Value: {}\", val);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let valid: Result<i32, &str> = Ok(42);\n    let val = valid.expect(\"Failed to unwrap valid value\");\n    println!(\"Value: {}\", val);\n}",
     "hints": [
       "Write:\nfn main() {\n    let valid: Result<i32, &str> = Ok(42);\n    let val = valid.expect(\"Failed to unwrap valid value\");\n    println!(\"Value: {}\", val);\n}"
@@ -4575,7 +4575,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn parse_number(s: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = s.parse::<i32>()?; // Return Err early if failed!\n    Ok(n * 2)\n}\n\nfn main() {\n    println!(\"{:?}\", parse_number(\"21\"));\n}",
+    "initialCode": "fn parse_number(s: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = s.parse::<i32>()?; // Return Err early if failed!\n    Ok(n * 2)\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn parse_number(s: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = s.parse::<i32>()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    println!(\"{:?}\", parse_number(\"21\"));\n}",
     "hints": [
       "Write:\nfn parse_number(s: &str) -> Result<i32, std::num::ParseIntError> {\n    let n = s.parse::<i32>()?;\n    Ok(n * 2)\n}\n\nfn main() {\n    println!(\"{:?}\", parse_number(\"21\"));\n}"
@@ -4617,7 +4617,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn last_char_first_word(text: &str) -> Option<char> {\n    text.split_whitespace().next()?.chars().last()\n}\n\nfn main() {\n    println!(\"{:?}\", last_char_first_word(\"hello world\"));\n}",
+    "initialCode": "fn last_char_first_word(text: &str) -> Option<char> {\n    text.split_whitespace().next()?.chars().last()\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn last_char_first_word(text: &str) -> Option<char> {\n    text.split_whitespace().next()?.chars().last()\n}\n\nfn main() {\n    println!(\"{:?}\", last_char_first_word(\"hello world\"));\n}",
     "hints": [
       "Write:\nfn last_char_first_word(text: &str) -> Option<char> {\n    text.split_whitespace().next()?.chars().last()\n}\n\nfn main() {\n    println!(\"{:?}\", last_char_first_word(\"hello world\"));\n}"
@@ -4659,7 +4659,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn read_int(s: &str) -> Result<i32, String> {\n    s.parse::<i32>().map_err(|e| format!(\"Invalid integer: {}\", e))\n}\n\nfn main() {\n    println!(\"{:?}\", read_int(\"abc\"));\n}",
+    "initialCode": "fn read_int(s: &str) -> Result<i32, String> {\n    s.parse::<i32>().map_err(|e| format!(\"Invalid integer: {}\", e))\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn read_int(s: &str) -> Result<i32, String> {\n    s.parse::<i32>().map_err(|e| format!(\"Invalid integer: {}\", e))\n}\n\nfn main() {\n    println!(\"{:?}\", read_int(\"abc\"));\n}",
     "hints": [
       "Write:\nfn read_int(s: &str) -> Result<i32, String> {\n    s.parse::<i32>().map_err(|e| format!(\"Invalid integer: {}\", e))\n}\n\nfn main() {\n    println!(\"{:?}\", read_int(\"abc\"));\n}"
@@ -4701,7 +4701,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "#[derive(Debug)]\nenum DataStoreError {\n    NotFound(String),\n    PermissionDenied,\n}\n\nfn main() {\n    let err: Result<(), DataStoreError> = Err(DataStoreError::NotFound(String::from(\"user_1\")));\n    println!(\"{:?}\", err);\n}",
+    "initialCode": "#[derive(Debug)]\nenum DataStoreError {\n    NotFound(String),\n    PermissionDenied,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "#[derive(Debug)]\nenum DataStoreError {\n    NotFound(String),\n    PermissionDenied,\n}\n\nfn main() {\n    let err: Result<(), DataStoreError> = Err(DataStoreError::NotFound(String::from(\"user_1\")));\n    println!(\"{}\", \"Custom error defined\");\n}",
     "hints": [
       "Write:\n#[derive(Debug)]\nenum DataStoreError {\n    NotFound(String),\n    PermissionDenied,\n}\n\nfn main() {\n    let err: Result<(), DataStoreError> = Err(DataStoreError::NotFound(String::from(\"user_1\")));\n    println!(\"{}\", \"Custom error defined\");\n}"
@@ -4743,7 +4743,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::fmt;\n\n#[derive(Debug)]\nstruct CustomError(&'static str);\n\nimpl fmt::Display for CustomError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Custom error: {}\", self.0)\n    }\n}\nimpl std::error::Error for CustomError {}\n\nfn main() {\n    println!(\"{}\", CustomError(\"timeout\"));\n}",
+    "initialCode": "use std::fmt;\n\n#[derive(Debug)]\nstruct CustomError(&'static str);\n\nimpl fmt::Display for CustomError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Custom error: {}\", self.0)\n    }\n}\nimpl std::error::Error for CustomError {}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::fmt;\n\n#[derive(Debug)]\nstruct CustomError(&'static str);\n\nimpl fmt::Display for CustomError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Custom error: {}\", self.0)\n    }\n}\nimpl std::error::Error for CustomError {}\n\nfn main() {\n    println!(\"{}\", CustomError(\"timeout\"));\n}",
     "hints": [
       "Write:\nuse std::fmt;\n\n#[derive(Debug)]\nstruct CustomError(&'static str);\n\nimpl fmt::Display for CustomError {\n    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {\n        write!(f, \"Custom error: {}\", self.0)\n    }\n}\nimpl std::error::Error for CustomError {}\n\nfn main() {\n    println!(\"{}\", CustomError(\"timeout\"));\n}"
@@ -4785,7 +4785,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn run_task() -> Result<(), Box<dyn std::error::Error>> {\n    let _num = \"42\".parse::<i32>()?;\n    Ok(())\n}\n\nfn main() {\n    println!(\"{:?}\", run_task());\n}",
+    "initialCode": "fn run_task() -> Result<(), Box<dyn std::error::Error>> {\n    let _num = \"42\".parse::<i32>()?;\n    Ok(())\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn run_task() -> Result<(), Box<dyn std::error::Error>> {\n    let _num = \"42\".parse::<i32>()?;\n    Ok(())\n}\n\nfn main() {\n    println!(\"{:?}\", run_task());\n}",
     "hints": [
       "Write:\nfn run_task() -> Result<(), Box<dyn std::error::Error>> {\n    let _num = \"42\".parse::<i32>()?;\n    Ok(())\n}\n\nfn main() {\n    println!(\"{:?}\", run_task());\n}"
@@ -4827,7 +4827,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // thiserror derive macro generates Display and std::error::Error implementations effortlessly\n    // #[derive(thiserror::Error, Debug)]\n    // pub enum ConfigError { #[error(\"file not found: {0}\")] NotFound(String) }\n    println!(\"thiserror concepts explored\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"thiserror concepts explored\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"thiserror concepts explored\");\n}"
@@ -4869,7 +4869,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // anyhow::Result<()> provides effortless context: .context(\"Failed to load user config\")\n    println!(\"anyhow contextual errors explored\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"anyhow contextual errors explored\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"anyhow contextual errors explored\");\n}"
@@ -4911,7 +4911,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let opt: Option<i32> = None;\n    let val = opt.unwrap_or(100);\n    let computed = opt.unwrap_or_else(|| 42 * 2);\n    println!(\"Val: {}, Computed: {}\", val, computed);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let opt: Option<i32> = None;\n    let val = opt.unwrap_or(100);\n    let computed = opt.unwrap_or_else(|| 42 * 2);\n    println!(\"Val: {}, Computed: {}\", val, computed);\n}",
     "hints": [
       "Write:\nfn main() {\n    let opt: Option<i32> = None;\n    let val = opt.unwrap_or(100);\n    let computed = opt.unwrap_or_else(|| 42 * 2);\n    println!(\"Val: {}, Computed: {}\", val, computed);\n}"
@@ -4995,7 +4995,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // Set RUST_BACKTRACE=1 to view exact stack trace lines upon panic\n    // std::panic::set_hook(...) customizes crash reports\n    println!(\"Backtrace diagnostics available\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Backtrace diagnostics available\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Backtrace diagnostics available\");\n}"
@@ -5037,7 +5037,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let res: Result<&str, ()> = Ok(\"Error Handling Idioms Mastered\");\n    if let Ok(msg) = res {\n        println!(\"{}\", msg);\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let res: Result<&str, ()> = Ok(\"Error Handling Idioms Mastered\");\n    if let Ok(msg) = res {\n        println!(\"{}\", msg);\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    let res: Result<&str, ()> = Ok(\"Error Handling Idioms Mastered\");\n    if let Ok(msg) = res {\n        println!(\"{}\", msg);\n    }\n}"
@@ -5079,7 +5079,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let factor = 3;\n    let multiply = |x| x * factor;\n    println!(\"3 * 5 = {}\", multiply(5));\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let factor = 3;\n    let multiply = |x| x * factor;\n    println!(\"3 * 5 = {}\", multiply(5));\n}",
     "hints": [
       "Write:\nfn main() {\n    let factor = 3;\n    let multiply = |x| x * factor;\n    println!(\"3 * 5 = {}\", multiply(5));\n}"
@@ -5121,7 +5121,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let add_annotated = |x: i32, y: i32| -> i32 { x + y };\n    println!(\"{}\", add_annotated(10, 20));\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let add_annotated = |x: i32, y: i32| -> i32 { x + y };\n    println!(\"{}\", add_annotated(10, 20));\n}",
     "hints": [
       "Write:\nfn main() {\n    let add_annotated = |x: i32, y: i32| -> i32 { x + y };\n    println!(\"{}\", add_annotated(10, 20));\n}"
@@ -5163,7 +5163,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // FnOnce: captures by value (moves), can only be called once\n    // FnMut: captures by mutable reference, mutates environment\n    // Fn: captures by immutable reference, callable repeatedly\n    println!(\"Fn, FnMut, FnOnce categorized\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Fn, FnMut, FnOnce categorized\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Fn, FnMut, FnOnce categorized\");\n}"
@@ -5205,7 +5205,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let data = vec![1, 2, 3];\n    let owns_data = move || println!(\"Owned vec: {:?}\", data);\n    owns_data();\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let data = vec![1, 2, 3];\n    let owns_data = move || println!(\"Owned vec: {:?}\", data);\n    owns_data();\n}",
     "hints": [
       "Write:\nfn main() {\n    let data = vec![1, 2, 3];\n    let owns_data = move || println!(\"Owned vec: {:?}\", data);\n    owns_data();\n}"
@@ -5247,7 +5247,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let v = vec![1, 2];\n    let mut iter = v.into_iter();\n    println!(\"{:?}\", iter.next()); // Some(1)\n    println!(\"{:?}\", iter.next()); // Some(2)\n    println!(\"{:?}\", iter.next()); // None\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let v = vec![1, 2];\n    let mut iter = v.into_iter();\n    println!(\"{:?}\", iter.next());\n    println!(\"{:?}\", iter.next());\n    println!(\"{:?}\", iter.next());\n}",
     "hints": [
       "Write:\nfn main() {\n    let v = vec![1, 2];\n    let mut iter = v.into_iter();\n    println!(\"{:?}\", iter.next());\n    println!(\"{:?}\", iter.next());\n    println!(\"{:?}\", iter.next());\n}"
@@ -5289,7 +5289,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let evens_squared: Vec<i32> = nums.into_iter()\n        .filter(|x| x % 2 == 0)\n        .map(|x| x * x)\n        .collect();\n    println!(\"Result: {:?}\", evens_squared);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let evens_squared: Vec<i32> = nums.into_iter()\n        .filter(|x| x % 2 == 0)\n        .map(|x| x * x)\n        .collect();\n    println!(\"Result: {:?}\", evens_squared);\n}",
     "hints": [
       "Write:\nfn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let evens_squared: Vec<i32> = nums.into_iter()\n        .filter(|x| x % 2 == 0)\n        .map(|x| x * x)\n        .collect();\n    println!(\"Result: {:?}\", evens_squared);\n}"
@@ -5331,7 +5331,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let nums = vec![10, 20, 30];\n    let total: i32 = nums.iter().sum();\n    println!(\"Total: {}\", total);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let nums = vec![10, 20, 30];\n    let total: i32 = nums.iter().sum();\n    println!(\"Total: {}\", total);\n}",
     "hints": [
       "Write:\nfn main() {\n    let nums = vec![10, 20, 30];\n    let total: i32 = nums.iter().sum();\n    println!(\"Total: {}\", total);\n}"
@@ -5373,7 +5373,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let v = vec![1, 2, 3];\n    let _unused_iter = v.iter().map(|x| x + 1); // Nothing happens yet!\n    println!(\"No computation performed until consumed\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"No computation performed until consumed\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"No computation performed until consumed\");\n}"
@@ -5415,7 +5415,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // Rust compiles functional iterator pipelines into identical or faster assembly than raw C loops\n    // Compiler unrolls loops and vectorizes with SIMD instructions!\n    println!(\"Iterators are zero-cost\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Iterators are zero-cost\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Iterators are zero-cost\");\n}"
@@ -5457,7 +5457,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "struct Counter {\n    count: u32,\n}\nimpl Counter {\n    fn new() -> Counter { Counter { count: 0 } }\n}\nimpl Iterator for Counter {\n    type Item = u32;\n    fn next(&mut self) -> Option<Self::Item> {\n        if self.count < 3 {\n            self.count += 1;\n            Some(self.count)\n        } else { None }\n    }\n}\n\nfn main() {\n    let total: u32 = Counter::new().sum();\n    println!(\"Sum: {}\", total);\n}",
+    "initialCode": "struct Counter {\n    count: u32,\n}\nimpl Counter {\n    fn new() -> Counter { Counter { count: 0 } }\n}\nimpl Iterator for Counter {\n    type Item = u32;\n    fn next(&mut self) -> Option<Self::Item> {\n        if self.count < 3 {\n            self.count += 1;\n            Some(self.count)\n        } else { None }\n    }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "struct Counter {\n    count: u32,\n}\nimpl Counter {\n    fn new() -> Counter { Counter { count: 0 } }\n}\nimpl Iterator for Counter {\n    type Item = u32;\n    fn next(&mut self) -> Option<Self::Item> {\n        if self.count < 3 {\n            self.count += 1;\n            Some(self.count)\n        } else { None }\n    }\n}\n\nfn main() {\n    let total: u32 = Counter::new().sum();\n    println!(\"Sum: {}\", total);\n}",
     "hints": [
       "Write:\nstruct Counter {\n    count: u32,\n}\nimpl Counter {\n    fn new() -> Counter { Counter { count: 0 } }\n}\nimpl Iterator for Counter {\n    type Item = u32;\n    fn next(&mut self) -> Option<Self::Item> {\n        if self.count < 3 {\n            self.count += 1;\n            Some(self.count)\n        } else { None }\n    }\n}\n\nfn main() {\n    let total: u32 = Counter::new().sum();\n    println!(\"Sum: {}\", total);\n}"
@@ -5499,7 +5499,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n    let product = nums.iter().fold(1, |acc, x| acc * x);\n    println!(\"Product: {}\", product);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let nums = vec![1, 2, 3, 4];\n    let product = nums.iter().fold(1, |acc, x| acc * x);\n    println!(\"Product: {}\", product);\n}",
     "hints": [
       "Write:\nfn main() {\n    let nums = vec![1, 2, 3, 4];\n    let product = nums.iter().fold(1, |acc, x| acc * x);\n    println!(\"Product: {}\", product);\n}"
@@ -5541,7 +5541,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let matrix = vec![vec![1, 2], vec![3, 4]];\n    let flat: Vec<i32> = matrix.into_iter().flatten().collect();\n    println!(\"Flat: {:?}\", flat);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let matrix = vec![vec![1, 2], vec![3, 4]];\n    let flat: Vec<i32> = matrix.into_iter().flatten().collect();\n    println!(\"Flat: {:?}\", flat);\n}",
     "hints": [
       "Write:\nfn main() {\n    let matrix = vec![vec![1, 2], vec![3, 4]];\n    let flat: Vec<i32> = matrix.into_iter().flatten().collect();\n    println!(\"Flat: {:?}\", flat);\n}"
@@ -5583,7 +5583,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let letters = ['a', 'b', 'c'];\n    for (i, c) in letters.iter().enumerate() {\n        println!(\"{}: {}\", i, c);\n    }\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let letters = ['a', 'b', 'c'];\n    for (i, c) in letters.iter().enumerate() {\n        println!(\"{}: {}\", i, c);\n    }\n}",
     "hints": [
       "Write:\nfn main() {\n    let letters = ['a', 'b', 'c'];\n    for (i, c) in letters.iter().enumerate() {\n        println!(\"{}: {}\", i, c);\n    }\n}"
@@ -5625,7 +5625,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let (evens, odds): (Vec<i32>, Vec<i32>) = nums.into_iter().partition(|&n| n % 2 == 0);\n    println!(\"Evens: {:?}, Odds: {:?}\", evens, odds);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let (evens, odds): (Vec<i32>, Vec<i32>) = nums.into_iter().partition(|&n| n % 2 == 0);\n    println!(\"Evens: {:?}, Odds: {:?}\", evens, odds);\n}",
     "hints": [
       "Write:\nfn main() {\n    let nums = vec![1, 2, 3, 4, 5, 6];\n    let (evens, odds): (Vec<i32>, Vec<i32>) = nums.into_iter().partition(|&n| n % 2 == 0);\n    println!(\"Evens: {:?}, Odds: {:?}\", evens, odds);\n}"
@@ -5667,7 +5667,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let sum: i32 = (1..=5).map(|x| x * 2).sum();\n    println!(\"Functional pipeline result: {}\", sum);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let sum: i32 = (1..=5).map(|x| x * 2).sum();\n    println!(\"Functional pipeline result: {}\", sum);\n}",
     "hints": [
       "Write:\nfn main() {\n    let sum: i32 = (1..=5).map(|x| x * 2).sum();\n    println!(\"Functional pipeline result: {}\", sum);\n}"
@@ -5709,7 +5709,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let b = Box::new(5);\n    println!(\"b = {}\", b);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let b = Box::new(5);\n    println!(\"b = {}\", b);\n}",
     "hints": [
       "Write:\nfn main() {\n    let b = Box::new(5);\n    println!(\"b = {}\", b);\n}"
@@ -5751,7 +5751,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    let _list = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Nil))));\n    println!(\"Recursive List built\");\n}",
+    "initialCode": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "enum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    let _list = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Nil))));\n    println!(\"Recursive List built\");\n}",
     "hints": [
       "Write:\nenum List {\n    Cons(i32, Box<List>),\n    Nil,\n}\n\nfn main() {\n    let _list = List::Cons(1, Box::new(List::Cons(2, Box::new(List::Nil))));\n    println!(\"Recursive List built\");\n}"
@@ -5793,7 +5793,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::ops::Deref;\n\nstruct MyBox<T>(T);\nimpl<T> Deref for MyBox<T> {\n    type Target = T;\n    fn deref(&self) -> &Self::Target { &self.0 }\n}\n\nfn main() {\n    let x = 5;\n    let y = MyBox(x);\n    println!(\"Deref: {}\", *y);\n}",
+    "initialCode": "use std::ops::Deref;\n\nstruct MyBox<T>(T);\nimpl<T> Deref for MyBox<T> {\n    type Target = T;\n    fn deref(&self) -> &Self::Target { &self.0 }\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::ops::Deref;\n\nstruct MyBox<T>(T);\nimpl<T> Deref for MyBox<T> {\n    type Target = T;\n    fn deref(&self) -> &Self::Target { &self.0 }\n}\n\nfn main() {\n    let x = 5;\n    let y = MyBox(x);\n    println!(\"Deref: {}\", *y);\n}",
     "hints": [
       "Write:\nuse std::ops::Deref;\n\nstruct MyBox<T>(T);\nimpl<T> Deref for MyBox<T> {\n    type Target = T;\n    fn deref(&self) -> &Self::Target { &self.0 }\n}\n\nfn main() {\n    let x = 5;\n    let y = MyBox(x);\n    println!(\"Deref: {}\", *y);\n}"
@@ -5835,7 +5835,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::rc::Rc;\n\nfn main() {\n    let shared = Rc::new(String::from(\"Common Resource\"));\n    let _clone1 = Rc::clone(&shared);\n    let _clone2 = Rc::clone(&shared);\n    println!(\"Ref count: {}\", Rc::strong_count(&shared));\n}",
+    "initialCode": "use std::rc::Rc;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::rc::Rc;\n\nfn main() {\n    let shared = Rc::new(String::from(\"Common Resource\"));\n    let _clone1 = Rc::clone(&shared);\n    let _clone2 = Rc::clone(&shared);\n    println!(\"Ref count: {}\", Rc::strong_count(&shared));\n}",
     "hints": [
       "Write:\nuse std::rc::Rc;\n\nfn main() {\n    let shared = Rc::new(String::from(\"Common Resource\"));\n    let _clone1 = Rc::clone(&shared);\n    let _clone2 = Rc::clone(&shared);\n    println!(\"Ref count: {}\", Rc::strong_count(&shared));\n}"
@@ -5877,7 +5877,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::cell::RefCell;\n\nfn main() {\n    let data = RefCell::new(42);\n    {\n        let mut mut_ref = data.borrow_mut();\n        *mut_ref += 1;\n    }\n    println!(\"Data: {}\", data.borrow());\n}",
+    "initialCode": "use std::cell::RefCell;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::cell::RefCell;\n\nfn main() {\n    let data = RefCell::new(42);\n    {\n        let mut mut_ref = data.borrow_mut();\n        *mut_ref += 1;\n    }\n    println!(\"Data: {}\", data.borrow());\n}",
     "hints": [
       "Write:\nuse std::cell::RefCell;\n\nfn main() {\n    let data = RefCell::new(42);\n    {\n        let mut mut_ref = data.borrow_mut();\n        *mut_ref += 1;\n    }\n    println!(\"Data: {}\", data.borrow());\n}"
@@ -5919,7 +5919,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::rc::Rc;\nuse std::cell::RefCell;\n\nfn main() {\n    let value = Rc::new(RefCell::new(5));\n    let a = Rc::clone(&value);\n    *a.borrow_mut() += 10;\n    println!(\"Shared mutated value: {}\", value.borrow());\n}",
+    "initialCode": "use std::rc::Rc;\nuse std::cell::RefCell;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::rc::Rc;\nuse std::cell::RefCell;\n\nfn main() {\n    let value = Rc::new(RefCell::new(5));\n    let a = Rc::clone(&value);\n    *a.borrow_mut() += 10;\n    println!(\"Shared mutated value: {}\", value.borrow());\n}",
     "hints": [
       "Write:\nuse std::rc::Rc;\nuse std::cell::RefCell;\n\nfn main() {\n    let value = Rc::new(RefCell::new(5));\n    let a = Rc::clone(&value);\n    *a.borrow_mut() += 10;\n    println!(\"Shared mutated value: {}\", value.borrow());\n}"
@@ -5961,7 +5961,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        println!(\"Hello from worker thread!\");\n    });\n    handle.join().unwrap();\n}",
+    "initialCode": "use std::thread;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        println!(\"Hello from worker thread!\");\n    });\n    handle.join().unwrap();\n}",
     "hints": [
       "Write:\nuse std::thread;\n\nfn main() {\n    let handle = thread::spawn(|| {\n        println!(\"Hello from worker thread!\");\n    });\n    handle.join().unwrap();\n}"
@@ -6003,7 +6003,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n    thread::spawn(move || {\n        tx.send(\"Message from thread\").unwrap();\n    });\n    let received = rx.recv().unwrap();\n    println!(\"Received: {}\", received);\n}",
+    "initialCode": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n    thread::spawn(move || {\n        tx.send(\"Message from thread\").unwrap();\n    });\n    let received = rx.recv().unwrap();\n    println!(\"Received: {}\", received);\n}",
     "hints": [
       "Write:\nuse std::sync::mpsc;\nuse std::thread;\n\nfn main() {\n    let (tx, rx) = mpsc::channel();\n    thread::spawn(move || {\n        tx.send(\"Message from thread\").unwrap();\n    });\n    let received = rx.recv().unwrap();\n    println!(\"Received: {}\", received);\n}"
@@ -6045,7 +6045,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::sync::Mutex;\n\nfn main() {\n    let m = Mutex::new(5);\n    {\n        let mut num = m.lock().unwrap();\n        *num = 6;\n    }\n    println!(\"Mutex value: {:?}\", m);\n}",
+    "initialCode": "use std::sync::Mutex;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::sync::Mutex;\n\nfn main() {\n    let m = Mutex::new(5);\n    {\n        let mut num = m.lock().unwrap();\n        *num = 6;\n    }\n    println!(\"Mutex value: {:?}\", m);\n}",
     "hints": [
       "Write:\nuse std::sync::Mutex;\n\nfn main() {\n    let m = Mutex::new(5);\n    {\n        let mut num = m.lock().unwrap();\n        *num = 6;\n    }\n    println!(\"Mutex value: {:?}\", m);\n}"
@@ -6087,7 +6087,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n    for _ in 0..5 {\n        let c = Arc::clone(&counter);\n        handles.push(thread::spawn(move || {\n            let mut num = c.lock().unwrap();\n            *num += 1;\n        }));\n    }\n    for h in handles { h.join().unwrap(); }\n    println!(\"Result: {}\", *counter.lock().unwrap());\n}",
+    "initialCode": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n    for _ in 0..5 {\n        let c = Arc::clone(&counter);\n        handles.push(thread::spawn(move || {\n            let mut num = c.lock().unwrap();\n            *num += 1;\n        }));\n    }\n    for h in handles { h.join().unwrap(); }\n    println!(\"Result: {}\", *counter.lock().unwrap());\n}",
     "hints": [
       "Write:\nuse std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(0));\n    let mut handles = vec![];\n    for _ in 0..5 {\n        let c = Arc::clone(&counter);\n        handles.push(thread::spawn(move || {\n            let mut num = c.lock().unwrap();\n            *num += 1;\n        }));\n    }\n    for h in handles { h.join().unwrap(); }\n    println!(\"Result: {}\", *counter.lock().unwrap());\n}"
@@ -6129,7 +6129,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // Send: ownership of type can be transferred between threads\n    // Sync: safe to share references to type across threads (&T is Send)\n    println!(\"Send and Sync verified\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Send and Sync verified\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Send and Sync verified\");\n}"
@@ -6171,7 +6171,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    // async fn returns an anonymous type implementing Future<Output = T>\n    // Futures are zero-cost state machines, executed by runtimes like Tokio\n    println!(\"Async rust overview\");\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    println!(\"Async rust overview\");\n}",
     "hints": [
       "Write:\nfn main() {\n    println!(\"Async rust overview\");\n}"
@@ -6213,7 +6213,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "fn main() {\n    let mut num = 5;\n    let r1 = &num as *const i32;\n    let r2 = &mut num as *mut i32;\n    unsafe {\n        println!(\"Dereferenced raw pointer: {}\", *r1);\n        *r2 = 10;\n    }\n    println!(\"Num: {}\", num);\n}",
+    "initialCode": "fn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "fn main() {\n    let mut num = 5;\n    let r1 = &num as *const i32;\n    let r2 = &mut num as *mut i32;\n    unsafe {\n        println!(\"Dereferenced raw pointer: {}\", *r1);\n        *r2 = 10;\n    }\n    println!(\"Num: {}\", num);\n}",
     "hints": [
       "Write:\nfn main() {\n    let mut num = 5;\n    let r1 = &num as *const i32;\n    let r2 = &mut num as *mut i32;\n    unsafe {\n        println!(\"Dereferenced raw pointer: {}\", *r1);\n        *r2 = 10;\n    }\n    println!(\"Num: {}\", num);\n}"
@@ -6255,7 +6255,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "extern \"C\" {\n    fn abs(input: i32) -> i32;\n}\n\nfn main() {\n    let result = unsafe { abs(-42) };\n    println!(\"Absolute value: {}\", result);\n}",
+    "initialCode": "extern \"C\" {\n    fn abs(input: i32) -> i32;\n}\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "extern \"C\" {\n    fn abs(input: i32) -> i32;\n}\n\nfn main() {\n    let result = unsafe { abs(-42) };\n    println!(\"Absolute value: {}\", result);\n}",
     "hints": [
       "Write:\nextern \"C\" {\n    fn abs(input: i32) -> i32;\n}\n\nfn main() {\n    let result = unsafe { abs(-42) };\n    println!(\"Absolute value: {}\", result);\n}"
@@ -6297,7 +6297,7 @@ export const RUST_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(100));\n    let c = Arc::clone(&counter);\n    let handle = thread::spawn(move || {\n        let mut val = c.lock().unwrap();\n        *val += 50;\n    });\n    handle.join().unwrap();\n    println!(\"DevForge Rust Systems Engine Final State: {}\", *counter.lock().unwrap());\n}",
+    "initialCode": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    // Step 1: Write your Rust implementation below\n    // TODO: Write code below\n}",
     "solutionCode": "use std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(100));\n    let c = Arc::clone(&counter);\n    let handle = thread::spawn(move || {\n        let mut val = c.lock().unwrap();\n        *val += 50;\n    });\n    handle.join().unwrap();\n    println!(\"DevForge Rust Systems Engine Final State: {}\", *counter.lock().unwrap());\n}",
     "hints": [
       "Write:\nuse std::sync::{Arc, Mutex};\nuse std::thread;\n\nfn main() {\n    let counter = Arc::new(Mutex::new(100));\n    let c = Arc::clone(&counter);\n    let handle = thread::spawn(move || {\n        let mut val = c.lock().unwrap();\n        *val += 50;\n    });\n    handle.join().unwrap();\n    println!(\"DevForge Rust Systems Engine Final State: {}\", *counter.lock().unwrap());\n}"

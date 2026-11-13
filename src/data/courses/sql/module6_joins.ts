@@ -30,7 +30,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders WHERE user_id = 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders WHERE user_id = 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders WHERE user_id = 1;\n",
     "hints": [
       "Execute: SELECT * FROM orders WHERE user_id = 1;"
@@ -73,7 +73,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT orders.id, users.name, orders.amount FROM orders INNER JOIN users ON orders.user_id = users.id;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT orders.id, users.name, orders.amount FROM orders INNER JOIN users ON orders.user_id = users.id;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT orders.id, users.name, orders.amount FROM orders INNER JOIN users ON orders.user_id = users.id;\n",
     "hints": [
       "Execute: SELECT orders.id, users.name, orders.amount FROM orders INNER JOIN users ON orders.user_id = users.id;"
@@ -116,7 +116,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id;\n",
     "hints": [
       "Execute: SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id;"
@@ -159,7 +159,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id WHERE u.country = 'USA';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id WHERE u.country = 'USA';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id WHERE u.country = 'USA';\n",
     "hints": [
       "Execute: SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id WHERE u.country = 'USA';"
@@ -202,7 +202,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id;\n",
     "hints": [
       "Execute: SELECT u.name, o.amount FROM users u LEFT JOIN orders o ON u.id = o.user_id;"
@@ -245,7 +245,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;\n",
     "hints": [
       "Execute: SELECT u.name FROM users u LEFT JOIN orders o ON u.id = o.user_id WHERE o.id IS NULL;"
@@ -288,7 +288,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name, COUNT(o.id) AS order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name, COUNT(o.id) AS order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name, COUNT(o.id) AS order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;\n",
     "hints": [
       "Execute: SELECT u.name, COUNT(o.id) AS order_count FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;"
@@ -331,7 +331,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;\n",
     "hints": [
       "Execute: SELECT u.name, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id;"
@@ -374,7 +374,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id LIMIT 3;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id LIMIT 3;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id LIMIT 3;\n",
     "hints": [
       "Execute: SELECT o.id, u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id LIMIT 3;"
@@ -417,7 +417,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.amount DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.amount DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.amount DESC;\n",
     "hints": [
       "Execute: SELECT u.name, o.amount FROM orders o JOIN users u ON o.user_id = u.id ORDER BY o.amount DESC;"
@@ -460,7 +460,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT p1.name AS prod1, p2.name AS prod2 FROM products p1 JOIN products p2 ON p1.category = p2.category AND p1.id <> p2.id LIMIT 2;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT p1.name AS prod1, p2.name AS prod2 FROM products p1 JOIN products p2 ON p1.category = p2.category AND p1.id <> p2.id LIMIT 2;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT p1.name AS prod1, p2.name AS prod2 FROM products p1 JOIN products p2 ON p1.category = p2.category AND p1.id <> p2.id LIMIT 2;\n",
     "hints": [
       "Execute: SELECT p1.name AS prod1, p2.name AS prod2 FROM products p1 JOIN products p2 ON p1.category = p2.category AND p1.id <> p2.id LIMIT 2;"
@@ -503,7 +503,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name, p.category FROM users u CROSS JOIN (SELECT DISTINCT category FROM products) p LIMIT 4;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name, p.category FROM users u CROSS JOIN (SELECT DISTINCT category FROM products) p LIMIT 4;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name, p.category FROM users u CROSS JOIN (SELECT DISTINCT category FROM products) p LIMIT 4;\n",
     "hints": [
       "Execute: SELECT u.name, p.category FROM users u CROSS JOIN (SELECT DISTINCT category FROM products) p LIMIT 4;"
@@ -546,7 +546,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.country, SUM(o.amount) AS revenue FROM orders o JOIN users u ON o.user_id = u.id GROUP BY u.country;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.country, SUM(o.amount) AS revenue FROM orders o JOIN users u ON o.user_id = u.id GROUP BY u.country;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.country, SUM(o.amount) AS revenue FROM orders o JOIN users u ON o.user_id = u.id GROUP BY u.country;\n",
     "hints": [
       "Execute: SELECT u.country, SUM(o.amount) AS revenue FROM orders o JOIN users u ON o.user_id = u.id GROUP BY u.country;"
@@ -589,7 +589,7 @@ export const sqlModule6Lessons: Lesson[] = [
       "Write the query: `SELECT u.name, u.email, SUM(o.amount) AS spent FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.id HAVING SUM(o.amount) > 100;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.name, u.email, SUM(o.amount) AS spent FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.id HAVING SUM(o.amount) > 100;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.name, u.email, SUM(o.amount) AS spent FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.id HAVING SUM(o.amount) > 100;\n",
     "hints": [
       "Execute: SELECT u.name, u.email, SUM(o.amount) AS spent FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.id HAVING SUM(o.amount) > 100;"

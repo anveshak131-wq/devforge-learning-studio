@@ -30,7 +30,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, AVG(amount) OVER() AS global_avg FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, AVG(amount) OVER() AS global_avg FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, AVG(amount) OVER() AS global_avg FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, AVG(amount) OVER() AS global_avg FROM orders;"
@@ -73,7 +73,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, name, ROW_NUMBER() OVER(ORDER BY price DESC) AS price_rank FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, name, ROW_NUMBER() OVER(ORDER BY price DESC) AS price_rank FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, name, ROW_NUMBER() OVER(ORDER BY price DESC) AS price_rank FROM products;\n",
     "hints": [
       "Execute: SELECT id, name, ROW_NUMBER() OVER(ORDER BY price DESC) AS price_rank FROM products;"
@@ -116,7 +116,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, RANK() OVER(ORDER BY amount DESC) AS rnk FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, RANK() OVER(ORDER BY amount DESC) AS rnk FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, RANK() OVER(ORDER BY amount DESC) AS rnk FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, RANK() OVER(ORDER BY amount DESC) AS rnk FROM orders;"
@@ -159,7 +159,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT name, category, price, ROW_NUMBER() OVER(PARTITION BY category ORDER BY price DESC) AS cat_rank FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, category, price, ROW_NUMBER() OVER(PARTITION BY category ORDER BY price DESC) AS cat_rank FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, category, price, ROW_NUMBER() OVER(PARTITION BY category ORDER BY price DESC) AS cat_rank FROM products;\n",
     "hints": [
       "Execute: SELECT name, category, price, ROW_NUMBER() OVER(PARTITION BY category ORDER BY price DESC) AS cat_rank FROM products;"
@@ -202,7 +202,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, order_date, amount, SUM(amount) OVER(ORDER BY order_date ASC) AS running_total FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, order_date, amount, SUM(amount) OVER(ORDER BY order_date ASC) AS running_total FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, order_date, amount, SUM(amount) OVER(ORDER BY order_date ASC) AS running_total FROM orders;\n",
     "hints": [
       "Execute: SELECT id, order_date, amount, SUM(amount) OVER(ORDER BY order_date ASC) AS running_total FROM orders;"
@@ -245,7 +245,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT name, category, SUM(price * stock) OVER(PARTITION BY category) AS cat_valuation FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, category, SUM(price * stock) OVER(PARTITION BY category) AS cat_valuation FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, category, SUM(price * stock) OVER(PARTITION BY category) AS cat_valuation FROM products;\n",
     "hints": [
       "Execute: SELECT name, category, SUM(price * stock) OVER(PARTITION BY category) AS cat_valuation FROM products;"
@@ -288,7 +288,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, LAG(amount, 1) OVER(ORDER BY order_date ASC) AS prev_amount FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, LAG(amount, 1) OVER(ORDER BY order_date ASC) AS prev_amount FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, LAG(amount, 1) OVER(ORDER BY order_date ASC) AS prev_amount FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, LAG(amount, 1) OVER(ORDER BY order_date ASC) AS prev_amount FROM orders;"
@@ -331,7 +331,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, LEAD(amount, 1) OVER(ORDER BY order_date ASC) AS next_amount FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, LEAD(amount, 1) OVER(ORDER BY order_date ASC) AS next_amount FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, LEAD(amount, 1) OVER(ORDER BY order_date ASC) AS next_amount FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, LEAD(amount, 1) OVER(ORDER BY order_date ASC) AS next_amount FROM orders;"
@@ -374,7 +374,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, amount - COALESCE(LAG(amount) OVER(ORDER BY order_date), amount) AS diff FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, amount - COALESCE(LAG(amount) OVER(ORDER BY order_date), amount) AS diff FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, amount - COALESCE(LAG(amount) OVER(ORDER BY order_date), amount) AS diff FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, amount - COALESCE(LAG(amount) OVER(ORDER BY order_date), amount) AS diff FROM orders;"
@@ -417,7 +417,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT name, price, FIRST_VALUE(name) OVER(ORDER BY price DESC) AS top_product FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price, FIRST_VALUE(name) OVER(ORDER BY price DESC) AS top_product FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price, FIRST_VALUE(name) OVER(ORDER BY price DESC) AS top_product FROM products;\n",
     "hints": [
       "Execute: SELECT name, price, FIRST_VALUE(name) OVER(ORDER BY price DESC) AS top_product FROM products;"
@@ -460,7 +460,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT name, price, NTILE(4) OVER(ORDER BY price ASC) AS quartile FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price, NTILE(4) OVER(ORDER BY price ASC) AS quartile FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price, NTILE(4) OVER(ORDER BY price ASC) AS quartile FROM products;\n",
     "hints": [
       "Execute: SELECT name, price, NTILE(4) OVER(ORDER BY price ASC) AS quartile FROM products;"
@@ -503,7 +503,7 @@ export const sqlModule13Lessons: Lesson[] = [
       "Write the query: `SELECT id, amount, SUM(amount) OVER(ORDER BY id) AS cumulative FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, amount, SUM(amount) OVER(ORDER BY id) AS cumulative FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, amount, SUM(amount) OVER(ORDER BY id) AS cumulative FROM orders;\n",
     "hints": [
       "Execute: SELECT id, amount, SUM(amount) OVER(ORDER BY id) AS cumulative FROM orders;"

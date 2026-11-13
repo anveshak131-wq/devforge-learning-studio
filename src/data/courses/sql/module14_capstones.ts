@@ -30,7 +30,7 @@ export const sqlModule14Lessons: Lesson[] = [
       "Write the query: `SELECT u.country, COUNT(o.id) AS total_orders, ROUND(SUM(o.amount), 2) AS gross_revenue FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.country ORDER BY gross_revenue DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT u.country, COUNT(o.id) AS total_orders, ROUND(SUM(o.amount), 2) AS gross_revenue FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.country ORDER BY gross_revenue DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT u.country, COUNT(o.id) AS total_orders, ROUND(SUM(o.amount), 2) AS gross_revenue FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.country ORDER BY gross_revenue DESC;\n",
     "hints": [
       "Execute: SELECT u.country, COUNT(o.id) AS total_orders, ROUND(SUM(o.amount), 2) AS gross_revenue FROM users u JOIN orders o ON u.id = o.user_id GROUP BY u.country ORDER BY gross_revenue DESC;"
@@ -73,7 +73,7 @@ export const sqlModule14Lessons: Lesson[] = [
       "Write the query: `WITH UserSpend AS (SELECT u.id, u.name, u.email, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id) SELECT name, email, total_spent, CASE WHEN total_spent >= 300 THEN 'Platinum' WHEN total_spent >= 100 THEN 'Gold' ELSE 'Standard' END AS vip_tier FROM UserSpend ORDER BY total_spent DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH UserSpend AS (SELECT u.id, u.name, u.email, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id) SELECT name, email, total_spent, CASE WHEN total_spent >= 300 THEN 'Platinum' WHEN total_spent >= 100 THEN 'Gold' ELSE 'Standard' END AS vip_tier FROM UserSpend ORDER BY total_spent DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH UserSpend AS (SELECT u.id, u.name, u.email, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id) SELECT name, email, total_spent, CASE WHEN total_spent >= 300 THEN 'Platinum' WHEN total_spent >= 100 THEN 'Gold' ELSE 'Standard' END AS vip_tier FROM UserSpend ORDER BY total_spent DESC;\n",
     "hints": [
       "Execute: WITH UserSpend AS (SELECT u.id, u.name, u.email, COALESCE(SUM(o.amount), 0) AS total_spent FROM users u LEFT JOIN orders o ON u.id = o.user_id GROUP BY u.id) SELECT name, email, total_spent, CASE WHEN total_spent >= 300 THEN 'Platinum' WHEN total_spent >= 100 THEN 'Gold' ELSE 'Standard' END AS vip_tier FROM UserSpend ORDER BY total_spent DESC;"
@@ -116,7 +116,7 @@ export const sqlModule14Lessons: Lesson[] = [
       "Write the query: `SELECT category, COUNT(*) AS items, SUM(stock) AS total_stock, ROUND(SUM(price * stock), 2) AS total_valuation, SUM(CASE WHEN stock <= 15 THEN 1 ELSE 0 END) AS reorder_needed FROM products GROUP BY category ORDER BY total_valuation DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT category, COUNT(*) AS items, SUM(stock) AS total_stock, ROUND(SUM(price * stock), 2) AS total_valuation, SUM(CASE WHEN stock <= 15 THEN 1 ELSE 0 END) AS reorder_needed FROM products GROUP BY category ORDER BY total_valuation DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT category, COUNT(*) AS items, SUM(stock) AS total_stock, ROUND(SUM(price * stock), 2) AS total_valuation, SUM(CASE WHEN stock <= 15 THEN 1 ELSE 0 END) AS reorder_needed FROM products GROUP BY category ORDER BY total_valuation DESC;\n",
     "hints": [
       "Execute: SELECT category, COUNT(*) AS items, SUM(stock) AS total_stock, ROUND(SUM(price * stock), 2) AS total_valuation, SUM(CASE WHEN stock <= 15 THEN 1 ELSE 0 END) AS reorder_needed FROM products GROUP BY category ORDER BY total_valuation DESC;"
@@ -159,7 +159,7 @@ export const sqlModule14Lessons: Lesson[] = [
       "Write the query: `WITH OrderCounts AS (SELECT user_id, COUNT(*) AS num_orders FROM orders GROUP BY user_id) SELECT CASE WHEN num_orders > 1 THEN 'Repeat Buyer' ELSE 'Single Buyer' END AS buyer_type, COUNT(*) AS customer_count FROM OrderCounts GROUP BY buyer_type;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH OrderCounts AS (SELECT user_id, COUNT(*) AS num_orders FROM orders GROUP BY user_id) SELECT CASE WHEN num_orders > 1 THEN 'Repeat Buyer' ELSE 'Single Buyer' END AS buyer_type, COUNT(*) AS customer_count FROM OrderCounts GROUP BY buyer_type;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH OrderCounts AS (SELECT user_id, COUNT(*) AS num_orders FROM orders GROUP BY user_id) SELECT CASE WHEN num_orders > 1 THEN 'Repeat Buyer' ELSE 'Single Buyer' END AS buyer_type, COUNT(*) AS customer_count FROM OrderCounts GROUP BY buyer_type;\n",
     "hints": [
       "Execute: WITH OrderCounts AS (SELECT user_id, COUNT(*) AS num_orders FROM orders GROUP BY user_id) SELECT CASE WHEN num_orders > 1 THEN 'Repeat Buyer' ELSE 'Single Buyer' END AS buyer_type, COUNT(*) AS customer_count FROM OrderCounts GROUP BY buyer_type;"
@@ -202,7 +202,7 @@ export const sqlModule14Lessons: Lesson[] = [
       "Write the query: `WITH Stats AS (SELECT AVG(amount) AS mean, 100 AS threshold FROM orders) SELECT o.id, o.amount, o.status FROM orders o, Stats s WHERE o.amount > s.mean + s.threshold;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH Stats AS (SELECT AVG(amount) AS mean, 100 AS threshold FROM orders) SELECT o.id, o.amount, o.status FROM orders o, Stats s WHERE o.amount > s.mean + s.threshold;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH Stats AS (SELECT AVG(amount) AS mean, 100 AS threshold FROM orders) SELECT o.id, o.amount, o.status FROM orders o, Stats s WHERE o.amount > s.mean + s.threshold;\n",
     "hints": [
       "Execute: WITH Stats AS (SELECT AVG(amount) AS mean, 100 AS threshold FROM orders) SELECT o.id, o.amount, o.status FROM orders o, Stats s WHERE o.amount > s.mean + s.threshold;"
@@ -245,7 +245,7 @@ export const sqlModule14Lessons: Lesson[] = [
       "Write the query: `SELECT strftime('%Y-%m', order_date) AS month, COUNT(id) AS transaction_volume, ROUND(SUM(amount), 2) AS total_sales, ROUND(AVG(amount), 2) AS average_ticket FROM orders WHERE status = 'completed' GROUP BY month ORDER BY month ASC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT strftime('%Y-%m', order_date) AS month, COUNT(id) AS transaction_volume, ROUND(SUM(amount), 2) AS total_sales, ROUND(AVG(amount), 2) AS average_ticket FROM orders WHERE status = 'completed' GROUP BY month ORDER BY month ASC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT strftime('%Y-%m', order_date) AS month, COUNT(id) AS transaction_volume, ROUND(SUM(amount), 2) AS total_sales, ROUND(AVG(amount), 2) AS average_ticket FROM orders WHERE status = 'completed' GROUP BY month ORDER BY month ASC;\n",
     "hints": [
       "Execute: SELECT strftime('%Y-%m', order_date) AS month, COUNT(id) AS transaction_volume, ROUND(SUM(amount), 2) AS total_sales, ROUND(AVG(amount), 2) AS average_ticket FROM orders WHERE status = 'completed' GROUP BY month ORDER BY month ASC;"

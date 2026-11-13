@@ -86,12 +86,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       return currentLesson.initialCode;
     }
 
-    // If user hasn't completed the lesson, but saved code exactly matches solutionCode
-    // while initialCode is now scaffolded differently, reset to the starter scaffold
+    // If user hasn't completed the lesson, but saved code has legacy emoji hints or matches solutionCode,
+    // reset to the clean starter scaffold
     if (
       !isCompleted &&
-      saved.trim() === currentLesson.solutionCode.trim() &&
-      currentLesson.initialCode.trim() !== currentLesson.solutionCode.trim()
+      (saved.includes('👉') ||
+       (saved.trim() === currentLesson.solutionCode.trim() &&
+        currentLesson.initialCode.trim() !== currentLesson.solutionCode.trim()))
     ) {
       ProgressStorage.saveCode(currentLesson.id, currentLesson.initialCode);
       return currentLesson.initialCode;

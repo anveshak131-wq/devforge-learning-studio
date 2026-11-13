@@ -29,7 +29,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Create `let scores = [100, 95, 88];`.",
       "Print `scores[0]`."
     ],
-    "initialCode": "let scores = [100, 95, 88];\nconsole.log(scores[0]);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let scores = [100, 95, 88];\nconsole.log(scores[0]);\n",
     "hints": [
       "Write `scores[0]`"
@@ -71,7 +71,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Push `\"shield\"` with `inventory.push(\"shield\");`.",
       "Print `inventory.length`."
     ],
-    "initialCode": "let inventory = [\"sword\"];\ninventory.push(\"shield\");\nconsole.log(inventory.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let inventory = [\"sword\"];\ninventory.push(\"shield\");\nconsole.log(inventory.length);\n",
     "hints": [
       "Write `inventory.push(\"shield\");`"
@@ -113,7 +113,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Pop into `let lastCard = cards.pop();`.",
       "Print `lastCard`."
     ],
-    "initialCode": "let cards = [10, 20, 30];\nlet lastCard = cards.pop();\nconsole.log(lastCard);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let cards = [10, 20, 30];\nlet lastCard = cards.pop();\nconsole.log(lastCard);\n",
     "hints": [
       "Use `cards.pop()`"
@@ -155,7 +155,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Unshift `10` with `nums.unshift(10);`.",
       "Print `nums[0]`."
     ],
-    "initialCode": "let nums = [20, 30];\nnums.unshift(10);\nconsole.log(nums[0]);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let nums = [20, 30];\nnums.unshift(10);\nconsole.log(nums[0]);\n",
     "hints": [
       "Use `nums.unshift(10)`"
@@ -196,7 +196,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Slice the first 2 items of `[1, 2, 3, 4]`. Assign to `let pair = [1, 2, 3, 4].slice(0, 2);`.",
       "Print `pair.length`."
     ],
-    "initialCode": "let pair = [1, 2, 3, 4].slice(0, 2);\nconsole.log(pair.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let pair = [1, 2, 3, 4].slice(0, 2);\nconsole.log(pair.length);\n",
     "hints": [
       "Use `.slice(0, 2)`"
@@ -237,7 +237,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Remove 1 item at index 1 from `let arr = ['x', 'y', 'z'];` using `arr.splice(1, 1);`.",
       "Print `arr.length`."
     ],
-    "initialCode": "let arr = ['x', 'y', 'z'];\narr.splice(1, 1);\nconsole.log(arr.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let arr = ['x', 'y', 'z'];\narr.splice(1, 1);\nconsole.log(arr.length);\n",
     "hints": [
       "Use `arr.splice(1, 1)`"
@@ -278,7 +278,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Combine `[10, 20]` and `[30, 40]`. Assign to `let merged = [10, 20].concat([30, 40]);`.",
       "Print `merged.length`."
     ],
-    "initialCode": "let merged = [10, 20].concat([30, 40]);\nconsole.log(merged.length);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let merged = [10, 20].concat([30, 40]);\nconsole.log(merged.length);\n",
     "hints": [
       "Use `.concat()`"
@@ -319,7 +319,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Join `[\"cat\", \"dog\"]` with `\" & \"`. Assign to `let text = [\"cat\", \"dog\"].join(\" & \");`.",
       "Print `text`."
     ],
-    "initialCode": "let text = [\"cat\", \"dog\"].join(\" & \");\nconsole.log(text);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let text = [\"cat\", \"dog\"].join(\" & \");\nconsole.log(text);\n",
     "hints": [
       "Write `.join(\" & \")`"
@@ -360,7 +360,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Check if `[1, 2, 3]` includes `2`. Assign to `let hasTwo = [1, 2, 3].includes(2);`.",
       "Print `hasTwo`."
     ],
-    "initialCode": "let hasTwo = [1, 2, 3].includes(2);\nconsole.log(hasTwo);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let hasTwo = [1, 2, 3].includes(2);\nconsole.log(hasTwo);\n",
     "hints": [
       "Use `[1, 2, 3].includes(2)`"
@@ -401,7 +401,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Reverse `let list = [10, 20, 30];` with `list.reverse();`.",
       "Print `list[0]`."
     ],
-    "initialCode": "let list = [10, 20, 30];\nlist.reverse();\nconsole.log(list[0]);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let list = [10, 20, 30];\nlist.reverse();\nconsole.log(list[0]);\n",
     "hints": [
       "Call `list.reverse()`"
@@ -440,7 +440,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
     "exerciseSteps": [
       "Loop over `['A', 'B']` with `.forEach(letter => console.log(letter))`."
     ],
-    "initialCode": "['A', 'B'].forEach(letter => {\n  console.log(letter);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "['A', 'B'].forEach(letter => {\n  console.log(letter);\n});\n",
     "hints": [
       "Use `.forEach(letter => console.log(letter))`"
@@ -482,7 +482,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Triple every number in `[2, 4]` using `.map(x => x * 3)`. Assign to `let tripled`.",
       "Print `tripled`."
     ],
-    "initialCode": "let tripled = [2, 4].map(x => x * 3);\nconsole.log(tripled);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let tripled = [2, 4].map(x => x * 3);\nconsole.log(tripled);\n",
     "hints": [
       "Use `[2, 4].map(x => x * 3)`"
@@ -523,7 +523,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Filter `[5, 12, 8, 20]` for numbers `>= 10`. Assign to `let bigNums`.",
       "Print `bigNums`."
     ],
-    "initialCode": "let bigNums = [5, 12, 8, 20].filter(n => n >= 10);\nconsole.log(bigNums);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let bigNums = [5, 12, 8, 20].filter(n => n >= 10);\nconsole.log(bigNums);\n",
     "hints": [
       "Use `.filter(n => n >= 10)`"
@@ -564,7 +564,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Sum `[10, 20, 30, 40]` using `.reduce((acc, n) => acc + n, 0)`. Assign to `let grandTotal`.",
       "Print `grandTotal`."
     ],
-    "initialCode": "let grandTotal = [10, 20, 30, 40].reduce((acc, n) => acc + n, 0);\nconsole.log(grandTotal);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let grandTotal = [10, 20, 30, 40].reduce((acc, n) => acc + n, 0);\nconsole.log(grandTotal);\n",
     "hints": [
       "Write `.reduce((acc, n) => acc + n, 0)`"
@@ -605,7 +605,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Find first number > 50 in `[20, 55, 80]`. Assign to `let firstBig = [20, 55, 80].find(x => x > 50);`.",
       "Print `firstBig`."
     ],
-    "initialCode": "let firstBig = [20, 55, 80].find(x => x > 50);\nconsole.log(firstBig);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let firstBig = [20, 55, 80].find(x => x > 50);\nconsole.log(firstBig);\n",
     "hints": [
       "Use `.find(x => x > 50)`"
@@ -645,7 +645,7 @@ export const MODULE_7_LESSONS: Lesson[] = [
       "Find index of element === `'gold'` in `['silver', 'gold']`. Assign to `let goldIdx`.",
       "Print `goldIdx`."
     ],
-    "initialCode": "let goldIdx = ['silver', 'gold'].findIndex(item => item === 'gold');\nconsole.log(goldIdx);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let goldIdx = ['silver', 'gold'].findIndex(item => item === 'gold');\nconsole.log(goldIdx);\n",
     "hints": [
       "Use `.findIndex(item => item === 'gold')`"

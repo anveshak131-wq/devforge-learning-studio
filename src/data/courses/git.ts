@@ -39,7 +39,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check git installed version\ngit --version",
+    "initialCode": "# Step 1: Check git installed version\n# TODO: Write command below\n",
     "solutionCode": "git --version",
     "hints": [
       "Write:\ngit --version"
@@ -81,7 +81,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Configure author identity\ngit config --global user.name \"Sarah Connor\"\ngit config --global user.email \"sarah@devforge.io\"",
+    "initialCode": "# Step 1: Configure author identity\n# TODO: Write command below\n",
     "solutionCode": "git config --global user.name \"Sarah Connor\"\ngit config --global user.email \"sarah@devforge.io\"",
     "hints": [
       "Write:\ngit config --global user.name \"Sarah Connor\"\ngit config --global user.email \"sarah@devforge.io\""
@@ -123,7 +123,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Initialize a new git repository\ngit init",
+    "initialCode": "# Step 1: Initialize a new git repository\n# TODO: Write command below\n",
     "solutionCode": "git init",
     "hints": [
       "Write:\ngit init"
@@ -165,7 +165,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check the current status of all three areas\ngit status",
+    "initialCode": "# Step 1: Check the current status of all three areas\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -207,7 +207,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View modified and untracked files\ngit status",
+    "initialCode": "# Step 1: View modified and untracked files\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -249,7 +249,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stage a single file for the next commit\ngit add index.html",
+    "initialCode": "# Step 1: Stage a single file for the next commit\n# TODO: Write command below\n",
     "solutionCode": "git add index.html",
     "hints": [
       "Write:\ngit add index.html"
@@ -291,7 +291,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stage all modified and untracked files\ngit add .",
+    "initialCode": "# Step 1: Stage all modified and untracked files\n# TODO: Write command below\n",
     "solutionCode": "git add .",
     "hints": [
       "Write:\ngit add ."
@@ -333,7 +333,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stage individual hunks interactively\ngit add -p",
+    "initialCode": "# Step 1: Stage individual hunks interactively\n# TODO: Write command below\n",
     "solutionCode": "git add -p",
     "hints": [
       "Write:\ngit add -p"
@@ -375,7 +375,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Record a snapshot with a descriptive message\ngit commit -m \"feat: initialize core application shell\"",
+    "initialCode": "# Step 1: Record a snapshot with a descriptive message\n# TODO: Write command below\n",
     "solutionCode": "git commit -m \"feat: initialize core application shell\"",
     "hints": [
       "Write:\ngit commit -m \"feat: initialize core application shell\""
@@ -417,7 +417,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Example of conventional commit\ngit commit -m \"fix(auth): prevent token expiration race condition\"",
+    "initialCode": "# Step 1: Example of conventional commit\n# TODO: Write command below\n",
     "solutionCode": "git commit -m \"fix(auth): prevent token expiration race condition\"",
     "hints": [
       "Write:\ngit commit -m \"fix(auth): prevent token expiration race condition\""
@@ -459,7 +459,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View the commit log history\ngit log",
+    "initialCode": "# Step 1: View the commit log history\n# TODO: Write command below\n",
     "solutionCode": "git log",
     "hints": [
       "Write:\ngit log"
@@ -501,7 +501,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View visual graph of commits\ngit log --oneline --graph --decorate -n 10",
+    "initialCode": "# Step 1: View visual graph of commits\n# TODO: Write command below\n",
     "solutionCode": "git log --oneline --graph --decorate -n 10",
     "hints": [
       "Write:\ngit log --oneline --graph --decorate -n 10"
@@ -543,7 +543,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View unstaged modifications in working tree\ngit diff",
+    "initialCode": "# Step 1: View unstaged modifications in working tree\n# TODO: Write command below\n",
     "solutionCode": "git diff",
     "hints": [
       "Write:\ngit diff"
@@ -585,7 +585,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View changes waiting in the staging area\ngit diff --staged",
+    "initialCode": "# Step 1: View changes waiting in the staging area\n# TODO: Write command below\n",
     "solutionCode": "git diff --staged",
     "hints": [
       "Write:\ngit diff --staged"
@@ -627,7 +627,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Complete initialization, add, and commit flow\ngit status",
+    "initialCode": "# Step 1: Complete initialization, add, and commit flow\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -669,7 +669,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View commits by specific engineer\ngit log --author=\"Sarah\"",
+    "initialCode": "# Step 1: View commits by specific engineer\n# TODO: Write command below\n",
     "solutionCode": "git log --author=\"Sarah\"",
     "hints": [
       "Write:\ngit log --author=\"Sarah\""
@@ -711,7 +711,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View commits from the past week\ngit log --since=\"1 week ago\"",
+    "initialCode": "# Step 1: View commits from the past week\n# TODO: Write command below\n",
     "solutionCode": "git log --since=\"1 week ago\"",
     "hints": [
       "Write:\ngit log --since=\"1 week ago\""
@@ -753,7 +753,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search for bugfix commit messages\ngit log --grep=\"fix\"",
+    "initialCode": "# Step 1: Search for bugfix commit messages\n# TODO: Write command below\n",
     "solutionCode": "git log --grep=\"fix\"",
     "hints": [
       "Write:\ngit log --grep=\"fix\""
@@ -795,7 +795,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find when a function was introduced or deleted\ngit log -S \"calculateTotal\"",
+    "initialCode": "# Step 1: Find when a function was introduced or deleted\n# TODO: Write command below\n",
     "solutionCode": "git log -S \"calculateTotal\"",
     "hints": [
       "Write:\ngit log -S \"calculateTotal\""
@@ -837,7 +837,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect the most recent commit details\ngit show HEAD",
+    "initialCode": "# Step 1: Inspect the most recent commit details\n# TODO: Write command below\n",
     "solutionCode": "git show HEAD",
     "hints": [
       "Write:\ngit show HEAD"
@@ -879,7 +879,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View how index.html looked 3 commits ago\ngit show HEAD~3:index.html",
+    "initialCode": "# Step 1: View how index.html looked 3 commits ago\n# TODO: Write command below\n",
     "solutionCode": "git show HEAD~3:index.html",
     "hints": [
       "Write:\ngit show HEAD~3:index.html"
@@ -921,7 +921,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# See who last modified each line of a file\ngit blame server.ts",
+    "initialCode": "# Step 1: See who last modified each line of a file\n# TODO: Write command below\n",
     "solutionCode": "git blame server.ts",
     "hints": [
       "Write:\ngit blame server.ts"
@@ -963,7 +963,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Ignore formatting/linting changes in blame\ngit blame -w server.ts",
+    "initialCode": "# Step 1: Ignore formatting/linting changes in blame\n# TODO: Write command below\n",
     "solutionCode": "git blame -w server.ts",
     "hints": [
       "Write:\ngit blame -w server.ts"
@@ -1005,7 +1005,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Summary of commits grouped by contributor\ngit shortlog -s -n",
+    "initialCode": "# Step 1: Summary of commits grouped by contributor\n# TODO: Write command below\n",
     "solutionCode": "git shortlog -s -n",
     "hints": [
       "Write:\ngit shortlog -s -n"
@@ -1047,7 +1047,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Show commits along with their patch diffs\ngit log -p -n 2",
+    "initialCode": "# Step 1: Show commits along with their patch diffs\n# TODO: Write command below\n",
     "solutionCode": "git log -p -n 2",
     "hints": [
       "Write:\ngit log -p -n 2"
@@ -1089,7 +1089,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List all files tracked in the repository\ngit ls-files",
+    "initialCode": "# Step 1: List all files tracked in the repository\n# TODO: Write command below\n",
     "solutionCode": "git ls-files",
     "hints": [
       "Write:\ngit ls-files"
@@ -1131,7 +1131,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View compact two-letter status indicators\ngit status -s",
+    "initialCode": "# Step 1: View compact two-letter status indicators\n# TODO: Write command below\n",
     "solutionCode": "git status -s",
     "hints": [
       "Write:\ngit status -s"
@@ -1173,7 +1173,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Display current commit hash\ngit rev-parse HEAD",
+    "initialCode": "# Step 1: Display current commit hash\n# TODO: Write command below\n",
     "solutionCode": "git rev-parse HEAD",
     "hints": [
       "Write:\ngit rev-parse HEAD"
@@ -1215,7 +1215,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect raw Git object type and contents\ngit cat-file -p HEAD",
+    "initialCode": "# Step 1: Inspect raw Git object type and contents\n# TODO: Write command below\n",
     "solutionCode": "git cat-file -p HEAD",
     "hints": [
       "Write:\ngit cat-file -p HEAD"
@@ -1257,7 +1257,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compare differences between two revisions\ngit diff main..feature",
+    "initialCode": "# Step 1: Compare differences between two revisions\n# TODO: Write command below\n",
     "solutionCode": "git diff main..feature",
     "hints": [
       "Write:\ngit diff main..feature"
@@ -1299,7 +1299,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View existing branches\ngit branch",
+    "initialCode": "# Step 1: View existing branches\n# TODO: Write command below\n",
     "solutionCode": "git branch",
     "hints": [
       "Write:\ngit branch"
@@ -1341,7 +1341,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List all branches including remotes\ngit branch -a",
+    "initialCode": "# Step 1: List all branches including remotes\n# TODO: Write command below\n",
     "solutionCode": "git branch -a",
     "hints": [
       "Write:\ngit branch -a"
@@ -1383,7 +1383,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create a new feature branch\ngit branch feature/auth",
+    "initialCode": "# Step 1: Create a new feature branch\n# TODO: Write command below\n",
     "solutionCode": "git branch feature/auth",
     "hints": [
       "Write:\ngit branch feature/auth"
@@ -1425,7 +1425,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Switch to an existing branch\ngit switch main",
+    "initialCode": "# Step 1: Switch to an existing branch\n# TODO: Write command below\n",
     "solutionCode": "git switch main",
     "hints": [
       "Write:\ngit switch main"
@@ -1467,7 +1467,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create and immediately switch to new branch\ngit switch -c feature/user-profile",
+    "initialCode": "# Step 1: Create and immediately switch to new branch\n# TODO: Write command below\n",
     "solutionCode": "git switch -c feature/user-profile",
     "hints": [
       "Write:\ngit switch -c feature/user-profile"
@@ -1509,7 +1509,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Safely delete merged branch\ngit branch -d feature/user-profile",
+    "initialCode": "# Step 1: Safely delete merged branch\n# TODO: Write command below\n",
     "solutionCode": "git branch -d feature/user-profile",
     "hints": [
       "Write:\ngit branch -d feature/user-profile"
@@ -1551,7 +1551,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Force delete abandoned experimental branch\ngit branch -D experiment/bad-idea",
+    "initialCode": "# Step 1: Force delete abandoned experimental branch\n# TODO: Write command below\n",
     "solutionCode": "git branch -D experiment/bad-idea",
     "hints": [
       "Write:\ngit branch -D experiment/bad-idea"
@@ -1593,7 +1593,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Rename current branch\ngit branch -m feature/billing-v2",
+    "initialCode": "# Step 1: Rename current branch\n# TODO: Write command below\n",
     "solutionCode": "git branch -m feature/billing-v2",
     "hints": [
       "Write:\ngit branch -m feature/billing-v2"
@@ -1635,7 +1635,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Checkout specific past commit\ngit checkout HEAD~1",
+    "initialCode": "# Step 1: Checkout specific past commit\n# TODO: Write command below\n",
     "solutionCode": "git checkout HEAD~1",
     "hints": [
       "Write:\ngit checkout HEAD~1"
@@ -1677,7 +1677,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create a named branch to save detached commits\ngit switch -c recovery-branch",
+    "initialCode": "# Step 1: Create a named branch to save detached commits\n# TODO: Write command below\n",
     "solutionCode": "git switch -c recovery-branch",
     "hints": [
       "Write:\ngit switch -c recovery-branch"
@@ -1719,7 +1719,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compare feature branch to its fork point on main\ngit diff main...feature",
+    "initialCode": "# Step 1: Compare feature branch to its fork point on main\n# TODO: Write command below\n",
     "solutionCode": "git diff main...feature",
     "hints": [
       "Write:\ngit diff main...feature"
@@ -1761,7 +1761,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find branches already merged into current branch\ngit branch --merged",
+    "initialCode": "# Step 1: Find branches already merged into current branch\n# TODO: Write command below\n",
     "solutionCode": "git branch --merged",
     "hints": [
       "Write:\ngit branch --merged"
@@ -1803,7 +1803,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find branches with unmerged active work\ngit branch --no-merged",
+    "initialCode": "# Step 1: Find branches with unmerged active work\n# TODO: Write command below\n",
     "solutionCode": "git branch --no-merged",
     "hints": [
       "Write:\ngit branch --no-merged"
@@ -1845,7 +1845,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create structured branch name\ngit branch feature/ENG-402-payment-gateway",
+    "initialCode": "# Step 1: Create structured branch name\n# TODO: Write command below\n",
     "solutionCode": "git branch feature/ENG-402-payment-gateway",
     "hints": [
       "Write:\ngit branch feature/ENG-402-payment-gateway"
@@ -1887,7 +1887,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Set remote tracking branch\ngit branch -u origin/main",
+    "initialCode": "# Step 1: Set remote tracking branch\n# TODO: Write command below\n",
     "solutionCode": "git branch -u origin/main",
     "hints": [
       "Write:\ngit branch -u origin/main"
@@ -1929,7 +1929,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Merge feature branch into main\ngit merge feature/login",
+    "initialCode": "# Step 1: Merge feature branch into main\n# TODO: Write command below\n",
     "solutionCode": "git merge feature/login",
     "hints": [
       "Write:\ngit merge feature/login"
@@ -1971,7 +1971,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Merge with explicit merge commit\ngit merge --no-ff feature/payments",
+    "initialCode": "# Step 1: Merge with explicit merge commit\n# TODO: Write command below\n",
     "solutionCode": "git merge --no-ff feature/payments",
     "hints": [
       "Write:\ngit merge --no-ff feature/payments"
@@ -2013,7 +2013,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect conflict status during merge\ngit status",
+    "initialCode": "# Step 1: Inspect conflict status during merge\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -2055,7 +2055,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View conflict markers in file\ngit diff",
+    "initialCode": "# Step 1: View conflict markers in file\n# TODO: Write command below\n",
     "solutionCode": "git diff",
     "hints": [
       "Write:\ngit diff"
@@ -2097,7 +2097,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stage resolved file after editing\ngit add src/index.ts",
+    "initialCode": "# Step 1: Stage resolved file after editing\n# TODO: Write command below\n",
     "solutionCode": "git add src/index.ts",
     "hints": [
       "Write:\ngit add src/index.ts"
@@ -2139,7 +2139,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Finalize the merge commit\ngit commit -m \"merge: resolve auth conflict\"",
+    "initialCode": "# Step 1: Finalize the merge commit\n# TODO: Write command below\n",
     "solutionCode": "git commit -m \"merge: resolve auth conflict\"",
     "hints": [
       "Write:\ngit commit -m \"merge: resolve auth conflict\""
@@ -2181,7 +2181,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Abort merge and return to pre-merge state\ngit merge --abort",
+    "initialCode": "# Step 1: Abort merge and return to pre-merge state\n# TODO: Write command below\n",
     "solutionCode": "git merge --abort",
     "hints": [
       "Write:\ngit merge --abort"
@@ -2223,7 +2223,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Auto-favor our branch changes in conflict\ngit merge -X ours feature/styles",
+    "initialCode": "# Step 1: Auto-favor our branch changes in conflict\n# TODO: Write command below\n",
     "solutionCode": "git merge -X ours feature/styles",
     "hints": [
       "Write:\ngit merge -X ours feature/styles"
@@ -2265,7 +2265,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Combine all feature commits into one clean commit\ngit merge --squash feature/dashboard",
+    "initialCode": "# Step 1: Combine all feature commits into one clean commit\n# TODO: Write command below\n",
     "solutionCode": "git merge --squash feature/dashboard",
     "hints": [
       "Write:\ngit merge --squash feature/dashboard"
@@ -2307,7 +2307,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Graphical merge visualizer\ngit log --graph --oneline --all",
+    "initialCode": "# Step 1: Graphical merge visualizer\n# TODO: Write command below\n",
     "solutionCode": "git log --graph --oneline --all",
     "hints": [
       "Write:\ngit log --graph --oneline --all"
@@ -2349,7 +2349,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Launch graphical merge conflict tool\ngit mergetool",
+    "initialCode": "# Step 1: Launch graphical merge conflict tool\n# TODO: Write command below\n",
     "solutionCode": "git mergetool",
     "hints": [
       "Write:\ngit mergetool"
@@ -2391,7 +2391,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find common ancestor commit between two branches\ngit merge-base main feature",
+    "initialCode": "# Step 1: Find common ancestor commit between two branches\n# TODO: Write command below\n",
     "solutionCode": "git merge-base main feature",
     "hints": [
       "Write:\ngit merge-base main feature"
@@ -2433,7 +2433,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Git auto-detects renames via similarity index\ngit status",
+    "initialCode": "# Step 1: Git auto-detects renames via similarity index\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -2475,7 +2475,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pull latest changes frequently\ngit pull --rebase",
+    "initialCode": "# Step 1: Pull latest changes frequently\n# TODO: Write command below\n",
     "solutionCode": "git pull --rebase",
     "hints": [
       "Write:\ngit pull --rebase"
@@ -2517,7 +2517,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Review clean merge status\ngit status",
+    "initialCode": "# Step 1: Review clean merge status\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -2559,7 +2559,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stash uncommitted changes quickly\ngit stash",
+    "initialCode": "# Step 1: Stash uncommitted changes quickly\n# TODO: Write command below\n",
     "solutionCode": "git stash",
     "hints": [
       "Write:\ngit stash"
@@ -2601,7 +2601,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View all saved stashes\ngit stash list",
+    "initialCode": "# Step 1: View all saved stashes\n# TODO: Write command below\n",
     "solutionCode": "git stash list",
     "hints": [
       "Write:\ngit stash list"
@@ -2643,7 +2643,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Apply stash without deleting it from list\ngit stash apply stash@{0}",
+    "initialCode": "# Step 1: Apply stash without deleting it from list\n# TODO: Write command below\n",
     "solutionCode": "git stash apply stash@{0}",
     "hints": [
       "Write:\ngit stash apply stash@{0}"
@@ -2685,7 +2685,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Restore stash and immediately remove from list\ngit stash pop",
+    "initialCode": "# Step 1: Restore stash and immediately remove from list\n# TODO: Write command below\n",
     "solutionCode": "git stash pop",
     "hints": [
       "Write:\ngit stash pop"
@@ -2727,7 +2727,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Save stash with custom label\ngit stash save \"WIP: refactor auth middleware\"",
+    "initialCode": "# Step 1: Save stash with custom label\n# TODO: Write command below\n",
     "solutionCode": "git stash save \"WIP: refactor auth middleware\"",
     "hints": [
       "Write:\ngit stash save \"WIP: refactor auth middleware\""
@@ -2769,7 +2769,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Include brand new untracked files in stash\ngit stash -u",
+    "initialCode": "# Step 1: Include brand new untracked files in stash\n# TODO: Write command below\n",
     "solutionCode": "git stash -u",
     "hints": [
       "Write:\ngit stash -u"
@@ -2811,7 +2811,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stash specific code hunks interactively\ngit stash -p",
+    "initialCode": "# Step 1: Stash specific code hunks interactively\n# TODO: Write command below\n",
     "solutionCode": "git stash -p",
     "hints": [
       "Write:\ngit stash -p"
@@ -2853,7 +2853,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Spin off a new branch from a stash\ngit stash branch feature/resumed-work stash@{0}",
+    "initialCode": "# Step 1: Spin off a new branch from a stash\n# TODO: Write command below\n",
     "solutionCode": "git stash branch feature/resumed-work stash@{0}",
     "hints": [
       "Write:\ngit stash branch feature/resumed-work stash@{0}"
@@ -2895,7 +2895,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete a specific stash\ngit stash drop stash@{0}",
+    "initialCode": "# Step 1: Delete a specific stash\n# TODO: Write command below\n",
     "solutionCode": "git stash drop stash@{0}",
     "hints": [
       "Write:\ngit stash drop stash@{0}"
@@ -2937,7 +2937,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Wipe all stashes from repository\ngit stash clear",
+    "initialCode": "# Step 1: Wipe all stashes from repository\n# TODO: Write command below\n",
     "solutionCode": "git stash clear",
     "hints": [
       "Write:\ngit stash clear"
@@ -2979,7 +2979,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dry-run check for untracked files to delete\ngit clean -n",
+    "initialCode": "# Step 1: Dry-run check for untracked files to delete\n# TODO: Write command below\n",
     "solutionCode": "git clean -n",
     "hints": [
       "Write:\ngit clean -n"
@@ -3021,7 +3021,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Remove untracked files and directories\ngit clean -fd",
+    "initialCode": "# Step 1: Remove untracked files and directories\n# TODO: Write command below\n",
     "solutionCode": "git clean -fd",
     "hints": [
       "Write:\ngit clean -fd"
@@ -3063,7 +3063,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Discard uncommitted changes to a file\ngit restore src/app.ts",
+    "initialCode": "# Step 1: Discard uncommitted changes to a file\n# TODO: Write command below\n",
     "solutionCode": "git restore src/app.ts",
     "hints": [
       "Write:\ngit restore src/app.ts"
@@ -3105,7 +3105,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Unstage file while keeping working modifications\ngit restore --staged config.json",
+    "initialCode": "# Step 1: Unstage file while keeping working modifications\n# TODO: Write command below\n",
     "solutionCode": "git restore --staged config.json",
     "hints": [
       "Write:\ngit restore --staged config.json"
@@ -3147,7 +3147,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify clean working tree\ngit status",
+    "initialCode": "# Step 1: Verify clean working tree\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -3189,7 +3189,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View configured remote repositories\ngit remote -v",
+    "initialCode": "# Step 1: View configured remote repositories\n# TODO: Write command below\n",
     "solutionCode": "git remote -v",
     "hints": [
       "Write:\ngit remote -v"
@@ -3231,7 +3231,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Add origin remote URL\ngit remote add origin https://github.com/devforge/core.git",
+    "initialCode": "# Step 1: Add origin remote URL\n# TODO: Write command below\n",
     "solutionCode": "git remote add origin https://github.com/devforge/core.git",
     "hints": [
       "Write:\ngit remote add origin https://github.com/devforge/core.git"
@@ -3273,7 +3273,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Push branch and set default upstream\ngit push -u origin main",
+    "initialCode": "# Step 1: Push branch and set default upstream\n# TODO: Write command below\n",
     "solutionCode": "git push -u origin main",
     "hints": [
       "Write:\ngit push -u origin main"
@@ -3315,7 +3315,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Download remote updates without merging\ngit fetch origin",
+    "initialCode": "# Step 1: Download remote updates without merging\n# TODO: Write command below\n",
     "solutionCode": "git fetch origin",
     "hints": [
       "Write:\ngit fetch origin"
@@ -3357,7 +3357,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pull latest changes\ngit pull origin main",
+    "initialCode": "# Step 1: Pull latest changes\n# TODO: Write command below\n",
     "solutionCode": "git pull origin main",
     "hints": [
       "Write:\ngit pull origin main"
@@ -3399,7 +3399,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pull updates while keeping a linear commit history\ngit pull --rebase origin main",
+    "initialCode": "# Step 1: Pull updates while keeping a linear commit history\n# TODO: Write command below\n",
     "solutionCode": "git pull --rebase origin main",
     "hints": [
       "Write:\ngit pull --rebase origin main"
@@ -3441,7 +3441,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Push release tags to remote\ngit push origin --tags",
+    "initialCode": "# Step 1: Push release tags to remote\n# TODO: Write command below\n",
     "solutionCode": "git push origin --tags",
     "hints": [
       "Write:\ngit push origin --tags"
@@ -3483,7 +3483,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete obsolete remote feature branch\ngit push origin --delete feature/old-exp",
+    "initialCode": "# Step 1: Delete obsolete remote feature branch\n# TODO: Write command below\n",
     "solutionCode": "git push origin --delete feature/old-exp",
     "hints": [
       "Write:\ngit push origin --delete feature/old-exp"
@@ -3525,7 +3525,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Clean up local references to deleted remote branches\ngit remote prune origin",
+    "initialCode": "# Step 1: Clean up local references to deleted remote branches\n# TODO: Write command below\n",
     "solutionCode": "git remote prune origin",
     "hints": [
       "Write:\ngit remote prune origin"
@@ -3567,7 +3567,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Add upstream original repository remote\ngit remote add upstream https://github.com/original/repo.git",
+    "initialCode": "# Step 1: Add upstream original repository remote\n# TODO: Write command below\n",
     "solutionCode": "git remote add upstream https://github.com/original/repo.git",
     "hints": [
       "Write:\ngit remote add upstream https://github.com/original/repo.git"
@@ -3609,7 +3609,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Clone a remote repository locally\ngit clone https://github.com/devforge/learning-studio.git",
+    "initialCode": "# Step 1: Clone a remote repository locally\n# TODO: Write command below\n",
     "solutionCode": "git clone https://github.com/devforge/learning-studio.git",
     "hints": [
       "Write:\ngit clone https://github.com/devforge/learning-studio.git"
@@ -3651,7 +3651,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Clone only the latest commit to save bandwidth\ngit clone --depth 1 https://github.com/devforge/app.git",
+    "initialCode": "# Step 1: Clone only the latest commit to save bandwidth\n# TODO: Write command below\n",
     "solutionCode": "git clone --depth 1 https://github.com/devforge/app.git",
     "hints": [
       "Write:\ngit clone --depth 1 https://github.com/devforge/app.git"
@@ -3693,7 +3693,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Clone a specific branch directly\ngit clone -b release-v2 --single-branch https://github.com/devforge/app.git",
+    "initialCode": "# Step 1: Clone a specific branch directly\n# TODO: Write command below\n",
     "solutionCode": "git clone -b release-v2 --single-branch https://github.com/devforge/app.git",
     "hints": [
       "Write:\ngit clone -b release-v2 --single-branch https://github.com/devforge/app.git"
@@ -3735,7 +3735,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect tracking status and push/pull URLs\ngit remote show origin",
+    "initialCode": "# Step 1: Inspect tracking status and push/pull URLs\n# TODO: Write command below\n",
     "solutionCode": "git remote show origin",
     "hints": [
       "Write:\ngit remote show origin"
@@ -3777,7 +3777,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Fetch and check synchronization status\ngit status",
+    "initialCode": "# Step 1: Fetch and check synchronization status\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -3819,7 +3819,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Rebase current feature branch onto main\ngit rebase main",
+    "initialCode": "# Step 1: Rebase current feature branch onto main\n# TODO: Write command below\n",
     "solutionCode": "git rebase main",
     "hints": [
       "Write:\ngit rebase main"
@@ -3861,7 +3861,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check rebase linear history\ngit log --oneline -n 5",
+    "initialCode": "# Step 1: Check rebase linear history\n# TODO: Write command below\n",
     "solutionCode": "git log --oneline -n 5",
     "hints": [
       "Write:\ngit log --oneline -n 5"
@@ -3903,7 +3903,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Continue rebase after staging conflict resolution\ngit rebase --continue",
+    "initialCode": "# Step 1: Continue rebase after staging conflict resolution\n# TODO: Write command below\n",
     "solutionCode": "git rebase --continue",
     "hints": [
       "Write:\ngit rebase --continue"
@@ -3945,7 +3945,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Cancel rebase and restore original pre-rebase state\ngit rebase --abort",
+    "initialCode": "# Step 1: Cancel rebase and restore original pre-rebase state\n# TODO: Write command below\n",
     "solutionCode": "git rebase --abort",
     "hints": [
       "Write:\ngit rebase --abort"
@@ -3987,7 +3987,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Launch interactive rebase for last 3 commits\ngit rebase -i HEAD~3",
+    "initialCode": "# Step 1: Launch interactive rebase for last 3 commits\n# TODO: Write command below\n",
     "solutionCode": "git rebase -i HEAD~3",
     "hints": [
       "Write:\ngit rebase -i HEAD~3"
@@ -4029,7 +4029,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Mark commit for message editing in interactive rebase\n# pick -> reword\ngit status",
+    "initialCode": "# Step 1: Mark commit for message editing in interactive rebase pick -> reword\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -4071,7 +4071,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Squash multiple messy commits into one\n# pick -> squash\ngit status",
+    "initialCode": "# Step 1: Squash multiple messy commits into one pick -> squash\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -4113,7 +4113,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete unwanted historical commit\n# pick -> drop\ngit status",
+    "initialCode": "# Step 1: Delete unwanted historical commit pick -> drop\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -4155,7 +4155,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Reorder lines in the interactive rebase file\ngit status",
+    "initialCode": "# Step 1: Reorder lines in the interactive rebase file\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -4197,7 +4197,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stop to split commit into smaller chunks\n# pick -> edit\ngit status",
+    "initialCode": "# Step 1: Stop to split commit into smaller chunks pick -> edit\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -4239,7 +4239,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify current branch is local feature branch before rebasing\ngit branch --show-current",
+    "initialCode": "# Step 1: Verify current branch is local feature branch before rebasing\n# TODO: Write command below\n",
     "solutionCode": "git branch --show-current",
     "hints": [
       "Write:\ngit branch --show-current"
@@ -4281,7 +4281,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Push rebased branch safely\ngit push --force-with-lease origin feature/auth",
+    "initialCode": "# Step 1: Push rebased branch safely\n# TODO: Write command below\n",
     "solutionCode": "git push --force-with-lease origin feature/auth",
     "hints": [
       "Write:\ngit push --force-with-lease origin feature/auth"
@@ -4323,7 +4323,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Move a branch grafted onto the wrong parent branch\ngit rebase --onto main legacy-feature new-feature",
+    "initialCode": "# Step 1: Move a branch grafted onto the wrong parent branch\n# TODO: Write command below\n",
     "solutionCode": "git rebase --onto main legacy-feature new-feature",
     "hints": [
       "Write:\ngit rebase --onto main legacy-feature new-feature"
@@ -4365,7 +4365,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Configure git to always rebase on pull\ngit config --global pull.rebase true",
+    "initialCode": "# Step 1: Configure git to always rebase on pull\n# TODO: Write command below\n",
     "solutionCode": "git config --global pull.rebase true",
     "hints": [
       "Write:\ngit config --global pull.rebase true"
@@ -4407,7 +4407,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify tidy linear log\ngit log --oneline -n 5",
+    "initialCode": "# Step 1: Verify tidy linear log\n# TODO: Write command below\n",
     "solutionCode": "git log --oneline -n 5",
     "hints": [
       "Write:\ngit log --oneline -n 5"
@@ -4449,7 +4449,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Add forgotten file and update last commit message\ngit commit --amend -m \"feat: complete auth flow with tests\"",
+    "initialCode": "# Step 1: Add forgotten file and update last commit message\n# TODO: Write command below\n",
     "solutionCode": "git commit --amend -m \"feat: complete auth flow with tests\"",
     "hints": [
       "Write:\ngit commit --amend -m \"feat: complete auth flow with tests\""
@@ -4491,7 +4491,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Amend staged file into previous commit silently\ngit commit --amend --no-edit",
+    "initialCode": "# Step 1: Amend staged file into previous commit silently\n# TODO: Write command below\n",
     "solutionCode": "git commit --amend --no-edit",
     "hints": [
       "Write:\ngit commit --amend --no-edit"
@@ -4533,7 +4533,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Revert a buggy commit by creating an inverse commit\ngit revert 7e8f9a0",
+    "initialCode": "# Step 1: Revert a buggy commit by creating an inverse commit\n# TODO: Write command below\n",
     "solutionCode": "git revert 7e8f9a0",
     "hints": [
       "Write:\ngit revert 7e8f9a0"
@@ -4575,7 +4575,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Revert a merge commit specifying parent mainline 1\ngit revert -m 1 3c8e2a1",
+    "initialCode": "# Step 1: Revert a merge commit specifying parent mainline 1\n# TODO: Write command below\n",
     "solutionCode": "git revert -m 1 3c8e2a1",
     "hints": [
       "Write:\ngit revert -m 1 3c8e2a1"
@@ -4617,7 +4617,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Undo commit but keep changes staged\ngit reset --soft HEAD~1",
+    "initialCode": "# Step 1: Undo commit but keep changes staged\n# TODO: Write command below\n",
     "solutionCode": "git reset --soft HEAD~1",
     "hints": [
       "Write:\ngit reset --soft HEAD~1"
@@ -4659,7 +4659,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Undo commit and unstage changes into working tree\ngit reset HEAD~1",
+    "initialCode": "# Step 1: Undo commit and unstage changes into working tree\n# TODO: Write command below\n",
     "solutionCode": "git reset HEAD~1",
     "hints": [
       "Write:\ngit reset HEAD~1"
@@ -4701,7 +4701,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Discard commits, staged changes, and working modifications\ngit reset --hard HEAD~1",
+    "initialCode": "# Step 1: Discard commits, staged changes, and working modifications\n# TODO: Write command below\n",
     "solutionCode": "git reset --hard HEAD~1",
     "hints": [
       "Write:\ngit reset --hard HEAD~1"
@@ -4743,7 +4743,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect repository reference log history\ngit reflog -n 10",
+    "initialCode": "# Step 1: Inspect repository reference log history\n# TODO: Write command below\n",
     "solutionCode": "git reflog -n 10",
     "hints": [
       "Write:\ngit reflog -n 10"
@@ -4785,7 +4785,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Restore an accidentally deleted commit\ngit reset --hard HEAD@{2}",
+    "initialCode": "# Step 1: Restore an accidentally deleted commit\n# TODO: Write command below\n",
     "solutionCode": "git reset --hard HEAD@{2}",
     "hints": [
       "Write:\ngit reset --hard HEAD@{2}"
@@ -4827,7 +4827,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Recreate a deleted branch from its last reflog commit\ngit branch recovered-branch HEAD@{3}",
+    "initialCode": "# Step 1: Recreate a deleted branch from its last reflog commit\n# TODO: Write command below\n",
     "solutionCode": "git branch recovered-branch HEAD@{3}",
     "hints": [
       "Write:\ngit branch recovered-branch HEAD@{3}"
@@ -4869,7 +4869,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Recover dropped stash via dangling commit hash\ngit fsck --lost-found",
+    "initialCode": "# Step 1: Recover dropped stash via dangling commit hash\n# TODO: Write command below\n",
     "solutionCode": "git fsck --lost-found",
     "hints": [
       "Write:\ngit fsck --lost-found"
@@ -4911,7 +4911,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Restore an accidentally deleted file from the index\ngit restore src/important.ts",
+    "initialCode": "# Step 1: Restore an accidentally deleted file from the index\n# TODO: Write command below\n",
     "solutionCode": "git restore src/important.ts",
     "hints": [
       "Write:\ngit restore src/important.ts"
@@ -4953,7 +4953,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check safe revert command\ngit revert HEAD",
+    "initialCode": "# Step 1: Check safe revert command\n# TODO: Write command below\n",
     "solutionCode": "git revert HEAD",
     "hints": [
       "Write:\ngit revert HEAD"
@@ -4995,7 +4995,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Apply a single bugfix commit from another branch\ngit cherry-pick 4a7c1b2",
+    "initialCode": "# Step 1: Apply a single bugfix commit from another branch\n# TODO: Write command below\n",
     "solutionCode": "git cherry-pick 4a7c1b2",
     "hints": [
       "Write:\ngit cherry-pick 4a7c1b2"
@@ -5037,7 +5037,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Abort a conflicting cherry-pick\ngit cherry-pick --abort",
+    "initialCode": "# Step 1: Abort a conflicting cherry-pick\n# TODO: Write command below\n",
     "solutionCode": "git cherry-pick --abort",
     "hints": [
       "Write:\ngit cherry-pick --abort"
@@ -5079,7 +5079,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create lightweight tag at current commit\ngit tag v1.0.0",
+    "initialCode": "# Step 1: Create lightweight tag at current commit\n# TODO: Write command below\n",
     "solutionCode": "git tag v1.0.0",
     "hints": [
       "Write:\ngit tag v1.0.0"
@@ -5121,7 +5121,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create signed annotated release tag\ngit tag -a v1.0.0 -m \"Release 1.0.0: Initial production release\"",
+    "initialCode": "# Step 1: Create signed annotated release tag\n# TODO: Write command below\n",
     "solutionCode": "git tag -a v1.0.0 -m \"Release 1.0.0: Initial production release\"",
     "hints": [
       "Write:\ngit tag -a v1.0.0 -m \"Release 1.0.0: Initial production release\""
@@ -5163,7 +5163,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List tags matching version pattern\ngit tag -l \"v1.*\"",
+    "initialCode": "# Step 1: List tags matching version pattern\n# TODO: Write command below\n",
     "solutionCode": "git tag -l \"v1.*\"",
     "hints": [
       "Write:\ngit tag -l \"v1.*\""
@@ -5205,7 +5205,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Checkout tag in detached HEAD to inspect release code\ngit checkout v1.0.0",
+    "initialCode": "# Step 1: Checkout tag in detached HEAD to inspect release code\n# TODO: Write command below\n",
     "solutionCode": "git checkout v1.0.0",
     "hints": [
       "Write:\ngit checkout v1.0.0"
@@ -5247,7 +5247,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Start automated binary search for bug\ngit bisect start\ngit bisect bad\ngit bisect good v1.0.0",
+    "initialCode": "# Step 1: Start automated binary search for bug\n# TODO: Write command below\n",
     "solutionCode": "git bisect start\ngit bisect bad\ngit bisect good v1.0.0",
     "hints": [
       "Write:\ngit bisect start\ngit bisect bad\ngit bisect good v1.0.0"
@@ -5289,7 +5289,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Automate bisect with automated test command\ngit bisect run npm test",
+    "initialCode": "# Step 1: Automate bisect with automated test command\n# TODO: Write command below\n",
     "solutionCode": "git bisect run npm test",
     "hints": [
       "Write:\ngit bisect run npm test"
@@ -5331,7 +5331,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Add a separate working tree for hotfix without switching branches\ngit worktree add ../hotfix-worktree hotfix/urgent",
+    "initialCode": "# Step 1: Add a separate working tree for hotfix without switching branches\n# TODO: Write command below\n",
     "solutionCode": "git worktree add ../hotfix-worktree hotfix/urgent",
     "hints": [
       "Write:\ngit worktree add ../hotfix-worktree hotfix/urgent"
@@ -5373,7 +5373,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List and clean up completed worktrees\ngit worktree list\ngit worktree prune",
+    "initialCode": "# Step 1: List and clean up completed worktrees\n# TODO: Write command below\n",
     "solutionCode": "git worktree list\ngit worktree prune",
     "hints": [
       "Write:\ngit worktree list\ngit worktree prune"
@@ -5415,7 +5415,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Add external repository as submodule\ngit submodule add https://github.com/vendor/library.git vendor/lib",
+    "initialCode": "# Step 1: Add external repository as submodule\n# TODO: Write command below\n",
     "solutionCode": "git submodule add https://github.com/vendor/library.git vendor/lib",
     "hints": [
       "Write:\ngit submodule add https://github.com/vendor/library.git vendor/lib"
@@ -5457,7 +5457,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Clone and update all nested submodules recursively\ngit submodule update --init --recursive",
+    "initialCode": "# Step 1: Clone and update all nested submodules recursively\n# TODO: Write command below\n",
     "solutionCode": "git submodule update --init --recursive",
     "hints": [
       "Write:\ngit submodule update --init --recursive"
@@ -5499,7 +5499,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check submodule config file\ncat .gitmodules",
+    "initialCode": "# Step 1: Check submodule config file\n# TODO: Write command below\n",
     "solutionCode": "cat .gitmodules",
     "hints": [
       "Write:\ncat .gitmodules"
@@ -5541,7 +5541,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Export clean zip of release without .git history\ngit archive --format=zip --output=release.zip v1.0.0",
+    "initialCode": "# Step 1: Export clean zip of release without .git history\n# TODO: Write command below\n",
     "solutionCode": "git archive --format=zip --output=release.zip v1.0.0",
     "hints": [
       "Write:\ngit archive --format=zip --output=release.zip v1.0.0"
@@ -5583,7 +5583,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Attach review notes to commit without rewriting SHA\ngit notes add -m \"Reviewed and approved by Security Team\" HEAD",
+    "initialCode": "# Step 1: Attach review notes to commit without rewriting SHA\n# TODO: Write command below\n",
     "solutionCode": "git notes add -m \"Reviewed and approved by Security Team\" HEAD",
     "hints": [
       "Write:\ngit notes add -m \"Reviewed and approved by Security Team\" HEAD"
@@ -5625,7 +5625,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify internal repository database integrity\ngit fsck --full",
+    "initialCode": "# Step 1: Verify internal repository database integrity\n# TODO: Write command below\n",
     "solutionCode": "git fsck --full",
     "hints": [
       "Write:\ngit fsck --full"
@@ -5667,7 +5667,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Summary of release tags\ngit tag -l",
+    "initialCode": "# Step 1: Summary of release tags\n# TODO: Write command below\n",
     "solutionCode": "git tag -l",
     "hints": [
       "Write:\ngit tag -l"
@@ -5709,7 +5709,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check status before opening pull request\ngit status",
+    "initialCode": "# Step 1: Check status before opening pull request\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -5751,7 +5751,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check commit history ready for PR\ngit log -n 3 --oneline",
+    "initialCode": "# Step 1: Check commit history ready for PR\n# TODO: Write command below\n",
     "solutionCode": "git log -n 3 --oneline",
     "hints": [
       "Write:\ngit log -n 3 --oneline"
@@ -5793,7 +5793,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check main branch status\ngit branch",
+    "initialCode": "# Step 1: Check main branch status\n# TODO: Write command below\n",
     "solutionCode": "git branch",
     "hints": [
       "Write:\ngit branch"
@@ -5835,7 +5835,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check branch commits\ngit log --oneline -n 3",
+    "initialCode": "# Step 1: Check branch commits\n# TODO: Write command below\n",
     "solutionCode": "git log --oneline -n 3",
     "hints": [
       "Write:\ngit log --oneline -n 3"
@@ -5877,7 +5877,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Ignore build artifacts and dependencies\n# .gitignore\nnode_modules/\ndist/\n.env",
+    "initialCode": "# Step 1: Ignore build artifacts and dependencies .gitignore\n# TODO: Write command below\n",
     "solutionCode": "echo \"node_modules/\" >> .gitignore",
     "hints": [
       "Write:\necho \"node_modules/\" >> .gitignore"
@@ -5919,7 +5919,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Configure LF line endings across all operating systems\n# * text=auto eol=lf",
+    "initialCode": "# Step 1: Configure LF line endings across all operating systems * text=auto eol=lf\n# TODO: Write command below\n",
     "solutionCode": "cat .gitattributes",
     "hints": [
       "Write:\ncat .gitattributes"
@@ -5961,7 +5961,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Track large video assets with Git LFS\ngit lfs track \"*.mp4\"",
+    "initialCode": "# Step 1: Track large video assets with Git LFS\n# TODO: Write command below\n",
     "solutionCode": "git lfs track \"*.mp4\"",
     "hints": [
       "Write:\ngit lfs track \"*.mp4\""
@@ -6003,7 +6003,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect pre-commit hook script\ncat .git/hooks/pre-commit",
+    "initialCode": "# Step 1: Inspect pre-commit hook script\n# TODO: Write command below\n",
     "solutionCode": "cat .git/hooks/pre-commit",
     "hints": [
       "Write:\ncat .git/hooks/pre-commit"
@@ -6045,7 +6045,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run linter strictly on staged files before commit\nnpx lint-staged",
+    "initialCode": "# Step 1: Run linter strictly on staged files before commit\n# TODO: Write command below\n",
     "solutionCode": "npx lint-staged",
     "hints": [
       "Write:\nnpx lint-staged"
@@ -6087,7 +6087,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify conventional commit format\nnpx commitlint --from=HEAD~1",
+    "initialCode": "# Step 1: Verify conventional commit format\n# TODO: Write command below\n",
     "solutionCode": "npx commitlint --from=HEAD~1",
     "hints": [
       "Write:\nnpx commitlint --from=HEAD~1"
@@ -6129,7 +6129,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run test workflow on pull request\n# .github/workflows/test.yml\ncat .github/workflows/ci.yml",
+    "initialCode": "# Step 1: Run test workflow on pull request .github/workflows/test.yml\n# TODO: Write command below\n",
     "solutionCode": "cat .github/workflows/ci.yml",
     "hints": [
       "Write:\ncat .github/workflows/ci.yml"
@@ -6171,7 +6171,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify CI test status\ngit status",
+    "initialCode": "# Step 1: Verify CI test status\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"
@@ -6213,7 +6213,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check release changelog\ncat CHANGELOG.md",
+    "initialCode": "# Step 1: Check release changelog\n# TODO: Write command below\n",
     "solutionCode": "cat CHANGELOG.md",
     "hints": [
       "Write:\ncat CHANGELOG.md"
@@ -6255,7 +6255,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Scan repository history for leaked API keys\ngitleaks detect --verbose",
+    "initialCode": "# Step 1: Scan repository history for leaked API keys\n# TODO: Write command below\n",
     "solutionCode": "gitleaks detect --verbose",
     "hints": [
       "Write:\ngitleaks detect --verbose"
@@ -6297,7 +6297,7 @@ export const GIT_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Complete production deployment checklist\ngit status",
+    "initialCode": "# Step 1: Complete production deployment checklist\n# TODO: Write command below\n",
     "solutionCode": "git status",
     "hints": [
       "Write:\ngit status"

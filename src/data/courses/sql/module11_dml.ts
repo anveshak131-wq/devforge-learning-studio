@@ -30,7 +30,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `INSERT INTO users (id, name, email, country, role, created_at) VALUES (6, 'Alex Vance', 'alex@valve.com', 'USA', 'member', '2023-07-01'); SELECT * FROM users WHERE id = 6;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nINSERT INTO users (id, name, email, country, role, created_at) VALUES (6, 'Alex Vance', 'alex@valve.com', 'USA', 'member', '2023-07-01'); SELECT * FROM users WHERE id = 6;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "INSERT INTO users (id, name, email, country, role, created_at) VALUES (6, 'Alex Vance', 'alex@valve.com', 'USA', 'member', '2023-07-01'); SELECT * FROM users WHERE id = 6;\n",
     "hints": [
       "Execute: INSERT INTO users (id, name, email, country, role, created_at) VALUES (6, 'Alex Vance', 'alex@valve.com', 'USA', 'member', '2023-07-01'); SELECT * FROM users WHERE id = 6;"
@@ -73,7 +73,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `INSERT INTO products (id, name, category, price, stock) VALUES (7, 'Mousepad', 'Accessories', 15.00, 50), (8, 'Webcam', 'Electronics', 79.99, 20); SELECT COUNT(*) FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nINSERT INTO products (id, name, category, price, stock) VALUES (7, 'Mousepad', 'Accessories', 15.00, 50), (8, 'Webcam', 'Electronics', 79.99, 20); SELECT COUNT(*) FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "INSERT INTO products (id, name, category, price, stock) VALUES (7, 'Mousepad', 'Accessories', 15.00, 50), (8, 'Webcam', 'Electronics', 79.99, 20); SELECT COUNT(*) FROM products;\n",
     "hints": [
       "Execute: INSERT INTO products (id, name, category, price, stock) VALUES (7, 'Mousepad', 'Accessories', 15.00, 50), (8, 'Webcam', 'Electronics', 79.99, 20); SELECT COUNT(*) FROM products;"
@@ -116,7 +116,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `UPDATE products SET stock = stock + 10 WHERE id = 1; SELECT stock FROM products WHERE id = 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nUPDATE products SET stock = stock + 10 WHERE id = 1; SELECT stock FROM products WHERE id = 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "UPDATE products SET stock = stock + 10 WHERE id = 1; SELECT stock FROM products WHERE id = 1;\n",
     "hints": [
       "Execute: UPDATE products SET stock = stock + 10 WHERE id = 1; SELECT stock FROM products WHERE id = 1;"
@@ -159,7 +159,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `UPDATE users SET country = 'Canada', role = 'admin' WHERE id = 2; SELECT country, role FROM users WHERE id = 2;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nUPDATE users SET country = 'Canada', role = 'admin' WHERE id = 2; SELECT country, role FROM users WHERE id = 2;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "UPDATE users SET country = 'Canada', role = 'admin' WHERE id = 2; SELECT country, role FROM users WHERE id = 2;\n",
     "hints": [
       "Execute: UPDATE users SET country = 'Canada', role = 'admin' WHERE id = 2; SELECT country, role FROM users WHERE id = 2;"
@@ -202,7 +202,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `UPDATE orders SET status = 'completed' WHERE id = 4; SELECT status FROM orders WHERE id = 4;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nUPDATE orders SET status = 'completed' WHERE id = 4; SELECT status FROM orders WHERE id = 4;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "UPDATE orders SET status = 'completed' WHERE id = 4; SELECT status FROM orders WHERE id = 4;\n",
     "hints": [
       "Execute: UPDATE orders SET status = 'completed' WHERE id = 4; SELECT status FROM orders WHERE id = 4;"
@@ -245,7 +245,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `DELETE FROM orders WHERE id = 3; SELECT COUNT(*) FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nDELETE FROM orders WHERE id = 3; SELECT COUNT(*) FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "DELETE FROM orders WHERE id = 3; SELECT COUNT(*) FROM orders;\n",
     "hints": [
       "Execute: DELETE FROM orders WHERE id = 3; SELECT COUNT(*) FROM orders;"
@@ -288,7 +288,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `DELETE FROM products WHERE id NOT IN (1, 2, 3, 4, 5, 6); SELECT COUNT(*) FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nDELETE FROM products WHERE id NOT IN (1, 2, 3, 4, 5, 6); SELECT COUNT(*) FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "DELETE FROM products WHERE id NOT IN (1, 2, 3, 4, 5, 6); SELECT COUNT(*) FROM products;\n",
     "hints": [
       "Execute: DELETE FROM products WHERE id NOT IN (1, 2, 3, 4, 5, 6); SELECT COUNT(*) FROM products;"
@@ -331,7 +331,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `INSERT OR REPLACE INTO users (id, name, email, country, role, created_at) VALUES (1, 'Sarah Chen', 'sarah.new@example.com', 'USA', 'admin', '2023-01-15'); SELECT email FROM users WHERE id = 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nINSERT OR REPLACE INTO users (id, name, email, country, role, created_at) VALUES (1, 'Sarah Chen', 'sarah.new@example.com', 'USA', 'admin', '2023-01-15'); SELECT email FROM users WHERE id = 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "INSERT OR REPLACE INTO users (id, name, email, country, role, created_at) VALUES (1, 'Sarah Chen', 'sarah.new@example.com', 'USA', 'admin', '2023-01-15'); SELECT email FROM users WHERE id = 1;\n",
     "hints": [
       "Execute: INSERT OR REPLACE INTO users (id, name, email, country, role, created_at) VALUES (1, 'Sarah Chen', 'sarah.new@example.com', 'USA', 'admin', '2023-01-15'); SELECT email FROM users WHERE id = 1;"
@@ -374,7 +374,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `UPDATE products SET price = ROUND(price * 0.9, 2) WHERE category = 'Accessories'; SELECT price FROM products WHERE id = 5;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nUPDATE products SET price = ROUND(price * 0.9, 2) WHERE category = 'Accessories'; SELECT price FROM products WHERE id = 5;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "UPDATE products SET price = ROUND(price * 0.9, 2) WHERE category = 'Accessories'; SELECT price FROM products WHERE id = 5;\n",
     "hints": [
       "Execute: UPDATE products SET price = ROUND(price * 0.9, 2) WHERE category = 'Accessories'; SELECT price FROM products WHERE id = 5;"
@@ -417,7 +417,7 @@ export const sqlModule11Lessons: Lesson[] = [
       "Write the query: `UPDATE orders SET status = 'archived' WHERE status = 'pending'; SELECT COUNT(*) FROM orders WHERE status = 'archived';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nUPDATE orders SET status = 'archived' WHERE status = 'pending'; SELECT COUNT(*) FROM orders WHERE status = 'archived';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "UPDATE orders SET status = 'archived' WHERE status = 'pending'; SELECT COUNT(*) FROM orders WHERE status = 'archived';\n",
     "hints": [
       "Execute: UPDATE orders SET status = 'archived' WHERE status = 'pending'; SELECT COUNT(*) FROM orders WHERE status = 'archived';"

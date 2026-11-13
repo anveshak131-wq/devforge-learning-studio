@@ -117,6 +117,12 @@ export class TestRunner {
     for (const tc of testCases) {
       try {
         const testScript = `
+          const React = {
+            createElement: (type, props, ...children) => {
+              const normalizedChildren = children.length === 1 ? children[0] : (children.length === 0 ? undefined : children);
+              return { type, props: { ...(props || {}), children: normalizedChildren } };
+            }
+          };
           const customConsole = {
             log: (...args) => {},
             error: (...args) => {},

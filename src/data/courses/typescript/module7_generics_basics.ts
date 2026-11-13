@@ -30,7 +30,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `function identity<T>(arg: T): T { return arg; } let out = identity<string>('TypeScript');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction identity<T>(arg: T): T { return arg; } let out = identity<string>('TypeScript');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function identity<T>(arg: T): T { return arg; } let out = identity<string>('TypeScript');\n",
     "hints": [
       "Write: function identity<T>(arg: T): T { return arg; } let out = identity<string>('TypeScript');"
@@ -72,7 +72,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `function getFirst<T>(arr: T[]): T | undefined { return arr[0]; } let n = getFirst([10, 20, 30]);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction getFirst<T>(arr: T[]): T | undefined { return arr[0]; } let n = getFirst([10, 20, 30]);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function getFirst<T>(arr: T[]): T | undefined { return arr[0]; } let n = getFirst([10, 20, 30]);\n",
     "hints": [
       "Write: function getFirst<T>(arr: T[]): T | undefined { return arr[0]; } let n = getFirst([10, 20, 30]);"
@@ -114,7 +114,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `function pair<T, U>(first: T, second: U): [T, U] { return [first, second]; } let p = pair('Age', 30);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction pair<T, U>(first: T, second: U): [T, U] { return [first, second]; } let p = pair('Age', 30);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function pair<T, U>(first: T, second: U): [T, U] { return [first, second]; } let p = pair('Age', 30);\n",
     "hints": [
       "Write: function pair<T, U>(first: T, second: U): [T, U] { return [first, second]; } let p = pair('Age', 30);"
@@ -156,7 +156,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `interface Box<T> { content: T; } let box: Box<number> = { content: 42 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Box<T> { content: T; } let box: Box<number> = { content: 42 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Box<T> { content: T; } let box: Box<number> = { content: 42 };\n",
     "hints": [
       "Write: interface Box<T> { content: T; } let box: Box<number> = { content: 42 };"
@@ -198,7 +198,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `type Result<T> = { success: boolean; data: T }; let res: Result<string> = { success: true, data: 'Loaded' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Result<T> = { success: boolean; data: T }; let res: Result<string> = { success: true, data: 'Loaded' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Result<T> = { success: boolean; data: T }; let res: Result<string> = { success: true, data: 'Loaded' };\n",
     "hints": [
       "Write: type Result<T> = { success: boolean; data: T }; let res: Result<string> = { success: true, data: 'Loaded' };"
@@ -240,7 +240,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `class StorageContainer<T> { private item: T; constructor(item: T) { this.item = item; } getItem(): T { return this.item; } } let sc = new StorageContainer('Package');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass StorageContainer<T> { private item: T; constructor(item: T) { this.item = item; } getItem(): T { return this.item; } } let sc = new StorageContainer('Package');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class StorageContainer<T> { private item: T; constructor(item: T) { this.item = item; } getItem(): T { return this.item; } } let sc = new StorageContainer('Package');\n",
     "hints": [
       "Write: class StorageContainer<T> { private item: T; constructor(item: T) { this.item = item; } getItem(): T { return this.item; } } let sc = new StorageContainer('Package');"
@@ -282,7 +282,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `type APIResponse<T = string> = { data: T }; let defaultResp: APIResponse = { data: 'OK' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype APIResponse<T = string> = { data: T }; let defaultResp: APIResponse = { data: 'OK' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type APIResponse<T = string> = { data: T }; let defaultResp: APIResponse = { data: 'OK' };\n",
     "hints": [
       "Write: type APIResponse<T = string> = { data: T }; let defaultResp: APIResponse = { data: 'OK' };"
@@ -324,7 +324,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `const wrap = <T>(val: T): { value: T } => ({ value: val }); let wrapped = wrap(100);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst wrap = <T>(val: T): { value: T } => ({ value: val }); let wrapped = wrap(100);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const wrap = <T>(val: T): { value: T } => ({ value: val }); let wrapped = wrap(100);\n",
     "hints": [
       "Write: const wrap = <T>(val: T): { value: T } => ({ value: val }); let wrapped = wrap(100);"
@@ -366,7 +366,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `class Stack<T> { private list: T[] = []; push(item: T) { this.list.push(item); } pop(): T | undefined { return this.list.pop(); } } let s = new Stack<number>(); s.push(5); let top = s.pop();`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Stack<T> { private list: T[] = []; push(item: T) { this.list.push(item); } pop(): T | undefined { return this.list.pop(); } } let s = new Stack<number>(); s.push(5); let top = s.pop();\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Stack<T> { private list: T[] = []; push(item: T) { this.list.push(item); } pop(): T | undefined { return this.list.pop(); } } let s = new Stack<number>(); s.push(5); let top = s.pop();\n",
     "hints": [
       "Write: class Stack<T> { private list: T[] = []; push(item: T) { this.list.push(item); } pop(): T | undefined { return this.list.pop(); } } let s = new Stack<number>(); s.push(5); let top = s.pop();"
@@ -408,7 +408,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `class Queue<T> { private items: T[] = []; enqueue(item: T) { this.items.push(item); } dequeue(): T | undefined { return this.items.shift(); } } let q = new Queue<string>(); q.enqueue('first'); let head = q.dequeue();`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Queue<T> { private items: T[] = []; enqueue(item: T) { this.items.push(item); } dequeue(): T | undefined { return this.items.shift(); } } let q = new Queue<string>(); q.enqueue('first'); let head = q.dequeue();\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Queue<T> { private items: T[] = []; enqueue(item: T) { this.items.push(item); } dequeue(): T | undefined { return this.items.shift(); } } let q = new Queue<string>(); q.enqueue('first'); let head = q.dequeue();\n",
     "hints": [
       "Write: class Queue<T> { private items: T[] = []; enqueue(item: T) { this.items.push(item); } dequeue(): T | undefined { return this.items.shift(); } } let q = new Queue<string>(); q.enqueue('first'); let head = q.dequeue();"
@@ -450,7 +450,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `interface KeyValue<K, V> { key: K; value: V; } let entry: KeyValue<string, number> = { key: 'count', value: 10 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface KeyValue<K, V> { key: K; value: V; } let entry: KeyValue<string, number> = { key: 'count', value: 10 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface KeyValue<K, V> { key: K; value: V; } let entry: KeyValue<string, number> = { key: 'count', value: 10 };\n",
     "hints": [
       "Write: interface KeyValue<K, V> { key: K; value: V; } let entry: KeyValue<string, number> = { key: 'count', value: 10 };"
@@ -492,7 +492,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `function resolveLater<T>(val: T): Promise<T> { return Promise.resolve(val); }`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction resolveLater<T>(val: T): Promise<T> { return Promise.resolve(val); }\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function resolveLater<T>(val: T): Promise<T> { return Promise.resolve(val); }\n",
     "hints": [
       "Write: function resolveLater<T>(val: T): Promise<T> { return Promise.resolve(val); }"
@@ -534,7 +534,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `function createInstance<T>(Constructor: new () => T): T { return new Constructor(); } class Dummy {} let d = createInstance(Dummy);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction createInstance<T>(Constructor: new () => T): T { return new Constructor(); } class Dummy {} let d = createInstance(Dummy);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function createInstance<T>(Constructor: new () => T): T { return new Constructor(); } class Dummy {} let d = createInstance(Dummy);\n",
     "hints": [
       "Write: function createInstance<T>(Constructor: new () => T): T { return new Constructor(); } class Dummy {} let d = createInstance(Dummy);"
@@ -576,7 +576,7 @@ export const tsModule7Lessons: Lesson[] = [
       "Enter the code: `interface Repo<T> { findById(id: string): T | null; } class UserRepo implements Repo<{ name: string }> { findById(id: string) { return { name: 'User' + id }; } } let r = new UserRepo(); let u = r.findById('1');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Repo<T> { findById(id: string): T | null; } class UserRepo implements Repo<{ name: string }> { findById(id: string) { return { name: 'User' + id }; } } let r = new UserRepo(); let u = r.findById('1');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Repo<T> { findById(id: string): T | null; } class UserRepo implements Repo<{ name: string }> { findById(id: string) { return { name: 'User' + id }; } } let r = new UserRepo(); let u = r.findById('1');\n",
     "hints": [
       "Write: interface Repo<T> { findById(id: string): T | null; } class UserRepo implements Repo<{ name: string }> { findById(id: string) { return { name: 'User' + id }; } } let r = new UserRepo(); let u = r.findById('1');"

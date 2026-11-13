@@ -30,7 +30,7 @@ export const tsModule13Lessons: Lesson[] = [
       "Enter the code: `export type Status = 'active' | 'archived'; let s: Status = 'active';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nexport type Status = 'active' | 'archived'; let s: Status = 'active';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "export type Status = 'active' | 'archived'; let s: Status = 'active';\n",
     "hints": [
       "Write: export type Status = 'active' | 'archived'; let s: Status = 'active';"
@@ -72,7 +72,7 @@ export const tsModule13Lessons: Lesson[] = [
       "Enter the code: `declare const __VERSION__: string; let version = '1.0.0';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ndeclare const __VERSION__: string; let version = '1.0.0';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "declare const __VERSION__: string; let version = '1.0.0';\n",
     "hints": [
       "Write: declare const __VERSION__: string; let version = '1.0.0';"
@@ -114,7 +114,7 @@ export const tsModule13Lessons: Lesson[] = [
       "Enter the code: `interface AppConfig { env: string; } let cfg: AppConfig = { env: 'production' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface AppConfig { env: string; } let cfg: AppConfig = { env: 'production' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface AppConfig { env: string; } let cfg: AppConfig = { env: 'production' };\n",
     "hints": [
       "Write: interface AppConfig { env: string; } let cfg: AppConfig = { env: 'production' };"
@@ -156,7 +156,7 @@ export const tsModule13Lessons: Lesson[] = [
       "Enter the code: `type ExtendedString = string; let str: ExtendedString = 'augmented';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype ExtendedString = string; let str: ExtendedString = 'augmented';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type ExtendedString = string; let str: ExtendedString = 'augmented';\n",
     "hints": [
       "Write: type ExtendedString = string; let str: ExtendedString = 'augmented';"
@@ -198,7 +198,7 @@ export const tsModule13Lessons: Lesson[] = [
       "Enter the code: `let referenceLoaded = true;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet referenceLoaded = true;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let referenceLoaded = true;\n",
     "hints": [
       "Write: let referenceLoaded = true;"
@@ -240,7 +240,7 @@ export const tsModule13Lessons: Lesson[] = [
       "Enter the code: `interface LibraryExport { version: string; init(): boolean; } const lib: LibraryExport = { version: '2.4.0', init: () => true };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface LibraryExport { version: string; init(): boolean; } const lib: LibraryExport = { version: '2.4.0', init: () => true };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface LibraryExport { version: string; init(): boolean; } const lib: LibraryExport = { version: '2.4.0', init: () => true };\n",
     "hints": [
       "Write: interface LibraryExport { version: string; init(): boolean; } const lib: LibraryExport = { version: '2.4.0', init: () => true };"

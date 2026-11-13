@@ -31,7 +31,7 @@ export const module12Lessons: Lesson[] = [
       "Push `\"sync 1\"` and `\"sync 2\"` to `timeline`.",
       "Print `timeline.join(\" -> \")`."
     ],
-    "initialCode": "let timeline = [];\ntimeline.push(\"sync 1\");\ntimeline.push(\"sync 2\");\nconsole.log(timeline.join(\" -> \"));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let timeline = [];\ntimeline.push(\"sync 1\");\ntimeline.push(\"sync 2\");\nconsole.log(timeline.join(\" -> \"));\n",
     "hints": [
       "Push both strings to timeline array"
@@ -72,7 +72,7 @@ export const module12Lessons: Lesson[] = [
       "Verify `setTimeout` is a function with `let isFunc = typeof setTimeout === \"function\";`.",
       "Print `isFunc`."
     ],
-    "initialCode": "let isFunc = typeof setTimeout === \"function\";\nconsole.log(isFunc);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isFunc = typeof setTimeout === \"function\";\nconsole.log(isFunc);\n",
     "hints": [
       "Check `typeof setTimeout === \"function\"`"
@@ -114,7 +114,7 @@ export const module12Lessons: Lesson[] = [
       "Clear it immediately with `clearInterval(id);`.",
       "Print `\"Interval cleared\"`."
     ],
-    "initialCode": "let id = setInterval(() => {}, 500);\nclearInterval(id);\nconsole.log(\"Interval cleared\");\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let id = setInterval(() => {}, 500);\nclearInterval(id);\nconsole.log(\"Interval cleared\");\n",
     "hints": [
       "Pass `id` to `clearInterval(id)`"
@@ -156,7 +156,7 @@ export const module12Lessons: Lesson[] = [
       "Create function `calculate(a, b, callback) { callback(a + b); }`.",
       "Call `calculate(10, 20, (sum) => { let result = sum; console.log(result); });`."
     ],
-    "initialCode": "let result = 0;\nfunction calculate(a, b, callback) {\n  callback(a + b);\n}\ncalculate(10, 20, (sum) => {\n  result = sum;\n});\nconsole.log(result);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let result = 0;\nfunction calculate(a, b, callback) {\n  callback(a + b);\n}\ncalculate(10, 20, (sum) => {\n  result = sum;\n});\nconsole.log(result);\n",
     "hints": [
       "Call `callback(a + b)`"
@@ -199,7 +199,7 @@ export const module12Lessons: Lesson[] = [
       "Create `let p = new Promise((resolve) => resolve(\"Resolved!\"));`.",
       "Print `p instanceof Promise`."
     ],
-    "initialCode": "let p = new Promise((resolve) => resolve(\"Resolved!\"));\nconsole.log(p instanceof Promise);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let p = new Promise((resolve) => resolve(\"Resolved!\"));\nconsole.log(p instanceof Promise);\n",
     "hints": [
       "Use `new Promise((resolve) => resolve(\"Resolved!\"))`"
@@ -240,7 +240,7 @@ export const module12Lessons: Lesson[] = [
       "Resolve a number: `let outcome = 0;`.",
       "Chain `Promise.resolve(25).then(val => { outcome = val; console.log(outcome); });`."
     ],
-    "initialCode": "let outcome = 0;\nPromise.resolve(25).then((val) => {\n  outcome = val;\n  console.log(outcome);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let outcome = 0;\nPromise.resolve(25).then((val) => {\n  outcome = val;\n  console.log(outcome);\n});\n",
     "hints": [
       "Set `outcome = val` inside .then()"
@@ -281,7 +281,7 @@ export const module12Lessons: Lesson[] = [
       "Create `let captured = \"\";`.",
       "Reject with `Promise.reject(\"Server down\").catch(err => { captured = err; console.log(captured); });`."
     ],
-    "initialCode": "let captured = \"\";\nPromise.reject(\"Server down\").catch((err) => {\n  captured = err;\n  console.log(captured);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let captured = \"\";\nPromise.reject(\"Server down\").catch((err) => {\n  captured = err;\n  console.log(captured);\n});\n",
     "hints": [
       "Assign `captured = err;` inside .catch"
@@ -323,7 +323,7 @@ export const module12Lessons: Lesson[] = [
       "Verify `let isPromise = getScore() instanceof Promise;`.",
       "Print `isPromise`."
     ],
-    "initialCode": "async function getScore() {\n  return 100;\n}\nlet isPromise = getScore() instanceof Promise;\nconsole.log(isPromise);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "async function getScore() {\n  return 100;\n}\nlet isPromise = getScore() instanceof Promise;\nconsole.log(isPromise);\n",
     "hints": [
       "Define `async function getScore()`"
@@ -364,7 +364,7 @@ export const module12Lessons: Lesson[] = [
       "Define `async function loadUser() { let user = await Promise.resolve({ name: \"Dev\" }); return user.name; }`.",
       "Call `let finalName = \"\"; loadUser().then(name => { finalName = name; console.log(finalName); });`."
     ],
-    "initialCode": "let finalName = \"\";\nasync function loadUser() {\n  let user = await Promise.resolve({ name: \"Dev\" });\n  return user.name;\n}\nloadUser().then((name) => {\n  finalName = name;\n  console.log(finalName);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let finalName = \"\";\nasync function loadUser() {\n  let user = await Promise.resolve({ name: \"Dev\" });\n  return user.name;\n}\nloadUser().then((name) => {\n  finalName = name;\n  console.log(finalName);\n});\n",
     "hints": [
       "Use `await Promise.resolve({ name: 'Dev' })`"
@@ -405,7 +405,7 @@ export const module12Lessons: Lesson[] = [
       "Define `async function safeFetch() { try { await Promise.reject(\"Failed\"); } catch (e) { return \"Recovered\"; } }`.",
       "Run `let status = \"\"; safeFetch().then(s => { status = s; console.log(status); });`."
     ],
-    "initialCode": "let status = \"\";\nasync function safeFetch() {\n  try {\n    await Promise.reject(\"Failed\");\n  } catch (e) {\n    return \"Recovered\";\n  }\n}\nsafeFetch().then((s) => {\n  status = s;\n  console.log(status);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let status = \"\";\nasync function safeFetch() {\n  try {\n    await Promise.reject(\"Failed\");\n  } catch (e) {\n    return \"Recovered\";\n  }\n}\nsafeFetch().then((s) => {\n  status = s;\n  console.log(status);\n});\n",
     "hints": [
       "Return 'Recovered' inside the catch block"
@@ -447,7 +447,7 @@ export const module12Lessons: Lesson[] = [
       "Create `let allTotal = 0;`.",
       "Use `Promise.all([Promise.resolve(15), Promise.resolve(35)]).then(([a, b]) => { allTotal = a + b; console.log(allTotal); });`."
     ],
-    "initialCode": "let allTotal = 0;\nPromise.all([Promise.resolve(15), Promise.resolve(35)]).then(([a, b]) => {\n  allTotal = a + b;\n  console.log(allTotal);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let allTotal = 0;\nPromise.all([Promise.resolve(15), Promise.resolve(35)]).then(([a, b]) => {\n  allTotal = a + b;\n  console.log(allTotal);\n});\n",
     "hints": [
       "Use `Promise.all([Promise.resolve(15), Promise.resolve(35)])`"
@@ -488,7 +488,7 @@ export const module12Lessons: Lesson[] = [
       "Create `let winner = \"\";`.",
       "Use `Promise.race([Promise.resolve(\"gold\"), Promise.resolve(\"silver\")]).then(w => { winner = w; console.log(winner); });`."
     ],
-    "initialCode": "let winner = \"\";\nPromise.race([Promise.resolve(\"gold\"), Promise.resolve(\"silver\")]).then((w) => {\n  winner = w;\n  console.log(winner);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let winner = \"\";\nPromise.race([Promise.resolve(\"gold\"), Promise.resolve(\"silver\")]).then((w) => {\n  winner = w;\n  console.log(winner);\n});\n",
     "hints": [
       "Use `Promise.race` and capture winner"
@@ -529,7 +529,7 @@ export const module12Lessons: Lesson[] = [
       "Create `let settledCount = 0;`.",
       "Use `Promise.allSettled([Promise.resolve(10), Promise.reject(\"err\")]).then(res => { settledCount = res.length; console.log(settledCount); });`."
     ],
-    "initialCode": "let settledCount = 0;\nPromise.allSettled([Promise.resolve(10), Promise.reject(\"err\")]).then((res) => {\n  settledCount = res.length;\n  console.log(settledCount);\n});\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let settledCount = 0;\nPromise.allSettled([Promise.resolve(10), Promise.reject(\"err\")]).then((res) => {\n  settledCount = res.length;\n  console.log(settledCount);\n});\n",
     "hints": [
       "Inspect `res.length` in then"

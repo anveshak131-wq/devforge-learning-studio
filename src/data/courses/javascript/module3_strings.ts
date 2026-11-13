@@ -30,7 +30,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Assign to `let loud = \"javascript\".toUpperCase();`.",
       "Print `loud`."
     ],
-    "initialCode": "let loud = \"javascript\".toUpperCase();\nconsole.log(loud);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let loud = \"javascript\".toUpperCase();\nconsole.log(loud);\n",
     "hints": [
       "Use `\"javascript\".toUpperCase()`"
@@ -72,7 +72,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Assign to `let cleanText = \"   cleanMe   \".trim();`.",
       "Print `cleanText`."
     ],
-    "initialCode": "let cleanText = \"   cleanMe   \".trim();\nconsole.log(cleanText);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let cleanText = \"   cleanMe   \".trim();\nconsole.log(cleanText);\n",
     "hints": [
       "Use `.trim()`"
@@ -115,7 +115,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Assign to `let hasMario = \"Super Mario\".includes(\"Mario\");`.",
       "Print `hasMario`."
     ],
-    "initialCode": "let hasMario = \"Super Mario\".includes(\"Mario\");\nconsole.log(hasMario);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let hasMario = \"Super Mario\".includes(\"Mario\");\nconsole.log(hasMario);\n",
     "hints": [
       "Write `\"Super Mario\".includes(\"Mario\")`"
@@ -157,7 +157,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Find position of `'code'` in `'Learn to code today'`. Assign to `let pos = 'Learn to code today'.indexOf('code');`.",
       "Print `pos`."
     ],
-    "initialCode": "let pos = 'Learn to code today'.indexOf('code');\nconsole.log(pos);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let pos = 'Learn to code today'.indexOf('code');\nconsole.log(pos);\n",
     "hints": [
       "Use `.indexOf('code')`"
@@ -198,7 +198,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Slice the first 3 characters from `'Developer'`. Assign to `let shortName = 'Developer'.slice(0, 3);`.",
       "Print `shortName`."
     ],
-    "initialCode": "let shortName = 'Developer'.slice(0, 3);\nconsole.log(shortName);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let shortName = 'Developer'.slice(0, 3);\nconsole.log(shortName);\n",
     "hints": [
       "Use `slice(0, 3)`"
@@ -239,7 +239,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Replace `'bad'` with `'good'` in `'This is a bad day'`. Assign to `let fixed = 'This is a bad day'.replace('bad', 'good');`.",
       "Print `fixed`."
     ],
-    "initialCode": "let fixed = 'This is a bad day'.replace('bad', 'good');\nconsole.log(fixed);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let fixed = 'This is a bad day'.replace('bad', 'good');\nconsole.log(fixed);\n",
     "hints": [
       "Use `.replace('bad', 'good')`"
@@ -280,7 +280,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Split `'red,green,blue'` by comma. Assign to `let colors = 'red,green,blue'.split(',');`.",
       "Print `colors[0]`."
     ],
-    "initialCode": "let colors = 'red,green,blue'.split(',');\nconsole.log(colors[0]);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let colors = 'red,green,blue'.split(',');\nconsole.log(colors[0]);\n",
     "hints": [
       "Use `.split(',')`"
@@ -320,7 +320,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Repeat `'*'` 10 times using `'*'.repeat(10)`. Assign to `let divider = '*'.repeat(10);`.",
       "Print `divider`."
     ],
-    "initialCode": "let divider = '*'.repeat(10);\nconsole.log(divider);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let divider = '*'.repeat(10);\nconsole.log(divider);\n",
     "hints": [
       "Write `'*'.repeat(10)`"
@@ -361,7 +361,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Check if `'document.docx'` ends with `'.docx'`. Assign to `let isDoc = 'document.docx'.endsWith('.docx');`.",
       "Print `isDoc`."
     ],
-    "initialCode": "let isDoc = 'document.docx'.endsWith('.docx');\nconsole.log(isDoc);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isDoc = 'document.docx'.endsWith('.docx');\nconsole.log(isDoc);\n",
     "hints": [
       "Use `.endsWith('.docx')`"
@@ -402,7 +402,7 @@ export const MODULE_3_LESSONS: Lesson[] = [
       "Pad `'7'` to 4 digits with `'0'` using `'7'.padStart(4, '0')`. Assign to `let padded = '7'.padStart(4, '0');`.",
       "Print `padded`."
     ],
-    "initialCode": "let padded = '7'.padStart(4, '0');\nconsole.log(padded);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let padded = '7'.padStart(4, '0');\nconsole.log(padded);\n",
     "hints": [
       "Use `.padStart(4, '0')`"

@@ -30,7 +30,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `let scores: number[] = [95, 88, 100];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet scores: number[] = [95, 88, 100];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let scores: number[] = [95, 88, 100];\n",
     "hints": [
       "Write: let scores: number[] = [95, 88, 100];"
@@ -72,7 +72,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `let names: Array<string> = ['Alice', 'Bob'];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet names: Array<string> = ['Alice', 'Bob'];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let names: Array<string> = ['Alice', 'Bob'];\n",
     "hints": [
       "Write: let names: Array<string> = ['Alice', 'Bob'];"
@@ -114,7 +114,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `const numbers: readonly number[] = [1, 2, 3];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst numbers: readonly number[] = [1, 2, 3];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const numbers: readonly number[] = [1, 2, 3];\n",
     "hints": [
       "Write: const numbers: readonly number[] = [1, 2, 3];"
@@ -156,7 +156,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `let user: [string, number] = ['Sam', 42];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet user: [string, number] = ['Sam', 42];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let user: [string, number] = ['Sam', 42];\n",
     "hints": [
       "Write: let user: [string, number] = ['Sam', 42];"
@@ -198,7 +198,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `type Point2D = [x: number, y: number]; let pt: Point2D = [10, 25];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Point2D = [x: number, y: number]; let pt: Point2D = [10, 25];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Point2D = [x: number, y: number]; let pt: Point2D = [10, 25];\n",
     "hints": [
       "Write: type Point2D = [x: number, y: number]; let pt: Point2D = [10, 25];"
@@ -240,7 +240,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `type RGB = [number, number, number, number?]; let color: RGB = [255, 0, 0];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype RGB = [number, number, number, number?]; let color: RGB = [255, 0, 0];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type RGB = [number, number, number, number?]; let color: RGB = [255, 0, 0];\n",
     "hints": [
       "Write: type RGB = [number, number, number, number?]; let color: RGB = [255, 0, 0];"
@@ -282,7 +282,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `type StringNumberBooleans = [string, ...number[]]; let record: StringNumberBooleans = ['ID', 1, 2, 3];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype StringNumberBooleans = [string, ...number[]]; let record: StringNumberBooleans = ['ID', 1, 2, 3];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type StringNumberBooleans = [string, ...number[]]; let record: StringNumberBooleans = ['ID', 1, 2, 3];\n",
     "hints": [
       "Write: type StringNumberBooleans = [string, ...number[]]; let record: StringNumberBooleans = ['ID', 1, 2, 3];"
@@ -324,7 +324,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `let pair: [string, number] = ['Key', 99]; let [k, v] = pair;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet pair: [string, number] = ['Key', 99]; let [k, v] = pair;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let pair: [string, number] = ['Key', 99]; let [k, v] = pair;\n",
     "hints": [
       "Write: let pair: [string, number] = ['Key', 99]; let [k, v] = pair;"
@@ -366,7 +366,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `let matrix: number[][] = [[1, 2], [3, 4]];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet matrix: number[][] = [[1, 2], [3, 4]];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let matrix: number[][] = [[1, 2], [3, 4]];\n",
     "hints": [
       "Write: let matrix: number[][] = [[1, 2], [3, 4]];"
@@ -408,7 +408,7 @@ export const tsModule2Lessons: Lesson[] = [
       "Enter the code: `type Leader = [rank: number, name: string]; let first: Leader = [1, 'Nova'];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Leader = [rank: number, name: string]; let first: Leader = [1, 'Nova'];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Leader = [rank: number, name: string]; let first: Leader = [1, 'Nova'];\n",
     "hints": [
       "Write: type Leader = [rank: number, name: string]; let first: Leader = [1, 'Nova'];"

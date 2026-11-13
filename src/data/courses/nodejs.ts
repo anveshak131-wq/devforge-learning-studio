@@ -39,7 +39,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getNodeInfo() {\n  return { runtime: 'Node.js', engine: 'V8', io: 'Libuv' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function getNodeInfo() {\n  return { runtime: 'Node.js', engine: 'V8', io: 'Libuv' };\n}\nconst info = getNodeInfo();",
     "hints": [
       "Write:\nfunction getNodeInfo() {\n  return { runtime: 'Node.js', engine: 'V8', io: 'Libuv' };\n}\nconst info = getNodeInfo();"
@@ -81,7 +81,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simulateEventLoop() {\n  const queue = ['microtask', 'timer'];\n  return queue.shift();\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function simulateEventLoop() {\n  const queue = ['microtask', 'timer'];\n  return queue.shift();\n}\nconst first = simulateEventLoop();",
     "hints": [
       "Write:\nfunction simulateEventLoop() {\n  const queue = ['microtask', 'timer'];\n  return queue.shift();\n}\nconst first = simulateEventLoop();"
@@ -123,7 +123,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function inspectGlobal() {\n  return typeof global !== 'undefined' ? 'node' : 'browser';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function inspectGlobal() {\n  return typeof global !== 'undefined' ? 'node' : 'browser';\n}\nconst env = inspectGlobal();",
     "hints": [
       "Write:\nfunction inspectGlobal() {\n  return typeof global !== 'undefined' ? 'node' : 'browser';\n}\nconst env = inspectGlobal();"
@@ -165,7 +165,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function readProcessConfig() {\n  return { nodeVersion: process.version || 'v20.0.0', platform: 'darwin' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function readProcessConfig() {\n  return { nodeVersion: process.version || 'v20.0.0', platform: 'darwin' };\n}\nconst cfg = readProcessConfig();",
     "hints": [
       "Write:\nfunction readProcessConfig() {\n  return { nodeVersion: process.version || 'v20.0.0', platform: 'darwin' };\n}\nconst cfg = readProcessConfig();"
@@ -207,7 +207,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function exitCodeMeaning(code) {\n  return code === 0 ? 'Success' : 'Failure';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function exitCodeMeaning(code) {\n  return code === 0 ? 'Success' : 'Failure';\n}\nconst ok = exitCodeMeaning(0);",
     "hints": [
       "Write:\nfunction exitCodeMeaning(code) {\n  return code === 0 ? 'Success' : 'Failure';\n}\nconst ok = exitCodeMeaning(0);"
@@ -249,7 +249,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createTimerMock(delay) {\n  return { delayMs: delay, scheduled: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createTimerMock(delay) {\n  return { delayMs: delay, scheduled: true };\n}\nconst t = createTimerMock(1000);",
     "hints": [
       "Write:\nfunction createTimerMock(delay) {\n  return { delayMs: delay, scheduled: true };\n}\nconst t = createTimerMock(1000);"
@@ -291,7 +291,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function orderExecution() {\n  return ['setImmediate', 'setTimeout'];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function orderExecution() {\n  return ['setImmediate', 'setTimeout'];\n}\nconst order = orderExecution();",
     "hints": [
       "Write:\nfunction orderExecution() {\n  return ['setImmediate', 'setTimeout'];\n}\nconst order = orderExecution();"
@@ -333,7 +333,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function nextTickPriority() {\n  return { priority: 'Highest', runsBeforeTimers: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function nextTickPriority() {\n  return { priority: 'Highest', runsBeforeTimers: true };\n}\nconst p = nextTickPriority();",
     "hints": [
       "Write:\nfunction nextTickPriority() {\n  return { priority: 'Highest', runsBeforeTimers: true };\n}\nconst p = nextTickPriority();"
@@ -375,7 +375,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function cjsExportMock(mathObj) {\n  return { ...mathObj, exported: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function cjsExportMock(mathObj) {\n  return { ...mathObj, exported: true };\n}\nconst mod = cjsExportMock({ add: (a, b) => a + b });",
     "hints": [
       "Write:\nfunction cjsExportMock(mathObj) {\n  return { ...mathObj, exported: true };\n}\nconst mod = cjsExportMock({ add: (a, b) => a + b });"
@@ -417,7 +417,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function esmExport(name) {\n  return `export default ${name}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function esmExport(name) {\n  return `export default ${name}`;\n}\nconst str = esmExport('Server');",
     "hints": [
       "Write:\nfunction esmExport(name) {\n  return `export default ${name}`;\n}\nconst str = esmExport('Server');"
@@ -459,7 +459,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createPackageJson(name, version) {\n  return { name, version, main: 'index.js', scripts: { start: 'node index.js' } };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createPackageJson(name, version) {\n  return { name, version, main: 'index.js', scripts: { start: 'node index.js' } };\n}\nconst pkg = createPackageJson('my-api', '1.0.0');",
     "hints": [
       "Write:\nfunction createPackageJson(name, version) {\n  return { name, version, main: 'index.js', scripts: { start: 'node index.js' } };\n}\nconst pkg = createPackageJson('my-api', '1.0.0');"
@@ -501,7 +501,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function sortDeps(isDev) {\n  return isDev ? 'devDependencies' : 'dependencies';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function sortDeps(isDev) {\n  return isDev ? 'devDependencies' : 'dependencies';\n}\nconst d = sortDeps(true);",
     "hints": [
       "Write:\nfunction sortDeps(isDev) {\n  return isDev ? 'devDependencies' : 'dependencies';\n}\nconst d = sortDeps(true);"
@@ -543,7 +543,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseSemver(caretVersion) {\n  return { allowMinorUpdates: caretVersion.startsWith('^') };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseSemver(caretVersion) {\n  return { allowMinorUpdates: caretVersion.startsWith('^') };\n}\nconst sem = parseSemver('^4.18.2');",
     "hints": [
       "Write:\nfunction parseSemver(caretVersion) {\n  return { allowMinorUpdates: caretVersion.startsWith('^') };\n}\nconst sem = parseSemver('^4.18.2');"
@@ -585,7 +585,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkLockfile() {\n  return { exactVersions: true, reproducibleBuilds: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function checkLockfile() {\n  return { exactVersions: true, reproducibleBuilds: true };\n}\nconst lock = checkLockfile();",
     "hints": [
       "Write:\nfunction checkLockfile() {\n  return { exactVersions: true, reproducibleBuilds: true };\n}\nconst lock = checkLockfile();"
@@ -627,7 +627,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function resolveModulePath(name) {\n  return name.startsWith('.') ? 'relative' : 'node_modules';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function resolveModulePath(name) {\n  return name.startsWith('.') ? 'relative' : 'node_modules';\n}\nconst loc = resolveModulePath('express');",
     "hints": [
       "Write:\nfunction resolveModulePath(name) {\n  return name.startsWith('.') ? 'relative' : 'node_modules';\n}\nconst loc = resolveModulePath('express');"
@@ -669,7 +669,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class SimpleEventEmitter {\n  constructor() { this.events = {}; }\n  on(event, listener) { (this.events[event] = this.events[event] || []).push(listener); }\n  emit(event, ...args) { (this.events[event] || []).forEach(fn => fn(...args)); }\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "class SimpleEventEmitter {\n  constructor() { this.events = {}; }\n  on(event, listener) { (this.events[event] = this.events[event] || []).push(listener); }\n  emit(event, ...args) { (this.events[event] || []).forEach(fn => fn(...args)); }\n}\nconst ee = new SimpleEventEmitter();\nlet heard = false;\nee.on('ping', () => { heard = true; });\nee.emit('ping');",
     "hints": [
       "Write:\nclass SimpleEventEmitter {\n  constructor() { this.events = {}; }\n  on(event, listener) { (this.events[event] = this.events[event] || []).push(listener); }\n  emit(event, ...args) { (this.events[event] || []).forEach(fn => fn(...args)); }\n}\nconst ee = new SimpleEventEmitter();\nlet heard = false;\nee.on('ping', () => { heard = true; });\nee.emit('ping');"
@@ -711,7 +711,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function emitPayload(channel, data) {\n  return { channel, data, timestamp: Date.now() };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function emitPayload(channel, data) {\n  return { channel, data, timestamp: Date.now() };\n}\nconst msg = emitPayload('user:signup', { email: 'user@test.com' });",
     "hints": [
       "Write:\nfunction emitPayload(channel, data) {\n  return { channel, data, timestamp: Date.now() };\n}\nconst msg = emitPayload('user:signup', { email: 'user@test.com' });"
@@ -753,7 +753,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function subscribeToLog(events) {\n  return [...events, 'listening'];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function subscribeToLog(events) {\n  return [...events, 'listening'];\n}\nconst subs = subscribeToLog([]);",
     "hints": [
       "Write:\nfunction subscribeToLog(events) {\n  return [...events, 'listening'];\n}\nconst subs = subscribeToLog([]);"
@@ -795,7 +795,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function recordOnce(hasFired) {\n  return { active: !hasFired };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function recordOnce(hasFired) {\n  return { active: !hasFired };\n}\nconst o = recordOnce(true);",
     "hints": [
       "Write:\nfunction recordOnce(hasFired) {\n  return { active: !hasFired };\n}\nconst o = recordOnce(true);"
@@ -837,7 +837,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function removeListenerMock(list, targetFn) {\n  return list.filter(fn => fn !== targetFn);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function removeListenerMock(list, targetFn) {\n  return list.filter(fn => fn !== targetFn);\n}\nconst fn1 = () => {};\nconst rem = removeListenerMock([fn1], fn1);",
     "hints": [
       "Write:\nfunction removeListenerMock(list, targetFn) {\n  return list.filter(fn => fn !== targetFn);\n}\nconst fn1 = () => {};\nconst rem = removeListenerMock([fn1], fn1);"
@@ -879,7 +879,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function handleErrorEvent(err) {\n  if (!err) return 'ok';\n  return `Caught: ${err.message}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function handleErrorEvent(err) {\n  if (!err) return 'ok';\n  return `Caught: ${err.message}`;\n}\nconst res = handleErrorEvent(new Error('Connection dropped'));",
     "hints": [
       "Write:\nfunction handleErrorEvent(err) {\n  if (!err) return 'ok';\n  return `Caught: ${err.message}`;\n}\nconst res = handleErrorEvent(new Error('Connection dropped'));"
@@ -921,7 +921,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function formatEventPayload(orderId, total, user) {\n  return { orderId, total, user };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function formatEventPayload(orderId, total, user) {\n  return { orderId, total, user };\n}\nconst p = formatEventPayload('ord-1', 99, 'Sarah');",
     "hints": [
       "Write:\nfunction formatEventPayload(orderId, total, user) {\n  return { orderId, total, user };\n}\nconst p = formatEventPayload('ord-1', 99, 'Sarah');"
@@ -963,7 +963,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkListenerThreshold(count, limit = 10) {\n  return count > limit ? 'Potential Leak Warning' : 'Safe';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function checkListenerThreshold(count, limit = 10) {\n  return count > limit ? 'Potential Leak Warning' : 'Safe';\n}\nconst warn = checkListenerThreshold(12);",
     "hints": [
       "Write:\nfunction checkListenerThreshold(count, limit = 10) {\n  return count > limit ? 'Potential Leak Warning' : 'Safe';\n}\nconst warn = checkListenerThreshold(12);"
@@ -1005,7 +1005,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class OrderProcessor {\n  constructor() { this.orders = []; }\n  process(id) { this.orders.push(id); return `Processed ${id}`; }\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "class OrderProcessor {\n  constructor() { this.orders = []; }\n  process(id) { this.orders.push(id); return `Processed ${id}`; }\n}\nconst op = new OrderProcessor();\nconst res = op.process('101');",
     "hints": [
       "Write:\nclass OrderProcessor {\n  constructor() { this.orders = []; }\n  process(id) { this.orders.push(id); return `Processed ${id}`; }\n}\nconst op = new OrderProcessor();\nconst res = op.process('101');"
@@ -1047,7 +1047,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function verifySyncOrder() {\n  const log = [];\n  log.push('before');\n  log.push('listener');\n  log.push('after');\n  return log;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function verifySyncOrder() {\n  const log = [];\n  log.push('before');\n  log.push('listener');\n  log.push('after');\n  return log;\n}\nconst executionOrder = verifySyncOrder();",
     "hints": [
       "Write:\nfunction verifySyncOrder() {\n  const log = [];\n  log.push('before');\n  log.push('listener');\n  log.push('after');\n  return log;\n}\nconst executionOrder = verifySyncOrder();"
@@ -1089,7 +1089,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function deferListener(callback) {\n  return { deferred: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function deferListener(callback) {\n  return { deferred: true };\n}\nconst d = deferListener(() => {});",
     "hints": [
       "Write:\nfunction deferListener(callback) {\n  return { deferred: true };\n}\nconst d = deferListener(() => {});"
@@ -1131,7 +1131,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function prepend(arr, item) {\n  return [item, ...arr];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function prepend(arr, item) {\n  return [item, ...arr];\n}\nconst list = prepend(['b'], 'a');",
     "hints": [
       "Write:\nfunction prepend(arr, item) {\n  return [item, ...arr];\n}\nconst list = prepend(['b'], 'a');"
@@ -1173,7 +1173,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getListenerCount(emitterMock) {\n  return emitterMock.listeners.length;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function getListenerCount(emitterMock) {\n  return emitterMock.listeners.length;\n}\nconst count = getListenerCount({ listeners: [() => {}, () => {}] });",
     "hints": [
       "Write:\nfunction getListenerCount(emitterMock) {\n  return emitterMock.listeners.length;\n}\nconst count = getListenerCount({ listeners: [() => {}, () => {}] });"
@@ -1215,7 +1215,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function pubSubBus() {\n  return { publish: (msg) => msg, subscribe: (fn) => fn };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function pubSubBus() {\n  return { publish: (msg) => msg, subscribe: (fn) => fn };\n}\nconst bus = pubSubBus();",
     "hints": [
       "Write:\nfunction pubSubBus() {\n  return { publish: (msg) => msg, subscribe: (fn) => fn };\n}\nconst bus = pubSubBus();"
@@ -1257,7 +1257,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function orchestrateOrder(orderId) {\n  return { orderId, steps: ['validated', 'paid', 'notified'] };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function orchestrateOrder(orderId) {\n  return { orderId, steps: ['validated', 'paid', 'notified'] };\n}\nconst flow = orchestrateOrder('order-99');",
     "hints": [
       "Write:\nfunction orchestrateOrder(orderId) {\n  return { orderId, steps: ['validated', 'paid', 'notified'] };\n}\nconst flow = orchestrateOrder('order-99');"
@@ -1299,7 +1299,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createBufferMock(size) {\n  return new Uint8Array(size);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createBufferMock(size) {\n  return new Uint8Array(size);\n}\nconst buf = createBufferMock(10);",
     "hints": [
       "Write:\nfunction createBufferMock(size) {\n  return new Uint8Array(size);\n}\nconst buf = createBufferMock(10);"
@@ -1341,7 +1341,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function allocSafe(size) {\n  return { size, zeroFilled: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function allocSafe(size) {\n  return { size, zeroFilled: true };\n}\nconst b = allocSafe(1024);",
     "hints": [
       "Write:\nfunction allocSafe(size) {\n  return { size, zeroFilled: true };\n}\nconst b = allocSafe(1024);"
@@ -1383,7 +1383,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createStringBuf(str) {\n  return { byteLength: str.length, text: str };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createStringBuf(str) {\n  return { byteLength: str.length, text: str };\n}\nconst b = createStringBuf('DevForge');",
     "hints": [
       "Write:\nfunction createStringBuf(str) {\n  return { byteLength: str.length, text: str };\n}\nconst b = createStringBuf('DevForge');"
@@ -1425,7 +1425,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function encodeBase64(str) {\n  return btoa(str);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function encodeBase64(str) {\n  return btoa(str);\n}\nconst encoded = encodeBase64('Admin');",
     "hints": [
       "Write:\nfunction encodeBase64(str) {\n  return btoa(str);\n}\nconst encoded = encodeBase64('Admin');"
@@ -1467,7 +1467,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function writeByte(buf, index, byteVal) {\n  buf[index] = byteVal;\n  return buf[index];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function writeByte(buf, index, byteVal) {\n  buf[index] = byteVal;\n  return buf[index];\n}\nconst val = writeByte(new Uint8Array(4), 0, 255);",
     "hints": [
       "Write:\nfunction writeByte(buf, index, byteVal) {\n  buf[index] = byteVal;\n  return buf[index];\n}\nconst val = writeByte(new Uint8Array(4), 0, 255);"
@@ -1509,7 +1509,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getByteSize(str) {\n  return new TextEncoder().encode(str).length;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function getByteSize(str) {\n  return new TextEncoder().encode(str).length;\n}\nconst size = getByteSize('\ud83d\ude80');",
     "hints": [
       "Write:\nfunction getByteSize(str) {\n  return new TextEncoder().encode(str).length;\n}\nconst size = getByteSize('\ud83d\ude80');"
@@ -1551,7 +1551,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function sliceView(arr, start, end) {\n  return arr.subarray(start, end);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function sliceView(arr, start, end) {\n  return arr.subarray(start, end);\n}\nconst view = sliceView(new Uint8Array([1, 2, 3, 4]), 1, 3);",
     "hints": [
       "Write:\nfunction sliceView(arr, start, end) {\n  return arr.subarray(start, end);\n}\nconst view = sliceView(new Uint8Array([1, 2, 3, 4]), 1, 3);"
@@ -1593,7 +1593,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function concatBuffers(b1, b2) {\n  const combined = new Uint8Array(b1.length + b2.length);\n  combined.set(b1);\n  combined.set(b2, b1.length);\n  return combined;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function concatBuffers(b1, b2) {\n  const combined = new Uint8Array(b1.length + b2.length);\n  combined.set(b1);\n  combined.set(b2, b1.length);\n  return combined;\n}\nconst merged = concatBuffers(new Uint8Array([1]), new Uint8Array([2]));",
     "hints": [
       "Write:\nfunction concatBuffers(b1, b2) {\n  const combined = new Uint8Array(b1.length + b2.length);\n  combined.set(b1);\n  combined.set(b2, b1.length);\n  return combined;\n}\nconst merged = concatBuffers(new Uint8Array([1]), new Uint8Array([2]));"
@@ -1635,7 +1635,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function copyBytes(src, target) {\n  target.set(src);\n  return target;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function copyBytes(src, target) {\n  target.set(src);\n  return target;\n}\nconst t = copyBytes(new Uint8Array([9]), new Uint8Array(1));",
     "hints": [
       "Write:\nfunction copyBytes(src, target) {\n  target.set(src);\n  return target;\n}\nconst t = copyBytes(new Uint8Array([9]), new Uint8Array(1));"
@@ -1677,7 +1677,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function compareBuffersMock(a, b) {\n  return a.length === b.length;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function compareBuffersMock(a, b) {\n  return a.length === b.length;\n}\nconst same = compareBuffersMock(new Uint8Array([1]), new Uint8Array([1]));",
     "hints": [
       "Write:\nfunction compareBuffersMock(a, b) {\n  return a.length === b.length;\n}\nconst same = compareBuffersMock(new Uint8Array([1]), new Uint8Array([1]));"
@@ -1719,7 +1719,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function bufferToJson(buf) {\n  return JSON.stringify(Array.from(buf));\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function bufferToJson(buf) {\n  return JSON.stringify(Array.from(buf));\n}\nconst json = bufferToJson(new Uint8Array([65, 66]));",
     "hints": [
       "Write:\nfunction bufferToJson(buf) {\n  return JSON.stringify(Array.from(buf));\n}\nconst json = bufferToJson(new Uint8Array([65, 66]));"
@@ -1761,7 +1761,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function decodeChunks(chunks) {\n  return chunks.join('');\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function decodeChunks(chunks) {\n  return chunks.join('');\n}\nconst text = decodeChunks(['Hello', ' ', 'World']);",
     "hints": [
       "Write:\nfunction decodeChunks(chunks) {\n  return chunks.join('');\n}\nconst text = decodeChunks(['Hello', ' ', 'World']);"
@@ -1803,7 +1803,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parsePacket(buf) {\n  const id = buf[0];\n  const length = buf[1];\n  return { id, length };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parsePacket(buf) {\n  const id = buf[0];\n  const length = buf[1];\n  return { id, length };\n}\nconst packet = parsePacket(new Uint8Array([42, 100]));",
     "hints": [
       "Write:\nfunction parsePacket(buf) {\n  const id = buf[0];\n  const length = buf[1];\n  return { id, length };\n}\nconst packet = parsePacket(new Uint8Array([42, 100]));"
@@ -1845,7 +1845,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function zeroOutSensitiveBuffer(buf) {\n  buf.fill(0);\n  return buf;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function zeroOutSensitiveBuffer(buf) {\n  buf.fill(0);\n  return buf;\n}\nconst clean = zeroOutSensitiveBuffer(new Uint8Array([9, 9, 9]));",
     "hints": [
       "Write:\nfunction zeroOutSensitiveBuffer(buf) {\n  buf.fill(0);\n  return buf;\n}\nconst clean = zeroOutSensitiveBuffer(new Uint8Array([9, 9, 9]));"
@@ -1887,7 +1887,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function serializeRecord(id, score) {\n  const buf = new Uint8Array(4);\n  buf[0] = id;\n  buf[1] = score;\n  return buf;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function serializeRecord(id, score) {\n  const buf = new Uint8Array(4);\n  buf[0] = id;\n  buf[1] = score;\n  return buf;\n}\nconst rec = serializeRecord(7, 95);",
     "hints": [
       "Write:\nfunction serializeRecord(id, score) {\n  const buf = new Uint8Array(4);\n  buf[0] = id;\n  buf[1] = score;\n  return buf;\n}\nconst rec = serializeRecord(7, 95);"
@@ -1929,7 +1929,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function calculateMemorySaved(fileSizeMb, streamChunkKb) {\n  return fileSizeMb * 1024 - streamChunkKb;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function calculateMemorySaved(fileSizeMb, streamChunkKb) {\n  return fileSizeMb * 1024 - streamChunkKb;\n}\nconst saved = calculateMemorySaved(1000, 64);",
     "hints": [
       "Write:\nfunction calculateMemorySaved(fileSizeMb, streamChunkKb) {\n  return fileSizeMb * 1024 - streamChunkKb;\n}\nconst saved = calculateMemorySaved(1000, 64);"
@@ -1971,7 +1971,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createReadableMock(chunks) {\n  return { chunks, read: () => chunks.shift() };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createReadableMock(chunks) {\n  return { chunks, read: () => chunks.shift() };\n}\nconst reader = createReadableMock(['c1', 'c2']);\nconst first = reader.read();",
     "hints": [
       "Write:\nfunction createReadableMock(chunks) {\n  return { chunks, read: () => chunks.shift() };\n}\nconst reader = createReadableMock(['c1', 'c2']);\nconst first = reader.read();"
@@ -2013,7 +2013,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createWritableMock() {\n  const storage = [];\n  return { write: (chunk) => storage.push(chunk), get: () => storage };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createWritableMock() {\n  const storage = [];\n  return { write: (chunk) => storage.push(chunk), get: () => storage };\n}\nconst writer = createWritableMock();\nwriter.write('chunk-1');",
     "hints": [
       "Write:\nfunction createWritableMock() {\n  const storage = [];\n  return { write: (chunk) => storage.push(chunk), get: () => storage };\n}\nconst writer = createWritableMock();\nwriter.write('chunk-1');"
@@ -2055,7 +2055,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function duplexMock() {\n  return { canRead: true, canWrite: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function duplexMock() {\n  return { canRead: true, canWrite: true };\n}\nconst d = duplexMock();",
     "hints": [
       "Write:\nfunction duplexMock() {\n  return { canRead: true, canWrite: true };\n}\nconst d = duplexMock();"
@@ -2097,7 +2097,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function transformMock(chunk) {\n  return chunk.toUpperCase();\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function transformMock(chunk) {\n  return chunk.toUpperCase();\n}\nconst t = transformMock('devforge');",
     "hints": [
       "Write:\nfunction transformMock(chunk) {\n  return chunk.toUpperCase();\n}\nconst t = transformMock('devforge');"
@@ -2139,7 +2139,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simulatePipe(src, dest) {\n  dest.push(...src);\n  return dest;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function simulatePipe(src, dest) {\n  dest.push(...src);\n  return dest;\n}\nconst out = simulatePipe(['a', 'b'], []);",
     "hints": [
       "Write:\nfunction simulatePipe(src, dest) {\n  dest.push(...src);\n  return dest;\n}\nconst out = simulatePipe(['a', 'b'], []);"
@@ -2181,7 +2181,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function handleBackpressure(isBufferFull) {\n  return isBufferFull ? 'PAUSE' : 'DRAIN';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function handleBackpressure(isBufferFull) {\n  return isBufferFull ? 'PAUSE' : 'DRAIN';\n}\nconst action = handleBackpressure(true);",
     "hints": [
       "Write:\nfunction handleBackpressure(isBufferFull) {\n  return isBufferFull ? 'PAUSE' : 'DRAIN';\n}\nconst action = handleBackpressure(true);"
@@ -2223,7 +2223,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkDrainSignal(state) {\n  return state === 'drained' ? 'RESUME_WRITE' : 'WAIT';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function checkDrainSignal(state) {\n  return state === 'drained' ? 'RESUME_WRITE' : 'WAIT';\n}\nconst sig = checkDrainSignal('drained');",
     "hints": [
       "Write:\nfunction checkDrainSignal(state) {\n  return state === 'drained' ? 'RESUME_WRITE' : 'WAIT';\n}\nconst sig = checkDrainSignal('drained');"
@@ -2265,7 +2265,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function pipelineMock(steps) {\n  return { completed: true, stepsExecuted: steps.length };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function pipelineMock(steps) {\n  return { completed: true, stepsExecuted: steps.length };\n}\nconst p = pipelineMock(['read', 'gzip', 'write']);",
     "hints": [
       "Write:\nfunction pipelineMock(steps) {\n  return { completed: true, stepsExecuted: steps.length };\n}\nconst p = pipelineMock(['read', 'gzip', 'write']);"
@@ -2307,7 +2307,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function copyStreamMock(sourceFile, targetFile) {\n  return { sourceFile, targetFile, streamed: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function copyStreamMock(sourceFile, targetFile) {\n  return { sourceFile, targetFile, streamed: true };\n}\nconst c = copyStreamMock('video.mp4', 'backup.mp4');",
     "hints": [
       "Write:\nfunction copyStreamMock(sourceFile, targetFile) {\n  return { sourceFile, targetFile, streamed: true };\n}\nconst c = copyStreamMock('video.mp4', 'backup.mp4');"
@@ -2349,7 +2349,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function gzipHeaderMock() {\n  return { algorithm: 'gzip', magicBytes: [0x1f, 0x8b] };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function gzipHeaderMock() {\n  return { algorithm: 'gzip', magicBytes: [0x1f, 0x8b] };\n}\nconst g = gzipHeaderMock();",
     "hints": [
       "Write:\nfunction gzipHeaderMock() {\n  return { algorithm: 'gzip', magicBytes: [0x1f, 0x8b] };\n}\nconst g = gzipHeaderMock();"
@@ -2391,7 +2391,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rangeHeaderResponse(start, end) {\n  return { status: 206, contentRange: `bytes ${start}-${end}` };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function rangeHeaderResponse(start, end) {\n  return { status: 206, contentRange: `bytes ${start}-${end}` };\n}\nconst r = rangeHeaderResponse(0, 1024);",
     "hints": [
       "Write:\nfunction rangeHeaderResponse(start, end) {\n  return { status: 206, contentRange: `bytes ${start}-${end}` };\n}\nconst r = rangeHeaderResponse(0, 1024);"
@@ -2433,7 +2433,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class UpperTransform {\n  transform(chunk) { return chunk.toString().toUpperCase(); }\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "class UpperTransform {\n  transform(chunk) { return chunk.toString().toUpperCase(); }\n}\nconst ut = new UpperTransform();\nconst res = ut.transform('node');",
     "hints": [
       "Write:\nclass UpperTransform {\n  transform(chunk) { return chunk.toString().toUpperCase(); }\n}\nconst ut = new UpperTransform();\nconst res = ut.transform('node');"
@@ -2475,7 +2475,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function destroyStreamMock() {\n  return { destroyed: true, closedFD: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function destroyStreamMock() {\n  return { destroyed: true, closedFD: true };\n}\nconst d = destroyStreamMock();",
     "hints": [
       "Write:\nfunction destroyStreamMock() {\n  return { destroyed: true, closedFD: true };\n}\nconst d = destroyStreamMock();"
@@ -2517,7 +2517,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function processLogStream(lineCount) {\n  return { processedLines: lineCount, peakMemoryMb: 18 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function processLogStream(lineCount) {\n  return { processedLines: lineCount, peakMemoryMb: 18 };\n}\nconst stats = processLogStream(1000000);",
     "hints": [
       "Write:\nfunction processLogStream(lineCount) {\n  return { processedLines: lineCount, peakMemoryMb: 18 };\n}\nconst stats = processLogStream(1000000);"
@@ -2559,7 +2559,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function readAsyncMock(filepath) {\n  return `Contents of ${filepath}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function readAsyncMock(filepath) {\n  return `Contents of ${filepath}`;\n}\nconst p = readAsyncMock('config.json');",
     "hints": [
       "Write:\nasync function readAsyncMock(filepath) {\n  return `Contents of ${filepath}`;\n}\nconst p = readAsyncMock('config.json');"
@@ -2601,7 +2601,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseJsonFile(rawContent) {\n  return JSON.parse(rawContent);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseJsonFile(rawContent) {\n  return JSON.parse(rawContent);\n}\nconst data = parseJsonFile('{\"port\":8080}');",
     "hints": [
       "Write:\nfunction parseJsonFile(rawContent) {\n  return JSON.parse(rawContent);\n}\nconst data = parseJsonFile('{\"port\":8080}');"
@@ -2643,7 +2643,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function writeConfigPayload(data) {\n  return JSON.stringify(data, null, 2);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function writeConfigPayload(data) {\n  return JSON.stringify(data, null, 2);\n}\nconst json = writeConfigPayload({ env: 'prod' });",
     "hints": [
       "Write:\nfunction writeConfigPayload(data) {\n  return JSON.stringify(data, null, 2);\n}\nconst json = writeConfigPayload({ env: 'prod' });"
@@ -2685,7 +2685,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function formatLogEntry(msg) {\n  return `[${new Date().toISOString()}] ${msg}\\n`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function formatLogEntry(msg) {\n  return `[${new Date().toISOString()}] ${msg}\\n`;\n}\nconst entry = formatLogEntry('User logged in');",
     "hints": [
       "Write:\nfunction formatLogEntry(msg) {\n  return `[${new Date().toISOString()}] ${msg}\\n`;\n}\nconst entry = formatLogEntry('User logged in');"
@@ -2727,7 +2727,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function deleteFileMock(path) {\n  return { path, deleted: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function deleteFileMock(path) {\n  return { path, deleted: true };\n}\nconst d = deleteFileMock('temp.tmp');",
     "hints": [
       "Write:\nfunction deleteFileMock(path) {\n  return { path, deleted: true };\n}\nconst d = deleteFileMock('temp.tmp');"
@@ -2769,7 +2769,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isFileOrDirectory(stats) {\n  return { isFile: stats.isFile(), isDir: stats.isDirectory(), size: stats.size };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function isFileOrDirectory(stats) {\n  return { isFile: stats.isFile(), isDir: stats.isDirectory(), size: stats.size };\n}\nconst mockStats = { isFile: () => true, isDirectory: () => false, size: 2048 };\nconst res = isFileOrDirectory(mockStats);",
     "hints": [
       "Write:\nfunction isFileOrDirectory(stats) {\n  return { isFile: stats.isFile(), isDir: stats.isDirectory(), size: stats.size };\n}\nconst mockStats = { isFile: () => true, isDirectory: () => false, size: 2048 };\nconst res = isFileOrDirectory(mockStats);"
@@ -2811,7 +2811,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function listFilesMock(files) {\n  return files.filter(f => f.endsWith('.js'));\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function listFilesMock(files) {\n  return files.filter(f => f.endsWith('.js'));\n}\nconst jsFiles = listFilesMock(['app.js', 'style.css']);",
     "hints": [
       "Write:\nfunction listFilesMock(files) {\n  return files.filter(f => f.endsWith('.js'));\n}\nconst jsFiles = listFilesMock(['app.js', 'style.css']);"
@@ -2853,7 +2853,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function walkDirMock(entries) {\n  return entries.map(e => `/root/${e}`);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function walkDirMock(entries) {\n  return entries.map(e => `/root/${e}`);\n}\nconst paths = walkDirMock(['src/index.js']);",
     "hints": [
       "Write:\nfunction walkDirMock(entries) {\n  return entries.map(e => `/root/${e}`);\n}\nconst paths = walkDirMock(['src/index.js']);"
@@ -2895,7 +2895,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function joinPathMock(...parts) {\n  return parts.join('/');\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function joinPathMock(...parts) {\n  return parts.join('/');\n}\nconst p = joinPathMock('users', 'devforge', 'index.js');",
     "hints": [
       "Write:\nfunction joinPathMock(...parts) {\n  return parts.join('/');\n}\nconst p = joinPathMock('users', 'devforge', 'index.js');"
@@ -2937,7 +2937,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function resolvePathMock(base, rel) {\n  return `${base}/${rel}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function resolvePathMock(base, rel) {\n  return `${base}/${rel}`;\n}\nconst abs = resolvePathMock('/workspace', 'app.js');",
     "hints": [
       "Write:\nfunction resolvePathMock(base, rel) {\n  return `${base}/${rel}`;\n}\nconst abs = resolvePathMock('/workspace', 'app.js');"
@@ -2979,7 +2979,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function decomposePath(filename) {\n  return {\n    dir: '/app',\n    base: filename,\n    ext: filename.substring(filename.lastIndexOf('.'))\n  };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function decomposePath(filename) {\n  return {\n    dir: '/app',\n    base: filename,\n    ext: filename.substring(filename.lastIndexOf('.'))\n  };\n}\nconst info = decomposePath('report.pdf');",
     "hints": [
       "Write:\nfunction decomposePath(filename) {\n  return {\n    dir: '/app',\n    base: filename,\n    ext: filename.substring(filename.lastIndexOf('.'))\n  };\n}\nconst info = decomposePath('report.pdf');"
@@ -3021,7 +3021,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function watchFileChange(event, filename) {\n  return `Event: ${event} on ${filename}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function watchFileChange(event, filename) {\n  return `Event: ${event} on ${filename}`;\n}\nconst ev = watchFileChange('change', 'index.ts');",
     "hints": [
       "Write:\nfunction watchFileChange(event, filename) {\n  return `Event: ${event} on ${filename}`;\n}\nconst ev = watchFileChange('change', 'index.ts');"
@@ -3063,7 +3063,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseOctalPermissions(mode) {\n  return mode === 0o755 ? 'rwxr-xr-x' : 'other';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseOctalPermissions(mode) {\n  return mode === 0o755 ? 'rwxr-xr-x' : 'other';\n}\nconst perms = parseOctalPermissions(0o755);",
     "hints": [
       "Write:\nfunction parseOctalPermissions(mode) {\n  return mode === 0o755 ? 'rwxr-xr-x' : 'other';\n}\nconst perms = parseOctalPermissions(0o755);"
@@ -3105,7 +3105,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function atomicSave(tempPath, finalPath) {\n  return `Renamed ${tempPath} -> ${finalPath}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function atomicSave(tempPath, finalPath) {\n  return `Renamed ${tempPath} -> ${finalPath}`;\n}\nconst log = atomicSave('file.tmp', 'file.json');",
     "hints": [
       "Write:\nfunction atomicSave(tempPath, finalPath) {\n  return `Renamed ${tempPath} -> ${finalPath}`;\n}\nconst log = atomicSave('file.tmp', 'file.json');"
@@ -3147,7 +3147,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function loadConfigWithDefaults(userConfig, defaults) {\n  return { ...defaults, ...userConfig };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function loadConfigWithDefaults(userConfig, defaults) {\n  return { ...defaults, ...userConfig };\n}\nconst cfg = loadConfigWithDefaults({ port: 3000 }, { host: 'localhost', port: 8080 });",
     "hints": [
       "Write:\nfunction loadConfigWithDefaults(userConfig, defaults) {\n  return { ...defaults, ...userConfig };\n}\nconst cfg = loadConfigWithDefaults({ port: 3000 }, { host: 'localhost', port: 8080 });"
@@ -3189,7 +3189,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createServerMock(handler) {\n  return { listen: (port) => `Listening on ${port}` };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createServerMock(handler) {\n  return { listen: (port) => `Listening on ${port}` };\n}\nconst server = createServerMock(() => {});\nconst msg = server.listen(3000);",
     "hints": [
       "Write:\nfunction createServerMock(handler) {\n  return { listen: (port) => `Listening on ${port}` };\n}\nconst server = createServerMock(() => {});\nconst msg = server.listen(3000);"
@@ -3231,7 +3231,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function inspectRequest(req) {\n  return { method: req.method, url: req.url, headers: req.headers };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function inspectRequest(req) {\n  return { method: req.method, url: req.url, headers: req.headers };\n}\nconst r = inspectRequest({ method: 'GET', url: '/api/users', headers: { host: 'localhost' } });",
     "hints": [
       "Write:\nfunction inspectRequest(req) {\n  return { method: req.method, url: req.url, headers: req.headers };\n}\nconst r = inspectRequest({ method: 'GET', url: '/api/users', headers: { host: 'localhost' } });"
@@ -3273,7 +3273,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function buildResponse(status, contentType, body) {\n  return { status, headers: { 'Content-Type': contentType }, body };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function buildResponse(status, contentType, body) {\n  return { status, headers: { 'Content-Type': contentType }, body };\n}\nconst res = buildResponse(200, 'application/json', '{\"ok\":true}');",
     "hints": [
       "Write:\nfunction buildResponse(status, contentType, body) {\n  return { status, headers: { 'Content-Type': contentType }, body };\n}\nconst res = buildResponse(200, 'application/json', '{\"ok\":true}');"
@@ -3315,7 +3315,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseQueryParams(urlString) {\n  const parsed = new URL(urlString, 'http://localhost');\n  return Object.fromEntries(parsed.searchParams);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseQueryParams(urlString) {\n  const parsed = new URL(urlString, 'http://localhost');\n  return Object.fromEntries(parsed.searchParams);\n}\nconst query = parseQueryParams('/search?category=books&limit=10');",
     "hints": [
       "Write:\nfunction parseQueryParams(urlString) {\n  const parsed = new URL(urlString, 'http://localhost');\n  return Object.fromEntries(parsed.searchParams);\n}\nconst query = parseQueryParams('/search?category=books&limit=10');"
@@ -3357,7 +3357,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function collectStreamBody(chunks) {\n  return chunks.join('');\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function collectStreamBody(chunks) {\n  return chunks.join('');\n}\nconst body = collectStreamBody(['{\"id\":', '123}']);",
     "hints": [
       "Write:\nasync function collectStreamBody(chunks) {\n  return chunks.join('');\n}\nconst body = collectStreamBody(['{\"id\":', '123}']);"
@@ -3399,7 +3399,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getHttpStatusText(code) {\n  const map = { 200: 'OK', 201: 'Created', 400: 'Bad Request', 404: 'Not Found', 500: 'Internal Error' };\n  return map[code] || 'Unknown';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function getHttpStatusText(code) {\n  const map = { 200: 'OK', 201: 'Created', 400: 'Bad Request', 404: 'Not Found', 500: 'Internal Error' };\n  return map[code] || 'Unknown';\n}\nconst s201 = getHttpStatusText(201);",
     "hints": [
       "Write:\nfunction getHttpStatusText(code) {\n  const map = { 200: 'OK', 201: 'Created', 400: 'Bad Request', 404: 'Not Found', 500: 'Internal Error' };\n  return map[code] || 'Unknown';\n}\nconst s201 = getHttpStatusText(201);"
@@ -3441,7 +3441,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function formatContentHeader(type) {\n  const types = { json: 'application/json', html: 'text/html', text: 'text/plain' };\n  return types[type];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function formatContentHeader(type) {\n  const types = { json: 'application/json', html: 'text/html', text: 'text/plain' };\n  return types[type];\n}\nconst ct = formatContentHeader('json');",
     "hints": [
       "Write:\nfunction formatContentHeader(type) {\n  const types = { json: 'application/json', html: 'text/html', text: 'text/plain' };\n  return types[type];\n}\nconst ct = formatContentHeader('json');"
@@ -3483,7 +3483,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simpleRouter(method, url) {\n  if (method === 'GET' && url === '/health') return 'OK';\n  if (method === 'GET' && url === '/users') return ['user1'];\n  return null;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function simpleRouter(method, url) {\n  if (method === 'GET' && url === '/health') return 'OK';\n  if (method === 'GET' && url === '/users') return ['user1'];\n  return null;\n}\nconst res = simpleRouter('GET', '/health');",
     "hints": [
       "Write:\nfunction simpleRouter(method, url) {\n  if (method === 'GET' && url === '/health') return 'OK';\n  if (method === 'GET' && url === '/users') return ['user1'];\n  return null;\n}\nconst res = simpleRouter('GET', '/health');"
@@ -3525,7 +3525,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getMimeType(extension) {\n  const map = { '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript' };\n  return map[extension] || 'application/octet-stream';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function getMimeType(extension) {\n  const map = { '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript' };\n  return map[extension] || 'application/octet-stream';\n}\nconst mime = getMimeType('.html');",
     "hints": [
       "Write:\nfunction getMimeType(extension) {\n  const map = { '.html': 'text/html', '.css': 'text/css', '.js': 'application/javascript' };\n  return map[extension] || 'application/octet-stream';\n}\nconst mime = getMimeType('.html');"
@@ -3567,7 +3567,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function setCorsHeaders() {\n  return {\n    'Access-Control-Allow-Origin': '*',\n    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',\n    'Access-Control-Allow-Headers': 'Content-Type, Authorization'\n  };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function setCorsHeaders() {\n  return {\n    'Access-Control-Allow-Origin': '*',\n    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',\n    'Access-Control-Allow-Headers': 'Content-Type, Authorization'\n  };\n}\nconst cors = setCorsHeaders();",
     "hints": [
       "Write:\nfunction setCorsHeaders() {\n  return {\n    'Access-Control-Allow-Origin': '*',\n    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',\n    'Access-Control-Allow-Headers': 'Content-Type, Authorization'\n  };\n}\nconst cors = setCorsHeaders();"
@@ -3609,7 +3609,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function handleOptionsRequest(method) {\n  return method === 'OPTIONS' ? 204 : null;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function handleOptionsRequest(method) {\n  return method === 'OPTIONS' ? 204 : null;\n}\nconst code = handleOptionsRequest('OPTIONS');",
     "hints": [
       "Write:\nfunction handleOptionsRequest(method) {\n  return method === 'OPTIONS' ? 204 : null;\n}\nconst code = handleOptionsRequest('OPTIONS');"
@@ -3651,7 +3651,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function mockFetch(url) {\n  return { ok: true, status: 200, json: async () => ({ status: 'online' }) };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function mockFetch(url) {\n  return { ok: true, status: 200, json: async () => ({ status: 'online' }) };\n}\nconst p = mockFetch('https://api.devforge.io/health');",
     "hints": [
       "Write:\nasync function mockFetch(url) {\n  return { ok: true, status: 200, json: async () => ({ status: 'online' }) };\n}\nconst p = mockFetch('https://api.devforge.io/health');"
@@ -3693,7 +3693,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function agentPoolConfig(maxSockets) {\n  return { keepAlive: true, maxSockets };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function agentPoolConfig(maxSockets) {\n  return { keepAlive: true, maxSockets };\n}\nconst agent = agentPoolConfig(50);",
     "hints": [
       "Write:\nfunction agentPoolConfig(maxSockets) {\n  return { keepAlive: true, maxSockets };\n}\nconst agent = agentPoolConfig(50);"
@@ -3735,7 +3735,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function gracefulShutdownMock(serverClosed) {\n  return { serverClosed, activeConnectionsDrained: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function gracefulShutdownMock(serverClosed) {\n  return { serverClosed, activeConnectionsDrained: true };\n}\nconst res = gracefulShutdownMock(true);",
     "hints": [
       "Write:\nfunction gracefulShutdownMock(serverClosed) {\n  return { serverClosed, activeConnectionsDrained: true };\n}\nconst res = gracefulShutdownMock(true);"
@@ -3777,7 +3777,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function initHealthServer() {\n  return { uptime: process.uptime ? process.uptime() : 100, status: 'HEALTHY' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function initHealthServer() {\n  return { uptime: process.uptime ? process.uptime() : 100, status: 'HEALTHY' };\n}\nconst health = initHealthServer();",
     "hints": [
       "Write:\nfunction initHealthServer() {\n  return { uptime: process.uptime ? process.uptime() : 100, status: 'HEALTHY' };\n}\nconst health = initHealthServer();"
@@ -3819,7 +3819,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createExpressApp() {\n  return { routes: [], use: () => {}, listen: () => 'started' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createExpressApp() {\n  return { routes: [], use: () => {}, listen: () => 'started' };\n}\nconst app = createExpressApp();",
     "hints": [
       "Write:\nfunction createExpressApp() {\n  return { routes: [], use: () => {}, listen: () => 'started' };\n}\nconst app = createExpressApp();"
@@ -3861,7 +3861,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function registerRoute(method, path) {\n  return { method: method.toUpperCase(), path };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function registerRoute(method, path) {\n  return { method: method.toUpperCase(), path };\n}\nconst r = registerRoute('get', '/courses');",
     "hints": [
       "Write:\nfunction registerRoute(method, path) {\n  return { method: method.toUpperCase(), path };\n}\nconst r = registerRoute('get', '/courses');"
@@ -3903,7 +3903,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseRouteParam(pattern, actualUrl) {\n  const id = actualUrl.split('/')[2];\n  return { id };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseRouteParam(pattern, actualUrl) {\n  const id = actualUrl.split('/')[2];\n  return { id };\n}\nconst p = parseRouteParam('/users/:id', '/users/usr-99');",
     "hints": [
       "Write:\nfunction parseRouteParam(pattern, actualUrl) {\n  const id = actualUrl.split('/')[2];\n  return { id };\n}\nconst p = parseRouteParam('/users/:id', '/users/usr-99');"
@@ -3945,7 +3945,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseQueryParams(queryObj) {\n  return { page: parseInt(queryObj.page || '1', 10), limit: parseInt(queryObj.limit || '20', 10) };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseQueryParams(queryObj) {\n  return { page: parseInt(queryObj.page || '1', 10), limit: parseInt(queryObj.limit || '20', 10) };\n}\nconst q = parseQueryParams({ page: '2', limit: '50' });",
     "hints": [
       "Write:\nfunction parseQueryParams(queryObj) {\n  return { page: parseInt(queryObj.page || '1', 10), limit: parseInt(queryObj.limit || '20', 10) };\n}\nconst q = parseQueryParams({ page: '2', limit: '50' });"
@@ -3987,7 +3987,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseJsonPayload(body) {\n  return typeof body === 'object' ? body : JSON.parse(body);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseJsonPayload(body) {\n  return typeof body === 'object' ? body : JSON.parse(body);\n}\nconst parsed = parseJsonPayload({ username: 'alex' });",
     "hints": [
       "Write:\nfunction parseJsonPayload(body) {\n  return typeof body === 'object' ? body : JSON.parse(body);\n}\nconst parsed = parseJsonPayload({ username: 'alex' });"
@@ -4029,7 +4029,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function runMiddleware(req, next) {\n  req.timestamp = Date.now();\n  return next();\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function runMiddleware(req, next) {\n  req.timestamp = Date.now();\n  return next();\n}\nconst r = {};\nrunMiddleware(r, () => 'next_called');",
     "hints": [
       "Write:\nfunction runMiddleware(req, next) {\n  req.timestamp = Date.now();\n  return next();\n}\nconst r = {};\nrunMiddleware(r, () => 'next_called');"
@@ -4071,7 +4071,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function requestLogger(req) {\n  return `[${req.method}] ${req.url}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function requestLogger(req) {\n  return `[${req.method}] ${req.url}`;\n}\nconst log = requestLogger({ method: 'POST', url: '/auth/login' });",
     "hints": [
       "Write:\nfunction requestLogger(req) {\n  return `[${req.method}] ${req.url}`;\n}\nconst log = requestLogger({ method: 'POST', url: '/auth/login' });"
@@ -4113,7 +4113,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function errorHandler(err) {\n  return { status: err.status || 500, message: err.message || 'Internal Error' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function errorHandler(err) {\n  return { status: err.status || 500, message: err.message || 'Internal Error' };\n}\nconst handled = errorHandler(new Error('Database unavailable'));",
     "hints": [
       "Write:\nfunction errorHandler(err) {\n  return { status: err.status || 500, message: err.message || 'Internal Error' };\n}\nconst handled = errorHandler(new Error('Database unavailable'));"
@@ -4155,7 +4155,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createRouter(prefix) {\n  return { prefix, routes: [] };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createRouter(prefix) {\n  return { prefix, routes: [] };\n}\nconst usersRouter = createRouter('/api/users');",
     "hints": [
       "Write:\nfunction createRouter(prefix) {\n  return { prefix, routes: [] };\n}\nconst usersRouter = createRouter('/api/users');"
@@ -4197,7 +4197,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function restEndpointMap() {\n  return {\n    'GET /items': 'List items',\n    'POST /items': 'Create item',\n    'GET /items/:id': 'Get item',\n    'PUT /items/:id': 'Replace item',\n    'DELETE /items/:id': 'Remove item'\n  };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function restEndpointMap() {\n  return {\n    'GET /items': 'List items',\n    'POST /items': 'Create item',\n    'GET /items/:id': 'Get item',\n    'PUT /items/:id': 'Replace item',\n    'DELETE /items/:id': 'Remove item'\n  };\n}\nconst rest = restEndpointMap();",
     "hints": [
       "Write:\nfunction restEndpointMap() {\n  return {\n    'GET /items': 'List items',\n    'POST /items': 'Create item',\n    'GET /items/:id': 'Get item',\n    'PUT /items/:id': 'Replace item',\n    'DELETE /items/:id': 'Remove item'\n  };\n}\nconst rest = restEndpointMap();"
@@ -4239,7 +4239,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function validateUserSchema(data) {\n  if (!data.email || !data.email.includes('@')) return { valid: false, error: 'Invalid email' };\n  return { valid: true, data };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function validateUserSchema(data) {\n  if (!data.email || !data.email.includes('@')) return { valid: false, error: 'Invalid email' };\n  return { valid: true, data };\n}\nconst res = validateUserSchema({ email: 'alex@devforge.io' });",
     "hints": [
       "Write:\nfunction validateUserSchema(data) {\n  if (!data.email || !data.email.includes('@')) return { valid: false, error: 'Invalid email' };\n  return { valid: true, data };\n}\nconst res = validateUserSchema({ email: 'alex@devforge.io' });"
@@ -4281,7 +4281,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function staticMiddlewareMock(dir) {\n  return { publicDir: dir, maxAge: '1d' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function staticMiddlewareMock(dir) {\n  return { publicDir: dir, maxAge: '1d' };\n}\nconst stat = staticMiddlewareMock('public');",
     "hints": [
       "Write:\nfunction staticMiddlewareMock(dir) {\n  return { publicDir: dir, maxAge: '1d' };\n}\nconst stat = staticMiddlewareMock('public');"
@@ -4323,7 +4323,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function helmetHeaders() {\n  return { 'X-Frame-Options': 'DENY', 'X-Content-Type-Options': 'nosniff' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function helmetHeaders() {\n  return { 'X-Frame-Options': 'DENY', 'X-Content-Type-Options': 'nosniff' };\n}\nconst h = helmetHeaders();",
     "hints": [
       "Write:\nfunction helmetHeaders() {\n  return { 'X-Frame-Options': 'DENY', 'X-Content-Type-Options': 'nosniff' };\n}\nconst h = helmetHeaders();"
@@ -4365,7 +4365,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function formatMorganLog(tokens) {\n  return `${tokens.method} ${tokens.url} ${tokens.status} - ${tokens.responseTime}ms`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function formatMorganLog(tokens) {\n  return `${tokens.method} ${tokens.url} ${tokens.status} - ${tokens.responseTime}ms`;\n}\nconst log = formatMorganLog({ method: 'GET', url: '/api', status: 200, responseTime: 12 });",
     "hints": [
       "Write:\nfunction formatMorganLog(tokens) {\n  return `${tokens.method} ${tokens.url} ${tokens.status} - ${tokens.responseTime}ms`;\n}\nconst log = formatMorganLog({ method: 'GET', url: '/api', status: 200, responseTime: 12 });"
@@ -4407,7 +4407,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function configureCors(origin) {\n  return { origin, credentials: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function configureCors(origin) {\n  return { origin, credentials: true };\n}\nconst corsCfg = configureCors('https://devforge.io');",
     "hints": [
       "Write:\nfunction configureCors(origin) {\n  return { origin, credentials: true };\n}\nconst corsCfg = configureCors('https://devforge.io');"
@@ -4449,7 +4449,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkRateLimit(requestsCount, max = 100) {\n  return requestsCount > max ? { allowed: false, status: 429 } : { allowed: true, status: 200 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function checkRateLimit(requestsCount, max = 100) {\n  return requestsCount > max ? { allowed: false, status: 429 } : { allowed: true, status: 200 };\n}\nconst limit = checkRateLimit(150);",
     "hints": [
       "Write:\nfunction checkRateLimit(requestsCount, max = 100) {\n  return requestsCount > max ? { allowed: false, status: 429 } : { allowed: true, status: 200 };\n}\nconst limit = checkRateLimit(150);"
@@ -4491,7 +4491,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function multerConfig(dest, maxBytes) {\n  return { destination: dest, limits: { fileSize: maxBytes } };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function multerConfig(dest, maxBytes) {\n  return { destination: dest, limits: { fileSize: maxBytes } };\n}\nconst upload = multerConfig('uploads/', 5 * 1024 * 1024);",
     "hints": [
       "Write:\nfunction multerConfig(dest, maxBytes) {\n  return { destination: dest, limits: { fileSize: maxBytes } };\n}\nconst upload = multerConfig('uploads/', 5 * 1024 * 1024);"
@@ -4533,7 +4533,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function parseCookiesMock(cookieHeader) {\n  return { sessionId: 'abc123xyz' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function parseCookiesMock(cookieHeader) {\n  return { sessionId: 'abc123xyz' };\n}\nconst c = parseCookiesMock('sessionId=abc123xyz');",
     "hints": [
       "Write:\nfunction parseCookiesMock(cookieHeader) {\n  return { sessionId: 'abc123xyz' };\n}\nconst c = parseCookiesMock('sessionId=abc123xyz');"
@@ -4575,7 +4575,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function routeByVersion(version) {\n  return `/api/${version}/courses`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function routeByVersion(version) {\n  return `/api/${version}/courses`;\n}\nconst v1 = routeByVersion('v1');",
     "hints": [
       "Write:\nfunction routeByVersion(version) {\n  return `/api/${version}/courses`;\n}\nconst v1 = routeByVersion('v1');"
@@ -4617,7 +4617,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createProductionApi() {\n  return { status: 'online', version: 'v1', endpoints: ['/courses', '/auth', '/stats'] };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createProductionApi() {\n  return { status: 'online', version: 'v1', endpoints: ['/courses', '/auth', '/stats'] };\n}\nconst api = createProductionApi();",
     "hints": [
       "Write:\nfunction createProductionApi() {\n  return { status: 'online', version: 'v1', endpoints: ['/courses', '/auth', '/stats'] };\n}\nconst api = createProductionApi();"
@@ -4659,7 +4659,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function runConcurrentTasks(taskA, taskB) {\n  const [a, b] = await Promise.all([taskA(), taskB()]);\n  return { a, b };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function runConcurrentTasks(taskA, taskB) {\n  const [a, b] = await Promise.all([taskA(), taskB()]);\n  return { a, b };\n}\nconst res = runConcurrentTasks(() => Promise.resolve(1), () => Promise.resolve(2));",
     "hints": [
       "Write:\nasync function runConcurrentTasks(taskA, taskB) {\n  const [a, b] = await Promise.all([taskA(), taskB()]);\n  return { a, b };\n}\nconst res = runConcurrentTasks(() => Promise.resolve(1), () => Promise.resolve(2));"
@@ -4701,7 +4701,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function batchSettled() {\n  return [{ status: 'fulfilled', value: 1 }, { status: 'rejected', reason: 'Fail' }];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function batchSettled() {\n  return [{ status: 'fulfilled', value: 1 }, { status: 'rejected', reason: 'Fail' }];\n}\nconst results = batchSettled();",
     "hints": [
       "Write:\nasync function batchSettled() {\n  return [{ status: 'fulfilled', value: 1 }, { status: 'rejected', reason: 'Fail' }];\n}\nconst results = batchSettled();"
@@ -4743,7 +4743,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function timeoutRace(promise, timeoutMs) {\n  return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej('Timeout'), timeoutMs))]);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function timeoutRace(promise, timeoutMs) {\n  return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej('Timeout'), timeoutMs))]);\n}\nconst p = timeoutRace(Promise.resolve('Fast'), 500);",
     "hints": [
       "Write:\nasync function timeoutRace(promise, timeoutMs) {\n  return Promise.race([promise, new Promise((_, rej) => setTimeout(() => rej('Timeout'), timeoutMs))]);\n}\nconst p = timeoutRace(Promise.resolve('Fast'), 500);"
@@ -4785,7 +4785,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createContextStore(requestId) {\n  return { requestId, timestamp: Date.now() };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createContextStore(requestId) {\n  return { requestId, timestamp: Date.now() };\n}\nconst store = createContextStore('req-uuid-1');",
     "hints": [
       "Write:\nfunction createContextStore(requestId) {\n  return { requestId, timestamp: Date.now() };\n}\nconst store = createContextStore('req-uuid-1');"
@@ -4827,7 +4827,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function chooseChildProcess(outputSize) {\n  return outputSize > 1024 * 1024 ? 'spawn' : 'exec';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function chooseChildProcess(outputSize) {\n  return outputSize > 1024 * 1024 ? 'spawn' : 'exec';\n}\nconst tool = chooseChildProcess(5000000);",
     "hints": [
       "Write:\nfunction chooseChildProcess(outputSize) {\n  return outputSize > 1024 * 1024 ? 'spawn' : 'exec';\n}\nconst tool = chooseChildProcess(5000000);"
@@ -4869,7 +4869,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createForkMessage(type, payload) {\n  return { type, payload, sender: 'child' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createForkMessage(type, payload) {\n  return { type, payload, sender: 'child' };\n}\nconst msg = createForkMessage('TASK_DONE', { id: 10 });",
     "hints": [
       "Write:\nfunction createForkMessage(type, payload) {\n  return { type, payload, sender: 'child' };\n}\nconst msg = createForkMessage('TASK_DONE', { id: 10 });"
@@ -4911,7 +4911,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function workerPayload(threadId, data) {\n  return { threadId, data, isWorkerThread: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function workerPayload(threadId, data) {\n  return { threadId, data, isWorkerThread: true };\n}\nconst w = workerPayload(1, [1, 2, 3]);",
     "hints": [
       "Write:\nfunction workerPayload(threadId, data) {\n  return { threadId, data, isWorkerThread: true };\n}\nconst w = workerPayload(1, [1, 2, 3]);"
@@ -4953,7 +4953,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function messageChannelMock() {\n  return { port1: {}, port2: {}, connected: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function messageChannelMock() {\n  return { port1: {}, port2: {}, connected: true };\n}\nconst ch = messageChannelMock();",
     "hints": [
       "Write:\nfunction messageChannelMock() {\n  return { port1: {}, port2: {}, connected: true };\n}\nconst ch = messageChannelMock();"
@@ -4995,7 +4995,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function offloadCpuTask(size) {\n  return { offloaded: size > 10000, target: 'worker_pool' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function offloadCpuTask(size) {\n  return { offloaded: size > 10000, target: 'worker_pool' };\n}\nconst task = offloadCpuTask(50000);",
     "hints": [
       "Write:\nfunction offloadCpuTask(size) {\n  return { offloaded: size > 10000, target: 'worker_pool' };\n}\nconst task = offloadCpuTask(50000);"
@@ -5037,7 +5037,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createPoolConfig(maxThreads) {\n  return { maxThreads, idleTimeoutMs: 5000 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createPoolConfig(maxThreads) {\n  return { maxThreads, idleTimeoutMs: 5000 };\n}\nconst pool = createPoolConfig(4);",
     "hints": [
       "Write:\nfunction createPoolConfig(maxThreads) {\n  return { maxThreads, idleTimeoutMs: 5000 };\n}\nconst pool = createPoolConfig(4);"
@@ -5079,7 +5079,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function clusterConfig(cores) {\n  return { workerCount: cores, isMaster: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function clusterConfig(cores) {\n  return { workerCount: cores, isMaster: true };\n}\nconst c = clusterConfig(8);",
     "hints": [
       "Write:\nfunction clusterConfig(cores) {\n  return { workerCount: cores, isMaster: true };\n}\nconst c = clusterConfig(8);"
@@ -5121,7 +5121,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rollingRestartOrder(workers) {\n  return workers.map((w, i) => `Restarting worker ${i + 1}`);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function rollingRestartOrder(workers) {\n  return workers.map((w, i) => `Restarting worker ${i + 1}`);\n}\nconst steps = rollingRestartOrder(['w1', 'w2']);",
     "hints": [
       "Write:\nfunction rollingRestartOrder(workers) {\n  return workers.map((w, i) => `Restarting worker ${i + 1}`);\n}\nconst steps = rollingRestartOrder(['w1', 'w2']);"
@@ -5163,7 +5163,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function pm2Config(instances) {\n  return { name: 'api-server', instances: instances || 'max', exec_mode: 'cluster' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function pm2Config(instances) {\n  return { name: 'api-server', instances: instances || 'max', exec_mode: 'cluster' };\n}\nconst pm2 = pm2Config('max');",
     "hints": [
       "Write:\nfunction pm2Config(instances) {\n  return { name: 'api-server', instances: instances || 'max', exec_mode: 'cluster' };\n}\nconst pm2 = pm2Config('max');"
@@ -5205,7 +5205,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function setupProcessTraps() {\n  return { trapped: true, logged: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function setupProcessTraps() {\n  return { trapped: true, logged: true };\n}\nconst traps = setupProcessTraps();",
     "hints": [
       "Write:\nfunction setupProcessTraps() {\n  return { trapped: true, logged: true };\n}\nconst traps = setupProcessTraps();"
@@ -5247,7 +5247,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function inspectHeapUsage() {\n  const mem = process.memoryUsage ? process.memoryUsage() : { heapUsed: 50000000 };\n  return { heapUsedMb: Math.round(mem.heapUsed / 1024 / 1024) };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function inspectHeapUsage() {\n  const mem = process.memoryUsage ? process.memoryUsage() : { heapUsed: 50000000 };\n  return { heapUsedMb: Math.round(mem.heapUsed / 1024 / 1024) };\n}\nconst heap = inspectHeapUsage();",
     "hints": [
       "Write:\nfunction inspectHeapUsage() {\n  const mem = process.memoryUsage ? process.memoryUsage() : { heapUsed: 50000000 };\n  return { heapUsedMb: Math.round(mem.heapUsed / 1024 / 1024) };\n}\nconst heap = inspectHeapUsage();"
@@ -5289,7 +5289,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createPoolOptions() {\n  return { max: 20, idleTimeoutMillis: 30000, connectionTimeoutMillis: 2000 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createPoolOptions() {\n  return { max: 20, idleTimeoutMillis: 30000, connectionTimeoutMillis: 2000 };\n}\nconst opts = createPoolOptions();",
     "hints": [
       "Write:\nfunction createPoolOptions() {\n  return { max: 20, idleTimeoutMillis: 30000, connectionTimeoutMillis: 2000 };\n}\nconst opts = createPoolOptions();"
@@ -5331,7 +5331,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function makeParameterizedQuery(username) {\n  return { text: 'SELECT * FROM users WHERE username = $1', values: [username] };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function makeParameterizedQuery(username) {\n  return { text: 'SELECT * FROM users WHERE username = $1', values: [username] };\n}\nconst q = makeParameterizedQuery('sarah');",
     "hints": [
       "Write:\nfunction makeParameterizedQuery(username) {\n  return { text: 'SELECT * FROM users WHERE username = $1', values: [username] };\n}\nconst q = makeParameterizedQuery('sarah');"
@@ -5373,7 +5373,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function runTransactionSteps() {\n  return ['BEGIN', 'DEDUCT_FUNDS', 'ADD_FUNDS', 'COMMIT'];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function runTransactionSteps() {\n  return ['BEGIN', 'DEDUCT_FUNDS', 'ADD_FUNDS', 'COMMIT'];\n}\nconst steps = runTransactionSteps();",
     "hints": [
       "Write:\nfunction runTransactionSteps() {\n  return ['BEGIN', 'DEDUCT_FUNDS', 'ADD_FUNDS', 'COMMIT'];\n}\nconst steps = runTransactionSteps();"
@@ -5415,7 +5415,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createMongooseSchema(fields) {\n  return { fields, timestamps: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createMongooseSchema(fields) {\n  return { fields, timestamps: true };\n}\nconst s = createMongooseSchema({ title: String, price: Number });",
     "hints": [
       "Write:\nfunction createMongooseSchema(fields) {\n  return { fields, timestamps: true };\n}\nconst s = createMongooseSchema({ title: String, price: Number });"
@@ -5457,7 +5457,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function prismaQueryMock(model) {\n  return { findMany: async () => [{ id: 1 }] };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function prismaQueryMock(model) {\n  return { findMany: async () => [{ id: 1 }] };\n}\nconst client = prismaQueryMock('User');",
     "hints": [
       "Write:\nfunction prismaQueryMock(model) {\n  return { findMany: async () => [{ id: 1 }] };\n}\nconst client = prismaQueryMock('User');"
@@ -5499,7 +5499,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function redisCacheEntry(key, value, ttlSeconds) {\n  return { key, value: JSON.stringify(value), ttl: ttlSeconds };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function redisCacheEntry(key, value, ttlSeconds) {\n  return { key, value: JSON.stringify(value), ttl: ttlSeconds };\n}\nconst cache = redisCacheEntry('course:1', { title: 'Node' }, 300);",
     "hints": [
       "Write:\nfunction redisCacheEntry(key, value, ttlSeconds) {\n  return { key, value: JSON.stringify(value), ttl: ttlSeconds };\n}\nconst cache = redisCacheEntry('course:1', { title: 'Node' }, 300);"
@@ -5541,7 +5541,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "async function cacheAsidePattern(key, fetchFromDb) {\n  let cached = null;\n  if (cached) return cached;\n  const fresh = await fetchFromDb();\n  return fresh;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "async function cacheAsidePattern(key, fetchFromDb) {\n  let cached = null;\n  if (cached) return cached;\n  const fresh = await fetchFromDb();\n  return fresh;\n}\nconst res = cacheAsidePattern('u1', () => Promise.resolve('user-data'));",
     "hints": [
       "Write:\nasync function cacheAsidePattern(key, fetchFromDb) {\n  let cached = null;\n  if (cached) return cached;\n  const fresh = await fetchFromDb();\n  return fresh;\n}\nconst res = cacheAsidePattern('u1', () => Promise.resolve('user-data'));"
@@ -5583,7 +5583,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function redisPubSubMock() {\n  return { publish: (channel, msg) => true, subscribe: (channel) => true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function redisPubSubMock() {\n  return { publish: (channel, msg) => true, subscribe: (channel) => true };\n}\nconst ps = redisPubSubMock();",
     "hints": [
       "Write:\nfunction redisPubSubMock() {\n  return { publish: (channel, msg) => true, subscribe: (channel) => true };\n}\nconst ps = redisPubSubMock();"
@@ -5625,7 +5625,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function sessionPayload(userId) {\n  return { userId, createdAt: Date.now(), expiresAt: Date.now() + 86400000 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function sessionPayload(userId) {\n  return { userId, createdAt: Date.now(), expiresAt: Date.now() + 86400000 };\n}\nconst sess = sessionPayload('usr-10');",
     "hints": [
       "Write:\nfunction sessionPayload(userId) {\n  return { userId, createdAt: Date.now(), expiresAt: Date.now() + 86400000 };\n}\nconst sess = sessionPayload('usr-10');"
@@ -5667,7 +5667,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function evaluateQueryCost(hasIndex) {\n  return hasIndex ? 'Index Scan (0.1ms)' : 'Sequential Scan (1200ms)';\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function evaluateQueryCost(hasIndex) {\n  return hasIndex ? 'Index Scan (0.1ms)' : 'Sequential Scan (1200ms)';\n}\nconst speed = evaluateQueryCost(true);",
     "hints": [
       "Write:\nfunction evaluateQueryCost(hasIndex) {\n  return hasIndex ? 'Index Scan (0.1ms)' : 'Sequential Scan (1200ms)';\n}\nconst speed = evaluateQueryCost(true);"
@@ -5709,7 +5709,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function calculateBackoff(attempt, baseMs = 100) {\n  return baseMs * Math.pow(2, attempt);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function calculateBackoff(attempt, baseMs = 100) {\n  return baseMs * Math.pow(2, attempt);\n}\nconst waitMs = calculateBackoff(3, 100);",
     "hints": [
       "Write:\nfunction calculateBackoff(attempt, baseMs = 100) {\n  return baseMs * Math.pow(2, attempt);\n}\nconst waitMs = calculateBackoff(3, 100);"
@@ -5751,7 +5751,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function healthCheckResult(dbConnected) {\n  return dbConnected ? { status: 'UP', code: 200 } : { status: 'DOWN', code: 503 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function healthCheckResult(dbConnected) {\n  return dbConnected ? { status: 'UP', code: 200 } : { status: 'DOWN', code: 503 };\n}\nconst res = healthCheckResult(true);",
     "hints": [
       "Write:\nfunction healthCheckResult(dbConnected) {\n  return dbConnected ? { status: 'UP', code: 200 } : { status: 'DOWN', code: 503 };\n}\nconst res = healthCheckResult(true);"
@@ -5793,7 +5793,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function migrationRecord(version, name) {\n  return { version, name, appliedAt: new Date().toISOString() };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function migrationRecord(version, name) {\n  return { version, name, appliedAt: new Date().toISOString() };\n}\nconst mig = migrationRecord(1, 'create_users_table');",
     "hints": [
       "Write:\nfunction migrationRecord(version, name) {\n  return { version, name, appliedAt: new Date().toISOString() };\n}\nconst mig = migrationRecord(1, 'create_users_table');"
@@ -5835,7 +5835,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkVersionConflict(currentVer, incomingVer) {\n  return currentVer === incomingVer;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function checkVersionConflict(currentVer, incomingVer) {\n  return currentVer === incomingVer;\n}\nconst canUpdate = checkVersionConflict(1, 1);",
     "hints": [
       "Write:\nfunction checkVersionConflict(currentVer, incomingVer) {\n  return currentVer === incomingVer;\n}\nconst canUpdate = checkVersionConflict(1, 1);"
@@ -5877,7 +5877,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createDataLayer() {\n  return { db: 'Postgres', cache: 'Redis', orm: 'Prisma', isReady: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createDataLayer() {\n  return { db: 'Postgres', cache: 'Redis', orm: 'Prisma', isReady: true };\n}\nconst layer = createDataLayer();",
     "hints": [
       "Write:\nfunction createDataLayer() {\n  return { db: 'Postgres', cache: 'Redis', orm: 'Prisma', isReady: true };\n}\nconst layer = createDataLayer();"
@@ -5919,7 +5919,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mockHash(password, salt) {\n  return `hash_${password}_${salt}`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function mockHash(password, salt) {\n  return `hash_${password}_${salt}`;\n}\nconst hashed = mockHash('secret', 's1');",
     "hints": [
       "Write:\nfunction mockHash(password, salt) {\n  return `hash_${password}_${salt}`;\n}\nconst hashed = mockHash('secret', 's1');"
@@ -5961,7 +5961,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createJwtPayload(userId, role) {\n  return { sub: userId, role, exp: Math.floor(Date.now() / 1000) + 3600 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createJwtPayload(userId, role) {\n  return { sub: userId, role, exp: Math.floor(Date.now() / 1000) + 3600 };\n}\nconst jwt = createJwtPayload('u-1', 'admin');",
     "hints": [
       "Write:\nfunction createJwtPayload(userId, role) {\n  return { sub: userId, role, exp: Math.floor(Date.now() / 1000) + 3600 };\n}\nconst jwt = createJwtPayload('u-1', 'admin');"
@@ -6003,7 +6003,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rotateTokens(oldRefresh) {\n  return { newAccess: 'jwt_access', newRefresh: 'jwt_refresh_next' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function rotateTokens(oldRefresh) {\n  return { newAccess: 'jwt_access', newRefresh: 'jwt_refresh_next' };\n}\nconst tokens = rotateTokens('old_token');",
     "hints": [
       "Write:\nfunction rotateTokens(oldRefresh) {\n  return { newAccess: 'jwt_access', newRefresh: 'jwt_refresh_next' };\n}\nconst tokens = rotateTokens('old_token');"
@@ -6045,7 +6045,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function authorizeRoles(...allowedRoles) {\n  return (userRole) => allowedRoles.includes(userRole);\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function authorizeRoles(...allowedRoles) {\n  return (userRole) => allowedRoles.includes(userRole);\n}\nconst checkAdmin = authorizeRoles('admin', 'superadmin');\nconst canAccess = checkAdmin('admin');",
     "hints": [
       "Write:\nfunction authorizeRoles(...allowedRoles) {\n  return (userRole) => allowedRoles.includes(userRole);\n}\nconst checkAdmin = authorizeRoles('admin', 'superadmin');\nconst canAccess = checkAdmin('admin');"
@@ -6087,7 +6087,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function sanitizeHtmlInput(raw) {\n  return raw.replace(/</g, '&lt;').replace(/>/g, '&gt;');\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function sanitizeHtmlInput(raw) {\n  return raw.replace(/</g, '&lt;').replace(/>/g, '&gt;');\n}\nconst clean = sanitizeHtmlInput('<script>steal()</script>');",
     "hints": [
       "Write:\nfunction sanitizeHtmlInput(raw) {\n  return raw.replace(/</g, '&lt;').replace(/>/g, '&gt;');\n}\nconst clean = sanitizeHtmlInput('<script>steal()</script>');"
@@ -6129,7 +6129,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function verifyCsrfToken(cookieToken, headerToken) {\n  return cookieToken === headerToken;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function verifyCsrfToken(cookieToken, headerToken) {\n  return cookieToken === headerToken;\n}\nconst ok = verifyCsrfToken('secret-tok', 'secret-tok');",
     "hints": [
       "Write:\nfunction verifyCsrfToken(cookieToken, headerToken) {\n  return cookieToken === headerToken;\n}\nconst ok = verifyCsrfToken('secret-tok', 'secret-tok');"
@@ -6171,7 +6171,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function cookieOptions() {\n  return { httpOnly: true, secure: true, sameSite: 'strict', maxAge: 86400000 };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function cookieOptions() {\n  return { httpOnly: true, secure: true, sameSite: 'strict', maxAge: 86400000 };\n}\nconst opts = cookieOptions();",
     "hints": [
       "Write:\nfunction cookieOptions() {\n  return { httpOnly: true, secure: true, sameSite: 'strict', maxAge: 86400000 };\n}\nconst opts = cookieOptions();"
@@ -6213,7 +6213,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function validateEnv(env) {\n  const port = parseInt(env.PORT || '3000', 10);\n  if (isNaN(port)) throw new Error('Invalid PORT');\n  return { PORT: port, NODE_ENV: env.NODE_ENV || 'production' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function validateEnv(env) {\n  const port = parseInt(env.PORT || '3000', 10);\n  if (isNaN(port)) throw new Error('Invalid PORT');\n  return { PORT: port, NODE_ENV: env.NODE_ENV || 'production' };\n}\nconst env = validateEnv({ PORT: '8080' });",
     "hints": [
       "Write:\nfunction validateEnv(env) {\n  const port = parseInt(env.PORT || '3000', 10);\n  if (isNaN(port)) throw new Error('Invalid PORT');\n  return { PORT: port, NODE_ENV: env.NODE_ENV || 'production' };\n}\nconst env = validateEnv({ PORT: '8080' });"
@@ -6255,7 +6255,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createDockerfile() {\n  return ['FROM node:20-alpine', 'WORKDIR /app', 'COPY package*.json ./', 'RUN npm ci --only=production', 'COPY . .', 'CMD [\"node\", \"index.js\"]'];\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createDockerfile() {\n  return ['FROM node:20-alpine', 'WORKDIR /app', 'COPY package*.json ./', 'RUN npm ci --only=production', 'COPY . .', 'CMD [\"node\", \"index.js\"]'];\n}\nconst docker = createDockerfile();",
     "hints": [
       "Write:\nfunction createDockerfile() {\n  return ['FROM node:20-alpine', 'WORKDIR /app', 'COPY package*.json ./', 'RUN npm ci --only=production', 'COPY . .', 'CMD [\"node\", \"index.js\"]'];\n}\nconst docker = createDockerfile();"
@@ -6297,7 +6297,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function multiStageDockerfile() {\n  return { stages: ['builder', 'runner'], runnerBase: 'alpine' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function multiStageDockerfile() {\n  return { stages: ['builder', 'runner'], runnerBase: 'alpine' };\n}\nconst stages = multiStageDockerfile();",
     "hints": [
       "Write:\nfunction multiStageDockerfile() {\n  return { stages: ['builder', 'runner'], runnerBase: 'alpine' };\n}\nconst stages = multiStageDockerfile();"
@@ -6339,7 +6339,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function twelveFactorChecks() {\n  return { codebaseInGit: true, configInEnv: true, statelessProcesses: true, portBinding: true };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function twelveFactorChecks() {\n  return { codebaseInGit: true, configInEnv: true, statelessProcesses: true, portBinding: true };\n}\nconst checks = twelveFactorChecks();",
     "hints": [
       "Write:\nfunction twelveFactorChecks() {\n  return { codebaseInGit: true, configInEnv: true, statelessProcesses: true, portBinding: true };\n}\nconst checks = twelveFactorChecks();"
@@ -6381,7 +6381,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function formatPinoLog(level, msg, context) {\n  return JSON.stringify({ level, msg, time: Date.now(), ...context });\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function formatPinoLog(level, msg, context) {\n  return JSON.stringify({ level, msg, time: Date.now(), ...context });\n}\nconst logStr = formatPinoLog('info', 'User created', { userId: '123' });",
     "hints": [
       "Write:\nfunction formatPinoLog(level, msg, context) {\n  return JSON.stringify({ level, msg, time: Date.now(), ...context });\n}\nconst logStr = formatPinoLog('info', 'User created', { userId: '123' });"
@@ -6423,7 +6423,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createTraceSpan(traceId, spanName) {\n  return { traceId, spanName, timestamp: Date.now() };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function createTraceSpan(traceId, spanName) {\n  return { traceId, spanName, timestamp: Date.now() };\n}\nconst span = createTraceSpan('trace-999', 'db:query');",
     "hints": [
       "Write:\nfunction createTraceSpan(traceId, spanName) {\n  return { traceId, spanName, timestamp: Date.now() };\n}\nconst span = createTraceSpan('trace-999', 'db:query');"
@@ -6465,7 +6465,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function formatPrometheusMetric(name, value) {\n  return `${name} ${value}\\n`;\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function formatPrometheusMetric(name, value) {\n  return `${name} ${value}\\n`;\n}\nconst metric = formatPrometheusMetric('http_requests_total', 1450);",
     "hints": [
       "Write:\nfunction formatPrometheusMetric(name, value) {\n  return `${name} ${value}\\n`;\n}\nconst metric = formatPrometheusMetric('http_requests_total', 1450);"
@@ -6507,7 +6507,7 @@ export const NODEJS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function assembleProductionMicroservice() {\n  return { name: 'devforge-backend', status: 'READY_FOR_PRODUCTION', architecture: 'Event-Driven Tier 5' };\n}",
+    "initialCode": "// Step 1: Write your Node.js solution below\n// TODO: Write code below\n",
     "solutionCode": "function assembleProductionMicroservice() {\n  return { name: 'devforge-backend', status: 'READY_FOR_PRODUCTION', architecture: 'Event-Driven Tier 5' };\n}\nconst s = assembleProductionMicroservice();",
     "hints": [
       "Write:\nfunction assembleProductionMicroservice() {\n  return { name: 'devforge-backend', status: 'READY_FOR_PRODUCTION', architecture: 'Event-Driven Tier 5' };\n}\nconst s = assembleProductionMicroservice();"

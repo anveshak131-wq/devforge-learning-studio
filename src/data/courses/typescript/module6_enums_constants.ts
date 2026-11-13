@@ -30,7 +30,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum Direction { Up, Down, Left, Right } let dir = Direction.Up;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum Direction { Up, Down, Left, Right } let dir = Direction.Up;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum Direction { Up, Down, Left, Right } let dir = Direction.Up;\n",
     "hints": [
       "Write: enum Direction { Up, Down, Left, Right } let dir = Direction.Up;"
@@ -72,7 +72,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum Status { Active = 'ACTIVE', Inactive = 'INACTIVE' } let s = Status.Active;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum Status { Active = 'ACTIVE', Inactive = 'INACTIVE' } let s = Status.Active;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum Status { Active = 'ACTIVE', Inactive = 'INACTIVE' } let s = Status.Active;\n",
     "hints": [
       "Write: enum Status { Active = 'ACTIVE', Inactive = 'INACTIVE' } let s = Status.Active;"
@@ -114,7 +114,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum Mixed { No = 0, Yes = 'YES' } let answer = Mixed.Yes;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum Mixed { No = 0, Yes = 'YES' } let answer = Mixed.Yes;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum Mixed { No = 0, Yes = 'YES' } let answer = Mixed.Yes;\n",
     "hints": [
       "Write: enum Mixed { No = 0, Yes = 'YES' } let answer = Mixed.Yes;"
@@ -156,7 +156,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `const enum Mode { Fast = 1, Slow = 2 } let m = Mode.Fast;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst enum Mode { Fast = 1, Slow = 2 } let m = Mode.Fast;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const enum Mode { Fast = 1, Slow = 2 } let m = Mode.Fast;\n",
     "hints": [
       "Write: const enum Mode { Fast = 1, Slow = 2 } let m = Mode.Fast;"
@@ -198,7 +198,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum Role { Admin, Member } let roleName = Role[0];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum Role { Admin, Member } let roleName = Role[0];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum Role { Admin, Member } let roleName = Role[0];\n",
     "hints": [
       "Write: enum Role { Admin, Member } let roleName = Role[0];"
@@ -240,7 +240,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `const HTTP_METHODS = ['GET', 'POST', 'PUT'] as const; let first = HTTP_METHODS[0];`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst HTTP_METHODS = ['GET', 'POST', 'PUT'] as const; let first = HTTP_METHODS[0];\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const HTTP_METHODS = ['GET', 'POST', 'PUT'] as const; let first = HTTP_METHODS[0];\n",
     "hints": [
       "Write: const HTTP_METHODS = ['GET', 'POST', 'PUT'] as const; let first = HTTP_METHODS[0];"
@@ -282,7 +282,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `const Roles = { ADMIN: 'admin', USER: 'user' } as const; type UserRole = typeof Roles[keyof typeof Roles]; let r: UserRole = 'admin';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst Roles = { ADMIN: 'admin', USER: 'user' } as const; type UserRole = typeof Roles[keyof typeof Roles]; let r: UserRole = 'admin';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const Roles = { ADMIN: 'admin', USER: 'user' } as const; type UserRole = typeof Roles[keyof typeof Roles]; let r: UserRole = 'admin';\n",
     "hints": [
       "Write: const Roles = { ADMIN: 'admin', USER: 'user' } as const; type UserRole = typeof Roles[keyof typeof Roles]; let r: UserRole = 'admin';"
@@ -324,7 +324,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum Permission { Read = 1, Write = 2, Execute = 4 } let perms = Permission.Read | Permission.Write;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum Permission { Read = 1, Write = 2, Execute = 4 } let perms = Permission.Read | Permission.Write;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum Permission { Read = 1, Write = 2, Execute = 4 } let perms = Permission.Read | Permission.Write;\n",
     "hints": [
       "Write: enum Permission { Read = 1, Write = 2, Execute = 4 } let perms = Permission.Read | Permission.Write;"
@@ -366,7 +366,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum MathConst { Base = 2, Doubled = Base * 2 } let val = MathConst.Doubled;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum MathConst { Base = 2, Doubled = Base * 2 } let val = MathConst.Doubled;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum MathConst { Base = 2, Doubled = Base * 2 } let val = MathConst.Doubled;\n",
     "hints": [
       "Write: enum MathConst { Base = 2, Doubled = Base * 2 } let val = MathConst.Doubled;"
@@ -408,7 +408,7 @@ export const tsModule6Lessons: Lesson[] = [
       "Enter the code: `enum HttpStatus { OK = 200, NotFound = 404, ServerError = 500 } let code = HttpStatus.OK;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nenum HttpStatus { OK = 200, NotFound = 404, ServerError = 500 } let code = HttpStatus.OK;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "enum HttpStatus { OK = 200, NotFound = 404, ServerError = 500 } let code = HttpStatus.OK;\n",
     "hints": [
       "Write: enum HttpStatus { OK = 200, NotFound = 404, ServerError = 500 } let code = HttpStatus.OK;"

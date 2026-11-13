@@ -30,7 +30,7 @@ export const module11Lessons: Lesson[] = [
       "Catch the error and set `let errorCaught = true;`.",
       "Print `errorCaught`."
     ],
-    "initialCode": "let errorCaught = false;\ntry {\n  JSON.parse(\"invalid\");\n} catch (err) {\n  errorCaught = true;\n}\nconsole.log(errorCaught);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let errorCaught = false;\ntry {\n  JSON.parse(\"invalid\");\n} catch (err) {\n  errorCaught = true;\n}\nconsole.log(errorCaught);\n",
     "hints": [
       "Set `errorCaught = true;` inside catch"
@@ -72,7 +72,7 @@ export const module11Lessons: Lesson[] = [
       "Inside a try/finally block, set `cleanedUp = true;` in finally.",
       "Print `cleanedUp`."
     ],
-    "initialCode": "let cleanedUp = false;\ntry {\n  // safe work\n} finally {\n  cleanedUp = true;\n}\nconsole.log(cleanedUp);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let cleanedUp = false;\ntry {\n  // safe work\n} finally {\n  cleanedUp = true;\n}\nconsole.log(cleanedUp);\n",
     "hints": [
       "Place `cleanedUp = true;` in the finally block"
@@ -113,7 +113,7 @@ export const module11Lessons: Lesson[] = [
       "Write a function `validateAge(age)` that throws `new Error(\"Too young\")` if `age < 18`.",
       "Call `try { validateAge(15); } catch(e) { console.log(e.message); }`."
     ],
-    "initialCode": "function validateAge(age) {\n  if (age < 18) {\n    throw new Error(\"Too young\");\n  }\n  return true;\n}\nlet msg = \"\";\ntry {\n  validateAge(15);\n} catch (e) {\n  msg = e.message;\n}\nconsole.log(msg);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "function validateAge(age) {\n  if (age < 18) {\n    throw new Error(\"Too young\");\n  }\n  return true;\n}\nlet msg = \"\";\ntry {\n  validateAge(15);\n} catch (e) {\n  msg = e.message;\n}\nconsole.log(msg);\n",
     "hints": [
       "Use `throw new Error(\"Too young\")`"
@@ -156,7 +156,7 @@ export const module11Lessons: Lesson[] = [
       "Capture `e.name` into `let caughtType`.",
       "Print `caughtType`."
     ],
-    "initialCode": "let caughtType = \"\";\ntry {\n  null.foo();\n} catch (e) {\n  caughtType = e.name;\n}\nconsole.log(caughtType);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let caughtType = \"\";\ntry {\n  null.foo();\n} catch (e) {\n  caughtType = e.name;\n}\nconsole.log(caughtType);\n",
     "hints": [
       "Assign `caughtType = e.name;` inside catch"
@@ -198,7 +198,7 @@ export const module11Lessons: Lesson[] = [
       "Convert to string with `let json = JSON.stringify(payload);`.",
       "Print `json`."
     ],
-    "initialCode": "let payload = { status: 200, ok: true };\nlet json = JSON.stringify(payload);\nconsole.log(json);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let payload = { status: 200, ok: true };\nlet json = JSON.stringify(payload);\nconsole.log(json);\n",
     "hints": [
       "Use `JSON.stringify(payload)`"
@@ -240,7 +240,7 @@ export const module11Lessons: Lesson[] = [
       "Parse with `let parsed = JSON.parse(raw);`.",
       "Print `parsed.role`."
     ],
-    "initialCode": "let raw = '{\"role\":\"admin\",\"active\":true}';\nlet parsed = JSON.parse(raw);\nconsole.log(parsed.role);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let raw = '{\"role\":\"admin\",\"active\":true}';\nlet parsed = JSON.parse(raw);\nconsole.log(parsed.role);\n",
     "hints": [
       "Use `JSON.parse(raw)`"
@@ -285,7 +285,7 @@ export const module11Lessons: Lesson[] = [
       "Add `set.add(\"apple\");` and `set.add(\"banana\");`.",
       "Print `set.has(\"apple\")`."
     ],
-    "initialCode": "let set = new Set();\nset.add(\"apple\");\nset.add(\"banana\");\nconsole.log(set.has(\"apple\"));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let set = new Set();\nset.add(\"apple\");\nset.add(\"banana\");\nconsole.log(set.has(\"apple\"));\n",
     "hints": [
       "Use `set.has(\"apple\")`"
@@ -327,7 +327,7 @@ export const module11Lessons: Lesson[] = [
       "Create `let unique = [...new Set(duplicates)];`.",
       "Print `unique`."
     ],
-    "initialCode": "let duplicates = [\"a\", \"b\", \"a\", \"c\", \"b\"];\nlet unique = [...new Set(duplicates)];\nconsole.log(unique);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let duplicates = [\"a\", \"b\", \"a\", \"c\", \"b\"];\nlet unique = [...new Set(duplicates)];\nconsole.log(unique);\n",
     "hints": [
       "Use `[...new Set(duplicates)]`"
@@ -371,7 +371,7 @@ export const module11Lessons: Lesson[] = [
       "Store key 101 with value `\"Found\"`: `cache.set(101, \"Found\");`.",
       "Print `cache.get(101)`."
     ],
-    "initialCode": "let cache = new Map();\ncache.set(101, \"Found\");\nconsole.log(cache.get(101));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let cache = new Map();\ncache.set(101, \"Found\");\nconsole.log(cache.get(101));\n",
     "hints": [
       "Use `cache.set(key, val)` and `cache.get(key)`"
@@ -413,7 +413,7 @@ export const module11Lessons: Lesson[] = [
       "Deep clone with `let clone = structuredClone(original);`.",
       "Mutate `clone.stats.hp = 50;` and print `original.stats.hp`."
     ],
-    "initialCode": "let original = { stats: { hp: 100 } };\nlet clone = structuredClone(original);\nclone.stats.hp = 50;\nconsole.log(original.stats.hp);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let original = { stats: { hp: 100 } };\nlet clone = structuredClone(original);\nclone.stats.hp = 50;\nconsole.log(original.stats.hp);\n",
     "hints": [
       "Use `structuredClone(original)`"

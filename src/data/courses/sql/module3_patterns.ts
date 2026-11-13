@@ -30,7 +30,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE name LIKE 'S%';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE name LIKE 'S%';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE name LIKE 'S%';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE name LIKE 'S%';"
@@ -73,7 +73,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE email LIKE '%@example.com';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE email LIKE '%@example.com';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE email LIKE '%@example.com';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE email LIKE '%@example.com';"
@@ -116,7 +116,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products WHERE name LIKE '%Desk%';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products WHERE name LIKE '%Desk%';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products WHERE name LIKE '%Desk%';\n",
     "hints": [
       "Execute: SELECT * FROM products WHERE name LIKE '%Desk%';"
@@ -159,7 +159,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE name LIKE 'L_am%';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE name LIKE 'L_am%';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE name LIKE 'L_am%';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE name LIKE 'L_am%';"
@@ -202,7 +202,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE name NOT LIKE 'A%';`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE name NOT LIKE 'A%';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE name NOT LIKE 'A%';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE name NOT LIKE 'A%';"
@@ -245,7 +245,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users WHERE role IS NOT NULL;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users WHERE role IS NOT NULL;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE role IS NOT NULL;\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE role IS NOT NULL;"
@@ -288,7 +288,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT name, COALESCE(role, 'guest') AS assigned_role FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, COALESCE(role, 'guest') AS assigned_role FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, COALESCE(role, 'guest') AS assigned_role FROM users;\n",
     "hints": [
       "Execute: SELECT name, COALESCE(role, 'guest') AS assigned_role FROM users;"
@@ -331,7 +331,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT name, CASE WHEN price > 200 THEN 'Premium' ELSE 'Budget' END AS tier FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, CASE WHEN price > 200 THEN 'Premium' ELSE 'Budget' END AS tier FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, CASE WHEN price > 200 THEN 'Premium' ELSE 'Budget' END AS tier FROM products;\n",
     "hints": [
       "Execute: SELECT name, CASE WHEN price > 200 THEN 'Premium' ELSE 'Budget' END AS tier FROM products;"
@@ -374,7 +374,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT id, CASE WHEN amount > 300 THEN 'High' WHEN amount > 100 THEN 'Medium' ELSE 'Low' END AS bracket FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT id, CASE WHEN amount > 300 THEN 'High' WHEN amount > 100 THEN 'Medium' ELSE 'Low' END AS bracket FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT id, CASE WHEN amount > 300 THEN 'High' WHEN amount > 100 THEN 'Medium' ELSE 'Low' END AS bracket FROM orders;\n",
     "hints": [
       "Execute: SELECT id, CASE WHEN amount > 300 THEN 'High' WHEN amount > 100 THEN 'Medium' ELSE 'Low' END AS bracket FROM orders;"
@@ -417,7 +417,7 @@ export const sqlModule3Lessons: Lesson[] = [
       "Write the query: `SELECT name, price, CASE WHEN stock < 20 THEN 'Restock' ELSE 'OK' END AS stock_status FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price, CASE WHEN stock < 20 THEN 'Restock' ELSE 'OK' END AS stock_status FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price, CASE WHEN stock < 20 THEN 'Restock' ELSE 'OK' END AS stock_status FROM products;\n",
     "hints": [
       "Execute: SELECT name, price, CASE WHEN stock < 20 THEN 'Restock' ELSE 'OK' END AS stock_status FROM products;"

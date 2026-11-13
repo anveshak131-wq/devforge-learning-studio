@@ -543,16 +543,16 @@ export const CSS_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "/* Calculate specificity */\n/* ID: 100, Class: 10, Element: 1 */\n#header .nav-item {\n  color: #6366f1;\n}",
-    "solutionCode": "code.includes('#header .nav-item')",
+    "initialCode": "/* Step 1: Target #header .nav-item */\n/* TODO: Write CSS rule below */\n",
+    "solutionCode": "#header .nav-item {\n  color: #6366f1;\n}\n",
     "hints": [
-      "Write:\ncode.includes('#header .nav-item')"
+      "Target '#header .nav-item' with color: #6366f1;"
     ],
     "testCases": [
       {
         "id": "css-13-tc-1",
         "description": "Verifies correct implementation for Specificity Hierarchy: Inline > ID > Class > Tag",
-        "testFn": "In a courtroom, a federal supreme judge overrides a district judge, who overrides a police officer."
+        "testFn": "code.includes('#header') && code.includes('.nav-item')"
       }
     ]
   },

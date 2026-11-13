@@ -29,7 +29,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Write a for loop from `i = 1` up to `i <= 3`.",
       "Print `i` in each loop."
     ],
-    "initialCode": "for (let i = 1; i <= 3; i++) {\n  console.log(i);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "for (let i = 1; i <= 3; i++) {\n  console.log(i);\n}\n",
     "hints": [
       "Write `for (let i = 1; i <= 3; i++) { console.log(i); }`"
@@ -70,7 +70,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Write a loop starting at `let i = 3; i >= 1; i--`.",
       "Print each number."
     ],
-    "initialCode": "for (let i = 3; i >= 1; i--) {\n  console.log(i);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "for (let i = 3; i >= 1; i--) {\n  console.log(i);\n}\n",
     "hints": [
       "Start with `let i = 3` and decrement with `i--`"
@@ -111,7 +111,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Iterate over `let list = [\"A\", \"B\"];`.",
       "Print each item using `console.log(list[i]);`."
     ],
-    "initialCode": "let list = [\"A\", \"B\"];\nfor (let i = 0; i < list.length; i++) {\n  console.log(list[i]);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let list = [\"A\", \"B\"];\nfor (let i = 0; i < list.length; i++) {\n  console.log(list[i]);\n}\n",
     "hints": [
       "Use `i < list.length` and `list[i]`"
@@ -152,7 +152,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Look at `let n = 1;`.",
       "While `n <= 2`, print `n` and increment `n++`."
     ],
-    "initialCode": "let n = 1;\nwhile (n <= 2) {\n  console.log(n);\n  n++;\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let n = 1;\nwhile (n <= 2) {\n  console.log(n);\n  n++;\n}\n",
     "hints": [
       "Remember to increment `n++` inside the loop"
@@ -192,7 +192,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
     "exerciseSteps": [
       "Write a do...while loop that logs `'Guaranteed'` once with `let run = false;`."
     ],
-    "initialCode": "let run = false;\ndo {\n  console.log(\"Guaranteed\");\n} while (run);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let run = false;\ndo {\n  console.log(\"Guaranteed\");\n} while (run);\n",
     "hints": [
       "Write `do { console.log(\"Guaranteed\"); } while (run);`"
@@ -233,7 +233,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Loop `i = 1; i <= 5; i++`.",
       "If `i === 3`, `break;`. Otherwise `console.log(i);`."
     ],
-    "initialCode": "for (let i = 1; i <= 5; i++) {\n  if (i === 3) break;\n  console.log(i);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "for (let i = 1; i <= 5; i++) {\n  if (i === 3) break;\n  console.log(i);\n}\n",
     "hints": [
       "Use `if (i === 3) break;`"
@@ -273,7 +273,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
     "exerciseSteps": [
       "Loop 1 to 4. Skip 2 using `if (i === 2) continue;`. Log each number."
     ],
-    "initialCode": "for (let i = 1; i <= 4; i++) {\n  if (i === 2) continue;\n  console.log(i);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "for (let i = 1; i <= 4; i++) {\n  if (i === 2) continue;\n  console.log(i);\n}\n",
     "hints": [
       "Write `if (i === 2) continue;`"
@@ -314,7 +314,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Loop over `[\"Sun\", \"Moon\"]` using `for (let orb of orbs)`.",
       "Print each item."
     ],
-    "initialCode": "let orbs = [\"Sun\", \"Moon\"];\nfor (let orb of orbs) {\n  console.log(orb);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let orbs = [\"Sun\", \"Moon\"];\nfor (let orb of orbs) {\n  console.log(orb);\n}\n",
     "hints": [
       "Write `for (let orb of orbs) { console.log(orb); }`"
@@ -355,7 +355,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Loop through keys of `{ title: \"Book\", pages: 200 }` using `for (let k in book)`.",
       "Print each key."
     ],
-    "initialCode": "let book = { title: \"Book\", pages: 200 };\nfor (let k in book) {\n  console.log(k);\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let book = { title: \"Book\", pages: 200 };\nfor (let k in book) {\n  console.log(k);\n}\n",
     "hints": [
       "Write `for (let k in book) { console.log(k); }`"
@@ -396,7 +396,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Run nested loops for `r = 1..2` and `c = 1..2`.",
       "Print each `r + '-' + c`."
     ],
-    "initialCode": "for (let r = 1; r <= 2; r++) {\n  for (let c = 1; c <= 2; c++) {\n    console.log(r + \"-\" + c);\n  }\n}\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "for (let r = 1; r <= 2; r++) {\n  for (let c = 1; c <= 2; c++) {\n    console.log(r + \"-\" + c);\n  }\n}\n",
     "hints": [
       "Outer loop is `r`, inner is `c`"
@@ -438,7 +438,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Loop over `[5, 10, 15]` adding to `total`.",
       "Print `total`."
     ],
-    "initialCode": "let total = 0;\nlet values = [5, 10, 15];\nfor (let v of values) {\n  total += v;\n}\nconsole.log(total);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let total = 0;\nlet values = [5, 10, 15];\nfor (let v of values) {\n  total += v;\n}\nconsole.log(total);\n",
     "hints": [
       "Add each `v` to `total += v`"
@@ -478,7 +478,7 @@ export const MODULE_5_LESSONS: Lesson[] = [
       "Build a string of 5 stars: `*****`.",
       "Assign to `let stars` and print."
     ],
-    "initialCode": "let stars = \"\";\nfor (let i = 0; i < 5; i++) {\n  stars += \"*\";\n}\nconsole.log(stars);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let stars = \"\";\nfor (let i = 0; i < 5; i++) {\n  stars += \"*\";\n}\nconsole.log(stars);\n",
     "hints": [
       "Append `stars += \"*\"` 5 times"

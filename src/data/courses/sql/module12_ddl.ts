@@ -30,7 +30,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE tags (id INTEGER PRIMARY KEY, name TEXT UNIQUE); SELECT * FROM tags;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE tags (id INTEGER PRIMARY KEY, name TEXT UNIQUE); SELECT * FROM tags;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE tags (id INTEGER PRIMARY KEY, name TEXT UNIQUE); SELECT * FROM tags;\n",
     "hints": [
       "Execute: CREATE TABLE tags (id INTEGER PRIMARY KEY, name TEXT UNIQUE); SELECT * FROM tags;"
@@ -73,7 +73,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE articles (id INTEGER PRIMARY KEY, title TEXT NOT NULL); SELECT * FROM articles;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE articles (id INTEGER PRIMARY KEY, title TEXT NOT NULL); SELECT * FROM articles;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE articles (id INTEGER PRIMARY KEY, title TEXT NOT NULL); SELECT * FROM articles;\n",
     "hints": [
       "Execute: CREATE TABLE articles (id INTEGER PRIMARY KEY, title TEXT NOT NULL); SELECT * FROM articles;"
@@ -116,7 +116,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE logs (id INTEGER PRIMARY KEY, msg TEXT, level TEXT DEFAULT 'info'); SELECT * FROM logs;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE logs (id INTEGER PRIMARY KEY, msg TEXT, level TEXT DEFAULT 'info'); SELECT * FROM logs;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE logs (id INTEGER PRIMARY KEY, msg TEXT, level TEXT DEFAULT 'info'); SELECT * FROM logs;\n",
     "hints": [
       "Execute: CREATE TABLE logs (id INTEGER PRIMARY KEY, msg TEXT, level TEXT DEFAULT 'info'); SELECT * FROM logs;"
@@ -159,7 +159,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE accounts (id INTEGER PRIMARY KEY, username TEXT UNIQUE); SELECT * FROM accounts;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE accounts (id INTEGER PRIMARY KEY, username TEXT UNIQUE); SELECT * FROM accounts;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE accounts (id INTEGER PRIMARY KEY, username TEXT UNIQUE); SELECT * FROM accounts;\n",
     "hints": [
       "Execute: CREATE TABLE accounts (id INTEGER PRIMARY KEY, username TEXT UNIQUE); SELECT * FROM accounts;"
@@ -202,7 +202,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE comments (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES users(id), text TEXT); SELECT * FROM comments;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE comments (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES users(id), text TEXT); SELECT * FROM comments;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE comments (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES users(id), text TEXT); SELECT * FROM comments;\n",
     "hints": [
       "Execute: CREATE TABLE comments (id INTEGER PRIMARY KEY, user_id INTEGER REFERENCES users(id), text TEXT); SELECT * FROM comments;"
@@ -245,7 +245,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `ALTER TABLE products ADD COLUMN is_featured INTEGER DEFAULT 0; SELECT is_featured FROM products LIMIT 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nALTER TABLE products ADD COLUMN is_featured INTEGER DEFAULT 0; SELECT is_featured FROM products LIMIT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "ALTER TABLE products ADD COLUMN is_featured INTEGER DEFAULT 0; SELECT is_featured FROM products LIMIT 1;\n",
     "hints": [
       "Execute: ALTER TABLE products ADD COLUMN is_featured INTEGER DEFAULT 0; SELECT is_featured FROM products LIMIT 1;"
@@ -288,7 +288,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE temp_tbl (x INTEGER); ALTER TABLE temp_tbl RENAME TO archived_tbl; SELECT * FROM archived_tbl;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE temp_tbl (x INTEGER); ALTER TABLE temp_tbl RENAME TO archived_tbl; SELECT * FROM archived_tbl;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE temp_tbl (x INTEGER); ALTER TABLE temp_tbl RENAME TO archived_tbl; SELECT * FROM archived_tbl;\n",
     "hints": [
       "Execute: CREATE TABLE temp_tbl (x INTEGER); ALTER TABLE temp_tbl RENAME TO archived_tbl; SELECT * FROM archived_tbl;"
@@ -331,7 +331,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE trash (id INT); DROP TABLE trash; SELECT 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE trash (id INT); DROP TABLE trash; SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE trash (id INT); DROP TABLE trash; SELECT 1;\n",
     "hints": [
       "Execute: CREATE TABLE trash (id INT); DROP TABLE trash; SELECT 1;"
@@ -374,7 +374,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE INDEX idx_users_country ON users(country); SELECT 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE INDEX idx_users_country ON users(country); SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE INDEX idx_users_country ON users(country); SELECT 1;\n",
     "hints": [
       "Execute: CREATE INDEX idx_users_country ON users(country); SELECT 1;"
@@ -417,7 +417,7 @@ export const sqlModule12Lessons: Lesson[] = [
       "Write the query: `CREATE TABLE customer_reviews (id INTEGER PRIMARY KEY, product_id INTEGER, rating INTEGER CHECK (rating BETWEEN 1 AND 5)); SELECT 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nCREATE TABLE customer_reviews (id INTEGER PRIMARY KEY, product_id INTEGER, rating INTEGER CHECK (rating BETWEEN 1 AND 5)); SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TABLE customer_reviews (id INTEGER PRIMARY KEY, product_id INTEGER, rating INTEGER CHECK (rating BETWEEN 1 AND 5)); SELECT 1;\n",
     "hints": [
       "Execute: CREATE TABLE customer_reviews (id INTEGER PRIMARY KEY, product_id INTEGER, rating INTEGER CHECK (rating BETWEEN 1 AND 5)); SELECT 1;"

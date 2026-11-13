@@ -39,7 +39,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function analyzeAlgorithm(inputSize) {\n  return { time: `O(${inputSize})`, space: 'O(1)' };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function analyzeAlgorithm(inputSize) {\n  return { time: `O(${inputSize})`, space: 'O(1)' };\n}\nconst res = analyzeAlgorithm('n');",
     "hints": [
       "Write:\nfunction analyzeAlgorithm(inputSize) {\n  return { time: `O(${inputSize})`, space: 'O(1)' };\n}\nconst res = analyzeAlgorithm('n');"
@@ -81,7 +81,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getFirstElement(arr) {\n  return arr[0];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function getFirstElement(arr) {\n  return arr[0];\n}\nconst first = getFirstElement([10, 20, 30]);",
     "hints": [
       "Write:\nfunction getFirstElement(arr) {\n  return arr[0];\n}\nconst first = getFirstElement([10, 20, 30]);"
@@ -123,7 +123,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function findMax(arr) {\n  let max = arr[0];\n  for (const num of arr) if (num > max) max = num;\n  return max;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function findMax(arr) {\n  let max = arr[0];\n  for (const num of arr) if (num > max) max = num;\n  return max;\n}\nconst maxVal = findMax([3, 7, 2, 9, 5]);",
     "hints": [
       "Write:\nfunction findMax(arr) {\n  let max = arr[0];\n  for (const num of arr) if (num > max) max = num;\n  return max;\n}\nconst maxVal = findMax([3, 7, 2, 9, 5]);"
@@ -165,7 +165,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function binarySearchCount(n) {\n  let steps = 0;\n  while (n > 1) { n = Math.floor(n / 2); steps++; }\n  return steps;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function binarySearchCount(n) {\n  let steps = 0;\n  while (n > 1) { n = Math.floor(n / 2); steps++; }\n  return steps;\n}\nconst steps = binarySearchCount(1024);",
     "hints": [
       "Write:\nfunction binarySearchCount(n) {\n  let steps = 0;\n  while (n > 1) { n = Math.floor(n / 2); steps++; }\n  return steps;\n}\nconst steps = binarySearchCount(1024);"
@@ -207,7 +207,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mergeSortCost(n) {\n  return Math.round(n * Math.log2(n));\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function mergeSortCost(n) {\n  return Math.round(n * Math.log2(n));\n}\nconst cost = mergeSortCost(8);",
     "hints": [
       "Write:\nfunction mergeSortCost(n) {\n  return Math.round(n * Math.log2(n));\n}\nconst cost = mergeSortCost(8);"
@@ -249,7 +249,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function countPairs(n) {\n  let count = 0;\n  for (let i = 0; i < n; i++) {\n    for (let j = 0; j < n; j++) count++;\n  }\n  return count;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function countPairs(n) {\n  let count = 0;\n  for (let i = 0; i < n; i++) {\n    for (let j = 0; j < n; j++) count++;\n  }\n  return count;\n}\nconst pairs = countPairs(10);",
     "hints": [
       "Write:\nfunction countPairs(n) {\n  let count = 0;\n  for (let i = 0; i < n; i++) {\n    for (let j = 0; j < n; j++) count++;\n  }\n  return count;\n}\nconst pairs = countPairs(10);"
@@ -291,7 +291,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function fibRecursive(n) {\n  if (n <= 1) return n;\n  return fibRecursive(n - 1) + fibRecursive(n - 2);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function fibRecursive(n) {\n  if (n <= 1) return n;\n  return fibRecursive(n - 1) + fibRecursive(n - 2);\n}\nconst fib5 = fibRecursive(5);",
     "hints": [
       "Write:\nfunction fibRecursive(n) {\n  if (n <= 1) return n;\n  return fibRecursive(n - 1) + fibRecursive(n - 2);\n}\nconst fib5 = fibRecursive(5);"
@@ -333,7 +333,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function factorialCount(n) {\n  return n <= 1 ? 1 : n * factorialCount(n - 1);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function factorialCount(n) {\n  return n <= 1 ? 1 : n * factorialCount(n - 1);\n}\nconst fact4 = factorialCount(4);",
     "hints": [
       "Write:\nfunction factorialCount(n) {\n  return n <= 1 ? 1 : n * factorialCount(n - 1);\n}\nconst fact4 = factorialCount(4);"
@@ -375,7 +375,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createCopy(arr) {\n  return [...arr]; // O(n) aux space\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function createCopy(arr) {\n  return [...arr];\n}\nconst copy = createCopy([1, 2, 3]);",
     "hints": [
       "Write:\nfunction createCopy(arr) {\n  return [...arr];\n}\nconst copy = createCopy([1, 2, 3]);"
@@ -417,7 +417,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simplifyBigO(n) {\n  return 'O(n)'; // 2n + 5 simplifies to O(n)\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function simplifyBigO(n) {\n  return 'O(n)';\n}\nconst res = simplifyBigO(100);",
     "hints": [
       "Write:\nfunction simplifyBigO(n) {\n  return 'O(n)';\n}\nconst res = simplifyBigO(100);"
@@ -459,7 +459,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function dominantTerm(n) {\n  return 'O(n^2)'; // n^2 dwarfs n as n grows large\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function dominantTerm(n) {\n  return 'O(n^2)';\n}\nconst term = dominantTerm(1000);",
     "hints": [
       "Write:\nfunction dominantTerm(n) {\n  return 'O(n^2)';\n}\nconst term = dominantTerm(1000);"
@@ -501,7 +501,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function linearSearchCost(target, arr) {\n  if (arr[0] === target) return 'Best Case: O(1)';\n  return 'Worst Case: O(n)';\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function linearSearchCost(target, arr) {\n  if (arr[0] === target) return 'Best Case: O(1)';\n  return 'Worst Case: O(n)';\n}\nconst best = linearSearchCost(1, [1, 2, 3]);",
     "hints": [
       "Write:\nfunction linearSearchCost(target, arr) {\n  if (arr[0] === target) return 'Best Case: O(1)';\n  return 'Worst Case: O(n)';\n}\nconst best = linearSearchCost(1, [1, 2, 3]);"
@@ -543,7 +543,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function calculateAmortizedPush() {\n  return 'O(1) Amortized';\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function calculateAmortizedPush() {\n  return 'O(1) Amortized';\n}\nconst cost = calculateAmortizedPush();",
     "hints": [
       "Write:\nfunction calculateAmortizedPush() {\n  return 'O(1) Amortized';\n}\nconst cost = calculateAmortizedPush();"
@@ -585,7 +585,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function cacheSquare(n, memo = {}) {\n  if (memo[n]) return memo[n];\n  memo[n] = n * n;\n  return memo[n];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function cacheSquare(n, memo = {}) {\n  if (memo[n]) return memo[n];\n  memo[n] = n * n;\n  return memo[n];\n}\nconst sq = cacheSquare(9);",
     "hints": [
       "Write:\nfunction cacheSquare(n, memo = {}) {\n  if (memo[n]) return memo[n];\n  memo[n] = n * n;\n  return memo[n];\n}\nconst sq = cacheSquare(9);"
@@ -627,7 +627,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rankComplexities() {\n  return ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)', 'O(n^2)', 'O(2^n)', 'O(n!)'];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function rankComplexities() {\n  return ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)', 'O(n^2)', 'O(2^n)', 'O(n!)'];\n}\nconst ranking = rankComplexities();",
     "hints": [
       "Write:\nfunction rankComplexities() {\n  return ['O(1)', 'O(log n)', 'O(n)', 'O(n log n)', 'O(n^2)', 'O(2^n)', 'O(n!)'];\n}\nconst ranking = rankComplexities();"
@@ -669,7 +669,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getElementAddress(base, index, elementSize) {\n  return base + index * elementSize;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function getElementAddress(base, index, elementSize) {\n  return base + index * elementSize;\n}\nconst addr = getElementAddress(1000, 3, 4);",
     "hints": [
       "Write:\nfunction getElementAddress(base, index, elementSize) {\n  return base + index * elementSize;\n}\nconst addr = getElementAddress(1000, 3, 4);"
@@ -711,7 +711,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function nextCapacity(curr) {\n  return curr === 0 ? 1 : curr * 2;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function nextCapacity(curr) {\n  return curr === 0 ? 1 : curr * 2;\n}\nconst cap = nextCapacity(4);",
     "hints": [
       "Write:\nfunction nextCapacity(curr) {\n  return curr === 0 ? 1 : curr * 2;\n}\nconst cap = nextCapacity(4);"
@@ -753,7 +753,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function twoSumSorted(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left < right) {\n    const sum = arr[left] + arr[right];\n    if (sum === target) return [left, right];\n    if (sum < target) left++;\n    else right--;\n  }\n  return null;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function twoSumSorted(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left < right) {\n    const sum = arr[left] + arr[right];\n    if (sum === target) return [left, right];\n    if (sum < target) left++;\n    else right--;\n  }\n  return null;\n}\nconst pair = twoSumSorted([2, 7, 11, 15], 9);",
     "hints": [
       "Write:\nfunction twoSumSorted(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left < right) {\n    const sum = arr[left] + arr[right];\n    if (sum === target) return [left, right];\n    if (sum < target) left++;\n    else right--;\n  }\n  return null;\n}\nconst pair = twoSumSorted([2, 7, 11, 15], 9);"
@@ -795,7 +795,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function removeDuplicates(nums) {\n  if (nums.length === 0) return 0;\n  let slow = 0;\n  for (let fast = 1; fast < nums.length; fast++) {\n    if (nums[fast] !== nums[slow]) {\n      slow++;\n      nums[slow] = nums[fast];\n    }\n  }\n  return slow + 1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function removeDuplicates(nums) {\n  if (nums.length === 0) return 0;\n  let slow = 0;\n  for (let fast = 1; fast < nums.length; fast++) {\n    if (nums[fast] !== nums[slow]) {\n      slow++;\n      nums[slow] = nums[fast];\n    }\n  }\n  return slow + 1;\n}\nconst len = removeDuplicates([1, 1, 2, 2, 3]);",
     "hints": [
       "Write:\nfunction removeDuplicates(nums) {\n  if (nums.length === 0) return 0;\n  let slow = 0;\n  for (let fast = 1; fast < nums.length; fast++) {\n    if (nums[fast] !== nums[slow]) {\n      slow++;\n      nums[slow] = nums[fast];\n    }\n  }\n  return slow + 1;\n}\nconst len = removeDuplicates([1, 1, 2, 2, 3]);"
@@ -837,7 +837,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function reverseInPlace(arr) {\n  let left = 0, right = arr.length - 1;\n  while (left < right) {\n    const temp = arr[left];\n    arr[left] = arr[right];\n    arr[right] = temp;\n    left++; right--;\n  }\n  return arr;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function reverseInPlace(arr) {\n  let left = 0, right = arr.length - 1;\n  while (left < right) {\n    const temp = arr[left];\n    arr[left] = arr[right];\n    arr[right] = temp;\n    left++; right--;\n  }\n  return arr;\n}\nconst rev = reverseInPlace([1, 2, 3, 4]);",
     "hints": [
       "Write:\nfunction reverseInPlace(arr) {\n  let left = 0, right = arr.length - 1;\n  while (left < right) {\n    const temp = arr[left];\n    arr[left] = arr[right];\n    arr[right] = temp;\n    left++; right--;\n  }\n  return arr;\n}\nconst rev = reverseInPlace([1, 2, 3, 4]);"
@@ -879,7 +879,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rotateArray(nums, k) {\n  k = k % nums.length;\n  return nums.slice(-k).concat(nums.slice(0, -k));\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function rotateArray(nums, k) {\n  k = k % nums.length;\n  return nums.slice(-k).concat(nums.slice(0, -k));\n}\nconst rot = rotateArray([1, 2, 3, 4, 5], 2);",
     "hints": [
       "Write:\nfunction rotateArray(nums, k) {\n  k = k % nums.length;\n  return nums.slice(-k).concat(nums.slice(0, -k));\n}\nconst rot = rotateArray([1, 2, 3, 4, 5], 2);"
@@ -921,7 +921,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function sortColors(nums) {\n  let low = 0, mid = 0, high = nums.length - 1;\n  while (mid <= high) {\n    if (nums[mid] === 0) { [nums[low], nums[mid]] = [nums[mid], nums[low]]; low++; mid++; }\n    else if (nums[mid] === 1) { mid++; }\n    else { [nums[mid], nums[high]] = [nums[high], nums[mid]]; high--; }\n  }\n  return nums;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function sortColors(nums) {\n  let low = 0, mid = 0, high = nums.length - 1;\n  while (mid <= high) {\n    if (nums[mid] === 0) { [nums[low], nums[mid]] = [nums[mid], nums[low]]; low++; mid++; }\n    else if (nums[mid] === 1) { mid++; }\n    else { [nums[mid], nums[high]] = [nums[high], nums[mid]]; high--; }\n  }\n  return nums;\n}\nconst sorted = sortColors([2, 0, 2, 1, 1, 0]);",
     "hints": [
       "Write:\nfunction sortColors(nums) {\n  let low = 0, mid = 0, high = nums.length - 1;\n  while (mid <= high) {\n    if (nums[mid] === 0) { [nums[low], nums[mid]] = [nums[mid], nums[low]]; low++; mid++; }\n    else if (nums[mid] === 1) { mid++; }\n    else { [nums[mid], nums[high]] = [nums[high], nums[mid]]; high--; }\n  }\n  return nums;\n}\nconst sorted = sortColors([2, 0, 2, 1, 1, 0]);"
@@ -963,7 +963,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function trap(height) {\n  let left = 0, right = height.length - 1;\n  let leftMax = 0, rightMax = 0, water = 0;\n  while (left < right) {\n    if (height[left] < height[right]) {\n      height[left] >= leftMax ? (leftMax = height[left]) : (water += leftMax - height[left]);\n      left++;\n    } else {\n      height[right] >= rightMax ? (rightMax = height[right]) : (water += rightMax - height[right]);\n      right--;\n    }\n  }\n  return water;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function trap(height) {\n  let left = 0, right = height.length - 1;\n  let leftMax = 0, rightMax = 0, water = 0;\n  while (left < right) {\n    if (height[left] < height[right]) {\n      height[left] >= leftMax ? (leftMax = height[left]) : (water += leftMax - height[left]);\n      left++;\n    } else {\n      height[right] >= rightMax ? (rightMax = height[right]) : (water += rightMax - height[right]);\n      right--;\n    }\n  }\n  return water;\n}\nconst trapped = trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]);",
     "hints": [
       "Write:\nfunction trap(height) {\n  let left = 0, right = height.length - 1;\n  let leftMax = 0, rightMax = 0, water = 0;\n  while (left < right) {\n    if (height[left] < height[right]) {\n      height[left] >= leftMax ? (leftMax = height[left]) : (water += leftMax - height[left]);\n      left++;\n    } else {\n      height[right] >= rightMax ? (rightMax = height[right]) : (water += rightMax - height[right]);\n      right--;\n    }\n  }\n  return water;\n}\nconst trapped = trap([0, 1, 0, 2, 1, 0, 1, 3, 2, 1, 2, 1]);"
@@ -1005,7 +1005,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function maxArea(height) {\n  let left = 0, right = height.length - 1, max = 0;\n  while (left < right) {\n    const current = Math.min(height[left], height[right]) * (right - left);\n    max = Math.max(max, current);\n    if (height[left] < height[right]) left++;\n    else right--;\n  }\n  return max;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function maxArea(height) {\n  let left = 0, right = height.length - 1, max = 0;\n  while (left < right) {\n    const current = Math.min(height[left], height[right]) * (right - left);\n    max = Math.max(max, current);\n    if (height[left] < height[right]) left++;\n    else right--;\n  }\n  return max;\n}\nconst area = maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);",
     "hints": [
       "Write:\nfunction maxArea(height) {\n  let left = 0, right = height.length - 1, max = 0;\n  while (left < right) {\n    const current = Math.min(height[left], height[right]) * (right - left);\n    max = Math.max(max, current);\n    if (height[left] < height[right]) left++;\n    else right--;\n  }\n  return max;\n}\nconst area = maxArea([1, 8, 6, 2, 5, 4, 8, 3, 7]);"
@@ -1047,7 +1047,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mergeSorted(nums1, m, nums2, n) {\n  let p1 = m - 1, p2 = n - 1, p = m + n - 1;\n  while (p2 >= 0) {\n    if (p1 >= 0 && nums1[p1] > nums2[p2]) { nums1[p] = nums1[p1]; p1--; }\n    else { nums1[p] = nums2[p2]; p2--; }\n    p--;\n  }\n  return nums1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function mergeSorted(nums1, m, nums2, n) {\n  let p1 = m - 1, p2 = n - 1, p = m + n - 1;\n  while (p2 >= 0) {\n    if (p1 >= 0 && nums1[p1] > nums2[p2]) { nums1[p] = nums1[p1]; p1--; }\n    else { nums1[p] = nums2[p2]; p2--; }\n    p--;\n  }\n  return nums1;\n}\nconst merged = mergeSorted([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3);",
     "hints": [
       "Write:\nfunction mergeSorted(nums1, m, nums2, n) {\n  let p1 = m - 1, p2 = n - 1, p = m + n - 1;\n  while (p2 >= 0) {\n    if (p1 >= 0 && nums1[p1] > nums2[p2]) { nums1[p] = nums1[p1]; p1--; }\n    else { nums1[p] = nums2[p2]; p2--; }\n    p--;\n  }\n  return nums1;\n}\nconst merged = mergeSorted([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3);"
@@ -1089,7 +1089,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function maxSubArray(nums) {\n  let maxSoFar = nums[0], currMax = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    currMax = Math.max(nums[i], currMax + nums[i]);\n    maxSoFar = Math.max(maxSoFar, currMax);\n  }\n  return maxSoFar;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function maxSubArray(nums) {\n  let maxSoFar = nums[0], currMax = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    currMax = Math.max(nums[i], currMax + nums[i]);\n    maxSoFar = Math.max(maxSoFar, currMax);\n  }\n  return maxSoFar;\n}\nconst maxSum = maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);",
     "hints": [
       "Write:\nfunction maxSubArray(nums) {\n  let maxSoFar = nums[0], currMax = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    currMax = Math.max(nums[i], currMax + nums[i]);\n    maxSoFar = Math.max(maxSoFar, currMax);\n  }\n  return maxSoFar;\n}\nconst maxSum = maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);"
@@ -1131,7 +1131,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function buildPrefixSum(arr) {\n  const prefix = [0];\n  for (let i = 0; i < arr.length; i++) prefix.push(prefix[i] + arr[i]);\n  return prefix;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function buildPrefixSum(arr) {\n  const prefix = [0];\n  for (let i = 0; i < arr.length; i++) prefix.push(prefix[i] + arr[i]);\n  return prefix;\n}\nconst pref = buildPrefixSum([1, 2, 3, 4]);",
     "hints": [
       "Write:\nfunction buildPrefixSum(arr) {\n  const prefix = [0];\n  for (let i = 0; i < arr.length; i++) prefix.push(prefix[i] + arr[i]);\n  return prefix;\n}\nconst pref = buildPrefixSum([1, 2, 3, 4]);"
@@ -1173,7 +1173,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rangeQuery(prefix, left, right) {\n  return prefix[right + 1] - prefix[left];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function rangeQuery(prefix, left, right) {\n  return prefix[right + 1] - prefix[left];\n}\nconst sum = rangeQuery([0, 1, 3, 6, 10], 1, 3);",
     "hints": [
       "Write:\nfunction rangeQuery(prefix, left, right) {\n  return prefix[right + 1] - prefix[left];\n}\nconst sum = rangeQuery([0, 1, 3, 6, 10], 1, 3);"
@@ -1215,7 +1215,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function subarraySum(nums, k) {\n  const map = new Map([[0, 1]]);\n  let sum = 0, count = 0;\n  for (const n of nums) {\n    sum += n;\n    if (map.has(sum - k)) count += map.get(sum - k);\n    map.set(sum, (map.get(sum) || 0) + 1);\n  }\n  return count;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function subarraySum(nums, k) {\n  const map = new Map([[0, 1]]);\n  let sum = 0, count = 0;\n  for (const n of nums) {\n    sum += n;\n    if (map.has(sum - k)) count += map.get(sum - k);\n    map.set(sum, (map.get(sum) || 0) + 1);\n  }\n  return count;\n}\nconst count = subarraySum([1, 1, 1], 2);",
     "hints": [
       "Write:\nfunction subarraySum(nums, k) {\n  const map = new Map([[0, 1]]);\n  let sum = 0, count = 0;\n  for (const n of nums) {\n    sum += n;\n    if (map.has(sum - k)) count += map.get(sum - k);\n    map.set(sum, (map.get(sum) || 0) + 1);\n  }\n  return count;\n}\nconst count = subarraySum([1, 1, 1], 2);"
@@ -1257,7 +1257,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isPalindrome(str) {\n  let l = 0, r = str.length - 1;\n  while (l < r) {\n    if (str[l] !== str[r]) return false;\n    l++; r--;\n  }\n  return true;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isPalindrome(str) {\n  let l = 0, r = str.length - 1;\n  while (l < r) {\n    if (str[l] !== str[r]) return false;\n    l++; r--;\n  }\n  return true;\n}\nconst palindrome = isPalindrome('racecar');",
     "hints": [
       "Write:\nfunction isPalindrome(str) {\n  let l = 0, r = str.length - 1;\n  while (l < r) {\n    if (str[l] !== str[r]) return false;\n    l++; r--;\n  }\n  return true;\n}\nconst palindrome = isPalindrome('racecar');"
@@ -1299,7 +1299,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function maxSumSubarray(arr, k) {\n  let sum = 0;\n  for (let i = 0; i < k; i++) sum += arr[i];\n  let max = sum;\n  for (let i = k; i < arr.length; i++) {\n    sum += arr[i] - arr[i - k];\n    max = Math.max(max, sum);\n  }\n  return max;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function maxSumSubarray(arr, k) {\n  let sum = 0;\n  for (let i = 0; i < k; i++) sum += arr[i];\n  let max = sum;\n  for (let i = k; i < arr.length; i++) {\n    sum += arr[i] - arr[i - k];\n    max = Math.max(max, sum);\n  }\n  return max;\n}\nconst max = maxSumSubarray([2, 1, 5, 1, 3, 2], 3);",
     "hints": [
       "Write:\nfunction maxSumSubarray(arr, k) {\n  let sum = 0;\n  for (let i = 0; i < k; i++) sum += arr[i];\n  let max = sum;\n  for (let i = k; i < arr.length; i++) {\n    sum += arr[i] - arr[i - k];\n    max = Math.max(max, sum);\n  }\n  return max;\n}\nconst max = maxSumSubarray([2, 1, 5, 1, 3, 2], 3);"
@@ -1341,7 +1341,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function lengthOfLongestSubstring(s) {\n  const seen = new Map();\n  let max = 0, left = 0;\n  for (let right = 0; right < s.length; right++) {\n    if (seen.has(s[right]) && seen.get(s[right]) >= left) {\n      left = seen.get(s[right]) + 1;\n    }\n    seen.set(s[right], right);\n    max = Math.max(max, right - left + 1);\n  }\n  return max;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function lengthOfLongestSubstring(s) {\n  const seen = new Map();\n  let max = 0, left = 0;\n  for (let right = 0; right < s.length; right++) {\n    if (seen.has(s[right]) && seen.get(s[right]) >= left) {\n      left = seen.get(s[right]) + 1;\n    }\n    seen.set(s[right], right);\n    max = Math.max(max, right - left + 1);\n  }\n  return max;\n}\nconst len = lengthOfLongestSubstring('abcabcbb');",
     "hints": [
       "Write:\nfunction lengthOfLongestSubstring(s) {\n  const seen = new Map();\n  let max = 0, left = 0;\n  for (let right = 0; right < s.length; right++) {\n    if (seen.has(s[right]) && seen.get(s[right]) >= left) {\n      left = seen.get(s[right]) + 1;\n    }\n    seen.set(s[right], right);\n    max = Math.max(max, right - left + 1);\n  }\n  return max;\n}\nconst len = lengthOfLongestSubstring('abcabcbb');"
@@ -1383,7 +1383,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function minSubArrayLen(target, nums) {\n  let left = 0, sum = 0, min = Infinity;\n  for (let right = 0; right < nums.length; right++) {\n    sum += nums[right];\n    while (sum >= target) {\n      min = Math.min(min, right - left + 1);\n      sum -= nums[left];\n      left++;\n    }\n  }\n  return min === Infinity ? 0 : min;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function minSubArrayLen(target, nums) {\n  let left = 0, sum = 0, min = Infinity;\n  for (let right = 0; right < nums.length; right++) {\n    sum += nums[right];\n    while (sum >= target) {\n      min = Math.min(min, right - left + 1);\n      sum -= nums[left];\n      left++;\n    }\n  }\n  return min === Infinity ? 0 : min;\n}\nconst minLen = minSubArrayLen(7, [2, 3, 1, 2, 4, 3]);",
     "hints": [
       "Write:\nfunction minSubArrayLen(target, nums) {\n  let left = 0, sum = 0, min = Infinity;\n  for (let right = 0; right < nums.length; right++) {\n    sum += nums[right];\n    while (sum >= target) {\n      min = Math.min(min, right - left + 1);\n      sum -= nums[left];\n      left++;\n    }\n  }\n  return min === Infinity ? 0 : min;\n}\nconst minLen = minSubArrayLen(7, [2, 3, 1, 2, 4, 3]);"
@@ -1425,7 +1425,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function maxSlidingWindow(nums, k) {\n  const res = [], deque = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (deque.length && deque[0] < i - k + 1) deque.shift();\n    while (deque.length && nums[deque[deque.length - 1]] < nums[i]) deque.pop();\n    deque.push(i);\n    if (i >= k - 1) res.push(nums[deque[0]]);\n  }\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function maxSlidingWindow(nums, k) {\n  const res = [], deque = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (deque.length && deque[0] < i - k + 1) deque.shift();\n    while (deque.length && nums[deque[deque.length - 1]] < nums[i]) deque.pop();\n    deque.push(i);\n    if (i >= k - 1) res.push(nums[deque[0]]);\n  }\n  return res;\n}\nconst maxes = maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3);",
     "hints": [
       "Write:\nfunction maxSlidingWindow(nums, k) {\n  const res = [], deque = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (deque.length && deque[0] < i - k + 1) deque.shift();\n    while (deque.length && nums[deque[deque.length - 1]] < nums[i]) deque.pop();\n    deque.push(i);\n    if (i >= k - 1) res.push(nums[deque[0]]);\n  }\n  return res;\n}\nconst maxes = maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], 3);"
@@ -1467,7 +1467,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simpleHash(key, bucketCount) {\n  let hash = 0;\n  for (let i = 0; i < key.length; i++) hash = (hash << 5) - hash + key.charCodeAt(i);\n  return Math.abs(hash) % bucketCount;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function simpleHash(key, bucketCount) {\n  let hash = 0;\n  for (let i = 0; i < key.length; i++) hash = (hash << 5) - hash + key.charCodeAt(i);\n  return Math.abs(hash) % bucketCount;\n}\nconst bucket = simpleHash('username', 16);",
     "hints": [
       "Write:\nfunction simpleHash(key, bucketCount) {\n  let hash = 0;\n  for (let i = 0; i < key.length; i++) hash = (hash << 5) - hash + key.charCodeAt(i);\n  return Math.abs(hash) % bucketCount;\n}\nconst bucket = simpleHash('username', 16);"
@@ -1509,7 +1509,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simulateChaining(bucket, key, val) {\n  bucket.push([key, val]);\n  return bucket;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function simulateChaining(bucket, key, val) {\n  bucket.push([key, val]);\n  return bucket;\n}\nconst b = simulateChaining([], 'k1', 'v1');",
     "hints": [
       "Write:\nfunction simulateChaining(bucket, key, val) {\n  bucket.push([key, val]);\n  return bucket;\n}\nconst b = simulateChaining([], 'k1', 'v1');"
@@ -1551,7 +1551,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mapPerformance(isColliding) {\n  return isColliding ? 'O(n) Degraded' : 'O(1) Average';\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function mapPerformance(isColliding) {\n  return isColliding ? 'O(n) Degraded' : 'O(1) Average';\n}\nconst perf = mapPerformance(false);",
     "hints": [
       "Write:\nfunction mapPerformance(isColliding) {\n  return isColliding ? 'O(n) Degraded' : 'O(1) Average';\n}\nconst perf = mapPerformance(false);"
@@ -1593,7 +1593,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function twoSum(nums, target) {\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) return [map.get(complement), i];\n    map.set(nums[i], i);\n  }\n  return null;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function twoSum(nums, target) {\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) return [map.get(complement), i];\n    map.set(nums[i], i);\n  }\n  return null;\n}\nconst pair = twoSum([2, 7, 11, 15], 9);",
     "hints": [
       "Write:\nfunction twoSum(nums, target) {\n  const map = new Map();\n  for (let i = 0; i < nums.length; i++) {\n    const complement = target - nums[i];\n    if (map.has(complement)) return [map.get(complement), i];\n    map.set(nums[i], i);\n  }\n  return null;\n}\nconst pair = twoSum([2, 7, 11, 15], 9);"
@@ -1635,7 +1635,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function groupAnagrams(strs) {\n  const map = new Map();\n  for (const s of strs) {\n    const key = s.split('').sort().join('');\n    if (!map.has(key)) map.set(key, []);\n    map.get(key).push(s);\n  }\n  return Array.from(map.values());\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function groupAnagrams(strs) {\n  const map = new Map();\n  for (const s of strs) {\n    const key = s.split('').sort().join('');\n    if (!map.has(key)) map.set(key, []);\n    map.get(key).push(s);\n  }\n  return Array.from(map.values());\n}\nconst groups = groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']);",
     "hints": [
       "Write:\nfunction groupAnagrams(strs) {\n  const map = new Map();\n  for (const s of strs) {\n    const key = s.split('').sort().join('');\n    if (!map.has(key)) map.set(key, []);\n    map.get(key).push(s);\n  }\n  return Array.from(map.values());\n}\nconst groups = groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']);"
@@ -1677,7 +1677,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function longestConsecutive(nums) {\n  const set = new Set(nums);\n  let max = 0;\n  for (const n of set) {\n    if (!set.has(n - 1)) {\n      let curr = n, streak = 1;\n      while (set.has(curr + 1)) { curr++; streak++; }\n      max = Math.max(max, streak);\n    }\n  }\n  return max;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function longestConsecutive(nums) {\n  const set = new Set(nums);\n  let max = 0;\n  for (const n of set) {\n    if (!set.has(n - 1)) {\n      let curr = n, streak = 1;\n      while (set.has(curr + 1)) { curr++; streak++; }\n      max = Math.max(max, streak);\n    }\n  }\n  return max;\n}\nconst seq = longestConsecutive([100, 4, 200, 1, 3, 2]);",
     "hints": [
       "Write:\nfunction longestConsecutive(nums) {\n  const set = new Set(nums);\n  let max = 0;\n  for (const n of set) {\n    if (!set.has(n - 1)) {\n      let curr = n, streak = 1;\n      while (set.has(curr + 1)) { curr++; streak++; }\n      max = Math.max(max, streak);\n    }\n  }\n  return max;\n}\nconst seq = longestConsecutive([100, 4, 200, 1, 3, 2]);"
@@ -1719,7 +1719,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function majorityElement(nums) {\n  let candidate = null, count = 0;\n  for (const num of nums) {\n    if (count === 0) candidate = num;\n    count += (num === candidate) ? 1 : -1;\n  }\n  return candidate;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function majorityElement(nums) {\n  let candidate = null, count = 0;\n  for (const num of nums) {\n    if (count === 0) candidate = num;\n    count += (num === candidate) ? 1 : -1;\n  }\n  return candidate;\n}\nconst maj = majorityElement([2, 2, 1, 1, 1, 2, 2]);",
     "hints": [
       "Write:\nfunction majorityElement(nums) {\n  let candidate = null, count = 0;\n  for (const num of nums) {\n    if (count === 0) candidate = num;\n    count += (num === candidate) ? 1 : -1;\n  }\n  return candidate;\n}\nconst maj = majorityElement([2, 2, 1, 1, 1, 2, 2]);"
@@ -1761,7 +1761,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function intersection(nums1, nums2) {\n  const set1 = new Set(nums1);\n  return [...new Set(nums2.filter(n => set1.has(n)))];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function intersection(nums1, nums2) {\n  const set1 = new Set(nums1);\n  return [...new Set(nums2.filter(n => set1.has(n)))];\n}\nconst inter = intersection([1, 2, 2, 1], [2, 2]);",
     "hints": [
       "Write:\nfunction intersection(nums1, nums2) {\n  const set1 = new Set(nums1);\n  return [...new Set(nums2.filter(n => set1.has(n)))];\n}\nconst inter = intersection([1, 2, 2, 1], [2, 2]);"
@@ -1803,7 +1803,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class LRUCache {\n  constructor(capacity) {\n    this.capacity = capacity;\n    this.map = new Map(); // In JS, Map preserves insertion order!\n  }\n  get(key) {\n    if (!this.map.has(key)) return -1;\n    const val = this.map.get(key);\n    this.map.delete(key);\n    this.map.set(key, val);\n    return val;\n  }\n  put(key, val) {\n    if (this.map.has(key)) this.map.delete(key);\n    else if (this.map.size >= this.capacity) this.map.delete(this.map.keys().next().value);\n    this.map.set(key, val);\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class LRUCache {\n  constructor(capacity) {\n    this.capacity = capacity;\n    this.map = new Map();\n  }\n  get(key) {\n    if (!this.map.has(key)) return -1;\n    const val = this.map.get(key);\n    this.map.delete(key);\n    this.map.set(key, val);\n    return val;\n  }\n  put(key, val) {\n    if (this.map.has(key)) this.map.delete(key);\n    else if (this.map.size >= this.capacity) this.map.delete(this.map.keys().next().value);\n    this.map.set(key, val);\n  }\n}\nconst lru = new LRUCache(2);\nlru.put(1, 10);\nlru.put(2, 20);\nconst v1 = lru.get(1);",
     "hints": [
       "Write:\nclass LRUCache {\n  constructor(capacity) {\n    this.capacity = capacity;\n    this.map = new Map();\n  }\n  get(key) {\n    if (!this.map.has(key)) return -1;\n    const val = this.map.get(key);\n    this.map.delete(key);\n    this.map.set(key, val);\n    return val;\n  }\n  put(key, val) {\n    if (this.map.has(key)) this.map.delete(key);\n    else if (this.map.size >= this.capacity) this.map.delete(this.map.keys().next().value);\n    this.map.set(key, val);\n  }\n}\nconst lru = new LRUCache(2);\nlru.put(1, 10);\nlru.put(2, 20);\nconst v1 = lru.get(1);"
@@ -1845,7 +1845,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function charFrequency(str) {\n  const freq = {};\n  for (const ch of str) freq[ch] = (freq[ch] || 0) + 1;\n  return freq;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function charFrequency(str) {\n  const freq = {};\n  for (const ch of str) freq[ch] = (freq[ch] || 0) + 1;\n  return freq;\n}\nconst f = charFrequency('devforge');",
     "hints": [
       "Write:\nfunction charFrequency(str) {\n  const freq = {};\n  for (const ch of str) freq[ch] = (freq[ch] || 0) + 1;\n  return freq;\n}\nconst f = charFrequency('devforge');"
@@ -1887,7 +1887,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function firstUniqChar(s) {\n  const map = new Map();\n  for (const ch of s) map.set(ch, (map.get(ch) || 0) + 1);\n  for (let i = 0; i < s.length; i++) if (map.get(s[i]) === 1) return i;\n  return -1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function firstUniqChar(s) {\n  const map = new Map();\n  for (const ch of s) map.set(ch, (map.get(ch) || 0) + 1);\n  for (let i = 0; i < s.length; i++) if (map.get(s[i]) === 1) return i;\n  return -1;\n}\nconst idx = firstUniqChar('leetcode');",
     "hints": [
       "Write:\nfunction firstUniqChar(s) {\n  const map = new Map();\n  for (const ch of s) map.set(ch, (map.get(ch) || 0) + 1);\n  for (let i = 0; i < s.length; i++) if (map.get(s[i]) === 1) return i;\n  return -1;\n}\nconst idx = firstUniqChar('leetcode');"
@@ -1929,7 +1929,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class ListNode {\n  constructor(val, next = null) {\n    this.val = val;\n    this.next = next;\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class ListNode {\n  constructor(val, next = null) {\n    this.val = val;\n    this.next = next;\n  }\n}\nconst n1 = new ListNode(10);\nconst n2 = new ListNode(20, n1);",
     "hints": [
       "Write:\nclass ListNode {\n  constructor(val, next = null) {\n    this.val = val;\n    this.next = next;\n  }\n}\nconst n1 = new ListNode(10);\nconst n2 = new ListNode(20, n1);"
@@ -1971,7 +1971,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function insertAtHead(head, val) {\n  return { val, next: head };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function insertAtHead(head, val) {\n  return { val, next: head };\n}\nconst h = insertAtHead(null, 5);",
     "hints": [
       "Write:\nfunction insertAtHead(head, val) {\n  return { val, next: head };\n}\nconst h = insertAtHead(null, 5);"
@@ -2013,7 +2013,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function listToArray(head) {\n  const arr = [];\n  let curr = head;\n  while (curr) { arr.push(curr.val); curr = curr.next; }\n  return arr;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function listToArray(head) {\n  const arr = [];\n  let curr = head;\n  while (curr) { arr.push(curr.val); curr = curr.next; }\n  return arr;\n}\nconst list = listToArray({ val: 1, next: { val: 2, next: null } });",
     "hints": [
       "Write:\nfunction listToArray(head) {\n  const arr = [];\n  let curr = head;\n  while (curr) { arr.push(curr.val); curr = curr.next; }\n  return arr;\n}\nconst list = listToArray({ val: 1, next: { val: 2, next: null } });"
@@ -2055,7 +2055,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function deleteNode(head, targetVal) {\n  if (!head) return null;\n  if (head.val === targetVal) return head.next;\n  let curr = head;\n  while (curr.next && curr.next.val !== targetVal) curr = curr.next;\n  if (curr.next) curr.next = curr.next.next;\n  return head;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function deleteNode(head, targetVal) {\n  if (!head) return null;\n  if (head.val === targetVal) return head.next;\n  let curr = head;\n  while (curr.next && curr.next.val !== targetVal) curr = curr.next;\n  if (curr.next) curr.next = curr.next.next;\n  return head;\n}\nconst head = deleteNode({ val: 1, next: { val: 2, next: { val: 3, next: null } } }, 2);",
     "hints": [
       "Write:\nfunction deleteNode(head, targetVal) {\n  if (!head) return null;\n  if (head.val === targetVal) return head.next;\n  let curr = head;\n  while (curr.next && curr.next.val !== targetVal) curr = curr.next;\n  if (curr.next) curr.next = curr.next.next;\n  return head;\n}\nconst head = deleteNode({ val: 1, next: { val: 2, next: { val: 3, next: null } } }, 2);"
@@ -2097,7 +2097,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class DoublyNode {\n  constructor(val) {\n    this.val = val;\n    this.prev = null;\n    this.next = null;\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class DoublyNode {\n  constructor(val) {\n    this.val = val;\n    this.prev = null;\n    this.next = null;\n  }\n}\nconst d1 = new DoublyNode(1);",
     "hints": [
       "Write:\nclass DoublyNode {\n  constructor(val) {\n    this.val = val;\n    this.prev = null;\n    this.next = null;\n  }\n}\nconst d1 = new DoublyNode(1);"
@@ -2139,7 +2139,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function reverseList(head) {\n  let prev = null, curr = head;\n  while (curr) {\n    const next = curr.next;\n    curr.next = prev;\n    prev = curr;\n    curr = next;\n  }\n  return prev;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function reverseList(head) {\n  let prev = null, curr = head;\n  while (curr) {\n    const next = curr.next;\n    curr.next = prev;\n    prev = curr;\n    curr = next;\n  }\n  return prev;\n}\nconst rev = reverseList({ val: 1, next: { val: 2, next: null } });",
     "hints": [
       "Write:\nfunction reverseList(head) {\n  let prev = null, curr = head;\n  while (curr) {\n    const next = curr.next;\n    curr.next = prev;\n    prev = curr;\n    curr = next;\n  }\n  return prev;\n}\nconst rev = reverseList({ val: 1, next: { val: 2, next: null } });"
@@ -2181,7 +2181,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function reverseRecursive(head) {\n  if (!head || !head.next) return head;\n  const newHead = reverseRecursive(head.next);\n  head.next.next = head;\n  head.next = null;\n  return newHead;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function reverseRecursive(head) {\n  if (!head || !head.next) return head;\n  const newHead = reverseRecursive(head.next);\n  head.next.next = head;\n  head.next = null;\n  return newHead;\n}\nconst rev = reverseRecursive({ val: 1, next: { val: 2, next: null } });",
     "hints": [
       "Write:\nfunction reverseRecursive(head) {\n  if (!head || !head.next) return head;\n  const newHead = reverseRecursive(head.next);\n  head.next.next = head;\n  head.next = null;\n  return newHead;\n}\nconst rev = reverseRecursive({ val: 1, next: { val: 2, next: null } });"
@@ -2223,7 +2223,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function findMiddle(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n  }\n  return slow;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function findMiddle(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n  }\n  return slow;\n}\nconst n4 = { val: 4, next: null };\nconst n3 = { val: 3, next: n4 };\nconst n2 = { val: 2, next: n3 };\nconst n1 = { val: 1, next: n2 };\nconst mid = findMiddle(n1);",
     "hints": [
       "Write:\nfunction findMiddle(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n  }\n  return slow;\n}\nconst n4 = { val: 4, next: null };\nconst n3 = { val: 3, next: n4 };\nconst n2 = { val: 2, next: n3 };\nconst n1 = { val: 1, next: n2 };\nconst mid = findMiddle(n1);"
@@ -2265,7 +2265,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function hasCycle(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n    if (slow === fast) return true;\n  }\n  return false;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function hasCycle(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n    if (slow === fast) return true;\n  }\n  return false;\n}\nconst cycle = hasCycle({ val: 1, next: null });",
     "hints": [
       "Write:\nfunction hasCycle(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next;\n    fast = fast.next.next;\n    if (slow === fast) return true;\n  }\n  return false;\n}\nconst cycle = hasCycle({ val: 1, next: null });"
@@ -2307,7 +2307,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function detectCycleStart(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next; fast = fast.next.next;\n    if (slow === fast) {\n      let p1 = head, p2 = slow;\n      while (p1 !== p2) { p1 = p1.next; p2 = p2.next; }\n      return p1;\n    }\n  }\n  return null;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function detectCycleStart(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next; fast = fast.next.next;\n    if (slow === fast) {\n      let p1 = head, p2 = slow;\n      while (p1 !== p2) { p1 = p1.next; p2 = p2.next; }\n      return p1;\n    }\n  }\n  return null;\n}\nconst start = detectCycleStart({ val: 1, next: null });",
     "hints": [
       "Write:\nfunction detectCycleStart(head) {\n  let slow = head, fast = head;\n  while (fast && fast.next) {\n    slow = slow.next; fast = fast.next.next;\n    if (slow === fast) {\n      let p1 = head, p2 = slow;\n      while (p1 !== p2) { p1 = p1.next; p2 = p2.next; }\n      return p1;\n    }\n  }\n  return null;\n}\nconst start = detectCycleStart({ val: 1, next: null });"
@@ -2349,7 +2349,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function removeNthFromEnd(head, n) {\n  const dummy = { next: head };\n  let fast = dummy, slow = dummy;\n  for (let i = 0; i <= n; i++) fast = fast.next;\n  while (fast) { fast = fast.next; slow = slow.next; }\n  slow.next = slow.next.next;\n  return dummy.next;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function removeNthFromEnd(head, n) {\n  const dummy = { next: head };\n  let fast = dummy, slow = dummy;\n  for (let i = 0; i <= n; i++) fast = fast.next;\n  while (fast) { fast = fast.next; slow = slow.next; }\n  slow.next = slow.next.next;\n  return dummy.next;\n}\nconst res = removeNthFromEnd({ val: 1, next: { val: 2, next: null } }, 1);",
     "hints": [
       "Write:\nfunction removeNthFromEnd(head, n) {\n  const dummy = { next: head };\n  let fast = dummy, slow = dummy;\n  for (let i = 0; i <= n; i++) fast = fast.next;\n  while (fast) { fast = fast.next; slow = slow.next; }\n  slow.next = slow.next.next;\n  return dummy.next;\n}\nconst res = removeNthFromEnd({ val: 1, next: { val: 2, next: null } }, 1);"
@@ -2391,7 +2391,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mergeTwoLists(l1, l2) {\n  const dummy = { val: 0, next: null };\n  let tail = dummy;\n  while (l1 && l2) {\n    if (l1.val <= l2.val) { tail.next = l1; l1 = l1.next; }\n    else { tail.next = l2; l2 = l2.next; }\n    tail = tail.next;\n  }\n  tail.next = l1 || l2;\n  return dummy.next;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function mergeTwoLists(l1, l2) {\n  const dummy = { val: 0, next: null };\n  let tail = dummy;\n  while (l1 && l2) {\n    if (l1.val <= l2.val) { tail.next = l1; l1 = l1.next; }\n    else { tail.next = l2; l2 = l2.next; }\n    tail = tail.next;\n  }\n  tail.next = l1 || l2;\n  return dummy.next;\n}\nconst m = mergeTwoLists({ val: 1, next: null }, { val: 2, next: null });",
     "hints": [
       "Write:\nfunction mergeTwoLists(l1, l2) {\n  const dummy = { val: 0, next: null };\n  let tail = dummy;\n  while (l1 && l2) {\n    if (l1.val <= l2.val) { tail.next = l1; l1 = l1.next; }\n    else { tail.next = l2; l2 = l2.next; }\n    tail = tail.next;\n  }\n  tail.next = l1 || l2;\n  return dummy.next;\n}\nconst m = mergeTwoLists({ val: 1, next: null }, { val: 2, next: null });"
@@ -2433,7 +2433,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createSentinel() {\n  return { val: -1, next: null };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function createSentinel() {\n  return { val: -1, next: null };\n}\nconst dummy = createSentinel();",
     "hints": [
       "Write:\nfunction createSentinel() {\n  return { val: -1, next: null };\n}\nconst dummy = createSentinel();"
@@ -2475,7 +2475,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function reorderListMock() {\n  return '1 -> N -> 2 -> N-1';\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function reorderListMock() {\n  return '1 -> N -> 2 -> N-1';\n}\nconst pat = reorderListMock();",
     "hints": [
       "Write:\nfunction reorderListMock() {\n  return '1 -> N -> 2 -> N-1';\n}\nconst pat = reorderListMock();"
@@ -2517,7 +2517,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isListPalindrome(head) {\n  return head ? true : false;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isListPalindrome(head) {\n  return head ? true : false;\n}\nconst ok = isListPalindrome({ val: 1, next: null });",
     "hints": [
       "Write:\nfunction isListPalindrome(head) {\n  return head ? true : false;\n}\nconst ok = isListPalindrome({ val: 1, next: null });"
@@ -2559,7 +2559,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class Stack {\n  constructor() { this.items = []; }\n  push(val) { this.items.push(val); }\n  pop() { return this.items.pop(); }\n  peek() { return this.items[this.items.length - 1]; }\n  isEmpty() { return this.items.length === 0; }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class Stack {\n  constructor() { this.items = []; }\n  push(val) { this.items.push(val); }\n  pop() { return this.items.pop(); }\n  peek() { return this.items[this.items.length - 1]; }\n  isEmpty() { return this.items.length === 0; }\n}\nconst s = new Stack();\ns.push(10); s.push(20);\nconst top = s.pop();",
     "hints": [
       "Write:\nclass Stack {\n  constructor() { this.items = []; }\n  push(val) { this.items.push(val); }\n  pop() { return this.items.pop(); }\n  peek() { return this.items[this.items.length - 1]; }\n  isEmpty() { return this.items.length === 0; }\n}\nconst s = new Stack();\ns.push(10); s.push(20);\nconst top = s.pop();"
@@ -2601,7 +2601,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isValidParentheses(s) {\n  const stack = [];\n  const map = { ')': '(', '}': '{', ']': '[' };\n  for (const ch of s) {\n    if (ch === '(' || ch === '{' || ch === '[') stack.push(ch);\n    else if (stack.pop() !== map[ch]) return false;\n  }\n  return stack.length === 0;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isValidParentheses(s) {\n  const stack = [];\n  const map = { ')': '(', '}': '{', ']': '[' };\n  for (const ch of s) {\n    if (ch === '(' || ch === '{' || ch === '[') stack.push(ch);\n    else if (stack.pop() !== map[ch]) return false;\n  }\n  return stack.length === 0;\n}\nconst valid = isValidParentheses('()[]{}');",
     "hints": [
       "Write:\nfunction isValidParentheses(s) {\n  const stack = [];\n  const map = { ')': '(', '}': '{', ']': '[' };\n  for (const ch of s) {\n    if (ch === '(' || ch === '{' || ch === '[') stack.push(ch);\n    else if (stack.pop() !== map[ch]) return false;\n  }\n  return stack.length === 0;\n}\nconst valid = isValidParentheses('()[]{}');"
@@ -2643,7 +2643,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class MinStack {\n  constructor() {\n    this.stack = [];\n    this.minStack = [];\n  }\n  push(val) {\n    this.stack.push(val);\n    const min = this.minStack.length ? Math.min(val, this.minStack[this.minStack.length - 1]) : val;\n    this.minStack.push(min);\n  }\n  pop() { this.minStack.pop(); return this.stack.pop(); }\n  getMin() { return this.minStack[this.minStack.length - 1]; }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class MinStack {\n  constructor() {\n    this.stack = [];\n    this.minStack = [];\n  }\n  push(val) {\n    this.stack.push(val);\n    const min = this.minStack.length ? Math.min(val, this.minStack[this.minStack.length - 1]) : val;\n    this.minStack.push(min);\n  }\n  pop() { this.minStack.pop(); return this.stack.pop(); }\n  getMin() { return this.minStack[this.minStack.length - 1]; }\n}\nconst ms = new MinStack();\nms.push(3); ms.push(5); ms.push(2);\nconst m = ms.getMin();",
     "hints": [
       "Write:\nclass MinStack {\n  constructor() {\n    this.stack = [];\n    this.minStack = [];\n  }\n  push(val) {\n    this.stack.push(val);\n    const min = this.minStack.length ? Math.min(val, this.minStack[this.minStack.length - 1]) : val;\n    this.minStack.push(min);\n  }\n  pop() { this.minStack.pop(); return this.stack.pop(); }\n  getMin() { return this.minStack[this.minStack.length - 1]; }\n}\nconst ms = new MinStack();\nms.push(3); ms.push(5); ms.push(2);\nconst m = ms.getMin();"
@@ -2685,7 +2685,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function evalRPN(tokens) {\n  const stack = [];\n  for (const t of tokens) {\n    if (['+', '-', '*', '/'].includes(t)) {\n      const b = stack.pop(), a = stack.pop();\n      if (t === '+') stack.push(a + b);\n      else if (t === '-') stack.push(a - b);\n      else if (t === '*') stack.push(a * b);\n      else stack.push(Math.trunc(a / b));\n    } else stack.push(Number(t));\n  }\n  return stack.pop();\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function evalRPN(tokens) {\n  const stack = [];\n  for (const t of tokens) {\n    if (['+', '-', '*', '/'].includes(t)) {\n      const b = stack.pop(), a = stack.pop();\n      if (t === '+') stack.push(a + b);\n      else if (t === '-') stack.push(a - b);\n      else if (t === '*') stack.push(a * b);\n      else stack.push(Math.trunc(a / b));\n    } else stack.push(Number(t));\n  }\n  return stack.pop();\n}\nconst res = evalRPN(['2', '1', '+', '3', '*']);",
     "hints": [
       "Write:\nfunction evalRPN(tokens) {\n  const stack = [];\n  for (const t of tokens) {\n    if (['+', '-', '*', '/'].includes(t)) {\n      const b = stack.pop(), a = stack.pop();\n      if (t === '+') stack.push(a + b);\n      else if (t === '-') stack.push(a - b);\n      else if (t === '*') stack.push(a * b);\n      else stack.push(Math.trunc(a / b));\n    } else stack.push(Number(t));\n  }\n  return stack.pop();\n}\nconst res = evalRPN(['2', '1', '+', '3', '*']);"
@@ -2727,7 +2727,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function dailyTemperatures(temps) {\n  const res = new Array(temps.length).fill(0);\n  const stack = []; // stores indices\n  for (let i = 0; i < temps.length; i++) {\n    while (stack.length && temps[i] > temps[stack[stack.length - 1]]) {\n      const prevIdx = stack.pop();\n      res[prevIdx] = i - prevIdx;\n    }\n    stack.push(i);\n  }\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function dailyTemperatures(temps) {\n  const res = new Array(temps.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temps.length; i++) {\n    while (stack.length && temps[i] > temps[stack[stack.length - 1]]) {\n      const prevIdx = stack.pop();\n      res[prevIdx] = i - prevIdx;\n    }\n    stack.push(i);\n  }\n  return res;\n}\nconst days = dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]);",
     "hints": [
       "Write:\nfunction dailyTemperatures(temps) {\n  const res = new Array(temps.length).fill(0);\n  const stack = [];\n  for (let i = 0; i < temps.length; i++) {\n    while (stack.length && temps[i] > temps[stack[stack.length - 1]]) {\n      const prevIdx = stack.pop();\n      res[prevIdx] = i - prevIdx;\n    }\n    stack.push(i);\n  }\n  return res;\n}\nconst days = dailyTemperatures([73, 74, 75, 71, 69, 72, 76, 73]);"
@@ -2769,7 +2769,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function nextGreaterElements(nums) {\n  const res = new Array(nums.length).fill(-1);\n  const stack = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (stack.length && nums[i] > nums[stack[stack.length - 1]]) {\n      res[stack.pop()] = nums[i];\n    }\n    stack.push(i);\n  }\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function nextGreaterElements(nums) {\n  const res = new Array(nums.length).fill(-1);\n  const stack = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (stack.length && nums[i] > nums[stack[stack.length - 1]]) {\n      res[stack.pop()] = nums[i];\n    }\n    stack.push(i);\n  }\n  return res;\n}\nconst nge = nextGreaterElements([4, 5, 2, 25]);",
     "hints": [
       "Write:\nfunction nextGreaterElements(nums) {\n  const res = new Array(nums.length).fill(-1);\n  const stack = [];\n  for (let i = 0; i < nums.length; i++) {\n    while (stack.length && nums[i] > nums[stack[stack.length - 1]]) {\n      res[stack.pop()] = nums[i];\n    }\n    stack.push(i);\n  }\n  return res;\n}\nconst nge = nextGreaterElements([4, 5, 2, 25]);"
@@ -2811,7 +2811,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function largestRectangleArea(heights) {\n  const stack = [-1];\n  let maxArea = 0;\n  for (let i = 0; i < heights.length; i++) {\n    while (stack.length > 1 && heights[i] < heights[stack[stack.length - 1]]) {\n      const h = heights[stack.pop()];\n      const w = i - stack[stack.length - 1] - 1;\n      maxArea = Math.max(maxArea, h * w);\n    }\n    stack.push(i);\n  }\n  while (stack.length > 1) {\n    const h = heights[stack.pop()];\n    const w = heights.length - stack[stack.length - 1] - 1;\n    maxArea = Math.max(maxArea, h * w);\n  }\n  return maxArea;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function largestRectangleArea(heights) {\n  const stack = [-1];\n  let maxArea = 0;\n  for (let i = 0; i < heights.length; i++) {\n    while (stack.length > 1 && heights[i] < heights[stack[stack.length - 1]]) {\n      const h = heights[stack.pop()];\n      const w = i - stack[stack.length - 1] - 1;\n      maxArea = Math.max(maxArea, h * w);\n    }\n    stack.push(i);\n  }\n  while (stack.length > 1) {\n    const h = heights[stack.pop()];\n    const w = heights.length - stack[stack.length - 1] - 1;\n    maxArea = Math.max(maxArea, h * w);\n  }\n  return maxArea;\n}\nconst area = largestRectangleArea([2, 1, 5, 6, 2, 3]);",
     "hints": [
       "Write:\nfunction largestRectangleArea(heights) {\n  const stack = [-1];\n  let maxArea = 0;\n  for (let i = 0; i < heights.length; i++) {\n    while (stack.length > 1 && heights[i] < heights[stack[stack.length - 1]]) {\n      const h = heights[stack.pop()];\n      const w = i - stack[stack.length - 1] - 1;\n      maxArea = Math.max(maxArea, h * w);\n    }\n    stack.push(i);\n  }\n  while (stack.length > 1) {\n    const h = heights[stack.pop()];\n    const w = heights.length - stack[stack.length - 1] - 1;\n    maxArea = Math.max(maxArea, h * w);\n  }\n  return maxArea;\n}\nconst area = largestRectangleArea([2, 1, 5, 6, 2, 3]);"
@@ -2853,7 +2853,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class Queue {\n  constructor() { this.items = []; }\n  enqueue(val) { this.items.push(val); }\n  dequeue() { return this.items.shift(); }\n  peek() { return this.items[0]; }\n  isEmpty() { return this.items.length === 0; }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class Queue {\n  constructor() { this.items = []; }\n  enqueue(val) { this.items.push(val); }\n  dequeue() { return this.items.shift(); }\n  peek() { return this.items[0]; }\n  isEmpty() { return this.items.length === 0; }\n}\nconst q = new Queue();\nq.enqueue(1); q.enqueue(2);\nconst first = q.dequeue();",
     "hints": [
       "Write:\nclass Queue {\n  constructor() { this.items = []; }\n  enqueue(val) { this.items.push(val); }\n  dequeue() { return this.items.shift(); }\n  peek() { return this.items[0]; }\n  isEmpty() { return this.items.length === 0; }\n}\nconst q = new Queue();\nq.enqueue(1); q.enqueue(2);\nconst first = q.dequeue();"
@@ -2895,7 +2895,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class CircularQueue {\n  constructor(k) {\n    this.queue = new Array(k);\n    this.head = 0;\n    this.tail = 0;\n    this.size = 0;\n    this.capacity = k;\n  }\n  enQueue(val) {\n    if (this.size === this.capacity) return false;\n    this.queue[this.tail] = val;\n    this.tail = (this.tail + 1) % this.capacity;\n    this.size++;\n    return true;\n  }\n  deQueue() {\n    if (this.size === 0) return false;\n    this.head = (this.head + 1) % this.capacity;\n    this.size--;\n    return true;\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class CircularQueue {\n  constructor(k) {\n    this.queue = new Array(k);\n    this.head = 0;\n    this.tail = 0;\n    this.size = 0;\n    this.capacity = k;\n  }\n  enQueue(val) {\n    if (this.size === this.capacity) return false;\n    this.queue[this.tail] = val;\n    this.tail = (this.tail + 1) % this.capacity;\n    this.size++;\n    return true;\n  }\n  deQueue() {\n    if (this.size === 0) return false;\n    this.head = (this.head + 1) % this.capacity;\n    this.size--;\n    return true;\n  }\n}\nconst cq = new CircularQueue(3);\ncq.enQueue(10); cq.enQueue(20);\ncq.deQueue();",
     "hints": [
       "Write:\nclass CircularQueue {\n  constructor(k) {\n    this.queue = new Array(k);\n    this.head = 0;\n    this.tail = 0;\n    this.size = 0;\n    this.capacity = k;\n  }\n  enQueue(val) {\n    if (this.size === this.capacity) return false;\n    this.queue[this.tail] = val;\n    this.tail = (this.tail + 1) % this.capacity;\n    this.size++;\n    return true;\n  }\n  deQueue() {\n    if (this.size === 0) return false;\n    this.head = (this.head + 1) % this.capacity;\n    this.size--;\n    return true;\n  }\n}\nconst cq = new CircularQueue(3);\ncq.enQueue(10); cq.enQueue(20);\ncq.deQueue();"
@@ -2937,7 +2937,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class MyQueue {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n  push(x) { this.inStack.push(x); }\n  pop() {\n    this.peek();\n    return this.outStack.pop();\n  }\n  peek() {\n    if (!this.outStack.length) {\n      while (this.inStack.length) this.outStack.push(this.inStack.pop());\n    }\n    return this.outStack[this.outStack.length - 1];\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class MyQueue {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n  push(x) { this.inStack.push(x); }\n  pop() {\n    this.peek();\n    return this.outStack.pop();\n  }\n  peek() {\n    if (!this.outStack.length) {\n      while (this.inStack.length) this.outStack.push(this.inStack.pop());\n    }\n    return this.outStack[this.outStack.length - 1];\n  }\n}\nconst q2 = new MyQueue();\nq2.push(1); q2.push(2);\nconst val = q2.pop();",
     "hints": [
       "Write:\nclass MyQueue {\n  constructor() {\n    this.inStack = [];\n    this.outStack = [];\n  }\n  push(x) { this.inStack.push(x); }\n  pop() {\n    this.peek();\n    return this.outStack.pop();\n  }\n  peek() {\n    if (!this.outStack.length) {\n      while (this.inStack.length) this.outStack.push(this.inStack.pop());\n    }\n    return this.outStack[this.outStack.length - 1];\n  }\n}\nconst q2 = new MyQueue();\nq2.push(1); q2.push(2);\nconst val = q2.pop();"
@@ -2979,7 +2979,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class DequeMock {\n  constructor() { this.items = []; }\n  addFront(v) { this.items.unshift(v); }\n  addBack(v) { this.items.push(v); }\n  removeFront() { return this.items.shift(); }\n  removeBack() { return this.items.pop(); }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class DequeMock {\n  constructor() { this.items = []; }\n  addFront(v) { this.items.unshift(v); }\n  addBack(v) { this.items.push(v); }\n  removeFront() { return this.items.shift(); }\n  removeBack() { return this.items.pop(); }\n}\nconst d = new DequeMock();\nd.addFront(1); d.addBack(2);\nconst f = d.removeFront();",
     "hints": [
       "Write:\nclass DequeMock {\n  constructor() { this.items = []; }\n  addFront(v) { this.items.unshift(v); }\n  addBack(v) { this.items.push(v); }\n  removeFront() { return this.items.shift(); }\n  removeBack() { return this.items.pop(); }\n}\nconst d = new DequeMock();\nd.addFront(1); d.addBack(2);\nconst f = d.removeFront();"
@@ -3021,7 +3021,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function simplifyPath(path) {\n  const stack = [];\n  for (const part of path.split('/')) {\n    if (part === '' || part === '.') continue;\n    if (part === '..') stack.pop();\n    else stack.push(part);\n  }\n  return '/' + stack.join('/');\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function simplifyPath(path) {\n  const stack = [];\n  for (const part of path.split('/')) {\n    if (part === '' || part === '.') continue;\n    if (part === '..') stack.pop();\n    else stack.push(part);\n  }\n  return '/' + stack.join('/');\n}\nconst canon = simplifyPath('/a/./b/../../c/');",
     "hints": [
       "Write:\nfunction simplifyPath(path) {\n  const stack = [];\n  for (const part of path.split('/')) {\n    if (part === '' || part === '.') continue;\n    if (part === '..') stack.pop();\n    else stack.push(part);\n  }\n  return '/' + stack.join('/');\n}\nconst canon = simplifyPath('/a/./b/../../c/');"
@@ -3063,7 +3063,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function decodeString(s) {\n  let numStack = [], strStack = [], currStr = '', currNum = 0;\n  for (const ch of s) {\n    if (!isNaN(ch)) currNum = currNum * 10 + Number(ch);\n    else if (ch === '[') {\n      numStack.push(currNum); strStack.push(currStr);\n      currStr = ''; currNum = 0;\n    } else if (ch === ']') {\n      currStr = strStack.pop() + currStr.repeat(numStack.pop());\n    } else currStr += ch;\n  }\n  return currStr;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function decodeString(s) {\n  let numStack = [], strStack = [], currStr = '', currNum = 0;\n  for (const ch of s) {\n    if (!isNaN(ch)) currNum = currNum * 10 + Number(ch);\n    else if (ch === '[') {\n      numStack.push(currNum); strStack.push(currStr);\n      currStr = ''; currNum = 0;\n    } else if (ch === ']') {\n      currStr = strStack.pop() + currStr.repeat(numStack.pop());\n    } else currStr += ch;\n  }\n  return currStr;\n}\nconst decoded = decodeString('3[a]2[bc]');",
     "hints": [
       "Write:\nfunction decodeString(s) {\n  let numStack = [], strStack = [], currStr = '', currNum = 0;\n  for (const ch of s) {\n    if (!isNaN(ch)) currNum = currNum * 10 + Number(ch);\n    else if (ch === '[') {\n      numStack.push(currNum); strStack.push(currStr);\n      currStr = ''; currNum = 0;\n    } else if (ch === ']') {\n      currStr = strStack.pop() + currStr.repeat(numStack.pop());\n    } else currStr += ch;\n  }\n  return currStr;\n}\nconst decoded = decodeString('3[a]2[bc]');"
@@ -3105,7 +3105,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function taskQueueSimulation(tasks) {\n  return { processed: tasks.length, status: 'DONE' };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function taskQueueSimulation(tasks) {\n  return { processed: tasks.length, status: 'DONE' };\n}\nconst res = taskQueueSimulation(['print', 'render']);",
     "hints": [
       "Write:\nfunction taskQueueSimulation(tasks) {\n  return { processed: tasks.length, status: 'DONE' };\n}\nconst res = taskQueueSimulation(['print', 'render']);"
@@ -3147,7 +3147,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isStackQueueReady() {\n  return true;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isStackQueueReady() {\n  return true;\n}\nconst ready = isStackQueueReady();",
     "hints": [
       "Write:\nfunction isStackQueueReady() {\n  return true;\n}\nconst ready = isStackQueueReady();"
@@ -3189,7 +3189,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function countdown(n, res = []) {\n  if (n <= 0) return res;\n  res.push(n);\n  return countdown(n - 1, res);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function countdown(n, res = []) {\n  if (n <= 0) return res;\n  res.push(n);\n  return countdown(n - 1, res);\n}\nconst count = countdown(3);",
     "hints": [
       "Write:\nfunction countdown(n, res = []) {\n  if (n <= 0) return res;\n  res.push(n);\n  return countdown(n - 1, res);\n}\nconst count = countdown(3);"
@@ -3231,7 +3231,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function fibMemo(n, memo = {}) {\n  if (n in memo) return memo[n];\n  if (n <= 1) return n;\n  return memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function fibMemo(n, memo = {}) {\n  if (n in memo) return memo[n];\n  if (n <= 1) return n;\n  return memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);\n}\nconst f = fibMemo(10);",
     "hints": [
       "Write:\nfunction fibMemo(n, memo = {}) {\n  if (n in memo) return memo[n];\n  if (n <= 1) return n;\n  return memo[n] = fibMemo(n - 1, memo) + fibMemo(n - 2, memo);\n}\nconst f = fibMemo(10);"
@@ -3273,7 +3273,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function backtrackingBlueprint() {\n  return ['CHOOSE', 'EXPLORE', 'UNCHOOSE'];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function backtrackingBlueprint() {\n  return ['CHOOSE', 'EXPLORE', 'UNCHOOSE'];\n}\nconst steps = backtrackingBlueprint();",
     "hints": [
       "Write:\nfunction backtrackingBlueprint() {\n  return ['CHOOSE', 'EXPLORE', 'UNCHOOSE'];\n}\nconst steps = backtrackingBlueprint();"
@@ -3315,7 +3315,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function subsets(nums) {\n  const res = [];\n  function backtrack(start, path) {\n    res.push([...path]);\n    for (let i = start; i < nums.length; i++) {\n      path.push(nums[i]);\n      backtrack(i + 1, path);\n      path.pop();\n    }\n  }\n  backtrack(0, []);\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function subsets(nums) {\n  const res = [];\n  function backtrack(start, path) {\n    res.push([...path]);\n    for (let i = start; i < nums.length; i++) {\n      path.push(nums[i]);\n      backtrack(i + 1, path);\n      path.pop();\n    }\n  }\n  backtrack(0, []);\n  return res;\n}\nconst pset = subsets([1, 2]);",
     "hints": [
       "Write:\nfunction subsets(nums) {\n  const res = [];\n  function backtrack(start, path) {\n    res.push([...path]);\n    for (let i = start; i < nums.length; i++) {\n      path.push(nums[i]);\n      backtrack(i + 1, path);\n      path.pop();\n    }\n  }\n  backtrack(0, []);\n  return res;\n}\nconst pset = subsets([1, 2]);"
@@ -3357,7 +3357,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function permute(nums) {\n  const res = [], used = new Array(nums.length).fill(false);\n  function backtrack(path) {\n    if (path.length === nums.length) { res.push([...path]); return; }\n    for (let i = 0; i < nums.length; i++) {\n      if (used[i]) continue;\n      used[i] = true; path.push(nums[i]);\n      backtrack(path);\n      path.pop(); used[i] = false;\n    }\n  }\n  backtrack([]);\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function permute(nums) {\n  const res = [], used = new Array(nums.length).fill(false);\n  function backtrack(path) {\n    if (path.length === nums.length) { res.push([...path]); return; }\n    for (let i = 0; i < nums.length; i++) {\n      if (used[i]) continue;\n      used[i] = true; path.push(nums[i]);\n      backtrack(path);\n      path.pop(); used[i] = false;\n    }\n  }\n  backtrack([]);\n  return res;\n}\nconst perms = permute([1, 2, 3]);",
     "hints": [
       "Write:\nfunction permute(nums) {\n  const res = [], used = new Array(nums.length).fill(false);\n  function backtrack(path) {\n    if (path.length === nums.length) { res.push([...path]); return; }\n    for (let i = 0; i < nums.length; i++) {\n      if (used[i]) continue;\n      used[i] = true; path.push(nums[i]);\n      backtrack(path);\n      path.pop(); used[i] = false;\n    }\n  }\n  backtrack([]);\n  return res;\n}\nconst perms = permute([1, 2, 3]);"
@@ -3399,7 +3399,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function combine(n, k) {\n  const res = [];\n  function backtrack(start, path) {\n    if (path.length === k) { res.push([...path]); return; }\n    for (let i = start; i <= n; i++) {\n      path.push(i);\n      backtrack(i + 1, path);\n      path.pop();\n    }\n  }\n  backtrack(1, []);\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function combine(n, k) {\n  const res = [];\n  function backtrack(start, path) {\n    if (path.length === k) { res.push([...path]); return; }\n    for (let i = start; i <= n; i++) {\n      path.push(i);\n      backtrack(i + 1, path);\n      path.pop();\n    }\n  }\n  backtrack(1, []);\n  return res;\n}\nconst combs = combine(4, 2);",
     "hints": [
       "Write:\nfunction combine(n, k) {\n  const res = [];\n  function backtrack(start, path) {\n    if (path.length === k) { res.push([...path]); return; }\n    for (let i = start; i <= n; i++) {\n      path.push(i);\n      backtrack(i + 1, path);\n      path.pop();\n    }\n  }\n  backtrack(1, []);\n  return res;\n}\nconst combs = combine(4, 2);"
@@ -3441,7 +3441,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function combinationSum(candidates, target) {\n  const res = [];\n  function backtrack(start, targetRemaining, path) {\n    if (targetRemaining === 0) { res.push([...path]); return; }\n    if (targetRemaining < 0) return;\n    for (let i = start; i < candidates.length; i++) {\n      path.push(candidates[i]);\n      backtrack(i, targetRemaining - candidates[i], path);\n      path.pop();\n    }\n  }\n  backtrack(0, target, []);\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function combinationSum(candidates, target) {\n  const res = [];\n  function backtrack(start, targetRemaining, path) {\n    if (targetRemaining === 0) { res.push([...path]); return; }\n    if (targetRemaining < 0) return;\n    for (let i = start; i < candidates.length; i++) {\n      path.push(candidates[i]);\n      backtrack(i, targetRemaining - candidates[i], path);\n      path.pop();\n    }\n  }\n  backtrack(0, target, []);\n  return res;\n}\nconst ways = combinationSum([2, 3, 6, 7], 7);",
     "hints": [
       "Write:\nfunction combinationSum(candidates, target) {\n  const res = [];\n  function backtrack(start, targetRemaining, path) {\n    if (targetRemaining === 0) { res.push([...path]); return; }\n    if (targetRemaining < 0) return;\n    for (let i = start; i < candidates.length; i++) {\n      path.push(candidates[i]);\n      backtrack(i, targetRemaining - candidates[i], path);\n      path.pop();\n    }\n  }\n  backtrack(0, target, []);\n  return res;\n}\nconst ways = combinationSum([2, 3, 6, 7], 7);"
@@ -3483,7 +3483,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function letterCombinations(digits) {\n  if (!digits) return [];\n  const phone = { '2': 'abc', '3': 'def' };\n  const res = [];\n  function backtrack(idx, path) {\n    if (idx === digits.length) { res.push(path); return; }\n    for (const letter of (phone[digits[idx]] || '')) backtrack(idx + 1, path + letter);\n  }\n  backtrack(0, '');\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function letterCombinations(digits) {\n  if (!digits) return [];\n  const phone = { '2': 'abc', '3': 'def' };\n  const res = [];\n  function backtrack(idx, path) {\n    if (idx === digits.length) { res.push(path); return; }\n    for (const letter of (phone[digits[idx]] || '')) backtrack(idx + 1, path + letter);\n  }\n  backtrack(0, '');\n  return res;\n}\nconst words = letterCombinations('23');",
     "hints": [
       "Write:\nfunction letterCombinations(digits) {\n  if (!digits) return [];\n  const phone = { '2': 'abc', '3': 'def' };\n  const res = [];\n  function backtrack(idx, path) {\n    if (idx === digits.length) { res.push(path); return; }\n    for (const letter of (phone[digits[idx]] || '')) backtrack(idx + 1, path + letter);\n  }\n  backtrack(0, '');\n  return res;\n}\nconst words = letterCombinations('23');"
@@ -3525,7 +3525,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function partitionPalindromes(s) {\n  const res = [];\n  function isPal(str, l, r) {\n    while (l < r) { if (str[l] !== str[r]) return false; l++; r--; }\n    return true;\n  }\n  function backtrack(start, path) {\n    if (start === s.length) { res.push([...path]); return; }\n    for (let end = start; end < s.length; end++) {\n      if (isPal(s, start, end)) {\n        path.push(s.slice(start, end + 1));\n        backtrack(end + 1, path);\n        path.pop();\n      }\n    }\n  }\n  backtrack(0, []);\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function partitionPalindromes(s) {\n  const res = [];\n  function isPal(str, l, r) {\n    while (l < r) { if (str[l] !== str[r]) return false; l++; r--; }\n    return true;\n  }\n  function backtrack(start, path) {\n    if (start === s.length) { res.push([...path]); return; }\n    for (let end = start; end < s.length; end++) {\n      if (isPal(s, start, end)) {\n        path.push(s.slice(start, end + 1));\n        backtrack(end + 1, path);\n        path.pop();\n      }\n    }\n  }\n  backtrack(0, []);\n  return res;\n}\nconst parts = partitionPalindromes('aab');",
     "hints": [
       "Write:\nfunction partitionPalindromes(s) {\n  const res = [];\n  function isPal(str, l, r) {\n    while (l < r) { if (str[l] !== str[r]) return false; l++; r--; }\n    return true;\n  }\n  function backtrack(start, path) {\n    if (start === s.length) { res.push([...path]); return; }\n    for (let end = start; end < s.length; end++) {\n      if (isPal(s, start, end)) {\n        path.push(s.slice(start, end + 1));\n        backtrack(end + 1, path);\n        path.pop();\n      }\n    }\n  }\n  backtrack(0, []);\n  return res;\n}\nconst parts = partitionPalindromes('aab');"
@@ -3567,7 +3567,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function existWord(board, word) {\n  const rows = board.length, cols = board[0].length;\n  function dfs(r, c, idx) {\n    if (idx === word.length) return true;\n    if (r < 0 || c < 0 || r >= rows || c >= cols || board[r][c] !== word[idx]) return false;\n    const temp = board[r][c];\n    board[r][c] = '#';\n    const found = dfs(r+1,c,idx+1) || dfs(r-1,c,idx+1) || dfs(r,c+1,idx+1) || dfs(r,c-1,idx+1);\n    board[r][c] = temp;\n    return found;\n  }\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) if (dfs(r, c, 0)) return true;\n  }\n  return false;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function existWord(board, word) {\n  const rows = board.length, cols = board[0].length;\n  function dfs(r, c, idx) {\n    if (idx === word.length) return true;\n    if (r < 0 || c < 0 || r >= rows || c >= cols || board[r][c] !== word[idx]) return false;\n    const temp = board[r][c];\n    board[r][c] = '#';\n    const found = dfs(r+1,c,idx+1) || dfs(r-1,c,idx+1) || dfs(r,c+1,idx+1) || dfs(r,c-1,idx+1);\n    board[r][c] = temp;\n    return found;\n  }\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) if (dfs(r, c, 0)) return true;\n  }\n  return false;\n}\nconst b = [['A','B'],['C','D']];\nconst found = existWord(b, 'AB');",
     "hints": [
       "Write:\nfunction existWord(board, word) {\n  const rows = board.length, cols = board[0].length;\n  function dfs(r, c, idx) {\n    if (idx === word.length) return true;\n    if (r < 0 || c < 0 || r >= rows || c >= cols || board[r][c] !== word[idx]) return false;\n    const temp = board[r][c];\n    board[r][c] = '#';\n    const found = dfs(r+1,c,idx+1) || dfs(r-1,c,idx+1) || dfs(r,c+1,idx+1) || dfs(r,c-1,idx+1);\n    board[r][c] = temp;\n    return found;\n  }\n  for (let r = 0; r < rows; r++) {\n    for (let c = 0; c < cols; c++) if (dfs(r, c, 0)) return true;\n  }\n  return false;\n}\nconst b = [['A','B'],['C','D']];\nconst found = existWord(b, 'AB');"
@@ -3609,7 +3609,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function generateParenthesis(n) {\n  const res = [];\n  function backtrack(open, close, str) {\n    if (str.length === n * 2) { res.push(str); return; }\n    if (open < n) backtrack(open + 1, close, str + '(');\n    if (close < open) backtrack(open, close + 1, str + ')');\n  }\n  backtrack(0, 0, '');\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function generateParenthesis(n) {\n  const res = [];\n  function backtrack(open, close, str) {\n    if (str.length === n * 2) { res.push(str); return; }\n    if (open < n) backtrack(open + 1, close, str + '(');\n    if (close < open) backtrack(open, close + 1, str + ')');\n  }\n  backtrack(0, 0, '');\n  return res;\n}\nconst parens = generateParenthesis(2);",
     "hints": [
       "Write:\nfunction generateParenthesis(n) {\n  const res = [];\n  function backtrack(open, close, str) {\n    if (str.length === n * 2) { res.push(str); return; }\n    if (open < n) backtrack(open + 1, close, str + '(');\n    if (close < open) backtrack(open, close + 1, str + ')');\n  }\n  backtrack(0, 0, '');\n  return res;\n}\nconst parens = generateParenthesis(2);"
@@ -3651,7 +3651,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function solveNQueensMock(n) {\n  return n === 4 ? 2 : 1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function solveNQueensMock(n) {\n  return n === 4 ? 2 : 1;\n}\nconst sols = solveNQueensMock(4);",
     "hints": [
       "Write:\nfunction solveNQueensMock(n) {\n  return n === 4 ? 2 : 1;\n}\nconst sols = solveNQueensMock(4);"
@@ -3693,7 +3693,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isValidSudokuMove(val) {\n  return val >= 1 && val <= 9;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isValidSudokuMove(val) {\n  return val >= 1 && val <= 9;\n}\nconst ok = isValidSudokuMove(5);",
     "hints": [
       "Write:\nfunction isValidSudokuMove(val) {\n  return val >= 1 && val <= 9;\n}\nconst ok = isValidSudokuMove(5);"
@@ -3735,7 +3735,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function pruneBranch(currentSum, target) {\n  return currentSum > target;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function pruneBranch(currentSum, target) {\n  return currentSum > target;\n}\nconst prune = pruneBranch(15, 10);",
     "hints": [
       "Write:\nfunction pruneBranch(currentSum, target) {\n  return currentSum > target;\n}\nconst prune = pruneBranch(15, 10);"
@@ -3777,7 +3777,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function restoreIpAddresses(s) {\n  return s.length >= 4 ? ['1.1.1.1'] : [];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function restoreIpAddresses(s) {\n  return s.length >= 4 ? ['1.1.1.1'] : [];\n}\nconst ips = restoreIpAddresses('1111');",
     "hints": [
       "Write:\nfunction restoreIpAddresses(s) {\n  return s.length >= 4 ? ['1.1.1.1'] : [];\n}\nconst ips = restoreIpAddresses('1111');"
@@ -3819,7 +3819,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class TreeNode {\n  constructor(val, left = null, right = null) {\n    this.val = val;\n    this.left = left;\n    this.right = right;\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class TreeNode {\n  constructor(val, left = null, right = null) {\n    this.val = val;\n    this.left = left;\n    this.right = right;\n  }\n}\nconst root = new TreeNode(1, new TreeNode(2), new TreeNode(3));",
     "hints": [
       "Write:\nclass TreeNode {\n  constructor(val, left = null, right = null) {\n    this.val = val;\n    this.left = left;\n    this.right = right;\n  }\n}\nconst root = new TreeNode(1, new TreeNode(2), new TreeNode(3));"
@@ -3861,7 +3861,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function preorderTraversal(root) {\n  if (!root) return [];\n  return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function preorderTraversal(root) {\n  if (!root) return [];\n  return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];\n}\nconst root = { val: 1, left: null, right: { val: 2, left: { val: 3, left: null, right: null }, right: null } };\nconst pre = preorderTraversal(root);",
     "hints": [
       "Write:\nfunction preorderTraversal(root) {\n  if (!root) return [];\n  return [root.val, ...preorderTraversal(root.left), ...preorderTraversal(root.right)];\n}\nconst root = { val: 1, left: null, right: { val: 2, left: { val: 3, left: null, right: null }, right: null } };\nconst pre = preorderTraversal(root);"
@@ -3903,7 +3903,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function inorderTraversal(root) {\n  if (!root) return [];\n  return [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function inorderTraversal(root) {\n  if (!root) return [];\n  return [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)];\n}\nconst root = { val: 2, left: { val: 1, left: null, right: null }, right: { val: 3, left: null, right: null } };\nconst inOrder = inorderTraversal(root);",
     "hints": [
       "Write:\nfunction inorderTraversal(root) {\n  if (!root) return [];\n  return [...inorderTraversal(root.left), root.val, ...inorderTraversal(root.right)];\n}\nconst root = { val: 2, left: { val: 1, left: null, right: null }, right: { val: 3, left: null, right: null } };\nconst inOrder = inorderTraversal(root);"
@@ -3945,7 +3945,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function postorderTraversal(root) {\n  if (!root) return [];\n  return [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function postorderTraversal(root) {\n  if (!root) return [];\n  return [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val];\n}\nconst root = { val: 1, left: { val: 2, left: null, right: null }, right: null };\nconst post = postorderTraversal(root);",
     "hints": [
       "Write:\nfunction postorderTraversal(root) {\n  if (!root) return [];\n  return [...postorderTraversal(root.left), ...postorderTraversal(root.right), root.val];\n}\nconst root = { val: 1, left: { val: 2, left: null, right: null }, right: null };\nconst post = postorderTraversal(root);"
@@ -3987,7 +3987,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function levelOrder(root) {\n  if (!root) return [];\n  const res = [], queue = [root];\n  while (queue.length) {\n    const levelSize = queue.length, level = [];\n    for (let i = 0; i < levelSize; i++) {\n      const node = queue.shift();\n      level.push(node.val);\n      if (node.left) queue.push(node.left);\n      if (node.right) queue.push(node.right);\n    }\n    res.push(level);\n  }\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function levelOrder(root) {\n  if (!root) return [];\n  const res = [], queue = [root];\n  while (queue.length) {\n    const levelSize = queue.length, level = [];\n    for (let i = 0; i < levelSize; i++) {\n      const node = queue.shift();\n      level.push(node.val);\n      if (node.left) queue.push(node.left);\n      if (node.right) queue.push(node.right);\n    }\n    res.push(level);\n  }\n  return res;\n}\nconst levels = levelOrder({ val: 3, left: { val: 9, left: null, right: null }, right: null });",
     "hints": [
       "Write:\nfunction levelOrder(root) {\n  if (!root) return [];\n  const res = [], queue = [root];\n  while (queue.length) {\n    const levelSize = queue.length, level = [];\n    for (let i = 0; i < levelSize; i++) {\n      const node = queue.shift();\n      level.push(node.val);\n      if (node.left) queue.push(node.left);\n      if (node.right) queue.push(node.right);\n    }\n    res.push(level);\n  }\n  return res;\n}\nconst levels = levelOrder({ val: 3, left: { val: 9, left: null, right: null }, right: null });"
@@ -4029,7 +4029,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function maxDepth(root) {\n  if (!root) return 0;\n  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function maxDepth(root) {\n  if (!root) return 0;\n  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n}\nconst depth = maxDepth({ val: 1, left: { val: 2, left: null, right: null }, right: null });",
     "hints": [
       "Write:\nfunction maxDepth(root) {\n  if (!root) return 0;\n  return 1 + Math.max(maxDepth(root.left), maxDepth(root.right));\n}\nconst depth = maxDepth({ val: 1, left: { val: 2, left: null, right: null }, right: null });"
@@ -4071,7 +4071,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function invertTree(root) {\n  if (!root) return null;\n  const temp = root.left;\n  root.left = invertTree(root.right);\n  root.right = invertTree(temp);\n  return root;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function invertTree(root) {\n  if (!root) return null;\n  const temp = root.left;\n  root.left = invertTree(root.right);\n  root.right = invertTree(temp);\n  return root;\n}\nconst inverted = invertTree({ val: 1, left: { val: 2, left: null, right: null }, right: { val: 3, left: null, right: null } });",
     "hints": [
       "Write:\nfunction invertTree(root) {\n  if (!root) return null;\n  const temp = root.left;\n  root.left = invertTree(root.right);\n  root.right = invertTree(temp);\n  return root;\n}\nconst inverted = invertTree({ val: 1, left: { val: 2, left: null, right: null }, right: { val: 3, left: null, right: null } });"
@@ -4113,7 +4113,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isSymmetric(root) {\n  if (!root) return true;\n  function isMirror(t1, t2) {\n    if (!t1 && !t2) return true;\n    if (!t1 || !t2 || t1.val !== t2.val) return false;\n    return isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);\n  }\n  return isMirror(root.left, root.right);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isSymmetric(root) {\n  if (!root) return true;\n  function isMirror(t1, t2) {\n    if (!t1 && !t2) return true;\n    if (!t1 || !t2 || t1.val !== t2.val) return false;\n    return isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);\n  }\n  return isMirror(root.left, root.right);\n}\nconst sym = isSymmetric({ val: 1, left: { val: 2, left: null, right: null }, right: { val: 2, left: null, right: null } });",
     "hints": [
       "Write:\nfunction isSymmetric(root) {\n  if (!root) return true;\n  function isMirror(t1, t2) {\n    if (!t1 && !t2) return true;\n    if (!t1 || !t2 || t1.val !== t2.val) return false;\n    return isMirror(t1.left, t2.right) && isMirror(t1.right, t2.left);\n  }\n  return isMirror(root.left, root.right);\n}\nconst sym = isSymmetric({ val: 1, left: { val: 2, left: null, right: null }, right: { val: 2, left: null, right: null } });"
@@ -4155,7 +4155,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function diameterOfBinaryTree(root) {\n  let diameter = 0;\n  function longestPath(node) {\n    if (!node) return 0;\n    const left = longestPath(node.left);\n    const right = longestPath(node.right);\n    diameter = Math.max(diameter, left + right);\n    return 1 + Math.max(left, right);\n  }\n  longestPath(root);\n  return diameter;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function diameterOfBinaryTree(root) {\n  let diameter = 0;\n  function longestPath(node) {\n    if (!node) return 0;\n    const left = longestPath(node.left);\n    const right = longestPath(node.right);\n    diameter = Math.max(diameter, left + right);\n    return 1 + Math.max(left, right);\n  }\n  longestPath(root);\n  return diameter;\n}\nconst d = diameterOfBinaryTree({ val: 1, left: { val: 2, left: null, right: null }, right: { val: 3, left: null, right: null } });",
     "hints": [
       "Write:\nfunction diameterOfBinaryTree(root) {\n  let diameter = 0;\n  function longestPath(node) {\n    if (!node) return 0;\n    const left = longestPath(node.left);\n    const right = longestPath(node.right);\n    diameter = Math.max(diameter, left + right);\n    return 1 + Math.max(left, right);\n  }\n  longestPath(root);\n  return diameter;\n}\nconst d = diameterOfBinaryTree({ val: 1, left: { val: 2, left: null, right: null }, right: { val: 3, left: null, right: null } });"
@@ -4197,7 +4197,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isBstProperty(leftVal, rootVal, rightVal) {\n  return leftVal < rootVal && rootVal < rightVal;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isBstProperty(leftVal, rootVal, rightVal) {\n  return leftVal < rootVal && rootVal < rightVal;\n}\nconst valid = isBstProperty(5, 10, 15);",
     "hints": [
       "Write:\nfunction isBstProperty(leftVal, rootVal, rightVal) {\n  return leftVal < rootVal && rootVal < rightVal;\n}\nconst valid = isBstProperty(5, 10, 15);"
@@ -4239,7 +4239,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function searchBST(root, val) {\n  if (!root || root.val === val) return root;\n  return val < root.val ? searchBST(root.left, val) : searchBST(root.right, val);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function searchBST(root, val) {\n  if (!root || root.val === val) return root;\n  return val < root.val ? searchBST(root.left, val) : searchBST(root.right, val);\n}\nconst found = searchBST({ val: 10, left: { val: 5, left: null, right: null }, right: null }, 5);",
     "hints": [
       "Write:\nfunction searchBST(root, val) {\n  if (!root || root.val === val) return root;\n  return val < root.val ? searchBST(root.left, val) : searchBST(root.right, val);\n}\nconst found = searchBST({ val: 10, left: { val: 5, left: null, right: null }, right: null }, 5);"
@@ -4281,7 +4281,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function insertIntoBST(root, val) {\n  if (!root) return { val, left: null, right: null };\n  if (val < root.val) root.left = insertIntoBST(root.left, val);\n  else root.right = insertIntoBST(root.right, val);\n  return root;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function insertIntoBST(root, val) {\n  if (!root) return { val, left: null, right: null };\n  if (val < root.val) root.left = insertIntoBST(root.left, val);\n  else root.right = insertIntoBST(root.right, val);\n  return root;\n}\nconst tree = insertIntoBST(null, 10);",
     "hints": [
       "Write:\nfunction insertIntoBST(root, val) {\n  if (!root) return { val, left: null, right: null };\n  if (val < root.val) root.left = insertIntoBST(root.left, val);\n  else root.right = insertIntoBST(root.right, val);\n  return root;\n}\nconst tree = insertIntoBST(null, 10);"
@@ -4323,7 +4323,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isValidBST(root, min = -Infinity, max = Infinity) {\n  if (!root) return true;\n  if (root.val <= min || root.val >= max) return false;\n  return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isValidBST(root, min = -Infinity, max = Infinity) {\n  if (!root) return true;\n  if (root.val <= min || root.val >= max) return false;\n  return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);\n}\nconst ok = isValidBST({ val: 2, left: { val: 1, left: null, right: null }, right: { val: 3, left: null, right: null } });",
     "hints": [
       "Write:\nfunction isValidBST(root, min = -Infinity, max = Infinity) {\n  if (!root) return true;\n  if (root.val <= min || root.val >= max) return false;\n  return isValidBST(root.left, min, root.val) && isValidBST(root.right, root.val, max);\n}\nconst ok = isValidBST({ val: 2, left: { val: 1, left: null, right: null }, right: { val: 3, left: null, right: null } });"
@@ -4365,7 +4365,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function lowestCommonAncestor(root, p, q) {\n  if (p < root.val && q < root.val) return lowestCommonAncestor(root.left, p, q);\n  if (p > root.val && q > root.val) return lowestCommonAncestor(root.right, p, q);\n  return root;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function lowestCommonAncestor(root, p, q) {\n  if (p < root.val && q < root.val) return lowestCommonAncestor(root.left, p, q);\n  if (p > root.val && q > root.val) return lowestCommonAncestor(root.right, p, q);\n  return root;\n}\nconst lca = lowestCommonAncestor({ val: 6, left: { val: 2 }, right: { val: 8 } }, 2, 8);",
     "hints": [
       "Write:\nfunction lowestCommonAncestor(root, p, q) {\n  if (p < root.val && q < root.val) return lowestCommonAncestor(root.left, p, q);\n  if (p > root.val && q > root.val) return lowestCommonAncestor(root.right, p, q);\n  return root;\n}\nconst lca = lowestCommonAncestor({ val: 6, left: { val: 2 }, right: { val: 8 } }, 2, 8);"
@@ -4407,7 +4407,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function checkBalancedBst() {\n  return { isBalanced: true, lookupCost: 'O(log n)' };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function checkBalancedBst() {\n  return { isBalanced: true, lookupCost: 'O(log n)' };\n}\nconst bst = checkBalancedBst();",
     "hints": [
       "Write:\nfunction checkBalancedBst() {\n  return { isBalanced: true, lookupCost: 'O(log n)' };\n}\nconst bst = checkBalancedBst();"
@@ -4449,7 +4449,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function getHeapIndices(i) {\n  return { parent: Math.floor((i - 1) / 2), left: 2 * i + 1, right: 2 * i + 2 };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function getHeapIndices(i) {\n  return { parent: Math.floor((i - 1) / 2), left: 2 * i + 1, right: 2 * i + 2 };\n}\nconst idx = getHeapIndices(0);",
     "hints": [
       "Write:\nfunction getHeapIndices(i) {\n  return { parent: Math.floor((i - 1) / 2), left: 2 * i + 1, right: 2 * i + 2 };\n}\nconst idx = getHeapIndices(0);"
@@ -4491,7 +4491,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function verifyMinHeap(parent, child) {\n  return parent <= child;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function verifyMinHeap(parent, child) {\n  return parent <= child;\n}\nconst ok = verifyMinHeap(5, 10);",
     "hints": [
       "Write:\nfunction verifyMinHeap(parent, child) {\n  return parent <= child;\n}\nconst ok = verifyMinHeap(5, 10);"
@@ -4533,7 +4533,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function bubbleUpMock(arr, i) {\n  let curr = i;\n  while (curr > 0) {\n    const parent = Math.floor((curr - 1) / 2);\n    if (arr[curr] < arr[parent]) { [arr[curr], arr[parent]] = [arr[parent], arr[curr]]; curr = parent; }\n    else break;\n  }\n  return arr;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function bubbleUpMock(arr, i) {\n  let curr = i;\n  while (curr > 0) {\n    const parent = Math.floor((curr - 1) / 2);\n    if (arr[curr] < arr[parent]) { [arr[curr], arr[parent]] = [arr[parent], arr[curr]]; curr = parent; }\n    else break;\n  }\n  return arr;\n}\nconst h = bubbleUpMock([10, 20, 5], 2);",
     "hints": [
       "Write:\nfunction bubbleUpMock(arr, i) {\n  let curr = i;\n  while (curr > 0) {\n    const parent = Math.floor((curr - 1) / 2);\n    if (arr[curr] < arr[parent]) { [arr[curr], arr[parent]] = [arr[parent], arr[curr]]; curr = parent; }\n    else break;\n  }\n  return arr;\n}\nconst h = bubbleUpMock([10, 20, 5], 2);"
@@ -4575,7 +4575,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function siftDownMock(arr) {\n  return arr.sort((a, b) => a - b);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function siftDownMock(arr) {\n  return arr.sort((a, b) => a - b);\n}\nconst s = siftDownMock([20, 5, 10]);",
     "hints": [
       "Write:\nfunction siftDownMock(arr) {\n  return arr.sort((a, b) => a - b);\n}\nconst s = siftDownMock([20, 5, 10]);"
@@ -4617,7 +4617,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function buildHeapCost(n) {\n  return `O(${n}) Linear`;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function buildHeapCost(n) {\n  return `O(${n}) Linear`;\n}\nconst cost = buildHeapCost('n');",
     "hints": [
       "Write:\nfunction buildHeapCost(n) {\n  return `O(${n}) Linear`;\n}\nconst cost = buildHeapCost('n');"
@@ -4659,7 +4659,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function heapSortMock(arr) {\n  return [...arr].sort((a, b) => a - b);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function heapSortMock(arr) {\n  return [...arr].sort((a, b) => a - b);\n}\nconst sorted = heapSortMock([4, 1, 3, 9, 7]);",
     "hints": [
       "Write:\nfunction heapSortMock(arr) {\n  return [...arr].sort((a, b) => a - b);\n}\nconst sorted = heapSortMock([4, 1, 3, 9, 7]);"
@@ -4701,7 +4701,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function findKthLargest(nums, k) {\n  return nums.sort((a, b) => b - a)[k - 1];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function findKthLargest(nums, k) {\n  return nums.sort((a, b) => b - a)[k - 1];\n}\nconst kth = findKthLargest([3, 2, 1, 5, 6, 4], 2);",
     "hints": [
       "Write:\nfunction findKthLargest(nums, k) {\n  return nums.sort((a, b) => b - a)[k - 1];\n}\nconst kth = findKthLargest([3, 2, 1, 5, 6, 4], 2);"
@@ -4743,7 +4743,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function topKFrequent(nums, k) {\n  const map = new Map();\n  for (const n of nums) map.set(n, (map.get(n) || 0) + 1);\n  return Array.from(map.entries()).sort((a, b) => b[1] - a[1]).slice(0, k).map(e => e[0]);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function topKFrequent(nums, k) {\n  const map = new Map();\n  for (const n of nums) map.set(n, (map.get(n) || 0) + 1);\n  return Array.from(map.entries()).sort((a, b) => b[1] - a[1]).slice(0, k).map(e => e[0]);\n}\nconst top = topKFrequent([1, 1, 1, 2, 2, 3], 2);",
     "hints": [
       "Write:\nfunction topKFrequent(nums, k) {\n  const map = new Map();\n  for (const n of nums) map.set(n, (map.get(n) || 0) + 1);\n  return Array.from(map.entries()).sort((a, b) => b[1] - a[1]).slice(0, k).map(e => e[0]);\n}\nconst top = topKFrequent([1, 1, 1, 2, 2, 3], 2);"
@@ -4785,7 +4785,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mergeKSortedMock(lists) {\n  return lists.flat().sort((a, b) => a - b);\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function mergeKSortedMock(lists) {\n  return lists.flat().sort((a, b) => a - b);\n}\nconst merged = mergeKSortedMock([[1, 4], [2, 5], [3, 6]]);",
     "hints": [
       "Write:\nfunction mergeKSortedMock(lists) {\n  return lists.flat().sort((a, b) => a - b);\n}\nconst merged = mergeKSortedMock([[1, 4], [2, 5], [3, 6]]);"
@@ -4827,7 +4827,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class MedianFinder {\n  constructor() {\n    this.nums = [];\n  }\n  addNum(num) {\n    this.nums.push(num);\n    this.nums.sort((a, b) => a - b);\n  }\n  findMedian() {\n    const mid = Math.floor(this.nums.length / 2);\n    return this.nums.length % 2 ? this.nums[mid] : (this.nums[mid - 1] + this.nums[mid]) / 2;\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class MedianFinder {\n  constructor() {\n    this.nums = [];\n  }\n  addNum(num) {\n    this.nums.push(num);\n    this.nums.sort((a, b) => a - b);\n  }\n  findMedian() {\n    const mid = Math.floor(this.nums.length / 2);\n    return this.nums.length % 2 ? this.nums[mid] : (this.nums[mid - 1] + this.nums[mid]) / 2;\n  }\n}\nconst mf = new MedianFinder();\nmf.addNum(1); mf.addNum(2); mf.addNum(3);\nconst med = mf.findMedian();",
     "hints": [
       "Write:\nclass MedianFinder {\n  constructor() {\n    this.nums = [];\n  }\n  addNum(num) {\n    this.nums.push(num);\n    this.nums.sort((a, b) => a - b);\n  }\n  findMedian() {\n    const mid = Math.floor(this.nums.length / 2);\n    return this.nums.length % 2 ? this.nums[mid] : (this.nums[mid - 1] + this.nums[mid]) / 2;\n  }\n}\nconst mf = new MedianFinder();\nmf.addNum(1); mf.addNum(2); mf.addNum(3);\nconst med = mf.findMedian();"
@@ -4869,7 +4869,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function leastIntervalMock(tasks, n) {\n  return tasks.length; // baseline\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function leastIntervalMock(tasks, n) {\n  return tasks.length;\n}\nconst time = leastIntervalMock(['A', 'A', 'A', 'B', 'B', 'B'], 2);",
     "hints": [
       "Write:\nfunction leastIntervalMock(tasks, n) {\n  return tasks.length;\n}\nconst time = leastIntervalMock(['A', 'A', 'A', 'B', 'B', 'B'], 2);"
@@ -4911,7 +4911,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function minCostConnectRopes(ropes) {\n  let cost = 0;\n  const sorted = [...ropes].sort((a, b) => a - b);\n  while (sorted.length > 1) {\n    const first = sorted.shift(), second = sorted.shift();\n    const sum = first + second;\n    cost += sum;\n    sorted.push(sum);\n    sorted.sort((a, b) => a - b);\n  }\n  return cost;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function minCostConnectRopes(ropes) {\n  let cost = 0;\n  const sorted = [...ropes].sort((a, b) => a - b);\n  while (sorted.length > 1) {\n    const first = sorted.shift(), second = sorted.shift();\n    const sum = first + second;\n    cost += sum;\n    sorted.push(sum);\n    sorted.sort((a, b) => a - b);\n  }\n  return cost;\n}\nconst total = minCostConnectRopes([8, 4, 6, 12]);",
     "hints": [
       "Write:\nfunction minCostConnectRopes(ropes) {\n  let cost = 0;\n  const sorted = [...ropes].sort((a, b) => a - b);\n  while (sorted.length > 1) {\n    const first = sorted.shift(), second = sorted.shift();\n    const sum = first + second;\n    cost += sum;\n    sorted.push(sum);\n    sorted.sort((a, b) => a - b);\n  }\n  return cost;\n}\nconst total = minCostConnectRopes([8, 4, 6, 12]);"
@@ -4953,7 +4953,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function compareHeapVsArray() {\n  return { heapInsert: 'O(log n)', arrayInsert: 'O(n)', heapPeek: 'O(1)', arrayPeek: 'O(1)' };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function compareHeapVsArray() {\n  return { heapInsert: 'O(log n)', arrayInsert: 'O(n)', heapPeek: 'O(1)', arrayPeek: 'O(1)' };\n}\nconst c = compareHeapVsArray();",
     "hints": [
       "Write:\nfunction compareHeapVsArray() {\n  return { heapInsert: 'O(log n)', arrayInsert: 'O(n)', heapPeek: 'O(1)', arrayPeek: 'O(1)' };\n}\nconst c = compareHeapVsArray();"
@@ -4995,7 +4995,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function compareByPriority(a, b) {\n  return a.priority - b.priority;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function compareByPriority(a, b) {\n  return a.priority - b.priority;\n}\nconst cmp = compareByPriority({ priority: 1 }, { priority: 2 });",
     "hints": [
       "Write:\nfunction compareByPriority(a, b) {\n  return a.priority - b.priority;\n}\nconst cmp = compareByPriority({ priority: 1 }, { priority: 2 });"
@@ -5037,7 +5037,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function priorityQueueSystem() {\n  return { isEngineReady: true };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function priorityQueueSystem() {\n  return { isEngineReady: true };\n}\nconst pq = priorityQueueSystem();",
     "hints": [
       "Write:\nfunction priorityQueueSystem() {\n  return { isEngineReady: true };\n}\nconst pq = priorityQueueSystem();"
@@ -5079,7 +5079,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createGraphRepresentation() {\n  return { vertices: ['A', 'B'], edges: [['A', 'B']] };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function createGraphRepresentation() {\n  return { vertices: ['A', 'B'], edges: [['A', 'B']] };\n}\nconst g = createGraphRepresentation();",
     "hints": [
       "Write:\nfunction createGraphRepresentation() {\n  return { vertices: ['A', 'B'], edges: [['A', 'B']] };\n}\nconst g = createGraphRepresentation();"
@@ -5121,7 +5121,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function buildAdjacencyList(edges) {\n  const adj = new Map();\n  for (const [u, v] of edges) {\n    if (!adj.has(u)) adj.set(u, []);\n    if (!adj.has(v)) adj.set(v, []);\n    adj.get(u).push(v);\n    adj.get(v).push(u);\n  }\n  return adj;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function buildAdjacencyList(edges) {\n  const adj = new Map();\n  for (const [u, v] of edges) {\n    if (!adj.has(u)) adj.set(u, []);\n    if (!adj.has(v)) adj.set(v, []);\n    adj.get(u).push(v);\n    adj.get(v).push(u);\n  }\n  return adj;\n}\nconst adj = buildAdjacencyList([['A', 'B']]);",
     "hints": [
       "Write:\nfunction buildAdjacencyList(edges) {\n  const adj = new Map();\n  for (const [u, v] of edges) {\n    if (!adj.has(u)) adj.set(u, []);\n    if (!adj.has(v)) adj.set(v, []);\n    adj.get(u).push(v);\n    adj.get(v).push(u);\n  }\n  return adj;\n}\nconst adj = buildAdjacencyList([['A', 'B']]);"
@@ -5163,7 +5163,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function createAdjacencyMatrix(size) {\n  return Array.from({ length: size }, () => new Array(size).fill(0));\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function createAdjacencyMatrix(size) {\n  return Array.from({ length: size }, () => new Array(size).fill(0));\n}\nconst m = createAdjacencyMatrix(3);",
     "hints": [
       "Write:\nfunction createAdjacencyMatrix(size) {\n  return Array.from({ length: size }, () => new Array(size).fill(0));\n}\nconst m = createAdjacencyMatrix(3);"
@@ -5205,7 +5205,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function bfsShortestPath(adj, start, target) {\n  const visited = new Set([start]), queue = [[start, 0]];\n  while (queue.length) {\n    const [node, dist] = queue.shift();\n    if (node === target) return dist;\n    for (const neighbor of (adj.get(node) || [])) {\n      if (!visited.has(neighbor)) {\n        visited.add(neighbor);\n        queue.push([neighbor, dist + 1]);\n      }\n    }\n  }\n  return -1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function bfsShortestPath(adj, start, target) {\n  const visited = new Set([start]), queue = [[start, 0]];\n  while (queue.length) {\n    const [node, dist] = queue.shift();\n    if (node === target) return dist;\n    for (const neighbor of (adj.get(node) || [])) {\n      if (!visited.has(neighbor)) {\n        visited.add(neighbor);\n        queue.push([neighbor, dist + 1]);\n      }\n    }\n  }\n  return -1;\n}\nconst map = new Map([['A', ['B']], ['B', ['C']], ['C', []]]);\nconst d = bfsShortestPath(map, 'A', 'C');",
     "hints": [
       "Write:\nfunction bfsShortestPath(adj, start, target) {\n  const visited = new Set([start]), queue = [[start, 0]];\n  while (queue.length) {\n    const [node, dist] = queue.shift();\n    if (node === target) return dist;\n    for (const neighbor of (adj.get(node) || [])) {\n      if (!visited.has(neighbor)) {\n        visited.add(neighbor);\n        queue.push([neighbor, dist + 1]);\n      }\n    }\n  }\n  return -1;\n}\nconst map = new Map([['A', ['B']], ['B', ['C']], ['C', []]]);\nconst d = bfsShortestPath(map, 'A', 'C');"
@@ -5247,7 +5247,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function dfsGraph(adj, start, visited = new Set()) {\n  visited.add(start);\n  for (const n of (adj.get(start) || [])) if (!visited.has(n)) dfsGraph(adj, n, visited);\n  return visited;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function dfsGraph(adj, start, visited = new Set()) {\n  visited.add(start);\n  for (const n of (adj.get(start) || [])) if (!visited.has(n)) dfsGraph(adj, n, visited);\n  return visited;\n}\nconst visited = dfsGraph(new Map([['A', ['B']], ['B', []]]), 'A');",
     "hints": [
       "Write:\nfunction dfsGraph(adj, start, visited = new Set()) {\n  visited.add(start);\n  for (const n of (adj.get(start) || [])) if (!visited.has(n)) dfsGraph(adj, n, visited);\n  return visited;\n}\nconst visited = dfsGraph(new Map([['A', ['B']], ['B', []]]), 'A');"
@@ -5289,7 +5289,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function numIslands(grid) {\n  if (!grid.length) return 0;\n  let count = 0;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] === '0') return;\n    grid[r][c] = '0';\n    dfs(r+1,c); dfs(r-1,c); dfs(r,c+1); dfs(r,c-1);\n  }\n  for (let r = 0; r < grid.length; r++) {\n    for (let c = 0; c < grid[0].length; c++) {\n      if (grid[r][c] === '1') { count++; dfs(r, c); }\n    }\n  }\n  return count;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function numIslands(grid) {\n  if (!grid.length) return 0;\n  let count = 0;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] === '0') return;\n    grid[r][c] = '0';\n    dfs(r+1,c); dfs(r-1,c); dfs(r,c+1); dfs(r,c-1);\n  }\n  for (let r = 0; r < grid.length; r++) {\n    for (let c = 0; c < grid[0].length; c++) {\n      if (grid[r][c] === '1') { count++; dfs(r, c); }\n    }\n  }\n  return count;\n}\nconst count = numIslands([['1', '1', '0'], ['0', '1', '0'], ['0', '0', '1']]);",
     "hints": [
       "Write:\nfunction numIslands(grid) {\n  if (!grid.length) return 0;\n  let count = 0;\n  function dfs(r, c) {\n    if (r < 0 || c < 0 || r >= grid.length || c >= grid[0].length || grid[r][c] === '0') return;\n    grid[r][c] = '0';\n    dfs(r+1,c); dfs(r-1,c); dfs(r,c+1); dfs(r,c-1);\n  }\n  for (let r = 0; r < grid.length; r++) {\n    for (let c = 0; c < grid[0].length; c++) {\n      if (grid[r][c] === '1') { count++; dfs(r, c); }\n    }\n  }\n  return count;\n}\nconst count = numIslands([['1', '1', '0'], ['0', '1', '0'], ['0', '0', '1']]);"
@@ -5331,7 +5331,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function hasCycleUndirected(adj, node, parent, visited = new Set()) {\n  visited.add(node);\n  for (const neighbor of (adj.get(node) || [])) {\n    if (!visited.has(neighbor)) {\n      if (hasCycleUndirected(adj, neighbor, node, visited)) return true;\n    } else if (neighbor !== parent) return true;\n  }\n  return false;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function hasCycleUndirected(adj, node, parent, visited = new Set()) {\n  visited.add(node);\n  for (const neighbor of (adj.get(node) || [])) {\n    if (!visited.has(neighbor)) {\n      if (hasCycleUndirected(adj, neighbor, node, visited)) return true;\n    } else if (neighbor !== parent) return true;\n  }\n  return false;\n}\nconst hasC = hasCycleUndirected(new Map([['A', ['B']], ['B', ['A']]]), 'A', null);",
     "hints": [
       "Write:\nfunction hasCycleUndirected(adj, node, parent, visited = new Set()) {\n  visited.add(node);\n  for (const neighbor of (adj.get(node) || [])) {\n    if (!visited.has(neighbor)) {\n      if (hasCycleUndirected(adj, neighbor, node, visited)) return true;\n    } else if (neighbor !== parent) return true;\n  }\n  return false;\n}\nconst hasC = hasCycleUndirected(new Map([['A', ['B']], ['B', ['A']]]), 'A', null);"
@@ -5373,7 +5373,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function hasCycleDirected(adj) {\n  const visited = new Map(); // 0 = unvisited, 1 = visiting, 2 = visited\n  function dfs(node) {\n    visited.set(node, 1);\n    for (const next of (adj.get(node) || [])) {\n      if (visited.get(next) === 1) return true;\n      if (!visited.has(next) && dfs(next)) return true;\n    }\n    visited.set(node, 2);\n    return false;\n  }\n  for (const node of adj.keys()) if (!visited.has(node) && dfs(node)) return true;\n  return false;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function hasCycleDirected(adj) {\n  const visited = new Map();\n  function dfs(node) {\n    visited.set(node, 1);\n    for (const next of (adj.get(node) || [])) {\n      if (visited.get(next) === 1) return true;\n      if (!visited.has(next) && dfs(next)) return true;\n    }\n    visited.set(node, 2);\n    return false;\n  }\n  for (const node of adj.keys()) if (!visited.has(node) && dfs(node)) return true;\n  return false;\n}\nconst cycle = hasCycleDirected(new Map([['A', ['B']], ['B', ['A']]]));",
     "hints": [
       "Write:\nfunction hasCycleDirected(adj) {\n  const visited = new Map();\n  function dfs(node) {\n    visited.set(node, 1);\n    for (const next of (adj.get(node) || [])) {\n      if (visited.get(next) === 1) return true;\n      if (!visited.has(next) && dfs(next)) return true;\n    }\n    visited.set(node, 2);\n    return false;\n  }\n  for (const node of adj.keys()) if (!visited.has(node) && dfs(node)) return true;\n  return false;\n}\nconst cycle = hasCycleDirected(new Map([['A', ['B']], ['B', ['A']]]));"
@@ -5415,7 +5415,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function topologicalSort(numCourses, prerequisites) {\n  const inDegree = new Array(numCourses).fill(0), adj = new Map();\n  for (const [u, v] of prerequisites) {\n    if (!adj.has(v)) adj.set(v, []);\n    adj.get(v).push(u); inDegree[u]++;\n  }\n  const queue = [], order = [];\n  for (let i = 0; i < numCourses; i++) if (inDegree[i] === 0) queue.push(i);\n  while (queue.length) {\n    const node = queue.shift(); order.push(node);\n    for (const next of (adj.get(node) || [])) {\n      inDegree[next]--;\n      if (inDegree[next] === 0) queue.push(next);\n    }\n  }\n  return order.length === numCourses ? order : [];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function topologicalSort(numCourses, prerequisites) {\n  const inDegree = new Array(numCourses).fill(0), adj = new Map();\n  for (const [u, v] of prerequisites) {\n    if (!adj.has(v)) adj.set(v, []);\n    adj.get(v).push(u); inDegree[u]++;\n  }\n  const queue = [], order = [];\n  for (let i = 0; i < numCourses; i++) if (inDegree[i] === 0) queue.push(i);\n  while (queue.length) {\n    const node = queue.shift(); order.push(node);\n    for (const next of (adj.get(node) || [])) {\n      inDegree[next]--;\n      if (inDegree[next] === 0) queue.push(next);\n    }\n  }\n  return order.length === numCourses ? order : [];\n}\nconst order = topologicalSort(2, [[1, 0]]);",
     "hints": [
       "Write:\nfunction topologicalSort(numCourses, prerequisites) {\n  const inDegree = new Array(numCourses).fill(0), adj = new Map();\n  for (const [u, v] of prerequisites) {\n    if (!adj.has(v)) adj.set(v, []);\n    adj.get(v).push(u); inDegree[u]++;\n  }\n  const queue = [], order = [];\n  for (let i = 0; i < numCourses; i++) if (inDegree[i] === 0) queue.push(i);\n  while (queue.length) {\n    const node = queue.shift(); order.push(node);\n    for (const next of (adj.get(node) || [])) {\n      inDegree[next]--;\n      if (inDegree[next] === 0) queue.push(next);\n    }\n  }\n  return order.length === numCourses ? order : [];\n}\nconst order = topologicalSort(2, [[1, 0]]);"
@@ -5457,7 +5457,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function canFinishCourses(num, prereqs) {\n  return topologicalSort(num, prereqs).length > 0;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function canFinishCourses(num, prereqs) {\n  return topologicalSort(num, prereqs).length > 0;\n}\nconst can = canFinishCourses(2, [[1, 0]]);",
     "hints": [
       "Write:\nfunction canFinishCourses(num, prereqs) {\n  return topologicalSort(num, prereqs).length > 0;\n}\nconst can = canFinishCourses(2, [[1, 0]]);"
@@ -5499,7 +5499,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function dijkstraMock(start, end) {\n  return { path: [start, end], cost: 15 };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function dijkstraMock(start, end) {\n  return { path: [start, end], cost: 15 };\n}\nconst route = dijkstraMock('NY', 'LA');",
     "hints": [
       "Write:\nfunction dijkstraMock(start, end) {\n  return { path: [start, end], cost: 15 };\n}\nconst route = dijkstraMock('NY', 'LA');"
@@ -5541,7 +5541,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function bellmanFordMock(hasNegativeCycle) {\n  return hasNegativeCycle ? 'Negative Cycle Detected' : 'Shortest Path Found';\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function bellmanFordMock(hasNegativeCycle) {\n  return hasNegativeCycle ? 'Negative Cycle Detected' : 'Shortest Path Found';\n}\nconst res = bellmanFordMock(false);",
     "hints": [
       "Write:\nfunction bellmanFordMock(hasNegativeCycle) {\n  return hasNegativeCycle ? 'Negative Cycle Detected' : 'Shortest Path Found';\n}\nconst res = bellmanFordMock(false);"
@@ -5583,7 +5583,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function mstCostMock(edgeCount) {\n  return { edgesUsed: edgeCount - 1, isAcyclic: true };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function mstCostMock(edgeCount) {\n  return { edgesUsed: edgeCount - 1, isAcyclic: true };\n}\nconst mst = mstCostMock(5);",
     "hints": [
       "Write:\nfunction mstCostMock(edgeCount) {\n  return { edgesUsed: edgeCount - 1, isAcyclic: true };\n}\nconst mst = mstCostMock(5);"
@@ -5625,7 +5625,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "class UnionFind {\n  constructor(n) {\n    this.parent = Array.from({ length: n }, (_, i) => i);\n  }\n  find(i) {\n    if (this.parent[i] === i) return i;\n    return this.parent[i] = this.find(this.parent[i]); // Path compression!\n  }\n  union(i, j) {\n    const rootI = this.find(i), rootJ = this.find(j);\n    if (rootI !== rootJ) { this.parent[rootI] = rootJ; return true; }\n    return false;\n  }\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "class UnionFind {\n  constructor(n) {\n    this.parent = Array.from({ length: n }, (_, i) => i);\n  }\n  find(i) {\n    if (this.parent[i] === i) return i;\n    return this.parent[i] = this.find(this.parent[i]);\n  }\n  union(i, j) {\n    const rootI = this.find(i), rootJ = this.find(j);\n    if (rootI !== rootJ) { this.parent[rootI] = rootJ; return true; }\n    return false;\n  }\n}\nconst uf = new UnionFind(4);\nuf.union(0, 1);\nconst connected = uf.find(0) === uf.find(1);",
     "hints": [
       "Write:\nclass UnionFind {\n  constructor(n) {\n    this.parent = Array.from({ length: n }, (_, i) => i);\n  }\n  find(i) {\n    if (this.parent[i] === i) return i;\n    return this.parent[i] = this.find(this.parent[i]);\n  }\n  union(i, j) {\n    const rootI = this.find(i), rootJ = this.find(j);\n    if (rootI !== rootJ) { this.parent[rootI] = rootJ; return true; }\n    return false;\n  }\n}\nconst uf = new UnionFind(4);\nuf.union(0, 1);\nconst connected = uf.find(0) === uf.find(1);"
@@ -5667,7 +5667,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function isBipartite(graph) {\n  const colors = new Map();\n  for (let i = 0; i < graph.length; i++) {\n    if (colors.has(i)) continue;\n    const queue = [i]; colors.set(i, 0);\n    while (queue.length) {\n      const curr = queue.shift();\n      for (const n of graph[curr]) {\n        if (!colors.has(n)) { colors.set(n, 1 - colors.get(curr)); queue.push(n); }\n        else if (colors.get(n) === colors.get(curr)) return false;\n      }\n    }\n  }\n  return true;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function isBipartite(graph) {\n  const colors = new Map();\n  for (let i = 0; i < graph.length; i++) {\n    if (colors.has(i)) continue;\n    const queue = [i]; colors.set(i, 0);\n    while (queue.length) {\n      const curr = queue.shift();\n      for (const n of graph[curr]) {\n        if (!colors.has(n)) { colors.set(n, 1 - colors.get(curr)); queue.push(n); }\n        else if (colors.get(n) === colors.get(curr)) return false;\n      }\n    }\n  }\n  return true;\n}\nconst b = isBipartite([[1, 3], [0, 2], [1, 3], [0, 2]]);",
     "hints": [
       "Write:\nfunction isBipartite(graph) {\n  const colors = new Map();\n  for (let i = 0; i < graph.length; i++) {\n    if (colors.has(i)) continue;\n    const queue = [i]; colors.set(i, 0);\n    while (queue.length) {\n      const curr = queue.shift();\n      for (const n of graph[curr]) {\n        if (!colors.has(n)) { colors.set(n, 1 - colors.get(curr)); queue.push(n); }\n        else if (colors.get(n) === colors.get(curr)) return false;\n      }\n    }\n  }\n  return true;\n}\nconst b = isBipartite([[1, 3], [0, 2], [1, 3], [0, 2]]);"
@@ -5709,7 +5709,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function ladderLengthMock(beginWord, endWord) {\n  return 5; // e.g. hit -> hot -> dot -> dog -> cog\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function ladderLengthMock(beginWord, endWord) {\n  return 5;\n}\nconst steps = ladderLengthMock('hit', 'cog');",
     "hints": [
       "Write:\nfunction ladderLengthMock(beginWord, endWord) {\n  return 5;\n}\nconst steps = ladderLengthMock('hit', 'cog');"
@@ -5751,7 +5751,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function cloneGraphMock() {\n  return { isDeepCopy: true, preservedCycles: true };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function cloneGraphMock() {\n  return { isDeepCopy: true, preservedCycles: true };\n}\nconst cloned = cloneGraphMock();",
     "hints": [
       "Write:\nfunction cloneGraphMock() {\n  return { isDeepCopy: true, preservedCycles: true };\n}\nconst cloned = cloneGraphMock();"
@@ -5793,7 +5793,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function graphRoutingEngine() {\n  return { status: 'OPTIMAL_PATH_FOUND' };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function graphRoutingEngine() {\n  return { status: 'OPTIMAL_PATH_FOUND' };\n}\nconst engine = graphRoutingEngine();",
     "hints": [
       "Write:\nfunction graphRoutingEngine() {\n  return { status: 'OPTIMAL_PATH_FOUND' };\n}\nconst engine = graphRoutingEngine();"
@@ -5835,7 +5835,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function dpConcept() {\n  return { overlappingSubproblems: true, optimalSubstructure: true };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function dpConcept() {\n  return { overlappingSubproblems: true, optimalSubstructure: true };\n}\nconst dp = dpConcept();",
     "hints": [
       "Write:\nfunction dpConcept() {\n  return { overlappingSubproblems: true, optimalSubstructure: true };\n}\nconst dp = dpConcept();"
@@ -5877,7 +5877,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function climbStairsTab(n) {\n  if (n <= 2) return n;\n  let a = 1, b = 2;\n  for (let i = 3; i <= n; i++) {\n    const temp = a + b; a = b; b = temp;\n  }\n  return b;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function climbStairsTab(n) {\n  if (n <= 2) return n;\n  let a = 1, b = 2;\n  for (let i = 3; i <= n; i++) {\n    const temp = a + b; a = b; b = temp;\n  }\n  return b;\n}\nconst ways = climbStairsTab(5);",
     "hints": [
       "Write:\nfunction climbStairsTab(n) {\n  if (n <= 2) return n;\n  let a = 1, b = 2;\n  for (let i = 3; i <= n; i++) {\n    const temp = a + b; a = b; b = temp;\n  }\n  return b;\n}\nconst ways = climbStairsTab(5);"
@@ -5919,7 +5919,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function climbStairs(n) {\n  const dp = [1, 1];\n  for (let i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];\n  return dp[n];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function climbStairs(n) {\n  const dp = [1, 1];\n  for (let i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];\n  return dp[n];\n}\nconst steps = climbStairs(4);",
     "hints": [
       "Write:\nfunction climbStairs(n) {\n  const dp = [1, 1];\n  for (let i = 2; i <= n; i++) dp[i] = dp[i - 1] + dp[i - 2];\n  return dp[n];\n}\nconst steps = climbStairs(4);"
@@ -5961,7 +5961,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function rob(nums) {\n  let prev = 0, curr = 0;\n  for (const n of nums) {\n    const temp = Math.max(curr, prev + n);\n    prev = curr; curr = temp;\n  }\n  return curr;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function rob(nums) {\n  let prev = 0, curr = 0;\n  for (const n of nums) {\n    const temp = Math.max(curr, prev + n);\n    prev = curr; curr = temp;\n  }\n  return curr;\n}\nconst maxLoot = rob([2, 7, 9, 3, 1]);",
     "hints": [
       "Write:\nfunction rob(nums) {\n  let prev = 0, curr = 0;\n  for (const n of nums) {\n    const temp = Math.max(curr, prev + n);\n    prev = curr; curr = temp;\n  }\n  return curr;\n}\nconst maxLoot = rob([2, 7, 9, 3, 1]);"
@@ -6003,7 +6003,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function coinChange(coins, amount) {\n  const dp = new Array(amount + 1).fill(Infinity);\n  dp[0] = 0;\n  for (let i = 1; i <= amount; i++) {\n    for (const c of coins) {\n      if (i - c >= 0) dp[i] = Math.min(dp[i], dp[i - c] + 1);\n    }\n  }\n  return dp[amount] === Infinity ? -1 : dp[amount];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function coinChange(coins, amount) {\n  const dp = new Array(amount + 1).fill(Infinity);\n  dp[0] = 0;\n  for (let i = 1; i <= amount; i++) {\n    for (const c of coins) {\n      if (i - c >= 0) dp[i] = Math.min(dp[i], dp[i - c] + 1);\n    }\n  }\n  return dp[amount] === Infinity ? -1 : dp[amount];\n}\nconst minCoins = coinChange([1, 2, 5], 11);",
     "hints": [
       "Write:\nfunction coinChange(coins, amount) {\n  const dp = new Array(amount + 1).fill(Infinity);\n  dp[0] = 0;\n  for (let i = 1; i <= amount; i++) {\n    for (const c of coins) {\n      if (i - c >= 0) dp[i] = Math.min(dp[i], dp[i - c] + 1);\n    }\n  }\n  return dp[amount] === Infinity ? -1 : dp[amount];\n}\nconst minCoins = coinChange([1, 2, 5], 11);"
@@ -6045,7 +6045,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function knapsack(weights, values, capacity) {\n  const dp = new Array(capacity + 1).fill(0);\n  for (let i = 0; i < weights.length; i++) {\n    for (let w = capacity; w >= weights[i]; w--) {\n      dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);\n    }\n  }\n  return dp[capacity];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function knapsack(weights, values, capacity) {\n  const dp = new Array(capacity + 1).fill(0);\n  for (let i = 0; i < weights.length; i++) {\n    for (let w = capacity; w >= weights[i]; w--) {\n      dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);\n    }\n  }\n  return dp[capacity];\n}\nconst maxVal = knapsack([2, 3, 4], [3, 4, 5], 5);",
     "hints": [
       "Write:\nfunction knapsack(weights, values, capacity) {\n  const dp = new Array(capacity + 1).fill(0);\n  for (let i = 0; i < weights.length; i++) {\n    for (let w = capacity; w >= weights[i]; w--) {\n      dp[w] = Math.max(dp[w], dp[w - weights[i]] + values[i]);\n    }\n  }\n  return dp[capacity];\n}\nconst maxVal = knapsack([2, 3, 4], [3, 4, 5], 5);"
@@ -6087,7 +6087,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function longestCommonSubsequence(text1, text2) {\n  const m = text1.length, n = text2.length;\n  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (text1[i - 1] === text2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n    }\n  }\n  return dp[m][n];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function longestCommonSubsequence(text1, text2) {\n  const m = text1.length, n = text2.length;\n  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (text1[i - 1] === text2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n    }\n  }\n  return dp[m][n];\n}\nconst lcs = longestCommonSubsequence('abcde', 'ace');",
     "hints": [
       "Write:\nfunction longestCommonSubsequence(text1, text2) {\n  const m = text1.length, n = text2.length;\n  const dp = Array.from({ length: m + 1 }, () => new Array(n + 1).fill(0));\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (text1[i - 1] === text2[j - 1]) dp[i][j] = dp[i - 1][j - 1] + 1;\n      else dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);\n    }\n  }\n  return dp[m][n];\n}\nconst lcs = longestCommonSubsequence('abcde', 'ace');"
@@ -6129,7 +6129,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function minDistance(w1, w2) {\n  const m = w1.length, n = w2.length;\n  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...new Array(n).fill(0)]);\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (w1[i - 1] === w2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n      else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n    }\n  }\n  return dp[m][n];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function minDistance(w1, w2) {\n  const m = w1.length, n = w2.length;\n  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...new Array(n).fill(0)]);\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (w1[i - 1] === w2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n      else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n    }\n  }\n  return dp[m][n];\n}\nconst dist = minDistance('horse', 'ros');",
     "hints": [
       "Write:\nfunction minDistance(w1, w2) {\n  const m = w1.length, n = w2.length;\n  const dp = Array.from({ length: m + 1 }, (_, i) => [i, ...new Array(n).fill(0)]);\n  for (let j = 0; j <= n; j++) dp[0][j] = j;\n  for (let i = 1; i <= m; i++) {\n    for (let j = 1; j <= n; j++) {\n      if (w1[i - 1] === w2[j - 1]) dp[i][j] = dp[i - 1][j - 1];\n      else dp[i][j] = 1 + Math.min(dp[i - 1][j], dp[i][j - 1], dp[i - 1][j - 1]);\n    }\n  }\n  return dp[m][n];\n}\nconst dist = minDistance('horse', 'ros');"
@@ -6171,7 +6171,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function lengthOfLIS(nums) {\n  if (!nums.length) return 0;\n  const dp = new Array(nums.length).fill(1);\n  let max = 1;\n  for (let i = 1; i < nums.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (nums[i] > nums[j]) dp[i] = Math.max(dp[i], dp[j] + 1);\n    }\n    max = Math.max(max, dp[i]);\n  }\n  return max;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function lengthOfLIS(nums) {\n  if (!nums.length) return 0;\n  const dp = new Array(nums.length).fill(1);\n  let max = 1;\n  for (let i = 1; i < nums.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (nums[i] > nums[j]) dp[i] = Math.max(dp[i], dp[j] + 1);\n    }\n    max = Math.max(max, dp[i]);\n  }\n  return max;\n}\nconst lis = lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]);",
     "hints": [
       "Write:\nfunction lengthOfLIS(nums) {\n  if (!nums.length) return 0;\n  const dp = new Array(nums.length).fill(1);\n  let max = 1;\n  for (let i = 1; i < nums.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (nums[i] > nums[j]) dp[i] = Math.max(dp[i], dp[j] + 1);\n    }\n    max = Math.max(max, dp[i]);\n  }\n  return max;\n}\nconst lis = lengthOfLIS([10, 9, 2, 5, 3, 7, 101, 18]);"
@@ -6213,7 +6213,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function canPartition(nums) {\n  const total = nums.reduce((a, b) => a + b, 0);\n  if (total % 2 !== 0) return false;\n  const target = total / 2;\n  const dp = new Array(target + 1).fill(false);\n  dp[0] = true;\n  for (const n of nums) {\n    for (let i = target; i >= n; i--) dp[i] = dp[i] || dp[i - n];\n  }\n  return dp[target];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function canPartition(nums) {\n  const total = nums.reduce((a, b) => a + b, 0);\n  if (total % 2 !== 0) return false;\n  const target = total / 2;\n  const dp = new Array(target + 1).fill(false);\n  dp[0] = true;\n  for (const n of nums) {\n    for (let i = target; i >= n; i--) dp[i] = dp[i] || dp[i - n];\n  }\n  return dp[target];\n}\nconst can = canPartition([1, 5, 11, 5]);",
     "hints": [
       "Write:\nfunction canPartition(nums) {\n  const total = nums.reduce((a, b) => a + b, 0);\n  if (total % 2 !== 0) return false;\n  const target = total / 2;\n  const dp = new Array(target + 1).fill(false);\n  dp[0] = true;\n  for (const n of nums) {\n    for (let i = target; i >= n; i--) dp[i] = dp[i] || dp[i - n];\n  }\n  return dp[target];\n}\nconst can = canPartition([1, 5, 11, 5]);"
@@ -6255,7 +6255,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function wordBreak(s, wordDict) {\n  const dict = new Set(wordDict);\n  const dp = new Array(s.length + 1).fill(false);\n  dp[0] = true;\n  for (let i = 1; i <= s.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (dp[j] && dict.has(s.slice(j, i))) { dp[i] = true; break; }\n    }\n  }\n  return dp[s.length];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function wordBreak(s, wordDict) {\n  const dict = new Set(wordDict);\n  const dp = new Array(s.length + 1).fill(false);\n  dp[0] = true;\n  for (let i = 1; i <= s.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (dp[j] && dict.has(s.slice(j, i))) { dp[i] = true; break; }\n    }\n  }\n  return dp[s.length];\n}\nconst wb = wordBreak('leetcode', ['leet', 'code']);",
     "hints": [
       "Write:\nfunction wordBreak(s, wordDict) {\n  const dict = new Set(wordDict);\n  const dp = new Array(s.length + 1).fill(false);\n  dp[0] = true;\n  for (let i = 1; i <= s.length; i++) {\n    for (let j = 0; j < i; j++) {\n      if (dp[j] && dict.has(s.slice(j, i))) { dp[i] = true; break; }\n    }\n  }\n  return dp[s.length];\n}\nconst wb = wordBreak('leetcode', ['leet', 'code']);"
@@ -6297,7 +6297,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function uniquePaths(m, n) {\n  const dp = new Array(n).fill(1);\n  for (let r = 1; r < m; r++) {\n    for (let c = 1; c < n; c++) dp[c] += dp[c - 1];\n  }\n  return dp[n - 1];\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function uniquePaths(m, n) {\n  const dp = new Array(n).fill(1);\n  for (let r = 1; r < m; r++) {\n    for (let c = 1; c < n; c++) dp[c] += dp[c - 1];\n  }\n  return dp[n - 1];\n}\nconst paths = uniquePaths(3, 7);",
     "hints": [
       "Write:\nfunction uniquePaths(m, n) {\n  const dp = new Array(n).fill(1);\n  for (let r = 1; r < m; r++) {\n    for (let c = 1; c < n; c++) dp[c] += dp[c - 1];\n  }\n  return dp[n - 1];\n}\nconst paths = uniquePaths(3, 7);"
@@ -6339,7 +6339,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function maxProduct(nums) {\n  let max = nums[0], min = nums[0], res = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    const n = nums[i];\n    if (n < 0) [max, min] = [min, max];\n    max = Math.max(n, max * n);\n    min = Math.min(n, min * n);\n    res = Math.max(res, max);\n  }\n  return res;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function maxProduct(nums) {\n  let max = nums[0], min = nums[0], res = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    const n = nums[i];\n    if (n < 0) [max, min] = [min, max];\n    max = Math.max(n, max * n);\n    min = Math.min(n, min * n);\n    res = Math.max(res, max);\n  }\n  return res;\n}\nconst prod = maxProduct([2, 3, -2, 4]);",
     "hints": [
       "Write:\nfunction maxProduct(nums) {\n  let max = nums[0], min = nums[0], res = nums[0];\n  for (let i = 1; i < nums.length; i++) {\n    const n = nums[i];\n    if (n < 0) [max, min] = [min, max];\n    max = Math.max(n, max * n);\n    min = Math.min(n, min * n);\n    res = Math.max(res, max);\n  }\n  return res;\n}\nconst prod = maxProduct([2, 3, -2, 4]);"
@@ -6381,7 +6381,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function binarySearchTemplate(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor(left + (right - left) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function binarySearchTemplate(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor(left + (right - left) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}\nconst idx = binarySearchTemplate([1, 3, 5, 7, 9], 7);",
     "hints": [
       "Write:\nfunction binarySearchTemplate(arr, target) {\n  let left = 0, right = arr.length - 1;\n  while (left <= right) {\n    const mid = Math.floor(left + (right - left) / 2);\n    if (arr[mid] === target) return mid;\n    if (arr[mid] < target) left = mid + 1;\n    else right = mid - 1;\n  }\n  return -1;\n}\nconst idx = binarySearchTemplate([1, 3, 5, 7, 9], 7);"
@@ -6423,7 +6423,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function searchRotated(nums, target) {\n  let l = 0, r = nums.length - 1;\n  while (l <= r) {\n    const mid = Math.floor((l + r) / 2);\n    if (nums[mid] === target) return mid;\n    if (nums[l] <= nums[mid]) {\n      if (nums[l] <= target && target < nums[mid]) r = mid - 1;\n      else l = mid + 1;\n    } else {\n      if (nums[mid] < target && target <= nums[r]) l = mid + 1;\n      else r = mid - 1;\n    }\n  }\n  return -1;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function searchRotated(nums, target) {\n  let l = 0, r = nums.length - 1;\n  while (l <= r) {\n    const mid = Math.floor((l + r) / 2);\n    if (nums[mid] === target) return mid;\n    if (nums[l] <= nums[mid]) {\n      if (nums[l] <= target && target < nums[mid]) r = mid - 1;\n      else l = mid + 1;\n    } else {\n      if (nums[mid] < target && target <= nums[r]) l = mid + 1;\n      else r = mid - 1;\n    }\n  }\n  return -1;\n}\nconst idx = searchRotated([4, 5, 6, 7, 0, 1, 2], 0);",
     "hints": [
       "Write:\nfunction searchRotated(nums, target) {\n  let l = 0, r = nums.length - 1;\n  while (l <= r) {\n    const mid = Math.floor((l + r) / 2);\n    if (nums[mid] === target) return mid;\n    if (nums[l] <= nums[mid]) {\n      if (nums[l] <= target && target < nums[mid]) r = mid - 1;\n      else l = mid + 1;\n    } else {\n      if (nums[mid] < target && target <= nums[r]) l = mid + 1;\n      else r = mid - 1;\n    }\n  }\n  return -1;\n}\nconst idx = searchRotated([4, 5, 6, 7, 0, 1, 2], 0);"
@@ -6465,7 +6465,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function findPeakElement(nums) {\n  let l = 0, r = nums.length - 1;\n  while (l < r) {\n    const mid = Math.floor((l + r) / 2);\n    if (nums[mid] > nums[mid + 1]) r = mid;\n    else l = mid + 1;\n  }\n  return l;\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function findPeakElement(nums) {\n  let l = 0, r = nums.length - 1;\n  while (l < r) {\n    const mid = Math.floor((l + r) / 2);\n    if (nums[mid] > nums[mid + 1]) r = mid;\n    else l = mid + 1;\n  }\n  return l;\n}\nconst peak = findPeakElement([1, 2, 3, 1]);",
     "hints": [
       "Write:\nfunction findPeakElement(nums) {\n  let l = 0, r = nums.length - 1;\n  while (l < r) {\n    const mid = Math.floor((l + r) / 2);\n    if (nums[mid] > nums[mid + 1]) r = mid;\n    else l = mid + 1;\n  }\n  return l;\n}\nconst peak = findPeakElement([1, 2, 3, 1]);"
@@ -6507,7 +6507,7 @@ export const DSA_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "function assembleDsaEngine() {\n  return { masteryLevel: 'Expert Tier 5', algorithmsCovered: 160 };\n}",
+    "initialCode": "// Step 1: Write your algorithm solution below\n// TODO: Write code below\n",
     "solutionCode": "function assembleDsaEngine() {\n  return { masteryLevel: 'Expert Tier 5', algorithmsCovered: 160 };\n}\nconst eng = assembleDsaEngine();",
     "hints": [
       "Write:\nfunction assembleDsaEngine() {\n  return { masteryLevel: 'Expert Tier 5', algorithmsCovered: 160 };\n}\nconst eng = assembleDsaEngine();"

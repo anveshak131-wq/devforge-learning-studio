@@ -30,7 +30,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `EXPLAIN QUERY PLAN SELECT * FROM users WHERE id = 1;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nEXPLAIN QUERY PLAN SELECT * FROM users WHERE id = 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "EXPLAIN QUERY PLAN SELECT * FROM users WHERE id = 1;\n",
     "hints": [
       "Execute: EXPLAIN QUERY PLAN SELECT * FROM users WHERE id = 1;"
@@ -73,7 +73,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `CREATE INDEX idx_user_email_name ON users(email, name); SELECT 1;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nCREATE INDEX idx_user_email_name ON users(email, name); SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE INDEX idx_user_email_name ON users(email, name); SELECT 1;\n",
     "hints": [
       "Execute: CREATE INDEX idx_user_email_name ON users(email, name); SELECT 1;"
@@ -116,7 +116,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `CREATE INDEX idx_user_name_nocase ON users(name COLLATE NOCASE); SELECT 1;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nCREATE INDEX idx_user_name_nocase ON users(name COLLATE NOCASE); SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE INDEX idx_user_name_nocase ON users(name COLLATE NOCASE); SELECT 1;\n",
     "hints": [
       "Execute: CREATE INDEX idx_user_name_nocase ON users(name COLLATE NOCASE); SELECT 1;"
@@ -159,7 +159,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `CREATE TEMP TABLE cache (key TEXT, val INT); SELECT * FROM cache;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nCREATE TEMP TABLE cache (key TEXT, val INT); SELECT * FROM cache;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TEMP TABLE cache (key TEXT, val INT); SELECT * FROM cache;\n",
     "hints": [
       "Execute: CREATE TEMP TABLE cache (key TEXT, val INT); SELECT * FROM cache;"
@@ -202,7 +202,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `PRAGMA table_info(users);`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nPRAGMA table_info(users);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "PRAGMA table_info(users);\n",
     "hints": [
       "Execute: PRAGMA table_info(users);"
@@ -245,7 +245,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `VACUUM; SELECT 1;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nVACUUM; SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "VACUUM; SELECT 1;\n",
     "hints": [
       "Execute: VACUUM; SELECT 1;"
@@ -288,7 +288,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `CREATE TRIGGER audit_user AFTER INSERT ON users BEGIN SELECT 1; END; SELECT 1;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nCREATE TRIGGER audit_user AFTER INSERT ON users BEGIN SELECT 1; END; SELECT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "CREATE TRIGGER audit_user AFTER INSERT ON users BEGIN SELECT 1; END; SELECT 1;\n",
     "hints": [
       "Execute: CREATE TRIGGER audit_user AFTER INSERT ON users BEGIN SELECT 1; END; SELECT 1;"
@@ -331,7 +331,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `SELECT * FROM users WHERE role = 'admin' AND country = 'USA';`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nSELECT * FROM users WHERE role = 'admin' AND country = 'USA';\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users WHERE role = 'admin' AND country = 'USA';\n",
     "hints": [
       "Execute: SELECT * FROM users WHERE role = 'admin' AND country = 'USA';"
@@ -374,7 +374,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `BEGIN TRANSACTION; UPDATE users SET role = 'member' WHERE id = 5; COMMIT; SELECT role FROM users WHERE id = 5;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nBEGIN TRANSACTION; UPDATE users SET role = 'member' WHERE id = 5; COMMIT; SELECT role FROM users WHERE id = 5;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "BEGIN TRANSACTION; UPDATE users SET role = 'member' WHERE id = 5; COMMIT; SELECT role FROM users WHERE id = 5;\n",
     "hints": [
       "Execute: BEGIN TRANSACTION; UPDATE users SET role = 'member' WHERE id = 5; COMMIT; SELECT role FROM users WHERE id = 5;"
@@ -417,7 +417,7 @@ export const sqlModule15Lessons: Lesson[] = [
       "Enter: `WITH Summary AS (SELECT country, COUNT(*) AS count FROM users GROUP BY country) SELECT * FROM Summary ORDER BY count DESC;`",
       "Click Check Answer to verify."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write query below:\nWITH Summary AS (SELECT country, COUNT(*) AS count FROM users GROUP BY country) SELECT * FROM Summary ORDER BY count DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH Summary AS (SELECT country, COUNT(*) AS count FROM users GROUP BY country) SELECT * FROM Summary ORDER BY count DESC;\n",
     "hints": [
       "Execute: WITH Summary AS (SELECT country, COUNT(*) AS count FROM users GROUP BY country) SELECT * FROM Summary ORDER BY count DESC;"

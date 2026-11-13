@@ -32,7 +32,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Create `let finalBill = bill - discount;`.",
       "Print `finalBill`."
     ],
-    "initialCode": "let bill = 40;\nlet discount = 10;\nlet finalBill = bill - discount;\nconsole.log(finalBill);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let bill = 40;\nlet discount = 10;\nlet finalBill = bill - discount;\nconsole.log(finalBill);\n",
     "hints": [
       "Subtract with `bill - discount`"
@@ -76,7 +76,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Create `let earnings = hours * rate;`.",
       "Print `earnings`."
     ],
-    "initialCode": "let hours = 8;\nlet rate = 25;\nlet earnings = hours * rate;\nconsole.log(earnings);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let hours = 8;\nlet rate = 25;\nlet earnings = hours * rate;\nconsole.log(earnings);\n",
     "hints": [
       "Multiply with `hours * rate`"
@@ -119,7 +119,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let rem = 17 % 5;`.",
       "Print `rem`."
     ],
-    "initialCode": "let rem = 17 % 5;\nconsole.log(rem);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let rem = 17 % 5;\nconsole.log(rem);\n",
     "hints": [
       "17 % 5 gives 2"
@@ -161,7 +161,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let cubed = 3 ** 3;`.",
       "Print `cubed`."
     ],
-    "initialCode": "let cubed = 3 ** 3;\nconsole.log(cubed);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let cubed = 3 ** 3;\nconsole.log(cubed);\n",
     "hints": [
       "Use `3 ** 3`"
@@ -203,7 +203,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Increment `streak++;`.",
       "Print `streak`."
     ],
-    "initialCode": "let streak = 5;\nstreak++;\nconsole.log(streak);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let streak = 5;\nstreak++;\nconsole.log(streak);\n",
     "hints": [
       "Write `streak++;`"
@@ -245,7 +245,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Subtract 25 using `hp -= 25;`.",
       "Print `hp`."
     ],
-    "initialCode": "let hp = 100;\nhp -= 25;\nconsole.log(hp);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let hp = 100;\nhp -= 25;\nconsole.log(hp);\n",
     "hints": [
       "Write `hp -= 25;`"
@@ -287,7 +287,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let isEqual = (100 === 100);`.",
       "Print `isEqual`."
     ],
-    "initialCode": "let isEqual = (100 === 100);\nconsole.log(isEqual);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isEqual = (100 === 100);\nconsole.log(isEqual);\n",
     "hints": [
       "Write `let isEqual = (100 === 100);`"
@@ -328,7 +328,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let isDifferent = (\"cat\" !== \"dog\");`.",
       "Print `isDifferent`."
     ],
-    "initialCode": "let isDifferent = (\"cat\" !== \"dog\");\nconsole.log(isDifferent);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isDifferent = (\"cat\" !== \"dog\");\nconsole.log(isDifferent);\n",
     "hints": [
       "Write `let isDifferent = (\"cat\" !== \"dog\");`"
@@ -371,7 +371,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let isGreater = 50 > 25;`.",
       "Print `isGreater`."
     ],
-    "initialCode": "let isGreater = 50 > 25;\nconsole.log(isGreater);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let isGreater = 50 > 25;\nconsole.log(isGreater);\n",
     "hints": [
       "Write `let isGreater = 50 > 25;`"
@@ -414,7 +414,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let roundedDown = Math.floor(8.7);`.",
       "Print `roundedDown`."
     ],
-    "initialCode": "let roundedDown = Math.floor(8.7);\nconsole.log(roundedDown);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let roundedDown = Math.floor(8.7);\nconsole.log(roundedDown);\n",
     "hints": [
       "Use `Math.floor(8.7)`"
@@ -456,7 +456,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let lowest = Math.min(40, 15, 80);`.",
       "Print `lowest`."
     ],
-    "initialCode": "let lowest = Math.min(40, 15, 80);\nconsole.log(lowest);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let lowest = Math.min(40, 15, 80);\nconsole.log(lowest);\n",
     "hints": [
       "Use `Math.min(40, 15, 80)`"
@@ -498,7 +498,7 @@ export const MODULE_2_LESSONS: Lesson[] = [
       "Assign to `let sum = Number(\"50\") + 50;`.",
       "Print `sum`."
     ],
-    "initialCode": "let sum = Number(\"50\") + 50;\nconsole.log(sum);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let sum = Number(\"50\") + 50;\nconsole.log(sum);\n",
     "hints": [
       "Write `let sum = Number(\"50\") + 50;`"

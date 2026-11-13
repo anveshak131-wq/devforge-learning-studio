@@ -30,7 +30,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class Account { public id: string; private balance: number; constructor(id: string, bal: number) { this.id = id; this.balance = bal; } getBalance() { return this.balance; } } let a = new Account('acc-1', 500);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Account { public id: string; private balance: number; constructor(id: string, bal: number) { this.id = id; this.balance = bal; } getBalance() { return this.balance; } } let a = new Account('acc-1', 500);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Account { public id: string; private balance: number; constructor(id: string, bal: number) { this.id = id; this.balance = bal; } getBalance() { return this.balance; } } let a = new Account('acc-1', 500);\n",
     "hints": [
       "Write: class Account { public id: string; private balance: number; constructor(id: string, bal: number) { this.id = id; this.balance = bal; } getBalance() { return this.balance; } } let a = new Account('acc-1', 500);"
@@ -72,7 +72,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class Employee { readonly joinedAt: Date = new Date(); constructor(public name: string) {} } let e = new Employee('Sarah');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Employee { readonly joinedAt: Date = new Date(); constructor(public name: string) {} } let e = new Employee('Sarah');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Employee { readonly joinedAt: Date = new Date(); constructor(public name: string) {} } let e = new Employee('Sarah');\n",
     "hints": [
       "Write: class Employee { readonly joinedAt: Date = new Date(); constructor(public name: string) {} } let e = new Employee('Sarah');"
@@ -114,7 +114,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class Vehicle { constructor(public brand: string, public year: number) {} } let v = new Vehicle('Honda', 2022);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Vehicle { constructor(public brand: string, public year: number) {} } let v = new Vehicle('Honda', 2022);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Vehicle { constructor(public brand: string, public year: number) {} } let v = new Vehicle('Honda', 2022);\n",
     "hints": [
       "Write: class Vehicle { constructor(public brand: string, public year: number) {} } let v = new Vehicle('Honda', 2022);"
@@ -156,7 +156,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class Temperature { private _c: number = 0; get fahrenheit(): number { return this._c * 1.8 + 32; } set celsius(val: number) { this._c = val; } } let t = new Temperature(); t.celsius = 25;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Temperature { private _c: number = 0; get fahrenheit(): number { return this._c * 1.8 + 32; } set celsius(val: number) { this._c = val; } } let t = new Temperature(); t.celsius = 25;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Temperature { private _c: number = 0; get fahrenheit(): number { return this._c * 1.8 + 32; } set celsius(val: number) { this._c = val; } } let t = new Temperature(); t.celsius = 25;\n",
     "hints": [
       "Write: class Temperature { private _c: number = 0; get fahrenheit(): number { return this._c * 1.8 + 32; } set celsius(val: number) { this._c = val; } } let t = new Temperature(); t.celsius = 25;"
@@ -198,7 +198,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class MathLibrary { static readonly PI: number = 3.14159; static square(n: number): number { return n * n; } } let sq = MathLibrary.square(5);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass MathLibrary { static readonly PI: number = 3.14159; static square(n: number): number { return n * n; } } let sq = MathLibrary.square(5);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class MathLibrary { static readonly PI: number = 3.14159; static square(n: number): number { return n * n; } } let sq = MathLibrary.square(5);\n",
     "hints": [
       "Write: class MathLibrary { static readonly PI: number = 3.14159; static square(n: number): number { return n * n; } } let sq = MathLibrary.square(5);"
@@ -240,7 +240,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `abstract class Animal { abstract makeSound(): string; move(): string { return 'moving'; } } class Dog extends Animal { makeSound() { return 'woof'; } } let d = new Dog();`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nabstract class Animal { abstract makeSound(): string; move(): string { return 'moving'; } } class Dog extends Animal { makeSound() { return 'woof'; } } let d = new Dog();\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "abstract class Animal { abstract makeSound(): string; move(): string { return 'moving'; } } class Dog extends Animal { makeSound() { return 'woof'; } } let d = new Dog();\n",
     "hints": [
       "Write: abstract class Animal { abstract makeSound(): string; move(): string { return 'moving'; } } class Dog extends Animal { makeSound() { return 'woof'; } } let d = new Dog();"
@@ -282,7 +282,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `interface Printable { print(): string; } class Report implements Printable { print() { return 'Report printed'; } } let r = new Report();`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Printable { print(): string; } class Report implements Printable { print() { return 'Report printed'; } } let r = new Report();\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Printable { print(): string; } class Report implements Printable { print() { return 'Report printed'; } } let r = new Report();\n",
     "hints": [
       "Write: interface Printable { print(): string; } class Report implements Printable { print() { return 'Report printed'; } } let r = new Report();"
@@ -324,7 +324,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class BaseUser { constructor(public username: string) {} } class AdminUser extends BaseUser { constructor(username: string, public level: number) { super(username); } } let admin = new AdminUser('super', 1);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass BaseUser { constructor(public username: string) {} } class AdminUser extends BaseUser { constructor(username: string, public level: number) { super(username); } } let admin = new AdminUser('super', 1);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class BaseUser { constructor(public username: string) {} } class AdminUser extends BaseUser { constructor(username: string, public level: number) { super(username); } } let admin = new AdminUser('super', 1);\n",
     "hints": [
       "Write: class BaseUser { constructor(public username: string) {} } class AdminUser extends BaseUser { constructor(username: string, public level: number) { super(username); } } let admin = new AdminUser('super', 1);"
@@ -366,7 +366,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `class Point { x = 0; y = 0; } let p: Point = { x: 10, y: 20 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nclass Point { x = 0; y = 0; } let p: Point = { x: 10, y: 20 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Point { x = 0; y = 0; } let p: Point = { x: 10, y: 20 };\n",
     "hints": [
       "Write: class Point { x = 0; y = 0; } let p: Point = { x: 10, y: 20 };"
@@ -408,7 +408,7 @@ export const tsModule12Lessons: Lesson[] = [
       "Enter the code: `abstract class BaseEntity { constructor(readonly id: string) {} } class UserEntity extends BaseEntity { constructor(id: string, public email: string) { super(id); } } let u = new UserEntity('u-1', 'test@corp.io');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nabstract class BaseEntity { constructor(readonly id: string) {} } class UserEntity extends BaseEntity { constructor(id: string, public email: string) { super(id); } } let u = new UserEntity('u-1', 'test@corp.io');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "abstract class BaseEntity { constructor(readonly id: string) {} } class UserEntity extends BaseEntity { constructor(id: string, public email: string) { super(id); } } let u = new UserEntity('u-1', 'test@corp.io');\n",
     "hints": [
       "Write: abstract class BaseEntity { constructor(readonly id: string) {} } class UserEntity extends BaseEntity { constructor(id: string, public email: string) { super(id); } } let u = new UserEntity('u-1', 'test@corp.io');"

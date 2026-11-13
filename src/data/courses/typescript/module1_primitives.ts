@@ -30,7 +30,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let username: string = 'Alex'; let age: number = 28; let isOnline: boolean = true;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet username: string = 'Alex'; let age: number = 28; let isOnline: boolean = true;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let username: string = 'Alex'; let age: number = 28; let isOnline: boolean = true;\n",
     "hints": [
       "Write: let username: string = 'Alex'; let age: number = 28; let isOnline: boolean = true;"
@@ -72,7 +72,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let count = 42; let message = 'hello';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet count = 42; let message = 'hello';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let count = 42; let message = 'hello';\n",
     "hints": [
       "Write: let count = 42; let message = 'hello';"
@@ -114,7 +114,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let flexible: any = 10; flexible = 'now a string';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet flexible: any = 10; flexible = 'now a string';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let flexible: any = 10; flexible = 'now a string';\n",
     "hints": [
       "Write: let flexible: any = 10; flexible = 'now a string';"
@@ -156,7 +156,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let input: unknown = 'secure'; let strLength = typeof input === 'string' ? input.length : 0;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet input: unknown = 'secure'; let strLength = typeof input === 'string' ? input.length : 0;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let input: unknown = 'secure'; let strLength = typeof input === 'string' ? input.length : 0;\n",
     "hints": [
       "Write: let input: unknown = 'secure'; let strLength = typeof input === 'string' ? input.length : 0;"
@@ -198,7 +198,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `function logMessage(msg: string): void { console.log(msg); } logMessage('Saved');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction logMessage(msg: string): void { console.log(msg); } logMessage('Saved');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function logMessage(msg: string): void { console.log(msg); } logMessage('Saved');\n",
     "hints": [
       "Write: function logMessage(msg: string): void { console.log(msg); } logMessage('Saved');"
@@ -240,7 +240,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let emptyVal: string | null = null; emptyVal = 'Filled';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet emptyVal: string | null = null; emptyVal = 'Filled';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let emptyVal: string | null = null; emptyVal = 'Filled';\n",
     "hints": [
       "Write: let emptyVal: string | null = null; emptyVal = 'Filled';"
@@ -282,7 +282,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let role: 'admin' | 'user' = 'admin';`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet role: 'admin' | 'user' = 'admin';\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let role: 'admin' | 'user' = 'admin';\n",
     "hints": [
       "Write: let role: 'admin' | 'user' = 'admin';"
@@ -324,7 +324,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `function fail(msg: string): never { throw new Error(msg); }`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction fail(msg: string): never { throw new Error(msg); }\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function fail(msg: string): never { throw new Error(msg); }\n",
     "hints": [
       "Write: function fail(msg: string): never { throw new Error(msg); }"
@@ -366,7 +366,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let bigNum: bigint = 9007199254740991n;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet bigNum: bigint = 9007199254740991n;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let bigNum: bigint = 9007199254740991n;\n",
     "hints": [
       "Write: let bigNum: bigint = 9007199254740991n;"
@@ -408,7 +408,7 @@ export const tsModule1Lessons: Lesson[] = [
       "Enter the code: `let host: string = 'localhost'; let port: number = 8080; let ssl: boolean = true;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet host: string = 'localhost'; let port: number = 8080; let ssl: boolean = true;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let host: string = 'localhost'; let port: number = 8080; let ssl: boolean = true;\n",
     "hints": [
       "Write: let host: string = 'localhost'; let port: number = 8080; let ssl: boolean = true;"

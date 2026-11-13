@@ -30,7 +30,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `let user: { id: number; name: string } = { id: 1, name: 'Alice' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nlet user: { id: number; name: string } = { id: 1, name: 'Alice' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "let user: { id: number; name: string } = { id: 1, name: 'Alice' };\n",
     "hints": [
       "Write: let user: { id: number; name: string } = { id: 1, name: 'Alice' };"
@@ -72,7 +72,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `type Product = { id: string; price: number }; let item: Product = { id: 'p1', price: 99 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Product = { id: string; price: number }; let item: Product = { id: 'p1', price: 99 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Product = { id: string; price: number }; let item: Product = { id: 'p1', price: 99 };\n",
     "hints": [
       "Write: type Product = { id: string; price: number }; let item: Product = { id: 'p1', price: 99 };"
@@ -114,7 +114,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface Customer { name: string; email: string; } let c: Customer = { name: 'Dan', email: 'd@test.com' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Customer { name: string; email: string; } let c: Customer = { name: 'Dan', email: 'd@test.com' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Customer { name: string; email: string; } let c: Customer = { name: 'Dan', email: 'd@test.com' };\n",
     "hints": [
       "Write: interface Customer { name: string; email: string; } let c: Customer = { name: 'Dan', email: 'd@test.com' };"
@@ -156,7 +156,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface Profile { username: string; bio?: string; } let p: Profile = { username: 'coder' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Profile { username: string; bio?: string; } let p: Profile = { username: 'coder' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Profile { username: string; bio?: string; } let p: Profile = { username: 'coder' };\n",
     "hints": [
       "Write: interface Profile { username: string; bio?: string; } let p: Profile = { username: 'coder' };"
@@ -198,7 +198,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface Config { readonly apiKey: string; } let cfg: Config = { apiKey: 'secret-xyz' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Config { readonly apiKey: string; } let cfg: Config = { apiKey: 'secret-xyz' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Config { readonly apiKey: string; } let cfg: Config = { apiKey: 'secret-xyz' };\n",
     "hints": [
       "Write: interface Config { readonly apiKey: string; } let cfg: Config = { apiKey: 'secret-xyz' };"
@@ -240,7 +240,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface BaseEntity { id: number; } interface UserEntity extends BaseEntity { name: string; } let u: UserEntity = { id: 10, name: 'Leo' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface BaseEntity { id: number; } interface UserEntity extends BaseEntity { name: string; } let u: UserEntity = { id: 10, name: 'Leo' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface BaseEntity { id: number; } interface UserEntity extends BaseEntity { name: string; } let u: UserEntity = { id: 10, name: 'Leo' };\n",
     "hints": [
       "Write: interface BaseEntity { id: number; } interface UserEntity extends BaseEntity { name: string; } let u: UserEntity = { id: 10, name: 'Leo' };"
@@ -282,7 +282,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface CanWalk { walk(): string; } interface CanFly { fly(): string; } interface Superhero extends CanWalk, CanFly {} let hero: Superhero = { walk: () => 'walking', fly: () => 'flying' };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface CanWalk { walk(): string; } interface CanFly { fly(): string; } interface Superhero extends CanWalk, CanFly {} let hero: Superhero = { walk: () => 'walking', fly: () => 'flying' };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface CanWalk { walk(): string; } interface CanFly { fly(): string; } interface Superhero extends CanWalk, CanFly {} let hero: Superhero = { walk: () => 'walking', fly: () => 'flying' };\n",
     "hints": [
       "Write: interface CanWalk { walk(): string; } interface CanFly { fly(): string; } interface Superhero extends CanWalk, CanFly {} let hero: Superhero = { walk: () => 'walking', fly: () => 'flying' };"
@@ -324,7 +324,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface ScoreDictionary { [subject: string]: number; } let grades: ScoreDictionary = { math: 95, english: 88 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface ScoreDictionary { [subject: string]: number; } let grades: ScoreDictionary = { math: 95, english: 88 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface ScoreDictionary { [subject: string]: number; } let grades: ScoreDictionary = { math: 95, english: 88 };\n",
     "hints": [
       "Write: interface ScoreDictionary { [subject: string]: number; } let grades: ScoreDictionary = { math: 95, english: 88 };"
@@ -366,7 +366,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `type Address = { city: string }; type Company = { name: string; address: Address }; let corp: Company = { name: 'Acme', address: { city: 'SF' } };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Address = { city: string }; type Company = { name: string; address: Address }; let corp: Company = { name: 'Acme', address: { city: 'SF' } };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Address = { city: string }; type Company = { name: string; address: Address }; let corp: Company = { name: 'Acme', address: { city: 'SF' } };\n",
     "hints": [
       "Write: type Address = { city: string }; type Company = { name: string; address: Address }; let corp: Company = { name: 'Acme', address: { city: 'SF' } };"
@@ -408,7 +408,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `type ID = string | number; interface Named { name: string; } let val: ID = 42;`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype ID = string | number; interface Named { name: string; } let val: ID = 42;\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type ID = string | number; interface Named { name: string; } let val: ID = 42;\n",
     "hints": [
       "Write: type ID = string | number; interface Named { name: string; } let val: ID = 42;"
@@ -450,7 +450,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface WindowSettings { theme: string; } interface WindowSettings { zoom: number; } let s: WindowSettings = { theme: 'dark', zoom: 100 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface WindowSettings { theme: string; } interface WindowSettings { zoom: number; } let s: WindowSettings = { theme: 'dark', zoom: 100 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface WindowSettings { theme: string; } interface WindowSettings { zoom: number; } let s: WindowSettings = { theme: 'dark', zoom: 100 };\n",
     "hints": [
       "Write: interface WindowSettings { theme: string; } interface WindowSettings { zoom: number; } let s: WindowSettings = { theme: 'dark', zoom: 100 };"
@@ -492,7 +492,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface Greeter { greet(name: string): string; } let g: Greeter = { greet: (n) => 'Hello ' + n };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Greeter { greet(name: string): string; } let g: Greeter = { greet: (n) => 'Hello ' + n };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Greeter { greet(name: string): string; } let g: Greeter = { greet: (n) => 'Hello ' + n };\n",
     "hints": [
       "Write: interface Greeter { greet(name: string): string; } let g: Greeter = { greet: (n) => 'Hello ' + n };"
@@ -534,7 +534,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface Point { x: number; y: number; } let pt: Point = { x: 5, y: 10 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface Point { x: number; y: number; } let pt: Point = { x: 5, y: 10 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface Point { x: number; y: number; } let pt: Point = { x: 5, y: 10 };\n",
     "hints": [
       "Write: interface Point { x: number; y: number; } let pt: Point = { x: 5, y: 10 };"
@@ -576,7 +576,7 @@ export const tsModule3Lessons: Lesson[] = [
       "Enter the code: `interface APIPayload { endpoint: string; retries?: number; } let req: APIPayload = { endpoint: '/users', retries: 3 };`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface APIPayload { endpoint: string; retries?: number; } let req: APIPayload = { endpoint: '/users', retries: 3 };\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface APIPayload { endpoint: string; retries?: number; } let req: APIPayload = { endpoint: '/users', retries: 3 };\n",
     "hints": [
       "Write: interface APIPayload { endpoint: string; retries?: number; } let req: APIPayload = { endpoint: '/users', retries: 3 };"

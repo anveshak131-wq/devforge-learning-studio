@@ -30,7 +30,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function add(a: number, b: number): number { return a + b; } let sum = add(10, 20);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction add(a: number, b: number): number { return a + b; } let sum = add(10, 20);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function add(a: number, b: number): number { return a + b; } let sum = add(10, 20);\n",
     "hints": [
       "Write: function add(a: number, b: number): number { return a + b; } let sum = add(10, 20);"
@@ -72,7 +72,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `const square = (n: number): number => n * n; let ans = square(6);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nconst square = (n: number): number => n * n; let ans = square(6);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "const square = (n: number): number => n * n; let ans = square(6);\n",
     "hints": [
       "Write: const square = (n: number): number => n * n; let ans = square(6);"
@@ -114,7 +114,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function greet(name: string, title?: string): string { return title ? `${title} ${name}` : name; } let res = greet('Smith', 'Dr.');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction greet(name: string, title?: string): string { return title ? `${title} ${name}` : name; } let res = greet('Smith', 'Dr.');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function greet(name: string, title?: string): string { return title ? `${title} ${name}` : name; } let res = greet('Smith', 'Dr.');\n",
     "hints": [
       "Write: function greet(name: string, title?: string): string { return title ? `${title} ${name}` : name; } let res = greet('Smith', 'Dr.');"
@@ -156,7 +156,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function multiply(a: number, factor: number = 2): number { return a * factor; } let res = multiply(5);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction multiply(a: number, factor: number = 2): number { return a * factor; } let res = multiply(5);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function multiply(a: number, factor: number = 2): number { return a * factor; } let res = multiply(5);\n",
     "hints": [
       "Write: function multiply(a: number, factor: number = 2): number { return a * factor; } let res = multiply(5);"
@@ -198,7 +198,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function sumAll(...nums: number[]): number { return nums.reduce((a, b) => a + b, 0); } let total = sumAll(1, 2, 3, 4);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction sumAll(...nums: number[]): number { return nums.reduce((a, b) => a + b, 0); } let total = sumAll(1, 2, 3, 4);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function sumAll(...nums: number[]): number { return nums.reduce((a, b) => a + b, 0); } let total = sumAll(1, 2, 3, 4);\n",
     "hints": [
       "Write: function sumAll(...nums: number[]): number { return nums.reduce((a, b) => a + b, 0); } let total = sumAll(1, 2, 3, 4);"
@@ -240,7 +240,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `type Formatter = (input: string) => string; const uppercaseFormatter: Formatter = (s) => s.toUpperCase(); let out = uppercaseFormatter('ts');`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Formatter = (input: string) => string; const uppercaseFormatter: Formatter = (s) => s.toUpperCase(); let out = uppercaseFormatter('ts');\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Formatter = (input: string) => string; const uppercaseFormatter: Formatter = (s) => s.toUpperCase(); let out = uppercaseFormatter('ts');\n",
     "hints": [
       "Write: type Formatter = (input: string) => string; const uppercaseFormatter: Formatter = (s) => s.toUpperCase(); let out = uppercaseFormatter('ts');"
@@ -282,7 +282,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function processNumber(n: number, cb: (val: number) => number): number { return cb(n); } let res = processNumber(5, x => x * 3);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction processNumber(n: number, cb: (val: number) => number): number { return cb(n); } let res = processNumber(5, x => x * 3);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function processNumber(n: number, cb: (val: number) => number): number { return cb(n); } let res = processNumber(5, x => x * 3);\n",
     "hints": [
       "Write: function processNumber(n: number, cb: (val: number) => number): number { return cb(n); } let res = processNumber(5, x => x * 3);"
@@ -324,7 +324,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function combine(a: number, b: number): number; function combine(a: string, b: string): string; function combine(a: any, b: any): any { return a + b; } let out = combine(10, 20);`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction combine(a: number, b: number): number; function combine(a: string, b: string): string; function combine(a: any, b: any): any { return a + b; } let out = combine(10, 20);\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function combine(a: number, b: number): number; function combine(a: string, b: string): string; function combine(a: any, b: any): any { return a + b; } let out = combine(10, 20);\n",
     "hints": [
       "Write: function combine(a: number, b: number): number; function combine(a: string, b: string): string; function combine(a: any, b: any): any { return a + b; } let out = combine(10, 20);"
@@ -366,7 +366,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `function showIdentity(this: { id: string }): string { return this.id; } let ctx = { id: 'ctx-1', show: showIdentity }; let out = ctx.show();`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nfunction showIdentity(this: { id: string }): string { return this.id; } let ctx = { id: 'ctx-1', show: showIdentity }; let out = ctx.show();\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "function showIdentity(this: { id: string }): string { return this.id; } let ctx = { id: 'ctx-1', show: showIdentity }; let out = ctx.show();\n",
     "hints": [
       "Write: function showIdentity(this: { id: string }): string { return this.id; } let ctx = { id: 'ctx-1', show: showIdentity }; let out = ctx.show();"
@@ -408,7 +408,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `async function fetchScore(): Promise<number> { return 100; }`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\nasync function fetchScore(): Promise<number> { return 100; }\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "async function fetchScore(): Promise<number> { return 100; }\n",
     "hints": [
       "Write: async function fetchScore(): Promise<number> { return 100; }"
@@ -450,7 +450,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `interface ClockConstructor { new (hour: number, minute: number): any; }`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ninterface ClockConstructor { new (hour: number, minute: number): any; }\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "interface ClockConstructor { new (hour: number, minute: number): any; }\n",
     "hints": [
       "Write: interface ClockConstructor { new (hour: number, minute: number): any; }"
@@ -492,7 +492,7 @@ export const tsModule4Lessons: Lesson[] = [
       "Enter the code: `type Middleware = (ctx: { path: string }) => boolean; const auth: Middleware = (c) => c.path === '/admin'; let allowed = auth({ path: '/admin' });`",
       "Click 'Check Answer' to transpile and verify your types."
     ],
-    "initialCode": "// \ud83d\udc49 Step 1: Write your typed TypeScript code below:\ntype Middleware = (ctx: { path: string }) => boolean; const auth: Middleware = (c) => c.path === '/admin'; let allowed = auth({ path: '/admin' });\n",
+    "initialCode": "// Step 1: Write your typed TypeScript code below\n// TODO: Write code below\n",
     "solutionCode": "type Middleware = (ctx: { path: string }) => boolean; const auth: Middleware = (c) => c.path === '/admin'; let allowed = auth({ path: '/admin' });\n",
     "hints": [
       "Write: type Middleware = (ctx: { path: string }) => boolean; const auth: Middleware = (c) => c.path === '/admin'; let allowed = auth({ path: '/admin' });"

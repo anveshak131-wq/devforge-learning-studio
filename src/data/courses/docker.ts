@@ -39,7 +39,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check Docker version\ndocker --version",
+    "initialCode": "# Step 1: Check Docker version\n# TODO: Write command below\n",
     "solutionCode": "docker --version",
     "hints": [
       "Write:\ndocker --version"
@@ -81,7 +81,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect Docker system information\ndocker info",
+    "initialCode": "# Step 1: Inspect Docker system information\n# TODO: Write command below\n",
     "solutionCode": "docker info",
     "hints": [
       "Write:\ndocker info"
@@ -123,7 +123,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run container with memory limit\ndocker run -m 512m alpine",
+    "initialCode": "# Step 1: Run container with memory limit\n# TODO: Write command below\n",
     "solutionCode": "docker run -m 512m alpine",
     "hints": [
       "Write:\ndocker run -m 512m alpine"
@@ -165,7 +165,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check Docker storage driver\ndocker info | grep Storage",
+    "initialCode": "# Step 1: Check Docker storage driver\n# TODO: Write command below\n",
     "solutionCode": "docker info | grep Storage",
     "hints": [
       "Write:\ndocker info | grep Storage"
@@ -207,7 +207,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify Docker daemon connectivity\ndocker version",
+    "initialCode": "# Step 1: Verify Docker daemon connectivity\n# TODO: Write command below\n",
     "solutionCode": "docker version",
     "hints": [
       "Write:\ndocker version"
@@ -249,7 +249,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run your very first container\ndocker run hello-world",
+    "initialCode": "# Step 1: Run your very first container\n# TODO: Write command below\n",
     "solutionCode": "docker run hello-world",
     "hints": [
       "Write:\ndocker run hello-world"
@@ -291,7 +291,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check running containers\ndocker ps",
+    "initialCode": "# Step 1: Check running containers\n# TODO: Write command below\n",
     "solutionCode": "docker ps",
     "hints": [
       "Write:\ndocker ps"
@@ -333,7 +333,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run background web server container\ndocker run -d -p 80:80 nginx",
+    "initialCode": "# Step 1: Run background web server container\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -p 80:80 nginx",
     "hints": [
       "Write:\ndocker run -d -p 80:80 nginx"
@@ -375,7 +375,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Launch interactive shell in Ubuntu container\ndocker run -it ubuntu bash",
+    "initialCode": "# Step 1: Launch interactive shell in Ubuntu container\n# TODO: Write command below\n",
     "solutionCode": "docker run -it ubuntu bash",
     "hints": [
       "Write:\ndocker run -it ubuntu bash"
@@ -417,7 +417,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run container with human-readable name\ndocker run -d --name web-gateway nginx",
+    "initialCode": "# Step 1: Run container with human-readable name\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --name web-gateway nginx",
     "hints": [
       "Write:\ndocker run -d --name web-gateway nginx"
@@ -459,7 +459,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Gracefully stop a container\ndocker stop web-gateway",
+    "initialCode": "# Step 1: Gracefully stop a container\n# TODO: Write command below\n",
     "solutionCode": "docker stop web-gateway",
     "hints": [
       "Write:\ndocker stop web-gateway"
@@ -501,7 +501,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Restart an existing stopped container\ndocker restart web-gateway",
+    "initialCode": "# Step 1: Restart an existing stopped container\n# TODO: Write command below\n",
     "solutionCode": "docker restart web-gateway",
     "hints": [
       "Write:\ndocker restart web-gateway"
@@ -543,7 +543,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Ensure container restarts on server reboot\ndocker run -d --restart unless-stopped nginx",
+    "initialCode": "# Step 1: Ensure container restarts on server reboot\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --restart unless-stopped nginx",
     "hints": [
       "Write:\ndocker run -d --restart unless-stopped nginx"
@@ -585,7 +585,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View both running and stopped containers\ndocker ps -a",
+    "initialCode": "# Step 1: View both running and stopped containers\n# TODO: Write command below\n",
     "solutionCode": "docker ps -a",
     "hints": [
       "Write:\ndocker ps -a"
@@ -627,7 +627,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify active container roster\ndocker ps",
+    "initialCode": "# Step 1: Verify active container roster\n# TODO: Write command below\n",
     "solutionCode": "docker ps",
     "hints": [
       "Write:\ndocker ps"
@@ -669,7 +669,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List locally cached images\ndocker images",
+    "initialCode": "# Step 1: List locally cached images\n# TODO: Write command below\n",
     "solutionCode": "docker images",
     "hints": [
       "Write:\ndocker images"
@@ -711,7 +711,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Download official Node.js image\ndocker pull node:20-alpine",
+    "initialCode": "# Step 1: Download official Node.js image\n# TODO: Write command below\n",
     "solutionCode": "docker pull node:20-alpine",
     "hints": [
       "Write:\ndocker pull node:20-alpine"
@@ -753,7 +753,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pull specific version tag\ndocker pull redis:7.2",
+    "initialCode": "# Step 1: Pull specific version tag\n# TODO: Write command below\n",
     "solutionCode": "docker pull redis:7.2",
     "hints": [
       "Write:\ndocker pull redis:7.2"
@@ -795,7 +795,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Remove unused local image\ndocker rmi hello-world",
+    "initialCode": "# Step 1: Remove unused local image\n# TODO: Write command below\n",
     "solutionCode": "docker rmi hello-world",
     "hints": [
       "Write:\ndocker rmi hello-world"
@@ -837,7 +837,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Remove all dangling image layers\ndocker image prune -f",
+    "initialCode": "# Step 1: Remove all dangling image layers\n# TODO: Write command below\n",
     "solutionCode": "docker image prune -f",
     "hints": [
       "Write:\ndocker image prune -f"
@@ -879,7 +879,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete a stopped container\ndocker rm web-gateway",
+    "initialCode": "# Step 1: Delete a stopped container\n# TODO: Write command below\n",
     "solutionCode": "docker rm web-gateway",
     "hints": [
       "Write:\ndocker rm web-gateway"
@@ -921,7 +921,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Clean all stopped containers\ndocker container prune -f",
+    "initialCode": "# Step 1: Clean all stopped containers\n# TODO: Write command below\n",
     "solutionCode": "docker container prune -f",
     "hints": [
       "Write:\ndocker container prune -f"
@@ -963,7 +963,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View detailed JSON metadata of container\ndocker inspect web-gateway",
+    "initialCode": "# Step 1: View detailed JSON metadata of container\n# TODO: Write command below\n",
     "solutionCode": "docker inspect web-gateway",
     "hints": [
       "Write:\ndocker inspect web-gateway"
@@ -1005,7 +1005,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Follow live output logs from container\ndocker logs -f web-gateway",
+    "initialCode": "# Step 1: Follow live output logs from container\n# TODO: Write command below\n",
     "solutionCode": "docker logs -f web-gateway",
     "hints": [
       "Write:\ndocker logs -f web-gateway"
@@ -1047,7 +1047,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Open interactive shell inside running container\ndocker exec -it web-gateway sh",
+    "initialCode": "# Step 1: Open interactive shell inside running container\n# TODO: Write command below\n",
     "solutionCode": "docker exec -it web-gateway sh",
     "hints": [
       "Write:\ndocker exec -it web-gateway sh"
@@ -1089,7 +1089,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Copy file into running container\ndocker cp ./config.json web-gateway:/etc/app/config.json",
+    "initialCode": "# Step 1: Copy file into running container\n# TODO: Write command below\n",
     "solutionCode": "docker cp ./config.json web-gateway:/etc/app/config.json",
     "hints": [
       "Write:\ndocker cp ./config.json web-gateway:/etc/app/config.json"
@@ -1131,7 +1131,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View live CPU, RAM, and network metrics\ndocker stats --no-stream",
+    "initialCode": "# Step 1: View live CPU, RAM, and network metrics\n# TODO: Write command below\n",
     "solutionCode": "docker stats --no-stream",
     "hints": [
       "Write:\ndocker stats --no-stream"
@@ -1173,7 +1173,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View running processes inside container\ndocker top web-gateway",
+    "initialCode": "# Step 1: View running processes inside container\n# TODO: Write command below\n",
     "solutionCode": "docker top web-gateway",
     "hints": [
       "Write:\ndocker top web-gateway"
@@ -1215,7 +1215,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect filesystem changes in container writable layer\ndocker diff web-gateway",
+    "initialCode": "# Step 1: Inspect filesystem changes in container writable layer\n# TODO: Write command below\n",
     "solutionCode": "docker diff web-gateway",
     "hints": [
       "Write:\ndocker diff web-gateway"
@@ -1257,7 +1257,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check system disk utilization\ndocker system df",
+    "initialCode": "# Step 1: Check system disk utilization\n# TODO: Write command below\n",
     "solutionCode": "docker system df",
     "hints": [
       "Write:\ndocker system df"
@@ -1299,7 +1299,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Build image from current directory Dockerfile\ndocker build -t my-app:1.0 .",
+    "initialCode": "# Step 1: Build image from current directory Dockerfile\n# TODO: Write command below\n",
     "solutionCode": "docker build -t my-app:1.0 .",
     "hints": [
       "Write:\ndocker build -t my-app:1.0 ."
@@ -1341,7 +1341,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: specify Alpine Node base\n# FROM node:20-alpine\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: specify Alpine Node base FROM node:20-alpine\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1383,7 +1383,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pull lightweight Alpine image\ndocker pull alpine:latest",
+    "initialCode": "# Step 1: Pull lightweight Alpine image\n# TODO: Write command below\n",
     "solutionCode": "docker pull alpine:latest",
     "hints": [
       "Write:\ndocker pull alpine:latest"
@@ -1425,7 +1425,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: set active working directory\n# WORKDIR /app\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: set active working directory WORKDIR /app\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1467,7 +1467,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: copy package files\n# COPY package*.json ./\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: copy package files COPY package*.json ./\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1509,7 +1509,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: install dependencies\n# RUN npm ci --only=production\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: install dependencies RUN npm ci --only=production\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1551,7 +1551,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: set default container command\n# CMD [\"node\", \"server.js\"]\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: set default container command CMD [\"node\", \"server.js\"]\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1593,7 +1593,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Always prefer exec array form\n# CMD [\"npm\", \"start\"]\ndocker build -t app .",
+    "initialCode": "# Step 1: Always prefer exec array form CMD [\"npm\", \"start\"]\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1635,7 +1635,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: document HTTP port\n# EXPOSE 3000\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: document HTTP port EXPOSE 3000\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1677,7 +1677,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: set runtime environment\n# ENV NODE_ENV=production PORT=8080\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: set runtime environment ENV NODE_ENV=production PORT=8080\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1719,7 +1719,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pass build argument\ndocker build --build-arg APP_VERSION=2.0 -t app .",
+    "initialCode": "# Step 1: Pass build argument\n# TODO: Write command below\n",
     "solutionCode": "docker build --build-arg APP_VERSION=2.0 -t app .",
     "hints": [
       "Write:\ndocker build --build-arg APP_VERSION=2.0 -t app ."
@@ -1761,7 +1761,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile: switch to non-root user\n# USER node\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile: switch to non-root user USER node\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1803,7 +1803,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect .dockerignore file\ncat .dockerignore",
+    "initialCode": "# Step 1: Inspect .dockerignore file\n# TODO: Write command below\n",
     "solutionCode": "cat .dockerignore",
     "hints": [
       "Write:\ncat .dockerignore"
@@ -1845,7 +1845,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Build with cache optimization\ndocker build -t app .",
+    "initialCode": "# Step 1: Build with cache optimization\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -1887,7 +1887,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify built image layers\ndocker history app",
+    "initialCode": "# Step 1: Verify built image layers\n# TODO: Write command below\n",
     "solutionCode": "docker history app",
     "hints": [
       "Write:\ndocker history app"
@@ -1929,7 +1929,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect image sizes\ndocker images",
+    "initialCode": "# Step 1: Inspect image sizes\n# TODO: Write command below\n",
     "solutionCode": "docker images",
     "hints": [
       "Write:\ndocker images"
@@ -1971,7 +1971,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile multi-stage header\n# FROM node:20-alpine AS builder\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile multi-stage header FROM node:20-alpine AS builder\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -2013,7 +2013,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile copy from builder\n# COPY --from=builder /app/dist ./dist\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile copy from builder COPY --from=builder /app/dist ./dist\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -2055,7 +2055,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile scratch runtime\n# FROM scratch\n# COPY --from=builder /bin/app /bin/app\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile scratch runtime FROM scratch COPY --from=builder /bin/app /bin/app\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -2097,7 +2097,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Build production Node container\ndocker build -t node-api:prod .",
+    "initialCode": "# Step 1: Build production Node container\n# TODO: Write command below\n",
     "solutionCode": "docker build -t node-api:prod .",
     "hints": [
       "Write:\ndocker build -t node-api:prod ."
@@ -2139,7 +2139,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Build Python container\ndocker build -t py-api .",
+    "initialCode": "# Step 1: Build Python container\n# TODO: Write command below\n",
     "solutionCode": "docker build -t py-api .",
     "hints": [
       "Write:\ndocker build -t py-api ."
@@ -2181,7 +2181,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Enable BuildKit for faster builds\nexport DOCKER_BUILDKIT=1\ndocker build -t app .",
+    "initialCode": "# Step 1: Enable BuildKit for faster builds\n# TODO: Write command below\n",
     "solutionCode": "export DOCKER_BUILDKIT=1\ndocker build -t app .",
     "hints": [
       "Write:\nexport DOCKER_BUILDKIT=1\ndocker build -t app ."
@@ -2223,7 +2223,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile cache mount\n# RUN --mount=type=cache,target=/root/.npm npm install\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile cache mount RUN --mount=type=cache,target=/root/.npm npm install\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -2265,7 +2265,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Build with private secret without leaking into image\ndocker build --secret id=npmrc,src=.npmrc -t app .",
+    "initialCode": "# Step 1: Build with private secret without leaking into image\n# TODO: Write command below\n",
     "solutionCode": "docker build --secret id=npmrc,src=.npmrc -t app .",
     "hints": [
       "Write:\ndocker build --secret id=npmrc,src=.npmrc -t app ."
@@ -2307,7 +2307,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect layer size breakdown\ndocker history my-app:1.0",
+    "initialCode": "# Step 1: Inspect layer size breakdown\n# TODO: Write command below\n",
     "solutionCode": "docker history my-app:1.0",
     "hints": [
       "Write:\ndocker history my-app:1.0"
@@ -2349,7 +2349,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Analyze layer efficiency with dive\ndive my-app:1.0",
+    "initialCode": "# Step 1: Analyze layer efficiency with dive\n# TODO: Write command below\n",
     "solutionCode": "dive my-app:1.0",
     "hints": [
       "Write:\ndive my-app:1.0"
@@ -2391,7 +2391,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Scan image for CVE security vulnerabilities\ndocker scout cves my-app:1.0",
+    "initialCode": "# Step 1: Scan image for CVE security vulnerabilities\n# TODO: Write command below\n",
     "solutionCode": "docker scout cves my-app:1.0",
     "hints": [
       "Write:\ndocker scout cves my-app:1.0"
@@ -2433,7 +2433,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Dockerfile distroless runtime\n# FROM gcr.io/distroless/nodejs20-debian12\ndocker build -t app .",
+    "initialCode": "# Step 1: Dockerfile distroless runtime FROM gcr.io/distroless/nodejs20-debian12\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -2475,7 +2475,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Chaining commands in Dockerfile\n# RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*\ndocker build -t app .",
+    "initialCode": "# Step 1: Chaining commands in Dockerfile RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -2517,7 +2517,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check finalized optimized image\ndocker images my-app:prod",
+    "initialCode": "# Step 1: Check finalized optimized image\n# TODO: Write command below\n",
     "solutionCode": "docker images my-app:prod",
     "hints": [
       "Write:\ndocker images my-app:prod"
@@ -2559,7 +2559,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check container volume mounts\ndocker inspect -f '{{ .Mounts }}' web-gateway",
+    "initialCode": "# Step 1: Check container volume mounts\n# TODO: Write command below\n",
     "solutionCode": "docker inspect -f '{{ .Mounts }}' web-gateway",
     "hints": [
       "Write:\ndocker inspect -f '{{ .Mounts }}' web-gateway"
@@ -2601,7 +2601,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create a managed persistent volume\ndocker volume create pgdata",
+    "initialCode": "# Step 1: Create a managed persistent volume\n# TODO: Write command below\n",
     "solutionCode": "docker volume create pgdata",
     "hints": [
       "Write:\ndocker volume create pgdata"
@@ -2643,7 +2643,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Mount named volume to Postgres container\ndocker run -d -v pgdata:/var/lib/postgresql/data postgres",
+    "initialCode": "# Step 1: Mount named volume to Postgres container\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -v pgdata:/var/lib/postgresql/data postgres",
     "hints": [
       "Write:\ndocker run -d -v pgdata:/var/lib/postgresql/data postgres"
@@ -2685,7 +2685,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Bind mount current source code for hot reload\ndocker run -d -v $(pwd):/app -p 3000:3000 node-dev",
+    "initialCode": "# Step 1: Bind mount current source code for hot reload\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -v $(pwd):/app -p 3000:3000 node-dev",
     "hints": [
       "Write:\ndocker run -d -v $(pwd):/app -p 3000:3000 node-dev"
@@ -2727,7 +2727,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List all Docker volumes on system\ndocker volume ls",
+    "initialCode": "# Step 1: List all Docker volumes on system\n# TODO: Write command below\n",
     "solutionCode": "docker volume ls",
     "hints": [
       "Write:\ndocker volume ls"
@@ -2769,7 +2769,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete an unused volume\ndocker volume rm pgdata",
+    "initialCode": "# Step 1: Delete an unused volume\n# TODO: Write command below\n",
     "solutionCode": "docker volume rm pgdata",
     "hints": [
       "Write:\ndocker volume rm pgdata"
@@ -2811,7 +2811,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Purge all dangling volumes\ndocker volume prune -f",
+    "initialCode": "# Step 1: Purge all dangling volumes\n# TODO: Write command below\n",
     "solutionCode": "docker volume prune -f",
     "hints": [
       "Write:\ndocker volume prune -f"
@@ -2853,7 +2853,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run PostgreSQL with persistent storage\ndocker run -d --name db -e POSTGRES_PASSWORD=secret -v db_data:/var/lib/postgresql/data postgres:16",
+    "initialCode": "# Step 1: Run PostgreSQL with persistent storage\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --name db -e POSTGRES_PASSWORD=secret -v db_data:/var/lib/postgresql/data postgres:16",
     "hints": [
       "Write:\ndocker run -d --name db -e POSTGRES_PASSWORD=secret -v db_data:/var/lib/postgresql/data postgres:16"
@@ -2895,7 +2895,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Mount sensitive configuration as read-only\ndocker run -d -v /etc/ssl/certs:/certs:ro nginx",
+    "initialCode": "# Step 1: Mount sensitive configuration as read-only\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -v /etc/ssl/certs:/certs:ro nginx",
     "hints": [
       "Write:\ndocker run -d -v /etc/ssl/certs:/certs:ro nginx"
@@ -2937,7 +2937,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Mount in-memory volatile temporary storage\ndocker run -d --tmpfs /tmp:rw,noexec,nosuid redis",
+    "initialCode": "# Step 1: Mount in-memory volatile temporary storage\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --tmpfs /tmp:rw,noexec,nosuid redis",
     "hints": [
       "Write:\ndocker run -d --tmpfs /tmp:rw,noexec,nosuid redis"
@@ -2979,7 +2979,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run container with host user UID\ndocker run -u $(id -u):$(id -g) -v $(pwd):/app node:alpine",
+    "initialCode": "# Step 1: Run container with host user UID\n# TODO: Write command below\n",
     "solutionCode": "docker run -u $(id -u):$(id -g) -v $(pwd):/app node:alpine",
     "hints": [
       "Write:\ndocker run -u $(id -u):$(id -g) -v $(pwd):/app node:alpine"
@@ -3021,7 +3021,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Backup volume contents to tar archive\ndocker run --rm -v pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata.tar.gz -C /data .",
+    "initialCode": "# Step 1: Backup volume contents to tar archive\n# TODO: Write command below\n",
     "solutionCode": "docker run --rm -v pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata.tar.gz -C /data .",
     "hints": [
       "Write:\ndocker run --rm -v pgdata:/data -v $(pwd):/backup alpine tar czf /backup/pgdata.tar.gz -C /data ."
@@ -3063,7 +3063,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Restore tarball into clean volume\ndocker run --rm -v pgdata:/data -v $(pwd):/backup alpine tar xzf /backup/pgdata.tar.gz -C /data",
+    "initialCode": "# Step 1: Restore tarball into clean volume\n# TODO: Write command below\n",
     "solutionCode": "docker run --rm -v pgdata:/data -v $(pwd):/backup alpine tar xzf /backup/pgdata.tar.gz -C /data",
     "hints": [
       "Write:\ndocker run --rm -v pgdata:/data -v $(pwd):/backup alpine tar xzf /backup/pgdata.tar.gz -C /data"
@@ -3105,7 +3105,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Share log volume between app and log collector\ndocker run -d --name log-collector --volumes-from web-gateway fluentd",
+    "initialCode": "# Step 1: Share log volume between app and log collector\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --name log-collector --volumes-from web-gateway fluentd",
     "hints": [
       "Write:\ndocker run -d --name log-collector --volumes-from web-gateway fluentd"
@@ -3147,7 +3147,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Audit system storage usage\ndocker system df -v",
+    "initialCode": "# Step 1: Audit system storage usage\n# TODO: Write command below\n",
     "solutionCode": "docker system df -v",
     "hints": [
       "Write:\ndocker system df -v"
@@ -3189,7 +3189,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List network drivers available\ndocker network ls",
+    "initialCode": "# Step 1: List network drivers available\n# TODO: Write command below\n",
     "solutionCode": "docker network ls",
     "hints": [
       "Write:\ndocker network ls"
@@ -3231,7 +3231,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect default bridge network\ndocker network inspect bridge",
+    "initialCode": "# Step 1: Inspect default bridge network\n# TODO: Write command below\n",
     "solutionCode": "docker network inspect bridge",
     "hints": [
       "Write:\ndocker network inspect bridge"
@@ -3273,7 +3273,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create custom isolated bridge network\ndocker network create app-net",
+    "initialCode": "# Step 1: Create custom isolated bridge network\n# TODO: Write command below\n",
     "solutionCode": "docker network create app-net",
     "hints": [
       "Write:\ndocker network create app-net"
@@ -3315,7 +3315,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Connect backend to db by container name\ndocker run -d --name api --network app-net -e DB_HOST=db api-image",
+    "initialCode": "# Step 1: Connect backend to db by container name\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --name api --network app-net -e DB_HOST=db api-image",
     "hints": [
       "Write:\ndocker run -d --name api --network app-net -e DB_HOST=db api-image"
@@ -3357,7 +3357,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Connect existing container to network\ndocker network connect app-net web-gateway",
+    "initialCode": "# Step 1: Connect existing container to network\n# TODO: Write command below\n",
     "solutionCode": "docker network connect app-net web-gateway",
     "hints": [
       "Write:\ndocker network connect app-net web-gateway"
@@ -3399,7 +3399,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Disconnect container from network\ndocker network disconnect app-net web-gateway",
+    "initialCode": "# Step 1: Disconnect container from network\n# TODO: Write command below\n",
     "solutionCode": "docker network disconnect app-net web-gateway",
     "hints": [
       "Write:\ndocker network disconnect app-net web-gateway"
@@ -3441,7 +3441,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Publish port 8080 on host to port 80 in container\ndocker run -d -p 8080:80 nginx",
+    "initialCode": "# Step 1: Publish port 8080 on host to port 80 in container\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -p 8080:80 nginx",
     "hints": [
       "Write:\ndocker run -d -p 8080:80 nginx"
@@ -3483,7 +3483,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Bind port strictly to localhost loopback\ndocker run -d -p 127.0.0.1:5432:5432 postgres",
+    "initialCode": "# Step 1: Bind port strictly to localhost loopback\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -p 127.0.0.1:5432:5432 postgres",
     "hints": [
       "Write:\ndocker run -d -p 127.0.0.1:5432:5432 postgres"
@@ -3525,7 +3525,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run with zero network virtualization overhead\ndocker run -d --network host nginx",
+    "initialCode": "# Step 1: Run with zero network virtualization overhead\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --network host nginx",
     "hints": [
       "Write:\ndocker run -d --network host nginx"
@@ -3567,7 +3567,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Completely isolate container from all networking\ndocker run -d --network none secure-batch-job",
+    "initialCode": "# Step 1: Completely isolate container from all networking\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --network none secure-batch-job",
     "hints": [
       "Write:\ndocker run -d --network none secure-batch-job"
@@ -3609,7 +3609,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Add network DNS alias for load balancing\ndocker run -d --network app-net --network-alias search-service elasticsearch",
+    "initialCode": "# Step 1: Add network DNS alias for load balancing\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --network app-net --network-alias search-service elasticsearch",
     "hints": [
       "Write:\ndocker run -d --network app-net --network-alias search-service elasticsearch"
@@ -3651,7 +3651,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect connected container IPs on network\ndocker network inspect app-net",
+    "initialCode": "# Step 1: Inspect connected container IPs on network\n# TODO: Write command below\n",
     "solutionCode": "docker network inspect app-net",
     "hints": [
       "Write:\ndocker network inspect app-net"
@@ -3693,7 +3693,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Ping database container from api container\ndocker exec api ping -c 3 db",
+    "initialCode": "# Step 1: Ping database container from api container\n# TODO: Write command below\n",
     "solutionCode": "docker exec api ping -c 3 db",
     "hints": [
       "Write:\ndocker exec api ping -c 3 db"
@@ -3735,7 +3735,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete all unused networks\ndocker network prune -f",
+    "initialCode": "# Step 1: Delete all unused networks\n# TODO: Write command below\n",
     "solutionCode": "docker network prune -f",
     "hints": [
       "Write:\ndocker network prune -f"
@@ -3777,7 +3777,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify isolated network configuration\ndocker network ls",
+    "initialCode": "# Step 1: Verify isolated network configuration\n# TODO: Write command below\n",
     "solutionCode": "docker network ls",
     "hints": [
       "Write:\ndocker network ls"
@@ -3819,7 +3819,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Launch fullstack application stack\ndocker compose up -d",
+    "initialCode": "# Step 1: Launch fullstack application stack\n# TODO: Write command below\n",
     "solutionCode": "docker compose up -d",
     "hints": [
       "Write:\ndocker compose up -d"
@@ -3861,7 +3861,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Validate compose configuration\ndocker compose config",
+    "initialCode": "# Step 1: Validate compose configuration\n# TODO: Write command below\n",
     "solutionCode": "docker compose config",
     "hints": [
       "Write:\ndocker compose config"
@@ -3903,7 +3903,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect compose services\ndocker compose ps",
+    "initialCode": "# Step 1: Inspect compose services\n# TODO: Write command below\n",
     "solutionCode": "docker compose ps",
     "hints": [
       "Write:\ndocker compose ps"
@@ -3945,7 +3945,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Start specific service with dependencies\ndocker compose up -d api",
+    "initialCode": "# Step 1: Start specific service with dependencies\n# TODO: Write command below\n",
     "solutionCode": "docker compose up -d api",
     "hints": [
       "Write:\ndocker compose up -d api"
@@ -3987,7 +3987,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compose healthcheck wait syntax\n# depends_on:\n#   db:\n#     condition: service_healthy\ndocker compose up -d",
+    "initialCode": "# Step 1: Compose healthcheck wait syntax depends_on: db: condition: service_healthy\n# TODO: Write command below\n",
     "solutionCode": "docker compose up -d",
     "hints": [
       "Write:\ndocker compose up -d"
@@ -4029,7 +4029,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect parsed environment variables\ndocker compose config --env-file .env",
+    "initialCode": "# Step 1: Inspect parsed environment variables\n# TODO: Write command below\n",
     "solutionCode": "docker compose config",
     "hints": [
       "Write:\ndocker compose config"
@@ -4071,7 +4071,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Start stack with persistent volumes\ndocker compose up -d",
+    "initialCode": "# Step 1: Start stack with persistent volumes\n# TODO: Write command below\n",
     "solutionCode": "docker compose up -d",
     "hints": [
       "Write:\ndocker compose up -d"
@@ -4113,7 +4113,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Follow live logs from all services simultaneously\ndocker compose logs -f --tail=50",
+    "initialCode": "# Step 1: Follow live logs from all services simultaneously\n# TODO: Write command below\n",
     "solutionCode": "docker compose logs -f",
     "hints": [
       "Write:\ndocker compose logs -f"
@@ -4155,7 +4155,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Open shell in running compose service\ndocker compose exec api sh",
+    "initialCode": "# Step 1: Open shell in running compose service\n# TODO: Write command below\n",
     "solutionCode": "docker compose exec api sh",
     "hints": [
       "Write:\ndocker compose exec api sh"
@@ -4197,7 +4197,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Stop and remove containers and networks\ndocker compose down",
+    "initialCode": "# Step 1: Stop and remove containers and networks\n# TODO: Write command below\n",
     "solutionCode": "docker compose down",
     "hints": [
       "Write:\ndocker compose down"
@@ -4239,7 +4239,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Teardown stack AND delete persistent volumes\ndocker compose down -v",
+    "initialCode": "# Step 1: Teardown stack AND delete persistent volumes\n# TODO: Write command below\n",
     "solutionCode": "docker compose down -v",
     "hints": [
       "Write:\ndocker compose down -v"
@@ -4281,7 +4281,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Scale worker service to 4 parallel containers\ndocker compose up -d --scale worker=4",
+    "initialCode": "# Step 1: Scale worker service to 4 parallel containers\n# TODO: Write command below\n",
     "solutionCode": "docker compose up -d --scale worker=4",
     "hints": [
       "Write:\ndocker compose up -d --scale worker=4"
@@ -4323,7 +4323,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Combine production and dev override compose files\ndocker compose -f compose.yaml -f compose.dev.yaml up -d",
+    "initialCode": "# Step 1: Combine production and dev override compose files\n# TODO: Write command below\n",
     "solutionCode": "docker compose -f",
     "hints": [
       "Write:\ndocker compose -f"
@@ -4365,7 +4365,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Start stack including optional debug tools profile\ndocker compose --profile debug up -d",
+    "initialCode": "# Step 1: Start stack including optional debug tools profile\n# TODO: Write command below\n",
     "solutionCode": "docker compose --profile debug up -d",
     "hints": [
       "Write:\ndocker compose --profile debug up -d"
@@ -4407,7 +4407,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check fullstack application health\ndocker compose ps",
+    "initialCode": "# Step 1: Check fullstack application health\n# TODO: Write command below\n",
     "solutionCode": "docker compose ps",
     "hints": [
       "Write:\ndocker compose ps"
@@ -4449,7 +4449,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify docker daemon socket permissions\nls -l /var/run/docker.sock",
+    "initialCode": "# Step 1: Verify docker daemon socket permissions\n# TODO: Write command below\n",
     "solutionCode": "ls -l /var/run/docker.sock",
     "hints": [
       "Write:\nls -l /var/run/docker.sock"
@@ -4491,7 +4491,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify rootless daemon mode\ndocker info | grep -i rootless",
+    "initialCode": "# Step 1: Verify rootless daemon mode\n# TODO: Write command below\n",
     "solutionCode": "docker info | grep -i rootless",
     "hints": [
       "Write:\ndocker info | grep -i rootless"
@@ -4533,7 +4533,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run with dropped Linux capabilities\ndocker run -d --cap-drop ALL --cap-add NET_BIND_SERVICE nginx",
+    "initialCode": "# Step 1: Run with dropped Linux capabilities\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --cap-drop ALL",
     "hints": [
       "Write:\ndocker run -d --cap-drop ALL"
@@ -4575,7 +4575,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run container with immutable read-only root\ndocker run -d --read-only --tmpfs /tmp nginx",
+    "initialCode": "# Step 1: Run container with immutable read-only root\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --read-only",
     "hints": [
       "Write:\ndocker run -d --read-only"
@@ -4617,7 +4617,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Strictly cap memory and CPU cores\ndocker run -d --memory=512m --cpus=1.5 my-api",
+    "initialCode": "# Step 1: Strictly cap memory and CPU cores\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --memory=512m --cpus=1.5 my-api",
     "hints": [
       "Write:\ndocker run -d --memory=512m --cpus=1.5 my-api"
@@ -4659,7 +4659,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Prevent privilege escalation via SUID binaries\ndocker run -d --security-opt no-new-privileges:true my-api",
+    "initialCode": "# Step 1: Prevent privilege escalation via SUID binaries\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --security-opt no-new-privileges:true my-api",
     "hints": [
       "Write:\ndocker run -d --security-opt no-new-privileges:true my-api"
@@ -4701,7 +4701,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Apply custom seccomp profile\ndocker run -d --security-opt seccomp=default.json my-api",
+    "initialCode": "# Step 1: Apply custom seccomp profile\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --security-opt seccomp=default.json my-api",
     "hints": [
       "Write:\ndocker run -d --security-opt seccomp=default.json my-api"
@@ -4743,7 +4743,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check AppArmor security status\ndocker info | grep Security",
+    "initialCode": "# Step 1: Check AppArmor security status\n# TODO: Write command below\n",
     "solutionCode": "docker info | grep Security",
     "hints": [
       "Write:\ndocker info | grep Security"
@@ -4785,7 +4785,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Enable mandatory image signature verification\nexport DOCKER_CONTENT_TRUST=1",
+    "initialCode": "# Step 1: Enable mandatory image signature verification\n# TODO: Write command below\n",
     "solutionCode": "export DOCKER_CONTENT_TRUST=1",
     "hints": [
       "Write:\nexport DOCKER_CONTENT_TRUST=1"
@@ -4827,7 +4827,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect Docker secret configuration\ndocker secret ls",
+    "initialCode": "# Step 1: Inspect Docker secret configuration\n# TODO: Write command below\n",
     "solutionCode": "docker secret ls",
     "hints": [
       "Write:\ndocker secret ls"
@@ -4869,7 +4869,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run docker-bench-security check\ndocker run --rm --net host --pid host -v /var/run/docker.sock:/var/run/docker.sock docker/docker-bench-security",
+    "initialCode": "# Step 1: Run docker-bench-security check\n# TODO: Write command below\n",
     "solutionCode": "docker run --rm --net host --pid host -v /var/run/docker.sock:/var/run/docker.sock docker/docker-bench-security",
     "hints": [
       "Write:\ndocker run --rm --net host --pid host -v /var/run/docker.sock:/var/run/docker.sock docker/docker-bench-security"
@@ -4911,7 +4911,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Configure rotating JSON log driver to prevent disk overflow\ndocker run -d --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 my-api",
+    "initialCode": "# Step 1: Configure rotating JSON log driver to prevent disk overflow\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 my-api",
     "hints": [
       "Write:\ndocker run -d --log-driver json-file --log-opt max-size=10m --log-opt max-file=3 my-api"
@@ -4953,7 +4953,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Test container healthcheck command\ndocker inspect --format='{{json .State.Health}}' my-api",
+    "initialCode": "# Step 1: Test container healthcheck command\n# TODO: Write command below\n",
     "solutionCode": "docker inspect --format='{{json .State.Health}}' my-api",
     "hints": [
       "Write:\ndocker inspect --format='{{json .State.Health}}' my-api"
@@ -4995,7 +4995,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect container stop timeout\ndocker run -d --stop-timeout 30 my-api",
+    "initialCode": "# Step 1: Inspect container stop timeout\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --stop-timeout 30 my-api",
     "hints": [
       "Write:\ndocker run -d --stop-timeout 30 my-api"
@@ -5037,7 +5037,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Complete container security checklist\ndocker run -d --read-only --cap-drop ALL --security-opt no-new-privileges:true my-api",
+    "initialCode": "# Step 1: Complete container security checklist\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --read-only --cap-drop ALL --security-opt no-new-privileges:true my-api",
     "hints": [
       "Write:\ndocker run -d --read-only --cap-drop ALL --security-opt no-new-privileges:true my-api"
@@ -5079,7 +5079,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Log in to Docker registry\ndocker login -u myuser",
+    "initialCode": "# Step 1: Log in to Docker registry\n# TODO: Write command below\n",
     "solutionCode": "docker login -u myuser",
     "hints": [
       "Write:\ndocker login -u myuser"
@@ -5121,7 +5121,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Tag local image with remote repository namespace\ndocker tag my-app:1.0 registry.devforge.io/team/my-app:1.0",
+    "initialCode": "# Step 1: Tag local image with remote repository namespace\n# TODO: Write command below\n",
     "solutionCode": "docker tag my-app:1.0 registry.devforge.io/team/my-app:1.0",
     "hints": [
       "Write:\ndocker tag my-app:1.0 registry.devforge.io/team/my-app:1.0"
@@ -5163,7 +5163,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Push tagged image to remote registry\ndocker push registry.devforge.io/team/my-app:1.0",
+    "initialCode": "# Step 1: Push tagged image to remote registry\n# TODO: Write command below\n",
     "solutionCode": "docker push registry.devforge.io/team/my-app:1.0",
     "hints": [
       "Write:\ndocker push registry.devforge.io/team/my-app:1.0"
@@ -5205,7 +5205,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run local private registry on port 5000\ndocker run -d -p 5000:5000 --name local-registry registry:2",
+    "initialCode": "# Step 1: Run local private registry on port 5000\n# TODO: Write command below\n",
     "solutionCode": "docker run -d -p 5000:5000 --name local-registry registry:2",
     "hints": [
       "Write:\ndocker run -d -p 5000:5000 --name local-registry registry:2"
@@ -5247,7 +5247,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Authenticate Docker with AWS ECR\naws ecr get-login-password | docker login --username AWS --password-stdin 123456.dkr.ecr.us-east-1.amazonaws.com",
+    "initialCode": "# Step 1: Authenticate Docker with AWS ECR\n# TODO: Write command below\n",
     "solutionCode": "aws ecr get-login-password | docker login --username AWS --password-stdin 123456.dkr.ecr.us-east-1.amazonaws.com",
     "hints": [
       "Write:\naws ecr get-login-password | docker login --username AWS --password-stdin 123456.dkr.ecr.us-east-1.amazonaws.com"
@@ -5289,7 +5289,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify GitHub Actions workflow file\ncat .github/workflows/docker.yml",
+    "initialCode": "# Step 1: Verify GitHub Actions workflow file\n# TODO: Write command below\n",
     "solutionCode": "cat .github/workflows/docker.yml",
     "hints": [
       "Write:\ncat .github/workflows/docker.yml"
@@ -5331,7 +5331,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Configure GitHub Actions cache export\n# cache-from: type=gha\n# cache-to: type=gha,mode=max\ndocker build -t app .",
+    "initialCode": "# Step 1: Configure GitHub Actions cache export cache-from: type=gha cache-to: type=gha,mode=max\n# TODO: Write command below\n",
     "solutionCode": "docker build -t app .",
     "hints": [
       "Write:\ndocker build -t app ."
@@ -5373,7 +5373,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create multi-arch buildx builder\ndocker buildx create --use --name multi-builder",
+    "initialCode": "# Step 1: Create multi-arch buildx builder\n# TODO: Write command below\n",
     "solutionCode": "docker buildx create --use --name multi-builder",
     "hints": [
       "Write:\ndocker buildx create --use --name multi-builder"
@@ -5415,7 +5415,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Build and push multi-arch image\ndocker buildx build --platform linux/amd64,linux/arm64 -t my-app:latest --push .",
+    "initialCode": "# Step 1: Build and push multi-arch image\n# TODO: Write command below\n",
     "solutionCode": "docker buildx build --platform linux/amd64,linux/arm64 -t my-app:latest --push .",
     "hints": [
       "Write:\ndocker buildx build --platform linux/amd64,linux/arm64 -t my-app:latest --push ."
@@ -5457,7 +5457,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect multi-arch manifest list\ndocker buildx imagetools inspect my-app:latest",
+    "initialCode": "# Step 1: Inspect multi-arch manifest list\n# TODO: Write command below\n",
     "solutionCode": "docker buildx imagetools inspect my-app:latest",
     "hints": [
       "Write:\ndocker buildx imagetools inspect my-app:latest"
@@ -5499,7 +5499,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Tag image with git commit hash\ndocker build -t my-app:sha-7e8f9a0 -t my-app:1.2.0 .",
+    "initialCode": "# Step 1: Tag image with git commit hash\n# TODO: Write command below\n",
     "solutionCode": "docker build -t my-app:sha-7e8f9a0 -t my-app:1.2.0 .",
     "hints": [
       "Write:\ndocker build -t my-app:sha-7e8f9a0 -t my-app:1.2.0 ."
@@ -5541,7 +5541,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Scan image in CI and fail on critical vulnerabilities\ntrivy image --exit-code 1 --severity CRITICAL my-app:latest",
+    "initialCode": "# Step 1: Scan image in CI and fail on critical vulnerabilities\n# TODO: Write command below\n",
     "solutionCode": "trivy image --exit-code 1 --severity CRITICAL my-app:latest",
     "hints": [
       "Write:\ntrivy image --exit-code 1 --severity CRITICAL my-app:latest"
@@ -5583,7 +5583,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check registry webhook response\ncurl -I https://registry.devforge.io/v2/",
+    "initialCode": "# Step 1: Check registry webhook response\n# TODO: Write command below\n",
     "solutionCode": "curl -I https://registry.devforge.io/v2/",
     "hints": [
       "Write:\ncurl -I https://registry.devforge.io/v2/"
@@ -5625,7 +5625,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Route 10% traffic to canary container\ndocker ps --filter name=canary",
+    "initialCode": "# Step 1: Route 10% traffic to canary container\n# TODO: Write command below\n",
     "solutionCode": "docker ps --filter name=canary",
     "hints": [
       "Write:\ndocker ps --filter name=canary"
@@ -5667,7 +5667,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify multi-arch image status\ndocker buildx ls",
+    "initialCode": "# Step 1: Verify multi-arch image status\n# TODO: Write command below\n",
     "solutionCode": "docker buildx ls",
     "hints": [
       "Write:\ndocker buildx ls"
@@ -5709,7 +5709,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run container with built-in tini init system\ndocker run -d --init my-api",
+    "initialCode": "# Step 1: Run container with built-in tini init system\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --init my-api",
     "hints": [
       "Write:\ndocker run -d --init my-api"
@@ -5751,7 +5751,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify PID 1 process inside container\ndocker top my-api",
+    "initialCode": "# Step 1: Verify PID 1 process inside container\n# TODO: Write command below\n",
     "solutionCode": "docker top my-api",
     "hints": [
       "Write:\ndocker top my-api"
@@ -5793,7 +5793,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run cAdvisor container metrics exporter\ndocker run -d --name cadvisor -p 8080:8080 -v /:/rootfs:ro -v /var/run:/var/run:ro -v /sys:/sys:ro gcr.io/cadvisor/cadvisor",
+    "initialCode": "# Step 1: Run cAdvisor container metrics exporter\n# TODO: Write command below\n",
     "solutionCode": "docker run -d --name cadvisor -p 8080:8080 -v /:/rootfs:ro -v /var/run:/var/run:ro -v /sys:/sys:ro gcr.io/cadvisor/cadvisor",
     "hints": [
       "Write:\ndocker run -d --name cadvisor -p 8080:8080 -v /:/rootfs:ro -v /var/run:/var/run:ro -v /sys:/sys:ro gcr.io/cadvisor/cadvisor"
@@ -5835,7 +5835,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View Docker log driver configuration\ndocker info --format '{{.LoggingDriver}}'",
+    "initialCode": "# Step 1: View Docker log driver configuration\n# TODO: Write command below\n",
     "solutionCode": "docker info --format '{{.LoggingDriver}}'",
     "hints": [
       "Write:\ndocker info --format '{{.LoggingDriver}}'"
@@ -5877,7 +5877,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Test container reboot recovery\ndocker restart my-api",
+    "initialCode": "# Step 1: Test container reboot recovery\n# TODO: Write command below\n",
     "solutionCode": "docker restart my-api",
     "hints": [
       "Write:\ndocker restart my-api"
@@ -5919,7 +5919,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Initialize Docker Swarm cluster\ndocker swarm init",
+    "initialCode": "# Step 1: Initialize Docker Swarm cluster\n# TODO: Write command below\n",
     "solutionCode": "docker swarm init",
     "hints": [
       "Write:\ndocker swarm init"
@@ -5961,7 +5961,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Deploy compose stack as swarm service\ndocker stack deploy -c compose.yaml prod-stack",
+    "initialCode": "# Step 1: Deploy compose stack as swarm service\n# TODO: Write command below\n",
     "solutionCode": "docker stack deploy -c compose.yaml prod-stack",
     "hints": [
       "Write:\ndocker stack deploy -c compose.yaml prod-stack"
@@ -6003,7 +6003,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compare container to Pod architecture\necho \"Pod = 1 or more tightly coupled containers sharing network & IPC\"",
+    "initialCode": "# Step 1: Compare container to Pod architecture\n# TODO: Write command below\n",
     "solutionCode": "echo \"Pod = 1 or more tightly coupled containers sharing network & IPC\"",
     "hints": [
       "Write:\necho \"Pod = 1 or more tightly coupled containers sharing network & IPC\""
@@ -6045,7 +6045,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Review Kubernetes Pod manifest\ncat pod.yaml",
+    "initialCode": "# Step 1: Review Kubernetes Pod manifest\n# TODO: Write command below\n",
     "solutionCode": "cat pod.yaml",
     "hints": [
       "Write:\ncat pod.yaml"
@@ -6087,7 +6087,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check deployment replica spec\necho \"apiVersion: apps/v1\\nkind: Deployment\" > deployment.yaml",
+    "initialCode": "# Step 1: Check deployment replica spec\n# TODO: Write command below\n",
     "solutionCode": "echo \"apiVersion: apps/v1\\nkind: Deployment\" > deployment.yaml",
     "hints": [
       "Write:\necho \"apiVersion: apps/v1\\nkind: Deployment\" > deployment.yaml"
@@ -6129,7 +6129,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check service network mapping\necho \"apiVersion: v1\\nkind: Service\" > service.yaml",
+    "initialCode": "# Step 1: Check service network mapping\n# TODO: Write command below\n",
     "solutionCode": "echo \"apiVersion: v1\\nkind: Service\" > service.yaml",
     "hints": [
       "Write:\necho \"apiVersion: v1\\nkind: Service\" > service.yaml"
@@ -6171,7 +6171,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Persistent volume claim concept\necho \"kind: PersistentVolumeClaim\" > pvc.yaml",
+    "initialCode": "# Step 1: Persistent volume claim concept\n# TODO: Write command below\n",
     "solutionCode": "echo \"kind: PersistentVolumeClaim\" > pvc.yaml",
     "hints": [
       "Write:\necho \"kind: PersistentVolumeClaim\" > pvc.yaml"
@@ -6213,7 +6213,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# ConfigMap environment mapping\necho \"kind: ConfigMap\" > configmap.yaml",
+    "initialCode": "# Step 1: ConfigMap environment mapping\n# TODO: Write command below\n",
     "solutionCode": "echo \"kind: ConfigMap\" > configmap.yaml",
     "hints": [
       "Write:\necho \"kind: ConfigMap\" > configmap.yaml"
@@ -6255,7 +6255,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search Helm charts for PostgreSQL\nhelm search hub postgresql",
+    "initialCode": "# Step 1: Search Helm charts for PostgreSQL\n# TODO: Write command below\n",
     "solutionCode": "helm search hub postgresql",
     "hints": [
       "Write:\nhelm search hub postgresql"
@@ -6297,7 +6297,7 @@ export const DOCKER_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Final verification of container deployment\ndocker ps --format \"table {{.ID}}\\t{{.Names}}\\t{{.Status}}\"",
+    "initialCode": "# Step 1: Final verification of container deployment\n# TODO: Write command below\n",
     "solutionCode": "docker ps --format \"table {{.ID}}\\t{{.Names}}\\t{{.Status}}\"",
     "hints": [
       "Write:\ndocker ps --format \"table {{.ID}}\\t{{.Names}}\\t{{.Status}}\""

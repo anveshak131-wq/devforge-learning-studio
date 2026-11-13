@@ -31,7 +31,7 @@ export const module10Lessons: Lesson[] = [
       "Instantiate `let player = new Hero();`.",
       "Print `player instanceof Hero`."
     ],
-    "initialCode": "class Hero {}\nlet player = new Hero();\nconsole.log(player instanceof Hero);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Hero {}\nlet player = new Hero();\nconsole.log(player instanceof Hero);\n",
     "hints": [
       "Write `class Hero {}` and `new Hero()`"
@@ -73,7 +73,7 @@ export const module10Lessons: Lesson[] = [
       "Create `let myBook = new Book(\"Dune\");`.",
       "Print `myBook.title`."
     ],
-    "initialCode": "class Book {\n  constructor(title) {\n    this.title = title;\n  }\n}\nlet myBook = new Book(\"Dune\");\nconsole.log(myBook.title);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Book {\n  constructor(title) {\n    this.title = title;\n  }\n}\nlet myBook = new Book(\"Dune\");\nconsole.log(myBook.title);\n",
     "hints": [
       "Assign `this.title = title;` inside the constructor"
@@ -115,7 +115,7 @@ export const module10Lessons: Lesson[] = [
       "Create `let acc = new BankAccount(100);`.",
       "Deposit 50 and print `acc.bal`."
     ],
-    "initialCode": "class BankAccount {\n  constructor(bal) {\n    this.bal = bal;\n  }\n  deposit(amount) {\n    this.bal += amount;\n    return this.bal;\n  }\n}\nlet acc = new BankAccount(100);\nacc.deposit(50);\nconsole.log(acc.bal);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class BankAccount {\n  constructor(bal) {\n    this.bal = bal;\n  }\n  deposit(amount) {\n    this.bal += amount;\n    return this.bal;\n  }\n}\nlet acc = new BankAccount(100);\nacc.deposit(50);\nconsole.log(acc.bal);\n",
     "hints": [
       "acc.deposit(50) should increase bal to 150"
@@ -157,7 +157,7 @@ export const module10Lessons: Lesson[] = [
       "Define child `class Phone extends Device {}`.",
       "Create `let p = new Phone();` and print `p.powerOn()`."
     ],
-    "initialCode": "class Device {\n  powerOn() {\n    return \"ON\";\n  }\n}\nclass Phone extends Device {}\nlet p = new Phone();\nconsole.log(p.powerOn());\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Device {\n  powerOn() {\n    return \"ON\";\n  }\n}\nclass Phone extends Device {}\nlet p = new Phone();\nconsole.log(p.powerOn());\n",
     "hints": [
       "Use `class Phone extends Device`"
@@ -199,7 +199,7 @@ export const module10Lessons: Lesson[] = [
       "Define `class Circle extends Shape { constructor(color, radius) { super(color); this.radius = radius; } }`.",
       "Create `let c = new Circle(\"red\", 10);` and print `c.color`."
     ],
-    "initialCode": "class Shape {\n  constructor(color) {\n    this.color = color;\n  }\n}\nclass Circle extends Shape {\n  constructor(color, radius) {\n    super(color);\n    this.radius = radius;\n  }\n}\nlet c = new Circle(\"red\", 10);\nconsole.log(c.color);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Shape {\n  constructor(color) {\n    this.color = color;\n  }\n}\nclass Circle extends Shape {\n  constructor(color, radius) {\n    super(color);\n    this.radius = radius;\n  }\n}\nlet c = new Circle(\"red\", 10);\nconsole.log(c.color);\n",
     "hints": [
       "Remember to call `super(color)` before `this.radius = radius`"
@@ -242,7 +242,7 @@ export const module10Lessons: Lesson[] = [
       "Create `let r = new Rectangle(5, 4);`.",
       "Print `r.area`."
     ],
-    "initialCode": "class Rectangle {\n  constructor(w, h) {\n    this.w = w;\n    this.h = h;\n  }\n  get area() {\n    return this.w * this.h;\n  }\n}\nlet r = new Rectangle(5, 4);\nconsole.log(r.area);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Rectangle {\n  constructor(w, h) {\n    this.w = w;\n    this.h = h;\n  }\n  get area() {\n    return this.w * this.h;\n  }\n}\nlet r = new Rectangle(5, 4);\nconsole.log(r.area);\n",
     "hints": [
       "Use `get area() { return this.w * this.h; }`"
@@ -284,7 +284,7 @@ export const module10Lessons: Lesson[] = [
       "Call `let res = Calculator.add(15, 25);`.",
       "Print `res`."
     ],
-    "initialCode": "class Calculator {\n  static add(a, b) {\n    return a + b;\n  }\n}\nlet res = Calculator.add(15, 25);\nconsole.log(res);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Calculator {\n  static add(a, b) {\n    return a + b;\n  }\n}\nlet res = Calculator.add(15, 25);\nconsole.log(res);\n",
     "hints": [
       "Call `Calculator.add(15, 25)` without new"
@@ -326,7 +326,7 @@ export const module10Lessons: Lesson[] = [
       "Create `let s = new Safe();`.",
       "Print `s.check(1234)`."
     ],
-    "initialCode": "class Safe {\n  #pin = 1234;\n  check(val) {\n    return this.#pin === val;\n  }\n}\nlet s = new Safe();\nconsole.log(s.check(1234));\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class Safe {\n  #pin = 1234;\n  check(val) {\n    return this.#pin === val;\n  }\n}\nlet s = new Safe();\nconsole.log(s.check(1234));\n",
     "hints": [
       "Declare `#pin = 1234;` at class level"
@@ -368,7 +368,7 @@ export const module10Lessons: Lesson[] = [
       "Create `let isDate = date instanceof Date;`.",
       "Print `isDate`."
     ],
-    "initialCode": "let date = new Date();\nlet isDate = date instanceof Date;\nconsole.log(isDate);\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "let date = new Date();\nlet isDate = date instanceof Date;\nconsole.log(isDate);\n",
     "hints": [
       "Use `date instanceof Date`"
@@ -410,7 +410,7 @@ export const module10Lessons: Lesson[] = [
       "Define `class EmailNotification extends BaseNotification { send() { return \"Sending email\"; } }`.",
       "Create `let n = new EmailNotification();` and print `n.send()`."
     ],
-    "initialCode": "class BaseNotification {\n  send() {\n    return \"Generic notification\";\n  }\n}\nclass EmailNotification extends BaseNotification {\n  send() {\n    return \"Sending email\";\n  }\n}\nlet n = new EmailNotification();\nconsole.log(n.send());\n",
+    "initialCode": "// Step 1: Write your JavaScript code below\n// TODO: Write code below\n",
     "solutionCode": "class BaseNotification {\n  send() {\n    return \"Generic notification\";\n  }\n}\nclass EmailNotification extends BaseNotification {\n  send() {\n    return \"Sending email\";\n  }\n}\nlet n = new EmailNotification();\nconsole.log(n.send());\n",
     "hints": [
       "EmailNotification should override send() to return 'Sending email'"

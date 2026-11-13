@@ -39,7 +39,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Print current working directory\npwd",
+    "initialCode": "# Step 1: Print current working directory\n# TODO: Write command below\n",
     "solutionCode": "pwd",
     "hints": [
       "Write:\npwd"
@@ -81,7 +81,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Confirm active directory path\npwd",
+    "initialCode": "# Step 1: Confirm active directory path\n# TODO: Write command below\n",
     "solutionCode": "pwd",
     "hints": [
       "Write:\npwd"
@@ -123,7 +123,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List contents of current directory\nls",
+    "initialCode": "# Step 1: List contents of current directory\n# TODO: Write command below\n",
     "solutionCode": "ls",
     "hints": [
       "Write:\nls"
@@ -165,7 +165,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View permissions, owner, size, and dates\nls -l",
+    "initialCode": "# Step 1: View permissions, owner, size, and dates\n# TODO: Write command below\n",
     "solutionCode": "ls -l",
     "hints": [
       "Write:\nls -l"
@@ -207,7 +207,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View all files including dotfiles\nls -a",
+    "initialCode": "# Step 1: View all files including dotfiles\n# TODO: Write command below\n",
     "solutionCode": "ls -a",
     "hints": [
       "Write:\nls -a"
@@ -249,7 +249,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Display sizes in KB, MB, and GB\nls -lh",
+    "initialCode": "# Step 1: Display sizes in KB, MB, and GB\n# TODO: Write command below\n",
     "solutionCode": "ls -lh",
     "hints": [
       "Write:\nls -lh"
@@ -291,7 +291,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Navigate to home directory\ncd ~",
+    "initialCode": "# Step 1: Navigate to home directory\n# TODO: Write command below\n",
     "solutionCode": "cd ~",
     "hints": [
       "Write:\ncd ~"
@@ -333,7 +333,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create a new empty file\ntouch index.ts",
+    "initialCode": "# Step 1: Create a new empty file\n# TODO: Write command below\n",
     "solutionCode": "touch index.ts",
     "hints": [
       "Write:\ntouch index.ts"
@@ -375,7 +375,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create nested folder structure\nmkdir -p src/controllers/auth",
+    "initialCode": "# Step 1: Create nested folder structure\n# TODO: Write command below\n",
     "solutionCode": "mkdir -p src/controllers/auth",
     "hints": [
       "Write:\nmkdir -p src/controllers/auth"
@@ -417,7 +417,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Recursively copy directory\ncp -r src/ src_backup/",
+    "initialCode": "# Step 1: Recursively copy directory\n# TODO: Write command below\n",
     "solutionCode": "cp -r src/ src_backup/",
     "hints": [
       "Write:\ncp -r src/ src_backup/"
@@ -459,7 +459,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Rename file\nmv old_name.txt new_name.txt",
+    "initialCode": "# Step 1: Rename file\n# TODO: Write command below\n",
     "solutionCode": "mv old_name.txt new_name.txt",
     "hints": [
       "Write:\nmv old_name.txt new_name.txt"
@@ -501,7 +501,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Remove temporary directory recursively\nrm -rf /tmp/scratch",
+    "initialCode": "# Step 1: Remove temporary directory recursively\n# TODO: Write command below\n",
     "solutionCode": "rm -rf /tmp/scratch",
     "hints": [
       "Write:\nrm -rf /tmp/scratch"
@@ -543,7 +543,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Concatenate and print file to screen\ncat /etc/os-release",
+    "initialCode": "# Step 1: Concatenate and print file to screen\n# TODO: Write command below\n",
     "solutionCode": "cat /etc/os-release",
     "hints": [
       "Write:\ncat /etc/os-release"
@@ -585,7 +585,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View file with paginated scrolling\nless /var/log/system.log",
+    "initialCode": "# Step 1: View file with paginated scrolling\n# TODO: Write command below\n",
     "solutionCode": "less /var/log/system.log",
     "hints": [
       "Write:\nless /var/log/system.log"
@@ -627,7 +627,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Follow live incoming log entries\ntail -f /var/log/app.log",
+    "initialCode": "# Step 1: Follow live incoming log entries\n# TODO: Write command below\n",
     "solutionCode": "tail -f /var/log/app.log",
     "hints": [
       "Write:\ntail -f /var/log/app.log"
@@ -669,7 +669,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Print current active user identity\nwhoami",
+    "initialCode": "# Step 1: Print current active user identity\n# TODO: Write command below\n",
     "solutionCode": "whoami",
     "hints": [
       "Write:\nwhoami"
@@ -711,7 +711,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect file permissions\nls -l app.sh",
+    "initialCode": "# Step 1: Inspect file permissions\n# TODO: Write command below\n",
     "solutionCode": "ls -l app.sh",
     "hints": [
       "Write:\nls -l app.sh"
@@ -753,7 +753,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Set rwxr-xr-x permissions (755)\nchmod 755 app.sh",
+    "initialCode": "# Step 1: Set rwxr-xr-x permissions (755)\n# TODO: Write command below\n",
     "solutionCode": "chmod 755 app.sh",
     "hints": [
       "Write:\nchmod 755 app.sh"
@@ -795,7 +795,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Make script executable for all users\nchmod +x deploy.sh",
+    "initialCode": "# Step 1: Make script executable for all users\n# TODO: Write command below\n",
     "solutionCode": "chmod +x deploy.sh",
     "hints": [
       "Write:\nchmod +x deploy.sh"
@@ -837,7 +837,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Change file owner to deployer user\nchown deployer:appgroup server.js",
+    "initialCode": "# Step 1: Change file owner to deployer user\n# TODO: Write command below\n",
     "solutionCode": "chown deployer:appgroup server.js",
     "hints": [
       "Write:\nchown deployer:appgroup server.js"
@@ -879,7 +879,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Change group ownership\nchgrp developers config.json",
+    "initialCode": "# Step 1: Change group ownership\n# TODO: Write command below\n",
     "solutionCode": "chgrp developers config.json",
     "hints": [
       "Write:\nchgrp developers config.json"
@@ -921,7 +921,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View current umask value\numask",
+    "initialCode": "# Step 1: View current umask value\n# TODO: Write command below\n",
     "solutionCode": "umask",
     "hints": [
       "Write:\numask"
@@ -963,7 +963,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View passwd binary SUID permission\nls -l /usr/bin/passwd",
+    "initialCode": "# Step 1: View passwd binary SUID permission\n# TODO: Write command below\n",
     "solutionCode": "ls -l /usr/bin/passwd",
     "hints": [
       "Write:\nls -l /usr/bin/passwd"
@@ -1005,7 +1005,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Configure SGID on shared team directory\nchmod 2775 /var/shared",
+    "initialCode": "# Step 1: Configure SGID on shared team directory\n# TODO: Write command below\n",
     "solutionCode": "chmod 2775 /var/shared",
     "hints": [
       "Write:\nchmod 2775 /var/shared"
@@ -1047,7 +1047,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View sticky bit on /tmp directory\nls -ld /tmp",
+    "initialCode": "# Step 1: View sticky bit on /tmp directory\n# TODO: Write command below\n",
     "solutionCode": "ls -ld /tmp",
     "hints": [
       "Write:\nls -ld /tmp"
@@ -1089,7 +1089,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run privileged command with sudo\nsudo systemctl restart nginx",
+    "initialCode": "# Step 1: Run privileged command with sudo\n# TODO: Write command below\n",
     "solutionCode": "sudo systemctl restart nginx",
     "hints": [
       "Write:\nsudo systemctl restart nginx"
@@ -1131,7 +1131,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Switch to deploy user\nsu - deployer",
+    "initialCode": "# Step 1: Switch to deploy user\n# TODO: Write command below\n",
     "solutionCode": "su - deployer",
     "hints": [
       "Write:\nsu - deployer"
@@ -1173,7 +1173,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Safely inspect sudoers configuration\nsudo cat /etc/sudoers",
+    "initialCode": "# Step 1: Safely inspect sudoers configuration\n# TODO: Write command below\n",
     "solutionCode": "sudo cat /etc/sudoers",
     "hints": [
       "Write:\nsudo cat /etc/sudoers"
@@ -1215,7 +1215,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect extended file attributes\nlsattr config.json",
+    "initialCode": "# Step 1: Inspect extended file attributes\n# TODO: Write command below\n",
     "solutionCode": "lsattr config.json",
     "hints": [
       "Write:\nlsattr config.json"
@@ -1257,7 +1257,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Audit directory permissions\nls -la",
+    "initialCode": "# Step 1: Audit directory permissions\n# TODO: Write command below\n",
     "solutionCode": "ls -la",
     "hints": [
       "Write:\nls -la"
@@ -1299,7 +1299,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Confirm standard file descriptors\nls -l /dev/fd",
+    "initialCode": "# Step 1: Confirm standard file descriptors\n# TODO: Write command below\n",
     "solutionCode": "ls -l /dev/fd",
     "hints": [
       "Write:\nls -l /dev/fd"
@@ -1341,7 +1341,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Save directory listing to file\nls -l > inventory.txt",
+    "initialCode": "# Step 1: Save directory listing to file\n# TODO: Write command below\n",
     "solutionCode": "ls -l > inventory.txt",
     "hints": [
       "Write:\nls -l > inventory.txt"
@@ -1383,7 +1383,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Append timestamped log entry\necho \"Server rebooted\" >> uptime.log",
+    "initialCode": "# Step 1: Append timestamped log entry\n# TODO: Write command below\n",
     "solutionCode": "echo \"Server rebooted\" >> uptime.log",
     "hints": [
       "Write:\necho \"Server rebooted\" >> uptime.log"
@@ -1425,7 +1425,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Redirect error messages to errors.log\nls /nonexistent 2> errors.log",
+    "initialCode": "# Step 1: Redirect error messages to errors.log\n# TODO: Write command below\n",
     "solutionCode": "ls /nonexistent 2> errors.log",
     "hints": [
       "Write:\nls /nonexistent 2> errors.log"
@@ -1467,7 +1467,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Redirect both normal output and errors into one file\n./build.sh &> build.log",
+    "initialCode": "# Step 1: Redirect both normal output and errors into one file\n# TODO: Write command below\n",
     "solutionCode": "./build.sh &> build.log",
     "hints": [
       "Write:\n./build.sh &> build.log"
@@ -1509,7 +1509,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Silently discard error output\nls /secret 2> /dev/null",
+    "initialCode": "# Step 1: Silently discard error output\n# TODO: Write command below\n",
     "solutionCode": "ls /secret 2> /dev/null",
     "hints": [
       "Write:\nls /secret 2> /dev/null"
@@ -1551,7 +1551,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Read input from file\nwc -l < data.csv",
+    "initialCode": "# Step 1: Read input from file\n# TODO: Write command below\n",
     "solutionCode": "wc -l < data.csv",
     "hints": [
       "Write:\nwc -l < data.csv"
@@ -1593,7 +1593,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create multi-line configuration file\ncat <<EOF > config.env\nPORT=8080\nENV=production\nEOF",
+    "initialCode": "# Step 1: Create multi-line configuration file\n# TODO: Write command below\n",
     "solutionCode": "cat <<EOF > config.env\nPORT=8080\nENV=production\nEOF",
     "hints": [
       "Write:\ncat <<EOF > config.env\nPORT=8080\nENV=production\nEOF"
@@ -1635,7 +1635,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Feed string directly to command stdin\nbase64 -d <<< \"SGVsbG8=\"",
+    "initialCode": "# Step 1: Feed string directly to command stdin\n# TODO: Write command below\n",
     "solutionCode": "base64 -d <<< \"SGVsbG8=\"",
     "hints": [
       "Write:\nbase64 -d <<< \"SGVsbG8=\""
@@ -1677,7 +1677,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Chain commands together\nls -l | grep \".ts\" | wc -l",
+    "initialCode": "# Step 1: Chain commands together\n# TODO: Write command below\n",
     "solutionCode": "ls -l | grep \".ts\" | wc -l",
     "hints": [
       "Write:\nls -l | grep \".ts\" | wc -l"
@@ -1719,7 +1719,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Print to screen AND save to log file simultaneously\necho \"Deployment complete\" | tee -a deploy.log",
+    "initialCode": "# Step 1: Print to screen AND save to log file simultaneously\n# TODO: Write command below\n",
     "solutionCode": "echo \"Deployment complete\" | tee -a deploy.log",
     "hints": [
       "Write:\necho \"Deployment complete\" | tee -a deploy.log"
@@ -1761,7 +1761,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete all temporary files discovered by find\nfind . -name \"*.tmp\" | xargs rm -f",
+    "initialCode": "# Step 1: Delete all temporary files discovered by find\n# TODO: Write command below\n",
     "solutionCode": "find . -name \"*.tmp\" | xargs rm -f",
     "hints": [
       "Write:\nfind . -name \"*.tmp\" | xargs rm -f"
@@ -1803,7 +1803,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Safely process files containing spaces\nfind . -name \"*.log\" -print0 | xargs -0 rm",
+    "initialCode": "# Step 1: Safely process files containing spaces\n# TODO: Write command below\n",
     "solutionCode": "find . -name \"*.log\" -print0 | xargs -0 rm",
     "hints": [
       "Write:\nfind . -name \"*.log\" -print0 | xargs -0 rm"
@@ -1845,7 +1845,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compare outputs of two running commands directly\ndiff <(ls dirA) <(ls dirB)",
+    "initialCode": "# Step 1: Compare outputs of two running commands directly\n# TODO: Write command below\n",
     "solutionCode": "diff <(ls dirA) <(ls dirB)",
     "hints": [
       "Write:\ndiff <(ls dirA) <(ls dirB)"
@@ -1887,7 +1887,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Complex text transformation pipeline\ncat /var/log/syslog | grep \"ERROR\" | cut -d' ' -f5- | sort | uniq -c",
+    "initialCode": "# Step 1: Complex text transformation pipeline\n# TODO: Write command below\n",
     "solutionCode": "cat /var/log/syslog | grep \"ERROR\" | cut -d' ' -f5- | sort | uniq -c",
     "hints": [
       "Write:\ncat /var/log/syslog | grep \"ERROR\" | cut -d' ' -f5- | sort | uniq -c"
@@ -1929,7 +1929,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Count total lines in a file\nwc -l server.ts",
+    "initialCode": "# Step 1: Count total lines in a file\n# TODO: Write command below\n",
     "solutionCode": "wc -l server.ts",
     "hints": [
       "Write:\nwc -l server.ts"
@@ -1971,7 +1971,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Sort numerically in reverse order\nsort -n -r scores.txt",
+    "initialCode": "# Step 1: Sort numerically in reverse order\n# TODO: Write command below\n",
     "solutionCode": "sort -n -r scores.txt",
     "hints": [
       "Write:\nsort -n -r scores.txt"
@@ -2013,7 +2013,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Count unique occurrences of lines\nsort access.log | uniq -c",
+    "initialCode": "# Step 1: Count unique occurrences of lines\n# TODO: Write command below\n",
     "solutionCode": "sort access.log | uniq -c",
     "hints": [
       "Write:\nsort access.log | uniq -c"
@@ -2055,7 +2055,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Extract usernames from /etc/passwd\ncut -d: -f1 /etc/passwd",
+    "initialCode": "# Step 1: Extract usernames from /etc/passwd\n# TODO: Write command below\n",
     "solutionCode": "cut -d: -f1 /etc/passwd",
     "hints": [
       "Write:\ncut -d: -f1 /etc/passwd"
@@ -2097,7 +2097,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Convert text to uppercase\necho \"hello devforge\" | tr 'a-z' 'A-Z'",
+    "initialCode": "# Step 1: Convert text to uppercase\n# TODO: Write command below\n",
     "solutionCode": "echo \"hello devforge\" | tr 'a-z' 'A-Z'",
     "hints": [
       "Write:\necho \"hello devforge\" | tr 'a-z' 'A-Z'"
@@ -2139,7 +2139,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search for keyword across files\ngrep \"DATABASE_URL\" .env",
+    "initialCode": "# Step 1: Search for keyword across files\n# TODO: Write command below\n",
     "solutionCode": "grep \"DATABASE_URL\" .env",
     "hints": [
       "Write:\ngrep \"DATABASE_URL\" .env"
@@ -2181,7 +2181,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find non-matching lines ignoring case\ngrep -iv \"debug\" server.log",
+    "initialCode": "# Step 1: Find non-matching lines ignoring case\n# TODO: Write command below\n",
     "solutionCode": "grep -iv \"debug\" server.log",
     "hints": [
       "Write:\ngrep -iv \"debug\" server.log"
@@ -2223,7 +2223,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Count total error occurrences with line numbers\ngrep -n \"Error:\" build.log",
+    "initialCode": "# Step 1: Count total error occurrences with line numbers\n# TODO: Write command below\n",
     "solutionCode": "grep -n \"Error:\" build.log",
     "hints": [
       "Write:\ngrep -n \"Error:\" build.log"
@@ -2265,7 +2265,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search recursively across directory tree\ngrep -rn \"useAuth\" src/",
+    "initialCode": "# Step 1: Search recursively across directory tree\n# TODO: Write command below\n",
     "solutionCode": "grep -rn \"useAuth\" src/",
     "hints": [
       "Write:\ngrep -rn \"useAuth\" src/"
@@ -2307,7 +2307,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Match either word1 or word2\ngrep -E \"(error|fatal)\" system.log",
+    "initialCode": "# Step 1: Match either word1 or word2\n# TODO: Write command below\n",
     "solutionCode": "grep -E \"(error|fatal)\" system.log",
     "hints": [
       "Write:\ngrep -E \"(error|fatal)\" system.log"
@@ -2349,7 +2349,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Replace first occurrence of 'http' with 'https'\nsed 's/http:/https:/' urls.txt",
+    "initialCode": "# Step 1: Replace first occurrence of 'http' with 'https'\n# TODO: Write command below\n",
     "solutionCode": "sed 's/http:/https:/' urls.txt",
     "hints": [
       "Write:\nsed 's/http:/https:/' urls.txt"
@@ -2391,7 +2391,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Replace text directly inside the file\nsed -i 's/localhost/127.0.0.1/g' config.env",
+    "initialCode": "# Step 1: Replace text directly inside the file\n# TODO: Write command below\n",
     "solutionCode": "sed -i 's/localhost/127.0.0.1/g' config.env",
     "hints": [
       "Write:\nsed -i 's/localhost/127.0.0.1/g' config.env"
@@ -2433,7 +2433,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete all empty blank lines\nsed -i '/^$/d' data.txt",
+    "initialCode": "# Step 1: Delete all empty blank lines\n# TODO: Write command below\n",
     "solutionCode": "sed -i '/^$/d' data.txt",
     "hints": [
       "Write:\nsed -i '/^$/d' data.txt"
@@ -2475,7 +2475,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Print Column 1 and Column 3 from table\nawk '{print $1, $3}' access.log",
+    "initialCode": "# Step 1: Print Column 1 and Column 3 from table\n# TODO: Write command below\n",
     "solutionCode": "awk '{print $1, $3}' access.log",
     "hints": [
       "Write:\nawk '{print $1, $3}' access.log"
@@ -2517,7 +2517,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Print lines where Column 2 exceeds 100\nawk '$2 > 100 {print $1, $2}' metrics.txt",
+    "initialCode": "# Step 1: Print lines where Column 2 exceeds 100\n# TODO: Write command below\n",
     "solutionCode": "awk '$2 > 100 {print $1, $2}' metrics.txt",
     "hints": [
       "Write:\nawk '$2 > 100 {print $1, $2}' metrics.txt"
@@ -2559,7 +2559,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Print line number and last column\nawk 'BEGIN {FS=\":\"} {print NR, $NF}' /etc/passwd",
+    "initialCode": "# Step 1: Print line number and last column\n# TODO: Write command below\n",
     "solutionCode": "awk 'BEGIN {FS=\":\"} {print NR, $NF}' /etc/passwd",
     "hints": [
       "Write:\nawk 'BEGIN {FS=\":\"} {print NR, $NF}' /etc/passwd"
@@ -2601,7 +2601,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Top 5 IP addresses hitting the web server\nawk '{print $1}' access.log | sort | uniq -c | sort -nr | head -n 5",
+    "initialCode": "# Step 1: Top 5 IP addresses hitting the web server\n# TODO: Write command below\n",
     "solutionCode": "awk '{print $1}' access.log | sort | uniq -c | sort -nr | head -n 5",
     "hints": [
       "Write:\nawk '{print $1}' access.log | sort | uniq -c | sort -nr | head -n 5"
@@ -2643,7 +2643,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Comprehensive log summary report\nawk '{sum += $2} END {print \"Total:\", sum}' data.txt",
+    "initialCode": "# Step 1: Comprehensive log summary report\n# TODO: Write command below\n",
     "solutionCode": "awk '{sum += $2} END {print \"Total:\", sum}' data.txt",
     "hints": [
       "Write:\nawk '{sum += $2} END {print \"Total:\", sum}' data.txt"
@@ -2685,7 +2685,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search for TypeScript files recursively\nfind . -name \"*.ts\"",
+    "initialCode": "# Step 1: Search for TypeScript files recursively\n# TODO: Write command below\n",
     "solutionCode": "find . -name \"*.ts\"",
     "hints": [
       "Write:\nfind . -name \"*.ts\""
@@ -2727,7 +2727,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search ignoring case\nfind . -iname \"readme*\"",
+    "initialCode": "# Step 1: Search ignoring case\n# TODO: Write command below\n",
     "solutionCode": "find . -iname \"readme*\"",
     "hints": [
       "Write:\nfind . -iname \"readme*\""
@@ -2769,7 +2769,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Search for directories only\nfind . -type d -name \"controllers\"",
+    "initialCode": "# Step 1: Search for directories only\n# TODO: Write command below\n",
     "solutionCode": "find . -type d -name \"controllers\"",
     "hints": [
       "Write:\nfind . -type d -name \"controllers\""
@@ -2811,7 +2811,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find large files exceeding 100 Megabytes\nfind /var -size +100M",
+    "initialCode": "# Step 1: Find large files exceeding 100 Megabytes\n# TODO: Write command below\n",
     "solutionCode": "find /var -size +100M",
     "hints": [
       "Write:\nfind /var -size +100M"
@@ -2853,7 +2853,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find files modified in the past 24 hours\nfind . -mtime -1",
+    "initialCode": "# Step 1: Find files modified in the past 24 hours\n# TODO: Write command below\n",
     "solutionCode": "find . -mtime -1",
     "hints": [
       "Write:\nfind . -mtime -1"
@@ -2895,7 +2895,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Delete all matching temporary files safely\nfind . -name \"*.tmp\" -exec rm -f {} +",
+    "initialCode": "# Step 1: Delete all matching temporary files safely\n# TODO: Write command below\n",
     "solutionCode": "find . -name \"*.tmp\" -exec rm -f {} +",
     "hints": [
       "Write:\nfind . -name \"*.tmp\" -exec rm -f {} +"
@@ -2937,7 +2937,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find exact binary path of node\nwhich node",
+    "initialCode": "# Step 1: Find exact binary path of node\n# TODO: Write command below\n",
     "solutionCode": "which node",
     "hints": [
       "Write:\nwhich node"
@@ -2979,7 +2979,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Instantly locate configuration files\nlocate nginx.conf",
+    "initialCode": "# Step 1: Instantly locate configuration files\n# TODO: Write command below\n",
     "solutionCode": "locate nginx.conf",
     "hints": [
       "Write:\nlocate nginx.conf"
@@ -3021,7 +3021,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create compressed gzip tar archive of directory\ntar -czvf backup.tar.gz src/",
+    "initialCode": "# Step 1: Create compressed gzip tar archive of directory\n# TODO: Write command below\n",
     "solutionCode": "tar -czvf backup.tar.gz src/",
     "hints": [
       "Write:\ntar -czvf backup.tar.gz src/"
@@ -3063,7 +3063,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Extract compressed tarball archive\ntar -xzvf backup.tar.gz",
+    "initialCode": "# Step 1: Extract compressed tarball archive\n# TODO: Write command below\n",
     "solutionCode": "tar -xzvf backup.tar.gz",
     "hints": [
       "Write:\ntar -xzvf backup.tar.gz"
@@ -3105,7 +3105,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compress single file\ngzip access.log",
+    "initialCode": "# Step 1: Compress single file\n# TODO: Write command below\n",
     "solutionCode": "gzip access.log",
     "hints": [
       "Write:\ngzip access.log"
@@ -3147,7 +3147,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View free disk space across all mounted filesystems\ndf -h",
+    "initialCode": "# Step 1: View free disk space across all mounted filesystems\n# TODO: Write command below\n",
     "solutionCode": "df -h",
     "hints": [
       "Write:\ndf -h"
@@ -3189,7 +3189,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View summary size of current directory\ndu -sh .",
+    "initialCode": "# Step 1: View summary size of current directory\n# TODO: Write command below\n",
     "solutionCode": "du -sh .",
     "hints": [
       "Write:\ndu -sh ."
@@ -3231,7 +3231,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Rank largest space consumers on disk\ndu -sh * | sort -hr | head -n 10",
+    "initialCode": "# Step 1: Rank largest space consumers on disk\n# TODO: Write command below\n",
     "solutionCode": "du -sh * | sort -hr | head -n 10",
     "hints": [
       "Write:\ndu -sh * | sort -hr | head -n 10"
@@ -3273,7 +3273,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify archive integrity and disk stats\ndf -h",
+    "initialCode": "# Step 1: Verify archive integrity and disk stats\n# TODO: Write command below\n",
     "solutionCode": "df -h",
     "hints": [
       "Write:\ndf -h"
@@ -3315,7 +3315,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View current shell process ID\necho $$",
+    "initialCode": "# Step 1: View current shell process ID\n# TODO: Write command below\n",
     "solutionCode": "echo $$",
     "hints": [
       "Write:\necho $$"
@@ -3357,7 +3357,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View all running processes on the system\nps aux",
+    "initialCode": "# Step 1: View all running processes on the system\n# TODO: Write command below\n",
     "solutionCode": "ps aux",
     "hints": [
       "Write:\nps aux"
@@ -3399,7 +3399,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run top process monitor\ntop -n 1",
+    "initialCode": "# Step 1: Run top process monitor\n# TODO: Write command below\n",
     "solutionCode": "top -n 1",
     "hints": [
       "Write:\ntop -n 1"
@@ -3441,7 +3441,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Gracefully terminate process by PID\nkill -15 1234",
+    "initialCode": "# Step 1: Gracefully terminate process by PID\n# TODO: Write command below\n",
     "solutionCode": "kill -15 1234",
     "hints": [
       "Write:\nkill -15 1234"
@@ -3483,7 +3483,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Kill all running instances of node\npkill node",
+    "initialCode": "# Step 1: Kill all running instances of node\n# TODO: Write command below\n",
     "solutionCode": "pkill node",
     "hints": [
       "Write:\npkill node"
@@ -3525,7 +3525,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Send interrupt signal (Ctrl+C equivalent)\nkill -2 1234",
+    "initialCode": "# Step 1: Send interrupt signal (Ctrl+C equivalent)\n# TODO: Write command below\n",
     "solutionCode": "kill -2 1234",
     "hints": [
       "Write:\nkill -2 1234"
@@ -3567,7 +3567,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run script in background detached from terminal input\n./worker.sh &",
+    "initialCode": "# Step 1: Run script in background detached from terminal input\n# TODO: Write command below\n",
     "solutionCode": "./worker.sh &",
     "hints": [
       "Write:\n./worker.sh &"
@@ -3609,7 +3609,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List background jobs in current shell\njobs",
+    "initialCode": "# Step 1: List background jobs in current shell\n# TODO: Write command below\n",
     "solutionCode": "jobs",
     "hints": [
       "Write:\njobs"
@@ -3651,7 +3651,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Pause foreground job and background it\n# Ctrl+Z then bg\nbg",
+    "initialCode": "# Step 1: Pause foreground job and background it Ctrl+Z then bg\n# TODO: Write command below\n",
     "solutionCode": "bg",
     "hints": [
       "Write:\nbg"
@@ -3693,7 +3693,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run long-running job immune to SSH disconnection\nnohup ./long_task.sh > output.log 2>&1 &",
+    "initialCode": "# Step 1: Run long-running job immune to SSH disconnection\n# TODO: Write command below\n",
     "solutionCode": "nohup ./long_task.sh > output.log 2>&1 &",
     "hints": [
       "Write:\nnohup ./long_task.sh > output.log 2>&1 &"
@@ -3735,7 +3735,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Launch process with low priority (high niceness)\nnice -n 19 ./heavy_computation.sh",
+    "initialCode": "# Step 1: Launch process with low priority (high niceness)\n# TODO: Write command below\n",
     "solutionCode": "nice -n 19 ./heavy_computation.sh",
     "hints": [
       "Write:\nnice -n 19 ./heavy_computation.sh"
@@ -3777,7 +3777,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect system load averages\nuptime",
+    "initialCode": "# Step 1: Inspect system load averages\n# TODO: Write command below\n",
     "solutionCode": "uptime",
     "hints": [
       "Write:\nuptime"
@@ -3819,7 +3819,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find process listening on port 3000\nlsof -i :3000",
+    "initialCode": "# Step 1: Find process listening on port 3000\n# TODO: Write command below\n",
     "solutionCode": "lsof -i :3000",
     "hints": [
       "Write:\nlsof -i :3000"
@@ -3861,7 +3861,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Find and kill process locking a port\nfuser -k 8080/tcp",
+    "initialCode": "# Step 1: Find and kill process locking a port\n# TODO: Write command below\n",
     "solutionCode": "fuser -k 8080/tcp",
     "hints": [
       "Write:\nfuser -k 8080/tcp"
@@ -3903,7 +3903,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check system process count and health\nuptime",
+    "initialCode": "# Step 1: Check system process count and health\n# TODO: Write command below\n",
     "solutionCode": "uptime",
     "hints": [
       "Write:\nuptime"
@@ -3945,7 +3945,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "#!/usr/bin/env bash\necho \"Script initialized\"",
+    "initialCode": "# Step 1: !/usr/bin/env bash\n# TODO: Write command below\n",
     "solutionCode": "#!/usr/bin/env bash\necho \"Script initialized\"",
     "hints": [
       "Write:\n#!/usr/bin/env bash\necho \"Script initialized\""
@@ -3987,7 +3987,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Declare and print variable\nAPP_NAME=\"DevForge\"\necho \"Running $APP_NAME\"",
+    "initialCode": "# Step 1: Declare and print variable\n# TODO: Write command below\n",
     "solutionCode": "APP_NAME=\"DevForge\"\necho \"Running $APP_NAME\"",
     "hints": [
       "Write:\nAPP_NAME=\"DevForge\"\necho \"Running $APP_NAME\""
@@ -4029,7 +4029,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Concatenate variable cleanly\nPREFIX=\"dev\"\necho \"Environment: ${PREFIX}_production\"",
+    "initialCode": "# Step 1: Concatenate variable cleanly\n# TODO: Write command below\n",
     "solutionCode": "PREFIX=\"dev\"\necho \"Environment: ${PREFIX}_production\"",
     "hints": [
       "Write:\nPREFIX=\"dev\"\necho \"Environment: ${PREFIX}_production\""
@@ -4071,7 +4071,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Capture current date in variable\nCURRENT_DATE=$(date +%Y-%m-%d)\necho \"Backup date: $CURRENT_DATE\"",
+    "initialCode": "# Step 1: Capture current date in variable\n# TODO: Write command below\n",
     "solutionCode": "CURRENT_DATE=$(date +%Y-%m-%d)\necho \"Backup date: $CURRENT_DATE\"",
     "hints": [
       "Write:\nCURRENT_DATE=$(date +%Y-%m-%d)\necho \"Backup date: $CURRENT_DATE\""
@@ -4113,7 +4113,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "#!/usr/bin/env bash\necho \"First arg: $1, Second arg: $2\"",
+    "initialCode": "# Step 1: !/usr/bin/env bash\n# TODO: Write command below\n",
     "solutionCode": "#!/usr/bin/env bash\necho \"First arg: $1, Second arg: $2\"",
     "hints": [
       "Write:\n#!/usr/bin/env bash\necho \"First arg: $1, Second arg: $2\""
@@ -4155,7 +4155,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "#!/usr/bin/env bash\necho \"Script: $0, Total args: $#, All: $@\"",
+    "initialCode": "# Step 1: !/usr/bin/env bash\n# TODO: Write command below\n",
     "solutionCode": "#!/usr/bin/env bash\necho \"Script: $0, Total args: $#, All: $@\"",
     "hints": [
       "Write:\n#!/usr/bin/env bash\necho \"Script: $0, Total args: $#, All: $@\""
@@ -4197,7 +4197,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check exit code of previous command\nls /tmp\necho \"Exit code was: $?\"",
+    "initialCode": "# Step 1: Check exit code of previous command\n# TODO: Write command below\n",
     "solutionCode": "ls /tmp\necho \"Exit code was: $?\"",
     "hints": [
       "Write:\nls /tmp\necho \"Exit code was: $?\""
@@ -4239,7 +4239,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Prompt for username\nread -p \"Enter your name: \" USERNAME\necho \"Hello, $USERNAME\"",
+    "initialCode": "# Step 1: Prompt for username\n# TODO: Write command below\n",
     "solutionCode": "read -p \"Enter your name: \" USERNAME\necho \"Hello, $USERNAME\"",
     "hints": [
       "Write:\nread -p \"Enter your name: \" USERNAME\necho \"Hello, $USERNAME\""
@@ -4281,7 +4281,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Read password without echoing keystrokes to terminal\nread -s -p \"Enter password: \" PASS\necho \"\"",
+    "initialCode": "# Step 1: Read password without echoing keystrokes to terminal\n# TODO: Write command below\n",
     "solutionCode": "read -s -p \"Enter password: \" PASS\necho \"\"",
     "hints": [
       "Write:\nread -s -p \"Enter password: \" PASS\necho \"\""
@@ -4323,7 +4323,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Calculate total sum\nA=15\nB=25\nTOTAL=$((A + B))\necho \"Sum: $TOTAL\"",
+    "initialCode": "# Step 1: Calculate total sum\n# TODO: Write command below\n",
     "solutionCode": "A=15\nB=25\nTOTAL=$((A + B))\necho \"Sum: $TOTAL\"",
     "hints": [
       "Write:\nA=15\nB=25\nTOTAL=$((A + B))\necho \"Sum: $TOTAL\""
@@ -4365,7 +4365,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Get string length and substring\nSTR=\"DevForgeStudio\"\necho \"Length: ${#STR}, Substring: ${STR:0:8}\"",
+    "initialCode": "# Step 1: Get string length and substring\n# TODO: Write command below\n",
     "solutionCode": "STR=\"DevForgeStudio\"\necho \"Length: ${#STR}, Substring: ${STR:0:8}\"",
     "hints": [
       "Write:\nSTR=\"DevForgeStudio\"\necho \"Length: ${#STR}, Substring: ${STR:0:8}\""
@@ -4407,7 +4407,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Fallback to default port if not set\nPORT=${PORT:-8080}\necho \"Listening on port $PORT\"",
+    "initialCode": "# Step 1: Fallback to default port if not set\n# TODO: Write command below\n",
     "solutionCode": "PORT=${PORT:-8080}\necho \"Listening on port $PORT\"",
     "hints": [
       "Write:\nPORT=${PORT:-8080}\necho \"Listening on port $PORT\""
@@ -4449,7 +4449,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Export variable to child processes\nexport API_KEY=\"secret-token-xyz\"",
+    "initialCode": "# Step 1: Export variable to child processes\n# TODO: Write command below\n",
     "solutionCode": "export API_KEY=\"secret-token-xyz\"",
     "hints": [
       "Write:\nexport API_KEY=\"secret-token-xyz\""
@@ -4491,7 +4491,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Source helper functions into current environment\nsource ./utils.sh",
+    "initialCode": "# Step 1: Source helper functions into current environment\n# TODO: Write command below\n",
     "solutionCode": "source ./utils.sh",
     "hints": [
       "Write:\nsource ./utils.sh"
@@ -4533,7 +4533,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Enable strict error checking\nset -euo pipefail\necho \"Strict mode enabled\"",
+    "initialCode": "# Step 1: Enable strict error checking\n# TODO: Write command below\n",
     "solutionCode": "set -euo pipefail\necho \"Strict mode enabled\"",
     "hints": [
       "Write:\nset -euo pipefail\necho \"Strict mode enabled\""
@@ -4575,7 +4575,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Modern bash conditional test\nif [[ 10 -gt 5 ]]; then echo \"Greater\"; fi",
+    "initialCode": "# Step 1: Modern bash conditional test\n# TODO: Write command below\n",
     "solutionCode": "if [[ 10 -gt 5 ]]; then echo \"Greater\"; fi",
     "hints": [
       "Write:\nif [[ 10 -gt 5 ]]; then echo \"Greater\"; fi"
@@ -4617,7 +4617,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Compare integer scores\nSCORE=85\nif [[ $SCORE -ge 80 ]]; then echo \"Passed\"; fi",
+    "initialCode": "# Step 1: Compare integer scores\n# TODO: Write command below\n",
     "solutionCode": "SCORE=85\nif [[ $SCORE -ge 80 ]]; then echo \"Passed\"; fi",
     "hints": [
       "Write:\nSCORE=85\nif [[ $SCORE -ge 80 ]]; then echo \"Passed\"; fi"
@@ -4659,7 +4659,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check if string is empty or matches\nNAME=\"Sarah\"\nif [[ -n \"$NAME\" && \"$NAME\" == \"Sarah\" ]]; then echo \"Welcome Sarah\"; fi",
+    "initialCode": "# Step 1: Check if string is empty or matches\n# TODO: Write command below\n",
     "solutionCode": "NAME=\"Sarah\"\nif [[ -n \"$NAME\" && \"$NAME\" == \"Sarah\" ]]; then echo \"Welcome Sarah\"; fi",
     "hints": [
       "Write:\nNAME=\"Sarah\"\nif [[ -n \"$NAME\" && \"$NAME\" == \"Sarah\" ]]; then echo \"Welcome Sarah\"; fi"
@@ -4701,7 +4701,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check if file and directory exist\nif [[ -f \"config.json\" && -d \"src/\" ]]; then echo \"Project valid\"; fi",
+    "initialCode": "# Step 1: Check if file and directory exist\n# TODO: Write command below\n",
     "solutionCode": "if [[ -f \"config.json\" && -d \"src/\" ]]; then echo \"Project valid\"; fi",
     "hints": [
       "Write:\nif [[ -f \"config.json\" && -d \"src/\" ]]; then echo \"Project valid\"; fi"
@@ -4743,7 +4743,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check if script is executable\nif [[ -x \"deploy.sh\" ]]; then ./deploy.sh; fi",
+    "initialCode": "# Step 1: Check if script is executable\n# TODO: Write command below\n",
     "solutionCode": "if [[ -x \"deploy.sh\" ]]; then ./deploy.sh; fi",
     "hints": [
       "Write:\nif [[ -x \"deploy.sh\" ]]; then ./deploy.sh; fi"
@@ -4785,7 +4785,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Complete conditional logic branch\nVAL=10\nif [[ $VAL -gt 15 ]]; then\n  echo \"High\"\nelif [[ $VAL -gt 5 ]]; then\n  echo \"Medium\"\nelse\n  echo \"Low\"\nfi",
+    "initialCode": "# Step 1: Complete conditional logic branch\n# TODO: Write command below\n",
     "solutionCode": "VAL=10\nif [[ $VAL -gt 15 ]]; then\n  echo \"High\"\nelif [[ $VAL -gt 5 ]]; then\n  echo \"Medium\"\nelse\n  echo \"Low\"\nfi",
     "hints": [
       "Write:\nVAL=10\nif [[ $VAL -gt 15 ]]; then\n  echo \"High\"\nelif [[ $VAL -gt 5 ]]; then\n  echo \"Medium\"\nelse\n  echo \"Low\"\nfi"
@@ -4827,7 +4827,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run command only if previous succeeded\nmkdir -p logs && touch logs/app.log || echo \"Failed\"",
+    "initialCode": "# Step 1: Run command only if previous succeeded\n# TODO: Write command below\n",
     "solutionCode": "mkdir -p logs && touch logs/app.log || echo \"Failed\"",
     "hints": [
       "Write:\nmkdir -p logs && touch logs/app.log || echo \"Failed\""
@@ -4869,7 +4869,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Match command options with case\nACTION=\"start\"\ncase \"$ACTION\" in\n  start) echo \"Starting server\" ;;\n  stop)  echo \"Stopping server\" ;;\n  *)     echo \"Unknown option\" ;;\nesac",
+    "initialCode": "# Step 1: Match command options with case\n# TODO: Write command below\n",
     "solutionCode": "ACTION=\"start\"\ncase \"$ACTION\" in\n  start) echo \"Starting server\" ;;\n  stop)  echo \"Stopping server\" ;;\n  *)     echo \"Unknown option\" ;;\nesac",
     "hints": [
       "Write:\nACTION=\"start\"\ncase \"$ACTION\" in\n  start) echo \"Starting server\" ;;\n  stop)  echo \"Stopping server\" ;;\n  *)     echo \"Unknown option\" ;;\nesac"
@@ -4911,7 +4911,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Iterate over list of servers\nfor SVR in web1 web2 db1; do\n  echo \"Checking $SVR\"\ndone",
+    "initialCode": "# Step 1: Iterate over list of servers\n# TODO: Write command below\n",
     "solutionCode": "for SVR in web1 web2 db1; do\n  echo \"Checking $SVR\"\ndone",
     "hints": [
       "Write:\nfor SVR in web1 web2 db1; do\n  echo \"Checking $SVR\"\ndone"
@@ -4953,7 +4953,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# C-style iteration loop\nfor ((i = 1; i <= 5; i++)); do\n  echo \"Count: $i\"\ndone",
+    "initialCode": "# Step 1: C-style iteration loop\n# TODO: Write command below\n",
     "solutionCode": "for ((i = 1; i <= 5; i++)); do\n  echo \"Count: $i\"\ndone",
     "hints": [
       "Write:\nfor ((i = 1; i <= 5; i++)); do\n  echo \"Count: $i\"\ndone"
@@ -4995,7 +4995,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Iterate through numeric range\nfor NUM in {1..5}; do\n  echo \"Step $NUM\"\ndone",
+    "initialCode": "# Step 1: Iterate through numeric range\n# TODO: Write command below\n",
     "solutionCode": "for NUM in {1..5}; do\n  echo \"Step $NUM\"\ndone",
     "hints": [
       "Write:\nfor NUM in {1..5}; do\n  echo \"Step $NUM\"\ndone"
@@ -5037,7 +5037,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Read CSV file line by line safely\nwhile IFS= read -r LINE; do\n  echo \"Line: $LINE\"\ndone < /dev/null",
+    "initialCode": "# Step 1: Read CSV file line by line safely\n# TODO: Write command below\n",
     "solutionCode": "while IFS= read -r LINE; do\n  echo \"Line: $LINE\"\ndone < /dev/null",
     "hints": [
       "Write:\nwhile IFS= read -r LINE; do\n  echo \"Line: $LINE\"\ndone < /dev/null"
@@ -5079,7 +5079,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Loop until condition becomes true\nCOUNT=3\nuntil [[ $COUNT -le 0 ]]; do\n  echo \"Countdown: $COUNT\"\n  COUNT=$((COUNT - 1))\ndone",
+    "initialCode": "# Step 1: Loop until condition becomes true\n# TODO: Write command below\n",
     "solutionCode": "COUNT=3\nuntil [[ $COUNT -le 0 ]]; do\n  echo \"Countdown: $COUNT\"\n  COUNT=$((COUNT - 1))\ndone",
     "hints": [
       "Write:\nCOUNT=3\nuntil [[ $COUNT -le 0 ]]; do\n  echo \"Countdown: $COUNT\"\n  COUNT=$((COUNT - 1))\ndone"
@@ -5121,7 +5121,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Skip even numbers and stop at 7\nfor i in {1..10}; do\n  if [[ $((i % 2)) -eq 0 ]]; then continue; fi\n  if [[ $i -gt 7 ]]; then break; fi\n  echo \"Odd: $i\"\ndone",
+    "initialCode": "# Step 1: Skip even numbers and stop at 7\n# TODO: Write command below\n",
     "solutionCode": "for i in {1..10}; do\n  if [[ $((i % 2)) -eq 0 ]]; then continue; fi\n  if [[ $i -gt 7 ]]; then break; fi\n  echo \"Odd: $i\"\ndone",
     "hints": [
       "Write:\nfor i in {1..10}; do\n  if [[ $((i % 2)) -eq 0 ]]; then continue; fi\n  if [[ $i -gt 7 ]]; then break; fi\n  echo \"Odd: $i\"\ndone"
@@ -5163,7 +5163,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Define reusable function with return code\nlog_message() {\n  local MSG=\"$1\"\n  echo \"[$(date +%T)] $MSG\"\n  return 0\n}\nlog_message \"System ready\"",
+    "initialCode": "# Step 1: Define reusable function with return code\n# TODO: Write command below\n",
     "solutionCode": "log_message() {\n  local MSG=\"$1\"\n  echo \"[$(date +%T)] $MSG\"\n  return 0\n}\nlog_message \"System ready\"",
     "hints": [
       "Write:\nlog_message() {\n  local MSG=\"$1\"\n  echo \"[$(date +%T)] $MSG\"\n  return 0\n}\nlog_message \"System ready\""
@@ -5205,7 +5205,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View current user crontab schedule\ncrontab -l",
+    "initialCode": "# Step 1: View current user crontab schedule\n# TODO: Write command below\n",
     "solutionCode": "crontab -l",
     "hints": [
       "Write:\ncrontab -l"
@@ -5247,7 +5247,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Run backup script every night at 2:30 AM\necho \"30 2 * * * /usr/local/bin/backup.sh\" >> mycron",
+    "initialCode": "# Step 1: Run backup script every night at 2:30 AM\n# TODO: Write command below\n",
     "solutionCode": "echo \"30 2 * * * /usr/local/bin/backup.sh\" >> mycron",
     "hints": [
       "Write:\necho \"30 2 * * * /usr/local/bin/backup.sh\" >> mycron"
@@ -5289,7 +5289,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List active systemd timers\nsystemctl list-timers",
+    "initialCode": "# Step 1: List active systemd timers\n# TODO: Write command below\n",
     "solutionCode": "systemctl list-timers",
     "hints": [
       "Write:\nsystemctl list-timers"
@@ -5331,7 +5331,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Schedule one-time command for 5pm\necho \"./cleanup.sh\" | at 5:00 PM",
+    "initialCode": "# Step 1: Schedule one-time command for 5pm\n# TODO: Write command below\n",
     "solutionCode": "echo \"./cleanup.sh\" | at 5:00 PM",
     "hints": [
       "Write:\necho \"./cleanup.sh\" | at 5:00 PM"
@@ -5373,7 +5373,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Test API health endpoint\ncurl -s -o /dev/null -w \"HTTP Code: %{http_code}\\n\" https://devforge.io",
+    "initialCode": "# Step 1: Test API health endpoint\n# TODO: Write command below\n",
     "solutionCode": "curl -s -o /dev/null -w \"HTTP Code: %{http_code}\\n\" https://devforge.io",
     "hints": [
       "Write:\ncurl -s -o /dev/null -w \"HTTP Code: %{http_code}\\n\" https://devforge.io"
@@ -5415,7 +5415,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Download file in background\nwget -q -c https://example.com/data.tar.gz",
+    "initialCode": "# Step 1: Download file in background\n# TODO: Write command below\n",
     "solutionCode": "wget -q -c https://example.com/data.tar.gz",
     "hints": [
       "Write:\nwget -q -c https://example.com/data.tar.gz"
@@ -5457,7 +5457,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Ping server 3 times\nping -c 3 8.8.8.8",
+    "initialCode": "# Step 1: Ping server 3 times\n# TODO: Write command below\n",
     "solutionCode": "ping -c 3 8.8.8.8",
     "hints": [
       "Write:\nping -c 3 8.8.8.8"
@@ -5499,7 +5499,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Trace network path to gateway\ntraceroute -m 5 8.8.8.8",
+    "initialCode": "# Step 1: Trace network path to gateway\n# TODO: Write command below\n",
     "solutionCode": "traceroute -m 5 8.8.8.8",
     "hints": [
       "Write:\ntraceroute -m 5 8.8.8.8"
@@ -5541,7 +5541,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# List listening TCP ports\nss -tulpn",
+    "initialCode": "# Step 1: List listening TCP ports\n# TODO: Write command below\n",
     "solutionCode": "ss -tulpn",
     "hints": [
       "Write:\nss -tulpn"
@@ -5583,7 +5583,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Display network interface IP addresses\nip addr show",
+    "initialCode": "# Step 1: Display network interface IP addresses\n# TODO: Write command below\n",
     "solutionCode": "ip addr show",
     "hints": [
       "Write:\nip addr show"
@@ -5625,7 +5625,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Query DNS A-records\ndig +short devforge.io",
+    "initialCode": "# Step 1: Query DNS A-records\n# TODO: Write command below\n",
     "solutionCode": "dig +short devforge.io",
     "hints": [
       "Write:\ndig +short devforge.io"
@@ -5667,7 +5667,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Connect securely to remote server\nssh -p 22 deploy@server.devforge.io",
+    "initialCode": "# Step 1: Connect securely to remote server\n# TODO: Write command below\n",
     "solutionCode": "ssh -p 22 deploy@server.devforge.io",
     "hints": [
       "Write:\nssh -p 22 deploy@server.devforge.io"
@@ -5709,7 +5709,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Generate modern Ed25519 SSH keypair\nssh-keygen -t ed25519 -C \"admin@devforge.io\" -f ~/.ssh/id_ed25519 -N \"\"",
+    "initialCode": "# Step 1: Generate modern Ed25519 SSH keypair\n# TODO: Write command below\n",
     "solutionCode": "ssh-keygen -t ed25519 -C \"admin@devforge.io\" -f ~/.ssh/id_ed25519 -N \"\"",
     "hints": [
       "Write:\nssh-keygen -t ed25519 -C \"admin@devforge.io\" -f ~/.ssh/id_ed25519 -N \"\""
@@ -5751,7 +5751,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Mirror directory incrementally over SSH\nrsync -avz --delete src/ backup/",
+    "initialCode": "# Step 1: Mirror directory incrementally over SSH\n# TODO: Write command below\n",
     "solutionCode": "rsync -avz --delete src/ backup/",
     "hints": [
       "Write:\nrsync -avz --delete src/ backup/"
@@ -5793,7 +5793,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Verify cron and network readiness\ncrontab -l",
+    "initialCode": "# Step 1: Verify cron and network readiness\n# TODO: Write command below\n",
     "solutionCode": "crontab -l",
     "hints": [
       "Write:\ncrontab -l"
@@ -5835,7 +5835,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Send message to system journal syslog\nlogger -t DEPLOY \"Deployment v2.0 completed successfully\"",
+    "initialCode": "# Step 1: Send message to system journal syslog\n# TODO: Write command below\n",
     "solutionCode": "logger -t DEPLOY \"Deployment v2.0 completed successfully\"",
     "hints": [
       "Write:\nlogger -t DEPLOY \"Deployment v2.0 completed successfully\""
@@ -5877,7 +5877,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create secure temporary scratch file\nTMP_FILE=$(mktemp /tmp/backup.XXXXXX)\necho \"Temporary file: $TMP_FILE\"",
+    "initialCode": "# Step 1: Create secure temporary scratch file\n# TODO: Write command below\n",
     "solutionCode": "TMP_FILE=$(mktemp /tmp/backup.XXXXXX)\necho \"Temporary file: $TMP_FILE\"",
     "hints": [
       "Write:\nTMP_FILE=$(mktemp /tmp/backup.XXXXXX)\necho \"Temporary file: $TMP_FILE\""
@@ -5919,7 +5919,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Register cleanup on script exit or interrupt\ntrap 'rm -f \"$TMP_FILE\"; echo \"Cleaned up\"' EXIT INT TERM",
+    "initialCode": "# Step 1: Register cleanup on script exit or interrupt\n# TODO: Write command below\n",
     "solutionCode": "trap 'rm -f \"$TMP_FILE\"; echo \"Cleaned up\"' EXIT INT TERM",
     "hints": [
       "Write:\ntrap 'rm -f \"$TMP_FILE\"; echo \"Cleaned up\"' EXIT INT TERM"
@@ -5961,7 +5961,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Parse -p port and -h host flags\nwhile getopts \"p:h:\" opt; do\n  case $opt in\n    p) PORT=\"$OPTARG\" ;;\n    h) HOST=\"$OPTARG\" ;;\n  esac\ndone",
+    "initialCode": "# Step 1: Parse -p port and -h host flags\n# TODO: Write command below\n",
     "solutionCode": "while getopts \"p:h:\" opt; do\n  case $opt in\n    p) PORT=\"$OPTARG\" ;;\n    h) HOST=\"$OPTARG\" ;;\n  esac\ndone",
     "hints": [
       "Write:\nwhile getopts \"p:h:\" opt; do\n  case $opt in\n    p) PORT=\"$OPTARG\" ;;\n    h) HOST=\"$OPTARG\" ;;\n  esac\ndone"
@@ -6003,7 +6003,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Ensure only one instance runs at a time\nexec 200>/var/lock/backup.lock\nflock -n 200 || { echo \"Already running\"; exit 1; }",
+    "initialCode": "# Step 1: Ensure only one instance runs at a time\n# TODO: Write command below\n",
     "solutionCode": "exec 200>/var/lock/backup.lock\nflock -n 200 || { echo \"Already running\"; exit 1; }",
     "hints": [
       "Write:\nexec 200>/var/lock/backup.lock\nflock -n 200 || { echo \"Already running\"; exit 1; }"
@@ -6045,7 +6045,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create systemd service unit file\ncat <<EOF > /etc/systemd/system/myapp.service\n[Unit]\nDescription=DevForge Application\n[Service]\nExecStart=/usr/bin/node /app/index.js\nRestart=always\n[Install]\nWantedBy=multi-user.target\nEOF",
+    "initialCode": "# Step 1: Create systemd service unit file\n# TODO: Write command below\n",
     "solutionCode": "cat <<EOF > /etc/systemd/system/myapp.service\n[Unit]\nDescription=DevForge Application\n[Service]\nExecStart=/usr/bin/node /app/index.js\nRestart=always\n[Install]\nWantedBy=multi-user.target\nEOF",
     "hints": [
       "Write:\ncat <<EOF > /etc/systemd/system/myapp.service\n[Unit]\nDescription=DevForge Application\n[Service]\nExecStart=/usr/bin/node /app/index.js\nRestart=always\n[Install]\nWantedBy=multi-user.target\nEOF"
@@ -6087,7 +6087,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Start, enable, and inspect system service\nsystemctl start myapp\nsystemctl enable myapp\nsystemctl status myapp",
+    "initialCode": "# Step 1: Start, enable, and inspect system service\n# TODO: Write command below\n",
     "solutionCode": "systemctl start myapp\nsystemctl enable myapp\nsystemctl status myapp",
     "hints": [
       "Write:\nsystemctl start myapp\nsystemctl enable myapp\nsystemctl status myapp"
@@ -6129,7 +6129,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# View live logs from specific systemd service\njournalctl -u myapp -f -n 50",
+    "initialCode": "# Step 1: View live logs from specific systemd service\n# TODO: Write command below\n",
     "solutionCode": "journalctl -u myapp -f -n 50",
     "hints": [
       "Write:\njournalctl -u myapp -f -n 50"
@@ -6171,7 +6171,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Create dedicated system service user with no login shell\nuseradd -r -s /usr/sbin/nologin -d /var/empty myapp",
+    "initialCode": "# Step 1: Create dedicated system service user with no login shell\n# TODO: Write command below\n",
     "solutionCode": "useradd -r -s /usr/sbin/nologin -d /var/empty myapp",
     "hints": [
       "Write:\nuseradd -r -s /usr/sbin/nologin -d /var/empty myapp"
@@ -6213,7 +6213,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Update package repositories and install curl\nsudo apt-get update && sudo apt-get install -y curl",
+    "initialCode": "# Step 1: Update package repositories and install curl\n# TODO: Write command below\n",
     "solutionCode": "sudo apt-get update && sudo apt-get install -y curl",
     "hints": [
       "Write:\nsudo apt-get update && sudo apt-get install -y curl"
@@ -6255,7 +6255,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Allow SSH and HTTP traffic through firewall\nsudo ufw allow 22/tcp\nsudo ufw allow 80/tcp\nsudo ufw enable",
+    "initialCode": "# Step 1: Allow SSH and HTTP traffic through firewall\n# TODO: Write command below\n",
     "solutionCode": "sudo ufw allow 22/tcp\nsudo ufw allow 80/tcp\nsudo ufw enable",
     "hints": [
       "Write:\nsudo ufw allow 22/tcp\nsudo ufw allow 80/tcp\nsudo ufw enable"
@@ -6297,7 +6297,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Daily backup script with 7-day retention rotation\nfind /backups -name \"*.sql.gz\" -mtime +7 -delete",
+    "initialCode": "# Step 1: Daily backup script with 7-day retention rotation\n# TODO: Write command below\n",
     "solutionCode": "find /backups -name \"*.sql.gz\" -mtime +7 -delete",
     "hints": [
       "Write:\nfind /backups -name \"*.sql.gz\" -mtime +7 -delete"
@@ -6339,7 +6339,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Check disk threshold and alert if over 90%\nUSAGE=$(df / | awk 'NR==2 {print $5}' | tr -d '%')\nif [[ $USAGE -gt 90 ]]; then echo \"Alert: Disk full ($USAGE%)\"; fi",
+    "initialCode": "# Step 1: Check disk threshold and alert if over 90%\n# TODO: Write command below\n",
     "solutionCode": "USAGE=$(df / | awk 'NR==2 {print $5}' | tr -d '%')\nif [[ $USAGE -gt 90 ]]; then echo \"Alert: Disk full ($USAGE%)\"; fi",
     "hints": [
       "Write:\nUSAGE=$(df / | awk 'NR==2 {print $5}' | tr -d '%')\nif [[ $USAGE -gt 90 ]]; then echo \"Alert: Disk full ($USAGE%)\"; fi"
@@ -6381,7 +6381,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Inspect maximum open file descriptors limit\nsysctl fs.file-max",
+    "initialCode": "# Step 1: Inspect maximum open file descriptors limit\n# TODO: Write command below\n",
     "solutionCode": "sysctl fs.file-max",
     "hints": [
       "Write:\nsysctl fs.file-max"
@@ -6423,7 +6423,7 @@ export const BASH_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "# Complete system administrator verification\nuname -a && uptime",
+    "initialCode": "# Step 1: Complete system administrator verification\n# TODO: Write command below\n",
     "solutionCode": "uname -a && uptime",
     "hints": [
       "Write:\nuname -a && uptime"

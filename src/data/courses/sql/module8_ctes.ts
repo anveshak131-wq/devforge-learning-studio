@@ -30,7 +30,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH HighOrders AS (SELECT * FROM orders WHERE amount > 200) SELECT * FROM HighOrders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH HighOrders AS (SELECT * FROM orders WHERE amount > 200) SELECT * FROM HighOrders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH HighOrders AS (SELECT * FROM orders WHERE amount > 200) SELECT * FROM HighOrders;\n",
     "hints": [
       "Execute: WITH HighOrders AS (SELECT * FROM orders WHERE amount > 200) SELECT * FROM HighOrders;"
@@ -73,7 +73,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH CatStock AS (SELECT category, SUM(stock) AS total FROM products GROUP BY category) SELECT * FROM CatStock WHERE total > 20;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH CatStock AS (SELECT category, SUM(stock) AS total FROM products GROUP BY category) SELECT * FROM CatStock WHERE total > 20;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH CatStock AS (SELECT category, SUM(stock) AS total FROM products GROUP BY category) SELECT * FROM CatStock WHERE total > 20;\n",
     "hints": [
       "Execute: WITH CatStock AS (SELECT category, SUM(stock) AS total FROM products GROUP BY category) SELECT * FROM CatStock WHERE total > 20;"
@@ -116,7 +116,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH OrderStats AS (SELECT user_id, SUM(amount) AS total FROM orders GROUP BY user_id) SELECT u.name, os.total FROM users u JOIN OrderStats os ON u.id = os.user_id;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH OrderStats AS (SELECT user_id, SUM(amount) AS total FROM orders GROUP BY user_id) SELECT u.name, os.total FROM users u JOIN OrderStats os ON u.id = os.user_id;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH OrderStats AS (SELECT user_id, SUM(amount) AS total FROM orders GROUP BY user_id) SELECT u.name, os.total FROM users u JOIN OrderStats os ON u.id = os.user_id;\n",
     "hints": [
       "Execute: WITH OrderStats AS (SELECT user_id, SUM(amount) AS total FROM orders GROUP BY user_id) SELECT u.name, os.total FROM users u JOIN OrderStats os ON u.id = os.user_id;"
@@ -159,7 +159,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH C1 AS (SELECT * FROM orders WHERE status = 'completed'), C2 AS (SELECT AVG(amount) AS avg_amt FROM C1) SELECT * FROM C1 WHERE amount > (SELECT avg_amt FROM C2);`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH C1 AS (SELECT * FROM orders WHERE status = 'completed'), C2 AS (SELECT AVG(amount) AS avg_amt FROM C1) SELECT * FROM C1 WHERE amount > (SELECT avg_amt FROM C2);\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH C1 AS (SELECT * FROM orders WHERE status = 'completed'), C2 AS (SELECT AVG(amount) AS avg_amt FROM C1) SELECT * FROM C1 WHERE amount > (SELECT avg_amt FROM C2);\n",
     "hints": [
       "Execute: WITH C1 AS (SELECT * FROM orders WHERE status = 'completed'), C2 AS (SELECT AVG(amount) AS avg_amt FROM C1) SELECT * FROM C1 WHERE amount > (SELECT avg_amt FROM C2);"
@@ -202,7 +202,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH Summary AS (SELECT category, AVG(price) AS avg_p FROM products GROUP BY category) SELECT * FROM Summary ORDER BY avg_p DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH Summary AS (SELECT category, AVG(price) AS avg_p FROM products GROUP BY category) SELECT * FROM Summary ORDER BY avg_p DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH Summary AS (SELECT category, AVG(price) AS avg_p FROM products GROUP BY category) SELECT * FROM Summary ORDER BY avg_p DESC;\n",
     "hints": [
       "Execute: WITH Summary AS (SELECT category, AVG(price) AS avg_p FROM products GROUP BY category) SELECT * FROM Summary ORDER BY avg_p DESC;"
@@ -245,7 +245,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH CleanUsers AS (SELECT id, LOWER(email) AS clean_email FROM users) SELECT * FROM CleanUsers;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH CleanUsers AS (SELECT id, LOWER(email) AS clean_email FROM users) SELECT * FROM CleanUsers;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH CleanUsers AS (SELECT id, LOWER(email) AS clean_email FROM users) SELECT * FROM CleanUsers;\n",
     "hints": [
       "Execute: WITH CleanUsers AS (SELECT id, LOWER(email) AS clean_email FROM users) SELECT * FROM CleanUsers;"
@@ -288,7 +288,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH Cohorts AS (SELECT user_id, COUNT(*) AS orders_count FROM orders GROUP BY user_id) SELECT orders_count, COUNT(*) AS users_in_cohort FROM Cohorts GROUP BY orders_count;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH Cohorts AS (SELECT user_id, COUNT(*) AS orders_count FROM orders GROUP BY user_id) SELECT orders_count, COUNT(*) AS users_in_cohort FROM Cohorts GROUP BY orders_count;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH Cohorts AS (SELECT user_id, COUNT(*) AS orders_count FROM orders GROUP BY user_id) SELECT orders_count, COUNT(*) AS users_in_cohort FROM Cohorts GROUP BY orders_count;\n",
     "hints": [
       "Execute: WITH Cohorts AS (SELECT user_id, COUNT(*) AS orders_count FROM orders GROUP BY user_id) SELECT orders_count, COUNT(*) AS users_in_cohort FROM Cohorts GROUP BY orders_count;"
@@ -331,7 +331,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH AvgOrder AS (SELECT AVG(amount) AS avg_val FROM orders) SELECT o.* FROM orders o, AvgOrder a WHERE o.amount > a.avg_val;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH AvgOrder AS (SELECT AVG(amount) AS avg_val FROM orders) SELECT o.* FROM orders o, AvgOrder a WHERE o.amount > a.avg_val;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH AvgOrder AS (SELECT AVG(amount) AS avg_val FROM orders) SELECT o.* FROM orders o, AvgOrder a WHERE o.amount > a.avg_val;\n",
     "hints": [
       "Execute: WITH AvgOrder AS (SELECT AVG(amount) AS avg_val FROM orders) SELECT o.* FROM orders o, AvgOrder a WHERE o.amount > a.avg_val;"
@@ -374,7 +374,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH RECURSIVE Counter AS (SELECT 1 AS n UNION ALL SELECT n + 1 FROM Counter WHERE n < 5) SELECT * FROM Counter;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH RECURSIVE Counter AS (SELECT 1 AS n UNION ALL SELECT n + 1 FROM Counter WHERE n < 5) SELECT * FROM Counter;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH RECURSIVE Counter AS (SELECT 1 AS n UNION ALL SELECT n + 1 FROM Counter WHERE n < 5) SELECT * FROM Counter;\n",
     "hints": [
       "Execute: WITH RECURSIVE Counter AS (SELECT 1 AS n UNION ALL SELECT n + 1 FROM Counter WHERE n < 5) SELECT * FROM Counter;"
@@ -417,7 +417,7 @@ export const sqlModule8Lessons: Lesson[] = [
       "Write the query: `WITH Sales AS (SELECT SUM(amount) AS rev FROM orders WHERE status = 'completed') SELECT rev AS total_revenue FROM Sales;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nWITH Sales AS (SELECT SUM(amount) AS rev FROM orders WHERE status = 'completed') SELECT rev AS total_revenue FROM Sales;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "WITH Sales AS (SELECT SUM(amount) AS rev FROM orders WHERE status = 'completed') SELECT rev AS total_revenue FROM Sales;\n",
     "hints": [
       "Execute: WITH Sales AS (SELECT SUM(amount) AS rev FROM orders WHERE status = 'completed') SELECT rev AS total_revenue FROM Sales;"

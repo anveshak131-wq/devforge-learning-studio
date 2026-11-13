@@ -30,7 +30,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT name, UPPER(country) AS upper_country, LOWER(email) AS lower_email FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, UPPER(country) AS upper_country, LOWER(email) AS lower_email FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, UPPER(country) AS upper_country, LOWER(email) AS lower_email FROM users;\n",
     "hints": [
       "Execute: SELECT name, UPPER(country) AS upper_country, LOWER(email) AS lower_email FROM users;"
@@ -73,7 +73,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT name, LENGTH(name) AS char_count FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, LENGTH(name) AS char_count FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, LENGTH(name) AS char_count FROM products;\n",
     "hints": [
       "Execute: SELECT name, LENGTH(name) AS char_count FROM products;"
@@ -116,7 +116,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT name || ' (' || country || ')' AS display_label FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name || ' (' || country || ')' AS display_label FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name || ' (' || country || ')' AS display_label FROM users;\n",
     "hints": [
       "Execute: SELECT name || ' (' || country || ')' AS display_label FROM users;"
@@ -159,7 +159,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT name, SUBSTR(name, 1, 3) AS initials FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, SUBSTR(name, 1, 3) AS initials FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, SUBSTR(name, 1, 3) AS initials FROM users;\n",
     "hints": [
       "Execute: SELECT name, SUBSTR(name, 1, 3) AS initials FROM users;"
@@ -202,7 +202,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT TRIM('   clean text   ') AS trimmed_text;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT TRIM('   clean text   ') AS trimmed_text;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT TRIM('   clean text   ') AS trimmed_text;\n",
     "hints": [
       "Execute: SELECT TRIM('   clean text   ') AS trimmed_text;"
@@ -245,7 +245,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT email, REPLACE(email, '@example.com', '@company.org') AS new_email FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT email, REPLACE(email, '@example.com', '@company.org') AS new_email FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT email, REPLACE(email, '@example.com', '@company.org') AS new_email FROM users;\n",
     "hints": [
       "Execute: SELECT email, REPLACE(email, '@example.com', '@company.org') AS new_email FROM users;"
@@ -288,7 +288,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT email, INSTR(email, '@') AS at_position FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT email, INSTR(email, '@') AS at_position FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT email, INSTR(email, '@') AS at_position FROM users;\n",
     "hints": [
       "Execute: SELECT email, INSTR(email, '@') AS at_position FROM users;"
@@ -331,7 +331,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT SUBSTR(email, 1, 2) || '***@' || SUBSTR(email, INSTR(email, '@') + 1) AS masked FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT SUBSTR(email, 1, 2) || '***@' || SUBSTR(email, INSTR(email, '@') + 1) AS masked FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT SUBSTR(email, 1, 2) || '***@' || SUBSTR(email, INSTR(email, '@') + 1) AS masked FROM users;\n",
     "hints": [
       "Execute: SELECT SUBSTR(email, 1, 2) || '***@' || SUBSTR(email, INSTR(email, '@') + 1) AS masked FROM users;"
@@ -374,7 +374,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT name, '$' || price AS price_tag FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, '$' || price AS price_tag FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, '$' || price AS price_tag FROM products;\n",
     "hints": [
       "Execute: SELECT name, '$' || price AS price_tag FROM products;"
@@ -417,7 +417,7 @@ export const sqlModule9Lessons: Lesson[] = [
       "Write the query: `SELECT UPPER(name) || ' - ' || role AS profile FROM users LIMIT 3;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT UPPER(name) || ' - ' || role AS profile FROM users LIMIT 3;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT UPPER(name) || ' - ' || role AS profile FROM users LIMIT 3;\n",
     "hints": [
       "Execute: SELECT UPPER(name) || ' - ' || role AS profile FROM users LIMIT 3;"

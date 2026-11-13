@@ -39,7 +39,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Hello, DevForge!\")\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Hello, DevForge!\")\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Hello, DevForge!\")\n}"
@@ -81,8 +81,8 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "// Initialize Go module\n// go mod init devforge/core",
-    "solutionCode": "package main\n\nfunc main() {\n  // go.mod declares module path and dependencies\n}",
+    "initialCode": "// Step 1: Declare go.mod module path\n// TODO: Write code below\n\npackage main\n\nfunc main() {\n  // TODO: Add go.mod reference\n}\n",
+    "solutionCode": "package main\n\nfunc main() {\n  // go.mod declares module path and dependencies\n}\n",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // go.mod declares module path and dependencies\n}"
     ],
@@ -90,7 +90,7 @@ export const GOLANG_TRACK: Track = {
       {
         "id": "golang-2-tc-1",
         "description": "Verifies correct implementation for Go Modules and go.mod File",
-        "testFn": "code.includes('package main')"
+        "testFn": "code.includes('go.mod') || code.includes('go mod')"
       }
     ]
   },
@@ -123,7 +123,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Execution starts here\")\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Execution starts here\")\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"Execution starts here\")\n}"
@@ -165,7 +165,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  var username string = \"Sarah\"\n  fmt.Println(username)\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  var username string = \"Sarah\"\n  fmt.Println(username)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  var username string = \"Sarah\"\n  fmt.Println(username)\n}"
@@ -207,7 +207,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  score := 100\n  fmt.Println(score)\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  score := 100\n  fmt.Println(score)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  score := 100\n  fmt.Println(score)\n}"
@@ -249,7 +249,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  count := 42\n  price := 19.99\n  isReady := true\n  name := \"DevForge\"\n  _ = count; _ = price; _ = isReady; _ = name\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  count := 42\n  price := 19.99\n  isReady := true\n  name := \"DevForge\"\n  _ = count; _ = price; _ = isReady; _ = name\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  count := 42\n  price := 19.99\n  isReady := true\n  name := \"DevForge\"\n  _ = count; _ = price; _ = isReady; _ = name\n}"
@@ -291,7 +291,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var i int = 42\n  var f float64 = float64(i)\n  _ = f\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var i int = 42\n  var f float64 = float64(i)\n  _ = f\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var i int = 42\n  var f float64 = float64(i)\n  _ = f\n}"
@@ -333,7 +333,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nconst MaxRetries = 3\nconst Pi = 3.14159\n\nfunc main() {\n  _ = MaxRetries\n}",
+    "initialCode": "package main\n\nconst MaxRetries = 3\nconst Pi = 3.14159\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nconst MaxRetries = 3\nconst Pi = 3.14159\n\nfunc main() {\n  _ = MaxRetries\n}",
     "hints": [
       "Write:\npackage main\n\nconst MaxRetries = 3\nconst Pi = 3.14159\n\nfunc main() {\n  _ = MaxRetries\n}"
@@ -375,7 +375,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nconst (\n  StatusPending = iota\n  StatusActive\n  StatusCompleted\n)\n\nfunc main() {\n  _ = StatusActive\n}",
+    "initialCode": "package main\n\nconst (\n  StatusPending = iota\n  StatusActive\n  StatusCompleted\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nconst (\n  StatusPending = iota\n  StatusActive\n  StatusCompleted\n)\n\nfunc main() {\n  _ = StatusActive\n}",
     "hints": [
       "Write:\npackage main\n\nconst (\n  StatusPending = iota\n  StatusActive\n  StatusCompleted\n)\n\nfunc main() {\n  _ = StatusActive\n}"
@@ -417,7 +417,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var count int     // 0\n  var active bool   // false\n  var name string   // \"\"\n  _ = count; _ = active; _ = name\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var count int\n  var active bool\n  var name string\n  _ = count; _ = active; _ = name\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var count int\n  var active bool\n  var name string\n  _ = count; _ = active; _ = name\n}"
@@ -459,7 +459,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  val, _ := 10, 20\n  _ = val\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  val, _ := 10, 20\n  _ = val\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  val, _ := 10, 20\n  _ = val\n}"
@@ -501,7 +501,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  name := \"Go\"\n  fmt.Printf(\"Language: %s\\n\", name)\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  name := \"Go\"\n  fmt.Printf(\"Language: %s\\n\", name)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  name := \"Go\"\n  fmt.Printf(\"Language: %s\\n\", name)\n}"
@@ -543,7 +543,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // go run main.go compiles and runs in memory\n  // go build main.go compiles a standalone binary\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // go run main.go compiles and runs in memory\n  // go build main.go compiles a standalone binary\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // go run main.go compiles and runs in memory\n  // go build main.go compiles a standalone binary\n}"
@@ -585,7 +585,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // gofmt automatically formats all Go code\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // gofmt automatically formats all Go code\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // gofmt automatically formats all Go code\n}"
@@ -627,7 +627,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  appName := \"DevForge\"\n  fmt.Printf(\"App: %s initialized\\n\", appName)\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  appName := \"DevForge\"\n  fmt.Printf(\"App: %s initialized\\n\", appName)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  appName := \"DevForge\"\n  fmt.Printf(\"App: %s initialized\\n\", appName)\n}"
@@ -669,7 +669,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  if count := 10; count > 5 {\n    fmt.Println(\"High count\")\n  }\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  if count := 10; count > 5 {\n    fmt.Println(\"High count\")\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  if count := 10; count > 5 {\n    fmt.Println(\"High count\")\n  }\n}"
@@ -711,7 +711,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  role := \"admin\"\n  switch role {\n  case \"admin\":\n    fmt.Println(\"Full access\")\n  case \"user\":\n    fmt.Println(\"Limited access\")\n  }\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  role := \"admin\"\n  switch role {\n  case \"admin\":\n    fmt.Println(\"Full access\")\n  case \"user\":\n    fmt.Println(\"Limited access\")\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  role := \"admin\"\n  switch role {\n  case \"admin\":\n    fmt.Println(\"Full access\")\n  case \"user\":\n    fmt.Println(\"Limited access\")\n  }\n}"
@@ -753,7 +753,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  score := 85\n  switch {\n  case score >= 90:\n    fmt.Println(\"A\")\n  case score >= 80:\n    fmt.Println(\"B\")\n  }\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  score := 85\n  switch {\n  case score >= 90:\n    fmt.Println(\"A\")\n  case score >= 80:\n    fmt.Println(\"B\")\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  score := 85\n  switch {\n  case score >= 90:\n    fmt.Println(\"A\")\n  case score >= 80:\n    fmt.Println(\"B\")\n  }\n}"
@@ -795,7 +795,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  for i := 0; i < 3; i++ {\n    fmt.Println(i)\n  }\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  for i := 0; i < 3; i++ {\n    fmt.Println(i)\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  for i := 0; i < 3; i++ {\n    fmt.Println(i)\n  }\n}"
@@ -837,7 +837,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  count := 3\n  for count > 0 {\n    count--\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  count := 3\n  for count > 0 {\n    count--\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  count := 3\n  for count > 0 {\n    count--\n  }\n}"
@@ -879,7 +879,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  for {\n    break\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  for {\n    break\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  for {\n    break\n  }\n}"
@@ -921,7 +921,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc add(a int, b int) int {\n  return a + b\n}\n\nfunc main() {\n  _ = add(2, 3)\n}",
+    "initialCode": "package main\n\nfunc add(a int, b int) int {\n  return a + b\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc add(a int, b int) int {\n  return a + b\n}\n\nfunc main() {\n  _ = add(2, 3)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc add(a int, b int) int {\n  return a + b\n}\n\nfunc main() {\n  _ = add(2, 3)\n}"
@@ -963,7 +963,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc multiply(a, b int) int {\n  return a * b\n}\n\nfunc main() {\n  _ = multiply(4, 5)\n}",
+    "initialCode": "package main\n\nfunc multiply(a, b int) int {\n  return a * b\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc multiply(a, b int) int {\n  return a * b\n}\n\nfunc main() {\n  _ = multiply(4, 5)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc multiply(a, b int) int {\n  return a * b\n}\n\nfunc main() {\n  _ = multiply(4, 5)\n}"
@@ -1005,7 +1005,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc divide(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  res, ok := divide(10, 2)\n  _ = res; _ = ok\n}",
+    "initialCode": "package main\n\nfunc divide(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc divide(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  res, ok := divide(10, 2)\n  _ = res; _ = ok\n}",
     "hints": [
       "Write:\npackage main\n\nfunc divide(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  res, ok := divide(10, 2)\n  _ = res; _ = ok\n}"
@@ -1047,7 +1047,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc split(sum int) (x, y int) {\n  x = sum * 4 / 9\n  y = sum - x\n  return // naked return!\n}\n\nfunc main() {\n  _, _ = split(18)\n}",
+    "initialCode": "package main\n\nfunc split(sum int) (x, y int) {\n  x = sum * 4 / 9\n  y = sum - x\n  return // naked return!\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc split(sum int) (x, y int) {\n  x = sum * 4 / 9\n  y = sum - x\n  return\n}\n\nfunc main() {\n  _, _ = split(18)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc split(sum int) (x, y int) {\n  x = sum * 4 / 9\n  y = sum - x\n  return\n}\n\nfunc main() {\n  _, _ = split(18)\n}"
@@ -1089,7 +1089,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc sumAll(nums ...int) int {\n  total := 0\n  for _, n := range nums {\n    total += n\n  }\n  return total\n}\n\nfunc main() {\n  _ = sumAll(1, 2, 3, 4)\n}",
+    "initialCode": "package main\n\nfunc sumAll(nums ...int) int {\n  total := 0\n  for _, n := range nums {\n    total += n\n  }\n  return total\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc sumAll(nums ...int) int {\n  total := 0\n  for _, n := range nums {\n    total += n\n  }\n  return total\n}\n\nfunc main() {\n  _ = sumAll(1, 2, 3, 4)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc sumAll(nums ...int) int {\n  total := 0\n  for _, n := range nums {\n    total += n\n  }\n  return total\n}\n\nfunc main() {\n  _ = sumAll(1, 2, 3, 4)\n}"
@@ -1131,7 +1131,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc makeAdder(x int) func(int) int {\n  return func(y int) int {\n    return x + y\n  }\n}\n\nfunc main() {\n  addFive := makeAdder(5)\n  _ = addFive(10)\n}",
+    "initialCode": "package main\n\nfunc makeAdder(x int) func(int) int {\n  return func(y int) int {\n    return x + y\n  }\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc makeAdder(x int) func(int) int {\n  return func(y int) int {\n    return x + y\n  }\n}\n\nfunc main() {\n  addFive := makeAdder(5)\n  _ = addFive(10)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc makeAdder(x int) func(int) int {\n  return func(y int) int {\n    return x + y\n  }\n}\n\nfunc main() {\n  addFive := makeAdder(5)\n  _ = addFive(10)\n}"
@@ -1173,7 +1173,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  defer fmt.Println(\"World\")\n  fmt.Println(\"Hello\")\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  defer fmt.Println(\"World\")\n  fmt.Println(\"Hello\")\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  defer fmt.Println(\"World\")\n  fmt.Println(\"Hello\")\n}"
@@ -1215,7 +1215,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // file, _ := os.Open(\"data.txt\")\n  // defer file.Close()\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // file, _ := os.Open(\"data.txt\")\n  // defer file.Close()\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // file, _ := os.Open(\"data.txt\")\n  // defer file.Close()\n}"
@@ -1257,7 +1257,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc safeDiv(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  res, ok := safeDiv(20, 4)\n  _ = res; _ = ok\n}",
+    "initialCode": "package main\n\nfunc safeDiv(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc safeDiv(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  res, ok := safeDiv(20, 4)\n  _ = res; _ = ok\n}",
     "hints": [
       "Write:\npackage main\n\nfunc safeDiv(a, b int) (int, bool) {\n  if b == 0 { return 0, false }\n  return a / b, true\n}\n\nfunc main() {\n  res, ok := safeDiv(20, 4)\n  _ = res; _ = ok\n}"
@@ -1299,7 +1299,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var arr [3]int = [3]int{10, 20, 30}\n  _ = arr\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var arr [3]int = [3]int{10, 20, 30}\n  _ = arr\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var arr [3]int = [3]int{10, 20, 30}\n  _ = arr\n}"
@@ -1341,7 +1341,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  a := [2]int{1, 2}\n  b := a // Copies all elements!\n  b[0] = 99\n  _ = a; _ = b\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  a := [2]int{1, 2}\n  b := a\n  b[0] = 99\n  _ = a; _ = b\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  a := [2]int{1, 2}\n  b := a\n  b[0] = 99\n  _ = a; _ = b\n}"
@@ -1383,7 +1383,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  primes := []int{2, 3, 5, 7, 11}\n  _ = primes\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  primes := []int{2, 3, 5, 7, 11}\n  _ = primes\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  primes := []int{2, 3, 5, 7, 11}\n  _ = primes\n}"
@@ -1425,7 +1425,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  s := make([]int, 3, 10)\n  l := len(s)\n  c := cap(s)\n  _ = l; _ = c\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  s := make([]int, 3, 10)\n  l := len(s)\n  c := cap(s)\n  _ = l; _ = c\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  s := make([]int, 3, 10)\n  l := len(s)\n  c := cap(s)\n  _ = l; _ = c\n}"
@@ -1467,7 +1467,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  buf := make([]byte, 1024)\n  _ = buf\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  buf := make([]byte, 1024)\n  _ = buf\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  buf := make([]byte, 1024)\n  _ = buf\n}"
@@ -1509,7 +1509,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var s []int\n  s = append(s, 1, 2, 3)\n  _ = s\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var s []int\n  s = append(s, 1, 2, 3)\n  _ = s\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var s []int\n  s = append(s, 1, 2, 3)\n  _ = s\n}"
@@ -1551,7 +1551,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  arr := []string{\"A\", \"B\", \"C\", \"D\"}\n  sub := arr[1:3] // [\"B\", \"C\"]\n  _ = sub\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  arr := []string{\"A\", \"B\", \"C\", \"D\"}\n  sub := arr[1:3]\n  _ = sub\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  arr := []string{\"A\", \"B\", \"C\", \"D\"}\n  sub := arr[1:3]\n  _ = sub\n}"
@@ -1593,7 +1593,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  src := []int{1, 2, 3}\n  dst := make([]int, len(src))\n  n := copy(dst, src)\n  _ = n\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  src := []int{1, 2, 3}\n  dst := make([]int, len(src))\n  n := copy(dst, src)\n  _ = n\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  src := []int{1, 2, 3}\n  dst := make([]int, len(src))\n  n := copy(dst, src)\n  _ = n\n}"
@@ -1635,7 +1635,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  names := []string{\"Alex\", \"Sarah\"}\n  for i, name := range names {\n    _, _ = i, name\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  names := []string{\"Alex\", \"Sarah\"}\n  for i, name := range names {\n    _, _ = i, name\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  names := []string{\"Alex\", \"Sarah\"}\n  for i, name := range names {\n    _, _ = i, name\n  }\n}"
@@ -1677,7 +1677,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // In Go, 'val' in range is a temporary copy!\n  items := []int{1, 2}\n  for i := range items {\n    items[i] *= 2\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  items := []int{1, 2}\n  for i := range items {\n    items[i] *= 2\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  items := []int{1, 2}\n  for i := range items {\n    items[i] *= 2\n  }\n}"
@@ -1719,7 +1719,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  scores := make(map[string]int)\n  scores[\"Alice\"] = 95\n  _ = scores\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  scores := make(map[string]int)\n  scores[\"Alice\"] = 95\n  _ = scores\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  scores := make(map[string]int)\n  scores[\"Alice\"] = 95\n  _ = scores\n}"
@@ -1761,7 +1761,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  m := map[string]int{\"apples\": 5}\n  qty, ok := m[\"bananas\"]\n  _ = qty; _ = ok // ok is false!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  m := map[string]int{\"apples\": 5}\n  qty, ok := m[\"bananas\"]\n  _ = qty; _ = ok\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  m := map[string]int{\"apples\": 5}\n  qty, ok := m[\"bananas\"]\n  _ = qty; _ = ok\n}"
@@ -1803,7 +1803,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  m := map[string]int{\"token\": 123}\n  delete(m, \"token\")\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  m := map[string]int{\"token\": 123}\n  delete(m, \"token\")\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  m := map[string]int{\"token\": 123}\n  delete(m, \"token\")\n}"
@@ -1845,7 +1845,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var nilSlice []int           // nil\n  emptySlice := []int{}        // non-nil empty\n  _ = nilSlice; _ = emptySlice\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var nilSlice []int\n  emptySlice := []int{}\n  _ = nilSlice; _ = emptySlice\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var nilSlice []int\n  emptySlice := []int{}\n  _ = nilSlice; _ = emptySlice\n}"
@@ -1887,7 +1887,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  userMap := map[string][]string{\n    \"admins\": {\"Sarah\", \"Alex\"},\n  }\n  _ = userMap\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  userMap := map[string][]string{\n    \"admins\": {\"Sarah\", \"Alex\"},\n  }\n  _ = userMap\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  userMap := map[string][]string{\n    \"admins\": {\"Sarah\", \"Alex\"},\n  }\n  _ = userMap\n}"
@@ -1929,7 +1929,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  x := 42\n  p := &x // p is *int pointer\n  *p = 100 // dereference!\n  _ = x\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  x := 42\n  p := &x\n  *p = 100\n  _ = x\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  x := 42\n  p := &x\n  *p = 100\n  _ = x\n}"
@@ -1971,7 +1971,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Go disallows p++ pointer arithmetic for memory safety!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // Go disallows p++ pointer arithmetic for memory safety!\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // Go disallows p++ pointer arithmetic for memory safety!\n}"
@@ -2013,7 +2013,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype User struct {\n  ID    int\n  Name  string\n  Email string\n}\n\nfunc main() {\n  u := User{ID: 1, Name: \"Sarah\"}\n  _ = u\n}",
+    "initialCode": "package main\n\ntype User struct {\n  ID    int\n  Name  string\n  Email string\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype User struct {\n  ID    int\n  Name  string\n  Email string\n}\n\nfunc main() {\n  u := User{ID: 1, Name: \"Sarah\"}\n  _ = u\n}",
     "hints": [
       "Write:\npackage main\n\ntype User struct {\n  ID    int\n  Name  string\n  Email string\n}\n\nfunc main() {\n  u := User{ID: 1, Name: \"Sarah\"}\n  _ = u\n}"
@@ -2055,7 +2055,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Point struct { X, Y int }\n\nfunc main() {\n  p := &Point{X: 10, Y: 20}\n  p.X = 15 // Auto-dereference! No p->X needed\n  _ = p\n}",
+    "initialCode": "package main\n\ntype Point struct { X, Y int }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Point struct { X, Y int }\n\nfunc main() {\n  p := &Point{X: 10, Y: 20}\n  p.X = 15\n  _ = p\n}",
     "hints": [
       "Write:\npackage main\n\ntype Point struct { X, Y int }\n\nfunc main() {\n  p := &Point{X: 10, Y: 20}\n  p.X = 15\n  _ = p\n}"
@@ -2097,7 +2097,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Person struct { Name string }\ntype Employee struct {\n  Person // Embedded struct!\n  Salary int\n}\n\nfunc main() {\n  e := Employee{Person: Person{Name: \"Alex\"}, Salary: 80000}\n  _ = e.Name // Promoted field!\n}",
+    "initialCode": "package main\n\ntype Person struct { Name string }\ntype Employee struct {\n  Person // Embedded struct!\n  Salary int\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Person struct { Name string }\ntype Employee struct {\n  Person\n  Salary int\n}\n\nfunc main() {\n  e := Employee{Person: Person{Name: \"Alex\"}, Salary: 80000}\n  _ = e.Name\n}",
     "hints": [
       "Write:\npackage main\n\ntype Person struct { Name string }\ntype Employee struct {\n  Person\n  Salary int\n}\n\nfunc main() {\n  e := Employee{Person: Person{Name: \"Alex\"}, Salary: 80000}\n  _ = e.Name\n}"
@@ -2139,7 +2139,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Product struct {\n  ID    string `json:\"id\"`\n  Price int    `json:\"price_cents\"`\n}\n\nfunc main() {\n  _ = Product{ID: \"p1\", Price: 99}\n}",
+    "initialCode": "package main\n\ntype Product struct {\n  ID    string `json:\"id\"`\n  Price int    `json:\"price_cents\"`\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Product struct {\n  ID    string `json:\"id\"`\n  Price int    `json:\"price_cents\"`\n}\n\nfunc main() {\n  _ = Product{ID: \"p1\", Price: 99}\n}",
     "hints": [
       "Write:\npackage main\n\ntype Product struct {\n  ID    string `json:\"id\"`\n  Price int    `json:\"price_cents\"`\n}\n\nfunc main() {\n  _ = Product{ID: \"p1\", Price: 99}\n}"
@@ -2181,7 +2181,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Celsius float64\ntype Fahrenheit float64\n\nfunc main() {\n  var c Celsius = 100\n  _ = c\n}",
+    "initialCode": "package main\n\ntype Celsius float64\ntype Fahrenheit float64\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Celsius float64\ntype Fahrenheit float64\n\nfunc main() {\n  var c Celsius = 100\n  _ = c\n}",
     "hints": [
       "Write:\npackage main\n\ntype Celsius float64\ntype Fahrenheit float64\n\nfunc main() {\n  var c Celsius = 100\n  _ = c\n}"
@@ -2223,7 +2223,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Client struct { Host string }\n\nfunc NewClient(host string) *Client {\n  return &Client{Host: host}\n}\n\nfunc main() {\n  c := NewClient(\"api.devforge.io\")\n  _ = c\n}",
+    "initialCode": "package main\n\ntype Client struct { Host string }\n\nfunc NewClient(host string) *Client {\n  return &Client{Host: host}\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Client struct { Host string }\n\nfunc NewClient(host string) *Client {\n  return &Client{Host: host}\n}\n\nfunc main() {\n  c := NewClient(\"api.devforge.io\")\n  _ = c\n}",
     "hints": [
       "Write:\npackage main\n\ntype Client struct { Host string }\n\nfunc NewClient(host string) *Client {\n  return &Client{Host: host}\n}\n\nfunc main() {\n  c := NewClient(\"api.devforge.io\")\n  _ = c\n}"
@@ -2265,7 +2265,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Circle struct { Radius float64 }\n\nfunc (c Circle) Area() float64 {\n  return 3.14 * c.Radius * c.Radius\n}\n\nfunc main() {\n  c := Circle{Radius: 5}\n  _ = c.Area()\n}",
+    "initialCode": "package main\n\ntype Circle struct { Radius float64 }\n\nfunc (c Circle) Area() float64 {\n  return 3.14 * c.Radius * c.Radius\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Circle struct { Radius float64 }\n\nfunc (c Circle) Area() float64 {\n  return 3.14 * c.Radius * c.Radius\n}\n\nfunc main() {\n  c := Circle{Radius: 5}\n  _ = c.Area()\n}",
     "hints": [
       "Write:\npackage main\n\ntype Circle struct { Radius float64 }\n\nfunc (c Circle) Area() float64 {\n  return 3.14 * c.Radius * c.Radius\n}\n\nfunc main() {\n  c := Circle{Radius: 5}\n  _ = c.Area()\n}"
@@ -2307,7 +2307,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Counter struct { count int }\n\nfunc (c *Counter) Increment() {\n  c.count++\n}\n\nfunc main() {\n  c := &Counter{}\n  c.Increment()\n}",
+    "initialCode": "package main\n\ntype Counter struct { count int }\n\nfunc (c *Counter) Increment() {\n  c.count++\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Counter struct { count int }\n\nfunc (c *Counter) Increment() {\n  c.count++\n}\n\nfunc main() {\n  c := &Counter{}\n  c.Increment()\n}",
     "hints": [
       "Write:\npackage main\n\ntype Counter struct { count int }\n\nfunc (c *Counter) Increment() {\n  c.count++\n}\n\nfunc main() {\n  c := &Counter{}\n  c.Increment()\n}"
@@ -2349,7 +2349,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Rule: if ANY method needs a pointer receiver, make ALL methods pointer receivers!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // Rule: if ANY method needs a pointer receiver, make ALL methods pointer receivers!\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // Rule: if ANY method needs a pointer receiver, make ALL methods pointer receivers!\n}"
@@ -2391,7 +2391,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  config := struct {\n    Host string\n    Port int\n  }{\n    Host: \"localhost\",\n    Port: 8080,\n  }\n  _ = config\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  config := struct {\n    Host string\n    Port int\n  }{\n    Host: \"localhost\",\n    Port: 8080,\n  }\n  _ = config\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  config := struct {\n    Host string\n    Port int\n  }{\n    Host: \"localhost\",\n    Port: 8080,\n  }\n  _ = config\n}"
@@ -2433,7 +2433,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Point2D struct { X, Y int }\n\nfunc main() {\n  p1 := Point2D{1, 2}\n  p2 := Point2D{1, 2}\n  isEqual := p1 == p2\n  _ = isEqual\n}",
+    "initialCode": "package main\n\ntype Point2D struct { X, Y int }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Point2D struct { X, Y int }\n\nfunc main() {\n  p1 := Point2D{1, 2}\n  p2 := Point2D{1, 2}\n  isEqual := p1 == p2\n  _ = isEqual\n}",
     "hints": [
       "Write:\npackage main\n\ntype Point2D struct { X, Y int }\n\nfunc main() {\n  p1 := Point2D{1, 2}\n  p2 := Point2D{1, 2}\n  isEqual := p1 == p2\n  _ = isEqual\n}"
@@ -2475,7 +2475,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc createOnStack() int {\n  x := 42\n  return x // stays on stack!\n}\n\nfunc main() {\n  _ = createOnStack()\n}",
+    "initialCode": "package main\n\nfunc createOnStack() int {\n  x := 42\n  return x // stays on stack!\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc createOnStack() int {\n  x := 42\n  return x\n}\n\nfunc main() {\n  _ = createOnStack()\n}",
     "hints": [
       "Write:\npackage main\n\nfunc createOnStack() int {\n  x := 42\n  return x\n}\n\nfunc main() {\n  _ = createOnStack()\n}"
@@ -2517,7 +2517,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Service struct {\n  Name string\n}\n\nfunc (s *Service) Start() string {\n  return s.Name + \" running\"\n}\n\nfunc main() {\n  srv := &Service{Name: \"Auth\"}\n  _ = srv.Start()\n}",
+    "initialCode": "package main\n\ntype Service struct {\n  Name string\n}\n\nfunc (s *Service) Start() string {\n  return s.Name + \" running\"\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Service struct {\n  Name string\n}\n\nfunc (s *Service) Start() string {\n  return s.Name + \" running\"\n}\n\nfunc main() {\n  srv := &Service{Name: \"Auth\"}\n  _ = srv.Start()\n}",
     "hints": [
       "Write:\npackage main\n\ntype Service struct {\n  Name string\n}\n\nfunc (s *Service) Start() string {\n  return s.Name + \" running\"\n}\n\nfunc main() {\n  srv := &Service{Name: \"Auth\"}\n  _ = srv.Start()\n}"
@@ -2559,7 +2559,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Greeter interface {\n  Greet() string\n}\n\nfunc main() {\n  // If it walks like a duck and quacks like a duck, it's a duck!\n}",
+    "initialCode": "package main\n\ntype Greeter interface {\n  Greet() string\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Greeter interface {\n  Greet() string\n}\n\nfunc main() {\n  // If it walks like a duck and quacks like a duck, it's a duck!\n}",
     "hints": [
       "Write:\npackage main\n\ntype Greeter interface {\n  Greet() string\n}\n\nfunc main() {\n  // If it walks like a duck and quacks like a duck, it's a duck!\n}"
@@ -2601,7 +2601,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Speaker interface { Speak() string }\ntype Dog struct{}\nfunc (d Dog) Speak() string { return \"Woof\" }\n\nfunc main() {\n  var s Speaker = Dog{}\n  _ = s\n}",
+    "initialCode": "package main\n\ntype Speaker interface { Speak() string }\ntype Dog struct{}\nfunc (d Dog) Speak() string { return \"Woof\" }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Speaker interface { Speak() string }\ntype Dog struct{}\nfunc (d Dog) Speak() string { return \"Woof\" }\n\nfunc main() {\n  var s Speaker = Dog{}\n  _ = s\n}",
     "hints": [
       "Write:\npackage main\n\ntype Speaker interface { Speak() string }\ntype Dog struct{}\nfunc (d Dog) Speak() string { return \"Woof\" }\n\nfunc main() {\n  var s Speaker = Dog{}\n  _ = s\n}"
@@ -2643,7 +2643,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\ntype User struct { Name string }\nfunc (u User) String() string {\n  return \"User: \" + u.Name\n}\n\nfunc main() {\n  u := User{Name: \"Alex\"}\n  _ = fmt.Sprint(u)\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\ntype User struct { Name string }\nfunc (u User) String() string {\n  return \"User: \" + u.Name\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\ntype User struct { Name string }\nfunc (u User) String() string {\n  return \"User: \" + u.Name\n}\n\nfunc main() {\n  u := User{Name: \"Alex\"}\n  _ = fmt.Sprint(u)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\ntype User struct { Name string }\nfunc (u User) String() string {\n  return \"User: \" + u.Name\n}\n\nfunc main() {\n  u := User{Name: \"Alex\"}\n  _ = fmt.Sprint(u)\n}"
@@ -2685,7 +2685,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc printAny(val any) {\n  _ = val\n}\n\nfunc main() {\n  printAny(42)\n  printAny(\"text\")\n}",
+    "initialCode": "package main\n\nfunc printAny(val any) {\n  _ = val\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc printAny(val any) {\n  _ = val\n}\n\nfunc main() {\n  printAny(42)\n  printAny(\"text\")\n}",
     "hints": [
       "Write:\npackage main\n\nfunc printAny(val any) {\n  _ = val\n}\n\nfunc main() {\n  printAny(42)\n  printAny(\"text\")\n}"
@@ -2727,7 +2727,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var val any = \"DevForge\"\n  str := val.(string) // Type assertion!\n  _ = str\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var val any = \"DevForge\"\n  str := val.(string)\n  _ = str\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var val any = \"DevForge\"\n  str := val.(string)\n  _ = str\n}"
@@ -2769,7 +2769,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  var val any = 42\n  str, ok := val.(string)\n  _ = str; _ = ok // ok is false; no panic!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var val any = 42\n  str, ok := val.(string)\n  _ = str; _ = ok\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var val any = 42\n  str, ok := val.(string)\n  _ = str; _ = ok\n}"
@@ -2811,7 +2811,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc inspectType(x any) string {\n  switch v := x.(type) {\n  case int:    return \"integer\"\n  case string: return \"string\"\n  default:     _ = v; return \"unknown\"\n  }\n}\n\nfunc main() {\n  _ = inspectType(10)\n}",
+    "initialCode": "package main\n\nfunc inspectType(x any) string {\n  switch v := x.(type) {\n  case int:    return \"integer\"\n  case string: return \"string\"\n  default:     _ = v; return \"unknown\"\n  }\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc inspectType(x any) string {\n  switch v := x.(type) {\n  case int:    return \"integer\"\n  case string: return \"string\"\n  default:     _ = v; return \"unknown\"\n  }\n}\n\nfunc main() {\n  _ = inspectType(10)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc inspectType(x any) string {\n  switch v := x.(type) {\n  case int:    return \"integer\"\n  case string: return \"string\"\n  default:     _ = v; return \"unknown\"\n  }\n}\n\nfunc main() {\n  _ = inspectType(10)\n}"
@@ -2853,7 +2853,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Reader interface { Read(p []byte) (n int, err error) }\ntype Writer interface { Write(p []byte) (n int, err error) }\ntype ReadWriter interface {\n  Reader\n  Writer\n}\n\nfunc main() {\n  // ReadWriter bundles Reader and Writer!\n}",
+    "initialCode": "package main\n\ntype Reader interface { Read(p []byte) (n int, err error) }\ntype Writer interface { Write(p []byte) (n int, err error) }\ntype ReadWriter interface {\n  Reader\n  Writer\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Reader interface { Read(p []byte) (n int, err error) }\ntype Writer interface { Write(p []byte) (n int, err error) }\ntype ReadWriter interface {\n  Reader\n  Writer\n}\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\ntype Reader interface { Read(p []byte) (n int, err error) }\ntype Writer interface { Write(p []byte) (n int, err error) }\ntype ReadWriter interface {\n  Reader\n  Writer\n}\n\nfunc main() {\n}"
@@ -2895,7 +2895,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"bytes\"\n  \"io\"\n)\n\nfunc main() {\n  var r io.Reader = bytes.NewBufferString(\"stream\")\n  _ = r\n}",
+    "initialCode": "package main\n\nimport (\n  \"bytes\"\n  \"io\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"bytes\"\n  \"io\"\n)\n\nfunc main() {\n  var r io.Reader = bytes.NewBufferString(\"stream\")\n  _ = r\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"bytes\"\n  \"io\"\n)\n\nfunc main() {\n  var r io.Reader = bytes.NewBufferString(\"stream\")\n  _ = r\n}"
@@ -2937,7 +2937,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype error interface {\n  Error() string\n}\n\nfunc main() {\n  // In Go, an error is just any type with an Error() string method!\n}",
+    "initialCode": "package main\n\ntype error interface {\n  Error() string\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype error interface {\n  Error() string\n}\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\ntype error interface {\n  Error() string\n}\n\nfunc main() {\n}"
@@ -2979,7 +2979,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // An interface is nil ONLY if both its concrete type AND value are nil!\n  var r error = nil\n  _ = r == nil // true\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  var r error = nil\n  _ = r == nil\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  var r error = nil\n  _ = r == nil\n}"
@@ -3021,7 +3021,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Closer interface {\n  Close() error\n}\n\nfunc main() {\n  // Keep interfaces minimal!\n}",
+    "initialCode": "package main\n\ntype Closer interface {\n  Close() error\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Closer interface {\n  Close() error\n}\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\ntype Closer interface {\n  Close() error\n}\n\nfunc main() {\n}"
@@ -3063,7 +3063,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype Storage interface { Save(data string) error }\ntype App struct { db Storage }\n\nfunc main() {\n  _ = App{}\n}",
+    "initialCode": "package main\n\ntype Storage interface { Save(data string) error }\ntype App struct { db Storage }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype Storage interface { Save(data string) error }\ntype App struct { db Storage }\n\nfunc main() {\n  _ = App{}\n}",
     "hints": [
       "Write:\npackage main\n\ntype Storage interface { Save(data string) error }\ntype App struct { db Storage }\n\nfunc main() {\n  _ = App{}\n}"
@@ -3105,7 +3105,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Idiom: 'Accept interfaces, return concrete structs'\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -3147,7 +3147,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype PaymentGateway interface {\n  Pay(cents int) bool\n}\n\ntype Stripe struct{}\nfunc (s Stripe) Pay(cents int) bool { return true }\n\nfunc main() {\n  var g PaymentGateway = Stripe{}\n  _ = g.Pay(500)\n}",
+    "initialCode": "package main\n\ntype PaymentGateway interface {\n  Pay(cents int) bool\n}\n\ntype Stripe struct{}\nfunc (s Stripe) Pay(cents int) bool { return true }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype PaymentGateway interface {\n  Pay(cents int) bool\n}\n\ntype Stripe struct{}\nfunc (s Stripe) Pay(cents int) bool { return true }\n\nfunc main() {\n  var g PaymentGateway = Stripe{}\n  _ = g.Pay(500)\n}",
     "hints": [
       "Write:\npackage main\n\ntype PaymentGateway interface {\n  Pay(cents int) bool\n}\n\ntype Stripe struct{}\nfunc (s Stripe) Pay(cents int) bool { return true }\n\nfunc main() {\n  var g PaymentGateway = Stripe{}\n  _ = g.Pay(500)\n}"
@@ -3189,7 +3189,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"errors\"\n\nfunc check(val int) error {\n  if val < 0 { return errors.New(\"negative value\") }\n  return nil\n}\n\nfunc main() {\n  _ = check(-1)\n}",
+    "initialCode": "package main\n\nimport \"errors\"\n\nfunc check(val int) error {\n  if val < 0 { return errors.New(\"negative value\") }\n  return nil\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"errors\"\n\nfunc check(val int) error {\n  if val < 0 { return errors.New(\"negative value\") }\n  return nil\n}\n\nfunc main() {\n  _ = check(-1)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"errors\"\n\nfunc check(val int) error {\n  if val < 0 { return errors.New(\"negative value\") }\n  return nil\n}\n\nfunc main() {\n  _ = check(-1)\n}"
@@ -3231,7 +3231,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc doWork() error { return nil }\n\nfunc main() {\n  if err := doWork(); err != nil {\n    fmt.Println(\"Failed:\", err)\n    return\n  }\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc doWork() error { return nil }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc doWork() error { return nil }\n\nfunc main() {\n  if err := doWork(); err != nil {\n    fmt.Println(\"Failed:\", err)\n    return\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc doWork() error { return nil }\n\nfunc main() {\n  if err := doWork(); err != nil {\n    fmt.Println(\"Failed:\", err)\n    return\n  }\n}"
@@ -3273,7 +3273,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"errors\"\n\nvar ErrNotFound = errors.New(\"item not found\")\n\nfunc main() {\n  _ = ErrNotFound\n}",
+    "initialCode": "package main\n\nimport \"errors\"\n\nvar ErrNotFound = errors.New(\"item not found\")\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"errors\"\n\nvar ErrNotFound = errors.New(\"item not found\")\n\nfunc main() {\n  _ = ErrNotFound\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"errors\"\n\nvar ErrNotFound = errors.New(\"item not found\")\n\nfunc main() {\n  _ = ErrNotFound\n}"
@@ -3315,7 +3315,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc findUser(id int) error {\n  return fmt.Errorf(\"user %d not found\", id)\n}\n\nfunc main() {\n  _ = findUser(42)\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc findUser(id int) error {\n  return fmt.Errorf(\"user %d not found\", id)\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc findUser(id int) error {\n  return fmt.Errorf(\"user %d not found\", id)\n}\n\nfunc main() {\n  _ = findUser(42)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc findUser(id int) error {\n  return fmt.Errorf(\"user %d not found\", id)\n}\n\nfunc main() {\n  _ = findUser(42)\n}"
@@ -3357,7 +3357,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrDb = errors.New(\"db down\")\n\nfunc query() error {\n  return fmt.Errorf(\"query failed: %w\", ErrDb) // Wrapped!\n}\n\nfunc main() {\n  _ = query()\n}",
+    "initialCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrDb = errors.New(\"db down\")\n\nfunc query() error {\n  return fmt.Errorf(\"query failed: %w\", ErrDb) // Wrapped!\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrDb = errors.New(\"db down\")\n\nfunc query() error {\n  return fmt.Errorf(\"query failed: %w\", ErrDb)\n}\n\nfunc main() {\n  _ = query()\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrDb = errors.New(\"db down\")\n\nfunc query() error {\n  return fmt.Errorf(\"query failed: %w\", ErrDb)\n}\n\nfunc main() {\n  _ = query()\n}"
@@ -3399,7 +3399,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrNotFound = errors.New(\"not found\")\n\nfunc main() {\n  err := fmt.Errorf(\"fetch: %w\", ErrNotFound)\n  isMatch := errors.Is(err, ErrNotFound)\n  _ = isMatch // true!\n}",
+    "initialCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrNotFound = errors.New(\"not found\")\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrNotFound = errors.New(\"not found\")\n\nfunc main() {\n  err := fmt.Errorf(\"fetch: %w\", ErrNotFound)\n  isMatch := errors.Is(err, ErrNotFound)\n  _ = isMatch\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrNotFound = errors.New(\"not found\")\n\nfunc main() {\n  err := fmt.Errorf(\"fetch: %w\", ErrNotFound)\n  isMatch := errors.Is(err, ErrNotFound)\n  _ = isMatch\n}"
@@ -3441,7 +3441,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"errors\"\n\ntype QueryError struct{ Query string }\nfunc (e *QueryError) Error() string { return \"bad: \" + e.Query }\n\nfunc main() {\n  var qErr *QueryError\n  _ = errors.As(nil, &qErr)\n}",
+    "initialCode": "package main\n\nimport \"errors\"\n\ntype QueryError struct{ Query string }\nfunc (e *QueryError) Error() string { return \"bad: \" + e.Query }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"errors\"\n\ntype QueryError struct{ Query string }\nfunc (e *QueryError) Error() string { return \"bad: \" + e.Query }\n\nfunc main() {\n  var qErr *QueryError\n  _ = errors.As(nil, &qErr)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"errors\"\n\ntype QueryError struct{ Query string }\nfunc (e *QueryError) Error() string { return \"bad: \" + e.Query }\n\nfunc main() {\n  var qErr *QueryError\n  _ = errors.As(nil, &qErr)\n}"
@@ -3483,7 +3483,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\ntype HttpError struct {\n  StatusCode int\n  Endpoint   string\n}\n\nfunc (e *HttpError) Error() string {\n  return fmt.Sprintf(\"%d error on %s\", e.StatusCode, e.Endpoint)\n}\n\nfunc main() {\n  _ = &HttpError{StatusCode: 404, Endpoint: \"/courses\"}\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\ntype HttpError struct {\n  StatusCode int\n  Endpoint   string\n}\n\nfunc (e *HttpError) Error() string {\n  return fmt.Sprintf(\"%d error on %s\", e.StatusCode, e.Endpoint)\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\ntype HttpError struct {\n  StatusCode int\n  Endpoint   string\n}\n\nfunc (e *HttpError) Error() string {\n  return fmt.Sprintf(\"%d error on %s\", e.StatusCode, e.Endpoint)\n}\n\nfunc main() {\n  _ = &HttpError{StatusCode: 404, Endpoint: \"/courses\"}\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\ntype HttpError struct {\n  StatusCode int\n  Endpoint   string\n}\n\nfunc (e *HttpError) Error() string {\n  return fmt.Sprintf(\"%d error on %s\", e.StatusCode, e.Endpoint)\n}\n\nfunc main() {\n  _ = &HttpError{StatusCode: 404, Endpoint: \"/courses\"}\n}"
@@ -3525,7 +3525,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"errors\"\n\nvar (\n  ErrTimeout    = errors.New(\"timeout\")\n  ErrBadRequest = errors.New(\"bad request\")\n)\n\nfunc main() {\n  _ = ErrTimeout\n}",
+    "initialCode": "package main\n\nimport \"errors\"\n\nvar (\n  ErrTimeout    = errors.New(\"timeout\")\n  ErrBadRequest = errors.New(\"bad request\")\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"errors\"\n\nvar (\n  ErrTimeout    = errors.New(\"timeout\")\n  ErrBadRequest = errors.New(\"bad request\")\n)\n\nfunc main() {\n  _ = ErrTimeout\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"errors\"\n\nvar (\n  ErrTimeout    = errors.New(\"timeout\")\n  ErrBadRequest = errors.New(\"bad request\")\n)\n\nfunc main() {\n  _ = ErrTimeout\n}"
@@ -3567,7 +3567,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Use panic strictly for truly unrecoverable programmer bugs!\n  // panic(\"database driver missing\")\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // Use panic strictly for truly unrecoverable programmer bugs!\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // Use panic strictly for truly unrecoverable programmer bugs!\n}"
@@ -3609,7 +3609,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc safeRun() {\n  defer func() {\n    if r := recover(); r != nil {\n      fmt.Println(\"Recovered from:\", r)\n    }\n  }()\n  // code that might panic\n}\n\nfunc main() {\n  safeRun()\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc safeRun() {\n  defer func() {\n    if r := recover(); r != nil {\n      fmt.Println(\"Recovered from:\", r)\n    }\n  }()\n  // code that might panic\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc safeRun() {\n  defer func() {\n    if r := recover(); r != nil {\n      fmt.Println(\"Recovered from:\", r)\n    }\n  }()\n}\n\nfunc main() {\n  safeRun()\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc safeRun() {\n  defer func() {\n    if r := recover(); r != nil {\n      fmt.Println(\"Recovered from:\", r)\n    }\n  }()\n}\n\nfunc main() {\n  safeRun()\n}"
@@ -3651,7 +3651,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc recoveryMiddleware() {\n  defer func() {\n    _ = recover()\n  }()\n}\n\nfunc main() {\n  recoveryMiddleware()\n}",
+    "initialCode": "package main\n\nfunc recoveryMiddleware() {\n  defer func() {\n    _ = recover()\n  }()\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc recoveryMiddleware() {\n  defer func() {\n    _ = recover()\n  }()\n}\n\nfunc main() {\n  recoveryMiddleware()\n}",
     "hints": [
       "Write:\npackage main\n\nfunc recoveryMiddleware() {\n  defer func() {\n    _ = recover()\n  }()\n}\n\nfunc main() {\n  recoveryMiddleware()\n}"
@@ -3693,7 +3693,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"errors\"\n\nfunc validate() error {\n  err1 := errors.New(\"missing email\")\n  err2 := errors.New(\"missing password\")\n  return errors.Join(err1, err2) // Bundles multiple errors!\n}\n\nfunc main() {\n  _ = validate()\n}",
+    "initialCode": "package main\n\nimport \"errors\"\n\nfunc validate() error {\n  err1 := errors.New(\"missing email\")\n  err2 := errors.New(\"missing password\")\n  return errors.Join(err1, err2) // Bundles multiple errors!\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"errors\"\n\nfunc validate() error {\n  err1 := errors.New(\"missing email\")\n  err2 := errors.New(\"missing password\")\n  return errors.Join(err1, err2)\n}\n\nfunc main() {\n  _ = validate()\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"errors\"\n\nfunc validate() error {\n  err1 := errors.New(\"missing email\")\n  err2 := errors.New(\"missing password\")\n  return errors.Join(err1, err2)\n}\n\nfunc main() {\n  _ = validate()\n}"
@@ -3735,7 +3735,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Rule: either log the error, OR return it; never do both!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -3777,7 +3777,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrUnauthorized = errors.New(\"unauthorized\")\n\nfunc authenticate(token string) error {\n  if token == \"\" { return fmt.Errorf(\"auth failed: %w\", ErrUnauthorized) }\n  return nil\n}\n\nfunc main() {\n  err := authenticate(\"\")\n  _ = errors.Is(err, ErrUnauthorized)\n}",
+    "initialCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrUnauthorized = errors.New(\"unauthorized\")\n\nfunc authenticate(token string) error {\n  if token == \"\" { return fmt.Errorf(\"auth failed: %w\", ErrUnauthorized) }\n  return nil\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrUnauthorized = errors.New(\"unauthorized\")\n\nfunc authenticate(token string) error {\n  if token == \"\" { return fmt.Errorf(\"auth failed: %w\", ErrUnauthorized) }\n  return nil\n}\n\nfunc main() {\n  err := authenticate(\"\")\n  _ = errors.Is(err, ErrUnauthorized)\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"errors\"\n  \"fmt\"\n)\n\nvar ErrUnauthorized = errors.New(\"unauthorized\")\n\nfunc authenticate(token string) error {\n  if token == \"\" { return fmt.Errorf(\"auth failed: %w\", ErrUnauthorized) }\n  return nil\n}\n\nfunc main() {\n  err := authenticate(\"\")\n  _ = errors.Is(err, ErrUnauthorized)\n}"
@@ -3819,7 +3819,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Concurrency is dealing with lots of things at once.\n  // Parallelism is doing lots of things at once.\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // Concurrency is dealing with lots of things at once.\n  // Parallelism is doing lots of things at once.\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // Concurrency is dealing with lots of things at once.\n  // Parallelism is doing lots of things at once.\n}"
@@ -3861,7 +3861,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc sayHello() {\n  fmt.Println(\"Hello from goroutine\")\n}\n\nfunc main() {\n  go sayHello() // Runs concurrently!\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc sayHello() {\n  fmt.Println(\"Hello from goroutine\")\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc sayHello() {\n  fmt.Println(\"Hello from goroutine\")\n}\n\nfunc main() {\n  go sayHello()\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc sayHello() {\n  fmt.Println(\"Hello from goroutine\")\n}\n\nfunc main() {\n  go sayHello()\n}"
@@ -3903,7 +3903,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // An OS thread takes ~1MB to 2MB.\n  // A Goroutine starts at only ~2KB! You can run 100,000 goroutines easily.\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -3945,7 +3945,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Go schedules M goroutines onto N OS kernel threads!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -3987,7 +3987,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan int)\n  _ = ch\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan int)\n  _ = ch\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan int)\n  _ = ch\n}"
@@ -4029,7 +4029,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan string, 1)\n  ch <- \"ping\"     // Send into channel\n  msg := <-ch      // Receive from channel\n  _ = msg\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan string, 1)\n  ch <- \"ping\"\n  msg := <-ch\n  _ = msg\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan string, 1)\n  ch <- \"ping\"\n  msg := <-ch\n  _ = msg\n}"
@@ -4071,7 +4071,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan int) // Unbuffered (capacity 0)\n  _ = ch\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan int)\n  _ = ch\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan int)\n  _ = ch\n}"
@@ -4113,7 +4113,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan int, 3) // Buffer capacity 3\n  ch <- 1; ch <- 2; ch <- 3\n  _ = ch\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan int, 3)\n  ch <- 1; ch <- 2; ch <- 3\n  _ = ch\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan int, 3)\n  ch <- 1; ch <- 2; ch <- 3\n  _ = ch\n}"
@@ -4155,7 +4155,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan int, 1)\n  ch <- 42\n  close(ch) // Close channel!\n  val, ok := <-ch\n  _ = val; _ = ok // ok is true (received 42)\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan int, 1)\n  ch <- 42\n  close(ch)\n  val, ok := <-ch\n  _ = val; _ = ok\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan int, 1)\n  ch <- 42\n  close(ch)\n  val, ok := <-ch\n  _ = val; _ = ok\n}"
@@ -4197,7 +4197,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan int, 2)\n  ch <- 1; ch <- 2\n  close(ch)\n  for val := range ch {\n    _ = val\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan int, 2)\n  ch <- 1; ch <- 2\n  close(ch)\n  for val := range ch {\n    _ = val\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan int, 2)\n  ch <- 1; ch <- 2\n  close(ch)\n  for val := range ch {\n    _ = val\n  }\n}"
@@ -4239,7 +4239,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc sendOnly(ch chan<- int) {\n  ch <- 10\n}\n\nfunc main() {\n  c := make(chan int, 1)\n  sendOnly(c)\n}",
+    "initialCode": "package main\n\nfunc sendOnly(ch chan<- int) {\n  ch <- 10\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc sendOnly(ch chan<- int) {\n  ch <- 10\n}\n\nfunc main() {\n  c := make(chan int, 1)\n  sendOnly(c)\n}",
     "hints": [
       "Write:\npackage main\n\nfunc sendOnly(ch chan<- int) {\n  ch <- 10\n}\n\nfunc main() {\n  c := make(chan int, 1)\n  sendOnly(c)\n}"
@@ -4281,7 +4281,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  c1 := make(chan string, 1)\n  c2 := make(chan string, 1)\n  c1 <- \"one\"\n  select {\n  case msg := <-c1:\n    _ = msg\n  case msg := <-c2:\n    _ = msg\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  c1 := make(chan string, 1)\n  c2 := make(chan string, 1)\n  c1 <- \"one\"\n  select {\n  case msg := <-c1:\n    _ = msg\n  case msg := <-c2:\n    _ = msg\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  c1 := make(chan string, 1)\n  c2 := make(chan string, 1)\n  c1 <- \"one\"\n  select {\n  case msg := <-c1:\n    _ = msg\n  case msg := <-c2:\n    _ = msg\n  }\n}"
@@ -4323,7 +4323,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  ch := make(chan int)\n  select {\n  case val := <-ch:\n    _ = val\n  default:\n    // Runs instantly without blocking!\n  }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  ch := make(chan int)\n  select {\n  case val := <-ch:\n    _ = val\n  default:\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  ch := make(chan int)\n  select {\n  case val := <-ch:\n    _ = val\n  default:\n  }\n}"
@@ -4365,7 +4365,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // select {\n  // case res := <-ch:\n  // case <-time.After(1 * time.Second):\n  // }\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -4407,7 +4407,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc worker(id int, jobs <-chan int, results chan<- int) {\n  for j := range jobs {\n    results <- j * 2\n  }\n}\n\nfunc main() {\n  jobs := make(chan int, 2)\n  results := make(chan int, 2)\n  go worker(1, jobs, results)\n  jobs <- 5; close(jobs)\n  _ = <-results\n}",
+    "initialCode": "package main\n\nfunc worker(id int, jobs <-chan int, results chan<- int) {\n  for j := range jobs {\n    results <- j * 2\n  }\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc worker(id int, jobs <-chan int, results chan<- int) {\n  for j := range jobs {\n    results <- j * 2\n  }\n}\n\nfunc main() {\n  jobs := make(chan int, 2)\n  results := make(chan int, 2)\n  go worker(1, jobs, results)\n  jobs <- 5; close(jobs)\n  _ = <-results\n}",
     "hints": [
       "Write:\npackage main\n\nfunc worker(id int, jobs <-chan int, results chan<- int) {\n  for j := range jobs {\n    results <- j * 2\n  }\n}\n\nfunc main() {\n  jobs := make(chan int, 2)\n  results := make(chan int, 2)\n  go worker(1, jobs, results)\n  jobs <- 5; close(jobs)\n  _ = <-results\n}"
@@ -4449,7 +4449,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Run 'go test -race' or 'go run -race' to detect concurrent data race bugs!\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n  // Run 'go test -race' or 'go run -race' to detect concurrent data race bugs!\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n  // Run 'go test -race' or 'go run -race' to detect concurrent data race bugs!\n}"
@@ -4491,7 +4491,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"sync\"\n\ntype SafeCounter struct {\n  mu    sync.Mutex\n  count int\n}\n\nfunc (c *SafeCounter) Inc() {\n  c.mu.Lock()\n  c.count++\n  c.mu.Unlock()\n}\n\nfunc main() {\n  sc := &SafeCounter{}\n  sc.Inc()\n}",
+    "initialCode": "package main\n\nimport \"sync\"\n\ntype SafeCounter struct {\n  mu    sync.Mutex\n  count int\n}\n\nfunc (c *SafeCounter) Inc() {\n  c.mu.Lock()\n  c.count++\n  c.mu.Unlock()\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"sync\"\n\ntype SafeCounter struct {\n  mu    sync.Mutex\n  count int\n}\n\nfunc (c *SafeCounter) Inc() {\n  c.mu.Lock()\n  c.count++\n  c.mu.Unlock()\n}\n\nfunc main() {\n  sc := &SafeCounter{}\n  sc.Inc()\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"sync\"\n\ntype SafeCounter struct {\n  mu    sync.Mutex\n  count int\n}\n\nfunc (c *SafeCounter) Inc() {\n  c.mu.Lock()\n  c.count++\n  c.mu.Unlock()\n}\n\nfunc main() {\n  sc := &SafeCounter{}\n  sc.Inc()\n}"
@@ -4533,7 +4533,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"sync\"\n\nfunc safeOp(mu *sync.Mutex) {\n  mu.Lock()\n  defer mu.Unlock()\n  // do work safely\n}\n\nfunc main() {\n  safeOp(&sync.Mutex{})\n}",
+    "initialCode": "package main\n\nimport \"sync\"\n\nfunc safeOp(mu *sync.Mutex) {\n  mu.Lock()\n  defer mu.Unlock()\n  // do work safely\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"sync\"\n\nfunc safeOp(mu *sync.Mutex) {\n  mu.Lock()\n  defer mu.Unlock()\n}\n\nfunc main() {\n  safeOp(&sync.Mutex{})\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"sync\"\n\nfunc safeOp(mu *sync.Mutex) {\n  mu.Lock()\n  defer mu.Unlock()\n}\n\nfunc main() {\n  safeOp(&sync.Mutex{})\n}"
@@ -4575,7 +4575,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"sync\"\n\ntype Cache struct {\n  mu   sync.RWMutex\n  data map[string]string\n}\n\nfunc (c *Cache) Get(k string) string {\n  c.mu.RLock()\n  defer c.mu.RUnlock()\n  return c.data[k]\n}\n\nfunc main() {\n  c := &Cache{data: map[string]string{\"k\": \"v\"}}\n  _ = c.Get(\"k\")\n}",
+    "initialCode": "package main\n\nimport \"sync\"\n\ntype Cache struct {\n  mu   sync.RWMutex\n  data map[string]string\n}\n\nfunc (c *Cache) Get(k string) string {\n  c.mu.RLock()\n  defer c.mu.RUnlock()\n  return c.data[k]\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"sync\"\n\ntype Cache struct {\n  mu   sync.RWMutex\n  data map[string]string\n}\n\nfunc (c *Cache) Get(k string) string {\n  c.mu.RLock()\n  defer c.mu.RUnlock()\n  return c.data[k]\n}\n\nfunc main() {\n  c := &Cache{data: map[string]string{\"k\": \"v\"}}\n  _ = c.Get(\"k\")\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"sync\"\n\ntype Cache struct {\n  mu   sync.RWMutex\n  data map[string]string\n}\n\nfunc (c *Cache) Get(k string) string {\n  c.mu.RLock()\n  defer c.mu.RUnlock()\n  return c.data[k]\n}\n\nfunc main() {\n  c := &Cache{data: map[string]string{\"k\": \"v\"}}\n  _ = c.Get(\"k\")\n}"
@@ -4617,7 +4617,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"sync\"\n\nfunc main() {\n  var wg sync.WaitGroup\n  wg.Add(1)\n  go func() {\n    defer wg.Done()\n  }()\n  wg.Wait() // Blocks until counter hits 0!\n}",
+    "initialCode": "package main\n\nimport \"sync\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"sync\"\n\nfunc main() {\n  var wg sync.WaitGroup\n  wg.Add(1)\n  go func() {\n    defer wg.Done()\n  }()\n  wg.Wait()\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"sync\"\n\nfunc main() {\n  var wg sync.WaitGroup\n  wg.Add(1)\n  go func() {\n    defer wg.Done()\n  }()\n  wg.Wait()\n}"
@@ -4659,7 +4659,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"sync\"\n\nvar (\n  once     sync.Once\n  instance string\n)\n\nfunc getInstance() string {\n  once.Do(func() {\n    instance = \"Initialized\"\n  })\n  return instance\n}\n\nfunc main() {\n  _ = getInstance()\n}",
+    "initialCode": "package main\n\nimport \"sync\"\n\nvar (\n  once     sync.Once\n  instance string\n)\n\nfunc getInstance() string {\n  once.Do(func() {\n    instance = \"Initialized\"\n  })\n  return instance\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"sync\"\n\nvar (\n  once     sync.Once\n  instance string\n)\n\nfunc getInstance() string {\n  once.Do(func() {\n    instance = \"Initialized\"\n  })\n  return instance\n}\n\nfunc main() {\n  _ = getInstance()\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"sync\"\n\nvar (\n  once     sync.Once\n  instance string\n)\n\nfunc getInstance() string {\n  once.Do(func() {\n    instance = \"Initialized\"\n  })\n  return instance\n}\n\nfunc main() {\n  _ = getInstance()\n}"
@@ -4701,7 +4701,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"bytes\"\n  \"sync\"\n)\n\nvar bufPool = sync.Pool{\n  New: func() any { return new(bytes.Buffer) },\n}\n\nfunc main() {\n  b := bufPool.Get().(*bytes.Buffer)\n  b.Reset()\n  bufPool.Put(b)\n}",
+    "initialCode": "package main\n\nimport (\n  \"bytes\"\n  \"sync\"\n)\n\nvar bufPool = sync.Pool{\n  New: func() any { return new(bytes.Buffer) },\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"bytes\"\n  \"sync\"\n)\n\nvar bufPool = sync.Pool{\n  New: func() any { return new(bytes.Buffer) },\n}\n\nfunc main() {\n  b := bufPool.Get().(*bytes.Buffer)\n  b.Reset()\n  bufPool.Put(b)\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"bytes\"\n  \"sync\"\n)\n\nvar bufPool = sync.Pool{\n  New: func() any { return new(bytes.Buffer) },\n}\n\nfunc main() {\n  b := bufPool.Get().(*bytes.Buffer)\n  b.Reset()\n  bufPool.Put(b)\n}"
@@ -4743,7 +4743,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"sync/atomic\"\n)\n\nfunc main() {\n  var ops atomic.Uint64\n  ops.Add(1)\n  val := ops.Load()\n  _ = val\n}",
+    "initialCode": "package main\n\nimport (\n  \"sync/atomic\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"sync/atomic\"\n)\n\nfunc main() {\n  var ops atomic.Uint64\n  ops.Add(1)\n  val := ops.Load()\n  _ = val\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"sync/atomic\"\n)\n\nfunc main() {\n  var ops atomic.Uint64\n  ops.Add(1)\n  val := ops.Load()\n  _ = val\n}"
@@ -4785,7 +4785,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // 'Do not communicate by sharing memory; instead, share memory by communicating.'\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -4827,7 +4827,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  ctx := context.Background()\n  _ = ctx\n}",
+    "initialCode": "package main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  ctx := context.Background()\n  _ = ctx\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  ctx := context.Background()\n  _ = ctx\n}"
@@ -4869,7 +4869,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithCancel(context.Background())\n  defer cancel() // Always cancel to prevent resource leaks!\n  _ = ctx\n}",
+    "initialCode": "package main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithCancel(context.Background())\n  defer cancel()\n  _ = ctx\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"context\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithCancel(context.Background())\n  defer cancel()\n  _ = ctx\n}"
@@ -4911,7 +4911,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"context\"\n  \"time\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)\n  defer cancel()\n  _ = ctx\n}",
+    "initialCode": "package main\n\nimport (\n  \"context\"\n  \"time\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"context\"\n  \"time\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)\n  defer cancel()\n  _ = ctx\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"context\"\n  \"time\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithTimeout(context.Background(), 2*time.Second)\n  defer cancel()\n  _ = ctx\n}"
@@ -4953,7 +4953,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"context\"\n\nfunc doTask(ctx context.Context) {\n  select {\n  case <-ctx.Done():\n    return // Abort early!\n  default:\n    // continue\n  }\n}\n\nfunc main() {\n  doTask(context.Background())\n}",
+    "initialCode": "package main\n\nimport \"context\"\n\nfunc doTask(ctx context.Context) {\n  select {\n  case <-ctx.Done():\n    return // Abort early!\n  default:\n    // continue\n  }\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"context\"\n\nfunc doTask(ctx context.Context) {\n  select {\n  case <-ctx.Done():\n    return\n  default:\n  }\n}\n\nfunc main() {\n  doTask(context.Background())\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"context\"\n\nfunc doTask(ctx context.Context) {\n  select {\n  case <-ctx.Done():\n    return\n  default:\n  }\n}\n\nfunc main() {\n  doTask(context.Background())\n}"
@@ -4995,7 +4995,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"context\"\n\ntype ctxKey string\n\nfunc main() {\n  const k ctxKey = \"traceID\"\n  ctx := context.WithValue(context.Background(), k, \"uuid-1234\")\n  _ = ctx.Value(k)\n}",
+    "initialCode": "package main\n\nimport \"context\"\n\ntype ctxKey string\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"context\"\n\ntype ctxKey string\n\nfunc main() {\n  const k ctxKey = \"traceID\"\n  ctx := context.WithValue(context.Background(), k, \"uuid-1234\")\n  _ = ctx.Value(k)\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"context\"\n\ntype ctxKey string\n\nfunc main() {\n  const k ctxKey = \"traceID\"\n  ctx := context.WithValue(context.Background(), k, \"uuid-1234\")\n  _ = ctx.Value(k)\n}"
@@ -5037,7 +5037,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"context\"\n  \"sync\"\n  \"time\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)\n  defer cancel()\n  var wg sync.WaitGroup\n  wg.Add(1)\n  go func() {\n    defer wg.Done()\n    select {\n    case <-ctx.Done():\n    case <-time.After(500 * time.Millisecond):\n    }\n  }()\n  wg.Wait()\n}",
+    "initialCode": "package main\n\nimport (\n  \"context\"\n  \"sync\"\n  \"time\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"context\"\n  \"sync\"\n  \"time\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)\n  defer cancel()\n  var wg sync.WaitGroup\n  wg.Add(1)\n  go func() {\n    defer wg.Done()\n    select {\n    case <-ctx.Done():\n    case <-time.After(500 * time.Millisecond):\n    }\n  }()\n  wg.Wait()\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"context\"\n  \"sync\"\n  \"time\"\n)\n\nfunc main() {\n  ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)\n  defer cancel()\n  var wg sync.WaitGroup\n  wg.Add(1)\n  go func() {\n    defer wg.Done()\n    select {\n    case <-ctx.Done():\n    case <-time.After(500 * time.Millisecond):\n    }\n  }()\n  wg.Wait()\n}"
@@ -5079,7 +5079,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"encoding/json\"\n)\n\ntype User struct {\n  Name string `json:\"name\"`\n}\n\nfunc main() {\n  u := User{Name: \"Sarah\"}\n  bytes, _ := json.Marshal(u)\n  _ = bytes\n}",
+    "initialCode": "package main\n\nimport (\n  \"encoding/json\"\n)\n\ntype User struct {\n  Name string `json:\"name\"`\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"encoding/json\"\n)\n\ntype User struct {\n  Name string `json:\"name\"`\n}\n\nfunc main() {\n  u := User{Name: \"Sarah\"}\n  bytes, _ := json.Marshal(u)\n  _ = bytes\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"encoding/json\"\n)\n\ntype User struct {\n  Name string `json:\"name\"`\n}\n\nfunc main() {\n  u := User{Name: \"Sarah\"}\n  bytes, _ := json.Marshal(u)\n  _ = bytes\n}"
@@ -5121,7 +5121,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"bytes\"\n  \"encoding/json\"\n)\n\nfunc main() {\n  buf := bytes.NewBufferString(`{\"id\":1}`)\n  dec := json.NewDecoder(buf)\n  var res map[string]int\n  _ = dec.Decode(&res)\n}",
+    "initialCode": "package main\n\nimport (\n  \"bytes\"\n  \"encoding/json\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"bytes\"\n  \"encoding/json\"\n)\n\nfunc main() {\n  buf := bytes.NewBufferString(`{\"id\":1}`)\n  dec := json.NewDecoder(buf)\n  var res map[string]int\n  _ = dec.Decode(&res)\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"bytes\"\n  \"encoding/json\"\n)\n\nfunc main() {\n  buf := bytes.NewBufferString(`{\"id\":1}`)\n  dec := json.NewDecoder(buf)\n  var res map[string]int\n  _ = dec.Decode(&res)\n}"
@@ -5163,7 +5163,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"fmt\"\n  \"net/http\"\n)\n\nfunc handler(w http.ResponseWriter, r *http.Request) {\n  fmt.Fprintf(w, \"Hello DevForge\")\n}\n\nfunc main() {\n  http.HandleFunc(\"/hello\", handler)\n}",
+    "initialCode": "package main\n\nimport (\n  \"fmt\"\n  \"net/http\"\n)\n\nfunc handler(w http.ResponseWriter, r *http.Request) {\n  fmt.Fprintf(w, \"Hello DevForge\")\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"fmt\"\n  \"net/http\"\n)\n\nfunc handler(w http.ResponseWriter, r *http.Request) {\n  fmt.Fprintf(w, \"Hello DevForge\")\n}\n\nfunc main() {\n  http.HandleFunc(\"/hello\", handler)\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"fmt\"\n  \"net/http\"\n)\n\nfunc handler(w http.ResponseWriter, r *http.Request) {\n  fmt.Fprintf(w, \"Hello DevForge\")\n}\n\nfunc main() {\n  http.HandleFunc(\"/hello\", handler)\n}"
@@ -5205,7 +5205,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"net/http\"\n\nfunc loggingMiddleware(next http.Handler) http.Handler {\n  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n    // log request\n    next.ServeHTTP(w, r)\n  })\n}\n\nfunc main() {\n  _ = loggingMiddleware\n}",
+    "initialCode": "package main\n\nimport \"net/http\"\n\nfunc loggingMiddleware(next http.Handler) http.Handler {\n  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n    // log request\n    next.ServeHTTP(w, r)\n  })\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"net/http\"\n\nfunc loggingMiddleware(next http.Handler) http.Handler {\n  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n    next.ServeHTTP(w, r)\n  })\n}\n\nfunc main() {\n  _ = loggingMiddleware\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"net/http\"\n\nfunc loggingMiddleware(next http.Handler) http.Handler {\n  return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {\n    next.ServeHTTP(w, r)\n  })\n}\n\nfunc main() {\n  _ = loggingMiddleware\n}"
@@ -5247,7 +5247,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"net/http\"\n  \"time\"\n)\n\nfunc main() {\n  client := &http.Client{\n    Timeout: 5 * time.Second,\n  }\n  _ = client\n}",
+    "initialCode": "package main\n\nimport (\n  \"net/http\"\n  \"time\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"net/http\"\n  \"time\"\n)\n\nfunc main() {\n  client := &http.Client{\n    Timeout: 5 * time.Second,\n  }\n  _ = client\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"net/http\"\n  \"time\"\n)\n\nfunc main() {\n  client := &http.Client{\n    Timeout: 5 * time.Second,\n  }\n  _ = client\n}"
@@ -5289,7 +5289,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"bufio\"\n  \"strings\"\n)\n\nfunc main() {\n  scanner := bufio.NewScanner(strings.NewReader(\"line1\\nline2\"))\n  for scanner.Scan() {\n    _ = scanner.Text()\n  }\n}",
+    "initialCode": "package main\n\nimport (\n  \"bufio\"\n  \"strings\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"bufio\"\n  \"strings\"\n)\n\nfunc main() {\n  scanner := bufio.NewScanner(strings.NewReader(\"line1\\nline2\"))\n  for scanner.Scan() {\n    _ = scanner.Text()\n  }\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"bufio\"\n  \"strings\"\n)\n\nfunc main() {\n  scanner := bufio.NewScanner(strings.NewReader(\"line1\\nline2\"))\n  for scanner.Scan() {\n    _ = scanner.Text()\n  }\n}"
@@ -5541,7 +5541,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // 'go vet' analyzes source code and flags suspicious constructs\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -5583,7 +5583,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  _ \"net/http/pprof\"\n)\n\nfunc main() {\n  // Register pprof HTTP diagnostic endpoints automatically\n}",
+    "initialCode": "package main\n\nimport (\n  _ \"net/http/pprof\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  _ \"net/http/pprof\"\n)\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  _ \"net/http/pprof\"\n)\n\nfunc main() {\n}"
@@ -5625,7 +5625,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"log/slog\"\n)\n\nfunc main() {\n  slog.Info(\"User authenticated\", \"user_id\", 42, \"role\", \"admin\")\n}",
+    "initialCode": "package main\n\nimport (\n  \"log/slog\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"log/slog\"\n)\n\nfunc main() {\n  slog.Info(\"User authenticated\", \"user_id\", 42, \"role\", \"admin\")\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"log/slog\"\n)\n\nfunc main() {\n  slog.Info(\"User authenticated\", \"user_id\", 42, \"role\", \"admin\")\n}"
@@ -5709,7 +5709,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\ntype UserRepo interface { Find(id int) string }\ntype UserService struct { repo UserRepo }\n\nfunc main() {\n  _ = UserService{}\n}",
+    "initialCode": "package main\n\ntype UserRepo interface { Find(id int) string }\ntype UserService struct { repo UserRepo }\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\ntype UserRepo interface { Find(id int) string }\ntype UserService struct { repo UserRepo }\n\nfunc main() {\n  _ = UserService{}\n}",
     "hints": [
       "Write:\npackage main\n\ntype UserRepo interface { Find(id int) string }\ntype UserService struct { repo UserRepo }\n\nfunc main() {\n  _ = UserService{}\n}"
@@ -5751,7 +5751,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"database/sql\"\n  \"time\"\n)\n\nfunc configurePool(db *sql.DB) {\n  db.SetMaxOpenConns(25)\n  db.SetMaxIdleConns(10)\n  db.SetConnMaxLifetime(5 * time.Minute)\n}\n\nfunc main() {\n  _ = configurePool\n}",
+    "initialCode": "package main\n\nimport (\n  \"database/sql\"\n  \"time\"\n)\n\nfunc configurePool(db *sql.DB) {\n  db.SetMaxOpenConns(25)\n  db.SetMaxIdleConns(10)\n  db.SetConnMaxLifetime(5 * time.Minute)\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"database/sql\"\n  \"time\"\n)\n\nfunc configurePool(db *sql.DB) {\n  db.SetMaxOpenConns(25)\n  db.SetMaxIdleConns(10)\n  db.SetConnMaxLifetime(5 * time.Minute)\n}\n\nfunc main() {\n  _ = configurePool\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"database/sql\"\n  \"time\"\n)\n\nfunc configurePool(db *sql.DB) {\n  db.SetMaxOpenConns(25)\n  db.SetMaxIdleConns(10)\n  db.SetConnMaxLifetime(5 * time.Minute)\n}\n\nfunc main() {\n  _ = configurePool\n}"
@@ -5793,7 +5793,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Always use query placeholders: db.QueryRow(\"SELECT * FROM users WHERE id = $1\", userID)\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -5835,7 +5835,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // tx, _ := db.BeginTx(ctx, nil)\n  // defer tx.Rollback()\n  // tx.Commit()\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -5877,7 +5877,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Chi is lightweight, idiomatic, and 100% compatible with net/http\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -5919,7 +5919,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // gRPC serializes binary protobuf messages over HTTP/2 with lightning speed\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -5961,7 +5961,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"os\"\n\nfunc getEnv(key, fallback string) string {\n  if val, ok := os.LookupEnv(key); ok { return val }\n  return fallback\n}\n\nfunc main() {\n  port := getEnv(\"PORT\", \"8080\")\n  _ = port\n}",
+    "initialCode": "package main\n\nimport \"os\"\n\nfunc getEnv(key, fallback string) string {\n  if val, ok := os.LookupEnv(key); ok { return val }\n  return fallback\n}\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"os\"\n\nfunc getEnv(key, fallback string) string {\n  if val, ok := os.LookupEnv(key); ok { return val }\n  return fallback\n}\n\nfunc main() {\n  port := getEnv(\"PORT\", \"8080\")\n  _ = port\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"os\"\n\nfunc getEnv(key, fallback string) string {\n  if val, ok := os.LookupEnv(key); ok { return val }\n  return fallback\n}\n\nfunc main() {\n  port := getEnv(\"PORT\", \"8080\")\n  _ = port\n}"
@@ -6003,7 +6003,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport (\n  \"os\"\n  \"os/signal\"\n  \"syscall\"\n)\n\nfunc main() {\n  stop := make(chan os.Signal, 1)\n  signal.Notify(stop, os.Interrupt, syscall.SIGTERM)\n  // <-stop\n  _ = stop\n}",
+    "initialCode": "package main\n\nimport (\n  \"os\"\n  \"os/signal\"\n  \"syscall\"\n)\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport (\n  \"os\"\n  \"os/signal\"\n  \"syscall\"\n)\n\nfunc main() {\n  stop := make(chan os.Signal, 1)\n  signal.Notify(stop, os.Interrupt, syscall.SIGTERM)\n  _ = stop\n}",
     "hints": [
       "Write:\npackage main\n\nimport (\n  \"os\"\n  \"os/signal\"\n  \"syscall\"\n)\n\nfunc main() {\n  stop := make(chan os.Signal, 1)\n  signal.Notify(stop, os.Interrupt, syscall.SIGTERM)\n  _ = stop\n}"
@@ -6045,7 +6045,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Multi-stage build compiles CGO_ENABLED=0 binary, copied into 'FROM scratch' (15MB!)\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -6087,7 +6087,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Inject trace context into outgoing HTTP headers and database spans\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -6129,7 +6129,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Liveness probes check if server is responsive; Readiness checks if DB is connected\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -6171,7 +6171,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // GOMEMLIMIT=2GiB prevents OOM crashes by triggering timely GC cycles near memory caps\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -6213,7 +6213,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // The memory model defines the conditions under which reads of a variable in one goroutine\n  // can be guaranteed to observe values produced by writes in another.\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -6255,7 +6255,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nfunc main() {\n  // Protobuf compiles field tags into compact binary varints, beating JSON speed by 10x\n}",
+    "initialCode": "package main\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nfunc main() {\n}",
     "hints": [
       "Write:\npackage main\n\nfunc main() {\n}"
@@ -6297,7 +6297,7 @@ export const GOLANG_TRACK: Track = {
       "Type the exercise solution into the editor.",
       "Click 'Check Answer' to verify your solution."
     ],
-    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"DevForge Go Cloud Microservice Engine Ready\")\n}",
+    "initialCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  // Step 1: Write your Go implementation below\n  // TODO: Write code below\n}",
     "solutionCode": "package main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"DevForge Go Cloud Microservice Engine Ready\")\n}",
     "hints": [
       "Write:\npackage main\n\nimport \"fmt\"\n\nfunc main() {\n  fmt.Println(\"DevForge Go Cloud Microservice Engine Ready\")\n}"

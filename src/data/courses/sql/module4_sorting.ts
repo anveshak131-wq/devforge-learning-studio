@@ -30,7 +30,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products ORDER BY price;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products ORDER BY price;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products ORDER BY price;\n",
     "hints": [
       "Execute: SELECT * FROM products ORDER BY price;"
@@ -73,7 +73,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products ORDER BY price DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products ORDER BY price DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products ORDER BY price DESC;\n",
     "hints": [
       "Execute: SELECT * FROM products ORDER BY price DESC;"
@@ -116,7 +116,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM users ORDER BY country ASC, name ASC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM users ORDER BY country ASC, name ASC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM users ORDER BY country ASC, name ASC;\n",
     "hints": [
       "Execute: SELECT * FROM users ORDER BY country ASC, name ASC;"
@@ -159,7 +159,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT name, price FROM products ORDER BY 2 DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price FROM products ORDER BY 2 DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price FROM products ORDER BY 2 DESC;\n",
     "hints": [
       "Execute: SELECT name, price FROM products ORDER BY 2 DESC;"
@@ -202,7 +202,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT name, price * stock AS val FROM products ORDER BY val DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT name, price * stock AS val FROM products ORDER BY val DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT name, price * stock AS val FROM products ORDER BY val DESC;\n",
     "hints": [
       "Execute: SELECT name, price * stock AS val FROM products ORDER BY val DESC;"
@@ -245,7 +245,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products ORDER BY price DESC LIMIT 1;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products ORDER BY price DESC LIMIT 1;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products ORDER BY price DESC LIMIT 1;\n",
     "hints": [
       "Execute: SELECT * FROM products ORDER BY price DESC LIMIT 1;"
@@ -288,7 +288,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products ORDER BY price ASC LIMIT 3;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products ORDER BY price ASC LIMIT 3;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products ORDER BY price ASC LIMIT 3;\n",
     "hints": [
       "Execute: SELECT * FROM products ORDER BY price ASC LIMIT 3;"
@@ -331,7 +331,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM products ORDER BY id ASC LIMIT 2 OFFSET 2;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM products ORDER BY id ASC LIMIT 2 OFFSET 2;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM products ORDER BY id ASC LIMIT 2 OFFSET 2;\n",
     "hints": [
       "Execute: SELECT * FROM products ORDER BY id ASC LIMIT 2 OFFSET 2;"
@@ -374,7 +374,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT * FROM orders ORDER BY order_date DESC;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT * FROM orders ORDER BY order_date DESC;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT * FROM orders ORDER BY order_date DESC;\n",
     "hints": [
       "Execute: SELECT * FROM orders ORDER BY order_date DESC;"
@@ -417,7 +417,7 @@ export const sqlModule4Lessons: Lesson[] = [
       "Write the query: `SELECT user_id, amount FROM orders ORDER BY amount DESC LIMIT 3;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT user_id, amount FROM orders ORDER BY amount DESC LIMIT 3;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT user_id, amount FROM orders ORDER BY amount DESC LIMIT 3;\n",
     "hints": [
       "Execute: SELECT user_id, amount FROM orders ORDER BY amount DESC LIMIT 3;"

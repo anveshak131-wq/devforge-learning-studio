@@ -87,8 +87,9 @@ export class CourseStorageService {
             if (
               custom.initialCode &&
               custom.solutionCode &&
-              custom.initialCode.trim() === custom.solutionCode.trim() &&
-              baseLesson.initialCode.trim() !== baseLesson.solutionCode.trim()
+              (custom.initialCode.includes('👉') ||
+               (custom.initialCode.trim() === custom.solutionCode.trim() &&
+                baseLesson.initialCode.trim() !== baseLesson.solutionCode.trim()))
             ) {
               return { ...baseLesson, ...custom, initialCode: baseLesson.initialCode };
             }

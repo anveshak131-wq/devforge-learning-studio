@@ -30,7 +30,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT COUNT(*) AS total_users FROM users;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT COUNT(*) AS total_users FROM users;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT COUNT(*) AS total_users FROM users;\n",
     "hints": [
       "Execute: SELECT COUNT(*) AS total_users FROM users;"
@@ -73,7 +73,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT COUNT(id) AS product_count FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT COUNT(id) AS product_count FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT COUNT(id) AS product_count FROM products;\n",
     "hints": [
       "Execute: SELECT COUNT(id) AS product_count FROM products;"
@@ -116,7 +116,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT SUM(amount) AS total_revenue FROM orders;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT SUM(amount) AS total_revenue FROM orders;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT SUM(amount) AS total_revenue FROM orders;\n",
     "hints": [
       "Execute: SELECT SUM(amount) AS total_revenue FROM orders;"
@@ -159,7 +159,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT AVG(price) AS average_price FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT AVG(price) AS average_price FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT AVG(price) AS average_price FROM products;\n",
     "hints": [
       "Execute: SELECT AVG(price) AS average_price FROM products;"
@@ -202,7 +202,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT MIN(price) AS min_price, MAX(price) AS max_price FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT MIN(price) AS min_price, MAX(price) AS max_price FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT MIN(price) AS min_price, MAX(price) AS max_price FROM products;\n",
     "hints": [
       "Execute: SELECT MIN(price) AS min_price, MAX(price) AS max_price FROM products;"
@@ -245,7 +245,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT ROUND(AVG(price), 2) AS rounded_avg FROM products;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT ROUND(AVG(price), 2) AS rounded_avg FROM products;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT ROUND(AVG(price), 2) AS rounded_avg FROM products;\n",
     "hints": [
       "Execute: SELECT ROUND(AVG(price), 2) AS rounded_avg FROM products;"
@@ -288,7 +288,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT country, COUNT(*) AS user_count FROM users GROUP BY country;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT country, COUNT(*) AS user_count FROM users GROUP BY country;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT country, COUNT(*) AS user_count FROM users GROUP BY country;\n",
     "hints": [
       "Execute: SELECT country, COUNT(*) AS user_count FROM users GROUP BY country;"
@@ -331,7 +331,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT category, COUNT(*) AS count, AVG(price) AS avg_price FROM products GROUP BY category;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT category, COUNT(*) AS count, AVG(price) AS avg_price FROM products GROUP BY category;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT category, COUNT(*) AS count, AVG(price) AS avg_price FROM products GROUP BY category;\n",
     "hints": [
       "Execute: SELECT category, COUNT(*) AS count, AVG(price) AS avg_price FROM products GROUP BY category;"
@@ -374,7 +374,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT status, SUM(amount) AS total FROM orders GROUP BY status;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT status, SUM(amount) AS total FROM orders GROUP BY status;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT status, SUM(amount) AS total FROM orders GROUP BY status;\n",
     "hints": [
       "Execute: SELECT status, SUM(amount) AS total FROM orders GROUP BY status;"
@@ -417,7 +417,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT country, role, COUNT(*) AS count FROM users GROUP BY country, role;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT country, role, COUNT(*) AS count FROM users GROUP BY country, role;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT country, role, COUNT(*) AS count FROM users GROUP BY country, role;\n",
     "hints": [
       "Execute: SELECT country, role, COUNT(*) AS count FROM users GROUP BY country, role;"
@@ -460,7 +460,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT country, COUNT(*) AS count FROM users GROUP BY country HAVING COUNT(*) >= 2;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT country, COUNT(*) AS count FROM users GROUP BY country HAVING COUNT(*) >= 2;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT country, COUNT(*) AS count FROM users GROUP BY country HAVING COUNT(*) >= 2;\n",
     "hints": [
       "Execute: SELECT country, COUNT(*) AS count FROM users GROUP BY country HAVING COUNT(*) >= 2;"
@@ -503,7 +503,7 @@ export const sqlModule5Lessons: Lesson[] = [
       "Write the query: `SELECT category, SUM(stock) AS total_stock FROM products GROUP BY category HAVING SUM(stock) > 20;`",
       "Click 'Check Answer' to verify your query against the database."
     ],
-    "initialCode": "-- \ud83d\udc49 Step 1: Write your SQL query below:\nSELECT category, SUM(stock) AS total_stock FROM products GROUP BY category HAVING SUM(stock) > 20;\n",
+    "initialCode": "-- Step 1: Write your SQL query below\n-- TODO: Write query below\n",
     "solutionCode": "SELECT category, SUM(stock) AS total_stock FROM products GROUP BY category HAVING SUM(stock) > 20;\n",
     "hints": [
       "Execute: SELECT category, SUM(stock) AS total_stock FROM products GROUP BY category HAVING SUM(stock) > 20;"
