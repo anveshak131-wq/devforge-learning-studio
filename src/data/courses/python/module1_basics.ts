@@ -70,21 +70,21 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "Tokyo"
     },
     "exerciseSteps": [
-      "Create `hero = \"Spider-Man\"`.",
-      "Print `hero`."
+      "Create a variable named 'hero' and assign it a character name (e.g. \"Spider-Man\").",
+      "Print 'hero'."
     ],
-    "initialCode": "# Step 1: Create variable 'hero' and set it to \"Spider-Man\"\n# TODO: Write code below\n\n# Step 2: Print 'hero'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Create a variable named 'hero' and assign it a character name\n# TODO: Write code below\n\n# Step 2: Print the 'hero' variable\n# TODO: Write code below\n",
     "solutionCode": "hero = \"Spider-Man\"\nprint(hero)\n",
     "hints": [
       "Concept: Store numbers and words in memory by assigning them to variable names. Think of it like: A labeled storage box: put a toy inside and write 'favorite_toy' on the outside.",
       "Syntax Blueprint: Assign strings to variables using `name = \"value\"`. In Python, you do not need keywords like `var` or `let`.",
-      "Step-by-Step Target:\n1. Create `hero = \"Spider-Man\"`.\n2. Print `hero`.\nKey Tip: Write `hero = \"Spider-Man\"` and `print(hero)`"
+      "Step-by-Step Target:\n1. Create `hero = \"Spider-Man\"` (or your choice of hero).\n2. Print `hero` with `print(hero)`.\nKey Tip: Write `hero = \"Spider-Man\"` and `print(hero)`"
     ],
     "testCases": [
       {
         "id": "py-2-tc-1",
-        "description": "hero is Spider-Man",
-        "testFn": "hero === 'Spider-Man'"
+        "description": "hero is defined as a text string and printed",
+        "testFn": "(hero === 'Spider-Man' || (typeof hero === 'string' && hero.trim().length > 0)) && logs.some(l => l.args.join(' ').toLowerCase().includes(String(hero).toLowerCase()))"
       }
     ]
   },
@@ -113,11 +113,11 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "50"
     },
     "exerciseSteps": [
-      "Add a comment `# My first score`.",
-      "Assign `score = 99`.",
+      "Add a comment starting with `#`.",
+      "Assign a number to `score`.",
       "Print `score`."
     ],
-    "initialCode": "# Step 1: Add a comment '# My first score'\n# TODO: Write code below\n\n# Step 2: Assign 'score = 99'\n# TODO: Write code below\n\n# Step 3: Print 'score'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Add a comment with #\n# TODO: Write comment below\n\n# Step 2: Assign a number to 'score'\n# TODO: Write code below\n\n# Step 3: Print 'score'\n# TODO: Write code below\n",
     "solutionCode": "# My first score\nscore = 99\nprint(score)\n",
     "hints": [
       "Concept: Leave notes for human readers using the # symbol that Python ignores. Think of it like: Sticky notes on a cookbook page: helpful for the chef, but not part of the dish.",
@@ -127,8 +127,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-3-tc-1",
-        "description": "score is 99",
-        "testFn": "score === 99"
+        "description": "score is assigned a number and printed",
+        "testFn": "(score === 99 || typeof score === 'number') && logs.some(l => l.args.join(' ').includes(String(score)))"
       }
     ]
   },
@@ -157,10 +157,10 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "Hi Friend"
     },
     "exerciseSteps": [
-      "Create `greeting = \"Hello \" + \"Python\"`.",
+      "Create variable `greeting` combining words with `+`.",
       "Print `greeting`."
     ],
-    "initialCode": "# Step 1: Create variable 'greeting' and set it to \"Hello \" + \"Python\"\n# TODO: Write code below\n\n# Step 2: Print 'greeting'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Create a variable named 'greeting' and combine words with +\n# TODO: Write code below\n\n# Step 2: Print 'greeting'\n# TODO: Write code below\n",
     "solutionCode": "greeting = \"Hello \" + \"Python\"\nprint(greeting)\n",
     "hints": [
       "Concept: Create strings with single or double quotes and combine them with +. Think of it like: Snapping Lego bricks together to build a longer sentence.",
@@ -170,8 +170,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-4-tc-1",
-        "description": "greeting is Hello Python",
-        "testFn": "greeting === 'Hello Python'"
+        "description": "greeting is assigned a text string and printed",
+        "testFn": "(greeting === 'Hello Python' || (typeof greeting === 'string' && greeting.length > 0)) && logs.some(l => l.args.join(' ').toLowerCase().includes(String(greeting).toLowerCase()))"
       }
     ]
   },
@@ -200,11 +200,11 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "12.5"
     },
     "exerciseSteps": [
-      "Assign integer `age = 25`.",
-      "Assign float `height = 5.9`.",
+      "Assign an integer to `age`.",
+      "Assign a decimal float to `height`.",
       "Print `age`."
     ],
-    "initialCode": "# Step 1: Assign integer 25 to variable 'age'\n# TODO: Write code below\n\n# Step 2: Assign float 5.9 to variable 'height'\n# TODO: Write code below\n\n# Step 3: Print 'age'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Assign an integer to variable 'age'\n# TODO: Write code below\n\n# Step 2: Assign a float number with decimals to variable 'height'\n# TODO: Write code below\n\n# Step 3: Print 'age'\n# TODO: Write code below\n",
     "solutionCode": "age = 25\nheight = 5.9\nprint(age)\n",
     "hints": [
       "Concept: Distinguish between whole integers (int) and decimal numbers (float). Think of it like: Counting whole coins (int) versus reading the exact dollar and cent price on a tag (float).",
@@ -214,8 +214,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-5-tc-1",
-        "description": "age is 25 and height is 5.9",
-        "testFn": "age === 25 && height === 5.9"
+        "description": "age is an integer and height is a float number",
+        "testFn": "(age === 25 || typeof age === 'number') && (height === 5.9 || typeof height === 'number') && logs.some(l => l.args.join(' ').includes(String(age)))"
       }
     ]
   },
@@ -258,8 +258,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-6-tc-1",
-        "description": "is_active is True",
-        "testFn": "is_active === true"
+        "description": "is_active is set to a boolean and printed",
+        "testFn": "(is_active === true || is_active === false || typeof is_active === 'boolean') && logs.some(l => l.args.join(' ').toLowerCase().includes(String(is_active).toLowerCase()))"
       }
     ]
   },
@@ -288,10 +288,10 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "str"
     },
     "exerciseSteps": [
-      "Create `value = 100`.",
+      "Create variable `value = 100` (or any number).",
       "Print `type(value)`."
     ],
-    "initialCode": "# Step 1: Create variable 'value' and set it to 100\n# TODO: Write code below\n\n# Step 2: Print 'type(value)'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Create a variable named 'value' and assign it a number\n# TODO: Write code below\n\n# Step 2: Print type(value)\n# TODO: Write code below\n",
     "solutionCode": "value = 100\nprint(type(value))\n",
     "hints": [
       "Concept: Inspect what kind of data is stored in any variable using type(). Think of it like: Reading the nutrition facts label on a package to see what ingredients are inside.",
@@ -301,8 +301,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-7-tc-1",
-        "description": "value is 100",
-        "testFn": "value === 100"
+        "description": "value is created and its type is printed",
+        "testFn": "(value === 100 || typeof value !== 'undefined') && logs.some(l => l.args.join(' ').toLowerCase().includes('int') || l.args.join(' ').toLowerCase().includes(typeof value))"
       }
     ]
   },
@@ -336,7 +336,7 @@ export const pythonModule1Lessons: Lesson[] = [
       "Convert to integer with `num = int(raw_str)`.",
       "Print `num + 5`."
     ],
-    "initialCode": "# Step 1: Create variable 'raw_str' and set it to \"20\"\n# TODO: Write code below\n\n# Step 2: Convert to integer with 'num = int(raw_str)'\n# TODO: Write code below\n\n# Step 3: Print 'num + 5'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Create a variable named 'raw_str' with a number in quotes (e.g. \"20\")\n# TODO: Write code below\n\n# Step 2: Convert to integer with num = int(raw_str)\n# TODO: Write code below\n\n# Step 3: Print num + 5\n# TODO: Write code below\n",
     "solutionCode": "raw_str = \"20\"\nnum = int(raw_str)\nprint(num + 5)\n",
     "hints": [
       "Concept: Convert strings into numbers or numbers into strings with casting functions. Think of it like: Melting an ice cube (solid) into liquid water: same matter, converted into a different format.",
@@ -346,8 +346,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-8-tc-1",
-        "description": "num is 20",
-        "testFn": "num === 20"
+        "description": "num is converted to integer and result is printed",
+        "testFn": "(num === 20 || typeof num === 'number') && logs.length > 0"
       }
     ]
   },
@@ -376,10 +376,10 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "65"
     },
     "exerciseSteps": [
-      "Create `user_score_total = 350`.",
+      "Create variable `user_score_total = 350`.",
       "Print `user_score_total`."
     ],
-    "initialCode": "# Step 1: Create variable 'user_score_total' and set it to 350\n# TODO: Write code below\n\n# Step 2: Print 'user_score_total'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Create variable 'user_score_total' using snake_case and assign a score number\n# TODO: Write code below\n\n# Step 2: Print user_score_total\n# TODO: Write code below\n",
     "solutionCode": "user_score_total = 350\nprint(user_score_total)\n",
     "hints": [
       "Concept: Follow PEP 8 guidelines: use lowercase words separated by underscores for variables. Think of it like: Road sign conventions: consistent formatting makes every sign immediately readable at 60 mph.",
@@ -389,8 +389,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-9-tc-1",
-        "description": "user_score_total is 350",
-        "testFn": "user_score_total === 350"
+        "description": "user_score_total is created using snake_case and printed",
+        "testFn": "(user_score_total === 350 || typeof user_score_total === 'number') && logs.some(l => l.args.join(' ').includes(String(user_score_total)))"
       }
     ]
   },
@@ -419,12 +419,12 @@ export const pythonModule1Lessons: Lesson[] = [
       "expectedOutput": "Sarah"
     },
     "exerciseSteps": [
-      "Create `player_name = \"Nova\"`.",
-      "Create `player_xp = 1500`.",
+      "Create `player_name` with a name string.",
+      "Create `player_xp` with a number.",
       "Create `player_active = True`.",
       "Print `player_name`."
     ],
-    "initialCode": "# Step 1: Create variable 'player_name' and set it to \"Nova\"\n# TODO: Write code below\n\n# Step 2: Create variable 'player_xp' and set it to 1500\n# TODO: Write code below\n\n# Step 3: Create variable 'player_active' and set it to True\n# TODO: Write code below\n\n# Step 4: Print 'player_name'\n# TODO: Write code below\n",
+    "initialCode": "# Step 1: Create variable 'player_name' with a name string\n# TODO: Write code below\n\n# Step 2: Create variable 'player_xp' with a number\n# TODO: Write code below\n\n# Step 3: Create variable 'player_active' with True or False\n# TODO: Write code below\n\n# Step 4: Print player_name\n# TODO: Write code below\n",
     "solutionCode": "player_name = \"Nova\"\nplayer_xp = 1500\nplayer_active = True\nprint(player_name)\n",
     "hints": [
       "Concept: Combine variables, strings, integers, and booleans to build a complete user profile. Think of it like: Printing a completed ID badge with photo, name, employee number, and clearance level.",
@@ -434,8 +434,8 @@ export const pythonModule1Lessons: Lesson[] = [
     "testCases": [
       {
         "id": "py-10-tc-1",
-        "description": "profile fields set accurately",
-        "testFn": "player_name === 'Nova' && player_xp === 1500 && player_active === true"
+        "description": "profile fields are set and player_name is printed",
+        "testFn": "(player_name === 'Nova' || typeof player_name === 'string') && (player_xp === 1500 || typeof player_xp === 'number') && (player_active === true || typeof player_active === 'boolean') && logs.some(l => l.args.join(' ').toLowerCase().includes(String(player_name).toLowerCase()))"
       }
     ]
   }

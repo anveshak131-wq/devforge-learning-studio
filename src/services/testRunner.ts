@@ -75,14 +75,14 @@ export class TestRunner {
           id: tc.id,
           description: tc.description,
           passed,
-          error: passed ? undefined : (tc.expectedMessage || 'Assertion failed')
+          error: passed ? undefined : (tc.expectedMessage || `Goal not yet satisfied: ${tc.description}`)
         });
       } catch (err: any) {
         testResults.push({
           id: tc.id,
           description: tc.description,
           passed: false,
-          error: `Test check error: ${err.message}`
+          error: `Goal not yet satisfied: ${tc.description}`
         });
       }
     }
@@ -143,14 +143,14 @@ export class TestRunner {
           id: tc.id,
           description: tc.description,
           passed,
-          error: passed ? undefined : (tc.expectedMessage || 'Assertion failed')
+          error: passed ? undefined : (tc.expectedMessage || `Goal not yet satisfied: ${tc.description}`)
         });
       } catch (err: any) {
         testResults.push({
           id: tc.id,
           description: tc.description,
           passed: false,
-          error: `Test evaluation failed: ${err.message}`
+          error: `Goal not yet satisfied: ${tc.description}`
         });
       }
     }
