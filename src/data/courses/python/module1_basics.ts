@@ -77,7 +77,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "solutionCode": "hero = \"Spider-Man\"\nprint(hero)\n",
     "hints": [
       "Concept: Store numbers and words in memory by assigning them to variable names. Think of it like: A labeled storage box: put a toy inside and write 'favorite_toy' on the outside.",
-      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Syntax Blueprint: Assign strings to variables using `name = \"value\"`. In Python, you do not need keywords like `var` or `let`.",
       "Step-by-Step Target:\n1. Create `hero = \"Spider-Man\"`.\n2. Print `hero`.\nKey Tip: Write `hero = \"Spider-Man\"` and `print(hero)`"
     ],
     "testCases": [
@@ -164,7 +164,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "solutionCode": "greeting = \"Hello \" + \"Python\"\nprint(greeting)\n",
     "hints": [
       "Concept: Create strings with single or double quotes and combine them with +. Think of it like: Snapping Lego bricks together to build a longer sentence.",
-      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Syntax Blueprint: Assign strings to variables using `name = \"value\"`. In Python, you do not need keywords like `var` or `let`.",
       "Step-by-Step Target:\n1. Create `greeting = \"Hello \" + \"Python\"`.\n2. Print `greeting`.\nKey Tip: Use the `+` operator between strings"
     ],
     "testCases": [
@@ -340,7 +340,7 @@ export const pythonModule1Lessons: Lesson[] = [
     "solutionCode": "raw_str = \"20\"\nnum = int(raw_str)\nprint(num + 5)\n",
     "hints": [
       "Concept: Convert strings into numbers or numbers into strings with casting functions. Think of it like: Melting an ice cube (solid) into liquid water: same matter, converted into a different format.",
-      "Syntax Blueprint: Python arithmetic operators: `+` (add), `-` (subtract), `*` (multiply), `/` (float divide), `//` (integer divide), `%` (modulus), `**` (exponentiation).",
+      "Syntax Blueprint: Assign strings to variables using `name = \"value\"`. In Python, you do not need keywords like `var` or `let`.",
       "Step-by-Step Target:\n1. Create `raw_str = \"20\"`.\n2. Convert to integer with `num = int(raw_str)`.\n3. Print `num + 5`.\nKey Tip: Use `int(raw_str)`"
     ],
     "testCases": [
