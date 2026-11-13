@@ -105,6 +105,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   );
   const [isRunning, setIsRunning] = useState(false);
   const [isVerifying, setIsVerifying] = useState(false);
+  const [isReadyToSubmit, setIsReadyToSubmit] = useState(false);
   const [executionResult, setExecutionResult] = useState<ExecutionResult | null>(null);
   const [testResults, setTestResults] = useState<TestResultItem[] | null>(null);
   const [unlockedHints, setUnlockedHints] = useState<number>(0);
@@ -147,6 +148,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setCode(getInitialEditorCode(lesson));
     setExecutionResult(null);
     setTestResults(null);
+    setIsReadyToSubmit(false);
     setUnlockedHints(0);
     setShowSolutionConfirm(false);
     setIsOutlineOpen(false);
@@ -156,6 +158,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const handleCodeChange = (newCode: string) => {
     setCode(newCode);
     ProgressStorage.saveCode(lesson.id, newCode);
+    setIsReadyToSubmit(false);
   };
 
   const handleRun = async () => {
@@ -220,25 +223,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
           spread: 70,
           origin: { y: 0.6 }
         });
-        const nextStats = ProgressStorage.markLessonComplete(lesson.id, lesson.xp);
-        onStatsUpdate(nextStats);
+        setIsReadyToSubmit(true);
+      } else {
+        setIsReadyToSubmit(false);
       }
     } finally {
       setIsVerifying(false);
     }
-  };
-
-  const handleReset = () => {
-    setCode(lesson.initialCode);
-    ProgressStorage.saveCode(lesson.id, lesson.initialCode);
-    setExecutionResult(null);
-    setTestResults(null);
-  };
-
-  const handleShowSolution = () => {
-    setCode(lesson.solutionCode);
-    ProgressStorage.saveCode(lesson.id, lesson.solutionCode);
-    setShowSolutionConfirm(false);
   };
 
   const currentIndex = track.lessons.findIndex(l => l.id === lesson.id);
@@ -248,6 +239,48 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const completedInTrack = track.lessons.filter(l => userStats.completedLessonIds.includes(l.id)).length;
   const progressPercent = Math.round((completedInTrack / track.lessons.length) * 100);
   const allTestsPassed = testResults && testResults.length > 0 && testResults.every(t => t.passed);
+
+  const handleSubmitAndProceed = () => {
+    // Award XP and mark complete strictly upon submission
+    const nextStats = ProgressStorage.markLessonComplete(lesson.id, lesson.xp);
+    onStatsUpdate(nextStats);
+
+    if (nextLesson) {
+      onNavigateLesson(nextLesson.id);
+    } else if (onClaimCertificate) {
+      onClaimCertificate(track);
+    }
+  };
+
+  const handleReset = () => {
+    setCode(lesson.initialCode);
+    ProgressStorage.saveCode(lesson.id, lesson.initialCode);
+    setExecutionResult(null);
+    setTestResults(null);
+    setIsReadyToSubmit(false);
+  };
+
+  const handleShowSolution = () => {
+    setCode(lesson.solutionCode);
+    ProgressStorage.saveCode(lesson.id, lesson.solutionCode);
+    setShowSolutionConfirm(false);
+    setIsReadyToSubmit(false);
+  };
+
+  // Global Enter shortcut: When ready to submit, Enter advances to next lesson
+  useEffect(() => {
+    const handleGlobalKeyDown = (e: KeyboardEvent) => {
+      if (isReadyToSubmit && e.key === 'Enter') {
+        const isEditingInEditor = document.activeElement?.classList.contains('inputarea');
+        if (e.ctrlKey || e.metaKey || !isEditingInEditor) {
+          e.preventDefault();
+          handleSubmitAndProceed();
+        }
+      }
+    };
+    window.addEventListener('keydown', handleGlobalKeyDown);
+    return () => window.removeEventListener('keydown', handleGlobalKeyDown);
+  }, [isReadyToSubmit, nextLesson, lesson.id, lesson.xp]);
 
   return (
     <div className="flex flex-col h-[calc(100vh-3.5rem)] overflow-hidden bg-slate-950 font-sans relative">
@@ -926,13 +959,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                 <span>Awesome work! You passed this lesson!</span>
               </div>
               <p className="text-xs text-slate-300">
-                You earned <strong>+{lesson.xp} XP</strong>. Ready for the next topic?
+                Ready to advance? Click submit below to record <strong>+{lesson.xp} XP</strong> and unlock {nextLesson.title}.
               </p>
               <button
-                onClick={() => onNavigateLesson(nextLesson.id)}
-                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/30 transition"
+                onClick={handleSubmitAndProceed}
+                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-emerald-600/30 transition transform hover:scale-[1.01]"
               >
-                <span>Continue to {nextLesson.title}</span>
+                <span>Submit & Continue to {nextLesson.title} (+{lesson.xp} XP)</span>
                 <ArrowRight className="w-4 h-4" />
               </button>
             </div>
@@ -946,14 +979,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                 <span>Course Completed! You Earned a Verified Certificate!</span>
               </div>
               <p className="text-xs text-slate-300 leading-relaxed">
-                You have solved every lesson and test in <strong>{track.title}</strong>! Claim your personalized, cryptographically signed Certificate of Mastery.
+                You have solved every lesson and test in <strong>{track.title}</strong>! Click submit to lock in your XP and claim your Certificate of Mastery.
               </p>
               <button
-                onClick={() => onClaimCertificate(track)}
-                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/30 transition"
+                onClick={handleSubmitAndProceed}
+                className="w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/30 transition transform hover:scale-[1.01]"
               >
                 <Award className="w-4 h-4" />
-                <span>Claim & Download Certificate</span>
+                <span>Submit & Claim Certificate (+{lesson.xp} XP)</span>
               </button>
             </div>
           )}
@@ -971,12 +1004,45 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
               language={lesson.language}
               onRun={handleRun}
               onVerify={handleVerify}
+              onSubmitAndProceed={handleSubmitAndProceed}
+              isReadyToSubmit={isReadyToSubmit}
+              submitLabel={nextLesson ? `Submit & Next (+${lesson.xp} XP)` : `Submit & Claim Certificate (+${lesson.xp} XP)`}
               onReset={handleReset}
               isRunning={isRunning}
               isVerifying={isVerifying}
               hasTests={lesson.testCases.length > 0}
             />
           </div>
+
+          {/* Prominent Submit Bar right above console when tests pass */}
+          {isReadyToSubmit && (
+            <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-950 via-slate-900 to-teal-950 border border-emerald-500/50 flex flex-col sm:flex-row sm:items-center justify-between gap-3 shadow-xl animate-in fade-in slide-in-from-top-2 duration-300">
+              <div className="flex items-center space-x-2.5">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center shrink-0">
+                  <Sparkles className="w-4 h-4 text-emerald-400" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-white flex items-center space-x-1.5">
+                    <span>All Tests Passed! Outstanding Work!</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono font-bold">
+                      +{lesson.xp} XP Ready
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-slate-400">
+                    Press Submit to record your XP and advance to the next part.
+                  </div>
+                </div>
+              </div>
+
+              <button
+                onClick={handleSubmitAndProceed}
+                className="px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 hover:from-emerald-400 hover:to-teal-400 text-white font-extrabold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/30 transition transform hover:scale-[1.02] active:scale-[0.98] shrink-0"
+              >
+                <span>{nextLesson ? 'Submit & Next Lesson' : 'Submit & Claim Certificate'} (+{lesson.xp} XP)</span>
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </div>
+          )}
 
           {/* Bottom: Console & Test Runner Output */}
           <div className="h-[260px] min-h-[220px]">

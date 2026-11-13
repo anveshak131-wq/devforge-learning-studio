@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import Editor, { OnMount } from '@monaco-editor/react';
-import { Play, RotateCcw, Copy, Check, Sparkles } from 'lucide-react';
+import { Play, RotateCcw, Copy, Check, Sparkles, ArrowRight } from 'lucide-react';
 import { Language } from '../../types';
 
 interface CodeEditorProps {
@@ -9,10 +9,13 @@ interface CodeEditorProps {
   language: Language;
   onRun?: () => void;
   onVerify?: () => void;
+  onSubmitAndProceed?: () => void;
   onReset?: () => void;
   isRunning?: boolean;
   isVerifying?: boolean;
   hasTests?: boolean;
+  isReadyToSubmit?: boolean;
+  submitLabel?: string;
 }
 
 export const CodeEditor: React.FC<CodeEditorProps> = ({
@@ -21,10 +24,13 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
   language,
   onRun,
   onVerify,
+  onSubmitAndProceed,
   onReset,
   isRunning = false,
   isVerifying = false,
-  hasTests = false
+  hasTests = false,
+  isReadyToSubmit = false,
+  submitLabel
 }) => {
   const [copied, setCopied] = React.useState(false);
   const editorRef = useRef<any>(null);
@@ -47,9 +53,11 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
       tabSize: 2
     });
 
-    // Add keyboard shortcuts: Cmd+Enter or Ctrl+Enter to Run
+    // Add keyboard shortcuts: Cmd+Enter or Ctrl+Enter to Run / Verify / Submit
     editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
-      if (hasTests && onVerify) {
+      if (isReadyToSubmit && onSubmitAndProceed) {
+        onSubmitAndProceed();
+      } else if (hasTests && onVerify) {
         onVerify();
       } else if (onRun) {
         onRun();
@@ -117,16 +125,28 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
             </button>
           )}
 
-          {/* Verify Solution / Run Tests Button */}
-          {hasTests && onVerify && (
+          {/* Submit & Next Lesson Button when passed */}
+          {isReadyToSubmit && onSubmitAndProceed ? (
             <button
-              onClick={onVerify}
-              disabled={isRunning || isVerifying}
-              className="px-3 py-1 rounded-md bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-md shadow-emerald-500/20 text-xs font-semibold flex items-center space-x-1.5 transition disabled:opacity-50"
+              onClick={onSubmitAndProceed}
+              className="px-3.5 py-1 rounded-md bg-gradient-to-r from-emerald-500 via-teal-500 to-emerald-400 hover:from-emerald-400 hover:to-teal-400 text-white shadow-lg shadow-emerald-500/30 text-xs font-bold flex items-center space-x-1.5 transition-all transform hover:scale-[1.03] active:scale-[0.98] animate-pulse"
+              title="Submit your answer and advance to the next part"
             >
-              <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
-              <span>{isVerifying ? 'Testing...' : 'Check Solution'}</span>
+              <span>{submitLabel || 'Submit & Next Lesson'}</span>
+              <ArrowRight className="w-3.5 h-3.5 text-white" />
             </button>
+          ) : (
+            /* Verify Solution / Run Tests Button */
+            hasTests && onVerify && (
+              <button
+                onClick={onVerify}
+                disabled={isRunning || isVerifying}
+                className="px-3 py-1 rounded-md bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white shadow-md shadow-emerald-500/20 text-xs font-semibold flex items-center space-x-1.5 transition disabled:opacity-50"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-emerald-200" />
+                <span>{isVerifying ? 'Testing...' : 'Check Solution'}</span>
+              </button>
+            )
           )}
         </div>
       </div>
