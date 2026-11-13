@@ -20,7 +20,9 @@ import {
   Terminal,
   ExternalLink,
   Search,
-  ChevronDown
+  ChevronDown,
+  Presentation,
+  Film
 } from 'lucide-react';
 import { Lesson, Track, ExecutionResult, TestResultItem, UserStats } from '../../types';
 import { CodeEditor } from '../editor/CodeEditor';
@@ -32,6 +34,7 @@ import { ProgressStorage } from '../../services/progressStorage';
 import { YouTubePlayer } from '../video/YouTubePlayer';
 import { LectureMediaViewer } from '../media/LectureMediaViewer';
 import { AuthService } from '../../services/authService';
+import { resolveMediaSlot } from '../../utils/slides';
 
 interface LessonWorkspaceProps {
   track: Track;
@@ -79,6 +82,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const [unlockedHints, setUnlockedHints] = useState<number>(0);
   const [showSolutionConfirm, setShowSolutionConfirm] = useState(false);
   const [schemas, setSchemas] = useState<TableSchema[]>([]);
+  const [guideTab, setGuideTab] = useState<'concept' | 'media'>('concept');
   
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
@@ -118,6 +122,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setUnlockedHints(0);
     setShowSolutionConfirm(false);
     setIsOutlineOpen(false);
+    setGuideTab('concept');
   }, [lesson.id]);
 
   const handleCodeChange = (newCode: string) => {
@@ -499,13 +504,143 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             <p className="text-xs text-slate-300 leading-relaxed">{lesson.description}</p>
           </div>
 
-          {/* Lecture Media Slot (Interactive Slide Deck or Video Walkthrough) */}
-          <LectureMediaViewer
-            media={lesson.media}
-            legacyVideoUrl={lesson.videoUrl}
-            lessonTitle={lesson.title}
-            className="mt-2"
-          />
+          {(() => {
+            const activeMediaSlot = resolveMediaSlot(lesson.media, lesson.videoUrl);
+            const hasSlides = activeMediaSlot.type === 'slides';
+            const hasVideo = activeMediaSlot.type === 'video';
+            const hasMedia = hasSlides || hasVideo;
+
+            return (
+              <>
+                {/* Modern Segmented Mode Switcher: Concept vs Media */}
+                {hasMedia && (
+                  <div className="flex items-center justify-between p-1 rounded-xl bg-slate-950 border border-slate-800 shadow-inner">
+                    <div className="flex items-center space-x-1">
+                      <button
+                        type="button"
+                        onClick={() => setGuideTab('concept')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                          guideTab === 'concept'
+                            ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
+                            : 'text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+                        <span>Concept & Mission</span>
+                      </button>
+
+                      {hasSlides && (
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('media')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                            guideTab === 'media'
+                              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                              : 'text-slate-400 hover:text-amber-300'
+                          }`}
+                        >
+                          <Presentation className="w-3.5 h-3.5" />
+                          <span>Slide Deck (PPT)</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse ml-0.5" />
+                        </button>
+                      )}
+
+                      {hasVideo && (
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('media')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                            guideTab === 'media'
+                              ? 'bg-red-600 text-white shadow-md shadow-red-600/20'
+                              : 'text-slate-400 hover:text-red-300'
+                          }`}
+                        >
+                          <Film className="w-3.5 h-3.5" />
+                          <span>Video Walkthrough</span>
+                          <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse ml-0.5" />
+                        </button>
+                      )}
+                    </div>
+
+                    <span className="text-[10px] text-slate-500 font-mono hidden sm:inline pr-2">
+                      {guideTab === 'concept' ? '📖 Reading Mode' : '📊 Presentation Mode'}
+                    </span>
+                  </div>
+                )}
+
+                {/* If Presentation Mode is Active */}
+                {guideTab === 'media' && hasMedia ? (
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={() => setGuideTab('concept')}
+                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-semibold transition group"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
+                        <span>Back to Concept Notes & Task</span>
+                      </button>
+
+                      <span className="text-[11px] text-slate-400 font-mono">
+                        {hasSlides ? 'Interactive Slide Deck' : 'Video Tutorial'}
+                      </span>
+                    </div>
+
+                    {/* Dedicated Media Viewer taking full stage without clutter */}
+                    <LectureMediaViewer
+                      media={lesson.media}
+                      legacyVideoUrl={lesson.videoUrl}
+                      lessonTitle={lesson.title}
+                      className="w-full"
+                    />
+
+                    {/* Quick Task Peek Card while viewing slides */}
+                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-white flex items-center space-x-1.5">
+                          <Code2 className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>Mission Checklist ({lesson.testCases.length} Goals)</span>
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('concept')}
+                          className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-semibold"
+                        >
+                          Switch to Full Reading Notes
+                        </button>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        {lesson.testCases.map((tc, idx) => (
+                          <div key={tc.id || idx} className="flex items-start space-x-2 text-xs text-slate-300">
+                            <span className="w-4 h-4 rounded-full bg-slate-800 text-slate-400 text-[10px] flex items-center justify-center shrink-0 mt-0.5 font-mono">
+                              {idx + 1}
+                            </span>
+                            <span className="leading-snug">{tc.description}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <>
+                    {/* Compact Slide Invitation Pill (when slides exist and user is in reading mode) */}
+                    {hasSlides && (
+                      <div className="p-3 rounded-xl bg-gradient-to-r from-amber-500/10 via-slate-950 to-slate-950 border border-amber-500/20 flex items-center justify-between text-xs shadow-sm">
+                        <div className="flex items-center space-x-2 text-amber-300">
+                          <Presentation className="w-4 h-4 text-amber-400 shrink-0" />
+                          <span className="font-semibold">Visual Slide Deck Available</span>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('media')}
+                          className="px-2.5 py-1 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-[11px] font-bold flex items-center space-x-1 transition shadow-sm"
+                        >
+                          <span>View Slides</span>
+                          <ArrowRight className="w-3 h-3" />
+                        </button>
+                      </div>
+                    )}
 
           {/* Real-World Analogy */}
           {lesson.analogy && (
@@ -740,6 +875,11 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
               </button>
             )}
           </div>
+                  </>
+                )}
+              </>
+            );
+          })()}
 
           {/* Next Lesson Celebration Banner */}
           {allTestsPassed && nextLesson && (
