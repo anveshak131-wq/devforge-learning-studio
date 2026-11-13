@@ -21,9 +21,11 @@ import { CertificateModal } from './components/certificate/CertificateModal';
 import { AdminPortalView } from './components/admin/AdminPortalView';
 import { AdminLockScreen } from './components/admin/AdminLockScreen';
 import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
+import { SupportModal } from './components/support/SupportModal';
 import { CourseStorageService } from './services/courseStorageService';
 import { AdminSecurityService } from './services/adminSecurityService';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
+import { Heart } from 'lucide-react';
 
 export function App() {
   const [allTracks, setAllTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
@@ -92,6 +94,7 @@ export function App() {
   const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalConfig, setAuthModalConfig] = useState<{ title?: string; desc?: string; pendingTrack?: Track } | null>(null);
+  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
   // Certificate Modal State
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
@@ -196,6 +199,7 @@ export function App() {
           setAuthModalConfig(null);
           setIsAuthModalOpen(true);
         }}
+        onOpenSupport={() => setIsSupportModalOpen(true)}
         onLogout={handleLogout}
       />
 
@@ -207,6 +211,7 @@ export function App() {
             onNavigate={handleNavigate}
             onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
             onOpenFlashcards={() => setIsFlashcardsOpen(true)}
+            onOpenSupport={() => setIsSupportModalOpen(true)}
           />
         )}
 
@@ -320,11 +325,20 @@ export function App() {
         )}
       </main>
 
-      {/* Platform Footer (Completely clean of any admin hints or triggers) */}
+      {/* Platform Footer */}
       {currentView !== 'admin' && currentView !== 'lesson' && currentView !== 'decoy_404' && (
-        <footer className="py-3 px-6 border-t border-slate-900 bg-slate-950 flex items-center justify-between text-[11px] text-slate-500 font-mono select-none">
+        <footer className="py-3 px-6 border-t border-slate-900 bg-slate-950 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 font-mono select-none">
           <span>© 2026 DevForge Learning Studio. All rights reserved.</span>
-          <span className="text-slate-600">Enterprise Coding Curriculum</span>
+          <div className="flex items-center space-x-4">
+            <button
+              onClick={() => setIsSupportModalOpen(true)}
+              className="text-rose-400 hover:text-rose-300 flex items-center space-x-1.5 transition font-sans font-semibold text-xs"
+            >
+              <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+              <span>Support DevForge</span>
+            </button>
+            <span className="text-slate-600 hidden sm:inline">Enterprise Coding Curriculum</span>
+          </div>
         </footer>
       )}
 
@@ -366,6 +380,12 @@ export function App() {
         isOpen={isCertModalOpen}
         onClose={() => setIsCertModalOpen(false)}
         certificate={activeCertificate}
+      />
+
+      {/* Community Support Modal with Razorpay */}
+      <SupportModal
+        isOpen={isSupportModalOpen}
+        onClose={() => setIsSupportModalOpen(false)}
       />
     </div>
   );

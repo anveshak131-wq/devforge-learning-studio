@@ -14,7 +14,8 @@ import {
   LogOut,
   ChevronDown,
   LogIn,
-  Compass
+  Compass,
+  Heart
 } from 'lucide-react';
 import { UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
@@ -28,6 +29,7 @@ interface NavbarProps {
   onOpenFlashcards: () => void;
   onOpenPlacementQuiz: () => void;
   onOpenAuth: () => void;
+  onOpenSupport: () => void;
   onLogout: () => void;
 }
 
@@ -39,6 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenFlashcards,
   onOpenPlacementQuiz,
   onOpenAuth,
+  onOpenSupport,
   onLogout
 }) => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
@@ -189,6 +192,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <Sparkles className="w-4 h-4 text-amber-400" />
                   <span>Placement Quiz</span>
                 </button>
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onOpenSupport(); }}
+                  className="w-full px-3.5 py-2 text-left text-rose-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2 border-t border-slate-800"
+                >
+                  <Heart className="w-4 h-4 text-rose-500 fill-rose-500" />
+                  <span>Support DevForge</span>
+                </button>
               </div>
             )}
           </div>
@@ -197,6 +207,16 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Right: Metrics & Account */}
       <div className="flex items-center space-x-2.5">
+        {/* Support DevForge Action */}
+        <button
+          onClick={onOpenSupport}
+          className="flex items-center space-x-1.5 px-2.5 py-1 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 text-xs font-semibold transition shadow-sm hover:shadow-rose-500/20"
+          title="Support DevForge Academy with Razorpay"
+        >
+          <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+          <span className="hidden sm:inline">Support Us</span>
+        </button>
+
         {/* Streak */}
         <div 
           className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium"

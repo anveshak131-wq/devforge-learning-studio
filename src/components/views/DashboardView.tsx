@@ -13,26 +13,30 @@ import {
   Clock, 
   BookOpen, 
   Play,
-  FileCode2
+  FileCode2,
+  Heart
 } from 'lucide-react';
 import { UserStats, Track } from '../../types';
 import { CourseStorageService } from '../../services/courseStorageService';
 import { ALL_PROJECTS } from '../../data/projects';
 import { ProgressStorage } from '../../services/progressStorage';
 import { LanguageIcon } from '../common/LanguageIcon';
+import { RazorpayButton } from '../common/RazorpayButton';
 
 interface DashboardViewProps {
   userStats: UserStats;
   onNavigate: (view: string, payload?: any) => void;
   onOpenPlacementQuiz: () => void;
   onOpenFlashcards: () => void;
+  onOpenSupport?: () => void;
 }
 
 export const DashboardView: React.FC<DashboardViewProps> = ({
   userStats,
   onNavigate,
   onOpenPlacementQuiz,
-  onOpenFlashcards
+  onOpenFlashcards,
+  onOpenSupport
 }) => {
   const tracks = CourseStorageService.getTracks();
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
@@ -268,6 +272,43 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
               </p>
             </div>
           ))}
+        </div>
+      </div>
+
+      {/* Community Support & Razorpay Contribution Banner */}
+      <div className="relative rounded-2xl bg-gradient-to-r from-rose-950/40 via-slate-900 to-slate-950 border border-rose-500/30 p-6 md:p-8 overflow-hidden shadow-2xl">
+        <div className="absolute -top-12 -right-12 w-64 h-64 bg-rose-500/10 rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-xl">
+            <div className="flex items-center space-x-2">
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30 flex items-center space-x-1.5">
+                <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
+                <span>Support DevForge Academy</span>
+              </span>
+              <span className="text-xs text-slate-400">100% Free & Open-Access</span>
+            </div>
+            
+            <h3 className="text-xl font-bold text-white tracking-tight">
+              Love Learning on DevForge? Support Our Platform
+            </h3>
+            <p className="text-xs text-slate-300 leading-relaxed">
+              We never charge students or put lessons behind paywalls. Your contribution directly powers our live in-browser compilers, cloud servers, and helps us build new courses for learners worldwide.
+            </p>
+
+            <div className="flex flex-wrap items-center gap-3 text-[11px] text-slate-400 pt-1 font-mono">
+              <span className="flex items-center space-x-1 text-emerald-400">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                <span>Secured by Razorpay</span>
+              </span>
+              <span>•</span>
+              <span>UPI, Cards, QR & NetBanking</span>
+            </div>
+          </div>
+
+          <div className="shrink-0 flex flex-col items-center justify-center p-4 rounded-xl bg-slate-950/80 border border-slate-800 shadow-xl min-w-[260px]">
+            <RazorpayButton paymentButtonId="pl_Tzg6tLfdsapRCO" />
+          </div>
         </div>
       </div>
     </div>
