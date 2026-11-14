@@ -36,6 +36,8 @@ import {
   Presentation,
   FileUp,
   FileSpreadsheet,
+  Cloud,
+  CloudUpload,
   X
 } from 'lucide-react';
 import { Track, Lesson, WorkedExampleItem, Difficulty, TierLevel, LessonMedia, LectureMediaType, SlidesSourceType } from '../../types';
@@ -98,6 +100,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
 
   // Slide upload & Media Studio state
   const [isUploadingSlide, setIsUploadingSlide] = useState(false);
+  const [isSyncingCloud, setIsSyncingCloud] = useState(false);
   const slideFileInputRef = React.useRef<HTMLInputElement>(null);
   const [mediaStudioFilter, setMediaStudioFilter] = useState<'all' | 'slides' | 'video' | 'none'>('all');
   const [mediaStudioSearch, setMediaStudioSearch] = useState<string>('');
@@ -111,12 +114,26 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
     setTimeout(() => setToastMessage(null), 4000);
   };
 
-  // Sync with CourseStorageService
+  // Sync with CourseStorageService & auto-push local edits to Cloudflare KV central database
   useEffect(() => {
     const unsubscribe = CourseStorageService.subscribe(() => {
       setTracks(CourseStorageService.getTracks());
       setAuditLogs(AdminSecurityService.getAuditLogs());
     });
+
+    const autoSyncToCloud = async () => {
+      const stats = CourseStorageService.getStats();
+      if (stats.modifiedCount > 0 || stats.newCount > 0) {
+        setIsSyncingCloud(true);
+        const res = await CourseStorageService.pushLocalToCloud(currentUser?.email || 'admin');
+        setIsSyncingCloud(false);
+        if (res.success && res.count > 0) {
+          showToast(`☁️ Auto-synced ${res.count} custom lesson(s) to live Cloudflare KV database!`, 'success');
+        }
+      }
+    };
+    autoSyncToCloud();
+
     return () => unsubscribe();
   }, []);
 
@@ -594,6 +611,25 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
             <span className="text-slate-400">Custom Edits:</span>
             <span className="text-white font-bold">{stats.modifiedCount + stats.newCount}</span>
           </div>
+
+          <button
+            onClick={async () => {
+              setIsSyncingCloud(true);
+              const res = await CourseStorageService.pushLocalToCloud(currentUser?.email || 'admin');
+              setIsSyncingCloud(false);
+              if (res.success) {
+                showToast(`☁️ Synced ${res.count} custom lesson(s) to live Cloudflare KV! Visible to all public users immediately.`, 'success');
+              } else {
+                showToast(`Sync error: ${res.error || 'Failed to sync'}`, 'error');
+              }
+            }}
+            disabled={isSyncingCloud}
+            className="px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white border border-emerald-400/30 text-xs font-semibold flex items-center space-x-1.5 transition shadow disabled:opacity-50"
+            title="Sync all lessons and Google Slides links to live Cloudflare KV central database for all public visitors"
+          >
+            <CloudUpload className={`w-3.5 h-3.5 ${isSyncingCloud ? 'animate-bounce' : ''}`} />
+            <span>{isSyncingCloud ? 'Syncing...' : 'Sync to Cloud (KV)'}</span>
+          </button>
 
           <button
             onClick={() => {

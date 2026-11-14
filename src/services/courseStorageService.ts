@@ -11,10 +11,14 @@ type Listener = () => void;
 export class CourseStorageService {
   private static listeners: Set<Listener> = new Set();
   private static isInitialized = false;
+  private static isCloudSyncing = false;
+  private static lastCloudSyncAt = 0;
 
   private static initStorageListener() {
     if (this.isInitialized || typeof window === 'undefined') return;
     this.isInitialized = true;
+
+    // Listen for storage events across open tabs
     window.addEventListener('storage', (e) => {
       if (
         e.key === CUSTOM_LESSONS_STORAGE || 
@@ -24,6 +28,140 @@ export class CourseStorageService {
         CourseStorageService.notify();
       }
     });
+
+    // Auto-fetch latest curriculum from Cloudflare KV central database
+    this.fetchFromCloud();
+  }
+
+  /**
+   * Fetch curriculum overrides from Cloudflare KV backend
+   */
+  static async fetchFromCloud(): Promise<boolean> {
+    if (this.isCloudSyncing || typeof window === 'undefined') return false;
+    this.isCloudSyncing = true;
+
+    try {
+      const res = await fetch('/api/lessons', {
+        headers: { 'Cache-Control': 'no-cache' }
+      });
+      if (!res.ok) return false;
+      const data = await res.json();
+      if (!data || !data.success) return false;
+
+      let changed = false;
+
+      // Merge Cloudflare KV custom lessons into local cache
+      if (data.customLessons && typeof data.customLessons === 'object') {
+        const localCustom = this.getCustomLessons();
+        const mergedCustom = { ...localCustom, ...data.customLessons };
+        if (JSON.stringify(mergedCustom) !== JSON.stringify(localCustom)) {
+          localStorage.setItem(CUSTOM_LESSONS_STORAGE, JSON.stringify(mergedCustom));
+          changed = true;
+        }
+      }
+
+      if (data.newLessons && typeof data.newLessons === 'object') {
+        const localNew = this.getNewLessons();
+        const mergedNew = { ...localNew, ...data.newLessons };
+        if (JSON.stringify(mergedNew) !== JSON.stringify(localNew)) {
+          localStorage.setItem(NEW_LESSONS_STORAGE, JSON.stringify(mergedNew));
+          changed = true;
+        }
+      }
+
+      if (Array.isArray(data.deletedLessons) && data.deletedLessons.length > 0) {
+        const localDeleted = this.getDeletedLessonIds();
+        const mergedDeleted = Array.from(new Set([...localDeleted, ...data.deletedLessons]));
+        if (JSON.stringify(mergedDeleted) !== JSON.stringify(localDeleted)) {
+          localStorage.setItem(DELETED_LESSONS_STORAGE, JSON.stringify(mergedDeleted));
+          changed = true;
+        }
+      }
+
+      this.lastCloudSyncAt = Date.now();
+      if (changed) {
+        this.notify();
+      }
+      return true;
+    } catch (err) {
+      console.warn('Could not sync curriculum from Cloudflare KV:', err);
+      return false;
+    } finally {
+      this.isCloudSyncing = false;
+    }
+  }
+
+  /**
+   * Push all local customizations to Cloudflare KV central database
+   */
+  static async pushLocalToCloud(adminEmail: string = 'admin'): Promise<{ success: boolean; count: number; error?: string }> {
+    try {
+      const customLessons = this.getCustomLessons();
+      const newLessons = this.getNewLessons();
+      const deletedLessons = this.getDeletedLessonIds();
+
+      const count = Object.keys(customLessons).length;
+
+      const res = await fetch('/api/lessons', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          batch: true,
+          customLessons,
+          newLessons,
+          deletedLessons
+        })
+      });
+
+      if (!res.ok) {
+        const errText = await res.text();
+        return { success: false, count: 0, error: errText };
+      }
+
+      const data = await res.json();
+      if (data.success) {
+        this.lastCloudSyncAt = Date.now();
+        AdminSecurityService.logAudit({
+          adminEmail,
+          action: 'update_lesson',
+          details: `Synchronized ${count} custom lesson(s) to Cloudflare KV central database.`
+        });
+        return { success: true, count };
+      }
+      return { success: false, count: 0, error: data.error };
+    } catch (err: any) {
+      return { success: false, count: 0, error: err?.message || 'Sync failed' };
+    }
+  }
+
+  /**
+   * Asynchronously save a single lesson to Cloudflare KV
+   */
+  private static async saveLessonToCloud(trackId: string, lesson: Lesson): Promise<void> {
+    try {
+      await fetch('/api/lessons', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ trackId, lesson })
+      });
+    } catch (err) {
+      console.warn('Async Cloudflare KV save failed:', err);
+    }
+  }
+
+  /**
+   * Asynchronously delete a single lesson from Cloudflare KV
+   */
+  private static async deleteLessonFromCloud(lessonId: string): Promise<void> {
+    try {
+      await fetch(`/api/lessons?id=${encodeURIComponent(lessonId)}`, {
+        method: 'DELETE'
+      });
+    } catch (err) {
+      console.warn('Async Cloudflare KV delete failed:', err);
+    }
   }
 
   /**
@@ -179,6 +317,10 @@ export class CourseStorageService {
       });
 
       this.notify();
+
+      // Automatically sync to Cloudflare KV central database in background
+      this.saveLessonToCloud(trackId, updatedLesson);
+
       return true;
     } catch (err) {
       console.error('Failed to save lesson:', err);
@@ -208,6 +350,10 @@ export class CourseStorageService {
       });
 
       this.notify();
+
+      // Automatically sync to Cloudflare KV central database in background
+      this.saveLessonToCloud(trackId, newLesson);
+
       return true;
     } catch (err) {
       console.error('Failed to add lesson:', err);
@@ -242,6 +388,10 @@ export class CourseStorageService {
       });
 
       this.notify();
+
+      // Automatically sync deletion to Cloudflare KV central database in background
+      this.deleteLessonFromCloud(lessonId);
+
       return true;
     } catch (err) {
       console.error('Failed to delete lesson:', err);
@@ -273,6 +423,10 @@ export class CourseStorageService {
       });
 
       this.notify();
+
+      // Automatically sync deletion to Cloudflare KV central database in background
+      this.deleteLessonFromCloud(lessonId);
+
       return true;
     } catch (err) {
       console.error('Failed to reset lesson:', err);

@@ -1,0 +1,16 @@
+name = "devforge"
+pages_build_output_dir = "dist"
+compatibility_date = "2024-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[[kv_namespaces]]
+binding = "DEVFORGE_KV"
+id = "221384fa172142629d1ef9e716d34995"
+
+[[env.production.kv_namespaces]]
+binding = "DEVFORGE_KV"
+id = "221384fa172142629d1ef9e716d34995"
+
+[[env.preview.kv_namespaces]]
+binding = "DEVFORGE_KV"
+id = "221384fa172142629d1ef9e716d34995"

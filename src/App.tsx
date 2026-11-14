@@ -35,8 +35,9 @@ export function App() {
   const [currentView, setCurrentView] = useState<string>('dashboard');
   const [viewPayload, setViewPayload] = useState<any>(null);
 
-  // Subscribe to live curriculum edits made by Admin
+  // Subscribe to live curriculum edits made by Admin & fetch latest Cloudflare KV database updates
   useEffect(() => {
+    CourseStorageService.fetchFromCloud();
     return CourseStorageService.subscribe(() => {
       setAllTracks(CourseStorageService.getTracks());
     });
