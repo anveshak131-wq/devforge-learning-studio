@@ -8,9 +8,10 @@ import {
   Presentation, 
   Download, 
   Sparkles,
-  Layers
+  Layers,
+  Printer
 } from 'lucide-react';
-import { LessonMedia } from '../../types';
+import { LessonMedia, Lesson } from '../../types';
 import { YouTubePlayer } from '../video/YouTubePlayer';
 import { 
   extractGoogleSlidesEmbedUrl, 
@@ -19,11 +20,17 @@ import {
   formatFileSize 
 } from '../../utils/slides';
 import { SlideStorageService } from '../../services/slideStorageService';
+import { resolveLessonVideo, printLessonPdf } from '../../utils/lessonResources';
+import { InteractiveSlideDeck } from './InteractiveSlideDeck';
 
 interface LectureMediaViewerProps {
   media?: LessonMedia;
   legacyVideoUrl?: string;
+  lesson?: Lesson;
   lessonTitle?: string;
+  trackTitle?: string;
+  activeTab?: 'slides' | 'video';
+  onJumpToEditor?: () => void;
   className?: string;
   autoPlay?: boolean;
 }
@@ -31,7 +38,11 @@ interface LectureMediaViewerProps {
 export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
   media,
   legacyVideoUrl,
+  lesson,
   lessonTitle = 'Topic Lecture',
+  trackTitle = 'DevForge Course',
+  activeTab = 'slides',
+  onJumpToEditor,
   className = '',
   autoPlay = false
 }) => {
@@ -40,13 +51,16 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
   const [isFullscreen, setIsFullscreen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const { type, media: activeMedia } = resolveMediaSlot(media, legacyVideoUrl);
+  const { type: configuredType, media: activeMedia } = resolveMediaSlot(media, legacyVideoUrl);
+
+  // If user explicitly picked a tab ('slides' or 'video'), prioritize that; otherwise use configured
+  const effectiveType = activeTab || (configuredType !== 'none' ? configuredType : 'slides');
 
   // Load local slide deck from IndexedDB if uploaded PDF
   useEffect(() => {
     let isSubscribed = true;
 
-    if (type === 'slides' && activeMedia.slidesSourceType === 'pdf_upload' && activeMedia.slidesFileBlobId) {
+    if (effectiveType === 'slides' && activeMedia.slidesSourceType === 'pdf_upload' && activeMedia.slidesFileBlobId) {
       setLoadingBlob(true);
       SlideStorageService.getSlideBlobUrl(activeMedia.slidesFileBlobId)
         .then(url => {
@@ -66,7 +80,7 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
     return () => {
       isSubscribed = false;
     };
-  }, [type, activeMedia.slidesSourceType, activeMedia.slidesFileBlobId]);
+  }, [effectiveType, activeMedia.slidesSourceType, activeMedia.slidesFileBlobId]);
 
   // Handle Fullscreen Toggle
   const toggleFullscreen = () => {
@@ -88,30 +102,50 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
-  // 1. None: Clean return, no media
-  if (type === 'none') {
-    return null;
-  }
+  // 1. VIDEO TAB: YouTube Player
+  if (effectiveType === 'video') {
+    const resolved = lesson 
+      ? resolveLessonVideo(lesson)
+      : { 
+          url: activeMedia.videoUrl || legacyVideoUrl || '', 
+          title: activeMedia.videoTitle || `${lessonTitle} - Video Walkthrough`, 
+          watchUrl: activeMedia.videoUrl || legacyVideoUrl || '' 
+        };
 
-  // 2. Video: YouTube Player
-  if (type === 'video') {
     return (
       <div className={className}>
         <YouTubePlayer
-          url={activeMedia.videoUrl}
-          title={activeMedia.videoTitle || `${lessonTitle} - Video Walkthrough`}
+          url={resolved.url}
+          title={resolved.title}
           autoPlay={autoPlay}
         />
       </div>
     );
   }
 
-  // 3. Slides: Google Slides or PDF / PPT
+  // 2. SLIDES TAB: Check if external Google Slides or PDF upload exists
   const isGoogleSlides = activeMedia.slidesSourceType === 'google_slides' || (!activeMedia.slidesSourceType && !!activeMedia.slidesUrl);
   const embedUrl = isGoogleSlides ? extractGoogleSlidesEmbedUrl(activeMedia.slidesUrl) : null;
   const externalUrl = isGoogleSlides ? getGoogleSlidesExternalUrl(activeMedia.slidesUrl) : null;
   const directPdfUrl = activeMedia.slidesSourceType === 'pdf_url' ? activeMedia.slidesUrl : blobUrl;
 
+  const hasExternalSlideDeck = Boolean((isGoogleSlides && embedUrl) || (!isGoogleSlides && directPdfUrl));
+
+  // If no external slide deck exists, render the built-in Interactive Slide Deck
+  if (!hasExternalSlideDeck && lesson) {
+    return (
+      <InteractiveSlideDeck
+        lesson={lesson}
+        trackTitle={trackTitle}
+        isFullscreen={isFullscreen}
+        onToggleFullscreen={toggleFullscreen}
+        onJumpToEditor={onJumpToEditor}
+        className={className}
+      />
+    );
+  }
+
+  // If external slide deck is available
   return (
     <div 
       ref={containerRef}
@@ -143,6 +177,19 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
         </div>
 
         <div className="flex items-center space-x-2 shrink-0">
+          {/* Print / Download PDF */}
+          {lesson && (
+            <button
+              type="button"
+              onClick={() => printLessonPdf(lesson, trackTitle)}
+              className="px-2.5 py-1 rounded-lg text-[11px] text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-1 transition border border-slate-700"
+              title="Download printable PDF study sheet"
+            >
+              <Printer className="w-3 h-3 text-indigo-400" />
+              <span>PDF Sheet</span>
+            </button>
+          )}
+
           {/* External Link or Download */}
           {isGoogleSlides && externalUrl && (
             <a
@@ -173,6 +220,7 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
 
           {/* Fullscreen Toggle */}
           <button
+            type="button"
             onClick={toggleFullscreen}
             className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
             title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Present in Fullscreen'}
@@ -213,15 +261,26 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
           </div>
         )}
 
-        {/* Scenario D: Invalid or Missing Slides URL */}
-        {((isGoogleSlides && !embedUrl) || (!isGoogleSlides && !directPdfUrl && !loadingBlob)) && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-2 bg-slate-950">
-            <AlertCircle className="w-8 h-8 text-amber-400" />
-            <h4 className="text-sm font-bold text-white">Slide Deck Not Ready</h4>
-            <p className="text-xs text-slate-400 max-w-sm">
-              The presentation link or file is being processed or requires a valid Google Slides embed link.
-            </p>
-          </div>
+        {/* Scenario D: Fallback */}
+        {!embedUrl && !directPdfUrl && !loadingBlob && (
+          lesson ? (
+            <InteractiveSlideDeck
+              lesson={lesson}
+              trackTitle={trackTitle}
+              isFullscreen={isFullscreen}
+              onToggleFullscreen={toggleFullscreen}
+              onJumpToEditor={onJumpToEditor}
+              className="w-full h-full"
+            />
+          ) : (
+            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-2 bg-slate-950">
+              <AlertCircle className="w-8 h-8 text-amber-400" />
+              <h4 className="text-sm font-bold text-white">Slide Deck Preview</h4>
+              <p className="text-xs text-slate-400 max-w-sm">
+                Paste a Google Slides URL or upload a presentation deck above to preview.
+              </p>
+            </div>
+          )
         )}
       </div>
 
