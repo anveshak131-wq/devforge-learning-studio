@@ -597,6 +597,19 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
 
           <button
             onClick={() => {
+              const json = CourseStorageService.exportCurriculum();
+              navigator.clipboard.writeText(json);
+              showToast('Copied curriculum edits to clipboard! Paste it into the assistant chat.', 'success');
+            }}
+            className="px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white border border-indigo-400/30 text-xs font-semibold flex items-center space-x-1.5 transition shadow"
+            title="Copy all custom lessons JSON to clipboard to send to the assistant"
+          >
+            <Copy className="w-3.5 h-3.5" />
+            <span>Copy Edits JSON</span>
+          </button>
+
+          <button
+            onClick={() => {
               AdminSecurityService.destroySession();
               onCloseAdmin();
             }}
