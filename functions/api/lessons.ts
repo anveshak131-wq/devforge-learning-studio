@@ -83,7 +83,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
       const mergedCustom = { ...existingCustom, ...(body.customLessons || {}) };
       const mergedNew = { ...existingNew, ...(body.newLessons || {}) };
-      const mergedDeleted = Array.from(new Set([...existingDeleted, ...(body.deletedLessons || [])]));
+      const mergedDeleted = Array.isArray(body.deletedLessons) ? body.deletedLessons : existingDeleted;
 
       await Promise.all([
         env.DEVFORGE_KV.put('devforge_custom_lessons_v1', JSON.stringify(mergedCustom)),
