@@ -115,7 +115,18 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const [unlockedHints, setUnlockedHints] = useState<number>(0);
   const [showSolutionConfirm, setShowSolutionConfirm] = useState(false);
   const [schemas, setSchemas] = useState<TableSchema[]>([]);
-  const [guideTab, setGuideTab] = useState<'concept' | 'slides' | 'video' | 'pdf'>('concept');
+
+  const getInitialGuideTab = (l: Lesson): 'concept' | 'slides' | 'video' | 'pdf' => {
+    const status = getLessonMediaStatus(l.media, l.videoUrl);
+    if (status.hasSlides) return 'slides';
+    if (status.hasVideo) return 'video';
+    if (status.hasPdf) return 'pdf';
+    return 'concept';
+  };
+
+  const [guideTab, setGuideTab] = useState<'concept' | 'slides' | 'video' | 'pdf'>(() => 
+    getInitialGuideTab(lesson)
+  );
   
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
@@ -156,7 +167,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setUnlockedHints(0);
     setShowSolutionConfirm(false);
     setIsOutlineOpen(false);
-    setGuideTab('concept');
+    setGuideTab(getInitialGuideTab(lesson));
   }, [lesson.id]);
 
   const handleCodeChange = (newCode: string) => {
@@ -574,289 +585,149 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
 
             return (
               <>
-                {/* Segmented Mode Switcher: Rendered ONLY if Admin has uploaded media */}
+                {/* Media Segmented Controls & Viewer: Only rendered if admin uploaded media */}
                 {mediaStatus.hasMedia && (
-                  <div className="flex items-center justify-between p-1 rounded-xl bg-slate-950 border border-slate-800 shadow-inner">
-                    <div className="flex items-center space-x-1">
-                      <button
-                        type="button"
-                        onClick={() => setGuideTab('concept')}
-                        className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                          guideTab === 'concept'
-                            ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
-                            : 'text-slate-400 hover:text-white'
-                        }`}
-                      >
-                        <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-                        <span>Concept &amp; Mission</span>
-                      </button>
-
-                      {mediaStatus.hasSlides && (
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('slides')}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                            guideTab === 'slides'
-                              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                              : 'text-slate-400 hover:text-amber-300'
-                          }`}
-                        >
-                          <Presentation className="w-3.5 h-3.5 text-amber-400" />
-                          <span>Slide Deck (PPT)</span>
-                        </button>
-                      )}
-
-                      {mediaStatus.hasPdf && (
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('pdf')}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                            guideTab === 'pdf'
-                              ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
-                              : 'text-slate-400 hover:text-indigo-300'
-                          }`}
-                        >
-                          <FileText className="w-3.5 h-3.5 text-indigo-400" />
-                          <span>PDF Document</span>
-                        </button>
-                      )}
-
-                      {mediaStatus.hasVideo && (
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('video')}
-                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                            guideTab === 'video'
-                              ? 'bg-red-600 text-white shadow-md shadow-red-600/20'
-                              : 'text-slate-400 hover:text-red-300'
-                          }`}
-                        >
-                          <Film className="w-3.5 h-3.5 text-red-400" />
-                          <span>Video Walkthrough</span>
-                        </button>
-                      )}
-                    </div>
-
-                    <span className="text-[10px] text-slate-500 font-mono hidden sm:inline pr-2">
-                      {guideTab === 'concept' ? '📖 Reading' : guideTab === 'slides' ? '📊 Slides' : guideTab === 'pdf' ? '📄 PDF' : '🎥 Video'}
-                    </span>
-                  </div>
-                )}
-
-                {/* If Slides Mode is Active (strictly admin-uploaded presentation) */}
-                {guideTab === 'slides' && mediaStatus.hasSlides && (
-                  <div className="space-y-4 animate-in fade-in duration-200">
-                    <div className="flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setGuideTab('concept')}
-                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-semibold transition group"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
-                        <span>Back to Concept Notes &amp; Task</span>
-                      </button>
-
-                      <span className="text-[11px] text-amber-400 font-mono">
-                        Presentation Mode
-                      </span>
-                    </div>
-
-                    {/* Dedicated Media Viewer */}
-                    <LectureMediaViewer
-                      media={lesson.media}
-                      legacyVideoUrl={lesson.videoUrl}
-                      lesson={lesson}
-                      lessonTitle={lesson.title}
-                      trackTitle={track.title}
-                      activeTab="slides"
-                      className="w-full"
-                    />
-
-                    {/* Quick Task Peek Card while viewing slides */}
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-white flex items-center space-x-1.5">
-                          <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-                          <span>Mission Checklist ({lesson.testCases.length} Goals)</span>
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('concept')}
-                          className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-semibold"
-                        >
-                          Switch to Full Reading Notes
-                        </button>
-                      </div>
-
-                      <div className="space-y-1.5">
-                        {lesson.testCases.map((tc, idx) => (
-                          <div key={tc.id || idx} className="flex items-start space-x-2 text-xs text-slate-300">
-                            <span className="w-4 h-4 rounded-full bg-slate-800 text-slate-400 text-[10px] flex items-center justify-center shrink-0 mt-0.5 font-mono">
-                              {idx + 1}
-                            </span>
-                            <span className="leading-snug">{tc.description}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* If PDF Mode is Active (strictly admin-uploaded PDF) */}
-                {guideTab === 'pdf' && mediaStatus.hasPdf && (
-                  <div className="space-y-4 animate-in fade-in duration-200">
-                    <div className="flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setGuideTab('concept')}
-                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-semibold transition group"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
-                        <span>Back to Concept Notes &amp; Task</span>
-                      </button>
-
-                      <span className="text-[11px] text-indigo-400 font-mono">
-                        PDF Mode
-                      </span>
-                    </div>
-
-                    <LectureMediaViewer
-                      media={lesson.media}
-                      legacyVideoUrl={lesson.videoUrl}
-                      lesson={lesson}
-                      lessonTitle={lesson.title}
-                      trackTitle={track.title}
-                      activeTab="pdf"
-                      className="w-full"
-                    />
-
-                    {/* Quick Task Peek Card while viewing PDF */}
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-white flex items-center space-x-1.5">
-                          <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-                          <span>Mission Checklist ({lesson.testCases.length} Goals)</span>
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('concept')}
-                          className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-semibold"
-                        >
-                          Switch to Full Reading Notes
-                        </button>
-                      </div>
-
-                      <div className="space-y-1.5">
-                        {lesson.testCases.map((tc, idx) => (
-                          <div key={tc.id || idx} className="flex items-start space-x-2 text-xs text-slate-300">
-                            <span className="w-4 h-4 rounded-full bg-slate-800 text-slate-400 text-[10px] flex items-center justify-center shrink-0 mt-0.5 font-mono">
-                              {idx + 1}
-                            </span>
-                            <span className="leading-snug">{tc.description}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* If Video Mode is Active (strictly admin-uploaded video) */}
-                {guideTab === 'video' && mediaStatus.hasVideo && (
-                  <div className="space-y-4 animate-in fade-in duration-200">
-                    <div className="flex items-center justify-between">
-                      <button
-                        type="button"
-                        onClick={() => setGuideTab('concept')}
-                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-semibold transition group"
-                      >
-                        <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
-                        <span>Back to Concept Notes &amp; Task</span>
-                      </button>
-
-                      <span className="text-[11px] text-red-400 font-mono">
-                        Video Mode
-                      </span>
-                    </div>
-
-                    <LectureMediaViewer
-                      media={lesson.media}
-                      legacyVideoUrl={lesson.videoUrl}
-                      lesson={lesson}
-                      lessonTitle={lesson.title}
-                      trackTitle={track.title}
-                      activeTab="video"
-                      className="w-full"
-                    />
-
-                    {/* Quick Task Peek Card while viewing video */}
-                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-white flex items-center space-x-1.5">
-                          <Code2 className="w-3.5 h-3.5 text-cyan-400" />
-                          <span>Mission Checklist ({lesson.testCases.length} Goals)</span>
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('concept')}
-                          className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-semibold"
-                        >
-                          Switch to Full Reading Notes
-                        </button>
-                      </div>
-
-                      <div className="space-y-1.5">
-                        {lesson.testCases.map((tc, idx) => (
-                          <div key={tc.id || idx} className="flex items-start space-x-2 text-xs text-slate-300">
-                            <span className="w-4 h-4 rounded-full bg-slate-800 text-slate-400 text-[10px] flex items-center justify-center shrink-0 mt-0.5 font-mono">
-                              {idx + 1}
-                            </span>
-                            <span className="leading-snug">{tc.description}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                {/* If Concept Reading Mode is Active (or no media attached) */}
-                {guideTab === 'concept' && (
-                  <>
-                    {/* Attached Media Shortcut Buttons (ONLY rendered if admin attached media) */}
-                    {mediaStatus.hasMedia && (
-                      <div className="flex flex-wrap items-center gap-2 p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs">
-                        <span className="text-[11px] font-semibold text-slate-400">Attached Media:</span>
+                  <div className="space-y-3.5 mb-2">
+                    {/* Top Segmented Mode Switcher */}
+                    <div className="flex items-center justify-between p-1 rounded-xl bg-slate-950 border border-slate-800 shadow-inner">
+                      <div className="flex items-center space-x-1">
                         {mediaStatus.hasSlides && (
                           <button
                             type="button"
                             onClick={() => setGuideTab('slides')}
-                            className="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center space-x-1.5 transition text-xs font-semibold"
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                              guideTab === 'slides'
+                                ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                                : 'text-slate-400 hover:text-amber-300'
+                            }`}
                           >
                             <Presentation className="w-3.5 h-3.5 text-amber-400" />
-                            <span>View Slide Deck (PPT)</span>
+                            <span>Slide Deck (PPT)</span>
                           </button>
                         )}
-                        {mediaStatus.hasPdf && (
-                          <button
-                            type="button"
-                            onClick={() => setGuideTab('pdf')}
-                            className="px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center space-x-1.5 transition text-xs font-semibold"
-                          >
-                            <FileText className="w-3.5 h-3.5 text-indigo-400" />
-                            <span>Open PDF Document</span>
-                          </button>
-                        )}
+
                         {mediaStatus.hasVideo && (
                           <button
                             type="button"
                             onClick={() => setGuideTab('video')}
-                            className="px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-300 border border-red-500/30 flex items-center space-x-1.5 transition text-xs font-semibold"
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                              guideTab === 'video'
+                                ? 'bg-red-600 text-white shadow-md shadow-red-600/20'
+                                : 'text-slate-400 hover:text-red-300'
+                            }`}
                           >
                             <Film className="w-3.5 h-3.5 text-red-400" />
-                            <span>Watch Video Walkthrough</span>
+                            <span>Video Walkthrough</span>
                           </button>
                         )}
+
+                        {mediaStatus.hasPdf && (
+                          <button
+                            type="button"
+                            onClick={() => setGuideTab('pdf')}
+                            className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                              guideTab === 'pdf'
+                                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                                : 'text-slate-400 hover:text-indigo-300'
+                            }`}
+                          >
+                            <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                            <span>PDF Document</span>
+                          </button>
+                        )}
+
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('concept')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                            guideTab === 'concept'
+                              ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
+                              : 'text-slate-400 hover:text-white'
+                          }`}
+                          title="Collapse media player to read notes only"
+                        >
+                          <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+                          <span>Reading Notes Only</span>
+                        </button>
+                      </div>
+
+                      <span className="text-[10px] text-slate-500 font-mono hidden sm:inline pr-2">
+                        {guideTab === 'slides' ? '📊 Slides' : guideTab === 'video' ? '🎥 Video' : guideTab === 'pdf' ? '📄 PDF' : '📖 Pure Reading'}
+                      </span>
+                    </div>
+
+                    {/* Active Media Player View */}
+                    {guideTab === 'slides' && mediaStatus.hasSlides && (
+                      <LectureMediaViewer
+                        media={lesson.media}
+                        legacyVideoUrl={lesson.videoUrl}
+                        lesson={lesson}
+                        lessonTitle={lesson.title}
+                        trackTitle={track.title}
+                        activeTab="slides"
+                        className="w-full"
+                      />
+                    )}
+
+                    {guideTab === 'video' && mediaStatus.hasVideo && (
+                      <LectureMediaViewer
+                        media={lesson.media}
+                        legacyVideoUrl={lesson.videoUrl}
+                        lesson={lesson}
+                        lessonTitle={lesson.title}
+                        trackTitle={track.title}
+                        activeTab="video"
+                        className="w-full"
+                      />
+                    )}
+
+                    {guideTab === 'pdf' && mediaStatus.hasPdf && (
+                      <LectureMediaViewer
+                        media={lesson.media}
+                        legacyVideoUrl={lesson.videoUrl}
+                        lesson={lesson}
+                        lessonTitle={lesson.title}
+                        trackTitle={track.title}
+                        activeTab="pdf"
+                        className="w-full"
+                      />
+                    )}
+
+                    {/* Collapsed notification when user picks 'Reading Notes Only' */}
+                    {guideTab === 'concept' && (
+                      <div className="p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 flex items-center justify-between text-xs">
+                        <span className="text-slate-400 flex items-center space-x-2">
+                          {mediaStatus.hasSlides ? (
+                            <>
+                              <Presentation className="w-4 h-4 text-amber-400" />
+                              <span>Lecture presentation attached</span>
+                            </>
+                          ) : mediaStatus.hasVideo ? (
+                            <>
+                              <Film className="w-4 h-4 text-red-400" />
+                              <span>Video walkthrough attached</span>
+                            </>
+                          ) : (
+                            <>
+                              <FileText className="w-4 h-4 text-indigo-400" />
+                              <span>PDF document attached</span>
+                            </>
+                          )}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab(mediaStatus.hasSlides ? 'slides' : mediaStatus.hasVideo ? 'video' : 'pdf')}
+                          className="px-2.5 py-1 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs transition"
+                        >
+                          Expand Player
+                        </button>
                       </div>
                     )}
+                  </div>
+                )}
+              </>
+            );
+          })()}
 
           {/* Real-World Analogy */}
           {lesson.analogy && (
@@ -1100,11 +971,6 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
               </button>
             )}
           </div>
-                  </>
-                )}
-              </>
-            );
-          })()}
 
           {/* Next Lesson Celebration Banner */}
           {allTestsPassed && nextLesson && (

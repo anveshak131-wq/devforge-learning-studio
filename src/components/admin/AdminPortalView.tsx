@@ -339,7 +339,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const handleGoogleSlidesUrlChange = (input: string) => {
     if (!formData) return;
     const embed = extractGoogleSlidesEmbedUrl(input);
-    setFormData({
+    const updatedLesson: Lesson = {
       ...formData,
       media: {
         type: 'slides',
@@ -348,7 +348,10 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         slidesUrl: embed || input,
         slidesTitle: `${formData.title} - Google Slides`
       }
-    });
+    };
+    setFormData(updatedLesson);
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
   };
 
   const handleSlideFileUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -370,7 +373,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       });
 
       if (res.success) {
-        setFormData({
+        const updatedLesson: Lesson = {
           ...formData,
           media: {
             type: 'slides',
@@ -380,7 +383,10 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
             slidesFileSize: file.size,
             slidesTitle: `${formData.title} (${file.name})`
           }
-        });
+        };
+        setFormData(updatedLesson);
+        const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+        CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
         showToast(`Uploaded slide deck "${file.name}"!`, 'success');
       } else {
         showToast(res.error || 'Failed to store slide file.', 'error');
@@ -398,7 +404,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const handleRemoveSlideFile = async () => {
     if (!formData || !formData.media?.slidesFileBlobId) return;
     await SlideStorageService.deleteSlideFile(formData.media.slidesFileBlobId);
-    setFormData({
+    const updatedLesson: Lesson = {
       ...formData,
       media: {
         type: 'slides',
@@ -408,14 +414,17 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         slidesFileSize: undefined,
         slidesTitle: undefined
       }
-    });
+    };
+    setFormData(updatedLesson);
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
     showToast('Uploaded slide presentation removed.', 'info');
   };
 
   const handleInsertDemoSlideDeck = (sampleIndex: number = 0) => {
     if (!formData) return;
     const sample = SAMPLE_SLIDE_DECKS[sampleIndex] || SAMPLE_SLIDE_DECKS[0];
-    setFormData({
+    const updatedLesson: Lesson = {
       ...formData,
       media: {
         type: 'slides',
@@ -424,7 +433,10 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         slidesUrl: sample.url,
         slidesTitle: sample.title
       }
-    });
+    };
+    setFormData(updatedLesson);
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
     showToast(`Inserted sample presentation: "${sample.title}"`, 'success');
   };
 
@@ -1094,15 +1106,21 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                   <input
                                     type="url"
                                     value={activeMedia.slidesUrl || ''}
-                                    onChange={e => setFormData({
-                                      ...formData,
-                                      media: {
-                                        ...activeMedia,
-                                        type: 'slides',
-                                        slidesSourceType: 'pdf_url',
-                                        slidesUrl: e.target.value.trim()
-                                      }
-                                    })}
+                                    onChange={e => {
+                                      const val = e.target.value.trim();
+                                      const updatedLesson: Lesson = {
+                                        ...formData,
+                                        media: {
+                                          ...activeMedia,
+                                          type: 'slides',
+                                          slidesSourceType: 'pdf_url',
+                                          slidesUrl: val
+                                        }
+                                      };
+                                      setFormData(updatedLesson);
+                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+                                      CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
+                                    }}
                                     placeholder="https://example.com/presentations/javascript-lecture.pdf"
                                     className="w-full bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-cyan-500 font-mono"
                                   />
@@ -1155,15 +1173,18 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                   value={formData.videoUrl || activeMedia.videoUrl || ''}
                                   onChange={e => {
                                     const val = e.target.value;
-                                    setFormData({
+                                    const updatedLesson: Lesson = {
                                       ...formData,
-                                      videoUrl: val,
+                                      videoUrl: val || undefined,
                                       media: {
                                         type: 'video',
                                         videoUrl: val,
                                         videoTitle: `${formData.title} - Video Lecture`
                                       }
-                                    });
+                                    };
+                                    setFormData(updatedLesson);
+                                    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+                                    CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                   }}
                                   placeholder="e.g. https://www.youtube.com/watch?v=PkZNo7MFNFg or youtu.be/VIDEO_ID"
                                   className="flex-1 bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-red-500 font-mono"
@@ -1172,11 +1193,14 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                   <button
                                     type="button"
                                     onClick={() => {
-                                      setFormData({
+                                      const updatedLesson: Lesson = {
                                         ...formData,
-                                        videoUrl: '',
+                                        videoUrl: undefined,
                                         media: { type: 'video', videoUrl: '' }
-                                      });
+                                      };
+                                      setFormData(updatedLesson);
+                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+                                      CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                     }}
                                     className="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white text-xs"
                                   >

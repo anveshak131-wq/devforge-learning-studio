@@ -10,11 +10,27 @@ type Listener = () => void;
 
 export class CourseStorageService {
   private static listeners: Set<Listener> = new Set();
+  private static isInitialized = false;
+
+  private static initStorageListener() {
+    if (this.isInitialized || typeof window === 'undefined') return;
+    this.isInitialized = true;
+    window.addEventListener('storage', (e) => {
+      if (
+        e.key === CUSTOM_LESSONS_STORAGE || 
+        e.key === NEW_LESSONS_STORAGE || 
+        e.key === DELETED_LESSONS_STORAGE
+      ) {
+        CourseStorageService.notify();
+      }
+    });
+  }
 
   /**
    * Subscribe to curriculum changes
    */
   static subscribe(fn: Listener): () => void {
+    this.initStorageListener();
     this.listeners.add(fn);
     return () => {
       this.listeners.delete(fn);
