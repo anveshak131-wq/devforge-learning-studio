@@ -19,6 +19,13 @@ export const pythonModule1Lessons: Lesson[] = [
       "Python syntax simplicity"
     ],
     "analogy": "Speaking into a megaphone: print() broadcasts your words to the computer screen.",
+    "media": {
+      "type": "slides",
+      "slidesSourceType": "google_slides",
+      "slidesRawInput": "https://docs.google.com/presentation/d/1wjyojk9gIvDfNGgbwVjksaEcaslcS5yLNdmuh-UJrOs/edit?usp=sharing",
+      "slidesUrl": "https://docs.google.com/presentation/d/1wjyojk9gIvDfNGgbwVjksaEcaslcS5yLNdmuh-UJrOs/embed?start=false&loop=false&delayms=3000",
+      "slidesTitle": "1. Hello, Python! The print() Function - Slide Deck"
+    },
     "explanationMarkdown": "### Welcome to Python!\nPython is renowned for clean, English-like syntax.\n```python\nprint(\"Welcome to Python!\")\n```",
     "workedExample": {
       "title": "Worked Example: Friendly Greeting",
