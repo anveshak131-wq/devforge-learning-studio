@@ -8,20 +8,17 @@ import {
   Presentation, 
   Download, 
   Sparkles,
-  Layers,
-  Printer
+  Film
 } from 'lucide-react';
 import { LessonMedia, Lesson } from '../../types';
 import { YouTubePlayer } from '../video/YouTubePlayer';
 import { 
-  extractGoogleSlidesEmbedUrl, 
+  resolveSlidesEmbedUrl, 
   getGoogleSlidesExternalUrl, 
   resolveMediaSlot, 
   formatFileSize 
 } from '../../utils/slides';
 import { SlideStorageService } from '../../services/slideStorageService';
-import { resolveLessonVideo, printLessonPdf } from '../../utils/lessonResources';
-import { InteractiveSlideDeck } from './InteractiveSlideDeck';
 
 interface LectureMediaViewerProps {
   media?: LessonMedia;
@@ -29,8 +26,7 @@ interface LectureMediaViewerProps {
   lesson?: Lesson;
   lessonTitle?: string;
   trackTitle?: string;
-  activeTab?: 'slides' | 'video';
-  onJumpToEditor?: () => void;
+  activeTab?: 'slides' | 'video' | 'pdf';
   className?: string;
   autoPlay?: boolean;
 }
@@ -42,7 +38,6 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
   lessonTitle = 'Topic Lecture',
   trackTitle = 'DevForge Course',
   activeTab = 'slides',
-  onJumpToEditor,
   className = '',
   autoPlay = false
 }) => {
@@ -53,14 +48,17 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
 
   const { type: configuredType, media: activeMedia } = resolveMediaSlot(media, legacyVideoUrl);
 
-  // If user explicitly picked a tab ('slides' or 'video'), prioritize that; otherwise use configured
   const effectiveType = activeTab || (configuredType !== 'none' ? configuredType : 'slides');
 
   // Load local slide deck from IndexedDB if uploaded PDF
   useEffect(() => {
     let isSubscribed = true;
 
-    if (effectiveType === 'slides' && activeMedia.slidesSourceType === 'pdf_upload' && activeMedia.slidesFileBlobId) {
+    if (
+      (effectiveType === 'slides' || effectiveType === 'pdf') && 
+      activeMedia.slidesSourceType === 'pdf_upload' && 
+      activeMedia.slidesFileBlobId
+    ) {
       setLoadingBlob(true);
       SlideStorageService.getSlideBlobUrl(activeMedia.slidesFileBlobId)
         .then(url => {
@@ -102,50 +100,136 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
     return () => document.removeEventListener('fullscreenchange', handleFullscreenChange);
   }, []);
 
-  // 1. VIDEO TAB: YouTube Player
+  // ==========================================
+  // 1. VIDEO TAB: Strictly Admin-Uploaded Video
+  // ==========================================
   if (effectiveType === 'video') {
-    const resolved = lesson 
-      ? resolveLessonVideo(lesson)
-      : { 
-          url: activeMedia.videoUrl || legacyVideoUrl || '', 
-          title: activeMedia.videoTitle || `${lessonTitle} - Video Walkthrough`, 
-          watchUrl: activeMedia.videoUrl || legacyVideoUrl || '' 
-        };
+    const rawVideoUrl = (activeMedia.videoUrl || legacyVideoUrl || '').trim();
+
+    if (!rawVideoUrl) {
+      return (
+        <div className={`p-6 rounded-2xl bg-slate-950 border border-slate-800 text-center space-y-2 ${className}`}>
+          <AlertCircle className="w-8 h-8 text-slate-500 mx-auto" />
+          <h4 className="text-sm font-bold text-white">No Video Lecture Attached</h4>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            The course instructor has not uploaded a video walkthrough for this topic yet.
+          </p>
+        </div>
+      );
+    }
 
     return (
       <div className={className}>
         <YouTubePlayer
-          url={resolved.url}
-          title={resolved.title}
+          url={rawVideoUrl}
+          title={activeMedia.videoTitle || `${lessonTitle} - Video Walkthrough`}
           autoPlay={autoPlay}
         />
       </div>
     );
   }
 
-  // 2. SLIDES TAB: Check if external Google Slides or PDF upload exists
-  const isGoogleSlides = activeMedia.slidesSourceType === 'google_slides' || (!activeMedia.slidesSourceType && !!activeMedia.slidesUrl);
-  const embedUrl = isGoogleSlides ? extractGoogleSlidesEmbedUrl(activeMedia.slidesUrl) : null;
-  const externalUrl = isGoogleSlides ? getGoogleSlidesExternalUrl(activeMedia.slidesUrl) : null;
-  const directPdfUrl = activeMedia.slidesSourceType === 'pdf_url' ? activeMedia.slidesUrl : blobUrl;
+  // ==========================================
+  // 2. PDF TAB: Strictly Admin-Uploaded PDF
+  // ==========================================
+  if (effectiveType === 'pdf') {
+    const directPdfUrl = activeMedia.slidesSourceType === 'pdf_url' ? activeMedia.slidesUrl : blobUrl;
 
-  const hasExternalSlideDeck = Boolean((isGoogleSlides && embedUrl) || (!isGoogleSlides && directPdfUrl));
+    if (loadingBlob) {
+      return (
+        <div className={`rounded-2xl bg-slate-950 border border-slate-800 p-12 flex flex-col items-center justify-center space-y-2 ${className}`}>
+          <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
+          <p className="text-xs text-slate-400">Loading PDF document...</p>
+        </div>
+      );
+    }
 
-  // If no external slide deck exists, render the built-in Interactive Slide Deck
-  if (!hasExternalSlideDeck && lesson) {
+    if (!directPdfUrl) {
+      return (
+        <div className={`p-6 rounded-2xl bg-slate-950 border border-slate-800 text-center space-y-2 ${className}`}>
+          <AlertCircle className="w-8 h-8 text-slate-500 mx-auto" />
+          <h4 className="text-sm font-bold text-white">No PDF Document Attached</h4>
+          <p className="text-xs text-slate-400 max-w-sm mx-auto">
+            The course instructor has not uploaded a PDF for this topic yet.
+          </p>
+        </div>
+      );
+    }
+
     return (
-      <InteractiveSlideDeck
-        lesson={lesson}
-        trackTitle={trackTitle}
-        isFullscreen={isFullscreen}
-        onToggleFullscreen={toggleFullscreen}
-        onJumpToEditor={onJumpToEditor}
-        className={className}
-      />
+      <div 
+        ref={containerRef}
+        className={`rounded-2xl bg-slate-950 border border-slate-800 overflow-hidden shadow-2xl transition-all ${
+          isFullscreen ? 'fixed inset-0 z-50 rounded-none bg-black flex flex-col' : ''
+        } ${className}`}
+      >
+        <div className="px-4 py-2.5 bg-slate-900 border-b border-slate-800 flex items-center justify-between select-none">
+          <div className="flex items-center space-x-2.5 min-w-0">
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase flex items-center space-x-1.5 bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
+              <FileText className="w-3 h-3" />
+              <span>PDF Document</span>
+            </span>
+            <span className="text-xs font-semibold text-white truncate max-w-xs sm:max-w-md">
+              {activeMedia.slidesFileName || activeMedia.slidesTitle || lessonTitle}
+            </span>
+          </div>
+
+          <div className="flex items-center space-x-2 shrink-0">
+            <a
+              href={directPdfUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              download={activeMedia.slidesFileName || `${lessonTitle}.pdf`}
+              className="px-2.5 py-1 rounded-lg text-[11px] text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-1 transition border border-transparent hover:border-slate-700"
+              title="Open or Download PDF"
+            >
+              <Download className="w-3 h-3" />
+              <span>Download / Open</span>
+            </a>
+
+            <button
+              type="button"
+              onClick={toggleFullscreen}
+              className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              title={isFullscreen ? 'Exit Fullscreen (Esc)' : 'Present in Fullscreen'}
+            >
+              {isFullscreen ? <Minimize2 className="w-3.5 h-3.5" /> : <Maximize2 className="w-3.5 h-3.5" />}
+            </button>
+          </div>
+        </div>
+
+        <div className={`relative w-full bg-slate-950 ${isFullscreen ? 'flex-1' : 'aspect-video'}`}>
+          <iframe
+            src={`${directPdfUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
+            title={activeMedia.slidesTitle || lessonTitle}
+            className="absolute inset-0 w-full h-full border-0 bg-slate-900"
+            loading="lazy"
+          />
+        </div>
+      </div>
     );
   }
 
-  // If external slide deck is available
+  // =========================================================================
+  // 3. SLIDES TAB: Strictly Admin-Uploaded Google Slides or PPT Presentation
+  // =========================================================================
+  const rawInput = activeMedia.slidesUrl || activeMedia.slidesRawInput;
+  const embedUrl = resolveSlidesEmbedUrl(rawInput);
+  const externalUrl = getGoogleSlidesExternalUrl(rawInput) || rawInput;
+  const isGoogleSlides = Boolean(rawInput && /docs\.google\.com\/presentation/i.test(rawInput));
+
+  if (!embedUrl) {
+    return (
+      <div className={`p-6 rounded-2xl bg-slate-950 border border-slate-800 text-center space-y-2 ${className}`}>
+        <AlertCircle className="w-8 h-8 text-amber-500 mx-auto" />
+        <h4 className="text-sm font-bold text-white">Slide Deck Not Configured</h4>
+        <p className="text-xs text-slate-400 max-w-sm mx-auto">
+          No presentation link has been configured for this topic yet.
+        </p>
+      </div>
+    );
+  }
+
   return (
     <div 
       ref={containerRef}
@@ -177,44 +261,17 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
         </div>
 
         <div className="flex items-center space-x-2 shrink-0">
-          {/* Print / Download PDF */}
-          {lesson && (
-            <button
-              type="button"
-              onClick={() => printLessonPdf(lesson, trackTitle)}
-              className="px-2.5 py-1 rounded-lg text-[11px] text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-1 transition border border-slate-700"
-              title="Download printable PDF study sheet"
-            >
-              <Printer className="w-3 h-3 text-indigo-400" />
-              <span>PDF Sheet</span>
-            </button>
-          )}
-
-          {/* External Link or Download */}
-          {isGoogleSlides && externalUrl && (
+          {/* External Link */}
+          {externalUrl && (
             <a
               href={externalUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="px-2.5 py-1 rounded-lg text-[11px] text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-1 transition border border-transparent hover:border-slate-700"
-              title="Open full presentation in Google Slides"
+              title={isGoogleSlides ? 'Open presentation in Google Slides' : 'Open in new tab'}
             >
-              <span>Open in Slides</span>
+              <span>{isGoogleSlides ? 'Open in Slides' : 'Open Link'}</span>
               <ExternalLink className="w-3 h-3" />
-            </a>
-          )}
-
-          {!isGoogleSlides && directPdfUrl && (
-            <a
-              href={directPdfUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              download={activeMedia.slidesFileName || `${lessonTitle}-slides.pdf`}
-              className="px-2.5 py-1 rounded-lg text-[11px] text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-1 transition border border-transparent hover:border-slate-700"
-              title="Open in new window or download file"
-            >
-              <Download className="w-3 h-3" />
-              <span>Download / Open</span>
             </a>
           )}
 
@@ -232,56 +289,13 @@ export const LectureMediaViewer: React.FC<LectureMediaViewerProps> = ({
 
       {/* Main Slide Deck Presentation Area */}
       <div className={`relative w-full bg-slate-950 ${isFullscreen ? 'flex-1' : 'aspect-video'}`}>
-        {/* Scenario A: Google Slides */}
-        {isGoogleSlides && embedUrl && (
-          <iframe
-            src={embedUrl}
-            title={activeMedia.slidesTitle || lessonTitle}
-            className="absolute inset-0 w-full h-full border-0 bg-slate-950"
-            allowFullScreen
-            loading="lazy"
-          />
-        )}
-
-        {/* Scenario B: PDF / Uploaded Slide Deck */}
-        {!isGoogleSlides && directPdfUrl && (
-          <iframe
-            src={`${directPdfUrl}#toolbar=1&navpanes=0&scrollbar=1&view=FitH`}
-            title={activeMedia.slidesTitle || lessonTitle}
-            className="absolute inset-0 w-full h-full border-0 bg-slate-900"
-            loading="lazy"
-          />
-        )}
-
-        {/* Scenario C: Loading Local Deck */}
-        {loadingBlob && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center space-y-2 bg-slate-950">
-            <div className="w-6 h-6 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin" />
-            <p className="text-xs text-slate-400">Loading slide presentation...</p>
-          </div>
-        )}
-
-        {/* Scenario D: Fallback */}
-        {!embedUrl && !directPdfUrl && !loadingBlob && (
-          lesson ? (
-            <InteractiveSlideDeck
-              lesson={lesson}
-              trackTitle={trackTitle}
-              isFullscreen={isFullscreen}
-              onToggleFullscreen={toggleFullscreen}
-              onJumpToEditor={onJumpToEditor}
-              className="w-full h-full"
-            />
-          ) : (
-            <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center space-y-2 bg-slate-950">
-              <AlertCircle className="w-8 h-8 text-amber-400" />
-              <h4 className="text-sm font-bold text-white">Slide Deck Preview</h4>
-              <p className="text-xs text-slate-400 max-w-sm">
-                Paste a Google Slides URL or upload a presentation deck above to preview.
-              </p>
-            </div>
-          )
-        )}
+        <iframe
+          src={embedUrl}
+          title={activeMedia.slidesTitle || lessonTitle}
+          className="absolute inset-0 w-full h-full border-0 bg-slate-950"
+          allowFullScreen
+          loading="lazy"
+        />
       </div>
 
       {/* Presentation Footer Hint */}

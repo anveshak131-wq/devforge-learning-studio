@@ -1118,6 +1118,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                   <LectureMediaViewer
                                     media={activeMedia}
                                     lessonTitle={`${formData.title} Slide Preview`}
+                                    activeTab={activeMedia.slidesSourceType === 'pdf_upload' || activeMedia.slidesSourceType === 'pdf_url' ? 'pdf' : 'slides'}
                                     className="max-w-3xl"
                                   />
                                 </div>

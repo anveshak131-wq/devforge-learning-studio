@@ -23,10 +23,8 @@ import {
   ChevronDown,
   Presentation,
   Film,
-  Printer,
-  Download,
-  Video,
-  FileText
+  FileText,
+  Video
 } from 'lucide-react';
 import { Lesson, Track, ExecutionResult, TestResultItem, UserStats } from '../../types';
 import { CodeEditor } from '../editor/CodeEditor';
@@ -38,8 +36,7 @@ import { ProgressStorage } from '../../services/progressStorage';
 import { YouTubePlayer } from '../video/YouTubePlayer';
 import { LectureMediaViewer } from '../media/LectureMediaViewer';
 import { AuthService } from '../../services/authService';
-import { resolveMediaSlot } from '../../utils/slides';
-import { printLessonPdf, resolveLessonVideo, TRACK_OFFICIAL_DOCS } from '../../utils/lessonResources';
+import { getLessonMediaStatus } from '../../utils/slides';
 
 interface LessonWorkspaceProps {
   track: Track;
@@ -118,7 +115,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   const [unlockedHints, setUnlockedHints] = useState<number>(0);
   const [showSolutionConfirm, setShowSolutionConfirm] = useState(false);
   const [schemas, setSchemas] = useState<TableSchema[]>([]);
-  const [guideTab, setGuideTab] = useState<'concept' | 'slides' | 'video'>('concept');
+  const [guideTab, setGuideTab] = useState<'concept' | 'slides' | 'video' | 'pdf'>('concept');
   
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
@@ -573,63 +570,81 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
           </div>
 
           {(() => {
-            const videoInfo = resolveLessonVideo(lesson);
-            const docsInfo = TRACK_OFFICIAL_DOCS[lesson.language] || TRACK_OFFICIAL_DOCS.python;
+            const mediaStatus = getLessonMediaStatus(lesson.media, lesson.videoUrl);
 
             return (
               <>
-                {/* Modern Segmented Mode Switcher: Concept vs Slides vs Video */}
-                <div className="flex items-center justify-between p-1 rounded-xl bg-slate-950 border border-slate-800 shadow-inner">
-                  <div className="flex items-center space-x-1">
-                    <button
-                      type="button"
-                      onClick={() => setGuideTab('concept')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                        guideTab === 'concept'
-                          ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
-                          : 'text-slate-400 hover:text-white'
-                      }`}
-                    >
-                      <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
-                      <span>Concept &amp; Mission</span>
-                    </button>
+                {/* Segmented Mode Switcher: Rendered ONLY if Admin has uploaded media */}
+                {mediaStatus.hasMedia && (
+                  <div className="flex items-center justify-between p-1 rounded-xl bg-slate-950 border border-slate-800 shadow-inner">
+                    <div className="flex items-center space-x-1">
+                      <button
+                        type="button"
+                        onClick={() => setGuideTab('concept')}
+                        className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                          guideTab === 'concept'
+                            ? 'bg-slate-800 text-white shadow-sm border border-slate-700/80'
+                            : 'text-slate-400 hover:text-white'
+                        }`}
+                      >
+                        <BookOpen className="w-3.5 h-3.5 text-indigo-400" />
+                        <span>Concept &amp; Mission</span>
+                      </button>
 
-                    <button
-                      type="button"
-                      onClick={() => setGuideTab('slides')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                        guideTab === 'slides'
-                          ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
-                          : 'text-slate-400 hover:text-amber-300'
-                      }`}
-                    >
-                      <Presentation className="w-3.5 h-3.5 text-amber-400" />
-                      <span>Slide Deck (PPT)</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse ml-0.5" />
-                    </button>
+                      {mediaStatus.hasSlides && (
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('slides')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                            guideTab === 'slides'
+                              ? 'bg-amber-500 text-slate-950 shadow-md shadow-amber-500/20'
+                              : 'text-slate-400 hover:text-amber-300'
+                          }`}
+                        >
+                          <Presentation className="w-3.5 h-3.5 text-amber-400" />
+                          <span>Slide Deck (PPT)</span>
+                        </button>
+                      )}
 
-                    <button
-                      type="button"
-                      onClick={() => setGuideTab('video')}
-                      className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
-                        guideTab === 'video'
-                          ? 'bg-red-600 text-white shadow-md shadow-red-600/20'
-                          : 'text-slate-400 hover:text-red-300'
-                      }`}
-                    >
-                      <Film className="w-3.5 h-3.5 text-red-400" />
-                      <span>Video Walkthrough</span>
-                      <span className="w-1.5 h-1.5 rounded-full bg-red-400 animate-pulse ml-0.5" />
-                    </button>
+                      {mediaStatus.hasPdf && (
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('pdf')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                            guideTab === 'pdf'
+                              ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/20'
+                              : 'text-slate-400 hover:text-indigo-300'
+                          }`}
+                        >
+                          <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                          <span>PDF Document</span>
+                        </button>
+                      )}
+
+                      {mediaStatus.hasVideo && (
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('video')}
+                          className={`px-3 py-1.5 rounded-lg text-xs font-bold flex items-center space-x-1.5 transition ${
+                            guideTab === 'video'
+                              ? 'bg-red-600 text-white shadow-md shadow-red-600/20'
+                              : 'text-slate-400 hover:text-red-300'
+                          }`}
+                        >
+                          <Film className="w-3.5 h-3.5 text-red-400" />
+                          <span>Video Walkthrough</span>
+                        </button>
+                      )}
+                    </div>
+
+                    <span className="text-[10px] text-slate-500 font-mono hidden sm:inline pr-2">
+                      {guideTab === 'concept' ? '📖 Reading' : guideTab === 'slides' ? '📊 Slides' : guideTab === 'pdf' ? '📄 PDF' : '🎥 Video'}
+                    </span>
                   </div>
+                )}
 
-                  <span className="text-[10px] text-slate-500 font-mono hidden sm:inline pr-2">
-                    {guideTab === 'concept' ? '📖 Reading' : guideTab === 'slides' ? '📊 Slides' : '🎥 Video'}
-                  </span>
-                </div>
-
-                {/* If Slides Mode is Active */}
-                {guideTab === 'slides' && (
+                {/* If Slides Mode is Active (strictly admin-uploaded presentation) */}
+                {guideTab === 'slides' && mediaStatus.hasSlides && (
                   <div className="space-y-4 animate-in fade-in duration-200">
                     <div className="flex items-center justify-between">
                       <button
@@ -641,23 +656,12 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                         <span>Back to Concept Notes &amp; Task</span>
                       </button>
 
-                      <div className="flex items-center space-x-2">
-                        <button
-                          type="button"
-                          onClick={() => printLessonPdf(lesson, track.title)}
-                          className="text-[11px] text-slate-300 hover:text-white px-2 py-0.5 rounded bg-slate-800 border border-slate-700 flex items-center space-x-1 transition"
-                          title="Print or Save as PDF"
-                        >
-                          <Printer className="w-3 h-3 text-indigo-400" />
-                          <span>Download PDF</span>
-                        </button>
-                        <span className="text-[11px] text-amber-400 font-mono">
-                          Presentation Mode
-                        </span>
-                      </div>
+                      <span className="text-[11px] text-amber-400 font-mono">
+                        Presentation Mode
+                      </span>
                     </div>
 
-                    {/* Dedicated Media Viewer taking full stage without clutter */}
+                    {/* Dedicated Media Viewer */}
                     <LectureMediaViewer
                       media={lesson.media}
                       legacyVideoUrl={lesson.videoUrl}
@@ -665,7 +669,6 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                       lessonTitle={lesson.title}
                       trackTitle={track.title}
                       activeTab="slides"
-                      onJumpToEditor={() => setGuideTab('concept')}
                       className="w-full"
                     />
 
@@ -699,8 +702,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                   </div>
                 )}
 
-                {/* If Video Mode is Active */}
-                {guideTab === 'video' && (
+                {/* If PDF Mode is Active (strictly admin-uploaded PDF) */}
+                {guideTab === 'pdf' && mediaStatus.hasPdf && (
                   <div className="space-y-4 animate-in fade-in duration-200">
                     <div className="flex items-center justify-between">
                       <button
@@ -712,18 +715,69 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                         <span>Back to Concept Notes &amp; Task</span>
                       </button>
 
-                      <a
-                        href={videoInfo.watchUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-[11px] text-red-400 hover:text-red-300 flex items-center space-x-1 font-semibold transition"
-                      >
-                        <span>Open on YouTube</span>
-                        <ExternalLink className="w-3 h-3" />
-                      </a>
+                      <span className="text-[11px] text-indigo-400 font-mono">
+                        PDF Mode
+                      </span>
                     </div>
 
-                    {/* Dedicated Media Viewer taking full stage without clutter */}
+                    <LectureMediaViewer
+                      media={lesson.media}
+                      legacyVideoUrl={lesson.videoUrl}
+                      lesson={lesson}
+                      lessonTitle={lesson.title}
+                      trackTitle={track.title}
+                      activeTab="pdf"
+                      className="w-full"
+                    />
+
+                    {/* Quick Task Peek Card while viewing PDF */}
+                    <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-2.5">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-white flex items-center space-x-1.5">
+                          <Code2 className="w-3.5 h-3.5 text-cyan-400" />
+                          <span>Mission Checklist ({lesson.testCases.length} Goals)</span>
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => setGuideTab('concept')}
+                          className="text-[11px] text-indigo-400 hover:text-indigo-300 underline font-semibold"
+                        >
+                          Switch to Full Reading Notes
+                        </button>
+                      </div>
+
+                      <div className="space-y-1.5">
+                        {lesson.testCases.map((tc, idx) => (
+                          <div key={tc.id || idx} className="flex items-start space-x-2 text-xs text-slate-300">
+                            <span className="w-4 h-4 rounded-full bg-slate-800 text-slate-400 text-[10px] flex items-center justify-center shrink-0 mt-0.5 font-mono">
+                              {idx + 1}
+                            </span>
+                            <span className="leading-snug">{tc.description}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {/* If Video Mode is Active (strictly admin-uploaded video) */}
+                {guideTab === 'video' && mediaStatus.hasVideo && (
+                  <div className="space-y-4 animate-in fade-in duration-200">
+                    <div className="flex items-center justify-between">
+                      <button
+                        type="button"
+                        onClick={() => setGuideTab('concept')}
+                        className="text-xs text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 font-semibold transition group"
+                      >
+                        <ChevronLeft className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition" />
+                        <span>Back to Concept Notes &amp; Task</span>
+                      </button>
+
+                      <span className="text-[11px] text-red-400 font-mono">
+                        Video Mode
+                      </span>
+                    </div>
+
                     <LectureMediaViewer
                       media={lesson.media}
                       legacyVideoUrl={lesson.videoUrl}
@@ -764,78 +818,45 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                   </div>
                 )}
 
-                {/* If Concept Reading Mode is Active */}
+                {/* If Concept Reading Mode is Active (or no media attached) */}
                 {guideTab === 'concept' && (
                   <>
-                    {/* Multi-Modal Learning Resources Bar (PPT, PDF, YouTube, Docs) */}
-                    <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800/80 space-y-2.5 shadow-sm">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center space-x-2 text-xs font-bold text-white">
-                          <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-                          <span>Learning Resources &amp; Media Kit</span>
-                        </div>
-                        <span className="text-[10px] text-slate-500 font-mono">Instant Access</span>
+                    {/* Attached Media Shortcut Buttons (ONLY rendered if admin attached media) */}
+                    {mediaStatus.hasMedia && (
+                      <div className="flex flex-wrap items-center gap-2 p-2.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs">
+                        <span className="text-[11px] font-semibold text-slate-400">Attached Media:</span>
+                        {mediaStatus.hasSlides && (
+                          <button
+                            type="button"
+                            onClick={() => setGuideTab('slides')}
+                            className="px-2.5 py-1 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center space-x-1.5 transition text-xs font-semibold"
+                          >
+                            <Presentation className="w-3.5 h-3.5 text-amber-400" />
+                            <span>View Slide Deck (PPT)</span>
+                          </button>
+                        )}
+                        {mediaStatus.hasPdf && (
+                          <button
+                            type="button"
+                            onClick={() => setGuideTab('pdf')}
+                            className="px-2.5 py-1 rounded-lg bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 flex items-center space-x-1.5 transition text-xs font-semibold"
+                          >
+                            <FileText className="w-3.5 h-3.5 text-indigo-400" />
+                            <span>Open PDF Document</span>
+                          </button>
+                        )}
+                        {mediaStatus.hasVideo && (
+                          <button
+                            type="button"
+                            onClick={() => setGuideTab('video')}
+                            className="px-2.5 py-1 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-300 border border-red-500/30 flex items-center space-x-1.5 transition text-xs font-semibold"
+                          >
+                            <Film className="w-3.5 h-3.5 text-red-400" />
+                            <span>Watch Video Walkthrough</span>
+                          </button>
+                        )}
                       </div>
-
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
-                        {/* 1. Slide Deck (PPT) */}
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('slides')}
-                          className="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-amber-500/50 flex flex-col text-left transition group"
-                        >
-                          <div className="flex items-center justify-between w-full mb-1">
-                            <Presentation className="w-4 h-4 text-amber-400 group-hover:scale-110 transition transform" />
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-amber-500/10 text-amber-300 font-mono">PPT</span>
-                          </div>
-                          <span className="text-[11px] font-bold text-white group-hover:text-amber-300 transition">Slide Deck</span>
-                          <span className="text-[10px] text-slate-400">Visual Slides</span>
-                        </button>
-
-                        {/* 2. Video Walkthrough (YouTube) */}
-                        <button
-                          type="button"
-                          onClick={() => setGuideTab('video')}
-                          className="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-red-500/50 flex flex-col text-left transition group"
-                        >
-                          <div className="flex items-center justify-between w-full mb-1">
-                            <Film className="w-4 h-4 text-red-400 group-hover:scale-110 transition transform" />
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-red-500/10 text-red-300 font-mono">YouTube</span>
-                          </div>
-                          <span className="text-[11px] font-bold text-white group-hover:text-red-300 transition">Video Lecture</span>
-                          <span className="text-[10px] text-slate-400">HD Tutorial</span>
-                        </button>
-
-                        {/* 3. PDF Study Sheet */}
-                        <button
-                          type="button"
-                          onClick={() => printLessonPdf(lesson, track.title)}
-                          className="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-indigo-500/50 flex flex-col text-left transition group"
-                        >
-                          <div className="flex items-center justify-between w-full mb-1">
-                            <Printer className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition transform" />
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-indigo-500/10 text-indigo-300 font-mono">PDF</span>
-                          </div>
-                          <span className="text-[11px] font-bold text-white group-hover:text-indigo-300 transition">Study Sheet</span>
-                          <span className="text-[10px] text-slate-400">Download / Print</span>
-                        </button>
-
-                        {/* 4. Official Docs */}
-                        <a
-                          href={docsInfo.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="p-2.5 rounded-lg bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-cyan-500/50 flex flex-col text-left transition group"
-                        >
-                          <div className="flex items-center justify-between w-full mb-1">
-                            <ExternalLink className="w-4 h-4 text-cyan-400 group-hover:scale-110 transition transform" />
-                            <span className="text-[9px] px-1.5 py-0.2 rounded bg-cyan-500/10 text-cyan-300 font-mono">Docs</span>
-                          </div>
-                          <span className="text-[11px] font-bold text-white group-hover:text-cyan-300 transition">Official Docs</span>
-                          <span className="text-[10px] text-slate-400">{docsInfo.name.split(':')[0]}</span>
-                        </a>
-                      </div>
-                    </div>
+                    )}
 
           {/* Real-World Analogy */}
           {lesson.analogy && (

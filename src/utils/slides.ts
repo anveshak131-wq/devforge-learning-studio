@@ -12,7 +12,9 @@ import { LessonMedia, LectureMediaType } from '../types';
  * - https://docs.google.com/presentation/d/PRESENTATION_ID/pub...
  * - https://docs.google.com/presentation/d/PRESENTATION_ID/embed...
  * - https://docs.google.com/presentation/d/e/PUBLISHED_ID/pub...
+ * - https://docs.google.com/presentation/d/e/PUBLISHED_ID/embed...
  * - <iframe src="https://docs.google.com/presentation/d/..." ...></iframe>
+ * - Raw 20-60 char Google Slides presentation ID
  */
 export function extractGoogleSlidesEmbedUrl(input: string | null | undefined): string | null {
   if (!input) return null;
@@ -37,7 +39,13 @@ export function extractGoogleSlidesEmbedUrl(input: string | null | undefined): s
     return `https://docs.google.com/presentation/d/${standardMatch[1]}/embed?start=false&loop=false&delayms=3000`;
   }
 
-  // If user passed just the 44-character presentation ID
+  // Google Drive preview link for uploaded PPT / PDF
+  const driveMatch = trimmed.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i);
+  if (driveMatch && driveMatch[1]) {
+    return `https://drive.google.com/file/d/${driveMatch[1]}/preview`;
+  }
+
+  // If user passed just the presentation ID (alphanumeric with dashes/underscores)
   if (/^[a-zA-Z0-9_-]{20,60}$/.test(trimmed)) {
     return `https://docs.google.com/presentation/d/${trimmed}/embed?start=false&loop=false&delayms=3000`;
   }
@@ -53,24 +61,65 @@ export function isValidGoogleSlidesUrl(input: string | null | undefined): boolea
 }
 
 /**
+ * Resolves any presentation / slide deck input (Google Slides, Drive preview, Office PPT, or direct web URL)
+ * into a valid iframe embed URL.
+ */
+export function resolveSlidesEmbedUrl(input: string | null | undefined): string | null {
+  if (!input) return null;
+  let trimmed = input.trim();
+  if (!trimmed) return null;
+
+  // 1. Google Slides (standard edit/present/embed/pub, or Drive preview)
+  const googleEmbed = extractGoogleSlidesEmbedUrl(trimmed);
+  if (googleEmbed) return googleEmbed;
+
+  // 2. Extracted src from raw iframe tag
+  const iframeMatch = trimmed.match(/<iframe.*?src=["'](.*?)["'].*?>/i);
+  if (iframeMatch && iframeMatch[1]) {
+    return iframeMatch[1].trim();
+  }
+
+  // 3. Microsoft Office PowerPoint online viewer (for public .pptx / .ppt files)
+  if (/\.(pptx|ppt)($|\?)/i.test(trimmed)) {
+    return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(trimmed)}`;
+  }
+
+  // 4. Any direct valid HTTP / HTTPS embed link (e.g. Canva presentation, Pitch, Slideshare)
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  return null;
+}
+
+/**
  * Extracts canonical presentation view URL for "Open in Google Slides" external link
  */
 export function getGoogleSlidesExternalUrl(input: string | null | undefined): string | null {
   if (!input) return null;
-  const embed = extractGoogleSlidesEmbedUrl(input);
-  if (!embed) return null;
+  const trimmed = input.trim();
+  if (!trimmed) return null;
 
-  const publishedMatch = embed.match(/presentation\/d\/e\/([a-zA-Z0-9_-]+)/i);
+  const publishedMatch = trimmed.match(/docs\.google\.com\/presentation\/d\/e\/([a-zA-Z0-9_-]+)/i);
   if (publishedMatch) {
     return `https://docs.google.com/presentation/d/e/${publishedMatch[1]}/pub?start=false&loop=false&delayms=3000`;
   }
 
-  const standardMatch = embed.match(/presentation\/d\/([a-zA-Z0-9_-]+)/i);
+  const standardMatch = trimmed.match(/docs\.google\.com\/presentation\/d\/([a-zA-Z0-9_-]+)/i);
   if (standardMatch) {
     return `https://docs.google.com/presentation/d/${standardMatch[1]}/present`;
   }
 
-  return input;
+  const driveMatch = trimmed.match(/drive\.google\.com\/file\/d\/([a-zA-Z0-9_-]+)/i);
+  if (driveMatch) {
+    return `https://drive.google.com/file/d/${driveMatch[1]}/view`;
+  }
+
+  if (/^https?:\/\//i.test(trimmed)) {
+    return trimmed;
+  }
+
+  return null;
 }
 
 /**
@@ -110,6 +159,91 @@ export function resolveMediaSlot(
   return {
     type: 'none',
     media: { type: 'none' }
+  };
+}
+
+/**
+ * Status of admin-uploaded media for a lesson.
+ * Strictly reflects ONLY what the admin actually uploaded or configured.
+ * Zero random fallbacks.
+ */
+export interface LessonMediaStatus {
+  hasMedia: boolean;
+  hasSlides: boolean;
+  hasPdf: boolean;
+  hasVideo: boolean;
+  slidesUrl?: string;
+  slidesTitle?: string;
+  slidesSourceType?: string;
+  slidesFileBlobId?: string;
+  slidesFileName?: string;
+  slidesFileSize?: number;
+  videoUrl?: string;
+  videoTitle?: string;
+  pdfUrl?: string;
+}
+
+/**
+ * Analyzes admin-configured media for a lesson.
+ * Returns true flags strictly if media was uploaded / linked by the admin.
+ */
+export function getLessonMediaStatus(
+  media?: LessonMedia, 
+  legacyVideoUrl?: string
+): LessonMediaStatus {
+  const { type, media: activeMedia } = resolveMediaSlot(media, legacyVideoUrl);
+
+  if (type === 'none') {
+    return {
+      hasMedia: false,
+      hasSlides: false,
+      hasPdf: false,
+      hasVideo: false
+    };
+  }
+
+  let hasSlides = false;
+  let hasPdf = false;
+  let hasVideo = false;
+
+  // 1. Video Check: strictly admin provided video URL
+  const rawVideo = (activeMedia.videoUrl || legacyVideoUrl || '').trim();
+  if (rawVideo && (type === 'video' || legacyVideoUrl)) {
+    hasVideo = true;
+  }
+
+  // 2. Slides & PDF Check: strictly admin uploaded or configured
+  let pdfUrl: string | undefined = undefined;
+  if (type === 'slides') {
+    if (activeMedia.slidesSourceType === 'pdf_upload' && activeMedia.slidesFileBlobId) {
+      hasPdf = true;
+    } else if (activeMedia.slidesSourceType === 'pdf_url' && activeMedia.slidesUrl?.trim()) {
+      hasPdf = true;
+      pdfUrl = activeMedia.slidesUrl.trim();
+    } else if (activeMedia.slidesUrl && /\.pdf($|\?)/i.test(activeMedia.slidesUrl.trim())) {
+      hasPdf = true;
+      pdfUrl = activeMedia.slidesUrl.trim();
+    } else if (activeMedia.slidesUrl?.trim() || activeMedia.slidesRawInput?.trim()) {
+      hasSlides = true;
+    }
+  }
+
+  const hasMedia = hasSlides || hasPdf || hasVideo;
+
+  return {
+    hasMedia,
+    hasSlides,
+    hasPdf,
+    hasVideo,
+    slidesUrl: activeMedia.slidesUrl || activeMedia.slidesRawInput,
+    slidesTitle: activeMedia.slidesTitle,
+    slidesSourceType: activeMedia.slidesSourceType,
+    slidesFileBlobId: activeMedia.slidesFileBlobId,
+    slidesFileName: activeMedia.slidesFileName,
+    slidesFileSize: activeMedia.slidesFileSize,
+    videoUrl: hasVideo ? rawVideo : undefined,
+    videoTitle: activeMedia.videoTitle,
+    pdfUrl
   };
 }
 
