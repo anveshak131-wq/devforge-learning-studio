@@ -24,9 +24,13 @@ import {
   Presentation,
   Film,
   FileText,
-  Video
+  Video,
+  Lock
 } from 'lucide-react';
 import { Lesson, Track, ExecutionResult, TestResultItem, UserStats } from '../../types';
+import { User } from '../../types/auth';
+import { PaymentService } from '../../services/paymentService';
+import { CoursePaywallLock } from './CoursePaywallLock';
 import { CodeEditor } from '../editor/CodeEditor';
 import { OutputPanel } from '../execution/OutputPanel';
 import { CodeExecutor } from '../../services/codeExecutor';
@@ -47,6 +51,8 @@ interface LessonWorkspaceProps {
   onStatsUpdate: (stats: UserStats) => void;
   onClaimCertificate?: (track: Track) => void;
   onOpenAdmin?: (trackSlug: string, lessonId: string) => void;
+  currentUser?: User | null;
+  onOpenAuth?: () => void;
 }
 
 export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
@@ -57,7 +63,9 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   userStats,
   onStatsUpdate,
   onClaimCertificate,
-  onOpenAdmin
+  onOpenAdmin,
+  currentUser = null,
+  onOpenAuth = () => {}
 }) => {
   // Course Outline Sidebar Drawer state
   const [isOutlineOpen, setIsOutlineOpen] = useState(false);
@@ -276,7 +284,15 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     }
   };
 
+  const [coursePurchased, setCoursePurchased] = useState(() => PaymentService.isCoursePurchased(track.id, currentUser));
+
+  useEffect(() => {
+    setCoursePurchased(PaymentService.isCoursePurchased(track.id, currentUser));
+  }, [track.id, currentUser]);
+
   const currentIndex = track.lessons.findIndex(l => l.id === lesson.id);
+  const isFreePreview = currentIndex < 3;
+  const isLocked = !isFreePreview && !coursePurchased;
   const nextLesson = track.lessons[currentIndex + 1];
   const prevLesson = track.lessons[currentIndex - 1];
   const isCompleted = userStats.completedLessonIds.includes(lesson.id);
@@ -356,6 +372,21 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
             <span className="flex items-center space-x-1 px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-semibold">
               <CheckCircle2 className="w-3 h-3" />
               <span>Passed</span>
+            </span>
+          )}
+
+          {isFreePreview ? (
+            <span className="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+              Free Preview
+            </span>
+          ) : coursePurchased ? (
+            <span className="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+              Full Access
+            </span>
+          ) : (
+            <span className="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center space-x-1">
+              <Lock className="w-2.5 h-2.5" />
+              <span>₹199 Pass Required</span>
             </span>
           )}
         </div>
@@ -450,6 +481,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                   .map((l) => {
                     const isCurrent = l.id === lesson.id;
                     const isDone = userStats.completedLessonIds.includes(l.id);
+                    const lIdx = track.lessons.findIndex(item => item.id === l.id);
+                    const isLFree = lIdx < 3;
                     return (
                       <button
                         key={l.id}
@@ -468,12 +501,16 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                         <div className="flex items-center space-x-2.5 truncate mr-2">
                           {isDone ? (
                             <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                          ) : !isLFree && !coursePurchased ? (
+                            <Lock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                           ) : (
                             <Circle className={`w-4 h-4 shrink-0 ${isCurrent ? 'text-indigo-400' : 'text-slate-600'}`} />
                           )}
                           <span className="truncate">{l.title}</span>
                         </div>
-                        <span className="text-[10px] font-mono text-slate-500 shrink-0">+{l.xp} XP</span>
+                        <span className="text-[10px] font-mono text-slate-500 shrink-0">
+                          {isLFree ? 'FREE' : `+${l.xp} XP`}
+                        </span>
                       </button>
                     );
                   })}
@@ -522,6 +559,8 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                         {catLessons.map((l) => {
                           const isCurrent = l.id === lesson.id;
                           const isDone = userStats.completedLessonIds.includes(l.id);
+                          const lIdx = track.lessons.findIndex(item => item.id === l.id);
+                          const isLFree = lIdx < 3;
                           return (
                             <button
                               key={l.id}
@@ -540,12 +579,16 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
                               <div className="flex items-center space-x-2 truncate mr-2">
                                 {isDone ? (
                                   <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+                                ) : !isLFree && !coursePurchased ? (
+                                  <Lock className="w-3.5 h-3.5 text-amber-400 shrink-0" />
                                 ) : (
                                   <Circle className={`w-3.5 h-3.5 shrink-0 ${isCurrent ? 'text-indigo-400' : 'text-slate-600'}`} />
                                 )}
                                 <span className="truncate">{l.title}</span>
                               </div>
-                              <span className="text-[10px] font-mono text-slate-500 shrink-0">+{l.xp} XP</span>
+                              <span className="text-[10px] font-mono text-slate-500 shrink-0">
+                                {isLFree ? 'FREE' : `+${l.xp} XP`}
+                              </span>
                             </button>
                           );
                         })}
@@ -571,8 +614,18 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         </div>
       )}
 
-      {/* Main Workspace Split: Left Guide (5 cols) & Right Editor (7 cols) */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
+      {/* Main Workspace Split: Left Guide (5 cols) & Right Editor (7 cols) or Paywall Lock */}
+      {isLocked ? (
+        <CoursePaywallLock
+          track={track}
+          lesson={lesson}
+          lessonIndex={currentIndex}
+          currentUser={currentUser || null}
+          onOpenAuth={onOpenAuth}
+          onCourseUnlocked={() => setCoursePurchased(true)}
+        />
+      ) : (
+        <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden">
         {/* ========================================================= */}
         {/* LEFT COLUMN: THE GUIDE (Concept + Example + Task + Hints) */}
         {/* ========================================================= */}
@@ -1106,6 +1159,7 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
           </div>
         </div>
       </div>
+      )}
     </div>
   );
 };

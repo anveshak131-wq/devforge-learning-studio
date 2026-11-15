@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Play, 
   CheckCircle2, 
@@ -16,9 +16,12 @@ import {
   ShieldCheck,
   Zap,
   TrendingUp,
-  FileCode2
+  FileCode2,
+  Lock
 } from 'lucide-react';
 import { Track, UserStats, Lesson, TierLevel } from '../../types';
+import { User } from '../../types/auth';
+import { PaymentService } from '../../services/paymentService';
 import { LanguageIcon } from '../common/LanguageIcon';
 import { TRACK_OFFICIAL_DOCS } from '../../utils/lessonResources';
 
@@ -28,6 +31,8 @@ interface CourseDetailViewProps {
   onSelectLesson: (trackSlug: string, lessonId: string) => void;
   onBackToTracks: () => void;
   onClaimCertificate?: (track: Track) => void;
+  currentUser?: User | null;
+  onOpenAuth?: () => void;
 }
 
 export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
@@ -36,7 +41,31 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   onSelectLesson,
   onBackToTracks,
   onClaimCertificate,
+  currentUser = null,
+  onOpenAuth = () => {}
 }) => {
+  const [coursePurchased, setCoursePurchased] = useState(() => PaymentService.isCoursePurchased(track.id, currentUser));
+  const [checkoutLoading, setCheckoutLoading] = useState(false);
+
+  useEffect(() => {
+    setCoursePurchased(PaymentService.isCoursePurchased(track.id, currentUser));
+  }, [track.id, currentUser]);
+
+  const handleUnlockCourse = () => {
+    setCheckoutLoading(true);
+    PaymentService.openCheckout({
+      track,
+      currentUser: currentUser || null,
+      onSuccess: () => {
+        setCheckoutLoading(false);
+        setCoursePurchased(true);
+      },
+      onError: (err) => {
+        setCheckoutLoading(false);
+        alert(err);
+      }
+    });
+  };
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedTier, setSelectedTier] = useState<number | 'all'>('all');
   const [expandedModules, setExpandedModules] = useState<Record<string, boolean>>({});
@@ -145,6 +174,9 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-slate-800 text-slate-300">
                     {track.lessons.length} Interactive Topics
                   </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    {coursePurchased ? 'Full Course Unlocked' : '₹199 Lifetime Pass (Topics 1–3 Free)'}
+                  </span>
                   <span className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
                     +{track.lessons.length * 20} XP Total
                   </span>
@@ -165,6 +197,17 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
 
             {/* Quick Action Box */}
             <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+              {!coursePurchased && (
+                <button
+                  onClick={handleUnlockCourse}
+                  disabled={checkoutLoading}
+                  className="px-6 py-3 rounded-xl bg-gradient-to-r from-amber-500 via-amber-400 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 font-extrabold text-sm flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/30 transition transform hover:scale-[1.02] active:scale-[0.98]"
+                >
+                  <Sparkles className="w-4 h-4 fill-slate-950" />
+                  <span>{checkoutLoading ? 'Opening Checkout...' : 'Unlock Full Course — ₹199'}</span>
+                </button>
+              )}
+
               <button
                 onClick={() => onSelectLesson(track.slug, nextLesson.id)}
                 className="px-6 py-3 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-indigo-600 hover:from-indigo-500 hover:to-indigo-400 text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/30 transition transform hover:scale-[1.02] active:scale-[0.98]"
@@ -349,6 +392,8 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                       {filteredModuleLessons.map((lesson) => {
                         const isLessonDone = userStats.completedLessonIds.includes(lesson.id);
                         const isNext = lesson.id === nextLesson.id;
+                        const lessonIdx = track.lessons.findIndex(l => l.id === lesson.id);
+                        const isFree = lessonIdx < 3;
 
                         return (
                           <div
@@ -362,6 +407,8 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                               <div className="mt-0.5 shrink-0">
                                 {isLessonDone ? (
                                   <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                                ) : !isFree && !coursePurchased ? (
+                                  <Lock className="w-4 h-4 text-amber-400" />
                                 ) : isNext ? (
                                   <div className="w-4 h-4 rounded-full bg-indigo-500 flex items-center justify-center animate-pulse">
                                     <Play className="w-2.5 h-2.5 fill-white text-white ml-0.5" />
@@ -378,6 +425,16 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                                   }`}>
                                     {lesson.title}
                                   </span>
+                                  {isFree ? (
+                                    <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold uppercase bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                      Free Preview
+                                    </span>
+                                  ) : !coursePurchased ? (
+                                    <span className="px-1.5 py-0.2 rounded text-[10px] font-mono font-bold uppercase bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center space-x-0.5">
+                                      <Lock className="w-2.5 h-2.5" />
+                                      <span>₹199</span>
+                                    </span>
+                                  ) : null}
                                   {lesson.tierName && (
                                     <span className="px-1.5 py-0.2 rounded text-[10px] font-mono text-slate-400 bg-slate-800">
                                       {lesson.tierName}
@@ -402,10 +459,20 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                                 className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1 transition ${
                                   isNext
                                     ? 'bg-indigo-600 text-white'
+                                    : !isFree && !coursePurchased && !isLessonDone
+                                    ? 'bg-amber-500/20 text-amber-300 border border-amber-500/30'
                                     : 'bg-slate-800 text-slate-300 group-hover:bg-indigo-600 group-hover:text-white'
                                 }`}
                               >
-                                <span>{isLessonDone ? 'Review' : isNext ? 'Continue' : 'Start'}</span>
+                                <span>
+                                  {isLessonDone
+                                    ? 'Review'
+                                    : !isFree && !coursePurchased
+                                    ? 'Unlock'
+                                    : isNext
+                                    ? 'Continue'
+                                    : 'Start'}
+                                </span>
                                 <Play className="w-2.5 h-2.5 fill-current" />
                               </button>
                             </div>

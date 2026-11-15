@@ -20,6 +20,7 @@ import { CertificatesVaultView } from './components/views/CertificatesVaultView'
 import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
 import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
+import { LegalView, LegalTab } from './components/legal/LegalView';
 
 // Dynamic code-splitting: Admin chunks are NEVER downloaded by public students
 const AdminPortalView = React.lazy(() =>
@@ -71,6 +72,10 @@ function parseRouteFromLocation(): { view: string; payload?: any } {
   if (segments[0] === 'vault') return { view: 'vault' };
   if (segments[0] === 'roadmap') return { view: 'roadmap' };
   if (segments[0] === 'playground') return { view: 'playground' };
+  if (['terms', 'terms-and-conditions'].includes(segments[0])) return { view: 'terms' };
+  if (['privacy', 'privacy-policy'].includes(segments[0])) return { view: 'privacy' };
+  if (['refund', 'refund-policy', 'cancellation'].includes(segments[0])) return { view: 'refund' };
+  if (['contact', 'contact-us'].includes(segments[0])) return { view: 'contact' };
 
   return { view: 'dashboard' };
 }
@@ -167,6 +172,10 @@ export function App() {
     else if (view === 'vault') nextPath = '/vault';
     else if (view === 'roadmap') nextPath = '/roadmap';
     else if (view === 'playground') nextPath = '/playground';
+    else if (view === 'terms') nextPath = '/terms';
+    else if (view === 'privacy') nextPath = '/privacy';
+    else if (view === 'refund') nextPath = '/refund';
+    else if (view === 'contact') nextPath = '/contact';
     else if (view === 'admin') nextPath = window.location.pathname;
 
     if (pushHistory && view !== 'admin' && view !== 'decoy_404') {
@@ -326,6 +335,11 @@ export function App() {
             }}
             onBackToTracks={() => handleNavigate('tracks')}
             onClaimCertificate={handleClaimCertificate}
+            currentUser={currentUser}
+            onOpenAuth={() => {
+              setAuthModalConfig(null);
+              setIsAuthModalOpen(true);
+            }}
           />
         )}
 
@@ -342,6 +356,11 @@ export function App() {
             onClaimCertificate={handleClaimCertificate}
             onOpenAdmin={(trackSlug, lessonId) => {
               handleNavigate('admin', { trackSlug, lessonId });
+            }}
+            currentUser={currentUser}
+            onOpenAuth={() => {
+              setAuthModalConfig(null);
+              setIsAuthModalOpen(true);
             }}
           />
         )}
@@ -387,6 +406,15 @@ export function App() {
           <PlaygroundWorkspace />
         )}
 
+        {/* Compliance Legal & Policy Pages (Terms, Privacy, Refund, Contact) */}
+        {['terms', 'privacy', 'refund', 'contact'].includes(currentView) && (
+          <LegalView
+            initialTab={currentView as LegalTab}
+            onBack={() => handleNavigate('dashboard')}
+            onNavigateTab={(tab) => handleNavigate(tab)}
+          />
+        )}
+
         {/* Decoy 404 Honeypot Trap for intruders trying #admin, /admin, etc. */}
         {currentView === 'decoy_404' && (
           <DecoyNotFoundView onBackHome={() => handleNavigate('dashboard')} />
@@ -422,17 +450,45 @@ export function App() {
 
       {/* Platform Footer */}
       {currentView !== 'admin' && currentView !== 'lesson' && currentView !== 'decoy_404' && (
-        <footer className="py-3 px-6 border-t border-slate-900 bg-slate-950 flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-slate-500 font-mono select-none">
-          <span>© 2026 DevForge Learning Studio. All rights reserved.</span>
-          <div className="flex items-center space-x-4">
+        <footer className="py-4 px-6 border-t border-slate-900 bg-slate-950 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 font-mono select-none">
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
+            <span>© 2026 DevForge Learning Studio. All rights reserved.</span>
+            <span className="text-slate-700 hidden sm:inline">•</span>
+            <span className="text-slate-400 font-sans">₹199 Lifetime Access • Topics 1–3 Free Preview</span>
+          </div>
+
+          <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-sans">
+            <button
+              onClick={() => handleNavigate('terms')}
+              className="text-slate-400 hover:text-indigo-300 transition"
+            >
+              Terms
+            </button>
+            <button
+              onClick={() => handleNavigate('privacy')}
+              className="text-slate-400 hover:text-indigo-300 transition"
+            >
+              Privacy Policy
+            </button>
+            <button
+              onClick={() => handleNavigate('refund')}
+              className="text-slate-400 hover:text-indigo-300 transition"
+            >
+              Refund Policy
+            </button>
+            <button
+              onClick={() => handleNavigate('contact')}
+              className="text-slate-400 hover:text-indigo-300 transition"
+            >
+              Contact Us
+            </button>
             <button
               onClick={() => setIsSupportModalOpen(true)}
-              className="text-rose-400 hover:text-rose-300 flex items-center space-x-1.5 transition font-sans font-semibold text-xs"
+              className="text-rose-400 hover:text-rose-300 flex items-center space-x-1.5 transition font-semibold ml-1"
             >
               <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
               <span>Support DevForge</span>
             </button>
-            <span className="text-slate-600 hidden sm:inline">Enterprise Coding Curriculum</span>
           </div>
         </footer>
       )}

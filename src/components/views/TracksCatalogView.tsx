@@ -162,7 +162,10 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
                     </div>
                   </div>
 
-                  <div className="flex items-center space-x-1.5">
+                  <div className="flex items-center space-x-1.5 flex-wrap gap-y-1 justify-end">
+                    <span className="px-2 py-0.5 rounded-full bg-amber-500/15 text-amber-300 border border-amber-500/30 text-[10px] font-bold font-mono">
+                      ₹199 Pass
+                    </span>
                     <span className="px-2 py-0.5 rounded-full bg-slate-800/90 text-slate-300 text-[10px] font-mono font-bold uppercase tracking-wider">
                       {track.lessons.length} Topics
                     </span>
