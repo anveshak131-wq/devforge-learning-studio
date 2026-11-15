@@ -24,20 +24,19 @@ export class AuthService {
   static readonly SUPERADMIN_EMAILS = [
     'support.privatetoolbox@gmail.com',
     'anveshkoganti54@gmail.com',
-    'admin@devforge.academy',
   ];
 
-  static isSuperAdminEmail(email: string): boolean {
+  static isSuperAdminEmail(email?: string | null): boolean {
     if (!email) return false;
     const clean = email.trim().toLowerCase();
-    if (this.SUPERADMIN_EMAILS.includes(clean)) return true;
-    try {
-      const extra = JSON.parse(localStorage.getItem('devforge_admin_whitelist_v1') || '[]');
-      if (Array.isArray(extra) && extra.some((e: string) => e.trim().toLowerCase() === clean)) {
-        return true;
-      }
-    } catch {}
-    return false;
+    return this.SUPERADMIN_EMAILS.includes(clean);
+  }
+
+  static isAuthorizedAdmin(user?: User | null): boolean {
+    const target = user !== undefined ? user : this.getCurrentUser();
+    if (!target) return false;
+    if (this.isSuperAdminEmail(target.email)) return true;
+    return target.role === 'admin';
   }
 
   /**
@@ -45,21 +44,15 @@ export class AuthService {
    */
   static async getAdminWhitelist(): Promise<string[]> {
     try {
-      const res = await fetch('/api/admin/whitelist');
+      const res = await fetch('/api/admin/whitelist', { credentials: 'include' });
       if (res.ok) {
         const data = await res.json();
         if (data.success && Array.isArray(data.admins)) {
-          localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(data.admins));
           return data.admins;
         }
       }
     } catch {}
-    try {
-      const cached = JSON.parse(localStorage.getItem('devforge_admin_whitelist_v1') || '[]');
-      return Array.from(new Set([...this.SUPERADMIN_EMAILS, ...cached]));
-    } catch {
-      return [...this.SUPERADMIN_EMAILS];
-    }
+    return [...this.SUPERADMIN_EMAILS];
   }
 
   /**
@@ -70,23 +63,21 @@ export class AuthService {
       const res = await fetch('/api/admin/whitelist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ email, action: 'add' }),
       });
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
-          localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(data.admins));
           return { success: true, admins: data.admins };
         }
+        return { success: false, error: data.error };
       }
-    } catch {}
-    const cached = await this.getAdminWhitelist();
-    const clean = email.trim().toLowerCase();
-    if (!cached.includes(clean)) {
-      cached.push(clean);
-      localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(cached));
+      const data = await res.json().catch(() => ({}));
+      return { success: false, error: data.error || 'Failed to add admin' };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'Network error' };
     }
-    return { success: true, admins: cached };
   }
 
   /**
@@ -97,19 +88,21 @@ export class AuthService {
       const res = await fetch('/api/admin/whitelist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ email, action: 'remove' }),
       });
       if (res.ok) {
         const data = await res.json();
         if (data.success) {
-          localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(data.admins));
           return { success: true, admins: data.admins };
         }
+        return { success: false, error: data.error };
       }
-    } catch {}
-    const cached = (await this.getAdminWhitelist()).filter(e => e.toLowerCase() !== email.toLowerCase());
-    localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(cached));
-    return { success: true, admins: cached };
+      const data = await res.json().catch(() => ({}));
+      return { success: false, error: data.error || 'Failed to remove admin' };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'Network error' };
+    }
   }
 
   /**
@@ -141,7 +134,7 @@ export class AuthService {
       const data = localStorage.getItem(SESSION_KEY);
       if (!data) return null;
       const user: User = JSON.parse(data);
-      if (!user.role) user.role = user.email.includes('admin') ? 'admin' : 'student';
+      if (!user.role) user.role = this.isSuperAdminEmail(user.email) ? 'admin' : 'student';
       return user;
     } catch {
       return null;
@@ -153,7 +146,7 @@ export class AuthService {
    */
   static isAdmin(user?: User | null): boolean {
     const target = user !== undefined ? user : this.getCurrentUser();
-    return !!target && target.role === 'admin';
+    return !!target && (target.role === 'admin' || this.isSuperAdminEmail(target.email));
   }
 
   /**
@@ -170,8 +163,7 @@ export class AuthService {
   static async register(
     email: string, 
     password: string, 
-    fullName: string, 
-    adminKey?: string
+    fullName: string
   ): Promise<{ success: boolean; user?: User; error?: string }> {
     const cleanEmail = email.trim().toLowerCase();
     const cleanName = fullName.trim();
@@ -191,14 +183,7 @@ export class AuthService {
       return { success: false, error: 'An account with this email already exists. Please log in.' };
     }
 
-    let role: UserRole = 'student';
-    if (adminKey) {
-      if (adminKey.trim() === AdminSecurityService.getMasterKey()) {
-        role = 'admin';
-      } else {
-        return { success: false, error: 'Invalid Admin Master Key provided.' };
-      }
-    }
+    const role: UserRole = this.isSuperAdminEmail(cleanEmail) ? 'admin' : 'student';
 
     const passwordHash = await hashPassword(password);
     const newUser: User = {
@@ -237,37 +222,6 @@ export class AuthService {
     }
 
     localStorage.setItem(SESSION_KEY, JSON.stringify(record.user));
-    return { success: true, user: record.user };
-  }
-
-  /**
-   * Elevate account to Admin role with Master Key
-   */
-  static async elevateToAdmin(email: string, masterKey: string): Promise<{ success: boolean; user?: User; error?: string }> {
-    const cleanEmail = email.trim().toLowerCase();
-    const users = this.getUsers();
-    const record = users[cleanEmail];
-
-    if (!record) {
-      return { success: false, error: 'User account not found.' };
-    }
-
-    const verifyRes = await AdminSecurityService.verifyAdminKey(masterKey, cleanEmail);
-    if (!verifyRes.success) {
-      return { success: false, error: verifyRes.error || 'Invalid Admin Master Key.' };
-    }
-
-    record.user.role = 'admin';
-    users[cleanEmail] = record;
-    this.saveUsers(users);
-
-    // Update active session if this is the current user
-    const current = this.getCurrentUser();
-    if (current && current.email === cleanEmail) {
-      current.role = 'admin';
-      localStorage.setItem(SESSION_KEY, JSON.stringify(current));
-    }
-
     return { success: true, user: record.user };
   }
 
@@ -408,6 +362,14 @@ export class AuthService {
         if (data.success && data.user) {
           localStorage.setItem(SESSION_KEY, JSON.stringify(data.user));
           return data.user;
+        } else {
+          // If server indicates session is invalid/expired, purge local cache
+          const local = this.getCurrentUser();
+          if (local && (local.role === 'admin' || local.provider === 'google')) {
+            localStorage.removeItem(SESSION_KEY);
+            AdminSecurityService.destroySession();
+            return null;
+          }
         }
       }
     } catch {

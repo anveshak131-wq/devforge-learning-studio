@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import { UserStats, TierLevel, Track } from './types';
-import { User as UserType, Certificate, AdminSession } from './types/auth';
+import { User as UserType, Certificate } from './types/auth';
 import { ProgressStorage } from './services/progressStorage';
 import { AuthService } from './services/authService';
 import { Navbar } from './components/layout/Navbar';
@@ -24,9 +24,6 @@ import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
 // Dynamic code-splitting: Admin chunks are NEVER downloaded by public students
 const AdminPortalView = React.lazy(() =>
   import('./components/admin/AdminPortalView').then(m => ({ default: m.AdminPortalView }))
-);
-const AdminLockScreen = React.lazy(() =>
-  import('./components/admin/AdminLockScreen').then(m => ({ default: m.AdminLockScreen }))
 );
 import { SupportModal } from './components/support/SupportModal';
 import { CourseStorageService } from './services/courseStorageService';
@@ -83,7 +80,6 @@ export function App() {
   const [allTracks, setAllTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [userStats, setUserStats] = useState<UserStats>(() => ProgressStorage.getStats());
   const [currentUser, setCurrentUser] = useState<UserType | null>(() => AuthService.getCurrentUser());
-  const [adminSession, setAdminSession] = useState<AdminSession | null>(() => AdminSecurityService.getActiveSession());
   const [currentView, setCurrentView] = useState<string>(() => initialRoute.view);
   const [viewPayload, setViewPayload] = useState<any>(() => initialRoute.payload || null);
 
@@ -398,7 +394,7 @@ export function App() {
 
         {/* Protected Super Administrator Portal (Strict Google Whitelist Only) */}
         {currentView === 'admin' && (
-          !currentUser || !AuthService.isSuperAdminEmail(currentUser.email) ? (
+          !currentUser || !AuthService.isAuthorizedAdmin(currentUser) ? (
             <DecoyNotFoundView onBackHome={() => handleNavigate('dashboard')} />
           ) : (
             <React.Suspense
@@ -408,28 +404,17 @@ export function App() {
                 </div>
               }
             >
-              {adminSession ? (
-                <AdminPortalView
-                  onNavigateLesson={(trackSlug, lessonId) => {
-                    handleNavigate('lesson', { trackSlug, lessonId });
-                  }}
-                  onCloseAdmin={() => {
-                    setAdminSession(null);
-                    AdminSecurityService.destroySession();
-                    handleNavigate('dashboard');
-                  }}
-                  targetLessonId={viewPayload?.lessonId}
-                  targetTrackSlug={viewPayload?.trackSlug}
-                />
-              ) : (
-                <AdminLockScreen
-                  onUnlocked={(session) => {
-                    setAdminSession(session);
-                    setCurrentUser(AuthService.getCurrentUser());
-                  }}
-                  onCancel={() => handleNavigate('dashboard')}
-                />
-              )}
+              <AdminPortalView
+                onNavigateLesson={(trackSlug, lessonId) => {
+                  handleNavigate('lesson', { trackSlug, lessonId });
+                }}
+                onCloseAdmin={() => {
+                  AdminSecurityService.destroySession();
+                  handleNavigate('dashboard');
+                }}
+                targetLessonId={viewPayload?.lessonId}
+                targetTrackSlug={viewPayload?.trackSlug}
+              />
             </React.Suspense>
           )
         )}

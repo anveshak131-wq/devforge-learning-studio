@@ -90,9 +90,6 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   // Security tab state
   const [usersList, setUsersList] = useState<User[]>(() => AuthService.getAllUsersList());
   const [auditLogs, setAuditLogs] = useState<AdminAuditLog[]>(() => AdminSecurityService.getAuditLogs());
-  const [oldMasterKey, setOldMasterKey] = useState('');
-  const [newMasterKey, setNewMasterKey] = useState('');
-  const [keyChangeStatus, setKeyChangeStatus] = useState<string | null>(null);
   const [adminWhitelist, setAdminWhitelist] = useState<string[]>([]);
   const [newAdminEmailInput, setNewAdminEmailInput] = useState('');
   const [adminAddLoading, setAdminAddLoading] = useState(false);
@@ -196,7 +193,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   // Handle Save
   const handleSaveLesson = () => {
     if (!formData) return;
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
     const success = CourseStorageService.saveLesson(currentTrack.id, formData, adminEmail);
     if (success) {
       showToast(`Topic "${formData.title}" successfully saved and updated in live courses!`, 'success');
@@ -210,7 +207,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const handleRevertLesson = () => {
     if (!formData) return;
     if (window.confirm(`Revert "${formData.title}" back to factory defaults? All custom changes to this topic will be undone.`)) {
-      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
       CourseStorageService.resetLesson(currentTrack.id, formData.id, adminEmail);
       showToast(`Topic reverted to original defaults.`, 'info');
       // Reload
@@ -223,7 +220,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const handleDeleteLesson = () => {
     if (!formData) return;
     if (window.confirm(`Are you sure you want to delete topic "${formData.title}"? Learners will no longer see this topic.`)) {
-      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
       CourseStorageService.deleteLesson(currentTrack.id, formData.id, adminEmail);
       showToast(`Topic deleted successfully.`, 'info');
       // Select next lesson
@@ -294,7 +291,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       ]
     };
 
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
     CourseStorageService.addLesson(currentTrack.id, newLesson, adminEmail);
     showToast(`New topic "${newLesson.title}" created successfully!`, 'success');
     setSelectedLessonId(newLesson.id);
@@ -397,7 +394,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       }
     };
     setFormData(updatedLesson);
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
   };
 
@@ -432,7 +429,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
           }
         };
         setFormData(updatedLesson);
-        const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+        const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
         CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
         showToast(`Uploaded slide deck "${file.name}"!`, 'success');
       } else {
@@ -463,7 +460,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       }
     };
     setFormData(updatedLesson);
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
     showToast('Uploaded slide presentation removed.', 'info');
   };
@@ -482,7 +479,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       }
     };
     setFormData(updatedLesson);
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
     showToast(`Inserted sample presentation: "${sample.title}"`, 'success');
   };
@@ -502,20 +499,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
     showToast('Inserted demo YouTube video URL.', 'success');
   };
 
-  // Master Key Change
-  const handleChangeMasterKey = (e: React.FormEvent) => {
-    e.preventDefault();
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
-    const res = AdminSecurityService.setMasterKey(oldMasterKey, newMasterKey, adminEmail);
-    if (res.success) {
-      setKeyChangeStatus('Master Security Key updated successfully.');
-      setOldMasterKey('');
-      setNewMasterKey('');
-      showToast('Master Security Key updated.', 'success');
-    } else {
-      setKeyChangeStatus(res.error || 'Failed to update Master Key.');
-    }
-  };
+
 
   // Export / Import
   const handleExportData = () => {
@@ -1168,7 +1152,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                         }
                                       };
                                       setFormData(updatedLesson);
-                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
                                       CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                     }}
                                     placeholder="https://example.com/presentations/javascript-lecture.pdf"
@@ -1233,7 +1217,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                       }
                                     };
                                     setFormData(updatedLesson);
-                                    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+                                    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
                                     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                   }}
                                   placeholder="e.g. https://www.youtube.com/watch?v=PkZNo7MFNFg or youtu.be/VIDEO_ID"
@@ -1249,7 +1233,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                         media: { type: 'video', videoUrl: '' }
                                       };
                                       setFormData(updatedLesson);
-                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.academy';
+                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
                                       CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                     }}
                                     className="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white text-xs"
@@ -2129,62 +2113,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
               </div>
             </div>
 
-            {/* Master Key Card */}
-            <div className="rounded-2xl bg-slate-900/60 border border-slate-800 p-5 space-y-4 shadow-xl">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h3 className="text-base font-bold text-white flex items-center space-x-2">
-                    <Key className="w-4 h-4 text-amber-400" />
-                    <span>Admin Master Security Key</span>
-                  </h3>
-                  <p className="text-xs text-slate-400">
-                    The cryptographic key required to elevate accounts and access the Admin Studio.
-                  </p>
-                </div>
-              </div>
 
-              <form onSubmit={handleChangeMasterKey} className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
-                    Current Master Key
-                  </label>
-                  <input
-                    type="password"
-                    value={oldMasterKey}
-                    onChange={e => setOldMasterKey(e.target.value)}
-                    required
-                    placeholder="Enter current master key..."
-                    className="w-full bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-amber-500 font-mono"
-                  />
-                </div>
-
-                <div>
-                  <label className="block text-xs font-semibold text-slate-300 mb-1">
-                    New Master Key (Min 8 characters)
-                  </label>
-                  <input
-                    type="password"
-                    value={newMasterKey}
-                    onChange={e => setNewMasterKey(e.target.value)}
-                    required
-                    placeholder="Enter new strong master key..."
-                    className="w-full bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-amber-500 font-mono"
-                  />
-                </div>
-
-                <div className="md:col-span-2 flex items-center justify-between">
-                  {keyChangeStatus && (
-                    <span className="text-xs text-amber-400 font-medium">{keyChangeStatus}</span>
-                  )}
-                  <button
-                    type="submit"
-                    className="px-4 py-2 rounded-xl bg-amber-600 hover:bg-amber-500 text-white text-xs font-bold transition ml-auto shadow-md"
-                  >
-                    Update Security Key
-                  </button>
-                </div>
-              </form>
-            </div>
 
             {/* Whitelisted SuperAdmin Google Accounts */}
             <div className="rounded-2xl bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950 border border-indigo-500/30 p-5 space-y-4 shadow-xl">

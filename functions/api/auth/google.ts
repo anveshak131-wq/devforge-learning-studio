@@ -11,7 +11,6 @@ interface Env {
 const DEFAULT_SUPERADMIN_EMAILS = [
   'support.privatetoolbox@gmail.com',
   'anveshkoganti54@gmail.com',
-  'admin@devforge.academy',
 ];
 
 const CORS_HEADERS = {
@@ -72,7 +71,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const { sub, email, email_verified, name, picture, aud } = googlePayload;
 
     const EXPECTED_CLIENT_ID = '645430880987-cluo72d1jufag51hatsfaq5fo6q2pc0s.apps.googleusercontent.com';
-    if (aud && aud !== EXPECTED_CLIENT_ID && env?.GOOGLE_CLIENT_ID && aud !== env.GOOGLE_CLIENT_ID) {
+    const allowedClientIds = [EXPECTED_CLIENT_ID, env?.GOOGLE_CLIENT_ID].filter(Boolean);
+    if (!aud || !allowedClientIds.includes(aud)) {
       return JSON_RESPONSE(
         { success: false, error: 'Google token audience mismatch' },
         401

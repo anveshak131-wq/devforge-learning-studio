@@ -20,6 +20,7 @@ import {
 import { UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
 import { ProgressStorage } from '../../services/progressStorage';
+import { AuthService } from '../../services/authService';
 
 interface NavbarProps {
   currentView: string;
@@ -265,7 +266,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <Award className="w-4 h-4 text-amber-400" />
                   <span>My Certificates</span>
                 </button>
-                {currentUser.role === 'admin' && (
+                {AuthService.isAuthorizedAdmin(currentUser) && (
                   <button
                     onClick={() => { setProfileDropdownOpen(false); onNavigate('admin'); }}
                     className="w-full px-3.5 py-2 text-left text-amber-400 hover:text-amber-300 hover:bg-slate-800 flex items-center space-x-2"

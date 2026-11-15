@@ -11,7 +11,6 @@ export interface Env {
 export const DEFAULT_SUPERADMIN_EMAILS = [
   'support.privatetoolbox@gmail.com',
   'anveshkoganti54@gmail.com',
-  'admin@devforge.academy',
 ];
 
 export async function verifyAdminSession(

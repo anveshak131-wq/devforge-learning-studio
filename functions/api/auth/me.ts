@@ -1,10 +1,4 @@
-interface Env {
-  DEVFORGE_KV?: {
-    get: (key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }) => Promise<any>;
-    put: (key: string, value: string | ArrayBuffer | ReadableStream, options?: any) => Promise<void>;
-    delete: (key: string) => Promise<void>;
-  };
-}
+import { Env, DEFAULT_SUPERADMIN_EMAILS } from '../_auth';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -53,10 +47,28 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 
     if (env && env.DEVFORGE_KV) {
       const sessionUser = await env.DEVFORGE_KV.get(`session:${token}`, { type: 'json' }).catch(() => null);
-      if (sessionUser) {
+      if (sessionUser && sessionUser.email) {
+        const cleanEmail = String(sessionUser.email).trim().toLowerCase();
+        const customAdmins = (await env.DEVFORGE_KV.get('devforge_admin_whitelist_v1', { type: 'json' }).catch(() => [])) || [];
+        const envAdmins = env.ADMIN_EMAILS
+          ? env.ADMIN_EMAILS.split(',').map((e: string) => e.trim().toLowerCase())
+          : [];
+
+        const isWhitelisted =
+          DEFAULT_SUPERADMIN_EMAILS.includes(cleanEmail) ||
+          envAdmins.includes(cleanEmail) ||
+          (Array.isArray(customAdmins) &&
+            customAdmins.map((e: string) => String(e).toLowerCase().trim()).includes(cleanEmail));
+
+        const updatedRole = isWhitelisted ? 'admin' : (sessionUser.role === 'admin' ? 'student' : sessionUser.role);
+        const resolvedUser = {
+          ...sessionUser,
+          role: updatedRole,
+        };
+
         return JSON_RESPONSE({
           success: true,
-          user: sessionUser,
+          user: resolvedUser,
         });
       }
     }
