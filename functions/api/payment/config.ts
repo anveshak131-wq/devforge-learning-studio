@@ -15,7 +15,7 @@ export const onRequestOptions = async () => {
 
 export const onRequestGet = async (context: { env: Env }) => {
   const { env } = context;
-  const keyId = env?.RAZORPAY_KEY_ID || '';
+  const keyId = env?.RAZORPAY_KEY_ID || 'rzp_live_U0aEfT56Nxkpag';
 
   return new Response(
     JSON.stringify({

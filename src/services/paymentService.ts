@@ -82,7 +82,7 @@ export class PaymentService {
     }
 
     if (!razorpayKey) {
-      razorpayKey = 'rzp_test_devforge_sandbox';
+      razorpayKey = 'rzp_live_U0aEfT56Nxkpag';
     }
 
     if (!(window as any).Razorpay) {
