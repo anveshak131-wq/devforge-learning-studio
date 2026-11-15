@@ -66,8 +66,24 @@ export class PaymentService {
 
     if (typeof window === 'undefined') return;
 
-    const razorpayKey =
-      (import.meta as any).env?.VITE_RAZORPAY_KEY_ID || 'rzp_test_devforge_sandbox';
+    let razorpayKey = (import.meta as any).env?.VITE_RAZORPAY_KEY_ID;
+
+    // Dynamically fetch Razorpay Key ID from Cloudflare Edge if not baked into client build
+    if (!razorpayKey) {
+      try {
+        const configRes = await fetch('/api/payment/config');
+        if (configRes.ok) {
+          const configData = await configRes.json();
+          if (configData.keyId) {
+            razorpayKey = configData.keyId;
+          }
+        }
+      } catch {}
+    }
+
+    if (!razorpayKey) {
+      razorpayKey = 'rzp_test_devforge_sandbox';
+    }
 
     if (!(window as any).Razorpay) {
       onError('Razorpay checkout SDK failed to load. Please refresh and check your internet connection.');
