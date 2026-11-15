@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { X, Award, ShieldCheck, Zap, CheckCircle2, Lock, ArrowRight } from 'lucide-react';
+import { X, Award, ShieldCheck, Zap, CheckCircle2 } from 'lucide-react';
 import { AuthService } from '../../services/authService';
 import { User as UserType } from '../../types/auth';
 
@@ -35,9 +35,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 }) => {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
-  const [showAdminBypass, setShowAdminBypass] = useState(false);
-  const [adminEmail, setAdminEmail] = useState('admin@devforge.academy');
-  const [adminPassword, setAdminPassword] = useState('');
   const googleBtnContainerRef = useRef<HTMLDivElement>(null);
 
   // Initialize Google Identity Services
@@ -109,23 +106,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       window.google.accounts.id.prompt();
     } else {
       setError('Loading Google Identity... Please ensure your internet connection is active.');
-    }
-  };
-
-  const handleAdminSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setError(null);
-    setLoading(true);
-    try {
-      const res = await AuthService.login(adminEmail, adminPassword);
-      if (res.success && res.user) {
-        onSuccess(res.user);
-        onClose();
-      } else {
-        setError(res.error || 'Admin login failed.');
-      }
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -208,54 +188,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0 mt-0.5" />
               <span>Bank-grade security powered by Google OAuth 2.0</span>
             </div>
-          </div>
-
-          {/* Collapsible Admin Override */}
-          <div className="pt-2 border-t border-slate-800/60 text-center">
-            {!showAdminBypass ? (
-              <button
-                type="button"
-                onClick={() => setShowAdminBypass(true)}
-                className="text-[10px] text-slate-500 hover:text-slate-400 transition"
-              >
-                DevForge Staff / Admin Sign In
-              </button>
-            ) : (
-              <form onSubmit={handleAdminSubmit} className="space-y-2 pt-2 text-left">
-                <div className="flex items-center justify-between text-[11px] text-slate-400 font-semibold">
-                  <span>Admin Credentials</span>
-                  <button 
-                    type="button" 
-                    onClick={() => setShowAdminBypass(false)} 
-                    className="text-slate-500 hover:text-white"
-                  >
-                    Hide
-                  </button>
-                </div>
-                <input
-                  type="email"
-                  value={adminEmail}
-                  onChange={(e) => setAdminEmail(e.target.value)}
-                  placeholder="admin@devforge.academy"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
-                />
-                <input
-                  type="password"
-                  value={adminPassword}
-                  onChange={(e) => setAdminPassword(e.target.value)}
-                  placeholder="Admin Password"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-lg px-3 py-1.5 text-xs text-white placeholder-slate-600 focus:outline-none focus:border-indigo-500"
-                />
-                <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center justify-center space-x-1"
-                >
-                  <Lock className="w-3 h-3" />
-                  <span>Sign In as Admin</span>
-                </button>
-              </form>
-            )}
           </div>
         </div>
 
