@@ -21,6 +21,97 @@ function generateCredentialId(language: string): string {
 }
 
 export class AuthService {
+  static readonly SUPERADMIN_EMAILS = [
+    'support.privatetoolbox@gmail.com',
+    'anveshkoganti54@gmail.com',
+    'admin@devforge.academy',
+  ];
+
+  static isSuperAdminEmail(email: string): boolean {
+    if (!email) return false;
+    const clean = email.trim().toLowerCase();
+    if (this.SUPERADMIN_EMAILS.includes(clean)) return true;
+    try {
+      const extra = JSON.parse(localStorage.getItem('devforge_admin_whitelist_v1') || '[]');
+      if (Array.isArray(extra) && extra.some((e: string) => e.trim().toLowerCase() === clean)) {
+        return true;
+      }
+    } catch {}
+    return false;
+  }
+
+  /**
+   * Get all whitelisted admin emails (syncs with Cloudflare Edge KV)
+   */
+  static async getAdminWhitelist(): Promise<string[]> {
+    try {
+      const res = await fetch('/api/admin/whitelist');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.admins)) {
+          localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(data.admins));
+          return data.admins;
+        }
+      }
+    } catch {}
+    try {
+      const cached = JSON.parse(localStorage.getItem('devforge_admin_whitelist_v1') || '[]');
+      return Array.from(new Set([...this.SUPERADMIN_EMAILS, ...cached]));
+    } catch {
+      return [...this.SUPERADMIN_EMAILS];
+    }
+  }
+
+  /**
+   * Add a new admin email (SuperAdmin self-service)
+   */
+  static async addAdminEmail(email: string): Promise<{ success: boolean; admins?: string[]; error?: string }> {
+    try {
+      const res = await fetch('/api/admin/whitelist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, action: 'add' }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(data.admins));
+          return { success: true, admins: data.admins };
+        }
+      }
+    } catch {}
+    const cached = await this.getAdminWhitelist();
+    const clean = email.trim().toLowerCase();
+    if (!cached.includes(clean)) {
+      cached.push(clean);
+      localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(cached));
+    }
+    return { success: true, admins: cached };
+  }
+
+  /**
+   * Remove an admin email
+   */
+  static async removeAdminEmail(email: string): Promise<{ success: boolean; admins?: string[]; error?: string }> {
+    try {
+      const res = await fetch('/api/admin/whitelist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, action: 'remove' }),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success) {
+          localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(data.admins));
+          return { success: true, admins: data.admins };
+        }
+      }
+    } catch {}
+    const cached = (await this.getAdminWhitelist()).filter(e => e.toLowerCase() !== email.toLowerCase());
+    localStorage.setItem('devforge_admin_whitelist_v1', JSON.stringify(cached));
+    return { success: true, admins: cached };
+  }
+
   /**
    * Get all registered users from storage
    */
@@ -301,6 +392,7 @@ export class AuthService {
 
       const users = this.getUsers();
       let user: User;
+      const isSuperAdmin = this.isSuperAdminEmail(cleanEmail);
 
       if (users[cleanEmail]) {
         user = {
@@ -308,6 +400,7 @@ export class AuthService {
           fullName: cleanName,
           avatarUrl,
           googleId: payload.sub,
+          role: isSuperAdmin ? 'admin' : users[cleanEmail].user.role,
           provider: 'google',
         };
       } else {
@@ -316,7 +409,7 @@ export class AuthService {
           googleId: payload.sub,
           email: cleanEmail,
           fullName: cleanName,
-          role: cleanEmail.includes('admin@devforge') ? 'admin' : 'student',
+          role: isSuperAdmin ? 'admin' : 'student',
           avatarUrl,
           createdAt: new Date().toISOString(),
           earnedCertificateIds: [],

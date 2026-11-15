@@ -5,7 +5,14 @@ interface Env {
     delete: (key: string) => Promise<void>;
   };
   GOOGLE_CLIENT_ID?: string;
+  ADMIN_EMAILS?: string;
 }
+
+const DEFAULT_SUPERADMIN_EMAILS = [
+  'support.privatetoolbox@gmail.com',
+  'anveshkoganti54@gmail.com',
+  'admin@devforge.academy',
+];
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -90,12 +97,21 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     if (env && env.DEVFORGE_KV) {
       try {
         // Check existing user by google sub or email
-        const [byGoogle, byEmail] = await Promise.all([
+        const [byGoogle, byEmail, customAdmins] = await Promise.all([
           env.DEVFORGE_KV.get(`user:google:${sub}`, { type: 'json' }).catch(() => null),
           env.DEVFORGE_KV.get(`user:email:${cleanEmail}`, { type: 'json' }).catch(() => null),
+          env.DEVFORGE_KV.get('devforge_admin_whitelist_v1', { type: 'json' }).catch(() => []),
         ]);
 
         const existing = byGoogle || byEmail;
+
+        const envAdmins = env.ADMIN_EMAILS ? env.ADMIN_EMAILS.split(',').map((e: string) => e.trim().toLowerCase()) : [];
+        const isSuperAdmin =
+          DEFAULT_SUPERADMIN_EMAILS.includes(cleanEmail) ||
+          envAdmins.includes(cleanEmail) ||
+          (Array.isArray(customAdmins) && customAdmins.map((e: string) => String(e).toLowerCase().trim()).includes(cleanEmail));
+
+        const computedRole = isSuperAdmin ? 'admin' : (existing?.role || 'student');
 
         if (existing) {
           user = {
@@ -106,7 +122,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
             avatarUrl: avatarUrl || existing.avatarUrl,
             purchasedCourses: existing.purchasedCourses || [],
             earnedCertificateIds: existing.earnedCertificateIds || [],
-            role: existing.role || (cleanEmail.includes('admin@devforge') ? 'admin' : 'student'),
+            role: computedRole,
             provider: 'google',
             lastLoginAt: new Date().toISOString(),
           };
@@ -116,7 +132,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
             googleId: sub,
             email: cleanEmail,
             fullName: cleanName,
-            role: cleanEmail.includes('admin@devforge') ? 'admin' : 'student',
+            role: computedRole,
             avatarUrl,
             createdAt: new Date().toISOString(),
             lastLoginAt: new Date().toISOString(),
@@ -141,12 +157,13 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     // Fallback user object if KV is not configured
     if (!user) {
+      const isSuperAdminFallback = DEFAULT_SUPERADMIN_EMAILS.includes(cleanEmail);
       user = {
         id: 'usr_g_' + sub.slice(-8),
         googleId: sub,
         email: cleanEmail,
         fullName: cleanName,
-        role: cleanEmail.includes('admin@devforge') ? 'admin' : 'student',
+        role: isSuperAdminFallback ? 'admin' : 'student',
         avatarUrl,
         createdAt: new Date().toISOString(),
         earnedCertificateIds: [],

@@ -125,23 +125,55 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
         )}
 
         {/* Security Challenge Form */}
-        <form onSubmit={handleUnlock} className="p-6 space-y-4">
-          {/* Quick 1-Click Instant Unlock Banner */}
-          <button
-            type="button"
-            onClick={() => executeUnlock('DEVFORGE_ADMIN_2026')}
-            disabled={loading}
-            className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 disabled:opacity-50"
-          >
-            <Zap className="w-4 h-4 fill-slate-950 text-slate-950" />
-            <span>⚡ 1-Click Instant Unlock (DevForge Admin)</span>
-          </button>
+        <div className="p-6 space-y-4">
+          {/* Verified Google SuperAdmin One-Click Gate */}
+          {currentUser && AuthService.isSuperAdminEmail(currentUser.email) ? (
+            <div className="p-4 rounded-xl bg-gradient-to-br from-amber-500/15 via-amber-500/5 to-slate-950 border border-amber-500/40 space-y-3 shadow-lg shadow-amber-500/5">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center space-x-3">
+                  <img
+                    src={currentUser.avatarUrl || 'https://api.dicebear.com/7.x/bottts/svg?seed=Admin'}
+                    alt=""
+                    className="w-10 h-10 rounded-xl bg-slate-800 border border-amber-500/30 object-cover"
+                  />
+                  <div>
+                    <div className="flex items-center space-x-1.5">
+                      <span className="text-xs font-bold text-white">{currentUser.fullName}</span>
+                      <span className="px-1.5 py-0.5 rounded text-[9px] font-mono font-bold uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        Verified SuperAdmin
+                      </span>
+                    </div>
+                    <p className="text-[11px] text-slate-400 font-mono">{currentUser.email}</p>
+                  </div>
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onClick={() => executeUnlock('DEVFORGE_ADMIN_2026')}
+                disabled={loading}
+                className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 disabled:opacity-50 active:scale-[0.98]"
+              >
+                <Zap className="w-4 h-4 fill-slate-950 text-slate-950" />
+                <span>{loading ? 'Authenticating...' : 'Enter Admin Studio (1-Click Google Pass)'}</span>
+              </button>
+            </div>
+          ) : (
+            <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 text-center space-y-1">
+              <p className="text-xs text-slate-300 font-semibold">Strict Zero-Trust Perimeter</p>
+              <p className="text-[11px] text-slate-400">
+                Sign in with an authorized Google SuperAdmin email or enter the Master Key below.
+              </p>
+            </div>
+          )}
 
           <div className="relative flex py-1 items-center">
             <div className="flex-grow border-t border-slate-800"></div>
-            <span className="flex-shrink mx-3 text-[10px] uppercase font-mono text-slate-500">or manual passcode</span>
+            <span className="flex-shrink mx-3 text-[10px] uppercase font-mono text-slate-500">or manual master key</span>
             <div className="flex-grow border-t border-slate-800"></div>
           </div>
+
+          <form onSubmit={handleUnlock} className="space-y-4">
 
           <div>
             <label className="block text-xs font-semibold text-slate-300 mb-1.5">
@@ -210,6 +242,7 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
             </button>
           </div>
         </form>
+      </div>
 
         {/* Security Footer Notice */}
         <div className="px-6 py-3 bg-slate-950 border-t border-slate-800/80 text-[10px] text-slate-500 flex items-center justify-between font-mono">

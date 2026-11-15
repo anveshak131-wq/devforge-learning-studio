@@ -39,6 +39,11 @@ function parseRouteFromLocation(): { view: string; payload?: any } {
     return { view: 'dashboard' };
   }
 
+  // Decoy 404 Honeypot for common admin probing paths
+  if (['admin', 'wp-admin', 'administrator', 'backend', 'cpanel', 'login-admin', 'admin-login'].includes(segments[0])) {
+    return { view: 'decoy_404' };
+  }
+
   if (segments[0] === 'tracks' || segments[0] === 'courses') {
     if (!segments[1]) {
       return { view: 'tracks' };

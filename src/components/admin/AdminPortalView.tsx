@@ -97,6 +97,40 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const [newStealthSlug, setNewStealthSlug] = useState<string>('');
   const [slugStatus, setSlugStatus] = useState<string | null>(null);
   const [copiedLink, setCopiedLink] = useState(false);
+  const [adminWhitelist, setAdminWhitelist] = useState<string[]>([]);
+  const [newAdminEmailInput, setNewAdminEmailInput] = useState('');
+  const [adminAddLoading, setAdminAddLoading] = useState(false);
+
+  useEffect(() => {
+    AuthService.getAdminWhitelist().then(list => setAdminWhitelist(list));
+  }, []);
+
+  const handleAddAdmin = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newAdminEmailInput.trim()) return;
+    setAdminAddLoading(true);
+    const res = await AuthService.addAdminEmail(newAdminEmailInput);
+    setAdminAddLoading(false);
+    if (res.success && res.admins) {
+      setAdminWhitelist(res.admins);
+      setNewAdminEmailInput('');
+      showToast(`Granted SuperAdmin access to ${newAdminEmailInput}`, 'success');
+    } else {
+      showToast(res.error || 'Failed to add admin', 'error');
+    }
+  };
+
+  const handleRemoveAdmin = async (email: string) => {
+    if (AuthService.SUPERADMIN_EMAILS.includes(email.toLowerCase())) {
+      showToast('Cannot remove primary SuperAdmin account', 'error');
+      return;
+    }
+    const res = await AuthService.removeAdminEmail(email);
+    if (res.success && res.admins) {
+      setAdminWhitelist(res.admins);
+      showToast(`Revoked Admin access for ${email}`, 'info');
+    }
+  };
 
   // Slide upload & Media Studio state
   const [isUploadingSlide, setIsUploadingSlide] = useState(false);
@@ -2240,6 +2274,79 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                   </button>
                 </div>
               </form>
+            </div>
+
+            {/* Whitelisted SuperAdmin Google Accounts */}
+            <div className="rounded-2xl bg-gradient-to-br from-slate-900/90 via-slate-900/60 to-slate-950 border border-indigo-500/30 p-5 space-y-4 shadow-xl">
+              <div className="flex items-center justify-between">
+                <div>
+                  <div className="flex items-center space-x-2">
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-indigo-500/20 text-indigo-300 border border-indigo-500/30">
+                      Google OAuth Whitelist
+                    </span>
+                  </div>
+                  <h3 className="text-base font-bold text-white mt-1 flex items-center space-x-2">
+                    <ShieldCheck className="w-4 h-4 text-indigo-400" />
+                    <span>Authorized SuperAdmin Google Accounts</span>
+                  </h3>
+                  <p className="text-xs text-slate-400 mt-0.5">
+                    Only these specific Google accounts can unlock the Admin Studio. Add or revoke admins anytime.
+                  </p>
+                </div>
+              </div>
+
+              {/* Form to add a new admin */}
+              <form onSubmit={handleAddAdmin} className="flex flex-col sm:flex-row items-center gap-2.5 pt-1">
+                <input
+                  type="email"
+                  value={newAdminEmailInput}
+                  onChange={e => setNewAdminEmailInput(e.target.value)}
+                  placeholder="Enter new admin Gmail (e.g. partner@gmail.com)..."
+                  className="w-full flex-1 bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-indigo-500 font-mono"
+                />
+                <button
+                  type="submit"
+                  disabled={adminAddLoading || !newAdminEmailInput.trim()}
+                  className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition shadow-md disabled:opacity-50 flex items-center justify-center space-x-1.5"
+                >
+                  <Plus className="w-3.5 h-3.5" />
+                  <span>{adminAddLoading ? 'Adding...' : 'Add SuperAdmin'}</span>
+                </button>
+              </form>
+
+              {/* List of currently authorized superadmins */}
+              <div className="space-y-2 pt-1">
+                {adminWhitelist.map(email => {
+                  const isPrimary = AuthService.SUPERADMIN_EMAILS.includes(email.toLowerCase());
+                  return (
+                    <div
+                      key={email}
+                      className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between"
+                    >
+                      <div className="flex items-center space-x-2.5">
+                        <div className="w-7 h-7 rounded-lg bg-indigo-500/10 border border-indigo-500/20 flex items-center justify-center text-indigo-400">
+                          <ShieldCheck className="w-4 h-4" />
+                        </div>
+                        <div>
+                          <span className="text-xs font-mono font-bold text-white">{email}</span>
+                          <span className="ml-2 text-[10px] px-1.5 py-0.5 rounded bg-indigo-500/20 text-indigo-300 font-mono">
+                            {isPrimary ? 'Primary SuperAdmin' : 'Delegated Admin'}
+                          </span>
+                        </div>
+                      </div>
+                      {!isPrimary && (
+                        <button
+                          type="button"
+                          onClick={() => handleRemoveAdmin(email)}
+                          className="px-2.5 py-1 rounded bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/30 text-[11px] font-semibold transition"
+                        >
+                          Revoke Access
+                        </button>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </div>
 
             {/* Registered Users & Roles */}
