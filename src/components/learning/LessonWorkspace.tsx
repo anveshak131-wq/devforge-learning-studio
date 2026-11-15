@@ -130,12 +130,12 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
   
   const sqlSessionRef = useRef<SqlSession | null>(null);
 
-  const getReadySqlSession = async (): Promise<SqlSession | undefined> => {
+  const getReadySqlSession = async (forceReset = false): Promise<SqlSession | undefined> => {
     if (lesson.language !== 'sql') return undefined;
     if (!sqlSessionRef.current) {
       sqlSessionRef.current = new SqlSession();
     }
-    await sqlSessionRef.current.ensureReady(lesson.initSqlSchema);
+    await sqlSessionRef.current.ensureReady(lesson.initSqlSchema, forceReset);
     setSchemas(sqlSessionRef.current.getSchema());
     return sqlSessionRef.current;
   };
@@ -168,6 +168,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
     setShowSolutionConfirm(false);
     setIsOutlineOpen(false);
     setGuideTab(getInitialGuideTab(lesson));
+    if (lesson.language === 'sql' && sqlSessionRef.current) {
+      sqlSessionRef.current.resetDatabase(lesson.initSqlSchema).then(() => {
+        if (sqlSessionRef.current) {
+          setSchemas(sqlSessionRef.current.getSchema());
+        }
+      }).catch(console.error);
+    }
   }, [lesson.id]);
 
   const handleCodeChange = (newCode: string) => {
@@ -189,6 +196,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       if (session) {
         setSchemas(session.getSchema());
       }
+    } catch (err: any) {
+      setExecutionResult({
+        success: false,
+        logs: [{ type: 'error', args: [err.message || 'Execution error'], timestamp: Date.now() }],
+        error: err.message || 'Execution error',
+        executionTimeMs: 0
+      });
     } finally {
       setIsRunning(false);
     }
@@ -207,6 +221,13 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
         session
       );
       setExecutionResult(res);
+    } catch (err: any) {
+      setExecutionResult({
+        success: false,
+        logs: [{ type: 'error', args: [err.message || 'Execution error'], timestamp: Date.now() }],
+        error: err.message || 'Execution error',
+        executionTimeMs: 0
+      });
     } finally {
       setIsRunning(false);
     }
@@ -242,6 +263,14 @@ export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({
       } else {
         setIsReadyToSubmit(false);
       }
+    } catch (err: any) {
+      setExecutionResult({
+        success: false,
+        logs: [{ type: 'error', args: [err.message || 'Verification error'], timestamp: Date.now() }],
+        error: err.message || 'Verification error',
+        executionTimeMs: 0
+      });
+      setIsReadyToSubmit(false);
     } finally {
       setIsVerifying(false);
     }

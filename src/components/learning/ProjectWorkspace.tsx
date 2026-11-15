@@ -100,6 +100,13 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
       if (session) {
         setSchemas(session.getSchema());
       }
+    } catch (err: any) {
+      setExecutionResult({
+        success: false,
+        logs: [{ type: 'error', args: [err.message || 'Execution error'], timestamp: Date.now() }],
+        error: err.message || 'Execution error',
+        executionTimeMs: 0
+      });
     } finally {
       setIsRunning(false);
     }
@@ -146,6 +153,13 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
 
         onStatsUpdate(updated);
       }
+    } catch (err: any) {
+      setExecutionResult({
+        success: false,
+        logs: [{ type: 'error', args: [err.message || 'Verification error'], timestamp: Date.now() }],
+        error: err.message || 'Verification error',
+        executionTimeMs: 0
+      });
     } finally {
       setIsVerifying(false);
     }
