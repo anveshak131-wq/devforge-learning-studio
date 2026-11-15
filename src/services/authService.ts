@@ -241,11 +241,135 @@ export class AuthService {
   }
 
   /**
+   * Parse a Google JWT credential client-side (safe fallback)
+   */
+  private static parseJwt(token: string): any {
+    try {
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const jsonPayload = decodeURIComponent(
+        atob(base64)
+          .split('')
+          .map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2))
+          .join('')
+      );
+      return JSON.parse(jsonPayload);
+    } catch {
+      return null;
+    }
+  }
+
+  /**
+   * Log in or Register via Google OAuth ID token
+   */
+  static async loginWithGoogle(credential: string): Promise<{ success: boolean; user?: User; error?: string }> {
+    try {
+      // 1. Try serverless Cloudflare Pages endpoint first
+      try {
+        const res = await fetch('/api/auth/google', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({ credential }),
+        });
+
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success && data.user) {
+            const user: User = data.user;
+            localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+            // Also sync in local users map
+            const users = this.getUsers();
+            users[user.email] = { user, passwordHash: 'google_oauth_managed' };
+            this.saveUsers(users);
+            return { success: true, user };
+          }
+        }
+      } catch (networkErr) {
+        console.warn('Backend /api/auth/google unreachable or in local dev preview, falling back to client JWT parser:', networkErr);
+      }
+
+      // 2. Client-side fallback if /api/auth/google is not available (e.g. pure local Vite preview)
+      const payload = this.parseJwt(credential);
+      if (!payload || !payload.email) {
+        return { success: false, error: 'Could not decode Google token' };
+      }
+
+      const cleanEmail = payload.email.trim().toLowerCase();
+      const cleanName = payload.name || cleanEmail.split('@')[0];
+      const avatarUrl = payload.picture || `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanName)}`;
+
+      const users = this.getUsers();
+      let user: User;
+
+      if (users[cleanEmail]) {
+        user = {
+          ...users[cleanEmail].user,
+          fullName: cleanName,
+          avatarUrl,
+          googleId: payload.sub,
+          provider: 'google',
+        };
+      } else {
+        user = {
+          id: 'usr_g_' + (payload.sub ? payload.sub.slice(-8) : Math.random().toString(36).substring(2, 8)),
+          googleId: payload.sub,
+          email: cleanEmail,
+          fullName: cleanName,
+          role: cleanEmail.includes('admin@devforge') ? 'admin' : 'student',
+          avatarUrl,
+          createdAt: new Date().toISOString(),
+          earnedCertificateIds: [],
+          purchasedCourses: [],
+          provider: 'google',
+        };
+      }
+
+      users[cleanEmail] = { user, passwordHash: 'google_oauth_managed' };
+      this.saveUsers(users);
+      localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+      return { success: true, user };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'Google sign-in failed' };
+    }
+  }
+
+  /**
+   * Sync active session with Cloudflare Edge on startup
+   */
+  static async syncServerSession(): Promise<User | null> {
+    try {
+      const res = await fetch('/api/auth/me', {
+        method: 'GET',
+        credentials: 'include',
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.user) {
+          localStorage.setItem(SESSION_KEY, JSON.stringify(data.user));
+          return data.user;
+        }
+      }
+    } catch {
+      // Ignore network errors on local offline
+    }
+    return this.getCurrentUser();
+  }
+
+  /**
    * Log out
    */
   static logout() {
     localStorage.removeItem(SESSION_KEY);
     AdminSecurityService.destroySession();
+    try {
+      fetch('/api/auth/logout', {
+        method: 'POST',
+        credentials: 'include',
+      }).catch(() => {});
+    } catch {
+      // Ignore network errors
+    }
   }
 
   /**

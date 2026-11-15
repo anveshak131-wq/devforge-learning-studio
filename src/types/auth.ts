@@ -10,6 +10,9 @@ export interface User {
   avatarUrl?: string;
   createdAt: string;
   earnedCertificateIds: string[];
+  googleId?: string;
+  purchasedCourses?: string[];
+  provider?: 'google' | 'local' | 'admin';
 }
 
 export interface AdminSession {

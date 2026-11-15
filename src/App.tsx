@@ -79,6 +79,11 @@ export function App() {
   // Subscribe to live curriculum edits made by Admin & fetch latest Cloudflare KV database updates
   useEffect(() => {
     CourseStorageService.fetchFromCloud();
+    AuthService.syncServerSession().then(user => {
+      if (user) {
+        setCurrentUser(user);
+      }
+    });
     return CourseStorageService.subscribe(() => {
       setAllTracks(CourseStorageService.getTracks());
     });
