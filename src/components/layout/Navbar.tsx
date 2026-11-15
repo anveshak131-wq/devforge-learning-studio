@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { 
   Code2, 
   Flame, 
@@ -46,27 +46,10 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [profileDropdownOpen, setProfileDropdownOpen] = useState(false);
   const [toolsDropdownOpen, setToolsDropdownOpen] = useState(false);
-  const [logoClickCount, setLogoClickCount] = useState(0);
-  const logoTimerRef = useRef<any>(null);
   const levelInfo = ProgressStorage.getLevelInfo(userStats.xp);
 
-  // Secret 5-Tap on Logo: opens Admin Portal stealthily
   const handleLogoClick = () => {
     onNavigate('dashboard');
-
-    setLogoClickCount(prev => {
-      const next = prev + 1;
-      if (next >= 5) {
-        onNavigate('admin');
-        return 0;
-      }
-      return next;
-    });
-
-    clearTimeout(logoTimerRef.current);
-    logoTimerRef.current = setTimeout(() => {
-      setLogoClickCount(0);
-    }, 2500);
   };
 
   return (

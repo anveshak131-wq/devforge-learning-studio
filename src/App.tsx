@@ -116,38 +116,11 @@ export function App() {
         setCurrentView('decoy_404');
         return;
       }
-
-      // Check if matching private stealth slug (#forge-ops-9842 or custom slug)
-      if (AdminSecurityService.isStealthSlugMatch(hash) || AdminSecurityService.isStealthSlugMatch(search)) {
-        setCurrentView('admin');
-
-        // Immediately scrub the secret slug from the browser address bar so it cannot be copied/seen in history
-        try {
-          const currentSlug = AdminSecurityService.getStealthSlug();
-          const cleanSearch = window.location.search.replace(new RegExp(`[\\?&]${currentSlug}(=[^&]*)?`, 'gi'), '');
-          window.history.replaceState(null, '', window.location.pathname + (cleanSearch || ''));
-        } catch {
-          // ignore
-        }
-        return;
-      }
     };
 
     handleUrlRouting();
     window.addEventListener('hashchange', handleUrlRouting);
     return () => window.removeEventListener('hashchange', handleUrlRouting);
-  }, []);
-
-  // Global Secret Keyboard Shortcut for Admins: Ctrl+Shift+A or Cmd+Shift+A
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'A' || e.key === 'a')) {
-        e.preventDefault();
-        setCurrentView('admin');
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
   
   // Modals state
@@ -417,9 +390,11 @@ export function App() {
           <DecoyNotFoundView onBackHome={() => handleNavigate('dashboard')} />
         )}
 
-        {/* Protected Super Administrator Portal (Secret Admin Gateway) */}
+        {/* Protected Super Administrator Portal (Strict Google Whitelist Only) */}
         {currentView === 'admin' && (
-          adminSession ? (
+          !currentUser || !AuthService.isSuperAdminEmail(currentUser.email) ? (
+            <DecoyNotFoundView onBackHome={() => handleNavigate('dashboard')} />
+          ) : adminSession ? (
             <AdminPortalView
               onNavigateLesson={(trackSlug, lessonId) => {
                 handleNavigate('lesson', { trackSlug, lessonId });

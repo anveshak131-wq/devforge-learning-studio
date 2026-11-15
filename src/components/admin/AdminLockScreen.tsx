@@ -247,7 +247,7 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
         {/* Security Footer Notice */}
         <div className="px-6 py-3 bg-slate-950 border-t border-slate-800/80 text-[10px] text-slate-500 flex items-center justify-between font-mono">
           <span>Role-Based Access Control</span>
-          <span>Shortcut: Ctrl+Shift+A</span>
+          <span>Google Identity RBAC</span>
         </div>
       </div>
     </div>
