@@ -7,6 +7,7 @@ import { AuthService } from './services/authService';
 import { Navbar } from './components/layout/Navbar';
 import { DashboardView } from './components/views/DashboardView';
 import { TracksCatalogView } from './components/views/TracksCatalogView';
+import { CourseDetailView } from './components/views/CourseDetailView';
 import { ProjectsCatalogView } from './components/views/ProjectsCatalogView';
 import { LessonWorkspace } from './components/learning/LessonWorkspace';
 import { ProjectWorkspace } from './components/learning/ProjectWorkspace';
@@ -27,13 +28,53 @@ import { AdminSecurityService } from './services/adminSecurityService';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
 import { Heart } from 'lucide-react';
 
+function parseRouteFromLocation(): { view: string; payload?: any } {
+  let path = window.location.pathname.replace(/^\/+|\/+$/g, '');
+  if (!path && window.location.hash) {
+    path = window.location.hash.replace(/^#\/?/, '').replace(/^\/+|\/+$/g, '');
+  }
+  const segments = path.split('/').filter(Boolean);
+
+  if (!segments.length || segments[0] === 'dashboard') {
+    return { view: 'dashboard' };
+  }
+
+  if (segments[0] === 'tracks' || segments[0] === 'courses') {
+    if (!segments[1]) {
+      return { view: 'tracks' };
+    }
+    if (segments[2] === 'lesson' && segments[3]) {
+      return { view: 'lesson', payload: { trackSlug: segments[1], lessonId: segments[3] } };
+    }
+    return { view: 'course-detail', payload: { trackSlug: segments[1] } };
+  }
+
+  if (segments[0] === 'lesson' && segments[1]) {
+    return { view: 'lesson', payload: { lessonId: segments[1] } };
+  }
+
+  if (segments[0] === 'projects') {
+    if (segments[1]) {
+      return { view: 'project-milestone', payload: { projectId: segments[1] } };
+    }
+    return { view: 'projects' };
+  }
+
+  if (segments[0] === 'vault') return { view: 'vault' };
+  if (segments[0] === 'roadmap') return { view: 'roadmap' };
+  if (segments[0] === 'playground') return { view: 'playground' };
+
+  return { view: 'dashboard' };
+}
+
 export function App() {
+  const initialRoute = parseRouteFromLocation();
   const [allTracks, setAllTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [userStats, setUserStats] = useState<UserStats>(() => ProgressStorage.getStats());
   const [currentUser, setCurrentUser] = useState<UserType | null>(() => AuthService.getCurrentUser());
   const [adminSession, setAdminSession] = useState<AdminSession | null>(() => AdminSecurityService.getActiveSession());
-  const [currentView, setCurrentView] = useState<string>('dashboard');
-  const [viewPayload, setViewPayload] = useState<any>(null);
+  const [currentView, setCurrentView] = useState<string>(() => initialRoute.view);
+  const [viewPayload, setViewPayload] = useState<any>(() => initialRoute.payload || null);
 
   // Subscribe to live curriculum edits made by Admin & fetch latest Cloudflare KV database updates
   useEffect(() => {
@@ -41,6 +82,16 @@ export function App() {
     return CourseStorageService.subscribe(() => {
       setAllTracks(CourseStorageService.getTracks());
     });
+  }, []);
+
+  // Synchronize browser URL on Back / Forward history buttons
+  useEffect(() => {
+    const handlePopState = () => {
+      const parsed = parseRouteFromLocation();
+      handleNavigate(parsed.view, parsed.payload, false);
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
   }, []);
 
   // Stealth URL Gateway & Decoy Trap Listener
@@ -105,16 +156,48 @@ export function App() {
     setUserStats({ ...newStats });
   };
 
-  const handleNavigate = (view: string, payload?: any) => {
+  const handleNavigate = (view: string, payload?: any, pushHistory = true) => {
     if (view === 'cheatsheet') {
       setIsCheatSheetOpen(true);
       return;
     }
-    if (window.location.hash) {
+
+    let nextPath = '/';
+    if (view === 'dashboard') nextPath = '/dashboard';
+    else if (view === 'tracks') nextPath = '/tracks';
+    else if (view === 'course-detail' && payload?.trackSlug) nextPath = `/courses/${payload.trackSlug}`;
+    else if (view === 'lesson') {
+      if (payload?.trackSlug && payload?.lessonId) {
+        nextPath = `/courses/${payload.trackSlug}/lesson/${payload.lessonId}`;
+      } else if (payload?.lessonId) {
+        const match = CourseStorageService.getLessonById(payload.lessonId);
+        if (match) {
+          nextPath = `/courses/${match.track.slug}/lesson/${payload.lessonId}`;
+        } else {
+          nextPath = `/lesson/${payload.lessonId}`;
+        }
+      }
+    } else if (view === 'projects') nextPath = '/projects';
+    else if (view === 'project-milestone' && payload?.projectId) nextPath = `/projects/${payload.projectId}`;
+    else if (view === 'vault') nextPath = '/vault';
+    else if (view === 'roadmap') nextPath = '/roadmap';
+    else if (view === 'playground') nextPath = '/playground';
+    else if (view === 'admin') nextPath = window.location.pathname;
+
+    if (pushHistory && view !== 'admin' && view !== 'decoy_404') {
       try {
-        window.history.replaceState(null, '', window.location.pathname);
+        if (window.location.pathname !== nextPath) {
+          window.history.pushState(null, '', nextPath);
+        }
       } catch {}
     }
+
+    if (window.location.hash) {
+      try {
+        window.history.replaceState(null, '', nextPath);
+      } catch {}
+    }
+
     setCurrentView(view);
     setViewPayload(payload || null);
   };
@@ -161,18 +244,28 @@ export function App() {
   let activeTrack = allTracks[0];
   let activeLesson = allTracks[0]?.lessons[0];
 
-  if (currentView === 'lesson' && viewPayload) {
+  if ((currentView === 'lesson' || currentView === 'course-detail') && viewPayload) {
+    if (viewPayload.trackSlug) {
+      const track = CourseStorageService.getTrackBySlug(viewPayload.trackSlug);
+      if (track) {
+        activeTrack = track;
+        activeLesson = track.lessons[0];
+      }
+    }
+
     if (viewPayload.lessonId) {
       const match = CourseStorageService.getLessonById(viewPayload.lessonId);
       if (match) {
         activeTrack = match.track;
         activeLesson = match.lesson;
-      }
-    } else if (viewPayload.trackSlug) {
-      const track = CourseStorageService.getTrackBySlug(viewPayload.trackSlug);
-      if (track) {
-        activeTrack = track;
-        activeLesson = track.lessons[0];
+      } else if (activeTrack) {
+        const num = parseInt(viewPayload.lessonId, 10);
+        if (!isNaN(num) && num >= 1 && num <= activeTrack.lessons.length) {
+          activeLesson = activeTrack.lessons[num - 1];
+        } else {
+          const found = activeTrack.lessons.find(l => l.slug === viewPayload.lessonId || l.id.endsWith(viewPayload.lessonId));
+          if (found) activeLesson = found;
+        }
       }
     }
   }
@@ -232,7 +325,22 @@ export function App() {
             onSelectLesson={(trackSlug, lessonId) => {
               handleNavigate('lesson', { trackSlug, lessonId });
             }}
+            onSelectTrack={(trackSlug) => {
+              handleNavigate('course-detail', { trackSlug });
+            }}
             onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
+          />
+        )}
+
+        {currentView === 'course-detail' && (
+          <CourseDetailView
+            track={activeTrack}
+            userStats={userStats}
+            onSelectLesson={(trackSlug, lessonId) => {
+              handleNavigate('lesson', { trackSlug, lessonId });
+            }}
+            onBackToTracks={() => handleNavigate('tracks')}
+            onClaimCertificate={handleClaimCertificate}
           />
         )}
 
@@ -241,9 +349,9 @@ export function App() {
             track={activeTrack}
             lesson={activeLesson}
             onNavigateLesson={(lessonId) => {
-              handleNavigate('lesson', { lessonId });
+              handleNavigate('lesson', { trackSlug: activeTrack.slug, lessonId });
             }}
-            onBackToTracks={() => handleNavigate('tracks')}
+            onBackToTracks={() => handleNavigate('course-detail', { trackSlug: activeTrack.slug })}
             userStats={userStats}
             onStatsUpdate={handleStatsUpdate}
             onClaimCertificate={handleClaimCertificate}
