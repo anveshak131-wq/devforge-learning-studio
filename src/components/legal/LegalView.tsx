@@ -253,47 +253,40 @@ export const LegalView: React.FC<LegalViewProps> = ({
                 <span>Cancellation & Refund Policy</span>
               </h2>
               <p className="text-xs text-slate-400 mt-1">
-                Clear, fair policies designed to provide complete peace of mind for every learner.
+                Transparent policies governing digital course purchases, free previews, and duplicate transaction resolutions.
               </p>
             </div>
 
             <section className="space-y-2">
-              <h3 className="font-bold text-white text-sm">1. Free Preview Guarantee (Try Before You Pay)</h3>
+              <h3 className="font-bold text-white text-sm">1. Free Evaluation via Topics 1, 2, and 3</h3>
               <p>
-                To ensure total transparency, <strong>Topics 1, 2, and 3 of every track are 100% free to explore</strong>. You can read the explanations, write code, run live tests, and experience the full platform before deciding to purchase the complete course pass.
+                To allow prospective learners to make an informed decision, <strong>Topics 1, 2, and 3 of every curriculum track are 100% free of charge</strong>. Students can explore explanations, write code, run automated tests, and evaluate platform compatibility before committing to a purchase.
               </p>
             </section>
 
             <section className="space-y-2">
-              <h3 className="font-bold text-white text-sm">2. 7-Day Money-Back Guarantee</h3>
+              <h3 className="font-bold text-white text-sm">2. Digital Goods Policy (All Sales Final)</h3>
               <p>
-                If you purchase a course pass (₹199) and encounter verifiable technical defects, in-browser execution failures, or are genuinely unsatisfied with the material, you may request a <strong>100% full refund within 7 days</strong> of the transaction date.
+                Because full course access (₹199 per course pass) delivers immediate, non-revocable digital access to interactive lessons, capstone projects, and accredited certificate generation, <strong>all course purchases are final and non-refundable</strong> once unlocked.
               </p>
             </section>
 
             <section className="space-y-2">
-              <h3 className="font-bold text-white text-sm">3. Refund Request Process</h3>
+              <h3 className="font-bold text-white text-sm">3. Duplicate Transactions & Technical Billing Errors</h3>
               <p>
-                To initiate a refund, simply send an email to <code>support.privatetoolbox@gmail.com</code> with:
+                In the rare event that a user is accidentally charged more than once for the same course track due to a network or payment gateway glitch:
               </p>
               <ul className="list-disc pl-5 space-y-1 text-slate-300">
-                <li>Your registered Google account email.</li>
-                <li>Your Razorpay Payment ID (e.g. <code>pay_...</code> from your email receipt).</li>
-                <li>A brief description of the technical issue or reason for the request.</li>
+                <li>We will gladly issue a <strong>100% refund for the duplicate transaction</strong> upon verification.</li>
+                <li>Please email <code>support.privatetoolbox@gmail.com</code> with your transaction reference or Razorpay Payment ID within 7 days of the occurrence.</li>
+                <li>Approved duplicate refunds are credited back to the original payment source (UPI, Card, or Bank) within <strong>5 to 7 business days</strong> via Razorpay.</li>
               </ul>
             </section>
 
             <section className="space-y-2">
-              <h3 className="font-bold text-white text-sm">4. Refund Settlement Timeframe</h3>
+              <h3 className="font-bold text-white text-sm">4. Cancellation of Subscriptions</h3>
               <p>
-                Once approved, refunds are processed immediately through Razorpay and credited back to the original payment method (Bank Account, UPI ID, or Card) within <strong>5 to 7 business days</strong>, in accordance with standard Indian banking clearance timelines.
-              </p>
-            </section>
-
-            <section className="space-y-2">
-              <h3 className="font-bold text-white text-sm">5. Subscription Cancellation</h3>
-              <p>
-                DevForge does not operate recurring monthly subscriptions or auto-debit plans. Because every purchase is a one-time payment for lifetime access, there are no ongoing subscriptions to cancel or cancellation fees.
+                DevForge does not charge recurring monthly subscriptions or auto-debits. Since all courses are one-time payments granting lifetime access, there are no recurring subscriptions to cancel or cancellation penalties.
               </p>
             </section>
           </div>

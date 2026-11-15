@@ -136,8 +136,8 @@ export const CoursePaywallLock: React.FC<CoursePaywallLockProps> = ({
           </div>
 
           <div className="flex items-center space-x-2 text-[11px] text-slate-400">
-            <RotateCcw className="w-3.5 h-3.5 text-amber-400" />
-            <span>7-Day Money-Back Guarantee</span>
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Instant Digital Access • Topics 1–3 Free</span>
           </div>
         </div>
 
