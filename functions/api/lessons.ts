@@ -1,10 +1,4 @@
-interface Env {
-  DEVFORGE_KV: {
-    get: (key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }) => Promise<any>;
-    put: (key: string, value: string | ArrayBuffer | ReadableStream, options?: any) => Promise<void>;
-    delete: (key: string) => Promise<void>;
-  };
-}
+import { Env, verifyAdminSession } from './_auth';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -63,6 +57,16 @@ export const onRequestGet = async (context: { env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Strict SuperAdmin Authentication Check
+    const auth = await verifyAdminSession(request, env);
+    if (!auth.authorized) {
+      return JSON_RESPONSE({
+        success: false,
+        error: auth.error || 'Unauthorized: Valid SuperAdmin session required to alter curriculum data.',
+      }, 401);
+    }
+
     if (!env || !env.DEVFORGE_KV) {
       return JSON_RESPONSE({
         success: false,
@@ -140,6 +144,16 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 export const onRequestDelete = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Strict SuperAdmin Authentication Check
+    const auth = await verifyAdminSession(request, env);
+    if (!auth.authorized) {
+      return JSON_RESPONSE({
+        success: false,
+        error: auth.error || 'Unauthorized: Valid SuperAdmin session required to delete curriculum data.',
+      }, 401);
+    }
+
     if (!env || !env.DEVFORGE_KV) {
       return JSON_RESPONSE({
         success: false,

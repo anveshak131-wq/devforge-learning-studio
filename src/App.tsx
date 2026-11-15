@@ -19,9 +19,15 @@ import { RoadmapSkillTreeView } from './components/views/RoadmapSkillTreeView';
 import { CertificatesVaultView } from './components/views/CertificatesVaultView';
 import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
-import { AdminPortalView } from './components/admin/AdminPortalView';
-import { AdminLockScreen } from './components/admin/AdminLockScreen';
 import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
+
+// Dynamic code-splitting: Admin chunks are NEVER downloaded by public students
+const AdminPortalView = React.lazy(() =>
+  import('./components/admin/AdminPortalView').then(m => ({ default: m.AdminPortalView }))
+);
+const AdminLockScreen = React.lazy(() =>
+  import('./components/admin/AdminLockScreen').then(m => ({ default: m.AdminLockScreen }))
+);
 import { SupportModal } from './components/support/SupportModal';
 import { CourseStorageService } from './services/courseStorageService';
 import { AdminSecurityService } from './services/adminSecurityService';
@@ -394,27 +400,37 @@ export function App() {
         {currentView === 'admin' && (
           !currentUser || !AuthService.isSuperAdminEmail(currentUser.email) ? (
             <DecoyNotFoundView onBackHome={() => handleNavigate('dashboard')} />
-          ) : adminSession ? (
-            <AdminPortalView
-              onNavigateLesson={(trackSlug, lessonId) => {
-                handleNavigate('lesson', { trackSlug, lessonId });
-              }}
-              onCloseAdmin={() => {
-                setAdminSession(null);
-                AdminSecurityService.destroySession();
-                handleNavigate('dashboard');
-              }}
-              targetLessonId={viewPayload?.lessonId}
-              targetTrackSlug={viewPayload?.trackSlug}
-            />
           ) : (
-            <AdminLockScreen
-              onUnlocked={(session) => {
-                setAdminSession(session);
-                setCurrentUser(AuthService.getCurrentUser());
-              }}
-              onCancel={() => handleNavigate('dashboard')}
-            />
+            <React.Suspense
+              fallback={
+                <div className="min-h-[calc(100vh-3.5rem)] flex items-center justify-center bg-slate-950 text-slate-400 text-xs font-mono">
+                  Initializing Secure Admin Environment...
+                </div>
+              }
+            >
+              {adminSession ? (
+                <AdminPortalView
+                  onNavigateLesson={(trackSlug, lessonId) => {
+                    handleNavigate('lesson', { trackSlug, lessonId });
+                  }}
+                  onCloseAdmin={() => {
+                    setAdminSession(null);
+                    AdminSecurityService.destroySession();
+                    handleNavigate('dashboard');
+                  }}
+                  targetLessonId={viewPayload?.lessonId}
+                  targetTrackSlug={viewPayload?.trackSlug}
+                />
+              ) : (
+                <AdminLockScreen
+                  onUnlocked={(session) => {
+                    setAdminSession(session);
+                    setCurrentUser(AuthService.getCurrentUser());
+                  }}
+                  onCancel={() => handleNavigate('dashboard')}
+                />
+              )}
+            </React.Suspense>
           )
         )}
       </main>

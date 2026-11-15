@@ -14,8 +14,8 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
   onCancel
 }) => {
   const currentUser = AuthService.getCurrentUser();
-  const [email, setEmail] = useState(currentUser?.email || 'admin@devforge.academy');
-  const [masterKey, setMasterKey] = useState('DEVFORGE_ADMIN_2026');
+  const [email, setEmail] = useState(currentUser?.email || '');
+  const [masterKey, setMasterKey] = useState('');
   const [showKey, setShowKey] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -63,6 +63,21 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleGoogleSuperAdminUnlock = () => {
+    if (!currentUser || !AuthService.isSuperAdminEmail(currentUser.email)) {
+      setError('Current Google account is not on the authorized SuperAdmin whitelist.');
+      return;
+    }
+    const session: AdminSession = {
+      token: 'adm_sess_g_' + Math.random().toString(36).substring(2, 10),
+      adminEmail: currentUser.email,
+      authenticatedAt: new Date().toISOString(),
+      expiresAt: new Date(Date.now() + 60 * 60 * 1000).toISOString(),
+    };
+    AdminSecurityService.saveActiveSession(session);
+    onUnlocked(session);
   };
 
   const handleUnlock = async (e: React.FormEvent) => {
@@ -150,7 +165,7 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
 
               <button
                 type="button"
-                onClick={() => executeUnlock('DEVFORGE_ADMIN_2026')}
+                onClick={handleGoogleSuperAdminUnlock}
                 disabled={loading}
                 className="w-full py-2.5 px-3 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-500 hover:from-amber-400 hover:to-yellow-400 text-slate-950 text-xs font-bold transition flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 disabled:opacity-50 active:scale-[0.98]"
               >
@@ -185,7 +200,7 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
               onChange={e => setEmail(e.target.value)}
               required
               className="w-full bg-slate-950 text-white text-xs rounded-xl px-3.5 py-2.5 border border-slate-800 focus:outline-none focus:border-amber-500 font-mono"
-              placeholder="admin@devforge.academy"
+              placeholder="e.g. your_admin_email@gmail.com"
             />
           </div>
 
@@ -194,13 +209,6 @@ export const AdminLockScreen: React.FC<AdminLockScreenProps> = ({
               <label className="text-xs font-semibold text-slate-300">
                 Admin Master Security Key
               </label>
-              <button
-                type="button"
-                onClick={() => setMasterKey('DEVFORGE_ADMIN_2026')}
-                className="text-[10px] text-amber-400 hover:text-amber-300 transition"
-              >
-                Insert Default Key
-              </button>
             </div>
             <div className="relative">
               <Key className="w-4 h-4 text-slate-500 absolute left-3.5 top-1/2 -translate-y-1/2" />

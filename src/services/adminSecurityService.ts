@@ -127,14 +127,8 @@ export class AdminSecurityService {
     const cleaned = key.trim();
     const expectedKey = this.getMasterKey();
 
-    // Check if key is valid (case-insensitive and format-forgiving)
-    const isValidKey = 
-      cleaned === expectedKey ||
-      cleaned.toUpperCase() === expectedKey.toUpperCase() ||
-      cleaned.replace(/[-_]/g, '').toUpperCase() === expectedKey.replace(/[-_]/g, '').toUpperCase() ||
-      cleaned.toUpperCase() === 'DEVFORGE_ADMIN_2026' ||
-      cleaned.toLowerCase() === 'admin2026' ||
-      cleaned.toLowerCase() === 'admin';
+    // Check if key is valid (strictly matches expected key)
+    const isValidKey = Boolean(cleaned && (cleaned === expectedKey || cleaned.toUpperCase() === expectedKey.toUpperCase()));
 
     // If valid key provided, bypass any lingering lockout and clear immediately
     if (isValidKey) {
@@ -191,6 +185,18 @@ export class AdminSecurityService {
     });
 
     return { success: true, session };
+  }
+
+  /**
+   * Save active session
+   */
+  static saveActiveSession(session: AdminSession) {
+    localStorage.setItem(ADMIN_SESSION_STORAGE, JSON.stringify(session));
+    this.logAudit({
+      adminEmail: session.adminEmail,
+      action: 'admin_login',
+      details: 'Administrator acquired Google OAuth SuperAdmin session.'
+    });
   }
 
   /**

@@ -1,15 +1,4 @@
-interface Env {
-  DEVFORGE_KV?: {
-    get: (key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }) => Promise<any>;
-    put: (key: string, value: string | ArrayBuffer | ReadableStream, options?: any) => Promise<void>;
-  };
-}
-
-const DEFAULT_SUPERADMIN_EMAILS = [
-  'support.privatetoolbox@gmail.com',
-  'anveshkoganti54@gmail.com',
-  'admin@devforge.academy',
-];
+import { Env, verifyAdminSession, DEFAULT_SUPERADMIN_EMAILS } from '../_auth';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -34,9 +23,15 @@ export const onRequestOptions = async () => {
 
 export const onRequestGet = async (context: { request: Request; env: Env }) => {
   try {
-    const { env } = context;
-    let customAdmins: string[] = [];
+    const { request, env } = context;
 
+    // Strict SuperAdmin Session Verification
+    const auth = await verifyAdminSession(request, env);
+    if (!auth.authorized) {
+      return JSON_RESPONSE({ success: false, error: auth.error || 'Unauthorized' }, 401);
+    }
+
+    let customAdmins: string[] = [];
     if (env && env.DEVFORGE_KV) {
       customAdmins = (await env.DEVFORGE_KV.get('devforge_admin_whitelist_v1', { type: 'json' }).catch(() => [])) || [];
     }
@@ -51,6 +46,12 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Strict SuperAdmin Session Verification
+    const auth = await verifyAdminSession(request, env);
+    if (!auth.authorized) {
+      return JSON_RESPONSE({ success: false, error: auth.error || 'Unauthorized' }, 401);
+    }
 
     let body: any = null;
     try {
@@ -89,7 +90,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     const merged = Array.from(new Set([...DEFAULT_SUPERADMIN_EMAILS, ...updatedList]));
-    return JSON_RESPONSE({ success: true, admins: merged, message: `Admin list updated successfully.` });
+    return JSON_RESPONSE({ success: true, admins: merged, message: 'Admin list updated successfully.' });
   } catch (err: any) {
     return JSON_RESPONSE({ success: false, error: err?.message }, 500);
   }

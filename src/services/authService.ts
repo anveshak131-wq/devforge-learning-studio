@@ -119,33 +119,6 @@ export class AuthService {
     try {
       const data = localStorage.getItem(USERS_KEY);
       const parsed = data ? JSON.parse(data) : {};
-      
-      // Seed default Super Admin account if not present
-      if (!parsed['admin@devforge.academy']) {
-        const defaultAdmin: User = {
-          id: 'usr_superadmin',
-          email: 'admin@devforge.academy',
-          fullName: 'DevForge SuperAdmin',
-          role: 'admin',
-          avatarUrl: 'https://api.dicebear.com/7.x/bottts/svg?seed=DevForgeAdmin',
-          createdAt: new Date().toISOString(),
-          earnedCertificateIds: []
-        };
-        // password hash for 'AdminPass2026!'
-        // We'll compute or seed a predictable hash
-        parsed['admin@devforge.academy'] = {
-          user: defaultAdmin,
-          passwordHash: 'e71360bb3b3336cfcfa53b47164cf3ff673d3284ceb3979ea730701b22e1762c' // will update dynamically on first login
-        };
-      }
-
-      // Ensure every user object has a valid role property
-      Object.keys(parsed).forEach(email => {
-        if (!parsed[email].user.role) {
-          parsed[email].user.role = email.includes('admin') ? 'admin' : 'student';
-        }
-      });
-
       return parsed;
     } catch {
       return {};
@@ -259,13 +232,7 @@ export class AuthService {
     }
 
     const hash = await hashPassword(password);
-    // Allow initial login for preseeded admin or verify hash
-    if (cleanEmail === 'admin@devforge.academy' && password === 'AdminPass2026!') {
-      record.passwordHash = hash;
-      record.user.role = 'admin';
-      users[cleanEmail] = record;
-      this.saveUsers(users);
-    } else if (record.passwordHash !== hash) {
+    if (record.passwordHash !== hash) {
       return { success: false, error: 'Incorrect password. Please try again.' };
     }
 
