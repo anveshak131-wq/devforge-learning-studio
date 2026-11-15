@@ -446,6 +446,9 @@ export class AuthService {
     allCerts.push(newCert);
     localStorage.setItem(CERTIFICATES_KEY, JSON.stringify(allCerts));
 
+    // Asynchronously push to Cloudflare KV for permanent public verification
+    this.syncCertificateToCloud(newCert);
+
     // Link to user if logged in
     if (currentUser) {
       if (!currentUser.earnedCertificateIds.includes(newCert.id)) {
@@ -480,5 +483,110 @@ export class AuthService {
     const all = this.getAllCertificates();
     if (!user) return [];
     return all.filter(c => c.userId === user.id || user.earnedCertificateIds.includes(c.id));
+  }
+
+  /**
+   * Get public verification URL for a given credential ID
+   */
+  static getPublicVerificationUrl(credentialId: string): string {
+    const origin = typeof window !== 'undefined' && window.location.origin
+      ? window.location.origin
+      : 'https://devforge-65f.pages.dev';
+    return `${origin}/verify/${encodeURIComponent(credentialId.trim().toUpperCase())}`;
+  }
+
+  /**
+   * Build 1-Click LinkedIn "Add Certification" Pre-fill URL
+   */
+  static buildLinkedInCertUrl(cert: Certificate): string {
+    let issueYear = new Date().getFullYear();
+    let issueMonth = new Date().getMonth() + 1;
+
+    if (cert.issuedAt) {
+      const parsed = new Date(cert.issuedAt);
+      if (!isNaN(parsed.getTime())) {
+        issueYear = parsed.getFullYear();
+        issueMonth = parsed.getMonth() + 1;
+      }
+    }
+
+    const certUrl = this.getPublicVerificationUrl(cert.credentialId);
+    const certName = `${cert.trackTitle} - Professional Mastery`;
+    const orgName = 'DevForge Learning Studio';
+
+    const params = new URLSearchParams({
+      startTask: 'CERTIFICATION_NAME',
+      name: certName,
+      organizationName: orgName,
+      issueYear: String(issueYear),
+      issueMonth: String(issueMonth),
+      certId: cert.credentialId,
+      certUrl: certUrl,
+    });
+
+    return `https://www.linkedin.com/profile/add?${params.toString()}`;
+  }
+
+  /**
+   * Build 1-Click LinkedIn "Share to Feed" URL
+   */
+  static buildLinkedInShareUrl(cert: Certificate): string {
+    const certUrl = this.getPublicVerificationUrl(cert.credentialId);
+    return `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(certUrl)}`;
+  }
+
+  /**
+   * Synchronize an issued certificate to Cloudflare KV for public verification
+   */
+  static async syncCertificateToCloud(cert: Certificate): Promise<boolean> {
+    try {
+      const res = await fetch('/api/certificates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ certificate: cert }),
+      });
+      return res.ok;
+    } catch (err) {
+      console.warn('Could not sync certificate to Cloudflare KV:', err);
+      return false;
+    }
+  }
+
+  /**
+   * Synchronize all local certificates to Cloudflare KV
+   */
+  static async syncAllLocalCertificatesToCloud(): Promise<void> {
+    const all = this.getAllCertificates();
+    if (!all.length) return;
+    for (const cert of all) {
+      await this.syncCertificateToCloud(cert).catch(() => {});
+    }
+  }
+
+  /**
+   * Fetch and verify certificate from Cloudflare KV (with local cache fallback)
+   */
+  static async fetchCertificateFromCloud(credentialId: string): Promise<Certificate | null> {
+    const cleanId = credentialId.trim();
+    if (!cleanId) return null;
+
+    // Check local storage first
+    const local = this.getAllCertificates().find(
+      c => c.credentialId.toUpperCase() === cleanId.toUpperCase() || c.id === cleanId
+    );
+
+    try {
+      const res = await fetch(`/api/certificates?id=${encodeURIComponent(cleanId)}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.certificate) {
+          return data.certificate;
+        }
+      }
+    } catch (err) {
+      console.warn('Network lookup for certificate failed, using local fallback:', err);
+    }
+
+    return local || null;
   }
 }

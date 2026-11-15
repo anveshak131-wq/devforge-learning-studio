@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { 
   Award, 
   Download, 
@@ -10,13 +10,21 @@ import {
   Lock, 
   ArrowRight,
   User,
-  Edit2
+  Edit2,
+  ExternalLink,
+  Share2
 } from 'lucide-react';
 import { Certificate, User as UserType } from '../../types/auth';
 import { UserStats } from '../../types';
 import { CourseStorageService } from '../../services/courseStorageService';
 import { AuthService } from '../../services/authService';
 import { LanguageIcon } from '../common/LanguageIcon';
+
+const LinkedInIcon: React.FC<{ className?: string }> = ({ className = 'w-3.5 h-3.5' }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+    <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.2V10.9H6.46M7.83 6.45a1.67 1.67 0 0 0-1.67 1.67 1.67 1.67 0 0 0 1.67 1.67 1.67 1.67 0 0 0 1.67-1.67c0-.92-.75-1.67-1.67-1.67Z" />
+  </svg>
+);
 
 interface CertificatesVaultViewProps {
   currentUser: UserType | null;
@@ -25,6 +33,7 @@ interface CertificatesVaultViewProps {
   onViewCertificate: (cert: Certificate) => void;
   onNavigateLesson: (trackSlug: string, lessonId: string) => void;
   onUserUpdated: (user: UserType) => void;
+  onOpenPublicVerify?: (credentialId: string) => void;
 }
 
 export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
@@ -33,12 +42,18 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
   onOpenAuth,
   onViewCertificate,
   onNavigateLesson,
-  onUserUpdated
+  onUserUpdated,
+  onOpenPublicVerify
 }) => {
   const [editingName, setEditingName] = useState(false);
   const [nameInput, setNameInput] = useState(currentUser?.fullName || '');
 
   const userCerts = AuthService.getUserCertificates();
+
+  // Ensure all local certificates are synced to Cloudflare KV for public verification
+  useEffect(() => {
+    AuthService.syncAllLocalCertificatesToCloud();
+  }, []);
 
   const handleSaveName = (e: React.FormEvent) => {
     e.preventDefault();
@@ -47,6 +62,14 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
     if (updated) {
       onUserUpdated(updated);
       setEditingName(false);
+    }
+  };
+
+  const handleOpenVerify = (credentialId: string) => {
+    if (onOpenPublicVerify) {
+      onOpenPublicVerify(credentialId);
+    } else {
+      window.open(`/verify/${credentialId}`, '_blank');
     }
   };
 
@@ -66,7 +89,7 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
             My Course Certificates
           </h1>
           <p className="text-xs text-slate-300 max-w-xl leading-relaxed">
-            Every course you complete unlocks an official, cryptographically verified Certificate of Professional Mastery stamped with your name.
+            Every course you complete unlocks an official, cryptographically verified Certificate of Professional Mastery stamped with your name and verifiable online worldwide.
           </p>
 
           {/* Profile Name Management */}
@@ -150,9 +173,14 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
                     <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">
                       Official Credential
                     </span>
-                    <span className="text-xs font-mono text-slate-400">
-                      ID: {cert.credentialId}
-                    </span>
+                    <button
+                      onClick={() => handleOpenVerify(cert.credentialId)}
+                      className="text-xs font-mono text-indigo-400 hover:text-indigo-300 flex items-center space-x-1 transition"
+                      title="Open Public Verification Link"
+                    >
+                      <span>ID: {cert.credentialId}</span>
+                      <ExternalLink className="w-3 h-3" />
+                    </button>
                   </div>
 
                   <h3 className="text-base font-bold text-white">{cert.trackTitle}</h3>
@@ -167,15 +195,39 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
                   </div>
                 </div>
 
-                <div className="pt-3 border-t border-slate-800 flex items-center justify-between">
+                <div className="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2">
                   <span className="text-[11px] text-slate-500 font-mono">Issued {cert.issuedAt}</span>
-                  <button
-                    onClick={() => onViewCertificate(cert)}
-                    className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center space-x-1.5 shadow-md shadow-amber-500/20 transition"
-                  >
-                    <Printer className="w-3.5 h-3.5" />
-                    <span>View & Download</span>
-                  </button>
+                  
+                  <div className="flex items-center space-x-2">
+                    {/* 1-Click LinkedIn Add */}
+                    <button
+                      onClick={() => window.open(AuthService.buildLinkedInCertUrl(cert), '_blank')}
+                      className="px-2.5 py-1.5 rounded-lg bg-[#0a66c2] hover:bg-[#004182] text-white text-xs font-semibold flex items-center space-x-1.5 shadow-sm transition"
+                      title="Add directly to your LinkedIn Profile"
+                    >
+                      <LinkedInIcon className="w-3 h-3" />
+                      <span>Add to LinkedIn</span>
+                    </button>
+
+                    {/* View Public Verification Link */}
+                    <button
+                      onClick={() => handleOpenVerify(cert.credentialId)}
+                      className="px-2.5 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium flex items-center space-x-1 border border-slate-700 transition"
+                      title="View Public Verification Link"
+                    >
+                      <ExternalLink className="w-3 h-3 text-indigo-400" />
+                      <span>Verify</span>
+                    </button>
+
+                    {/* View Certificate Modal */}
+                    <button
+                      onClick={() => onViewCertificate(cert)}
+                      className="px-3 py-1.5 rounded-lg bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center space-x-1.5 shadow-md shadow-amber-500/20 transition"
+                    >
+                      <Printer className="w-3.5 h-3.5" />
+                      <span>View</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
@@ -195,7 +247,6 @@ export const CertificatesVaultView: React.FC<CertificatesVaultViewProps> = ({
             const completedCount = track.lessons.filter(l => userStats.completedLessonIds.includes(l.id)).length;
             const total = track.lessons.length;
             const isCompleted = completedCount === total;
-            const hasCert = userCerts.some(c => c.trackId === track.id || c.trackTitle.includes(track.title));
 
             return (
               <div

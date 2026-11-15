@@ -19,6 +19,7 @@ import { RoadmapSkillTreeView } from './components/views/RoadmapSkillTreeView';
 import { CertificatesVaultView } from './components/views/CertificatesVaultView';
 import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
+import { CertificateVerifyView } from './components/certificate/CertificateVerifyView';
 import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
 import { LegalView, LegalTab } from './components/legal/LegalView';
 
@@ -72,6 +73,10 @@ function parseRouteFromLocation(): { view: string; payload?: any } {
   if (segments[0] === 'vault') return { view: 'vault' };
   if (segments[0] === 'roadmap') return { view: 'roadmap' };
   if (segments[0] === 'playground') return { view: 'playground' };
+  if (segments[0] === 'verify' || segments[0] === 'certificate') {
+    const credentialId = segments[1] || new URLSearchParams(window.location.search).get('id') || '';
+    return { view: 'verify', payload: { credentialId } };
+  }
   if (['terms', 'terms-and-conditions'].includes(segments[0])) return { view: 'terms' };
   if (['privacy', 'privacy-policy'].includes(segments[0])) return { view: 'privacy' };
   if (['refund', 'refund-policy', 'cancellation'].includes(segments[0])) return { view: 'refund' };
@@ -176,6 +181,8 @@ export function App() {
     else if (view === 'privacy') nextPath = '/privacy';
     else if (view === 'refund') nextPath = '/refund';
     else if (view === 'contact') nextPath = '/contact';
+    else if (view === 'verify' && payload?.credentialId) nextPath = `/verify/${encodeURIComponent(payload.credentialId)}`;
+    else if (view === 'verify') nextPath = '/verify';
     else if (view === 'admin') nextPath = window.location.pathname;
 
     if (pushHistory && view !== 'admin' && view !== 'decoy_404') {
@@ -399,6 +406,17 @@ export function App() {
               handleNavigate('lesson', { trackSlug, lessonId });
             }}
             onUserUpdated={(u) => setCurrentUser(u)}
+            onOpenPublicVerify={(credId) => handleNavigate('verify', { credentialId: credId })}
+          />
+        )}
+
+        {/* Public Certificate Verification Page */}
+        {currentView === 'verify' && (
+          <CertificateVerifyView
+            credentialId={viewPayload?.credentialId || ''}
+            onBackHome={() => handleNavigate('dashboard')}
+            onNavigateCourse={(trackSlug) => handleNavigate('course-detail', { trackSlug })}
+            onNavigateToId={(newId) => handleNavigate('verify', { credentialId: newId })}
           />
         )}
 
@@ -450,7 +468,7 @@ export function App() {
 
       {/* Platform Footer */}
       {currentView !== 'admin' && currentView !== 'lesson' && currentView !== 'decoy_404' && (
-        <footer className="py-4 px-6 border-t border-slate-900 bg-slate-950 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 font-mono select-none">
+        <footer className="py-4 px-6 border-t border-slate-900 bg-slate-950 flex flex-col md:flex-row items-center justify-between gap-3 text-[11px] text-slate-500 font-mono select-none print:hidden">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-center sm:text-left">
             <span>© 2026 DevForge Learning Studio. All rights reserved.</span>
             <span className="text-slate-700 hidden sm:inline">•</span>
@@ -531,6 +549,7 @@ export function App() {
         isOpen={isCertModalOpen}
         onClose={() => setIsCertModalOpen(false)}
         certificate={activeCertificate}
+        onOpenPublicVerify={(credId) => handleNavigate('verify', { credentialId: credId })}
       />
 
       {/* Community Support Modal with Razorpay */}
