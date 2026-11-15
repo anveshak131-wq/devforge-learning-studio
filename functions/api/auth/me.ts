@@ -60,10 +60,23 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
           (Array.isArray(customAdmins) &&
             customAdmins.map((e: string) => String(e).toLowerCase().trim()).includes(cleanEmail));
 
+        // Check if user's email was granted promotional free access by Admin
+        const promoList = (await env.DEVFORGE_KV.get('devforge_promo_access_v1', { type: 'json' }).catch(() => [])) || [];
+        const promoMatch = Array.isArray(promoList) && promoList.find((p: any) => p && String(p.email || p).toLowerCase().trim() === cleanEmail);
+        const hasPromo = Boolean(promoMatch) || sessionUser.hasPromoAccess === true;
+
+        const currentCourses = Array.isArray(sessionUser.purchasedCourses) ? sessionUser.purchasedCourses : [];
+        const finalCourses = hasPromo
+          ? Array.from(new Set([...currentCourses, 'all']))
+          : currentCourses;
+
         const updatedRole = isWhitelisted ? 'admin' : (sessionUser.role === 'admin' ? 'student' : sessionUser.role);
         const resolvedUser = {
           ...sessionUser,
           role: updatedRole,
+          hasPromoAccess: hasPromo,
+          promoNote: promoMatch?.note || sessionUser.promoNote,
+          purchasedCourses: finalCourses,
         };
 
         return JSON_RESPONSE({

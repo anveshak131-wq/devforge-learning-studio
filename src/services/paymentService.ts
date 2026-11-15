@@ -20,8 +20,13 @@ export class PaymentService {
       return true;
     }
 
+    // Promotional Free Access (VIP Grant / Scholarship)
+    if (user && user.hasPromoAccess === true) {
+      return true;
+    }
+
     // Check user's purchasedCourses list (synced from Cloudflare KV)
-    if (user && Array.isArray(user.purchasedCourses) && user.purchasedCourses.includes(trackId)) {
+    if (user && Array.isArray(user.purchasedCourses) && (user.purchasedCourses.includes(trackId) || user.purchasedCourses.includes('all') || user.purchasedCourses.includes('*'))) {
       return true;
     }
 

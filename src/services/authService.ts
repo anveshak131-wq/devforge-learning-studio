@@ -1,4 +1,4 @@
-import { User, Certificate, UserRole } from '../types/auth';
+import { User, Certificate, UserRole, PromoGrant } from '../types/auth';
 import { Language } from '../types';
 import { AdminSecurityService } from './adminSecurityService';
 
@@ -103,6 +103,81 @@ export class AuthService {
     } catch (err: any) {
       return { success: false, error: err?.message || 'Network error' };
     }
+  }
+
+  /**
+   * Get all promotional free accounts (syncs with Cloudflare Edge KV)
+   */
+  static async getPromoUsers(): Promise<PromoGrant[]> {
+    try {
+      const res = await fetch('/api/admin/promos', { credentials: 'include' });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && Array.isArray(data.promos)) {
+          return data.promos;
+        }
+      }
+    } catch {}
+    return [];
+  }
+
+  /**
+   * Grant promotional free access by email or batch emails
+   */
+  static async grantPromoAccess(
+    rawEmails: string,
+    note?: string
+  ): Promise<{ success: boolean; promos?: PromoGrant[]; error?: string; message?: string }> {
+    try {
+      const res = await fetch('/api/admin/promos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ rawEmails, note, action: 'add' }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        return { success: true, promos: data.promos, message: data.message };
+      }
+      return { success: false, error: data.error || 'Failed to grant promotional access' };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'Network error' };
+    }
+  }
+
+  /**
+   * Revoke promotional free access
+   */
+  static async revokePromoAccess(
+    email: string
+  ): Promise<{ success: boolean; promos?: PromoGrant[]; error?: string; message?: string }> {
+    try {
+      const res = await fetch('/api/admin/promos', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ email, action: 'remove' }),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        return { success: true, promos: data.promos, message: data.message };
+      }
+      return { success: false, error: data.error || 'Failed to revoke promotional access' };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'Network error' };
+    }
+  }
+
+  /**
+   * Check if a user has promotional free lifetime access
+   */
+  static hasPromoAccess(user?: User | null): boolean {
+    const u = user !== undefined ? user : this.getCurrentUser();
+    if (!u) return false;
+    return (
+      u.hasPromoAccess === true ||
+      (Array.isArray(u.purchasedCourses) && (u.purchasedCourses.includes('all') || u.purchasedCourses.includes('*')))
+    );
   }
 
   /**

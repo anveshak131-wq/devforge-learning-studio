@@ -13,6 +13,15 @@ export interface User {
   googleId?: string;
   purchasedCourses?: string[];
   provider?: 'google' | 'local' | 'admin';
+  hasPromoAccess?: boolean;
+  promoNote?: string;
+}
+
+export interface PromoGrant {
+  email: string;
+  grantedAt: string;
+  grantedBy: string;
+  note?: string;
 }
 
 export interface AdminSession {

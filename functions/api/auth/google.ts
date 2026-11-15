@@ -113,6 +113,16 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
         const computedRole = isSuperAdmin ? 'admin' : (existing?.role || 'student');
 
+        // Check if user's email was granted promotional free access by Admin
+        const promoList = (await env.DEVFORGE_KV.get('devforge_promo_access_v1', { type: 'json' }).catch(() => [])) || [];
+        const promoMatch = Array.isArray(promoList) && promoList.find((p: any) => p && String(p.email || p).toLowerCase().trim() === cleanEmail);
+        const hasPromo = Boolean(promoMatch);
+
+        const existingCourses = existing?.purchasedCourses || [];
+        const finalCourses = hasPromo
+          ? Array.from(new Set([...existingCourses, 'all']))
+          : existingCourses;
+
         if (existing) {
           user = {
             ...existing,
@@ -120,10 +130,12 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
             email: cleanEmail,
             fullName: cleanName || existing.fullName,
             avatarUrl: avatarUrl || existing.avatarUrl,
-            purchasedCourses: existing.purchasedCourses || [],
+            purchasedCourses: finalCourses,
             earnedCertificateIds: existing.earnedCertificateIds || [],
             role: computedRole,
             provider: 'google',
+            hasPromoAccess: hasPromo || existing.hasPromoAccess || false,
+            promoNote: promoMatch?.note || existing.promoNote,
             lastLoginAt: new Date().toISOString(),
           };
         } else {
@@ -137,8 +149,10 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
             createdAt: new Date().toISOString(),
             lastLoginAt: new Date().toISOString(),
             earnedCertificateIds: [],
-            purchasedCourses: [],
+            purchasedCourses: hasPromo ? ['all'] : [],
             provider: 'google',
+            hasPromoAccess: hasPromo,
+            promoNote: promoMatch?.note,
           };
         }
 

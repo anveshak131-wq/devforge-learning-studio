@@ -258,6 +258,12 @@ export const Navbar: React.FC<NavbarProps> = ({
                 <div className="px-3.5 py-2 border-b border-slate-800">
                   <p className="font-bold text-white truncate">{currentUser.fullName}</p>
                   <p className="text-[10px] text-slate-400 truncate">{currentUser.email}</p>
+                  {currentUser.hasPromoAccess && (
+                    <span className="mt-1 px-1.5 py-0.5 rounded text-[9px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 uppercase tracking-wider inline-flex items-center space-x-1">
+                      <Sparkles className="w-2.5 h-2.5 text-emerald-400" />
+                      <span>VIP Promotional Scholar</span>
+                    </span>
+                  )}
                 </div>
                 <button
                   onClick={() => { setProfileDropdownOpen(false); onNavigate('vault'); }}

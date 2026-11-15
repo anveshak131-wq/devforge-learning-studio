@@ -38,10 +38,13 @@ import {
   FileSpreadsheet,
   Cloud,
   CloudUpload,
-  X
+  X,
+  Gift,
+  UserPlus,
+  Mail
 } from 'lucide-react';
 import { Track, Lesson, WorkedExampleItem, Difficulty, TierLevel, LessonMedia, LectureMediaType, SlidesSourceType } from '../../types';
-import { User, AdminAuditLog } from '../../types/auth';
+import { User, AdminAuditLog, PromoGrant } from '../../types/auth';
 import { CourseStorageService } from '../../services/courseStorageService';
 import { AdminSecurityService } from '../../services/adminSecurityService';
 import { AuthService } from '../../services/authService';
@@ -71,7 +74,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   targetLessonId,
   targetTrackSlug
 }) => {
-  const [activeTab, setActiveTab] = useState<'editor' | 'video_studio' | 'security' | 'backup'>('editor');
+  const [activeTab, setActiveTab] = useState<'editor' | 'video_studio' | 'security' | 'promos' | 'backup'>('editor');
   const [tracks, setTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [selectedTrackId, setSelectedTrackId] = useState<string>(targetTrackSlug || tracks[0]?.id || 'javascript');
   const [selectedLessonId, setSelectedLessonId] = useState<string>(targetLessonId || tracks[0]?.lessons[0]?.id || '');
@@ -94,9 +97,46 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const [newAdminEmailInput, setNewAdminEmailInput] = useState('');
   const [adminAddLoading, setAdminAddLoading] = useState(false);
 
+  // Promo / VIP Free Access tab state
+  const [promoList, setPromoList] = useState<PromoGrant[]>([]);
+  const [promoEmailsInput, setPromoEmailsInput] = useState('');
+  const [promoNoteInput, setPromoNoteInput] = useState('');
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoSearchQuery, setPromoSearchQuery] = useState('');
+
   useEffect(() => {
     AuthService.getAdminWhitelist().then(list => setAdminWhitelist(list));
+    AuthService.getPromoUsers().then(list => setPromoList(list));
   }, []);
+
+  const handleGrantPromo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!promoEmailsInput.trim()) return;
+    setPromoLoading(true);
+    const res = await AuthService.grantPromoAccess(promoEmailsInput, promoNoteInput);
+    setPromoLoading(false);
+    if (res.success && res.promos) {
+      setPromoList(res.promos);
+      setPromoEmailsInput('');
+      setPromoNoteInput('');
+      showToast(res.message || 'Granted promotional free access!', 'success');
+    } else {
+      showToast(res.error || 'Failed to grant promotional access', 'error');
+    }
+  };
+
+  const handleRevokePromo = async (email: string) => {
+    if (!confirm(`Are you sure you want to revoke promotional free access for ${email}?`)) {
+      return;
+    }
+    const res = await AuthService.revokePromoAccess(email);
+    if (res.success && res.promos) {
+      setPromoList(res.promos);
+      showToast(res.message || `Revoked promotional access for ${email}`, 'info');
+    } else {
+      showToast(res.error || 'Failed to revoke access', 'error');
+    }
+  };
 
   const handleAddAdmin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -679,6 +719,23 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         >
           <ShieldCheck className="w-4 h-4 text-amber-400" />
           <span>Security & Audit Logs</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('promos')}
+          className={`px-4 py-2.5 text-xs font-bold flex items-center space-x-2 border-b-2 transition ${
+            activeTab === 'promos'
+              ? 'border-emerald-500 text-white bg-slate-800/40'
+              : 'border-transparent text-slate-400 hover:text-white hover:bg-slate-800/20'
+          }`}
+        >
+          <Gift className="w-4 h-4 text-emerald-400" />
+          <span>VIP & Promo Access</span>
+          {promoList.length > 0 && (
+            <span className="px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-500/20 text-emerald-300 font-mono border border-emerald-500/30">
+              {promoList.length}
+            </span>
+          )}
         </button>
 
         <button
@@ -2313,6 +2370,192 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                     </div>
                   ))
                 )}
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ================================================================= */}
+        {/* TAB: VIP & PROMOTIONAL FREE ACCESS */}
+        {/* ================================================================= */}
+        {activeTab === 'promos' && (
+          <div className="h-full overflow-y-auto p-6 space-y-6 max-w-5xl mx-auto">
+            {/* Header Banner */}
+            <div className="p-6 rounded-2xl bg-gradient-to-r from-emerald-950/40 via-slate-900 to-slate-900 border border-emerald-500/30 space-y-3 shadow-xl">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400">
+                  <Gift className="w-5 h-5" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-bold text-white tracking-tight">
+                    Promotions, Scholarships & Free VIP Accounts
+                  </h2>
+                  <p className="text-xs text-slate-400">
+                    Grant 100% free lifetime access to all 150 topics and milestone projects by adding student emails.
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2">
+                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-0.5">
+                  <span className="text-[10px] text-slate-400 font-medium uppercase tracking-wider block">Total Active Grants</span>
+                  <span className="text-xl font-bold font-mono text-emerald-300">{promoList.length}</span>
+                </div>
+                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-0.5">
+                  <span className="text-[10px] text-slate-400 font-medium uppercase tracking-wider block">Active Campaigns</span>
+                  <span className="text-xl font-bold font-mono text-indigo-300">
+                    {new Set(promoList.map(p => p.note || 'Default')).size}
+                  </span>
+                </div>
+                <div className="p-3 rounded-xl bg-slate-900/80 border border-slate-800 space-y-0.5">
+                  <span className="text-[10px] text-slate-400 font-medium uppercase tracking-wider block">Storage Engine</span>
+                  <span className="text-xs font-mono font-semibold text-emerald-400 flex items-center space-x-1 pt-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+                    <span>Cloudflare KV (Global Edge)</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Grant Access Form Card */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4 shadow-xl">
+              <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                <UserPlus className="w-4 h-4 text-emerald-400" />
+                <span>Grant Lifetime Free Access</span>
+              </h3>
+
+              <form onSubmit={handleGrantPromo} className="space-y-3">
+                <div className="space-y-1">
+                  <label className="text-xs font-semibold text-slate-300 flex items-center justify-between">
+                    <span>Student Email(s)</span>
+                    <span className="text-[10px] text-slate-500 font-normal">Supports single email or multiple separated by comma or new line</span>
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={promoEmailsInput}
+                    onChange={(e) => setPromoEmailsInput(e.target.value)}
+                    placeholder="Enter email or paste multiple:&#10;influencer@youtube.com&#10;winner@collegehackathon.edu, student@gmail.com"
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500 font-mono resize-y"
+                    required
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 items-end">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-slate-300">
+                      Campaign / Reason <span className="text-slate-500 font-normal">(Optional note)</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={promoNoteInput}
+                      onChange={(e) => setPromoNoteInput(e.target.value)}
+                      placeholder="e.g. YouTube Reviewer, Hackathon Winner, VIP Scholar"
+                      className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={promoLoading || !promoEmailsInput.trim()}
+                    className="w-full px-4 py-2 rounded-xl bg-gradient-to-r from-emerald-600 to-teal-500 hover:from-emerald-500 hover:to-teal-400 disabled:opacity-50 text-white text-xs font-bold flex items-center justify-center space-x-2 shadow-lg shadow-emerald-500/20 transition h-[38px]"
+                  >
+                    {promoLoading ? (
+                      <span>Granting Access...</span>
+                    ) : (
+                      <>
+                        <UserPlus className="w-4 h-4" />
+                        <span>Grant Free Lifetime Access</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* Granted Accounts Table */}
+            <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 space-y-4 shadow-xl">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                <div className="space-y-0.5">
+                  <h3 className="text-sm font-bold text-white flex items-center space-x-2">
+                    <Users className="w-4 h-4 text-emerald-400" />
+                    <span>Active Promotional Accounts ({promoList.length})</span>
+                  </h3>
+                  <p className="text-[11px] text-slate-400">
+                    These students will have all 150 lessons and tracks automatically unlocked upon sign in.
+                  </p>
+                </div>
+
+                {/* Search / Filter */}
+                <div className="relative w-full sm:w-64">
+                  <Search className="w-3.5 h-3.5 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+                  <input
+                    type="text"
+                    value={promoSearchQuery}
+                    onChange={(e) => setPromoSearchQuery(e.target.value)}
+                    placeholder="Search by email or note..."
+                    className="w-full bg-slate-950 border border-slate-800 rounded-xl pl-8 pr-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-emerald-500"
+                  />
+                </div>
+              </div>
+
+              {/* Table */}
+              <div className="rounded-xl border border-slate-800 overflow-hidden">
+                <div className="max-h-96 overflow-y-auto">
+                  <table className="w-full text-left text-xs">
+                    <thead className="bg-slate-950/80 text-slate-400 text-[10px] uppercase font-bold tracking-wider border-b border-slate-800 sticky top-0 backdrop-blur z-10">
+                      <tr>
+                        <th className="py-2.5 px-3">Student Email</th>
+                        <th className="py-2.5 px-3">Campaign / Note</th>
+                        <th className="py-2.5 px-3 hidden md:table-cell">Granted Date</th>
+                        <th className="py-2.5 px-3">Status</th>
+                        <th className="py-2.5 px-3 text-right">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-800/60 font-sans">
+                      {promoList
+                        .filter(p => !promoSearchQuery.trim() || p.email.toLowerCase().includes(promoSearchQuery.toLowerCase()) || (p.note && p.note.toLowerCase().includes(promoSearchQuery.toLowerCase())))
+                        .map((item, idx) => (
+                          <tr key={idx} className="hover:bg-slate-800/30 transition">
+                            <td className="py-2.5 px-3 font-mono font-medium text-slate-200">
+                              {item.email}
+                            </td>
+                            <td className="py-2.5 px-3 text-slate-300">
+                              <span className="px-2 py-0.5 rounded bg-slate-800 border border-slate-700/50 text-slate-300 text-[11px]">
+                                {item.note || 'Promotional Free Access'}
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-slate-400 text-[11px] font-mono hidden md:table-cell">
+                              {item.grantedAt ? new Date(item.grantedAt).toLocaleDateString() : 'Active'}
+                            </td>
+                            <td className="py-2.5 px-3">
+                              <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 uppercase tracking-wider inline-flex items-center space-x-1">
+                                <CheckCircle2 className="w-2.5 h-2.5 text-emerald-400" />
+                                <span>UNLOCKED</span>
+                              </span>
+                            </td>
+                            <td className="py-2.5 px-3 text-right">
+                              <button
+                                onClick={() => handleRevokePromo(item.email)}
+                                className="px-2 py-1 rounded-md text-rose-400 hover:text-white hover:bg-rose-500/20 border border-transparent hover:border-rose-500/30 transition text-[11px] font-medium inline-flex items-center space-x-1"
+                                title="Revoke promo access"
+                              >
+                                <Trash2 className="w-3 h-3" />
+                                <span>Revoke</span>
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+
+                      {promoList.length === 0 && (
+                        <tr>
+                          <td colSpan={5} className="py-8 text-center text-slate-500">
+                            No promotional accounts added yet. Enter emails above to grant free access.
+                          </td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
