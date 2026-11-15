@@ -62,7 +62,15 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     const googlePayload: any = await googleVerifyRes.json();
-    const { sub, email, email_verified, name, picture } = googlePayload;
+    const { sub, email, email_verified, name, picture, aud } = googlePayload;
+
+    const EXPECTED_CLIENT_ID = '645430880987-cluo72d1jufag51hatsfaq5fo6q2pc0s.apps.googleusercontent.com';
+    if (aud && aud !== EXPECTED_CLIENT_ID && env?.GOOGLE_CLIENT_ID && aud !== env.GOOGLE_CLIENT_ID) {
+      return JSON_RESPONSE(
+        { success: false, error: 'Google token audience mismatch' },
+        401
+      );
+    }
 
     if (!email || (email_verified !== 'true' && email_verified !== true)) {
       return JSON_RESPONSE(

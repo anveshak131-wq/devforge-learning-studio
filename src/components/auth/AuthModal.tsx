@@ -43,7 +43,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
     const clientId =
       (import.meta as any).env?.VITE_GOOGLE_CLIENT_ID ||
-      '1029384756-devforge-oauth-client.apps.googleusercontent.com';
+      '645430880987-cluo72d1jufag51hatsfaq5fo6q2pc0s.apps.googleusercontent.com';
 
     let timer: any = null;
 
