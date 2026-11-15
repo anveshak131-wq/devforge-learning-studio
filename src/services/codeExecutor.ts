@@ -87,6 +87,22 @@ export class CodeExecutor {
       return this.executeRust(code, startTime);
     }
 
+    if (language === 'r') {
+      return this.executeR(code, startTime);
+    }
+
+    if (language === 'java') {
+      return this.executeJava(code, startTime);
+    }
+
+    if (language === 'cpp') {
+      return this.executeCpp(code, startTime);
+    }
+
+    if (language === 'cloud') {
+      return this.executeCloud(code, startTime);
+    }
+
     if (language === 'html' || language === 'css') {
       return this.executeWeb(code, language, startTime);
     }
@@ -380,6 +396,106 @@ export class CodeExecutor {
     js += '\nif (typeof main === "function") { main(); }';
 
     return this.runJsFunction(js, startTime, 'Rust');
+  }
+
+  /**
+   * R Language Interpreter / Simulator
+   */
+  private static executeR(code: string, startTime: number): ExecutionResult {
+    let js = code
+      .replace(/#.*/g, '')
+      .replace(/<-\s*/g, '= ')
+      .replace(/\bprint\s*\((.*?)\)/g, 'customConsole.log($1)')
+      .replace(/\bcat\s*\((.*?)\)/g, 'customConsole.log($1)')
+      .replace(/\bc\s*\((.*?)\)/g, '[$1]')
+      .replace(/\blength\s*\((.*?)\)/g, '($1).length')
+      .replace(/\bTRUE\b/g, 'true')
+      .replace(/\bFALSE\b/g, 'false')
+      .replace(/\bNULL\b/g, 'null')
+      .replace(/\bNA\b/g, 'NaN');
+
+    const lines = js.split('\n').filter(l => l.trim().length > 0);
+    const wrapped = lines.map(l => {
+      const trimmed = l.trim();
+      if (!trimmed.endsWith(';') && !trimmed.endsWith('{') && !trimmed.endsWith('}')) {
+        return trimmed + ';';
+      }
+      return trimmed;
+    }).join('\n');
+
+    return this.runJsFunction(`
+      function sum(arr) { return arr.reduce((a, b) => a + b, 0); }
+      function mean(arr) { return sum(arr) / arr.length; }
+      function paste(...args) { return args.join(" "); }
+      function paste0(...args) { return args.join(""); }
+      ${wrapped}
+    `, startTime, 'R');
+  }
+
+  /**
+   * Java Simulator / Transpiler
+   */
+  private static executeJava(code: string, startTime: number): ExecutionResult {
+    let js = code
+      .replace(/import\s+[a-zA-Z0-9_.*]+;/g, '')
+      .replace(/public\s+class\s+[a-zA-Z0-9_]+\s*\{/g, '{')
+      .replace(/public\s+static\s+void\s+main\s*\([^)]*\)\s*\{/g, 'function main() {')
+      .replace(/System\.out\.println\s*\((.*?)\);/g, 'customConsole.log($1);')
+      .replace(/System\.out\.print\s*\((.*?)\);/g, 'customConsole.log($1);')
+      .replace(/\b(int|double|float|String|boolean|char|long)\b/g, 'var');
+
+    js += '\nif (typeof main === "function") { main(); }';
+    return this.runJsFunction(js, startTime, 'Java');
+  }
+
+  /**
+   * C++ Simulator / Transpiler
+   */
+  private static executeCpp(code: string, startTime: number): ExecutionResult {
+    let js = code
+      .replace(/#include\s*<[^>]+>/g, '')
+      .replace(/using\s+namespace\s+std;/g, '')
+      .replace(/std::cout\s*<<\s*(.*?)\s*<<\s*std::endl;/g, 'customConsole.log($1);')
+      .replace(/cout\s*<<\s*(.*?)\s*<<\s*endl;/g, 'customConsole.log($1);')
+      .replace(/int\s+main\s*\([^)]*\)\s*\{/g, 'function main() {')
+      .replace(/\b(int|double|float|std::string|string|bool|char|long|auto)\b/g, 'var');
+
+    js += '\nif (typeof main === "function") { main(); }';
+    return this.runJsFunction(js, startTime, 'C++');
+  }
+
+  /**
+   * Cloud & Kubernetes Simulator
+   */
+  private static executeCloud(code: string, startTime: number): ExecutionResult {
+    const logs: ConsoleOutputMessage[] = [];
+    const lines = code.split('\n');
+
+    for (const rawLine of lines) {
+      const line = rawLine.trim();
+      if (!line || line.startsWith('#')) continue;
+
+      if (line.startsWith('kubectl get pods') || line.startsWith('kubectl get po')) {
+        logs.push({ type: 'log', args: ['NAME                     READY   STATUS    RESTARTS   AGE\nweb-deploy-74b89c-a1b2   1/1     Running   0          4m\nweb-deploy-74b89c-c3d4   1/1     Running   0          4m\nredis-master-0           1/1     Running   0          12m'], timestamp: Date.now() });
+      } else if (line.startsWith('kubectl get svc') || line.startsWith('kubectl get services')) {
+        logs.push({ type: 'log', args: ['NAME         TYPE           CLUSTER-IP      EXTERNAL-IP     PORT(S)\nkubernetes   ClusterIP      10.96.0.1       <none>          443/TCP\nweb-service  LoadBalancer   10.100.200.50   35.240.12.89    80:31234/TCP'], timestamp: Date.now() });
+      } else if (line.startsWith('kubectl apply')) {
+        logs.push({ type: 'log', args: ['deployment.apps/web-deploy configured\nservice/web-service created'], timestamp: Date.now() });
+      } else if (line.startsWith('kubectl logs')) {
+        logs.push({ type: 'log', args: ['2026-11-15T14:40:00Z [INFO] Server listening on :8080\n2026-11-15T14:40:02Z [INFO] Health check probe passed 200 OK'], timestamp: Date.now() });
+      } else if (line.startsWith('helm install') || line.startsWith('helm upgrade')) {
+        logs.push({ type: 'log', args: ['NAME: production-release\nLAST DEPLOYED: Sun Nov 15 2026\nNAMESPACE: default\nSTATUS: deployed\nREVISION: 1'], timestamp: Date.now() });
+      } else {
+        logs.push({ type: 'log', args: [`$ ${line}`], timestamp: Date.now() });
+      }
+    }
+
+    const duration = Math.round(performance.now() - startTime);
+    return {
+      success: true,
+      logs,
+      executionTimeMs: duration
+    };
   }
 
   /**

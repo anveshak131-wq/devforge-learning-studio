@@ -261,7 +261,40 @@ func main() {
     let numbers = vec![1, 2, 3, 4, 5];
     let sum: i32 = numbers.iter().sum();
     println!("Vector Sum: {}", sum);
-}`
+}`,
+
+  r: `# R Statistical Computing & Data Science Studio
+scores <- c(92, 85, 96, 78, 88, 94)
+cat("Average Score:", mean(scores), "\n")
+cat("Total Score:", sum(scores), "\n")
+cat("Observations:", length(scores), "\n")`,
+
+  java: `// Java Enterprise Architecture
+public class Main {
+    public static void main(String[] args) {
+        String greeting = "Welcome to Java Enterprise Systems!";
+        System.out.println(greeting);
+        int[] scores = {92, 85, 96, 88};
+        System.out.println("Loaded items: " + scores.length);
+    }
+}`,
+
+  cpp: `// Modern C++20 Systems Engineering
+#include <iostream>
+#include <vector>
+
+int main() {
+    std::cout << "Modern C++ Systems Studio" << std::endl;
+    std::vector<int> numbers = {10, 20, 30, 40, 50};
+    std::cout << "Vector size: " << numbers.size() << std::endl;
+    return 0;
+}`,
+
+  cloud: `# Cloud & Kubernetes Orchestration Studio
+kubectl get nodes
+kubectl get pods -A
+kubectl get services
+kubectl apply -f deployment.yaml`
 };
 
 export const PlaygroundWorkspace: React.FC = () => {

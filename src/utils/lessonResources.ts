@@ -73,5 +73,25 @@ export const TRACK_OFFICIAL_DOCS: Record<Language, { name: string; url: string; 
     name: 'The Rust Reference Book',
     url: 'https://doc.rust-lang.org/book/',
     cheatSheetUrl: 'https://cheats.rs/'
+  },
+  r: {
+    name: 'The R Project for Statistical Computing',
+    url: 'https://www.r-project.org/',
+    cheatSheetUrl: 'https://rstudio.github.io/cheatsheets/'
+  },
+  java: {
+    name: 'Oracle Java Documentation',
+    url: 'https://docs.oracle.com/en/java/',
+    cheatSheetUrl: 'https://devhints.io/java'
+  },
+  cpp: {
+    name: 'cppreference.com C++ Reference',
+    url: 'https://en.cppreference.com/w/',
+    cheatSheetUrl: 'https://cheatsheets.shecodes.io/cpp'
+  },
+  cloud: {
+    name: 'Kubernetes Official Documentation',
+    url: 'https://kubernetes.io/docs/',
+    cheatSheetUrl: 'https://kubernetes.io/docs/reference/kubectl/quick-reference/'
   }
 };

@@ -12,7 +12,11 @@ export type Language =
   | 'docker'
   | 'bash'
   | 'golang'
-  | 'rust';
+  | 'rust'
+  | 'r'
+  | 'java'
+  | 'cpp'
+  | 'cloud';
 
 export type Difficulty = 'Beginner' | 'Intermediate' | 'Advanced' | 'Expert';
 

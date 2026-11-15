@@ -77,7 +77,19 @@ export const CodeEditor: React.FC<CodeEditorProps> = ({
     }
   };
 
-  const monacoLanguage = language === 'sql' ? 'sql' : language === 'typescript' ? 'typescript' : language === 'python' ? 'python' : 'javascript';
+  const monacoLanguage = 
+    language === 'sql' ? 'sql' :
+    language === 'typescript' ? 'typescript' :
+    language === 'python' ? 'python' :
+    language === 'r' ? 'r' :
+    language === 'java' ? 'java' :
+    language === 'cpp' ? 'cpp' :
+    language === 'golang' ? 'go' :
+    language === 'rust' ? 'rust' :
+    language === 'html' ? 'html' :
+    language === 'css' ? 'css' :
+    (language === 'bash' || language === 'docker' || language === 'git' || language === 'cloud') ? 'shell' :
+    'javascript';
 
   return (
     <div className="flex flex-col h-full bg-[#1e1e1e] border border-slate-800 rounded-xl overflow-hidden shadow-xl">

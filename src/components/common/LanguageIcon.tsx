@@ -10,7 +10,11 @@ import {
   Server, 
   GitBranch, 
   Cpu, 
-  Box 
+  Box,
+  BarChart2,
+  Coffee,
+  Cloud,
+  FileCode
 } from 'lucide-react';
 import { Language } from '../../types';
 
@@ -49,6 +53,14 @@ export const LanguageIcon: React.FC<LanguageIconProps> = ({ language, className 
       return <Cpu className={`${className} text-cyan-300`} />;
     case 'rust':
       return <ShieldCheck className={`${className} text-orange-500`} />;
+    case 'r':
+      return <BarChart2 className={`${className} text-blue-500`} />;
+    case 'java':
+      return <Coffee className={`${className} text-amber-500`} />;
+    case 'cpp':
+      return <FileCode className={`${className} text-blue-600`} />;
+    case 'cloud':
+      return <Cloud className={`${className} text-sky-400`} />;
     default:
       return <Code2 className={`${className} text-slate-400`} />;
   }
