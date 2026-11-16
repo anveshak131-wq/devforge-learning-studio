@@ -87,7 +87,7 @@ export class PaymentService {
     }
 
     if (!razorpayKey) {
-      razorpayKey = 'rzp_live_U0aEfT56Nxkpag';
+      razorpayKey = 'rzp_live_U0kHC7jXJDBq6g';
     }
 
     if (!(window as any).Razorpay) {
