@@ -9,6 +9,7 @@ import {
   GitFork,
   Brain,
   Award,
+  Trophy,
   ShieldCheck,
   User as UserIcon,
   LogOut,
@@ -136,6 +137,18 @@ export const Navbar: React.FC<NavbarProps> = ({
             <span>Certificates</span>
           </button>
 
+          <button
+            onClick={() => onNavigate('leaderboard')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
+              currentView === 'leaderboard'
+                ? 'bg-slate-800 text-amber-400 border border-slate-700'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <Trophy className="w-3.5 h-3.5 text-amber-400" />
+            <span>Leaderboard</span>
+          </button>
+
           {/* Extra Study Tools Dropdown */}
           <div className="relative">
             <button
@@ -192,9 +205,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
         {/* Level and XP */}
         <div 
-          onClick={() => onNavigate('dashboard')}
+          onClick={() => onNavigate('leaderboard')}
           className="cursor-pointer hidden sm:flex items-center space-x-2 px-2.5 py-1 rounded-lg bg-slate-800/80 border border-slate-700/80 hover:border-indigo-500/40 transition group"
-          title={`${userStats.xp} XP total. Next rank at ${levelInfo.nextLevelXp} XP`}
+          title={`${userStats.xp} XP total. Click to view Global Leaderboard!`}
         >
           <div className="w-5 h-5 rounded bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-[10px] font-bold text-indigo-300">
             L{levelInfo.level}
@@ -251,6 +264,13 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Award className="w-4 h-4 text-amber-400" />
                   <span>My Certificates</span>
+                </button>
+                <button
+                  onClick={() => { setProfileDropdownOpen(false); onNavigate('leaderboard'); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <Trophy className="w-4 h-4 text-amber-400" />
+                  <span>Global Leaderboard</span>
                 </button>
                 {AuthService.isAuthorizedAdmin(currentUser) && (
                   <button

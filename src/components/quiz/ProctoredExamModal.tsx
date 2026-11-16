@@ -20,7 +20,8 @@ import {
   HelpCircle,
   Smartphone,
   CreditCard,
-  FileText
+  FileText,
+  Zap
 } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { QuizQuestion, QuizAttemptResult, CandidateTranscript } from '../../types/quiz';
@@ -28,6 +29,7 @@ import { ExamEngine, MAX_EXAM_ATTEMPTS, RETAKE_FEE_INR } from '../../services/ex
 import { AuthService } from '../../services/authService';
 import { CandidateTranscriptModal } from './CandidateTranscriptModal';
 import { PaymentService } from '../../services/paymentService';
+import { LeaderboardService } from '../../services/leaderboardService';
 
 interface ProctoredExamModalProps {
   isOpen: boolean;
@@ -308,9 +310,10 @@ export const ProctoredExamModal: React.FC<ProctoredExamModalProps> = ({
     setScreen('results');
     setStatusRefreshKey((k) => k + 1);
 
-    // Confetti if passed
+    // Confetti & Grounded XP Award if passed
     if (result.passed && !isWarmupMock) {
       try {
+        LeaderboardService.awardExamXp(result.scorePercent);
         confetti({
           particleCount: 120,
           spread: 80,
@@ -910,14 +913,29 @@ export const ProctoredExamModal: React.FC<ProctoredExamModalProps> = ({
                 </p>
               </div>
 
-              {/* Proctoring Verification Badge */}
-              <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
-                <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                <span className="text-slate-300 font-medium">
-                  {attemptResult.integrityStatus === 'clean'
-                    ? 'Proctored Clean Attempt (0 Focus Violations)'
-                    : `Flagged Attempt (${attemptResult.focusViolations} Violations)`}
-                </span>
+              {/* Proctoring Verification Badge & Grounded XP Award */}
+              <div className="flex flex-wrap items-center justify-center gap-2">
+                <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-xl bg-slate-950 border border-slate-800 text-xs">
+                  <ShieldCheck className="w-4 h-4 text-emerald-400" />
+                  <span className="text-slate-300 font-medium">
+                    {attemptResult.integrityStatus === 'clean'
+                      ? 'Proctored Clean Attempt (0 Focus Violations)'
+                      : `Flagged Attempt (${attemptResult.focusViolations} Violations)`}
+                  </span>
+                </div>
+
+                {attemptResult.passed && !isWarmupMock && (
+                  <div className="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-amber-500/15 border border-amber-500/30 text-amber-300 text-xs font-mono font-bold">
+                    <Zap className="w-3.5 h-3.5 text-amber-400" />
+                    <span>
+                      {attemptResult.scorePercent >= 90
+                        ? '+100 XP (Gold Distinction Stamped!)'
+                        : attemptResult.scorePercent >= 70
+                        ? '+75 XP (Honors Distinction Stamped!)'
+                        : '+50 XP (Certification Stamped!)'}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
 

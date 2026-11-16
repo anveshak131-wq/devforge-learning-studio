@@ -22,6 +22,7 @@ import { CertificateModal } from './components/certificate/CertificateModal';
 import { CertificateVerifyView } from './components/certificate/CertificateVerifyView';
 import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
 import { LegalView, LegalTab } from './components/legal/LegalView';
+import { LeaderboardView } from './components/leaderboard/LeaderboardView';
 
 // Dynamic code-splitting: Admin chunks are NEVER downloaded by public students
 const AdminPortalView = React.lazy(() =>
@@ -71,6 +72,7 @@ function parseRouteFromLocation(): { view: string; payload?: any } {
   if (segments[0] === 'vault') return { view: 'vault' };
   if (segments[0] === 'roadmap') return { view: 'roadmap' };
   if (segments[0] === 'playground') return { view: 'playground' };
+  if (segments[0] === 'leaderboard' || segments[0] === 'rankings') return { view: 'leaderboard' };
   if (segments[0] === 'verify' || segments[0] === 'certificate') {
     const credentialId = segments[1] || new URLSearchParams(window.location.search).get('id') || '';
     return { view: 'verify', payload: { credentialId } };
@@ -427,6 +429,11 @@ export function App() {
 
         {currentView === 'playground' && (
           <PlaygroundWorkspace />
+        )}
+
+        {/* Global Developer Rankings & XP Leaderboard */}
+        {currentView === 'leaderboard' && (
+          <LeaderboardView onNavigate={handleNavigate} />
         )}
 
         {/* Compliance Legal & Policy Pages (Terms, Privacy, Refund, Contact) */}
