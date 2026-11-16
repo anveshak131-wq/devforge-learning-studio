@@ -156,7 +156,32 @@ export class ExamEngine {
    */
   static getTrackExamStatus(trackId: string): TrackExamStatus {
     const all = this.getAllStatuses();
-    if (all[trackId]) return all[trackId];
+    const currentUser = AuthService.getCurrentUser();
+    const userExamStatus = currentUser?.examStatus?.[trackId];
+
+    if (all[trackId]) {
+      // If user profile has higher recorded attempt count or active cooldown, sync to latest
+      if (userExamStatus && (userExamStatus.attemptsCount || 0) > (all[trackId].attemptsCount || 0)) {
+        all[trackId] = userExamStatus;
+        try {
+          localStorage.setItem(EXAM_STATUS_KEY, JSON.stringify(all));
+        } catch {}
+      }
+      // If server profile holds an active paid retake pass, hydrate it
+      if (currentUser?.activeRetakePass && !all[trackId].activeRetakePass) {
+        all[trackId].activeRetakePass = currentUser.activeRetakePass;
+      }
+      return all[trackId];
+    }
+
+    // Hydrate from user profile if localStorage was cleared
+    if (userExamStatus) {
+      all[trackId] = userExamStatus;
+      try {
+        localStorage.setItem(EXAM_STATUS_KEY, JSON.stringify(all));
+      } catch {}
+      return userExamStatus;
+    }
 
     return {
       trackId,
@@ -166,7 +191,7 @@ export class ExamEngine {
       bestGrade: null,
       lastAttemptAt: null,
       cooldownEndsAt: null,
-      activeRetakePass: null,
+      activeRetakePass: currentUser?.activeRetakePass || null,
       history: [],
     };
   }
@@ -274,6 +299,16 @@ export class ExamEngine {
       localStorage.setItem(EXAM_STATUS_KEY, JSON.stringify(all));
     } catch (e) {
       console.warn('Could not save retake pass:', e);
+    }
+
+    const currentUser = AuthService.getCurrentUser();
+    if (currentUser) {
+      currentUser.activeRetakePass = pass;
+      currentUser.examStatus = currentUser.examStatus || {};
+      currentUser.examStatus[trackId] = current;
+      try {
+        localStorage.setItem('devforge_auth_session_v1', JSON.stringify(currentUser));
+      } catch {}
     }
 
     return pass;
@@ -413,6 +448,19 @@ export class ExamEngine {
         localStorage.setItem(EXAM_STATUS_KEY, JSON.stringify(allStatuses));
       } catch (err) {
         console.warn('Could not save exam status:', err);
+      }
+
+      // Sync attempt record to user profile so incognito/cleared localStorage does not bypass cooldown
+      const currentUser = AuthService.getCurrentUser();
+      if (currentUser) {
+        currentUser.examStatus = currentUser.examStatus || {};
+        currentUser.examStatus[trackId] = currentStatus;
+        if (currentStatus.activeRetakePass?.used) {
+          currentUser.activeRetakePass = undefined;
+        }
+        try {
+          localStorage.setItem('devforge_auth_session_v1', JSON.stringify(currentUser));
+        } catch {}
       }
 
       // 5. Award XP and stamp highest verified score on certificate

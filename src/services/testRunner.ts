@@ -141,15 +141,17 @@ export class TestRunner {
           return (${tc.testFn});
         `;
 
-        const testRunner = new Function(testScript);
-        const testOutcome = await testRunner();
-        const passed = Boolean(testOutcome);
+        // Security: Run test assertion inside isolated, timed Web Worker sandbox
+        const workerResult = await CodeExecutor.runInSandboxedWorker(testScript, 4000);
+        const passed = workerResult.success && Boolean(workerResult.returnValue);
 
         testResults.push({
           id: tc.id,
           description: tc.description,
           passed,
-          error: passed ? undefined : (tc.expectedMessage || `Goal not yet satisfied: ${tc.description}`)
+          error: passed
+            ? undefined
+            : (workerResult.error || tc.expectedMessage || `Goal not yet satisfied: ${tc.description}`)
         });
       } catch (err: any) {
         testResults.push({

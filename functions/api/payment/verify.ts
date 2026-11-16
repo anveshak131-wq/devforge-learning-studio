@@ -77,11 +77,11 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }
     }
 
-    // 4. Two-Tier Verification: Cryptographic HMAC Signature OR Direct Razorpay API Check
+    // 4. Two-Tier Verification: Cryptographic HMAC Signature AND Direct Razorpay API Check
     let isVerified = false;
-    let verifiedAmountInr = amountInr || 0;
+    let verifiedAmountInr = 0;
 
-    // Tier A: If orderId & signature are present, compute HMAC SHA-256
+    // Optional Tier A: Validate HMAC signature if orderId & signature are supplied
     if (orderId && signature && typeof orderId === 'string' && typeof signature === 'string') {
       try {
         const encoder = new TextEncoder();
@@ -101,56 +101,52 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           .map(b => b.toString(16).padStart(2, '0'))
           .join('');
 
-        if (computedHex.toLowerCase() === signature.trim().toLowerCase()) {
-          isVerified = true;
-        } else {
+        if (computedHex.toLowerCase() !== signature.trim().toLowerCase()) {
           return JSON_RESPONSE({ 
             success: false, 
             error: 'Invalid Razorpay payment signature. Tampering detected.' 
-          }, 400);
+          }, 400, request);
         }
       } catch (err: any) {
-        return JSON_RESPONSE({ success: false, error: 'Signature verification failure: ' + err?.message }, 400);
+        return JSON_RESPONSE({ success: false, error: 'Signature verification failure: ' + err?.message }, 400, request);
       }
     }
 
-    // Tier B: If not verified via HMAC, verify directly against Razorpay's official API
-    if (!isVerified) {
-      try {
-        const keyId = env.RAZORPAY_KEY_ID || 'rzp_live_U0kHC7jXJDBq6g';
-        const basicAuth = 'Basic ' + btoa(`${keyId}:${keySecret.trim()}`);
+    // Tier B: Authoritative verification against Razorpay's live production API
+    try {
+      const keyId = env.RAZORPAY_KEY_ID || 'rzp_live_U0kHC7jXJDBq6g';
+      const basicAuth = 'Basic ' + btoa(`${keyId}:${keySecret.trim()}`);
 
-        const rzpRes = await fetch(`https://api.razorpay.com/v1/payments/${encodeURIComponent(cleanPaymentId)}`, {
-          headers: {
-            Authorization: basicAuth,
-            'User-Agent': 'DevForge-Payment-Verifier/1.0',
-          },
-        });
+      const rzpRes = await fetch(`https://api.razorpay.com/v1/payments/${encodeURIComponent(cleanPaymentId)}`, {
+        headers: {
+          Authorization: basicAuth,
+          'User-Agent': 'DevForge-Payment-Verifier/1.0',
+        },
+      });
 
-        if (!rzpRes.ok) {
-          const errData: any = await rzpRes.json().catch(() => null);
-          return JSON_RESPONSE({ 
-            success: false, 
-            error: errData?.error?.description || 'Razorpay rejected payment ID verification.' 
-          }, 400);
-        }
-
-        const rzpData: any = await rzpRes.json();
-        if (rzpData.status !== 'captured' && rzpData.status !== 'authorized') {
-          return JSON_RESPONSE({ 
-            success: false, 
-            error: `Payment is unconfirmed. Current status: ${rzpData.status}` 
-          }, 400);
-        }
-
-        verifiedAmountInr = (rzpData.amount || 0) / 100;
-        isVerified = true;
-      } catch (err: any) {
+      if (!rzpRes.ok) {
+        const errData: any = await rzpRes.json().catch(() => null);
         return JSON_RESPONSE({ 
           success: false, 
-          error: 'Failed to communicate with Razorpay verification API: ' + (err?.message || 'Network error') 
-        }, 500);
+          error: errData?.error?.description || 'Razorpay rejected payment ID verification.' 
+        }, 400, request);
       }
+
+      const rzpData: any = await rzpRes.json();
+      if (rzpData.status !== 'captured' && rzpData.status !== 'authorized') {
+        return JSON_RESPONSE({ 
+          success: false, 
+          error: `Payment is unconfirmed. Current status: ${rzpData.status}` 
+        }, 400, request);
+      }
+
+      verifiedAmountInr = (rzpData.amount || 0) / 100;
+      isVerified = true;
+    } catch (err: any) {
+      return JSON_RESPONSE({ 
+        success: false, 
+        error: 'Failed to communicate with Razorpay verification API: ' + (err?.message || 'Network error') 
+      }, 500, request);
     }
 
     if (!isVerified) {
@@ -237,8 +233,17 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }
     }
 
-    // 7. Grant Course / Project Access
-    if (trackId && trackId !== 'retake') {
+    // 7. Grant Course / Project Access or Retake Pass
+    if (body.isRetake === true || trackId === 'retake') {
+      const now = new Date();
+      const expires = new Date(now.getTime() + 72 * 60 * 60 * 1000); // 72 hours
+      user.activeRetakePass = {
+        purchasedAt: now.toISOString(),
+        expiresAt: expires.toISOString(),
+        paymentId: cleanPaymentId,
+        used: false,
+      };
+    } else if (trackId) {
       const currentCourses = Array.isArray(user.purchasedCourses) ? user.purchasedCourses : [];
       if (!currentCourses.includes(trackId)) {
         user.purchasedCourses = [...currentCourses, trackId];

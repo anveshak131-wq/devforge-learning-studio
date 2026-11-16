@@ -57,6 +57,14 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 
     const cleanId = rawId.trim();
 
+    // Validate ID length & alphanumeric format before querying KV
+    if (cleanId.length < 3 || cleanId.length > 64 || !/^[A-Za-z0-9_-]+$/.test(cleanId)) {
+      return JSON_RESPONSE({
+        success: false,
+        error: 'Invalid credential ID format. Credential IDs must be between 3 and 64 alphanumeric characters.',
+      }, 400);
+    }
+
     // Look up by exact key or uppercase credential key
     let certificate = await env.DEVFORGE_KV.get(`certificate:${cleanId.toUpperCase()}`, { type: 'json' }).catch(() => null);
 

@@ -491,7 +491,7 @@ export class CodeExecutor {
    * Web Workers do not have access to window, document, or localStorage.
    * Infinite loops (e.g. while(true)) are automatically terminated after 4s without freezing UI.
    */
-  private static runInSandboxedWorker(
+  static runInSandboxedWorker(
     runnableJs: string,
     timeoutMs = 4000
   ): Promise<{ success: boolean; logs: ConsoleOutputMessage[]; returnValue?: any; error?: string }> {

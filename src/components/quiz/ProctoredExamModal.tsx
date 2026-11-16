@@ -335,11 +335,8 @@ export const ProctoredExamModal: React.FC<ProctoredExamModalProps> = ({
         setStatusRefreshKey((k) => k + 1);
       },
       onError: (err) => {
-        console.warn('Retake pass notice:', err);
-        // Fallback allows activation
-        ExamEngine.activateRetakePass(trackId);
         setIsPurchasingRetake(false);
-        setStatusRefreshKey((k) => k + 1);
+        alert(typeof err === 'string' ? err : 'Payment was not completed. Re-examination pass was not activated.');
       },
     });
   };

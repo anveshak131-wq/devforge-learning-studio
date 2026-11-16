@@ -18,6 +18,8 @@ export interface User {
   provider?: 'google' | 'github' | 'local' | 'admin';
   hasPromoAccess?: boolean;
   promoNote?: string;
+  activeRetakePass?: any;
+  examStatus?: Record<string, any>;
 }
 
 export interface PromoGrant {

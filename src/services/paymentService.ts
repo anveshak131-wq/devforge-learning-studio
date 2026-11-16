@@ -123,29 +123,36 @@ export class PaymentService {
       },
       handler: async (response: any) => {
         try {
-          const paymentId = response.razorpay_payment_id || `pay_sim_${Date.now()}`;
+          const paymentId = response.razorpay_payment_id;
+          if (!paymentId || !String(paymentId).startsWith('pay_')) {
+            onError('Invalid or unconfirmed payment ID from gateway.');
+            return;
+          }
           const orderId = response.razorpay_order_id || '';
           const signature = response.razorpay_signature || '';
 
           // Call backend verification & record in Cloudflare Edge KV
-          try {
-            await fetch('/api/payment/verify', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              credentials: 'include',
-              body: JSON.stringify({
-                trackId: track.id,
-                paymentId,
-                orderId,
-                signature,
-                email: currentUser?.email || '',
-              }),
-            });
-          } catch (e) {
-            console.warn('Backend payment verify notice:', e);
+          const verifyRes = await fetch('/api/payment/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+              trackId: track.id,
+              paymentId,
+              orderId,
+              signature,
+              email: currentUser?.email || '',
+              amountInr: (track as any).priceInr || this.COURSE_PRICE_INR,
+            }),
+          });
+
+          const data = await verifyRes.json().catch(() => ({}));
+          if (!verifyRes.ok || !data.success) {
+            onError(data.error || 'Server rejected payment verification.');
+            return;
           }
 
-          // Record purchase locally
+          // Record purchase locally only after authoritative backend confirmation
           PaymentService.recordLocalPurchase(track.id);
 
           // Trigger confetti
@@ -230,8 +237,40 @@ export class PaymentService {
         color: '#4f46e5',
       },
       handler: async (response: any) => {
-        const paymentId = response.razorpay_payment_id || `pay_retake_${Date.now()}`;
-        onSuccess(paymentId);
+        try {
+          const paymentId = response.razorpay_payment_id;
+          if (!paymentId || !String(paymentId).startsWith('pay_')) {
+            onError('Invalid or unconfirmed payment ID from gateway.');
+            return;
+          }
+          const orderId = response.razorpay_order_id || '';
+          const signature = response.razorpay_signature || '';
+
+          const verifyRes = await fetch('/api/payment/verify', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+            body: JSON.stringify({
+              trackId: 'retake',
+              isRetake: true,
+              paymentId,
+              orderId,
+              signature,
+              email: currentUser?.email || '',
+              amountInr: 49,
+            }),
+          });
+
+          const data = await verifyRes.json().catch(() => ({}));
+          if (!verifyRes.ok || !data.success) {
+            onError(data.error || 'Server rejected retake pass payment verification.');
+            return;
+          }
+
+          onSuccess(paymentId);
+        } catch (err: any) {
+          onError(err?.message || 'Network error verifying re-exam payment.');
+        }
       },
       modal: {
         ondismiss: function () {
@@ -377,12 +416,16 @@ export class PaymentService {
         color: '#4f46e5',
       },
       handler: async (response: any) => {
-        const paymentId = response.razorpay_payment_id || `pay_proj_${Date.now()}`;
-        const orderId = response.razorpay_order_id || '';
-        const signature = response.razorpay_signature || '';
-
         try {
-          await fetch('/api/payment/verify', {
+          const paymentId = response.razorpay_payment_id;
+          if (!paymentId || !String(paymentId).startsWith('pay_')) {
+            onError('Invalid or unconfirmed payment ID from gateway.');
+            return;
+          }
+          const orderId = response.razorpay_order_id || '';
+          const signature = response.razorpay_signature || '';
+
+          const verifyRes = await fetch('/api/payment/verify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -395,19 +438,25 @@ export class PaymentService {
               amountInr: priceInr,
             }),
           });
-        } catch (e) {
-          console.warn('Backend payment verify notice:', e);
-        }
 
-        this.recordLocalProjectPurchase(project.id);
-        try {
-          confetti({
-            particleCount: 120,
-            spread: 80,
-            origin: { y: 0.6 },
-          });
-        } catch {}
-        onSuccess(paymentId);
+          const data = await verifyRes.json().catch(() => ({}));
+          if (!verifyRes.ok || !data.success) {
+            onError(data.error || 'Server rejected project payment verification.');
+            return;
+          }
+
+          this.recordLocalProjectPurchase(project.id);
+          try {
+            confetti({
+              particleCount: 120,
+              spread: 80,
+              origin: { y: 0.6 },
+            });
+          } catch {}
+          onSuccess(paymentId);
+        } catch (err: any) {
+          onError(err?.message || 'Payment processing failed');
+        }
       },
       modal: {
         ondismiss: function () {
@@ -480,12 +529,16 @@ export class PaymentService {
         color: '#4f46e5',
       },
       handler: async (response: any) => {
-        const paymentId = response.razorpay_payment_id || `pay_bundle_${Date.now()}`;
-        const orderId = response.razorpay_order_id || '';
-        const signature = response.razorpay_signature || '';
-
         try {
-          await fetch('/api/payment/verify', {
+          const paymentId = response.razorpay_payment_id;
+          if (!paymentId || !String(paymentId).startsWith('pay_')) {
+            onError('Invalid or unconfirmed payment ID from gateway.');
+            return;
+          }
+          const orderId = response.razorpay_order_id || '';
+          const signature = response.razorpay_signature || '';
+
+          const verifyRes = await fetch('/api/payment/verify', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             credentials: 'include',
@@ -498,19 +551,25 @@ export class PaymentService {
               amountInr: this.ALL_PROJECTS_BUNDLE_PRICE_INR,
             }),
           });
-        } catch (e) {
-          console.warn('Backend payment verify notice:', e);
-        }
 
-        this.recordLocalProjectPurchase('all');
-        try {
-          confetti({
-            particleCount: 150,
-            spread: 90,
-            origin: { y: 0.6 },
-          });
-        } catch {}
-        onSuccess(paymentId);
+          const data = await verifyRes.json().catch(() => ({}));
+          if (!verifyRes.ok || !data.success) {
+            onError(data.error || 'Server rejected bundle pass payment verification.');
+            return;
+          }
+
+          this.recordLocalProjectPurchase('all');
+          try {
+            confetti({
+              particleCount: 150,
+              spread: 90,
+              origin: { y: 0.6 },
+            });
+          } catch {}
+          onSuccess(paymentId);
+        } catch (err: any) {
+          onError(err?.message || 'Payment processing failed');
+        }
       },
       modal: {
         ondismiss: function () {
