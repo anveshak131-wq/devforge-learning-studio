@@ -11,7 +11,7 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
   }
 
   try {
-    const clientId = env.GITHUB_CLIENT_ID || 'Ov23liN7J6dFz45xW10k';
+    const clientId = env.GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
     const clientSecret = env.GITHUB_CLIENT_SECRET || '';
 
     // 1. Exchange code for access token

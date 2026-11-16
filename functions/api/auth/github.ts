@@ -27,7 +27,7 @@ export const onRequestOptions = async () => {
 
 export const onRequestGet = async (context: { request: Request; env: Env }) => {
   const { env } = context;
-  const clientId = env.GITHUB_CLIENT_ID || 'Ov23liN7J6dFz45xW10k';
+  const clientId = env.GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
   return JSON_RESPONSE({
     success: true,
     clientId,
@@ -45,7 +45,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       return JSON_RESPONSE({ success: false, error: 'Missing GitHub authorization code' }, 400);
     }
 
-    const clientId = env.GITHUB_CLIENT_ID || 'Ov23liN7J6dFz45xW10k';
+    const clientId = env.GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
     const clientSecret = env.GITHUB_CLIENT_SECRET || '';
 
     // 1. Exchange code for access token with GitHub

@@ -429,7 +429,7 @@ export class AuthService {
   static async startGitHubOAuth(): Promise<void> {
     try {
       // Check if backend provides custom client ID
-      let clientId = (import.meta as any).env?.VITE_GITHUB_CLIENT_ID || 'Ov23liN7J6dFz45xW10k';
+      let clientId = (import.meta as any).env?.VITE_GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
       try {
         const configRes = await fetch('/api/auth/github');
         if (configRes.ok) {
