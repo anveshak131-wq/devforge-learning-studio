@@ -424,6 +424,61 @@ export class AuthService {
   }
 
   /**
+   * Initiate GitHub OAuth redirect flow
+   */
+  static async startGitHubOAuth(): Promise<void> {
+    try {
+      // Check if backend provides custom client ID
+      let clientId = (import.meta as any).env?.VITE_GITHUB_CLIENT_ID || 'Ov23liN7J6dFz45xW10k';
+      try {
+        const configRes = await fetch('/api/auth/github');
+        if (configRes.ok) {
+          const configData = await configRes.json();
+          if (configData.clientId) {
+            clientId = configData.clientId;
+          }
+        }
+      } catch {}
+
+      const redirectUri = `${window.location.origin}/api/auth/github/callback`;
+      const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=read:user,user:email&redirect_uri=${encodeURIComponent(redirectUri)}`;
+      window.location.href = authUrl;
+    } catch (err) {
+      console.error('Failed to initiate GitHub OAuth:', err);
+    }
+  }
+
+  /**
+   * Exchange GitHub code for session user
+   */
+  static async exchangeGitHubCode(code: string): Promise<{ success: boolean; user?: User; error?: string }> {
+    try {
+      const res = await fetch('/api/auth/github', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({ code }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.user) {
+          const user: User = data.user;
+          localStorage.setItem(SESSION_KEY, JSON.stringify(user));
+          const users = this.getUsers();
+          users[user.email] = { user, passwordHash: 'github_oauth_managed' };
+          this.saveUsers(users);
+          return { success: true, user };
+        }
+        return { success: false, error: data.error || 'GitHub sign-in failed' };
+      }
+      return { success: false, error: 'Failed to communicate with auth service' };
+    } catch (err: any) {
+      return { success: false, error: err?.message || 'Network error during GitHub sign-in' };
+    }
+  }
+
+  /**
    * Sync active session with Cloudflare Edge on startup
    */
   static async syncServerSession(): Promise<User | null> {

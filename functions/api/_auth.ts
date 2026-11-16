@@ -6,6 +6,8 @@ export interface Env {
   };
   ADMIN_EMAILS?: string;
   GOOGLE_CLIENT_ID?: string;
+  GITHUB_CLIENT_ID?: string;
+  GITHUB_CLIENT_SECRET?: string;
 }
 
 export const DEFAULT_SUPERADMIN_EMAILS = [

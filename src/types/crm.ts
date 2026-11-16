@@ -49,7 +49,7 @@ export interface LearnerRecord {
   fullName: string;
   avatarUrl: string;
   role: 'student' | 'admin';
-  provider: 'google' | 'local' | 'admin';
+  provider: 'google' | 'github' | 'local' | 'admin';
   joinedAt: string;
   lastActiveAt: string;
   isDemo?: boolean; // True for simulated preview profiles

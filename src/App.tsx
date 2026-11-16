@@ -101,6 +101,21 @@ export function App() {
         setCurrentUser(user);
       }
     });
+
+    // Check for GitHub OAuth success / error redirect callback
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.get('auth_success') === 'github') {
+      confetti({ particleCount: 90, spread: 70, origin: { y: 0.6 } });
+      AuthService.syncServerSession().then(u => {
+        if (u) setCurrentUser(u);
+      });
+      const cleanUrl = window.location.pathname + (window.location.hash || '');
+      window.history.replaceState({}, document.title, cleanUrl);
+    } else if (searchParams.get('auth_error')) {
+      const cleanUrl = window.location.pathname + (window.location.hash || '');
+      window.history.replaceState({}, document.title, cleanUrl);
+    }
+
     return CourseStorageService.subscribe(() => {
       setAllTracks(CourseStorageService.getTracks());
     });

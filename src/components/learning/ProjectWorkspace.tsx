@@ -13,7 +13,8 @@ import {
   Lock,
   ShieldCheck,
   Zap,
-  AlertCircle
+  AlertCircle,
+  FolderGit2
 } from 'lucide-react';
 import { GuidedProject, ProjectMilestone, ExecutionResult, TestResultItem, UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
@@ -24,6 +25,7 @@ import { TestRunner } from '../../services/testRunner';
 import { SqlSession, TableSchema } from '../../services/sqlEngine';
 import { ProgressStorage } from '../../services/progressStorage';
 import { PaymentService } from '../../services/paymentService';
+import { ExportRepoModal } from '../modals/ExportRepoModal';
 
 interface ProjectWorkspaceProps {
   project: GuidedProject;
@@ -46,6 +48,7 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
 
   const [purchasingType, setPurchasingType] = useState<'project' | 'bundle' | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [isExportModalOpen, setIsExportModalOpen] = useState(false);
 
   // Helper: milestone unlocked check
   // Milestone 0 (Milestone 1) is unlocked once purchased.
@@ -429,6 +432,17 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
               </button>
             );
           })}
+
+          <div className="flex items-center pl-2 border-l border-slate-800">
+            <button
+              onClick={() => setIsExportModalOpen(true)}
+              className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center space-x-1.5 border border-slate-700/80 transition shadow-sm"
+              title="Export as GitHub repository with tests and README"
+            >
+              <FolderGit2 className="w-3.5 h-3.5 text-indigo-400" />
+              <span className="hidden sm:inline">Export Repo</span>
+            </button>
+          </div>
         </div>
       </div>
 
@@ -565,13 +579,22 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
                     <p className="text-xs text-slate-300">
                       You passed all milestones and earned the verified project badge!
                     </p>
-                    <button
-                      onClick={onBackToProjects}
-                      className="w-full py-2 px-3 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-xs flex items-center justify-center space-x-1.5 shadow-lg shadow-indigo-600/30 transition"
-                    >
-                      <span>Back to Projects Catalog</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                    <div className="flex flex-col gap-2 pt-1">
+                      <button
+                        onClick={() => setIsExportModalOpen(true)}
+                        className="w-full py-2 px-3 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/30 transition active:scale-95"
+                      >
+                        <FolderGit2 className="w-3.5 h-3.5 text-indigo-200" />
+                        <span>Export to GitHub Repository</span>
+                      </button>
+                      <button
+                        onClick={onBackToProjects}
+                        className="w-full py-2 px-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs flex items-center justify-center space-x-1.5 transition"
+                      >
+                        <span>Back to Projects Catalog</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                    </div>
                   </div>
                 )
               )}
@@ -606,6 +629,14 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Export to GitHub Repository Modal */}
+      <ExportRepoModal
+        isOpen={isExportModalOpen}
+        onClose={() => setIsExportModalOpen(false)}
+        project={project}
+        userCode={code}
+      />
     </div>
   );
 };

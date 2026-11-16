@@ -11,9 +11,11 @@ export interface User {
   createdAt: string;
   earnedCertificateIds: string[];
   googleId?: string;
+  githubId?: string;
+  githubUsername?: string;
   purchasedCourses?: string[];
   purchasedProjects?: string[];
-  provider?: 'google' | 'local' | 'admin';
+  provider?: 'google' | 'github' | 'local' | 'admin';
   hasPromoAccess?: boolean;
   promoNote?: string;
 }
