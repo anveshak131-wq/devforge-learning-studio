@@ -16,6 +16,7 @@ const SEED_LEARNERS: LearnerRecord[] = [
     provider: 'google',
     joinedAt: '2026-10-12T14:20:00Z',
     lastActiveAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
+    isDemo: true,
     purchasedCourses: ['python', 'sql'],
     hasPromoAccess: false,
     ltvInr: 447, // 199 + 199 + 49
@@ -153,6 +154,7 @@ const SEED_LEARNERS: LearnerRecord[] = [
     provider: 'google',
     joinedAt: '2026-10-18T11:00:00Z',
     lastActiveAt: new Date(Date.now() - 18 * 60 * 60 * 1000).toISOString(),
+    isDemo: true,
     purchasedCourses: ['python'],
     hasPromoAccess: false,
     ltvInr: 199,
@@ -218,6 +220,7 @@ const SEED_LEARNERS: LearnerRecord[] = [
     provider: 'local',
     joinedAt: '2026-10-25T08:30:00Z',
     lastActiveAt: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString(), // >7 days (At-Risk!)
+    isDemo: true,
     purchasedCourses: ['sql'],
     hasPromoAccess: false,
     ltvInr: 199,
@@ -261,6 +264,7 @@ const SEED_LEARNERS: LearnerRecord[] = [
     provider: 'google',
     joinedAt: '2026-11-01T15:10:00Z',
     lastActiveAt: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
+    isDemo: true,
     purchasedCourses: ['all'],
     hasPromoAccess: true,
     promoNote: 'Stanford Hackathon 1st Place Winner - Free Lifetime Access',
@@ -337,6 +341,7 @@ const SEED_LEARNERS: LearnerRecord[] = [
     provider: 'google',
     joinedAt: '2026-10-30T10:00:00Z',
     lastActiveAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
+    isDemo: true,
     purchasedCourses: ['python'],
     hasPromoAccess: false,
     ltvInr: 199,
@@ -396,6 +401,37 @@ const SEED_LEARNERS: LearnerRecord[] = [
 ];
 
 export class StudentCRMService {
+  static isDemoHidden(): boolean {
+    try {
+      return localStorage.getItem('devforge_hide_demo_learners_v1') === 'true';
+    } catch {
+      return false;
+    }
+  }
+
+  static setHideDemo(hide: boolean) {
+    try {
+      localStorage.setItem('devforge_hide_demo_learners_v1', hide ? 'true' : 'false');
+    } catch {}
+  }
+
+  static purgeDemoLearners(): LearnerRecord[] {
+    this.setHideDemo(true);
+    const all = this.getLearners();
+    const clean = all.filter((l) => !l.isDemo);
+    this.saveLearners(clean);
+    return clean;
+  }
+
+  static restoreDemoLearners(): LearnerRecord[] {
+    this.setHideDemo(false);
+    const all = this.getLearners();
+    const clean = all.filter((l) => !l.isDemo);
+    const restored = [...clean, ...SEED_LEARNERS];
+    this.saveLearners(restored);
+    return restored;
+  }
+
   /**
    * Get all learners (merges real authenticated users + cohort records)
    */
@@ -403,9 +439,14 @@ export class StudentCRMService {
     try {
       let stored: LearnerRecord[] = [];
       const raw = localStorage.getItem(CRM_STUDENTS_STORAGE_KEY);
+      const hideDemo = this.isDemoHidden();
+
       if (raw) {
         stored = JSON.parse(raw);
-      } else {
+        if (hideDemo) {
+          stored = stored.filter((l) => !l.isDemo);
+        }
+      } else if (!hideDemo) {
         stored = [...SEED_LEARNERS];
         this.saveLearners(stored);
       }

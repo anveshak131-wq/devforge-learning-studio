@@ -52,6 +52,7 @@ export interface LearnerRecord {
   provider: 'google' | 'local' | 'admin';
   joinedAt: string;
   lastActiveAt: string;
+  isDemo?: boolean; // True for simulated preview profiles
   
   // Enrolled courses & subscriptions
   purchasedCourses: string[]; // e.g. ['python', 'sql']
