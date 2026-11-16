@@ -200,6 +200,3 @@ export function createRateLimitResponse(
     }
   );
 }
-    }
-  );
-}
