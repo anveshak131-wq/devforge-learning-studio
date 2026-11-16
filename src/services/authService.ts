@@ -700,6 +700,7 @@ export class AuthService {
       const res = await fetch('/api/certificates', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
         body: JSON.stringify({ certificate: cert }),
       });
       return res.ok;
