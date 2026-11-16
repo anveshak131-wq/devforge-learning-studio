@@ -20,6 +20,26 @@ export interface User {
   promoNote?: string;
   activeRetakePass?: any;
   examStatus?: Record<string, any>;
+  paymentReceipts?: PaymentReceipt[];
+}
+
+export interface PaymentReceipt {
+  receiptNumber: string;
+  paymentId: string;
+  orderId?: string | null;
+  userId?: string | null;
+  userEmail: string;
+  userName: string;
+  itemType: 'course' | 'project' | 'bundle' | 'retake';
+  itemId: string;
+  itemTitle: string;
+  amountInr: number;
+  currency: 'INR';
+  paymentMethod: string;
+  timestamp: string;
+  status: 'captured';
+  verificationHash: string;
+  issuer?: string;
 }
 
 export interface PromoGrant {

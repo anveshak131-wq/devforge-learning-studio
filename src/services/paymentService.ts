@@ -1,10 +1,11 @@
 import { Track, GuidedProject } from '../types';
-import { User } from '../types/auth';
+import { User, PaymentReceipt } from '../types/auth';
 import { AuthService } from './authService';
 import confetti from 'canvas-confetti';
 
 const PURCHASED_COURSES_STORAGE = 'devforge_purchased_courses_v1';
 const PURCHASED_PROJECTS_STORAGE = 'devforge_purchased_projects_v1';
+const PAYMENT_RECEIPTS_STORAGE = 'devforge_payment_receipts_v1';
 
 export class PaymentService {
   static readonly COURSE_PRICE_INR = 199;
@@ -60,12 +61,54 @@ export class PaymentService {
   }
 
   /**
+   * Save official payment receipt to local persistent storage & user profile
+   */
+  static recordLocalReceipt(receipt: PaymentReceipt) {
+    try {
+      const stored: PaymentReceipt[] = JSON.parse(localStorage.getItem(PAYMENT_RECEIPTS_STORAGE) || '[]');
+      const filtered = stored.filter(r => r.paymentId !== receipt.paymentId && r.receiptNumber !== receipt.receiptNumber);
+      filtered.unshift(receipt);
+      localStorage.setItem(PAYMENT_RECEIPTS_STORAGE, JSON.stringify(filtered));
+
+      const user = AuthService.getCurrentUser();
+      if (user) {
+        user.paymentReceipts = Array.isArray(user.paymentReceipts) ? user.paymentReceipts : [];
+        if (!user.paymentReceipts.some(r => r.paymentId === receipt.paymentId)) {
+          user.paymentReceipts.unshift(receipt);
+          localStorage.setItem('devforge_auth_session_v1', JSON.stringify(user));
+        }
+      }
+    } catch {}
+  }
+
+  /**
+   * Get all payment receipts for current user
+   */
+  static getLocalReceipts(): PaymentReceipt[] {
+    try {
+      const user = AuthService.getCurrentUser();
+      const userReceipts = Array.isArray(user?.paymentReceipts) ? user!.paymentReceipts : [];
+      const stored: PaymentReceipt[] = JSON.parse(localStorage.getItem(PAYMENT_RECEIPTS_STORAGE) || '[]');
+      
+      const mergedMap = new Map<string, PaymentReceipt>();
+      [...userReceipts, ...stored].forEach(r => {
+        if (r && r.paymentId) mergedMap.set(r.paymentId, r);
+      });
+      return Array.from(mergedMap.values()).sort(
+        (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()
+      );
+    } catch {
+      return [];
+    }
+  }
+
+  /**
    * Open Razorpay Checkout Modal
    */
   static async openCheckout(options: {
     track: Track;
     currentUser: User | null;
-    onSuccess: (paymentId: string) => void;
+    onSuccess: (paymentId: string, receipt?: PaymentReceipt) => void;
     onError: (err: string) => void;
   }) {
     const { track, currentUser, onSuccess, onError } = options;
@@ -155,6 +198,29 @@ export class PaymentService {
           // Record purchase locally only after authoritative backend confirmation
           PaymentService.recordLocalPurchase(track.id);
 
+          const price = (track as any).priceInr || this.COURSE_PRICE_INR;
+          const receipt: PaymentReceipt = data.receipt || {
+            receiptNumber: `DF-RCP-${new Date().getFullYear()}-${paymentId.slice(-8).toUpperCase()}`,
+            paymentId,
+            orderId: orderId || null,
+            userId: currentUser?.id || null,
+            userEmail: currentUser?.email || '',
+            userName: currentUser?.fullName || '',
+            itemType: 'course',
+            itemId: track.id,
+            itemTitle: `${track.title} — Lifetime Course Pass`,
+            amountInr: price,
+            currency: 'INR',
+            paymentMethod: 'ONLINE',
+            timestamp: new Date().toISOString(),
+            status: 'captured',
+            verificationHash: `df_rcp_${paymentId.slice(-16)}`,
+            issuer: 'DevForge Academy of Software Engineering',
+          };
+
+          // Record receipt locally
+          PaymentService.recordLocalReceipt(receipt);
+
           // Trigger confetti
           try {
             confetti({
@@ -164,7 +230,12 @@ export class PaymentService {
             });
           } catch {}
 
-          onSuccess(paymentId);
+          // Automatically broadcast receipt event so receipt modal displays
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('devforge:view_receipt', { detail: receipt }));
+          }
+
+          onSuccess(paymentId, receipt);
         } catch (err: any) {
           onError(err?.message || 'Payment processing failed');
         }
@@ -188,7 +259,7 @@ export class PaymentService {
   static async openRetakeCheckout(options: {
     trackId: string;
     currentUser: User | null;
-    onSuccess: (paymentId: string) => void;
+    onSuccess: (paymentId: string, receipt?: PaymentReceipt) => void;
     onError: (err: string) => void;
   }) {
     const { trackId, currentUser, onSuccess, onError } = options;
@@ -267,7 +338,32 @@ export class PaymentService {
             return;
           }
 
-          onSuccess(paymentId);
+          const receipt: PaymentReceipt = data.receipt || {
+            receiptNumber: `DF-RCP-${new Date().getFullYear()}-${paymentId.slice(-8).toUpperCase()}`,
+            paymentId,
+            orderId: orderId || null,
+            userId: currentUser?.id || null,
+            userEmail: currentUser?.email || '',
+            userName: currentUser?.fullName || '',
+            itemType: 'retake',
+            itemId: 'retake',
+            itemTitle: 'Proctored Certification Re-examination Pass (72-Hour Instant Retake)',
+            amountInr: 49,
+            currency: 'INR',
+            paymentMethod: 'ONLINE',
+            timestamp: new Date().toISOString(),
+            status: 'captured',
+            verificationHash: `df_rcp_${paymentId.slice(-16)}`,
+            issuer: 'DevForge Academy of Software Engineering',
+          };
+
+          PaymentService.recordLocalReceipt(receipt);
+
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('devforge:view_receipt', { detail: receipt }));
+          }
+
+          onSuccess(paymentId, receipt);
         } catch (err: any) {
           onError(err?.message || 'Network error verifying re-exam payment.');
         }
@@ -365,7 +461,7 @@ export class PaymentService {
   static async openProjectCheckout(options: {
     project: GuidedProject;
     currentUser: User | null;
-    onSuccess: (paymentId: string) => void;
+    onSuccess: (paymentId: string, receipt?: PaymentReceipt) => void;
     onError: (err: string) => void;
   }) {
     const { project, currentUser, onSuccess, onError } = options;
@@ -453,7 +549,32 @@ export class PaymentService {
               origin: { y: 0.6 },
             });
           } catch {}
-          onSuccess(paymentId);
+          const receipt: PaymentReceipt = data.receipt || {
+            receiptNumber: `DF-RCP-${new Date().getFullYear()}-${paymentId.slice(-8).toUpperCase()}`,
+            paymentId,
+            orderId: orderId || null,
+            userId: currentUser?.id || null,
+            userEmail: currentUser?.email || '',
+            userName: currentUser?.fullName || '',
+            itemType: 'project',
+            itemId: project.id,
+            itemTitle: `Guided Portfolio Project Pass (${project.title})`,
+            amountInr: priceInr,
+            currency: 'INR',
+            paymentMethod: 'ONLINE',
+            timestamp: new Date().toISOString(),
+            status: 'captured',
+            verificationHash: `df_rcp_${paymentId.slice(-16)}`,
+            issuer: 'DevForge Academy of Software Engineering',
+          };
+
+          PaymentService.recordLocalReceipt(receipt);
+
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('devforge:view_receipt', { detail: receipt }));
+          }
+
+          onSuccess(paymentId, receipt);
         } catch (err: any) {
           onError(err?.message || 'Payment processing failed');
         }
@@ -481,7 +602,7 @@ export class PaymentService {
    */
   static async openAllProjectsBundleCheckout(options: {
     currentUser: User | null;
-    onSuccess: (paymentId: string) => void;
+    onSuccess: (paymentId: string, receipt?: PaymentReceipt) => void;
     onError: (err: string) => void;
   }) {
     const { currentUser, onSuccess, onError } = options;
@@ -566,7 +687,32 @@ export class PaymentService {
               origin: { y: 0.6 },
             });
           } catch {}
-          onSuccess(paymentId);
+          const receipt: PaymentReceipt = data.receipt || {
+            receiptNumber: `DF-RCP-${new Date().getFullYear()}-${paymentId.slice(-8).toUpperCase()}`,
+            paymentId,
+            orderId: orderId || null,
+            userId: currentUser?.id || null,
+            userEmail: currentUser?.email || '',
+            userName: currentUser?.fullName || '',
+            itemType: 'bundle',
+            itemId: 'all',
+            itemTitle: 'All-Projects Portfolio Pass (Lifetime Bundle)',
+            amountInr: this.ALL_PROJECTS_BUNDLE_PRICE_INR,
+            currency: 'INR',
+            paymentMethod: 'ONLINE',
+            timestamp: new Date().toISOString(),
+            status: 'captured',
+            verificationHash: `df_rcp_${paymentId.slice(-16)}`,
+            issuer: 'DevForge Academy of Software Engineering',
+          };
+
+          PaymentService.recordLocalReceipt(receipt);
+
+          if (typeof window !== 'undefined') {
+            window.dispatchEvent(new CustomEvent('devforge:view_receipt', { detail: receipt }));
+          }
+
+          onSuccess(paymentId, receipt);
         } catch (err: any) {
           onError(err?.message || 'Payment processing failed');
         }

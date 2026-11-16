@@ -113,6 +113,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     // Tier B: Authoritative verification against Razorpay's live production API
+    let rzpPaymentData: any = null;
     try {
       const keyId = env.RAZORPAY_KEY_ID || 'rzp_live_U0kHC7jXJDBq6g';
       const basicAuth = 'Basic ' + btoa(`${keyId}:${keySecret.trim()}`);
@@ -141,6 +142,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }
 
       verifiedAmountInr = (rzpData.amount || 0) / 100;
+      rzpPaymentData = rzpData;
       isVerified = true;
     } catch (err: any) {
       return JSON_RESPONSE({ 
@@ -278,18 +280,66 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       );
     }
 
-    // Record immutable payment receipt in KV
-    const paymentRecord = {
+    // 8. Generate Authoritative Payment Receipt & Digital Verification Seal
+    const year = new Date().getFullYear();
+    const shortCode = cleanPaymentId.replace(/^pay_/, '').slice(0, 8).toUpperCase();
+    const receiptNumber = `DF-RCP-${year}-${shortCode}`;
+
+    let itemTitle = 'DevForge Professional Learning Pass';
+    let itemType: 'course' | 'project' | 'bundle' | 'retake' = 'course';
+    if (body.isRetake === true || trackId === 'retake') {
+      itemType = 'retake';
+      itemTitle = 'Proctored Certification Re-examination Pass (72-Hour Instant Retake)';
+    } else if (projectId === 'all') {
+      itemType = 'bundle';
+      itemTitle = 'All-Projects Portfolio Pass (Lifetime Bundle)';
+    } else if (projectId) {
+      itemType = 'project';
+      itemTitle = body.projectTitle || `Guided Portfolio Project Pass (${projectId})`;
+    } else if (trackId) {
+      itemType = 'course';
+      itemTitle = body.trackTitle || `Lifetime Course Pass (${trackId.toUpperCase()})`;
+    }
+
+    const sealData = `${receiptNumber}|${cleanPaymentId}|${user.email}|${verifiedAmountInr}|${new Date().toISOString()}`;
+    const encoder = new TextEncoder();
+    const sealBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(sealData));
+    const sealHex = Array.from(new Uint8Array(sealBuffer))
+      .map(b => b.toString(16).padStart(2, '0'))
+      .join('')
+      .substring(0, 24);
+    const verificationHash = `df_rcp_${sealHex}`;
+
+    const paymentMethod = rzpPaymentData?.method ? String(rzpPaymentData.method).toUpperCase() : 'ONLINE';
+
+    const receipt = {
+      receiptNumber,
       paymentId: cleanPaymentId,
-      orderId: orderId || '',
-      trackId: trackId || '',
-      projectId: projectId || '',
-      userEmail: user.email,
-      amountInr: verifiedAmountInr || 199,
+      orderId: orderId || null,
+      userId: user.id || null,
+      userEmail: user.email || rzpPaymentData?.email || '',
+      userName: user.fullName || rzpPaymentData?.notes?.name || String(user.email || 'Student').split('@')[0],
+      itemType,
+      itemId: trackId || projectId || 'retake',
+      itemTitle,
+      amountInr: verifiedAmountInr,
+      currency: 'INR',
+      paymentMethod,
       timestamp: new Date().toISOString(),
       status: 'captured',
+      verificationHash,
+      issuer: 'DevForge Academy of Software Engineering',
     };
-    writes.push(env.DEVFORGE_KV.put(`payment:${cleanPaymentId}`, JSON.stringify(paymentRecord)));
+
+    // Store in user profile's paymentReceipts array
+    user.paymentReceipts = Array.isArray(user.paymentReceipts) ? user.paymentReceipts : [];
+    if (!user.paymentReceipts.some((r: any) => r.paymentId === cleanPaymentId || r.receiptNumber === receiptNumber)) {
+      user.paymentReceipts.unshift(receipt);
+    }
+
+    // Persist immutable payment receipt and receipt number index in KV
+    writes.push(env.DEVFORGE_KV.put(`payment:${cleanPaymentId}`, JSON.stringify(receipt)));
+    writes.push(env.DEVFORGE_KV.put(`receipt:${receiptNumber}`, JSON.stringify(receipt)));
 
     await Promise.all(writes);
 
@@ -297,6 +347,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       success: true,
       purchasedCourses: user.purchasedCourses,
       purchasedProjects: user.purchasedProjects,
+      receipt,
       message: 'Payment verified and access granted successfully!',
     }, 200, request);
   } catch (err: any) {

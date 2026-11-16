@@ -20,9 +20,11 @@ import { CertificatesVaultView } from './components/views/CertificatesVaultView'
 import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
 import { CertificateVerifyView } from './components/certificate/CertificateVerifyView';
+import { PaymentReceiptModal } from './components/modals/PaymentReceiptModal';
 import { DecoyNotFoundView } from './components/views/DecoyNotFoundView';
 import { LegalView, LegalTab } from './components/legal/LegalView';
 import { LeaderboardView } from './components/leaderboard/LeaderboardView';
+import { PaymentReceipt } from './types/auth';
 
 // Dynamic code-splitting: Admin chunks are NEVER downloaded by public students
 const AdminPortalView = React.lazy(() =>
@@ -77,6 +79,10 @@ function parseRouteFromLocation(): { view: string; payload?: any } {
     const credentialId = segments[1] || new URLSearchParams(window.location.search).get('id') || '';
     return { view: 'verify', payload: { credentialId } };
   }
+  if (segments[0] === 'receipt' || segments[0] === 'invoice') {
+    const receiptId = segments[1] || new URLSearchParams(window.location.search).get('id') || new URLSearchParams(window.location.search).get('number') || '';
+    return { view: 'receipt', payload: { receiptId } };
+  }
   if (['terms', 'terms-and-conditions'].includes(segments[0])) return { view: 'terms' };
   if (['privacy', 'privacy-policy'].includes(segments[0])) return { view: 'privacy' };
   if (['refund', 'refund-policy', 'cancellation'].includes(segments[0])) return { view: 'refund' };
@@ -92,6 +98,35 @@ export function App() {
   const [currentUser, setCurrentUser] = useState<UserType | null>(() => AuthService.getCurrentUser());
   const [currentView, setCurrentView] = useState<string>(() => initialRoute.view);
   const [viewPayload, setViewPayload] = useState<any>(() => initialRoute.payload || null);
+  const [activeReceipt, setActiveReceipt] = useState<PaymentReceipt | null>(null);
+  const [isReceiptModalOpen, setIsReceiptModalOpen] = useState(false);
+
+  // Listen for receipt viewing events (e.g. dispatched automatically after payment confirmation)
+  useEffect(() => {
+    const handleViewReceipt = (e: any) => {
+      if (e?.detail) {
+        setActiveReceipt(e.detail);
+        setIsReceiptModalOpen(true);
+      }
+    };
+    window.addEventListener('devforge:view_receipt', handleViewReceipt);
+    return () => window.removeEventListener('devforge:view_receipt', handleViewReceipt);
+  }, []);
+
+  // Check if direct URL requested viewing a specific payment receipt
+  useEffect(() => {
+    if (initialRoute.view === 'receipt' && initialRoute.payload?.receiptId) {
+      fetch(`/api/payment/receipt?id=${encodeURIComponent(initialRoute.payload.receiptId)}`)
+        .then(r => r.json())
+        .then(data => {
+          if (data.success && data.receipt) {
+            setActiveReceipt(data.receipt);
+            setIsReceiptModalOpen(true);
+          }
+        })
+        .catch(() => {});
+    }
+  }, []);
 
   // Subscribe to live curriculum edits made by Admin & fetch latest Cloudflare KV database updates
   useEffect(() => {
@@ -435,6 +470,10 @@ export function App() {
             }}
             onUserUpdated={(u) => setCurrentUser(u)}
             onOpenPublicVerify={(credId) => handleNavigate('verify', { credentialId: credId })}
+            onViewReceipt={(receipt) => {
+              setActiveReceipt(receipt);
+              setIsReceiptModalOpen(true);
+            }}
           />
         )}
 
@@ -576,6 +615,13 @@ export function App() {
         onClose={() => setIsCertModalOpen(false)}
         certificate={activeCertificate}
         onOpenPublicVerify={(credId) => handleNavigate('verify', { credentialId: credId })}
+      />
+
+      {/* Official Payment Receipt / Tax Invoice Modal */}
+      <PaymentReceiptModal
+        isOpen={isReceiptModalOpen}
+        onClose={() => setIsReceiptModalOpen(false)}
+        receipt={activeReceipt}
       />
     </div>
   );
