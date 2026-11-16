@@ -1,4 +1,4 @@
-import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from '../_rateLimiter';
 
 interface Env {
   DEVFORGE_KV?: {
@@ -10,25 +10,17 @@ interface Env {
   RAZORPAY_KEY_ID?: string;
 }
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200) =>
+const JSON_RESPONSE = (data: any, status = 200, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
     },
   });
 
-export const onRequestOptions = async () => {
-  return new Response(null, { status: 204, headers: CORS_HEADERS });
+export const onRequestOptions = async (context: { request: Request }) => {
+  return new Response(null, { status: 204, headers: getCorsHeaders(context?.request) });
 };
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
@@ -165,7 +157,24 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       return JSON_RESPONSE({ success: false, error: 'Payment verification failed.' }, 400);
     }
 
-    // 5. Resolve User from session cookie or email
+    // 5. Strict Price & Product Amount Verification
+    let requiredMinAmount = 199; // Default course pass: ₹199
+    if (projectId === 'all') {
+      requiredMinAmount = 249; // All-Projects Portfolio Pass: ₹249
+    } else if (projectId) {
+      requiredMinAmount = 99; // Individual project: min ₹99
+    } else if (body.isRetake === true || trackId === 'retake') {
+      requiredMinAmount = 49; // Exam retake pass: ₹49
+    }
+
+    if (verifiedAmountInr > 0 && verifiedAmountInr < requiredMinAmount) {
+      return JSON_RESPONSE({
+        success: false,
+        error: `Under-payment alert: Verified payment amount (₹${verifiedAmountInr}) is lower than the required price (₹${requiredMinAmount}) for this item.`,
+      }, 400);
+    }
+
+    // 6. Secure Identity Resolution & Anti-Account-Takeover Protection
     let user: any = null;
     let sessionToken: string | null = null;
 
@@ -173,6 +182,11 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const cookieMatch = cookieHeader.match(/df_session=([^;]+)/);
     if (cookieMatch) {
       sessionToken = cookieMatch[1];
+    } else {
+      const authHeader = request.headers.get('Authorization') || '';
+      if (authHeader.startsWith('Bearer ')) {
+        sessionToken = authHeader.substring(7).trim();
+      }
     }
 
     if (!env || !env.DEVFORGE_KV) {
@@ -181,37 +195,50 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     if (sessionToken) {
       user = await env.DEVFORGE_KV.get(`session:${sessionToken}`, { type: 'json' }).catch(() => null);
+      if (user && user.email) {
+        // Enforce identity binding: caller cannot credit an arbitrary victim's account while logged in
+        if (email && typeof email === 'string' && email.trim()) {
+          const suppliedEmail = email.trim().toLowerCase();
+          const sessionEmail = String(user.email).trim().toLowerCase();
+          if (suppliedEmail !== sessionEmail) {
+            return JSON_RESPONSE({
+              success: false,
+              error: 'Security Alert: Supplied payment email does not match authenticated user session.',
+            }, 403);
+          }
+        }
+      }
     }
 
-    const cleanEmail = email ? String(email).trim().toLowerCase() : (user?.email || '');
-    if (!user && cleanEmail) {
-      user = await env.DEVFORGE_KV.get(`user:email:${cleanEmail}`, { type: 'json' }).catch(() => null);
-    }
-
-    // If user record doesn't exist yet, instantiate new student profile
-    if (!user && cleanEmail) {
-      user = {
-        id: 'usr_' + Math.random().toString(36).substring(2, 10),
-        email: cleanEmail,
-        fullName: cleanEmail.split('@')[0],
-        role: 'student',
-        avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanEmail)}`,
-        createdAt: new Date().toISOString(),
-        earnedCertificateIds: [],
-        purchasedCourses: [],
-        purchasedProjects: [],
-      };
-    }
-
+    // If caller is not in an active session, resolve by explicit email parameter
     if (!user) {
-      return JSON_RESPONSE({ 
-        success: false, 
-        error: 'Unable to link verified payment to a student account. Please ensure you are logged in.' 
-      }, 400);
+      if (!email || typeof email !== 'string' || !email.includes('@')) {
+        return JSON_RESPONSE({
+          success: false,
+          error: 'Please sign in or provide a valid email address to credit your course purchase.',
+        }, 400);
+      }
+
+      const cleanEmail = email.trim().toLowerCase();
+      user = await env.DEVFORGE_KV.get(`user:email:${cleanEmail}`, { type: 'json' }).catch(() => null);
+
+      if (!user) {
+        user = {
+          id: 'usr_' + Math.random().toString(36).substring(2, 10),
+          email: cleanEmail,
+          fullName: cleanEmail.split('@')[0],
+          role: 'student',
+          avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanEmail)}`,
+          createdAt: new Date().toISOString(),
+          earnedCertificateIds: [],
+          purchasedCourses: [],
+          purchasedProjects: [],
+        };
+      }
     }
 
-    // 6. Grant Course / Project Access
-    if (trackId) {
+    // 7. Grant Course / Project Access
+    if (trackId && trackId !== 'retake') {
       const currentCourses = Array.isArray(user.purchasedCourses) ? user.purchasedCourses : [];
       if (!currentCourses.includes(trackId)) {
         user.purchasedCourses = [...currentCourses, trackId];
@@ -237,7 +264,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     if (user.githubId) {
       writes.push(env.DEVFORGE_KV.put(`user:github:${user.githubId}`, JSON.stringify(user)));
     }
-    if (sessionToken) {
+    // Only update session if session was authenticated and matches this user
+    if (sessionToken && user.id) {
       writes.push(
         env.DEVFORGE_KV.put(`session:${sessionToken}`, JSON.stringify(user), {
           expirationTtl: 60 * 60 * 24 * 30, // 30-day session

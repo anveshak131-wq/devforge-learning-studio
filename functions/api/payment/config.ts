@@ -1,20 +1,26 @@
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from '../_rateLimiter';
+
 interface Env {
   RAZORPAY_KEY_ID?: string;
 }
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
+export const onRequestOptions = async (context: { request: Request }) => {
+  return new Response(null, { status: 204, headers: getCorsHeaders(context?.request) });
 };
 
-export const onRequestOptions = async () => {
-  return new Response(null, { status: 204, headers: CORS_HEADERS });
-};
+export const onRequestGet = async (context: { request: Request; env: Env }) => {
+  const { request, env } = context;
 
-export const onRequestGet = async (context: { env: Env }) => {
-  const { env } = context;
+  // Rate limiting: max 60 config requests per minute per IP
+  const rateLimit = checkRateLimit(request, {
+    keyPrefix: 'payment_config_get',
+    maxRequests: 60,
+    windowSeconds: 60,
+  });
+  if (!rateLimit.allowed) {
+    return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many payment config requests.', request);
+  }
+
   const keyId = env?.RAZORPAY_KEY_ID || 'rzp_live_U0kHC7jXJDBq6g';
 
   return new Response(
@@ -26,7 +32,7 @@ export const onRequestGet = async (context: { env: Env }) => {
       status: 200,
       headers: {
         'Content-Type': 'application/json',
-        ...CORS_HEADERS,
+        ...getCorsHeaders(request),
       },
     }
   );

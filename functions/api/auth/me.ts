@@ -1,27 +1,19 @@
 import { Env, DEFAULT_SUPERADMIN_EMAILS } from '../_auth';
-import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from '../_rateLimiter';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200) =>
+const JSON_RESPONSE = (data: any, status = 200, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
     },
   });
 
-export const onRequestOptions = async () => {
+export const onRequestOptions = async (context: { request: Request }) => {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS,
+    headers: getCorsHeaders(context?.request),
   });
 };
 
@@ -74,21 +66,28 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
         // Check if user's email was granted promotional free access by Admin
         const promoList = (await env.DEVFORGE_KV.get('devforge_promo_access_v1', { type: 'json' }).catch(() => [])) || [];
         const promoMatch = Array.isArray(promoList) && promoList.find((p: any) => p && String(p.email || p).toLowerCase().trim() === cleanEmail);
-        const hasPromo = Boolean(promoMatch) || sessionUser.hasPromoAccess === true;
+        const hasPromo = Boolean(promoMatch);
 
         const currentCourses = Array.isArray(sessionUser.purchasedCourses) ? sessionUser.purchasedCourses : [];
         const finalCourses = hasPromo
           ? Array.from(new Set([...currentCourses, 'all']))
-          : currentCourses;
+          : currentCourses.filter((c: string) => c !== 'all' && c !== '*');
 
         const updatedRole = isWhitelisted ? 'admin' : (sessionUser.role === 'admin' ? 'student' : sessionUser.role);
         const resolvedUser = {
           ...sessionUser,
           role: updatedRole,
           hasPromoAccess: hasPromo,
-          promoNote: promoMatch?.note || sessionUser.promoNote,
+          promoNote: hasPromo ? (promoMatch?.note || sessionUser.promoNote) : undefined,
           purchasedCourses: finalCourses,
         };
+
+        // If permissions or promo status changed, synchronize active session in KV
+        if (sessionUser.role !== updatedRole || sessionUser.hasPromoAccess !== hasPromo) {
+          await env.DEVFORGE_KV.put(`session:${token}`, JSON.stringify(resolvedUser), {
+            expirationTtl: 60 * 60 * 24 * 30,
+          }).catch(() => {});
+        }
 
         return JSON_RESPONSE({
           success: true,

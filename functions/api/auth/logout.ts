@@ -1,31 +1,25 @@
+import { getCorsHeaders } from '../_rateLimiter';
+
 interface Env {
   DEVFORGE_KV?: {
     delete: (key: string) => Promise<void>;
   };
 }
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200, extraHeaders: Record<string, string> = {}) =>
+const JSON_RESPONSE = (data: any, status = 200, extraHeaders: Record<string, string> = {}, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
       ...extraHeaders,
     },
   });
 
-export const onRequestOptions = async () => {
+export const onRequestOptions = async (context: { request: Request }) => {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS,
+    headers: getCorsHeaders(context?.request),
   });
 };
 
@@ -33,11 +27,20 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
   try {
     const { request, env } = context;
 
-    // Extract session token from cookie
+    // Extract session token from cookie or Authorization header
+    let token: string | null = null;
     const cookieHeader = request.headers.get('Cookie') || '';
     const cookieMatch = cookieHeader.match(/df_session=([^;]+)/);
-    if (cookieMatch && env && env.DEVFORGE_KV) {
-      const token = cookieMatch[1];
+    if (cookieMatch) {
+      token = cookieMatch[1];
+    } else {
+      const authHeader = request.headers.get('Authorization') || '';
+      if (authHeader.startsWith('Bearer ')) {
+        token = authHeader.substring(7).trim();
+      }
+    }
+
+    if (token && env && env.DEVFORGE_KV) {
       await env.DEVFORGE_KV.delete(`session:${token}`).catch(() => {});
     }
 
@@ -47,9 +50,10 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     return JSON_RESPONSE(
       { success: true, message: 'Logged out successfully' },
       200,
-      { 'Set-Cookie': clearCookieHeader }
+      { 'Set-Cookie': clearCookieHeader },
+      request
     );
   } catch (err: any) {
-    return JSON_RESPONSE({ success: false, error: err?.message }, 500);
+    return JSON_RESPONSE({ success: false, error: err?.message }, 500, {}, context.request);
   }
 };

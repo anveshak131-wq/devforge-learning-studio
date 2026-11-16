@@ -1,24 +1,17 @@
 import { Env, verifyAdminSession } from '../_auth';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from '../_rateLimiter';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200) =>
+const JSON_RESPONSE = (data: any, status = 200, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
     },
   });
 
-export const onRequestOptions = async () => {
-  return new Response(null, { status: 204, headers: CORS_HEADERS });
+export const onRequestOptions = async (context: { request: Request }) => {
+  return new Response(null, { status: 204, headers: getCorsHeaders(context?.request) });
 };
 
 export interface PromoGrantItem {
@@ -35,6 +28,16 @@ export interface PromoGrantItem {
 export const onRequestGet = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 30 promo list queries per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'admin_promos_get',
+      maxRequests: 30,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many promo requests.');
+    }
 
     // Strict SuperAdmin Session Verification
     const auth = await verifyAdminSession(request, env);
@@ -60,6 +63,16 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 15 promo grant/revoke requests per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'admin_promos_post',
+      maxRequests: 15,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many promo updates.');
+    }
 
     // Strict SuperAdmin Session Verification
     const auth = await verifyAdminSession(request, env);

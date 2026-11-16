@@ -1,4 +1,4 @@
-import { checkRateLimit, createRateLimitResponse } from './_rateLimiter';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from './_rateLimiter';
 
 interface Env {
   DEVFORGE_KV?: {
@@ -7,27 +7,19 @@ interface Env {
   };
 }
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200) =>
+const JSON_RESPONSE = (data: any, status = 200, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
     },
   });
 
-export const onRequestOptions = async () => {
+export const onRequestOptions = async (context: { request: Request }) => {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS,
+    headers: getCorsHeaders(context?.request),
   });
 };
 

@@ -112,11 +112,13 @@ export class ExamEngine {
       const shuffledOptions = shuffleArray(q.options);
       const newCorrectIndex = shuffledOptions.indexOf(correctOptionText);
 
+      // Security: Strip correct answer index and explanation from question payload so candidates cannot inspect answer keys in DevTools
       const dynamicQuestion: QuizQuestion = {
         ...q,
         id: `exam-${trackId}-${idx + 1}-${q.id}`,
         options: shuffledOptions,
-        correctOptionIndex: newCorrectIndex,
+        correctOptionIndex: -1,
+        explanation: '',
       };
 
       secretAnswers[dynamicQuestion.id] = newCorrectIndex;
@@ -325,14 +327,19 @@ export class ExamEngine {
 
     const totalQuestions = questions.length;
     const scorePercent = totalQuestions > 0 ? Math.round((correctCount / totalQuestions) * 100) : 0;
-    const passed = scorePercent >= 70;
+    const integrityStatus: 'clean' | 'flagged' = focusViolations >= 3 ? 'flagged' : 'clean';
+    const passed = scorePercent >= 70 && integrityStatus === 'clean';
 
     let grade: 'Distinction' | 'High Honors' | 'Honors' | 'Needs Review' = 'Needs Review';
-    if (scorePercent >= 90) grade = 'Distinction';
-    else if (scorePercent >= 80) grade = 'High Honors';
-    else if (scorePercent >= 70) grade = 'Honors';
-
-    const integrityStatus: 'clean' | 'flagged' = focusViolations >= 3 ? 'flagged' : 'clean';
+    if (integrityStatus === 'flagged') {
+      grade = 'Needs Review';
+    } else if (scorePercent >= 90) {
+      grade = 'Distinction';
+    } else if (scorePercent >= 80) {
+      grade = 'High Honors';
+    } else if (scorePercent >= 70) {
+      grade = 'Honors';
+    }
 
     const skillsBreakdown: Record<string, { correct: number; total: number; percent: number }> = {};
     Object.entries(domainStats).forEach(([domain, stats]) => {

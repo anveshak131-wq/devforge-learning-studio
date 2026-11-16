@@ -1,26 +1,19 @@
 import { Env, verifyAdminSession } from './_auth';
-import { checkRateLimit, createRateLimitResponse } from './_rateLimiter';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from './_rateLimiter';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200) =>
+const JSON_RESPONSE = (data: any, status = 200, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
     },
   });
 
-export const onRequestOptions = async () => {
+export const onRequestOptions = async (context: { request: Request }) => {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS,
+    headers: getCorsHeaders(context?.request),
   });
 };
 
@@ -166,6 +159,16 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 export const onRequestDelete = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 15 lesson deletion requests per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'lessons_delete',
+      maxRequests: 15,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many lesson deletion requests.');
+    }
 
     // Strict SuperAdmin Authentication Check
     const auth = await verifyAdminSession(request, env);

@@ -1,27 +1,19 @@
 import { Env, DEFAULT_SUPERADMIN_EMAILS } from './_auth';
-import { checkRateLimit, createRateLimitResponse } from './_rateLimiter';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from './_rateLimiter';
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200) =>
+const JSON_RESPONSE = (data: any, status = 200, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
     },
   });
 
-export const onRequestOptions = async () => {
+export const onRequestOptions = async (context: { request: Request }) => {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS,
+    headers: getCorsHeaders(context?.request),
   });
 };
 
@@ -157,7 +149,14 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     const cleanSessionEmail = String(sessionUser.email || '').toLowerCase().trim();
-    const isSuperAdmin = DEFAULT_SUPERADMIN_EMAILS.includes(cleanSessionEmail) || sessionUser.role === 'admin';
+    
+    // Check against superadmin whitelist
+    const customAdmins = (await env.DEVFORGE_KV.get('devforge_admin_whitelist_v1', { type: 'json' }).catch(() => [])) || [];
+    const envAdmins = env.ADMIN_EMAILS ? env.ADMIN_EMAILS.split(',').map((e: string) => e.trim().toLowerCase()) : [];
+    const isSuperAdmin =
+      DEFAULT_SUPERADMIN_EMAILS.includes(cleanSessionEmail) ||
+      envAdmins.includes(cleanSessionEmail) ||
+      (Array.isArray(customAdmins) && customAdmins.map((e: string) => String(e).toLowerCase().trim()).includes(cleanSessionEmail));
 
     // 2. Action: Server-Side Authoritative Issuance (action: 'issue')
     if (body.action === 'issue') {
@@ -184,8 +183,16 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         }, 403);
       }
 
+      // Enforce passing score requirement
+      const scoreNum = typeof examScore === 'number' ? Math.max(0, Math.min(100, Math.round(examScore))) : undefined;
+      if (scoreNum !== undefined && scoreNum < 70) {
+        return JSON_RESPONSE({
+          success: false,
+          error: `Graduation requirement not met: Verified exam score (${scoreNum}%) is below the minimum passing threshold (70%).`,
+        }, 400);
+      }
+
       // Compute grade server-side based on verified exam score
-      const scoreNum = typeof examScore === 'number' ? Math.max(0, Math.min(100, examScore)) : undefined;
       const grade = (scoreNum !== undefined && scoreNum >= 90)
         ? 'Distinction'
         : (scoreNum !== undefined && scoreNum >= 80)
@@ -256,7 +263,14 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       });
     }
 
-    // 3. Action: Register / Sync existing certificate payload
+    // 3. Action: Register / Sync existing certificate payload (SuperAdmin Only)
+    if (!isSuperAdmin) {
+      return JSON_RESPONSE({
+        success: false,
+        error: 'Access denied: Direct certificate payload registration is deprecated and restricted to SuperAdmins. Please earn credentials through track examination (action: "issue").',
+      }, 403);
+    }
+
     const cert = body?.certificate;
     if (!cert || !cert.credentialId || !cert.trackTitle) {
       return JSON_RESPONSE({

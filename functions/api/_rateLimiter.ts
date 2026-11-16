@@ -153,20 +153,34 @@ export function checkRateLimit(request: Request, config: RateLimitConfig): RateL
   };
 }
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
+/**
+ * Generates CORS headers compliant with W3C Fetch specification.
+ * Eliminates invalid wildcard '*' + credentials 'true' combination.
+ */
+export function getCorsHeaders(request?: Request): Record<string, string> {
+  const origin = request ? request.headers.get('Origin') : null;
+  const isAllowedOrigin = origin && (
+    origin.endsWith('.pages.dev') ||
+    origin.includes('localhost') ||
+    origin.includes('127.0.0.1')
+  );
+
+  return {
+    'Access-Control-Allow-Origin': isAllowedOrigin ? origin! : '*',
+    'Access-Control-Allow-Methods': 'GET, POST, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    ...(isAllowedOrigin ? { 'Access-Control-Allow-Credentials': 'true' } : {}),
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+  };
+}
 
 /**
  * Generates a standard HTTP 429 Too Many Requests response with appropriate headers
  */
 export function createRateLimitResponse(
   result: RateLimitResult,
-  customMessage?: string
+  customMessage?: string,
+  request?: Request
 ): Response {
   return new Response(
     JSON.stringify({
@@ -181,8 +195,11 @@ export function createRateLimitResponse(
       headers: {
         'Content-Type': 'application/json',
         ...result.headers,
-        ...CORS_HEADERS,
+        ...getCorsHeaders(request),
       },
+    }
+  );
+}
     }
   );
 }

@@ -519,6 +519,16 @@ export class CodeExecutor {
 
       const workerScript = `
         self.onmessage = async function(e) {
+          // Security: Neutralize network egress, sockets, and worker script imports in the sandbox
+          try {
+            self.fetch = undefined;
+            self.XMLHttpRequest = undefined;
+            self.WebSocket = undefined;
+            self.EventSource = undefined;
+            self.importScripts = undefined;
+            self.indexedDB = undefined;
+          } catch (e) {}
+
           const code = e.data.code;
           const capturedLogs = [];
 

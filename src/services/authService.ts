@@ -641,6 +641,11 @@ export class AuthService {
           }
           return cert;
         }
+      } else {
+        const errData = await res.json().catch(() => null);
+        if (errData?.error) {
+          alert(`Certificate Issuance: ${errData.error}`);
+        }
       }
     } catch (err) {
       console.warn('Server certificate issuance warning:', err);

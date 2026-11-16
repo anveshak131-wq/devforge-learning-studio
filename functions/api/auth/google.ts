@@ -1,4 +1,4 @@
-import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
+import { checkRateLimit, createRateLimitResponse, getCorsHeaders } from '../_rateLimiter';
 
 interface Env {
   DEVFORGE_KV?: {
@@ -15,28 +15,20 @@ const DEFAULT_SUPERADMIN_EMAILS = [
   'anveshkoganti54@gmail.com',
 ];
 
-const CORS_HEADERS = {
-  'Access-Control-Allow-Origin': '*',
-  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-  'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-  'Access-Control-Allow-Credentials': 'true',
-  'Cache-Control': 'no-cache, no-store, must-revalidate',
-};
-
-const JSON_RESPONSE = (data: any, status = 200, extraHeaders: Record<string, string> = {}) =>
+const JSON_RESPONSE = (data: any, status = 200, extraHeaders: Record<string, string> = {}, request?: Request) =>
   new Response(JSON.stringify(data), {
     status,
     headers: {
       'Content-Type': 'application/json',
-      ...CORS_HEADERS,
+      ...getCorsHeaders(request),
       ...extraHeaders,
     },
   });
 
-export const onRequestOptions = async () => {
+export const onRequestOptions = async (context: { request: Request }) => {
   return new Response(null, {
     status: 204,
-    headers: CORS_HEADERS,
+    headers: getCorsHeaders(context?.request),
   });
 };
 
@@ -215,7 +207,6 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       {
         success: true,
         user,
-        sessionToken,
       },
       200,
       { 'Set-Cookie': cookieHeader }

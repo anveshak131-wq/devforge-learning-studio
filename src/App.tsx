@@ -233,8 +233,11 @@ export function App() {
   const issueAndShowCertificate = async (track: Track, user: UserType) => {
     const skills = track.lessons.map(l => l.title);
     const serverCert = await AuthService.issueCertificateOnServer(track.id, track.title, track.language, skills);
-    const cert = serverCert || AuthService.issueCertificate(track.id, track.title, track.language, skills);
-    setActiveCertificate(cert);
+    if (!serverCert) {
+      alert('Unable to issue verified certificate. Please ensure you are logged in and have completed course enrollment requirements.');
+      return;
+    }
+    setActiveCertificate(serverCert);
     setIsCertModalOpen(true);
     confetti({
       particleCount: 120,
