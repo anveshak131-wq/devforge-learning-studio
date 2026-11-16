@@ -7,6 +7,7 @@ export const KANBAN_PROJECT: GuidedProject = {
   language: 'javascript',
   difficulty: 'Beginner',
   tier: 2,
+  priceInr: 99,
   estimatedHours: 1.5,
   xpReward: 250,
   tagline: 'Build a full-featured task management engine with state transitions, filtering, and local storage persistence.',

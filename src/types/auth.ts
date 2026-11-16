@@ -12,6 +12,7 @@ export interface User {
   earnedCertificateIds: string[];
   googleId?: string;
   purchasedCourses?: string[];
+  purchasedProjects?: string[];
   provider?: 'google' | 'local' | 'admin';
   hasPromoAccess?: boolean;
   promoNote?: string;

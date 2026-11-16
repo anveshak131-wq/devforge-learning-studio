@@ -7,6 +7,7 @@ export const REDUX_PROJECT: GuidedProject = {
   language: 'typescript',
   difficulty: 'Intermediate',
   tier: 4,
+  priceInr: 149,
   estimatedHours: 2,
   xpReward: 300,
   tagline: 'Engineer a predictable, typesafe state management container with generic reducers, actions, and subscribers.',

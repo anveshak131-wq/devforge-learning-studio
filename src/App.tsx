@@ -382,6 +382,7 @@ export function App() {
         {currentView === 'projects' && (
           <ProjectsCatalogView
             userStats={userStats}
+            currentUser={currentUser}
             onSelectProject={(projectId) => {
               handleNavigate('project-milestone', { projectId });
             }}
@@ -391,6 +392,7 @@ export function App() {
         {currentView === 'project-milestone' && (
           <ProjectWorkspace
             project={activeProject}
+            currentUser={currentUser}
             onBackToProjects={() => handleNavigate('projects')}
             userStats={userStats}
             onStatsUpdate={handleStatsUpdate}

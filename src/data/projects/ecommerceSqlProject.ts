@@ -8,6 +8,7 @@ export const ECOMMERCE_SQL_PROJECT: GuidedProject = {
   language: 'sql',
   difficulty: 'Intermediate',
   tier: 3,
+  priceInr: 99,
   estimatedHours: 2,
   xpReward: 300,
   tagline: 'Write production-grade SQL analytical queries to unlock insights on customer retention, revenue, and product velocity.',

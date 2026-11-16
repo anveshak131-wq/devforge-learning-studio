@@ -122,6 +122,7 @@ export interface GuidedProject {
   whatYouWillBuild: string[];
   skillsLearned: string[];
   milestones: ProjectMilestone[];
+  priceInr?: number;
   initSqlSchema?: string;
 }
 

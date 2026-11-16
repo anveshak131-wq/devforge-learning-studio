@@ -7,6 +7,7 @@ export const WEATHER_PROJECT: GuidedProject = {
   language: 'typescript',
   difficulty: 'Intermediate',
   tier: 4,
+  priceInr: 149,
   estimatedHours: 2,
   xpReward: 300,
   tagline: 'Build a production-ready asynchronous API fetcher with TTL caching, error recovery, and data transformations.',

@@ -34,11 +34,11 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const { request, env } = context;
     const body = (await request.json().catch(() => null)) as any;
 
-    if (!body || !body.trackId) {
-      return JSON_RESPONSE({ success: false, error: 'Missing trackId' }, 400);
+    if (!body || (!body.trackId && !body.projectId)) {
+      return JSON_RESPONSE({ success: false, error: 'Missing trackId or projectId' }, 400);
     }
 
-    const { trackId, paymentId, orderId, signature, email } = body;
+    const { trackId, projectId, paymentId, orderId, signature, email, amountInr } = body;
 
     // 1. Verify Razorpay Signature if secret is configured
     if (env.RAZORPAY_KEY_SECRET && orderId && signature) {
@@ -85,11 +85,22 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         user = await env.DEVFORGE_KV.get(`user:email:${cleanEmail}`, { type: 'json' }).catch(() => null);
       }
 
-      // 3. Update User's Purchased Courses
+      // 3. Update User's Purchased Courses / Projects
       if (user) {
-        const currentCourses = Array.isArray(user.purchasedCourses) ? user.purchasedCourses : [];
-        if (!currentCourses.includes(trackId)) {
-          user.purchasedCourses = [...currentCourses, trackId];
+        if (trackId) {
+          const currentCourses = Array.isArray(user.purchasedCourses) ? user.purchasedCourses : [];
+          if (!currentCourses.includes(trackId)) {
+            user.purchasedCourses = [...currentCourses, trackId];
+          }
+        }
+
+        if (projectId) {
+          const currentProjects = Array.isArray(user.purchasedProjects) ? user.purchasedProjects : [];
+          if (projectId === 'all') {
+            user.purchasedProjects = Array.from(new Set([...currentProjects, 'all', '*']));
+          } else if (!currentProjects.includes(projectId)) {
+            user.purchasedProjects = [...currentProjects, projectId];
+          }
         }
 
         const writes: Promise<void>[] = [];
@@ -111,9 +122,10 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         const paymentRecord = {
           paymentId: paymentId || `pay_${Date.now()}`,
           orderId: orderId || '',
-          trackId,
+          trackId: trackId || '',
+          projectId: projectId || '',
           userEmail: user.email,
-          amountInr: 199,
+          amountInr: amountInr || (projectId === 'all' ? 249 : projectId ? 99 : 199),
           timestamp: new Date().toISOString(),
           status: 'captured',
         };
@@ -124,15 +136,17 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         return JSON_RESPONSE({
           success: true,
           purchasedCourses: user.purchasedCourses,
-          message: 'Course unlocked successfully! Lifetime access granted.',
+          purchasedProjects: user.purchasedProjects,
+          message: 'Access granted successfully!',
         });
       }
     }
 
     return JSON_RESPONSE({
       success: true,
-      purchasedCourses: [trackId],
-      message: 'Course purchase acknowledged.',
+      purchasedCourses: trackId ? [trackId] : [],
+      purchasedProjects: projectId ? [projectId] : [],
+      message: 'Purchase acknowledged.',
     });
   } catch (err: any) {
     return JSON_RESPONSE({ success: false, error: err?.message || 'Verification failure' }, 500);
