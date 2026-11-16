@@ -428,20 +428,26 @@ export class AuthService {
    */
   static async startGitHubOAuth(): Promise<void> {
     try {
-      // Check if backend provides custom client ID
       let clientId = (import.meta as any).env?.VITE_GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
       try {
-        const configRes = await fetch('/api/auth/github');
+        const configRes = await fetch('/api/auth/github', { credentials: 'include' });
         if (configRes.ok) {
           const configData = await configRes.json();
+          if (configData.authUrl) {
+            window.location.href = configData.authUrl;
+            return;
+          }
           if (configData.clientId) {
             clientId = configData.clientId;
           }
         }
       } catch {}
 
+      // Fallback state generation if API unreachable
+      const state = Math.random().toString(36).substring(2, 18);
+      document.cookie = `df_oauth_state=${state}; path=/; max-age=600; SameSite=Lax`;
       const redirectUri = `${window.location.origin}/api/auth/github/callback`;
-      const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=read:user,user:email&redirect_uri=${encodeURIComponent(redirectUri)}`;
+      const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=read:user,user:email&state=${state}&redirect_uri=${encodeURIComponent(redirectUri)}`;
       window.location.href = authUrl;
     } catch (err) {
       console.error('Failed to initiate GitHub OAuth:', err);
@@ -602,6 +608,53 @@ export class AuthService {
     }
 
     return newCert;
+  }
+
+  /**
+   * Request Server-Validated Certificate Issuance from Cloudflare Edge KV
+   */
+  static async issueCertificateOnServer(
+    trackId: string,
+    trackTitle: string,
+    language: Language,
+    skillsVerified: string[],
+    examScore?: number
+  ): Promise<Certificate | null> {
+    try {
+      const res = await fetch('/api/certificates', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          action: 'issue',
+          trackId,
+          trackTitle,
+          language,
+          skillsVerified,
+          examScore,
+        }),
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        if (data.success && data.certificate) {
+          const cert: Certificate = data.certificate;
+          const allCerts = this.getAllCertificates().filter(c => c.credentialId !== cert.credentialId);
+          allCerts.push(cert);
+          localStorage.setItem(CERTIFICATES_KEY, JSON.stringify(allCerts));
+
+          const currentUser = this.getCurrentUser();
+          if (currentUser && !currentUser.earnedCertificateIds.includes(cert.credentialId)) {
+            currentUser.earnedCertificateIds.push(cert.credentialId);
+            localStorage.setItem(SESSION_KEY, JSON.stringify(currentUser));
+          }
+          return cert;
+        }
+      }
+    } catch (err) {
+      console.warn('Server certificate issuance warning:', err);
+    }
+    return null;
   }
 
   /**

@@ -230,9 +230,10 @@ export function App() {
     }
   };
 
-  const issueAndShowCertificate = (track: Track, user: UserType) => {
+  const issueAndShowCertificate = async (track: Track, user: UserType) => {
     const skills = track.lessons.map(l => l.title);
-    const cert = AuthService.issueCertificate(track.id, track.title, track.language, skills);
+    const serverCert = await AuthService.issueCertificateOnServer(track.id, track.title, track.language, skills);
+    const cert = serverCert || AuthService.issueCertificate(track.id, track.title, track.language, skills);
     setActiveCertificate(cert);
     setIsCertModalOpen(true);
     confetti({

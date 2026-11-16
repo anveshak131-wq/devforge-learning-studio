@@ -25,24 +25,70 @@ export const onRequestOptions = async () => {
   });
 };
 
+/**
+ * GET /api/auth/github
+ * Generates authorization URL with a cryptographically secure random `state` nonce
+ * and sets an ephemeral `df_oauth_state` HttpOnly cookie to prevent OAuth Login CSRF.
+ */
 export const onRequestGet = async (context: { request: Request; env: Env }) => {
-  const { env } = context;
+  const { request, env } = context;
   const clientId = env.GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
-  return JSON_RESPONSE({
-    success: true,
-    clientId,
-    authUrl: `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=read:user,user:email`,
-  });
+
+  // 1. Generate cryptographically secure random state (32 hex characters)
+  const stateBytes = new Uint8Array(16);
+  crypto.getRandomValues(stateBytes);
+  const state = Array.from(stateBytes)
+    .map((b) => b.toString(16).padStart(2, '0'))
+    .join('');
+
+  const url = new URL(request.url);
+  const redirectUri = `${url.origin}/api/auth/github/callback`;
+  const authUrl = `https://github.com/login/oauth/authorize?client_id=${clientId}&scope=read:user,user:email&state=${state}&redirect_uri=${encodeURIComponent(redirectUri)}`;
+
+  // 2. Set ephemeral state cookie: HttpOnly; SameSite=Lax; Max-Age=600 (10 minutes)
+  const isProd = !request.url.includes('localhost');
+  const cookieFlags = [
+    `df_oauth_state=${state}`,
+    'Path=/',
+    'HttpOnly',
+    'SameSite=Lax',
+    'Max-Age=600',
+  ];
+  if (isProd) {
+    cookieFlags.push('Secure');
+  }
+
+  return JSON_RESPONSE(
+    {
+      success: true,
+      clientId,
+      authUrl,
+      state,
+    },
+    200,
+    {
+      'Set-Cookie': cookieFlags.join('; '),
+    }
+  );
 };
 
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
     const body = (await request.json().catch(() => null)) as any;
-    const { code, redirectUri } = body || {};
+    const { code, state: returnedState, redirectUri } = body || {};
 
     if (!code || typeof code !== 'string') {
       return JSON_RESPONSE({ success: false, error: 'Missing GitHub authorization code' }, 400);
+    }
+
+    // CSRF State validation if provided
+    const cookieHeader = request.headers.get('Cookie') || '';
+    const stateMatch = cookieHeader.match(/df_oauth_state=([^;]+)/);
+    const expectedState = stateMatch ? stateMatch[1] : null;
+
+    if (expectedState && returnedState && expectedState !== returnedState) {
+      return JSON_RESPONSE({ success: false, error: 'OAuth state nonce mismatch. Possible CSRF attack detected.' }, 403);
     }
 
     const clientId = env.GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
@@ -72,10 +118,13 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const accessToken = tokenData.access_token;
 
     if (!accessToken) {
-      return JSON_RESPONSE({ 
-        success: false, 
-        error: tokenData.error_description || tokenData.error || 'GitHub code exchange failed' 
-      }, 400);
+      return JSON_RESPONSE(
+        {
+          success: false,
+          error: tokenData.error_description || tokenData.error || 'GitHub code exchange failed',
+        },
+        400
+      );
     }
 
     // 2. Fetch User Profile from GitHub API
@@ -106,12 +155,15 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         });
         if (emailsRes.ok) {
           const emails: any[] = await emailsRes.json();
-          const primaryEmail = emails.find((e) => e.primary && e.verified) || emails.find((e) => e.verified) || emails[0];
+          const primaryEmail =
+            emails.find((e) => e.primary && e.verified) || emails.find((e) => e.verified) || emails[0];
           if (primaryEmail) {
             email = primaryEmail.email;
           }
         }
-      } catch {}
+      } catch (err) {
+        console.warn('Could not fetch secondary emails from GitHub:', err);
+      }
     }
 
     if (!email) {
@@ -169,17 +221,15 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
           hasPromoAccess: existingUser?.hasPromoAccess === true,
         };
 
-        const writes = [
+        await Promise.all([
           env.DEVFORGE_KV.put(`user:github:${ghUser.id}`, JSON.stringify(user)),
           env.DEVFORGE_KV.put(`user:email:${cleanEmail}`, JSON.stringify(user)),
           env.DEVFORGE_KV.put(`session:${sessionToken}`, JSON.stringify(user), {
             expirationTtl: 60 * 60 * 24 * 30, // 30-day session
           }),
-        ];
-
-        await Promise.all(writes);
-      } catch (kvErr) {
-        console.warn('KV persistence warning in github auth:', kvErr);
+        ]);
+      } catch (err: any) {
+        console.warn('KV persistence warning:', err);
       }
     }
 
@@ -200,7 +250,6 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       };
     }
 
-    // Set secure HttpOnly session cookie
     const isProd = !request.url.includes('localhost');
     const cookieFlags = [
       `df_session=${sessionToken}`,
@@ -217,7 +266,6 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       {
         success: true,
         user,
-        message: 'Successfully authenticated with GitHub!',
       },
       200,
       {

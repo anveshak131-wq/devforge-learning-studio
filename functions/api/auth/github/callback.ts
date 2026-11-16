@@ -4,17 +4,34 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
   const { request, env } = context;
   const url = new URL(request.url);
   const code = url.searchParams.get('code');
+  const returnedState = url.searchParams.get('state');
   const error = url.searchParams.get('error');
 
   if (error || !code) {
-    return Response.redirect(`${url.origin}/?auth_error=${encodeURIComponent(error || 'GitHub authentication was cancelled')}`, 302);
+    return Response.redirect(
+      `${url.origin}/?auth_error=${encodeURIComponent(error || 'GitHub authentication was cancelled')}`,
+      302
+    );
+  }
+
+  // 1. Strict CSRF Verification: Check returned state against ephemeral HttpOnly state cookie
+  const cookieHeader = request.headers.get('Cookie') || '';
+  const stateMatch = cookieHeader.match(/df_oauth_state=([^;]+)/);
+  const expectedState = stateMatch ? stateMatch[1] : null;
+
+  if (!expectedState || !returnedState || expectedState !== returnedState) {
+    console.warn('OAuth CSRF state mismatch:', { expectedState, returnedState });
+    return Response.redirect(
+      `${url.origin}/?auth_error=${encodeURIComponent('Security verification failed: OAuth state mismatch or expired. Please try signing in again.')}`,
+      302
+    );
   }
 
   try {
     const clientId = env.GITHUB_CLIENT_ID || 'Ov23lioBtxwLMBx435Zp';
     const clientSecret = env.GITHUB_CLIENT_SECRET || '';
 
-    // 1. Exchange code for access token
+    // 2. Exchange code for access token with GitHub
     const tokenRes = await fetch('https://github.com/login/oauth/access_token', {
       method: 'POST',
       headers: {
@@ -33,10 +50,13 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
     const accessToken = tokenData.access_token;
 
     if (!accessToken) {
-      return Response.redirect(`${url.origin}/?auth_error=${encodeURIComponent(tokenData.error_description || 'Failed to exchange token')}`, 302);
+      return Response.redirect(
+        `${url.origin}/?auth_error=${encodeURIComponent(tokenData.error_description || 'Failed to exchange authorization token')}`,
+        302
+      );
     }
 
-    // 2. Fetch User Profile
+    // 3. Fetch User Profile
     const userRes = await fetch('https://api.github.com/user', {
       headers: {
         Authorization: `Bearer ${accessToken}`,
@@ -59,10 +79,13 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
         });
         if (emailsRes.ok) {
           const emails: any[] = await emailsRes.json();
-          const primaryEmail = emails.find((e) => e.primary && e.verified) || emails.find((e) => e.verified) || emails[0];
+          const primaryEmail =
+            emails.find((e) => e.primary && e.verified) || emails.find((e) => e.verified) || emails[0];
           if (primaryEmail) email = primaryEmail.email;
         }
-      } catch {}
+      } catch (e) {
+        console.warn('Email fetch error:', e);
+      }
     }
 
     if (!email) {
@@ -75,7 +98,7 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 
     const sessionToken = 'df_sess_' + crypto.randomUUID().replace(/-/g, '');
 
-    // Persist to Cloudflare KV
+    // 4. Persist to Cloudflare KV
     if (env && env.DEVFORGE_KV) {
       try {
         const [byGithub, byEmail, customAdmins] = await Promise.all([
@@ -132,7 +155,7 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
     }
 
     const isProd = !request.url.includes('localhost');
-    const cookieFlags = [
+    const sessionCookieFlags = [
       `df_session=${sessionToken}`,
       'Path=/',
       'HttpOnly',
@@ -140,15 +163,21 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
       `Max-Age=${60 * 60 * 24 * 30}`,
     ];
     if (isProd) {
-      cookieFlags.push('Secure');
+      sessionCookieFlags.push('Secure');
     }
+
+    // Clear the ephemeral state cookie now that verification succeeded
+    const clearStateCookie =
+      'df_oauth_state=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0' + (isProd ? '; Secure' : '');
+
+    const responseHeaders = new Headers();
+    responseHeaders.set('Location', `${url.origin}/?auth_success=github`);
+    responseHeaders.append('Set-Cookie', sessionCookieFlags.join('; '));
+    responseHeaders.append('Set-Cookie', clearStateCookie);
 
     return new Response(null, {
       status: 302,
-      headers: {
-        Location: `${url.origin}/?auth_success=github`,
-        'Set-Cookie': cookieFlags.join('; '),
-      },
+      headers: responseHeaders,
     });
   } catch (err: any) {
     return Response.redirect(`${url.origin}/?auth_error=${encodeURIComponent(err?.message || 'OAuth error')}`, 302);
