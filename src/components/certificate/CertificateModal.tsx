@@ -142,6 +142,14 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
               <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-amber-300 print:text-amber-800 tracking-tight pt-1">
                 {certificate.trackTitle}
               </h3>
+              {certificate.examScore !== undefined && (
+                <div className="pt-2">
+                  <span className="px-3 py-1 rounded-full text-[10px] sm:text-[11px] font-mono font-bold bg-amber-500/15 text-amber-300 border border-amber-500/40 print:border-black print:text-black inline-flex items-center space-x-1.5 shadow-sm">
+                    <ShieldCheck className="w-3.5 h-3.5 text-amber-400 print:text-black" />
+                    <span>Certified Exam Score: {certificate.examScore}% • {certificate.grade}</span>
+                  </span>
+                </div>
+              )}
             </div>
 
             {/* Competencies Verified */}

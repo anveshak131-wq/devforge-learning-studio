@@ -10,6 +10,7 @@ import {
   ChevronRight, 
   Search, 
   ArrowLeft, 
+  ArrowRight,
   BookOpen, 
   Layers, 
   ExternalLink, 
@@ -24,6 +25,9 @@ import { User } from '../../types/auth';
 import { PaymentService } from '../../services/paymentService';
 import { LanguageIcon } from '../common/LanguageIcon';
 import { TRACK_OFFICIAL_DOCS } from '../../utils/lessonResources';
+import { CourseQuiz } from '../../types/quiz';
+import { QuizService } from '../../services/quizService';
+import { CourseQuizModal } from '../quiz/CourseQuizModal';
 
 interface CourseDetailViewProps {
   track: Track;
@@ -31,6 +35,7 @@ interface CourseDetailViewProps {
   onSelectLesson: (trackSlug: string, lessonId: string) => void;
   onBackToTracks: () => void;
   onClaimCertificate?: (track: Track) => void;
+  onViewCertificate?: (trackId: string) => void;
   currentUser?: User | null;
   onOpenAuth?: () => void;
 }
@@ -41,11 +46,15 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   onSelectLesson,
   onBackToTracks,
   onClaimCertificate,
+  onViewCertificate,
   currentUser = null,
   onOpenAuth = () => {}
 }) => {
   const [coursePurchased, setCoursePurchased] = useState(() => PaymentService.isCoursePurchased(track.id, currentUser));
   const [checkoutLoading, setCheckoutLoading] = useState(false);
+  const [activeQuiz, setActiveQuiz] = useState<CourseQuiz | null>(null);
+  const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
+  const [quizRefreshKey, setQuizRefreshKey] = useState(0);
 
   useEffect(() => {
     setCoursePurchased(PaymentService.isCoursePurchased(track.id, currentUser));
@@ -75,6 +84,16 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   const isCompleted = completedCount === track.lessons.length && track.lessons.length > 0;
   const nextLesson = track.lessons.find(l => !userStats.completedLessonIds.includes(l.id)) || track.lessons[0];
   const officialDocs = TRACK_OFFICIAL_DOCS[track.language];
+
+  // Course Quizzes & Certification Exams (Python, SQL)
+  const trackQuizzes = QuizService.getQuizzes(track.id);
+  const finalExam = QuizService.getFinalExam(track.id);
+  const quizProgress = QuizService.getTrackQuizProgress(track.id);
+
+  const handleOpenQuiz = (quizToOpen: CourseQuiz) => {
+    setActiveQuiz(quizToOpen);
+    setIsQuizModalOpen(true);
+  };
 
   // Group lessons by category (Module)
   const moduleGroups = track.lessons.reduce((acc, lesson) => {
@@ -324,6 +343,53 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
           </div>
         </div>
 
+        {/* Course Assessments & Final Certification Exam (Python & SQL) */}
+        {finalExam && (
+          <div className="rounded-2xl bg-gradient-to-r from-amber-950/40 via-slate-900 to-slate-900 border border-amber-500/30 p-5 md:p-6 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <div className="flex items-start space-x-3.5">
+              <div className="w-11 h-11 rounded-xl bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0 mt-0.5">
+                <ShieldCheck className="w-6 h-6" />
+              </div>
+              <div className="space-y-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase tracking-wider">
+                    🏆 Official Certification Exam
+                  </span>
+                  {quizProgress.finalExamScore !== null ? (
+                    <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
+                      Score: {quizProgress.finalExamScore}% ({quizProgress.hasPassedFinalExam ? 'Passed' : 'Needs Review'})
+                    </span>
+                  ) : (
+                    <span className="text-xs text-slate-400">
+                      20 Timed Questions • 20 Mins
+                    </span>
+                  )}
+                </div>
+                <h3 className="text-base font-bold text-white">
+                  {finalExam.title}
+                </h3>
+                <p className="text-xs text-slate-300 max-w-xl">
+                  {finalExam.subtitle || 'Pass with 70%+ to unlock and stamp your official assessment score onto your verified certificate.'}
+                </p>
+                <div className="pt-1 flex items-center space-x-3 text-[11px] text-slate-400 font-mono">
+                  <span>Checkpoints: {quizProgress.completedCount}/{Math.max(1, trackQuizzes.length - 1)} Completed</span>
+                  {quizProgress.averageScore > 0 && <span>• Checkpoint Avg: {quizProgress.averageScore}%</span>}
+                </div>
+              </div>
+            </div>
+
+            <div className="shrink-0 w-full md:w-auto">
+              <button
+                onClick={() => handleOpenQuiz(finalExam)}
+                className="w-full md:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition"
+              >
+                <Award className="w-4 h-4" />
+                <span>{quizProgress.finalExamScore !== null ? 'Retake Final Exam' : 'Start Final Exam'}</span>
+              </button>
+            </div>
+          </div>
+        )}
+
         {/* Modules & Lessons Syllabus Accordion */}
         <div className="space-y-4">
           <div className="flex items-center justify-between">
@@ -479,6 +545,48 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                           </div>
                         );
                       })}
+
+                      {/* Module Checkpoint Quiz (if available for Python / SQL) */}
+                      {(() => {
+                        const modQuiz = QuizService.getModuleCheckpoint(track.id, moduleName);
+                        if (!modQuiz) return null;
+                        const best = QuizService.getBestAttempt(modQuiz.id);
+
+                        return (
+                          <div className="px-5 py-3.5 bg-slate-900/50 border-t border-slate-800/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+                            <div className="flex items-center space-x-3">
+                              <div className="w-8 h-8 rounded-lg bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
+                                <Sparkles className="w-4 h-4" />
+                              </div>
+                              <div>
+                                <div className="flex items-center space-x-2">
+                                  <span className="text-xs font-bold text-white">{modQuiz.title}</span>
+                                  {best && (
+                                    <span className={`px-2 py-0.2 rounded text-[10px] font-bold ${
+                                      best.passed 
+                                        ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' 
+                                        : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                                    }`}>
+                                      {best.passed ? `Score: ${best.scorePercent}%` : `${best.scorePercent}% (Review)`}
+                                    </span>
+                                  )}
+                                </div>
+                                <p className="text-[11px] text-slate-400">
+                                  {modQuiz.questions.length} questions • Test syntax, tricky bugs & output prediction (+{modQuiz.xpReward} XP)
+                                </p>
+                              </div>
+                            </div>
+
+                            <button
+                              onClick={() => handleOpenQuiz(modQuiz)}
+                              className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shrink-0 transition flex items-center space-x-1.5 shadow-sm"
+                            >
+                              <span>{best ? 'Retake Checkpoint' : 'Take Checkpoint'}</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </button>
+                          </div>
+                        );
+                      })()}
                     </div>
                   )}
                 </div>
@@ -487,6 +595,17 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
           </div>
         </div>
       </div>
+
+      {/* Interactive Course Quiz Modal */}
+      <CourseQuizModal
+        isOpen={isQuizModalOpen}
+        quiz={activeQuiz}
+        onClose={() => {
+          setIsQuizModalOpen(false);
+          setQuizRefreshKey((k) => k + 1);
+        }}
+        onViewCertificate={onViewCertificate}
+      />
     </div>
   );
 };

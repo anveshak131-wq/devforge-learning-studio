@@ -65,6 +65,7 @@ export interface Certificate {
   grade: 'Distinction' | 'High Honors' | 'Honors';
   skillsVerified: string[];
   verificationHash: string;
+  examScore?: number;
 }
 
 export interface AuthState {

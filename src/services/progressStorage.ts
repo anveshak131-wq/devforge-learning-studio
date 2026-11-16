@@ -78,6 +78,13 @@ export class ProgressStorage {
     return stats;
   }
 
+  static addXp(amount: number): UserStats {
+    const stats = this.getStats();
+    stats.xp += Math.max(0, amount);
+    this.saveStats(stats);
+    return stats;
+  }
+
   static markProjectComplete(projectId: string, xpReward: number): UserStats {
     const stats = this.getStats();
     if (!stats.completedProjectIds.includes(projectId)) {

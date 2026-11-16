@@ -342,6 +342,16 @@ export function App() {
             }}
             onBackToTracks={() => handleNavigate('tracks')}
             onClaimCertificate={handleClaimCertificate}
+            onViewCertificate={(trackSlugOrId) => {
+              const userCerts = AuthService.getUserCertificates();
+              const cert = userCerts.find(c => c.trackId.toLowerCase() === trackSlugOrId.toLowerCase() || c.trackTitle.toLowerCase().includes(trackSlugOrId.toLowerCase()));
+              if (cert) {
+                setActiveCertificate(cert);
+                setIsCertModalOpen(true);
+              } else {
+                handleNavigate('vault');
+              }
+            }}
             currentUser={currentUser}
             onOpenAuth={() => {
               setAuthModalConfig(null);

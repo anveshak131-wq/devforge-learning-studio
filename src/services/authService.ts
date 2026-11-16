@@ -495,13 +495,20 @@ export class AuthService {
     trackId: string,
     trackTitle: string,
     language: Language,
-    skillsVerified: string[]
+    skillsVerified: string[],
+    examScore?: number
   ): Certificate {
     const currentUser = this.getCurrentUser();
     const userName = currentUser ? currentUser.fullName : 'Distinguished Graduate';
     const userId = currentUser ? currentUser.id : 'guest_' + Date.now();
 
     const credentialId = generateCredentialId(language);
+    const grade = (examScore !== undefined && examScore >= 90)
+      ? 'Distinction'
+      : (examScore !== undefined && examScore >= 80)
+      ? 'High Honors'
+      : 'Honors';
+
     const newCert: Certificate = {
       id: 'cert_' + Math.random().toString(36).substring(2, 10),
       credentialId,
@@ -511,9 +518,10 @@ export class AuthService {
       trackTitle,
       language,
       issuedAt: new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }),
-      grade: 'Distinction',
+      grade,
       skillsVerified,
-      verificationHash: 'v_hash_' + Math.random().toString(36).substring(2, 12)
+      verificationHash: 'v_hash_' + Math.random().toString(36).substring(2, 12),
+      examScore
     };
 
     // Save to certificates storage
@@ -558,6 +566,25 @@ export class AuthService {
     const all = this.getAllCertificates();
     if (!user) return [];
     return all.filter(c => c.userId === user.id || user.earnedCertificateIds.includes(c.id));
+  }
+
+  /**
+   * Update or stamp an exam score onto an existing certificate
+   */
+  static attachExamScoreToCertificate(trackId: string, examScore: number): Certificate | null {
+    const all = this.getAllCertificates();
+    const cleanTrack = trackId.toLowerCase();
+    const index = all.findIndex(c => c.trackId.toLowerCase() === cleanTrack || c.trackTitle.toLowerCase().includes(cleanTrack));
+    if (index === -1) return null;
+
+    const cert = all[index];
+    cert.examScore = examScore;
+    cert.grade = examScore >= 90 ? 'Distinction' : examScore >= 80 ? 'High Honors' : 'Honors';
+
+    all[index] = cert;
+    localStorage.setItem(CERTIFICATES_KEY, JSON.stringify(all));
+    this.syncCertificateToCloud(cert);
+    return cert;
   }
 
   /**
