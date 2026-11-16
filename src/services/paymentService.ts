@@ -118,7 +118,7 @@ export class PaymentService {
       },
       modal: {
         ondismiss: function () {
-          console.log('Razorpay checkout dismissed by learner');
+          onError('Payment window closed.');
         },
       },
       handler: async (response: any) => {

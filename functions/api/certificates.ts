@@ -58,10 +58,10 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
     const cleanId = rawId.trim();
 
     // Validate ID length & alphanumeric format before querying KV
-    if (cleanId.length < 3 || cleanId.length > 64 || !/^[A-Za-z0-9_-]+$/.test(cleanId)) {
+    if (!/^[A-Za-z0-9_-]{3,64}$/.test(cleanId)) {
       return JSON_RESPONSE({
         success: false,
-        error: 'Invalid credential ID format. Credential IDs must be between 3 and 64 alphanumeric characters.',
+        error: 'Invalid credential ID format. Credential IDs must match /^[A-Za-z0-9_-]{3,64}$/ (between 3 and 64 alphanumeric characters, underscores, or hyphens).',
       }, 400);
     }
 
@@ -288,6 +288,12 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     const cleanCredId = String(cert.credentialId).trim().toUpperCase();
+    if (!/^[A-Za-z0-9_-]{3,64}$/.test(cleanCredId)) {
+      return JSON_RESPONSE({
+        success: false,
+        error: 'Invalid credential ID format in payload. Credential IDs must match /^[A-Za-z0-9_-]{3,64}$/.',
+      }, 400);
+    }
     const trackId = String(cert.trackId || '').toLowerCase().trim();
 
     // Check course enrollment eligibility

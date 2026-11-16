@@ -42,7 +42,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     const body = (await request.json().catch(() => null)) as any;
 
     if (!body || (!body.trackId && !body.projectId)) {
-      return JSON_RESPONSE({ success: false, error: 'Missing trackId or projectId in payment payload.' }, 400);
+      return JSON_RESPONSE({ success: false, error: 'Missing trackId or projectId in payment payload.' }, 400, request);
     }
 
     const { trackId, projectId, paymentId, orderId, signature, email, amountInr } = body;
@@ -52,7 +52,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       return JSON_RESPONSE({ 
         success: false, 
         error: 'Payment verification rejected: A genuine Razorpay payment ID (starting with "pay_") is required.' 
-      }, 400);
+      }, 400, request);
     }
 
     const cleanPaymentId = paymentId.trim();
@@ -63,7 +63,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       return JSON_RESPONSE({ 
         success: false, 
         error: 'Server payment configuration error: RAZORPAY_KEY_SECRET is not configured on Cloudflare.' 
-      }, 500);
+      }, 500, request);
     }
 
     // 3. Replay Protection: Ensure payment ID has not already been redeemed
@@ -73,7 +73,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         return JSON_RESPONSE({ 
           success: false, 
           error: 'This payment transaction ID has already been redeemed and cannot be reused.' 
-        }, 400);
+        }, 400, request);
       }
     }
 
@@ -150,7 +150,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     if (!isVerified) {
-      return JSON_RESPONSE({ success: false, error: 'Payment verification failed.' }, 400);
+      return JSON_RESPONSE({ success: false, error: 'Payment verification failed.' }, 400, request);
     }
 
     // 5. Strict Price & Product Amount Verification
@@ -163,11 +163,11 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       requiredMinAmount = 49; // Exam retake pass: ₹49
     }
 
-    if (verifiedAmountInr > 0 && verifiedAmountInr < requiredMinAmount) {
+    if (verifiedAmountInr < requiredMinAmount) {
       return JSON_RESPONSE({
         success: false,
-        error: `Under-payment alert: Verified payment amount (₹${verifiedAmountInr}) is lower than the required price (₹${requiredMinAmount}) for this item.`,
-      }, 400);
+        error: `Under-payment alert: Verified live payment amount (₹${verifiedAmountInr}) is lower than the required price (₹${requiredMinAmount}) for this item.`,
+      }, 400, request);
     }
 
     // 6. Secure Identity Resolution & Anti-Account-Takeover Protection
@@ -186,7 +186,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
     }
 
     if (!env || !env.DEVFORGE_KV) {
-      return JSON_RESPONSE({ success: false, error: 'Storage service unavailable.' }, 500);
+      return JSON_RESPONSE({ success: false, error: 'Storage service unavailable.' }, 500, request);
     }
 
     if (sessionToken) {
@@ -200,7 +200,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
             return JSON_RESPONSE({
               success: false,
               error: 'Security Alert: Supplied payment email does not match authenticated user session.',
-            }, 403);
+            }, 403, request);
           }
         }
       }
@@ -212,7 +212,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
         return JSON_RESPONSE({
           success: false,
           error: 'Please sign in or provide a valid email address to credit your course purchase.',
-        }, 400);
+        }, 400, request);
       }
 
       const cleanEmail = email.trim().toLowerCase();
@@ -298,8 +298,8 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       purchasedCourses: user.purchasedCourses,
       purchasedProjects: user.purchasedProjects,
       message: 'Payment verified and access granted successfully!',
-    });
+    }, 200, request);
   } catch (err: any) {
-    return JSON_RESPONSE({ success: false, error: err?.message || 'Payment verification failure' }, 500);
+    return JSON_RESPONSE({ success: false, error: err?.message || 'Payment verification failure' }, 500, request);
   }
 };
