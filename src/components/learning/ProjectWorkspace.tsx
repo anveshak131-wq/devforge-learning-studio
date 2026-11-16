@@ -317,62 +317,29 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
             </div>
           </div>
 
-          {/* Checkout Options */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
-            {/* Single Project Option */}
-            <div className="p-5 rounded-xl bg-slate-950/80 border border-indigo-500/40 flex flex-col justify-between space-y-4">
+          {/* Checkout Option */}
+          <div className="pt-2">
+            <div className="p-6 rounded-xl bg-slate-950/80 border border-indigo-500/40 flex flex-col md:flex-row md:items-center justify-between gap-4">
               <div>
                 <span className="text-[11px] font-mono text-indigo-400 uppercase font-bold tracking-wider">
-                  Individual Project
+                  Course Project Lifetime Access
                 </span>
-                <div className="flex items-baseline space-x-1.5 mt-1">
-                  <span className="text-2xl font-black text-white font-mono">₹{projectPrice}</span>
-                  <span className="text-xs text-slate-400">Lifetime Pass</span>
+                <div className="flex items-baseline space-x-2 mt-1">
+                  <span className="text-3xl font-black text-white font-mono">₹{projectPrice}</span>
+                  <span className="text-xs text-slate-400">One-Time Fee • Lifetime Pass</span>
                 </div>
-                <p className="text-xs text-slate-400 mt-2">
-                  Unlocks {project.title} immediately with Milestone 1 ready to code.
+                <p className="text-xs text-slate-300 mt-1">
+                  Unlocks {project.title} immediately. Milestone 1 will be ready to code with automated unit test grading.
                 </p>
               </div>
 
               <button
                 onClick={handleUnlockSingle}
                 disabled={purchasingType === 'project'}
-                className="w-full py-2.5 px-4 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/30 transition active:scale-95 disabled:opacity-50"
+                className="w-full md:w-auto px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm flex items-center justify-center space-x-2 shadow-lg shadow-indigo-600/30 transition active:scale-95 disabled:opacity-50 shrink-0"
               >
-                <Lock className="w-3.5 h-3.5" />
+                <Lock className="w-4 h-4 text-indigo-200" />
                 <span>{purchasingType === 'project' ? 'Opening Gateway...' : `Unlock Project — ₹${projectPrice}`}</span>
-              </button>
-            </div>
-
-            {/* All-Projects Pass Bundle */}
-            <div className="p-5 rounded-xl bg-gradient-to-br from-indigo-950/60 to-purple-950/60 border border-amber-500/40 flex flex-col justify-between space-y-4 relative overflow-hidden">
-              <span className="absolute -top-3 -right-3 w-16 h-16 bg-amber-500/10 rounded-full blur-xl pointer-events-none" />
-              <div>
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono text-amber-300 uppercase font-bold tracking-wider">
-                    Full Portfolio Pass
-                  </span>
-                  <span className="text-[10px] font-mono bg-amber-500/20 text-amber-300 border border-amber-500/30 px-1.5 py-0.5 rounded">
-                    Save 50%
-                  </span>
-                </div>
-                <div className="flex items-baseline space-x-2 mt-1">
-                  <span className="text-xs text-slate-400 line-through font-mono">₹496</span>
-                  <span className="text-2xl font-black text-white font-mono">₹249</span>
-                  <span className="text-xs text-slate-400">All 4 Projects</span>
-                </div>
-                <p className="text-xs text-slate-300 mt-2">
-                  Unlock all 4 engineering projects in one pass for half the cost.
-                </p>
-              </div>
-
-              <button
-                onClick={handleUnlockBundle}
-                disabled={purchasingType === 'bundle'}
-                className="w-full py-2.5 px-4 rounded-lg bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-extrabold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition active:scale-95 disabled:opacity-50"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-slate-950" />
-                <span>{purchasingType === 'bundle' ? 'Opening Gateway...' : 'Get All 4 Projects — ₹249'}</span>
               </button>
             </div>
           </div>

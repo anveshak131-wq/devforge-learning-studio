@@ -12,7 +12,8 @@ import {
   Zap,
   ShieldCheck,
   AlertCircle,
-  FolderGit2
+  FolderGit2,
+  Search
 } from 'lucide-react';
 import { GuidedProject, UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
@@ -25,26 +26,54 @@ interface ProjectsCatalogViewProps {
   onSelectProject: (projectId: string) => void;
 }
 
+const COURSE_FILTERS = [
+  { id: 'all', label: 'All Courses' },
+  { id: 'python', label: 'Python & PyShark' },
+  { id: 'javascript', label: 'JavaScript' },
+  { id: 'typescript', label: 'TypeScript' },
+  { id: 'sql', label: 'SQL' },
+  { id: 'cpp', label: 'Modern C++' },
+  { id: 'cloud', label: 'Cloud & K8s' },
+  { id: 'dsa', label: 'DSA' },
+  { id: 'bash', label: 'Linux & Bash' },
+  { id: 'r', label: 'R Data Science' },
+  { id: 'rust', label: 'Rust' },
+  { id: 'golang', label: 'Go' },
+  { id: 'java', label: 'Java' },
+  { id: 'nodejs', label: 'Node.js' },
+  { id: 'html', label: 'HTML' },
+  { id: 'css', label: 'CSS' },
+  { id: 'git', label: 'Git' },
+  { id: 'docker', label: 'Docker' }
+];
+
 export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
   userStats,
   currentUser,
   onSelectProject
 }) => {
   const [filterLang, setFilterLang] = useState<string>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
   const [purchasingId, setPurchasingId] = useState<string | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [, setRefreshKey] = useState<number>(0);
 
   const filtered = ALL_PROJECTS.filter(p => {
     if (filterLang !== 'all' && p.language !== filterLang) return false;
+    if (searchQuery.trim()) {
+      const q = searchQuery.toLowerCase();
+      const matchTitle = p.title.toLowerCase().includes(q);
+      const matchDesc = p.description.toLowerCase().includes(q);
+      const matchSkills = p.skillsLearned.some(s => s.toLowerCase().includes(q));
+      const matchLang = p.language.toLowerCase().includes(q);
+      if (!matchTitle && !matchDesc && !matchSkills && !matchLang) return false;
+    }
     return true;
   });
 
   const checkProjectPurchased = (projectId: string): boolean => {
     return PaymentService.isProjectPurchased(projectId, currentUser);
   };
-
-  const allProjectsPurchased = ALL_PROJECTS.every(p => checkProjectPurchased(p.id));
 
   const handleUnlockProject = (project: GuidedProject) => {
     setPaymentError(null);
@@ -63,20 +92,11 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
     });
   };
 
-  const handleUnlockBundle = () => {
-    setPaymentError(null);
-    setPurchasingId('bundle');
-    PaymentService.openAllProjectsBundleCheckout({
-      currentUser: currentUser || null,
-      onSuccess: () => {
-        setPurchasingId(null);
-        setRefreshKey(k => k + 1);
-      },
-      onError: (err) => {
-        setPurchasingId(null);
-        setPaymentError(err);
-      }
-    });
+  const getTierBadgeText = (price: number) => {
+    if (price <= 49) return 'Essential Lab';
+    if (price <= 99) return 'Practical Project';
+    if (price <= 149) return 'Architecture';
+    return 'Flagship System';
   };
 
   return (
@@ -97,129 +117,79 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
         </div>
       )}
 
-      {/* Header & Filter Row */}
+      {/* Header Row */}
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-extrabold text-white tracking-tight flex items-center gap-2">
-            <FolderGit2 className="w-6 h-6 text-indigo-400" />
-            <span>Guided Real-World Projects</span>
+          <h1 className="text-2xl font-black text-white tracking-tight flex items-center gap-2.5">
+            <FolderGit2 className="w-7 h-7 text-indigo-400" />
+            <span>Course-Specific Guided Projects</span>
           </h1>
           <p className="text-xs text-slate-400 mt-1">
-            Build production-grade applications step-by-step with automated unit test suites and sequential milestone verification.
+            Build resume-ready, production-grade applications with automated unit test verification and sequential milestone unlocks.
           </p>
         </div>
 
-        {/* Filter buttons */}
-        <div className="flex items-center space-x-1.5 overflow-x-auto pb-1">
-          {['all', 'javascript', 'typescript', 'sql'].map(lang => (
-            <button
-              key={lang}
-              onClick={() => setFilterLang(lang)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium uppercase tracking-wider font-mono transition ${
-                filterLang === lang
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                  : 'bg-slate-900 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800'
-              }`}
-            >
-              {lang}
-            </button>
-          ))}
+        {/* Search bar */}
+        <div className="relative w-full md:w-72">
+          <Search className="w-4 h-4 text-slate-500 absolute left-3 top-1/2 -translate-y-1/2" />
+          <input
+            type="text"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Search projects by topic, skill..."
+            className="w-full bg-slate-900 border border-slate-800 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-indigo-500 transition font-sans"
+          />
         </div>
       </div>
 
-      {/* Hero: All-Projects Portfolio Pass (₹249 Bundle) */}
-      <div className="rounded-2xl bg-gradient-to-r from-indigo-950/80 via-purple-950/50 to-slate-900/90 border border-indigo-500/30 p-6 md:p-7 shadow-2xl relative overflow-hidden backdrop-blur-sm">
-        <div className="absolute top-0 right-0 w-72 h-72 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
-        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-6">
-          <div className="space-y-3 max-w-2xl">
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono font-bold tracking-wider uppercase bg-amber-500/20 text-amber-300 border border-amber-500/30 flex items-center gap-1">
-                <Sparkles className="w-3 h-3 text-amber-400" />
-                Best Value Bundle • 50% Off
-              </span>
-              <span className="text-[11px] font-mono text-indigo-300">
-                Save ₹247 vs Individual
-              </span>
-            </div>
+      {/* Filter Chips Bar */}
+      <div className="flex items-center space-x-1.5 overflow-x-auto pb-2 scrollbar-none">
+        {COURSE_FILTERS.map(f => (
+          <button
+            key={f.id}
+            onClick={() => setFilterLang(f.id)}
+            className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap font-mono transition ${
+              filterLang === f.id
+                ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 font-bold'
+                : 'bg-slate-900/90 border border-slate-800/80 text-slate-400 hover:text-white hover:bg-slate-800'
+            }`}
+          >
+            {f.label}
+          </button>
+        ))}
+      </div>
 
-            <h2 className="text-xl md:text-2xl font-black text-white tracking-tight">
-              All-Projects Portfolio Pass
-            </h2>
-
-            <p className="text-xs md:text-sm text-slate-300 leading-relaxed">
-              Unlock the complete 4-project engineering curriculum in one pass. Master Kanban DOM mechanics, High-Throughput E-Commerce SQL Analytics, Custom Type-Safe Redux Architecture, and Async Weather API Cache microservices.
-            </p>
-
-            <div className="flex flex-wrap items-center gap-2 pt-1 text-[11px] text-slate-300">
-              <span className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-700/80 flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                4 Production Projects
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-700/80 flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-amber-400" />
-                Sequential Milestone Progression
-              </span>
-              <span className="px-2.5 py-1 rounded-lg bg-slate-900/80 border border-slate-700/80 flex items-center gap-1.5">
-                <Award className="w-3.5 h-3.5 text-cyan-400" />
-                Verified Portfolio Badges & XP
-              </span>
-            </div>
-          </div>
-
-          <div className="flex flex-col items-start lg:items-end justify-center shrink-0 space-y-3 bg-slate-950/60 lg:bg-transparent p-4 lg:p-0 rounded-xl border border-slate-800 lg:border-none">
-            {allProjectsPurchased ? (
-              <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-emerald-500/15 border border-emerald-500/40 text-emerald-300 font-bold text-xs">
-                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-                <span>Portfolio Pass Active • All Projects Unlocked</span>
-              </div>
-            ) : (
-              <>
-                <div className="text-left lg:text-right">
-                  <div className="flex items-baseline gap-2">
-                    <span className="text-xs text-slate-400 line-through font-mono">₹496</span>
-                    <span className="text-3xl font-black text-white font-mono">₹249</span>
-                  </div>
-                  <span className="text-[11px] text-slate-400 font-medium">One-Time Fee • Lifetime Access</span>
-                </div>
-
-                <button
-                  onClick={handleUnlockBundle}
-                  disabled={purchasingId === 'bundle'}
-                  className="w-full sm:w-auto px-6 py-2.5 rounded-xl bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-600/30 transition active:scale-95 disabled:opacity-50"
-                >
-                  <Sparkles className="w-4 h-4 text-amber-300 animate-pulse" />
-                  <span>{purchasingId === 'bundle' ? 'Opening Gateway...' : 'Unlock All 4 Projects Pass — ₹249'}</span>
-                </button>
-              </>
-            )}
-          </div>
-        </div>
+      {/* Results Header Count */}
+      <div className="flex items-center justify-between text-xs text-slate-400 border-b border-slate-800/60 pb-3">
+        <span>Showing {filtered.length} of {ALL_PROJECTS.length} Guided Projects</span>
+        <span className="font-mono text-[11px] text-slate-500">Sequential Milestone Gating Active</span>
       </div>
 
       {/* Projects Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map(project => {
           const completedMilestones = project.milestones.filter(m => userStats.completedMilestoneIds.includes(m.id)).length;
           const isFinished = userStats.completedProjectIds.includes(project.id);
           const isPurchased = checkProjectPurchased(project.id);
           const price = PaymentService.getProjectPrice(project);
           const isCurrentLoading = purchasingId === project.id;
+          const tierLabel = getTierBadgeText(price);
 
           return (
             <div
               key={project.id}
               className={`rounded-2xl bg-slate-900/60 border ${
                 isPurchased ? 'border-slate-800 hover:border-indigo-500/40' : 'border-indigo-900/40 hover:border-indigo-500/50'
-              } overflow-hidden shadow-xl flex flex-col justify-between transition group relative`}
+              } overflow-hidden shadow-xl flex flex-col justify-between transition group relative backdrop-blur-sm`}
             >
-              <div className="p-6 space-y-4">
+              <div className="p-5 space-y-3.5">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-slate-800 text-indigo-400 border border-slate-700">
                       {project.language}
                     </span>
-                    <span className="px-2.5 py-0.5 rounded text-[11px] bg-slate-800 text-slate-300">
-                      {project.difficulty}
+                    <span className="px-2 py-0.5 rounded text-[10px] font-mono bg-slate-800 text-slate-400">
+                      {tierLabel}
                     </span>
                   </div>
 
@@ -233,11 +203,11 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
                     ) : (
                       <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold tracking-wider bg-indigo-500/15 text-indigo-300 border border-indigo-500/30 flex items-center gap-1">
                         <Lock className="w-3 h-3 text-indigo-400" />
-                        ₹{price} Lifetime
+                        ₹{price}
                       </span>
                     )}
 
-                    <span className="text-xs font-mono font-bold text-amber-400 flex items-center space-x-1 pl-1">
+                    <span className="text-xs font-mono font-bold text-amber-400 flex items-center space-x-0.5 pl-1">
                       <Award className="w-3.5 h-3.5" />
                       <span>+{project.xpReward} XP</span>
                     </span>
@@ -245,25 +215,25 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
                 </div>
 
                 <div>
-                  <h3 className="text-lg font-bold text-white group-hover:text-indigo-300 transition flex items-center gap-2">
-                    <span>{project.title}</span>
+                  <h3 className="text-base font-bold text-white group-hover:text-indigo-300 transition line-clamp-1">
+                    {project.title}
                   </h3>
-                  <p className="text-xs text-slate-300 mt-1 leading-relaxed">
+                  <p className="text-xs text-slate-300 mt-1 line-clamp-2 leading-relaxed">
                     {project.description}
                   </p>
                 </div>
 
                 {/* Milestones list preview with Sequential Progression Indicator */}
-                <div className="p-3.5 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-2">
+                <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800/80 space-y-1.5">
                   <div className="flex items-center justify-between text-[11px]">
-                    <span className="font-bold text-slate-400 uppercase tracking-wider">
+                    <span className="font-bold text-slate-400 uppercase tracking-wider text-[10px]">
                       Milestones ({completedMilestones}/{project.milestones.length})
                     </span>
-                    <span className="text-[10px] text-slate-400 font-mono">
-                      Sequential Gating
+                    <span className="text-[10px] text-slate-500 font-mono">
+                      Sequential
                     </span>
                   </div>
-                  <div className="space-y-1.5">
+                  <div className="space-y-1">
                     {project.milestones.map((m, mIdx) => {
                       const done = userStats.completedMilestoneIds.includes(m.id);
                       const isMilestoneUnlocked = isPurchased && (mIdx === 0 || userStats.completedMilestoneIds.includes(project.milestones[mIdx - 1].id));
@@ -279,15 +249,9 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
                           ) : (
                             <Lock className="w-3.5 h-3.5 text-slate-600 shrink-0" />
                           )}
-                          <span className={done ? 'text-slate-400 line-through' : isMilestoneUnlocked ? 'text-slate-200' : 'text-slate-500'}>
+                          <span className={`truncate ${done ? 'text-slate-400 line-through' : isMilestoneUnlocked ? 'text-slate-200' : 'text-slate-500'}`}>
                             {m.title}
                           </span>
-                          {!isPurchased && mIdx === 0 && (
-                            <span className="text-[10px] text-amber-400 font-mono ml-auto">Unlocks on buy</span>
-                          )}
-                          {!isPurchased && mIdx > 0 && (
-                            <span className="text-[10px] text-slate-600 font-mono ml-auto">Locked</span>
-                          )}
                         </div>
                       );
                     })}
@@ -295,29 +259,34 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
                 </div>
 
                 {/* Skills Learned Badges */}
-                <div className="flex flex-wrap gap-1.5 pt-1">
-                  {project.skillsLearned.map((skill, sIdx) => (
-                    <span key={sIdx} className="text-[10px] px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60">
+                <div className="flex flex-wrap gap-1 pt-0.5">
+                  {project.skillsLearned.slice(0, 3).map((skill, sIdx) => (
+                    <span key={sIdx} className="text-[10px] px-2 py-0.5 rounded bg-slate-800/80 text-slate-300 border border-slate-700/60 truncate max-w-[140px]">
                       {skill}
                     </span>
                   ))}
+                  {project.skillsLearned.length > 3 && (
+                    <span className="text-[10px] px-1.5 py-0.5 rounded bg-slate-800/50 text-slate-500">
+                      +{project.skillsLearned.length - 3}
+                    </span>
+                  )}
                 </div>
               </div>
 
               {/* Action Footer */}
-              <div className="p-4 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
+              <div className="p-3.5 bg-slate-950/60 border-t border-slate-800/80 flex items-center justify-between">
                 <span className="text-xs text-slate-400 flex items-center space-x-1.5">
                   <Clock className="w-3.5 h-3.5 text-slate-500" />
-                  <span>{project.estimatedHours}h estimated</span>
+                  <span>{project.estimatedHours}h est.</span>
                 </span>
 
                 {isPurchased ? (
                   <button
                     onClick={() => onSelectProject(project.id)}
-                    className="px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition"
+                    className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition"
                   >
                     <span>
-                      {isFinished ? 'Review Project' : completedMilestones > 0 ? 'Resume Project' : 'Start Milestone 1'}
+                      {isFinished ? 'Review' : completedMilestones > 0 ? 'Resume' : 'Start M1'}
                     </span>
                     <ArrowRight className="w-3.5 h-3.5" />
                   </button>
@@ -325,7 +294,7 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
                   <button
                     onClick={() => handleUnlockProject(project)}
                     disabled={isCurrentLoading}
-                    className="px-4 py-2 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition active:scale-95 disabled:opacity-50"
+                    className="px-3.5 py-1.5 rounded-lg bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white text-xs font-semibold flex items-center space-x-1.5 shadow-md shadow-indigo-600/30 transition active:scale-95 disabled:opacity-50"
                   >
                     <Lock className="w-3.5 h-3.5 text-indigo-300" />
                     <span>{isCurrentLoading ? 'Opening...' : `Unlock for ₹${price}`}</span>
