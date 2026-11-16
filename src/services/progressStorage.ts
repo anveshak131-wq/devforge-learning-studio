@@ -12,7 +12,11 @@ const DEFAULT_STATS: UserStats = {
   savedCode: {},
   unlockedBadgeIds: ['badge-welcome'],
   diagnosedTier: 1,
-  reviewedFlashcardIds: []
+  reviewedFlashcardIds: [],
+  completedBugIds: [],
+  completedDailySprintDates: [],
+  streakFreezeActive: false,
+  completedSystemDesignLevelIds: []
 };
 
 export class ProgressStorage {
@@ -25,6 +29,9 @@ export class ProgressStorage {
       }
       const parsed: UserStats = JSON.parse(data);
       if (!parsed.reviewedFlashcardIds) parsed.reviewedFlashcardIds = [];
+      if (!parsed.completedBugIds) parsed.completedBugIds = [];
+      if (!parsed.completedDailySprintDates) parsed.completedDailySprintDates = [];
+      if (!parsed.completedSystemDesignLevelIds) parsed.completedSystemDesignLevelIds = [];
       this.updateStreakIfNeeded(parsed);
       return parsed;
     } catch {
@@ -52,7 +59,12 @@ export class ProgressStorage {
     if (diffDays === 1) {
       stats.streakDays += 1;
     } else if (diffDays > 1) {
-      stats.streakDays = 1;
+      if (stats.streakFreezeActive) {
+        // Streak freeze consumed to protect streak!
+        stats.streakFreezeActive = false;
+      } else {
+        stats.streakDays = 1;
+      }
     }
     stats.lastActiveDate = today;
     this.saveStats(stats);
@@ -111,6 +123,52 @@ export class ProgressStorage {
     if (!stats.reviewedFlashcardIds.includes(cardId)) {
       stats.reviewedFlashcardIds.push(cardId);
       stats.xp += 15;
+      this.saveStats(stats);
+    }
+    return stats;
+  }
+
+  static markBugComplete(bugId: string, xpReward: number = 100): UserStats {
+    const stats = this.getStats();
+    if (!stats.completedBugIds) stats.completedBugIds = [];
+    if (!stats.completedBugIds.includes(bugId)) {
+      stats.completedBugIds.push(bugId);
+      stats.xp += xpReward;
+      this.saveStats(stats);
+    }
+    return stats;
+  }
+
+  static markDailySprintComplete(dateStr: string, xpReward: number = 50): UserStats {
+    const stats = this.getStats();
+    if (!stats.completedDailySprintDates) stats.completedDailySprintDates = [];
+    if (!stats.completedDailySprintDates.includes(dateStr)) {
+      stats.completedDailySprintDates.push(dateStr);
+      stats.xp += xpReward;
+      // Increment or refresh streak
+      const today = new Date().toISOString().split('T')[0];
+      if (stats.lastActiveDate !== today) {
+        stats.streakDays += 1;
+        stats.lastActiveDate = today;
+      }
+      this.saveStats(stats);
+    }
+    return stats;
+  }
+
+  static toggleStreakFreeze(): UserStats {
+    const stats = this.getStats();
+    stats.streakFreezeActive = !stats.streakFreezeActive;
+    this.saveStats(stats);
+    return stats;
+  }
+
+  static markSystemDesignComplete(levelId: string, xpReward: number = 150): UserStats {
+    const stats = this.getStats();
+    if (!stats.completedSystemDesignLevelIds) stats.completedSystemDesignLevelIds = [];
+    if (!stats.completedSystemDesignLevelIds.includes(levelId)) {
+      stats.completedSystemDesignLevelIds.push(levelId);
+      stats.xp += xpReward;
       this.saveStats(stats);
     }
     return stats;

@@ -15,7 +15,10 @@ import {
   LogOut,
   ChevronDown,
   LogIn,
-  Compass
+  Compass,
+  Bug,
+  Network,
+  Zap
 } from 'lucide-react';
 import { UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
@@ -114,6 +117,18 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
+            onClick={() => onNavigate('daily')}
+            className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
+              currentView === 'daily'
+                ? 'bg-slate-800 text-amber-400 border border-slate-700'
+                : 'text-slate-300 hover:text-white hover:bg-slate-800/60'
+            }`}
+          >
+            <Flame className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
+            <span>Daily Sprint</span>
+          </button>
+
+          <button
             onClick={() => onNavigate('playground')}
             className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition flex items-center space-x-1.5 ${
               currentView === 'playground'
@@ -162,22 +177,46 @@ export const Navbar: React.FC<NavbarProps> = ({
 
             {toolsDropdownOpen && (
               <div 
-                className="absolute left-0 mt-1.5 w-48 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-1 z-50 text-xs"
+                className="absolute left-0 mt-1.5 w-56 rounded-xl bg-slate-900 border border-slate-800 shadow-2xl py-1 z-50 text-xs"
                 onMouseLeave={() => setToolsDropdownOpen(false)}
               >
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onNavigate('bughunter'); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <Bug className="w-4 h-4 text-rose-400" />
+                  <div>
+                    <div className="font-semibold text-white">Bug Hunter Arena</div>
+                    <div className="text-[10px] text-slate-400">PR debugging & regression fixes</div>
+                  </div>
+                </button>
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onNavigate('system-design'); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <Network className="w-4 h-4 text-indigo-400" />
+                  <div>
+                    <div className="font-semibold text-white">System Design Studio</div>
+                    <div className="text-[10px] text-slate-400">Traffic surge & cloud simulator</div>
+                  </div>
+                </button>
+                <button
+                  onClick={() => { setToolsDropdownOpen(false); onNavigate('study'); }}
+                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
+                >
+                  <BookOpen className="w-4 h-4 text-emerald-400" />
+                  <div>
+                    <div className="font-semibold text-white">Study Center</div>
+                    <div className="text-[10px] text-slate-400">Cheat sheets & flashcards</div>
+                  </div>
+                </button>
+                <div className="h-px bg-slate-800 my-1" />
                 <button
                   onClick={() => { setToolsDropdownOpen(false); onNavigate('roadmap'); }}
                   className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
                 >
                   <GitFork className="w-4 h-4 text-cyan-400" />
                   <span>Skill Tree Roadmap</span>
-                </button>
-                <button
-                  onClick={() => { setToolsDropdownOpen(false); onOpenFlashcards(); }}
-                  className="w-full px-3.5 py-2 text-left text-slate-300 hover:text-white hover:bg-slate-800 flex items-center space-x-2"
-                >
-                  <Brain className="w-4 h-4 text-indigo-400" />
-                  <span>Recall Flashcards</span>
                 </button>
                 <button
                   onClick={() => { setToolsDropdownOpen(false); onOpenPlacementQuiz(); }}
@@ -196,8 +235,9 @@ export const Navbar: React.FC<NavbarProps> = ({
       <div className="flex items-center space-x-2.5">
         {/* Streak */}
         <div 
-          className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium"
-          title="Daily Learning Streak"
+          onClick={() => onNavigate('daily')}
+          className="cursor-pointer flex items-center space-x-1 px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-xs font-medium hover:bg-amber-500/20 transition"
+          title="Daily Learning Streak - Click to solve Today's Sprint!"
         >
           <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
           <span>{userStats.streakDays}d Streak</span>

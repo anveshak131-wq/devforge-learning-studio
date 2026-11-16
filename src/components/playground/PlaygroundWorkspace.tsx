@@ -298,10 +298,39 @@ kubectl apply -f deployment.yaml`
 };
 
 export const PlaygroundWorkspace: React.FC = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>('javascript');
-  const [code, setCode] = useState<string>(PLAYGROUND_TEMPLATES.javascript);
+  // Check if code was passed in URL hash / query
+  const getInitialState = (): { lang: Language; code: string } => {
+    try {
+      const search = window.location.hash || window.location.search;
+      if (search.includes('code=')) {
+        const clean = search.replace(/^[#?]/, '');
+        const params = new URLSearchParams(clean);
+        const langParam = params.get('lang') as Language;
+        const codeParam = params.get('code');
+        if (codeParam) {
+          const decoded = decodeURIComponent(escape(atob(decodeURIComponent(codeParam))));
+          return {
+            lang: langParam || 'javascript',
+            code: decoded
+          };
+        }
+      }
+    } catch (e) {
+      console.warn('Could not decode shared fiddle:', e);
+    }
+    return {
+      lang: 'javascript',
+      code: PLAYGROUND_TEMPLATES.javascript
+    };
+  };
+
+  const initial = getInitialState();
+  const [selectedLanguage, setSelectedLanguage] = useState<Language>(initial.lang);
+  const [code, setCode] = useState<string>(initial.code);
   const [isRunning, setIsRunning] = useState(false);
   const [executionResult, setExecutionResult] = useState<ExecutionResult | null>(null);
+  const [copiedShare, setCopiedShare] = useState(false);
+  const [viewMode, setViewMode] = useState<'split' | 'code' | 'preview'>('split');
   
   // SQL specific state
   const [selectedDbPreset, setSelectedDbPreset] = useState<string>('ecommerce');
@@ -368,10 +397,40 @@ export const PlaygroundWorkspace: React.FC = () => {
     setCode(q);
   };
 
+  const handleShare = () => {
+    try {
+      const encoded = encodeURIComponent(btoa(unescape(encodeURIComponent(code))));
+      const shareUrl = `${window.location.origin}/playground#lang=${selectedLanguage}&code=${encoded}`;
+      navigator.clipboard.writeText(shareUrl);
+      setCopiedShare(true);
+      setTimeout(() => setCopiedShare(false), 2500);
+    } catch {
+      alert('Could not copy share link');
+    }
+  };
+
+  const handleDownload = () => {
+    const extensions: Partial<Record<Language, string>> = {
+      javascript: 'js',
+      typescript: 'ts',
+      python: 'py',
+      sql: 'sql',
+      html: 'html'
+    };
+    const ext = extensions[selectedLanguage] || 'txt';
+    const blob = new Blob([code], { type: 'text/plain;charset=utf-8' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `devforge_fiddle_${selectedLanguage}.${ext}`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   return (
-    <div className="flex flex-col h-[calc(100vh-3.5rem)] overflow-hidden bg-slate-950">
+    <div className="flex flex-col h-[calc(100vh-3.5rem)] overflow-hidden bg-slate-950 font-sans">
       {/* Playground Top Bar */}
-      <div className="h-12 border-b border-slate-800 bg-slate-900/80 px-4 flex items-center justify-between select-none">
+      <div className="h-12 border-b border-slate-800 bg-slate-900/90 px-4 flex items-center justify-between select-none">
         {/* Language switcher */}
         <div className="flex items-center space-x-1.5">
           {(['javascript', 'typescript', 'sql', 'python', 'html'] as Language[]).map(lang => (
@@ -403,6 +462,54 @@ export const PlaygroundWorkspace: React.FC = () => {
             </select>
           </div>
         )}
+
+        {/* Right actions: Share, Download, View Mode */}
+        <div className="flex items-center space-x-2">
+          {/* View mode switcher */}
+          <div className="hidden sm:flex items-center bg-slate-800 rounded-lg p-0.5 border border-slate-700 text-[11px]">
+            <button
+              onClick={() => setViewMode('split')}
+              className={`px-2 py-0.5 rounded ${viewMode === 'split' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-400 hover:text-white'}`}
+            >
+              Split
+            </button>
+            <button
+              onClick={() => setViewMode('code')}
+              className={`px-2 py-0.5 rounded ${viewMode === 'code' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-400 hover:text-white'}`}
+            >
+              Code Only
+            </button>
+            {selectedLanguage === 'html' && (
+              <button
+                onClick={() => setViewMode('preview')}
+                className={`px-2 py-0.5 rounded ${viewMode === 'preview' ? 'bg-indigo-600 text-white font-bold' : 'text-slate-400 hover:text-white'}`}
+              >
+                Preview
+              </button>
+            )}
+          </div>
+
+          <button
+            onClick={handleDownload}
+            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            title="Download code file"
+          >
+            <Download className="w-4 h-4" />
+          </button>
+
+          <button
+            onClick={handleShare}
+            className={`px-3 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1.5 transition ${
+              copiedShare
+                ? 'bg-emerald-600 text-white shadow-emerald-600/30'
+                : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30'
+            }`}
+            title="Generate shareable link for this snippet"
+          >
+            <Share2 className="w-3.5 h-3.5" />
+            <span>{copiedShare ? 'Link Copied!' : 'Share'}</span>
+          </button>
+        </div>
       </div>
 
       {/* SQL Sample Query Quick Bar if SQL */}
@@ -423,46 +530,50 @@ export const PlaygroundWorkspace: React.FC = () => {
 
       {/* Main Split Grid */}
       <div className="flex-1 grid grid-cols-1 lg:grid-cols-12 overflow-hidden p-3 gap-3">
-        {/* Editor (7 cols) */}
-        <div className="lg:col-span-7 h-full flex flex-col">
-          <CodeEditor
-            code={code}
-            onChange={setCode}
-            language={selectedLanguage}
-            onRun={handleRun}
-            onReset={handleReset}
-            isRunning={isRunning}
-          />
-        </div>
-
-        {/* Output Panel / HTML Preview (5 cols) */}
-        <div className="lg:col-span-5 h-full flex flex-col">
-          {selectedLanguage === 'html' ? (
-            <div className="flex flex-col h-full bg-[#181818] border border-slate-800 rounded-xl overflow-hidden shadow-xl">
-              <div className="h-10 bg-[#141414] border-b border-slate-800 px-3.5 flex items-center justify-between select-none">
-                <span className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
-                  <Eye className="w-3.5 h-3.5 text-cyan-400" />
-                  <span>Live Render Preview</span>
-                </span>
-                <span className="text-[10px] text-slate-500 font-mono">Sandboxed IFrame</span>
-              </div>
-              <iframe
-                title="Preview"
-                srcDoc={code}
-                className="w-full flex-1 bg-white"
-                sandbox="allow-scripts allow-modals"
-              />
-            </div>
-          ) : (
-            <OutputPanel
+        {/* Editor */}
+        {(viewMode === 'split' || viewMode === 'code') && (
+          <div className={`${viewMode === 'code' ? 'lg:col-span-12' : 'lg:col-span-7'} h-full flex flex-col`}>
+            <CodeEditor
+              code={code}
+              onChange={setCode}
               language={selectedLanguage}
-              executionResult={executionResult}
-              testResults={null}
-              onClearConsole={() => setExecutionResult(null)}
-              schemas={schemas}
+              onRun={handleRun}
+              onReset={handleReset}
+              isRunning={isRunning}
             />
-          )}
-        </div>
+          </div>
+        )}
+
+        {/* Output Panel / HTML Preview */}
+        {(viewMode === 'split' || viewMode === 'preview') && (
+          <div className={`${viewMode === 'preview' ? 'lg:col-span-12' : 'lg:col-span-5'} h-full flex flex-col`}>
+            {selectedLanguage === 'html' ? (
+              <div className="flex flex-col h-full bg-[#181818] border border-slate-800 rounded-xl overflow-hidden shadow-xl">
+                <div className="h-10 bg-[#141414] border-b border-slate-800 px-3.5 flex items-center justify-between select-none">
+                  <span className="text-xs font-semibold text-slate-300 flex items-center space-x-1.5">
+                    <Eye className="w-3.5 h-3.5 text-cyan-400" />
+                    <span>Live Render Preview</span>
+                  </span>
+                  <span className="text-[10px] text-slate-500 font-mono">Sandboxed IFrame</span>
+                </div>
+                <iframe
+                  title="Preview"
+                  srcDoc={code}
+                  className="w-full flex-1 bg-white"
+                  sandbox="allow-scripts allow-modals"
+                />
+              </div>
+            ) : (
+              <OutputPanel
+                language={selectedLanguage}
+                executionResult={executionResult}
+                testResults={null}
+                onClearConsole={() => setExecutionResult(null)}
+                schemas={schemas}
+              />
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

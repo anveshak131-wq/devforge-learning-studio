@@ -18,6 +18,10 @@ import { PlacementQuizModal } from './components/views/PlacementQuizModal';
 import { FlashcardsModal } from './components/views/FlashcardsModal';
 import { RoadmapSkillTreeView } from './components/views/RoadmapSkillTreeView';
 import { CertificatesVaultView } from './components/views/CertificatesVaultView';
+import { BugHunterView } from './components/views/BugHunterView';
+import { DailySprintView } from './components/views/DailySprintView';
+import { SystemDesignSimulatorView } from './components/views/SystemDesignSimulatorView';
+import { StudyCenterView } from './components/views/StudyCenterView';
 import { AuthModal } from './components/auth/AuthModal';
 import { CertificateModal } from './components/certificate/CertificateModal';
 import { CertificateVerifyView } from './components/certificate/CertificateVerifyView';
@@ -75,6 +79,12 @@ function parseRouteFromLocation(): { view: string; payload?: any } {
   if (segments[0] === 'vault') return { view: 'vault' };
   if (segments[0] === 'roadmap') return { view: 'roadmap' };
   if (segments[0] === 'playground') return { view: 'playground' };
+  if (segments[0] === 'daily' || segments[0] === 'sprint') return { view: 'daily' };
+  if (segments[0] === 'debug' || segments[0] === 'bughunter') return { view: 'bughunter' };
+  if (segments[0] === 'architecture' || segments[0] === 'system-design') return { view: 'system-design' };
+  if (['study', 'cheatsheet', 'flashcards'].includes(segments[0])) {
+    return { view: 'study', payload: { tab: segments[0] === 'flashcards' ? 'flashcards' : 'cheatsheets' } };
+  }
   if (segments[0] === 'leaderboard' || segments[0] === 'rankings') return { view: 'leaderboard' };
   if (segments[0] === 'verify' || segments[0] === 'certificate') {
     const credentialId = segments[1] || new URLSearchParams(window.location.search).get('id') || '';
@@ -234,6 +244,10 @@ export function App() {
     else if (view === 'vault') nextPath = '/vault';
     else if (view === 'roadmap') nextPath = '/roadmap';
     else if (view === 'playground') nextPath = '/playground';
+    else if (view === 'daily') nextPath = '/daily';
+    else if (view === 'bughunter') nextPath = '/bughunter';
+    else if (view === 'system-design') nextPath = '/system-design';
+    else if (view === 'study') nextPath = '/study';
     else if (view === 'terms') nextPath = '/terms';
     else if (view === 'privacy') nextPath = '/privacy';
     else if (view === 'refund') nextPath = '/refund';
@@ -538,6 +552,49 @@ export function App() {
 
         {currentView === 'playground' && (
           <PlaygroundWorkspace />
+        )}
+
+        {/* Bug Hunter & Real-World PR Debugging Arena */}
+        {currentView === 'bughunter' && (
+          <BugHunterView
+            userStats={userStats}
+            onStatsUpdate={handleStatsUpdate}
+            onBackToDashboard={() => handleNavigate('dashboard')}
+          />
+        )}
+
+        {/* Daily Code Sprint & Habit Streaks */}
+        {currentView === 'daily' && (
+          <DailySprintView
+            userStats={userStats}
+            onStatsUpdate={handleStatsUpdate}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {/* Interactive Distributed System Design & Architecture Simulator */}
+        {currentView === 'system-design' && (
+          <SystemDesignSimulatorView
+            userStats={userStats}
+            onStatsUpdate={handleStatsUpdate}
+            onNavigate={handleNavigate}
+          />
+        )}
+
+        {/* Developer Study Center (Interactive Cheat Sheets & Spaced Repetition) */}
+        {currentView === 'study' && (
+          <StudyCenterView
+            userStats={userStats}
+            onStatsUpdate={handleStatsUpdate}
+            initialTab={viewPayload?.tab || 'cheatsheets'}
+            onNavigateToPlayground={(snippetCode, lang) => {
+              try {
+                const encoded = encodeURIComponent(btoa(unescape(encodeURIComponent(snippetCode))));
+                window.location.hash = `#lang=${lang}&code=${encoded}`;
+              } catch {}
+              handleNavigate('playground');
+            }}
+          />
         )}
 
         {/* Global Developer Rankings & XP Leaderboard */}

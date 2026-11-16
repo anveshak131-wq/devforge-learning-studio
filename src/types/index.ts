@@ -165,6 +165,10 @@ export interface UserStats {
   unlockedBadgeIds: string[];
   diagnosedTier?: TierLevel;
   reviewedFlashcardIds: string[];
+  completedBugIds?: string[];
+  completedDailySprintDates?: string[];
+  streakFreezeActive?: boolean;
+  completedSystemDesignLevelIds?: string[];
 }
 
 export interface Badge {

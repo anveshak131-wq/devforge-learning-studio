@@ -13,8 +13,11 @@ import {
   Clock, 
   BookOpen, 
   Play,
-  FileCode2
+  FileCode2,
+  Bug,
+  Network
 } from 'lucide-react';
+import { getDailySprintForDate } from '../../data/dailySprints';
 import { UserStats, Track } from '../../types';
 import { CourseStorageService } from '../../services/courseStorageService';
 import { ALL_PROJECTS } from '../../data/projects';
@@ -52,6 +55,10 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
     }
     if (nextRecommended) break;
   }
+
+  const todayStr = new Date().toISOString().split('T')[0];
+  const todaySprint = getDailySprintForDate(todayStr);
+  const isTodaySprintDone = (userStats.completedDailySprintDates || []).includes(todayStr);
 
   return (
     <div className="h-[calc(100vh-3.5rem)] overflow-y-auto bg-slate-950 p-6 md:p-8 space-y-8 font-sans">
@@ -156,6 +163,137 @@ export const DashboardView: React.FC<DashboardViewProps> = ({
             </button>
           </div>
         )}
+      </div>
+
+      {/* Interactive Practice & Engineering Arenas */}
+      <div className="space-y-4">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-xl font-extrabold text-white tracking-tight flex items-center space-x-2">
+              <span>Interactive Engineering Arenas</span>
+              <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                New
+              </span>
+            </h2>
+            <p className="text-xs text-slate-400">Move beyond tutorials: solve daily sprints, fix production bugs, and simulate distributed system chaos.</p>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Daily Code Sprint */}
+          <div
+            onClick={() => onNavigate('daily')}
+            className="cursor-pointer p-5 rounded-2xl bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 border border-amber-500/30 hover:border-amber-500/60 transition group space-y-3 flex flex-col justify-between shadow-lg"
+          >
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-amber-500/20 border border-amber-500/30 flex items-center justify-center">
+                  <Flame className="w-5 h-5 text-amber-500 fill-amber-500" />
+                </div>
+                <span className="text-xs font-mono font-bold text-amber-400">
+                  {isTodaySprintDone ? 'Solved Today ✓' : '+50 XP'}
+                </span>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm group-hover:text-amber-300 transition">
+                  Daily Code Sprint
+                </h3>
+                <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Today: {todaySprint.title}. 5-minute challenge to extend your {userStats.streakDays}d streak!
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-amber-400">
+              <span>{isTodaySprintDone ? 'Review Daily Sprint' : 'Solve Today’s Sprint'}</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+
+          {/* Bug Hunter Arena */}
+          <div
+            onClick={() => onNavigate('bughunter')}
+            className="cursor-pointer p-5 rounded-2xl bg-gradient-to-br from-rose-950/30 via-slate-900 to-slate-950 border border-rose-500/30 hover:border-rose-500/60 transition group space-y-3 flex flex-col justify-between shadow-lg"
+          >
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-rose-500/20 border border-rose-500/30 flex items-center justify-center">
+                  <Bug className="w-5 h-5 text-rose-400" />
+                </div>
+                <span className="text-xs font-mono font-bold text-rose-400">+100 XP / PR</span>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm group-hover:text-rose-300 transition">
+                  Bug Hunter Arena
+                </h3>
+                <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Inspect broken Pull Requests, race conditions, memory leaks, and float rounding defects.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-rose-400">
+              <span>Launch PR Debugger</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+
+          {/* System Design Simulator */}
+          <div
+            onClick={() => onNavigate('system-design')}
+            className="cursor-pointer p-5 rounded-2xl bg-gradient-to-br from-indigo-950/30 via-slate-900 to-slate-950 border border-indigo-500/30 hover:border-indigo-500/60 transition group space-y-3 flex flex-col justify-between shadow-lg"
+          >
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-indigo-500/20 border border-indigo-500/30 flex items-center justify-center">
+                  <Network className="w-5 h-5 text-indigo-400" />
+                </div>
+                <span className="text-xs font-mono font-bold text-indigo-400">+150 XP / Lvl</span>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm group-hover:text-indigo-300 transition">
+                  System Design Studio
+                </h3>
+                <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Architect distributed CDN, Load Balancers, Redis, and Kafka. Simulate live traffic surges.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-indigo-400">
+              <span>Simulate Cloud Chaos</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+
+          {/* Developer Study Center */}
+          <div
+            onClick={() => onNavigate('study')}
+            className="cursor-pointer p-5 rounded-2xl bg-gradient-to-br from-cyan-950/30 via-slate-900 to-slate-950 border border-cyan-500/30 hover:border-cyan-500/60 transition group space-y-3 flex flex-col justify-between shadow-lg"
+          >
+            <div className="space-y-2.5">
+              <div className="flex items-center justify-between">
+                <div className="w-10 h-10 rounded-xl bg-cyan-500/20 border border-cyan-500/30 flex items-center justify-center">
+                  <BookOpen className="w-5 h-5 text-cyan-400" />
+                </div>
+                <span className="text-xs font-mono font-bold text-cyan-400">Reference & Recall</span>
+              </div>
+              <div>
+                <h3 className="font-bold text-white text-sm group-hover:text-cyan-300 transition">
+                  Developer Study Center
+                </h3>
+                <p className="text-xs text-slate-400 mt-1 line-clamp-2">
+                  Interactive runnable cheat sheets + Anki-style spaced repetition flashcards for interview prep.
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-2 border-t border-slate-800/80 flex items-center justify-between text-xs font-bold text-cyan-400">
+              <span>Open Study Center</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </div>
+        </div>
       </div>
 
       {/* 4 Core Language Tracks (1-Click Start) */}
