@@ -60,6 +60,7 @@ import {
   resolveMediaSlot 
 } from '../../utils/slides';
 import { SlideStorageService } from '../../services/slideStorageService';
+import { AdminExamStudioTab } from './AdminExamStudioTab';
 
 interface AdminPortalViewProps {
   onNavigateLesson: (trackSlug: string, lessonId: string) => void;
@@ -74,7 +75,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   targetLessonId,
   targetTrackSlug
 }) => {
-  const [activeTab, setActiveTab] = useState<'editor' | 'video_studio' | 'security' | 'promos' | 'backup'>('editor');
+  const [activeTab, setActiveTab] = useState<'editor' | 'video_studio' | 'exam_studio' | 'security' | 'promos' | 'backup'>('editor');
   const [tracks, setTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [selectedTrackId, setSelectedTrackId] = useState<string>(targetTrackSlug || tracks[0]?.id || 'javascript');
   const [selectedLessonId, setSelectedLessonId] = useState<string>(targetLessonId || tracks[0]?.lessons[0]?.id || '');
@@ -707,6 +708,18 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
         >
           <Presentation className="w-4 h-4 text-amber-400" />
           <span>Lecture Media Studio (Slides & Videos)</span>
+        </button>
+
+        <button
+          onClick={() => setActiveTab('exam_studio')}
+          className={`px-4 py-2.5 text-xs font-bold flex items-center space-x-2 border-b-2 transition ${
+            activeTab === 'exam_studio'
+              ? 'border-indigo-500 text-white bg-slate-800/40'
+              : 'border-transparent text-slate-400 hover:text-white hover:bg-slate-800/20'
+          }`}
+        >
+          <Award className="w-4 h-4 text-amber-400" />
+          <span>Exam & Question Bank Studio</span>
         </button>
 
         <button
@@ -2111,6 +2124,13 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
               </div>
             </div>
           </div>
+        )}
+
+        {/* ================================================================= */}
+        {/* TAB: EXAM & QUESTION BANK STUDIO */}
+        {/* ================================================================= */}
+        {activeTab === 'exam_studio' && (
+          <AdminExamStudioTab onShowToast={showToast} />
         )}
 
         {/* ================================================================= */}
