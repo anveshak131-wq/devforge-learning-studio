@@ -21,7 +21,7 @@ interface CoursePaywallLockProps {
   lesson: Lesson;
   lessonIndex: number;
   currentUser: User | null;
-  onOpenAuth: () => void;
+  onOpenAuth: (config?: any) => void;
   onCourseUnlocked: (trackId: string) => void;
 }
 
@@ -40,6 +40,17 @@ export const CoursePaywallLock: React.FC<CoursePaywallLockProps> = ({
 
   const handleCheckout = () => {
     setErrorMessage(null);
+
+    // Pre-Payment Authentication Gate
+    if (!currentUser) {
+      onOpenAuth({
+        title: 'Create an Account to Unlock Lifetime Access',
+        desc: `Sign in with Google or GitHub to link your lifetime enrollment in "${track.title}", save your progress across devices, and receive official certificates and tax receipts.`,
+        pendingCheckoutTrack: track,
+      });
+      return;
+    }
+
     setLoading(true);
 
     PaymentService.openCheckout({
@@ -156,7 +167,13 @@ export const CoursePaywallLock: React.FC<CoursePaywallLockProps> = ({
             className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-cyan-500 hover:from-indigo-500 hover:to-cyan-400 text-white font-extrabold text-sm flex items-center justify-center space-x-2.5 shadow-xl shadow-indigo-600/30 transition transform hover:scale-[1.01] active:scale-[0.99] disabled:opacity-50"
           >
             <Sparkles className="w-4 h-4 fill-white" />
-            <span>{loading ? 'Opening Secure Checkout...' : 'Unlock Lifetime Course Access — ₹199'}</span>
+            <span>
+              {loading
+                ? 'Opening Secure Checkout...'
+                : !currentUser
+                ? 'Sign In to Unlock Full Course — ₹199'
+                : 'Unlock Lifetime Course Access — ₹199'}
+            </span>
             <ArrowRight className="w-4 h-4" />
           </button>
 

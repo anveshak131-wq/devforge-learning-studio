@@ -208,29 +208,38 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
       }
     }
 
-    // If caller is not in an active session, resolve by explicit email parameter
+    // If caller is not in an active session, resolve by explicit email parameter or Razorpay verified ledger
     if (!user) {
-      if (!email || typeof email !== 'string' || !email.includes('@')) {
+      let resolvedEmail: string | null = null;
+      if (email && typeof email === 'string' && email.includes('@')) {
+        resolvedEmail = email.trim().toLowerCase();
+      } else if (rzpPaymentData?.email && typeof rzpPaymentData.email === 'string' && rzpPaymentData.email.includes('@')) {
+        resolvedEmail = rzpPaymentData.email.trim().toLowerCase();
+      }
+
+      if (!resolvedEmail) {
         return JSON_RESPONSE({
           success: false,
           error: 'Please sign in or provide a valid email address to credit your course purchase.',
         }, 400, request);
       }
 
-      const cleanEmail = email.trim().toLowerCase();
+      const cleanEmail = resolvedEmail;
       user = await env.DEVFORGE_KV.get(`user:email:${cleanEmail}`, { type: 'json' }).catch(() => null);
 
       if (!user) {
+        const studentName = (rzpPaymentData?.notes?.name || cleanEmail.split('@')[0]);
         user = {
           id: 'usr_' + Math.random().toString(36).substring(2, 10),
           email: cleanEmail,
-          fullName: cleanEmail.split('@')[0],
+          fullName: studentName,
           role: 'student',
           avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanEmail)}`,
           createdAt: new Date().toISOString(),
           earnedCertificateIds: [],
           purchasedCourses: [],
           purchasedProjects: [],
+          paymentReceipts: [],
         };
       }
     }
@@ -345,6 +354,7 @@ export const onRequestPost = async (context: { request: Request; env: Env }) => 
 
     return JSON_RESPONSE({
       success: true,
+      user,
       purchasedCourses: user.purchasedCourses,
       purchasedProjects: user.purchasedProjects,
       receipt,

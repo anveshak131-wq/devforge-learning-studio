@@ -33,6 +33,7 @@ interface ProjectWorkspaceProps {
   onBackToProjects: () => void;
   userStats: UserStats;
   onStatsUpdate: (stats: UserStats) => void;
+  onOpenAuth?: (config?: any) => void;
 }
 
 export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
@@ -40,7 +41,8 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
   currentUser,
   onBackToProjects,
   userStats,
-  onStatsUpdate
+  onStatsUpdate,
+  onOpenAuth,
 }) => {
   const [purchaseVersion, setPurchaseVersion] = useState(0);
   const isPurchased = PaymentService.isProjectPurchased(project.id, currentUser);
@@ -206,10 +208,25 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
 
   const handleUnlockSingle = () => {
     setPaymentError(null);
+
+    // Pre-Payment Authentication Gate
+    if (!currentUser) {
+      if (onOpenAuth) {
+        onOpenAuth({
+          title: `Create an Account to Unlock "${project.title}"`,
+          desc: 'Sign in with Google or GitHub to link your guided project access, save code progress, and submit milestones.',
+          pendingCheckoutProject: project,
+        });
+      } else {
+        alert('Please sign in or create an account before unlocking this guided project.');
+      }
+      return;
+    }
+
     setPurchasingType('project');
     PaymentService.openProjectCheckout({
       project,
-      currentUser: currentUser || null,
+      currentUser,
       onSuccess: () => {
         setPurchasingType(null);
         setPurchaseVersion(v => v + 1);
@@ -223,9 +240,24 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
 
   const handleUnlockBundle = () => {
     setPaymentError(null);
+
+    // Pre-Payment Authentication Gate
+    if (!currentUser) {
+      if (onOpenAuth) {
+        onOpenAuth({
+          title: 'Create an Account for All-Projects Pass',
+          desc: 'Sign in with Google or GitHub to link lifetime access across all guided portfolio projects.',
+          pendingCheckoutBundle: true,
+        });
+      } else {
+        alert('Please sign in or create an account before unlocking the All-Projects Portfolio Pass.');
+      }
+      return;
+    }
+
     setPurchasingType('bundle');
     PaymentService.openAllProjectsBundleCheckout({
-      currentUser: currentUser || null,
+      currentUser,
       onSuccess: () => {
         setPurchasingType(null);
         setPurchaseVersion(v => v + 1);

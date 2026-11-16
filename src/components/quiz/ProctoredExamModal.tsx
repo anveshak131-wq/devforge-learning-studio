@@ -37,6 +37,7 @@ interface ProctoredExamModalProps {
   courseTitle: string;
   onClose: () => void;
   onViewCertificate?: () => void;
+  onOpenAuth?: (config?: any) => void;
 }
 
 type ExamScreen = 'briefing' | 'exam' | 'results';
@@ -47,6 +48,7 @@ export const ProctoredExamModal: React.FC<ProctoredExamModalProps> = ({
   courseTitle,
   onClose,
   onViewCertificate,
+  onOpenAuth,
 }) => {
   // Screen routing
   const [screen, setScreen] = useState<ExamScreen>('briefing');
@@ -324,6 +326,19 @@ export const ProctoredExamModal: React.FC<ProctoredExamModalProps> = ({
   };
 
   const handlePurchaseRetake = () => {
+    // Gate: Must be authenticated
+    if (!currentUser) {
+      if (onOpenAuth) {
+        onOpenAuth({
+          title: 'Sign In to Unlock Instant Retake',
+          desc: 'Please sign in to link your ₹49 re-examination pass to your verified student profile.',
+        });
+      } else {
+        alert('Please sign in or create an account before purchasing an instant retake pass.');
+      }
+      return;
+    }
+
     setIsPurchasingRetake(true);
     // Trigger Razorpay for ₹49 retake pass
     PaymentService.openRetakeCheckout({

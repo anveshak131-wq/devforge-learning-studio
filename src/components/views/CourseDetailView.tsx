@@ -39,7 +39,7 @@ interface CourseDetailViewProps {
   onClaimCertificate?: (track: Track) => void;
   onViewCertificate?: (trackId: string) => void;
   currentUser?: User | null;
-  onOpenAuth?: () => void;
+  onOpenAuth?: (config?: any) => void;
 }
 
 export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
@@ -50,7 +50,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   onClaimCertificate,
   onViewCertificate,
   currentUser = null,
-  onOpenAuth = () => {}
+  onOpenAuth = (_cfg?: any) => {}
 }) => {
   const [coursePurchased, setCoursePurchased] = useState(() => PaymentService.isCoursePurchased(track.id, currentUser));
   const [checkoutLoading, setCheckoutLoading] = useState(false);
@@ -63,10 +63,20 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   }, [track.id, currentUser]);
 
   const handleUnlockCourse = () => {
+    // Pre-Payment Authentication Gate
+    if (!currentUser) {
+      onOpenAuth({
+        title: `Create an Account to Unlock ${track.title}`,
+        desc: `Sign in with Google or GitHub to link your lifetime course pass, save progress across all devices, and receive official certificates and receipts.`,
+        pendingCheckoutTrack: track,
+      });
+      return;
+    }
+
     setCheckoutLoading(true);
     PaymentService.openCheckout({
       track,
-      currentUser: currentUser || null,
+      currentUser,
       onSuccess: () => {
         setCheckoutLoading(false);
         setCoursePurchased(true);
@@ -633,6 +643,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
             setQuizRefreshKey((k) => k + 1);
           }}
           onViewCertificate={() => onViewCertificate?.(track.id)}
+          onOpenAuth={onOpenAuth}
         />
       )}
     </div>

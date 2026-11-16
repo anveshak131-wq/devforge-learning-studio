@@ -24,6 +24,7 @@ interface ProjectsCatalogViewProps {
   userStats: UserStats;
   currentUser?: UserType | null;
   onSelectProject: (projectId: string) => void;
+  onOpenAuth?: (config?: any) => void;
 }
 
 const COURSE_FILTERS = [
@@ -50,7 +51,8 @@ const COURSE_FILTERS = [
 export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
   userStats,
   currentUser,
-  onSelectProject
+  onSelectProject,
+  onOpenAuth,
 }) => {
   const [filterLang, setFilterLang] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -77,6 +79,21 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
 
   const handleUnlockProject = (project: GuidedProject) => {
     setPaymentError(null);
+
+    // Pre-Payment Authentication Gate
+    if (!currentUser) {
+      if (onOpenAuth) {
+        onOpenAuth({
+          title: `Create an Account to Unlock "${project.title}"`,
+          desc: 'Sign in with Google or GitHub to link your guided project access, save code progress, and earn project milestones.',
+          pendingCheckoutProject: project,
+        });
+      } else {
+        alert('Please sign in or create an account before unlocking this guided project.');
+      }
+      return;
+    }
+
     setPurchasingId(project.id);
     PaymentService.openProjectCheckout({
       project,

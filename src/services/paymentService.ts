@@ -115,6 +115,11 @@ export class PaymentService {
 
     if (typeof window === 'undefined') return;
 
+    if (!currentUser || !currentUser.email) {
+      onError('Authentication required: Please sign in or create an account before unlocking this course.');
+      return;
+    }
+
     let razorpayKey = (import.meta as any).env?.VITE_RAZORPAY_KEY_ID;
 
     // Dynamically fetch Razorpay Key ID from Cloudflare Edge if not baked into client build
@@ -265,6 +270,11 @@ export class PaymentService {
     const { trackId, currentUser, onSuccess, onError } = options;
 
     if (typeof window === 'undefined') return;
+
+    if (!currentUser || !currentUser.email) {
+      onError('Authentication required: Please sign in before purchasing a re-examination pass.');
+      return;
+    }
 
     let razorpayKey = (import.meta as any).env?.VITE_RAZORPAY_KEY_ID;
 
@@ -467,6 +477,11 @@ export class PaymentService {
     const { project, currentUser, onSuccess, onError } = options;
     if (typeof window === 'undefined') return;
 
+    if (!currentUser || !currentUser.email) {
+      onError('Authentication required: Please sign in or create an account before unlocking this guided project.');
+      return;
+    }
+
     const priceInr = this.getProjectPrice(project);
     const amountPaise = priceInr * 100;
 
@@ -607,6 +622,11 @@ export class PaymentService {
   }) {
     const { currentUser, onSuccess, onError } = options;
     if (typeof window === 'undefined') return;
+
+    if (!currentUser || !currentUser.email) {
+      onError('Authentication required: Please sign in or create an account before unlocking the All-Projects Portfolio Pass.');
+      return;
+    }
 
     const amountPaise = this.ALL_PROJECTS_BUNDLE_PRICE_INR * 100; // 24900
 

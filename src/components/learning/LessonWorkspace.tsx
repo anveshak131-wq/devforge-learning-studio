@@ -52,7 +52,7 @@ interface LessonWorkspaceProps {
   onClaimCertificate?: (track: Track) => void;
   onOpenAdmin?: (trackSlug: string, lessonId: string) => void;
   currentUser?: User | null;
-  onOpenAuth?: () => void;
+  onOpenAuth?: (config?: any) => void;
 }
 
 export const LessonWorkspace: React.FC<LessonWorkspaceProps> = ({

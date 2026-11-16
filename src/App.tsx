@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import confetti from 'canvas-confetti';
-import { UserStats, TierLevel, Track } from './types';
+import { UserStats, TierLevel, Track, GuidedProject } from './types';
 import { User as UserType, Certificate } from './types/auth';
 import { ProgressStorage } from './services/progressStorage';
 import { AuthService } from './services/authService';
+import { PaymentService } from './services/paymentService';
 import { Navbar } from './components/layout/Navbar';
 import { DashboardView } from './components/views/DashboardView';
 import { TracksCatalogView } from './components/views/TracksCatalogView';
@@ -190,7 +191,14 @@ export function App() {
   const [isPlacementQuizOpen, setIsPlacementQuizOpen] = useState(false);
   const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-  const [authModalConfig, setAuthModalConfig] = useState<{ title?: string; desc?: string; pendingTrack?: Track } | null>(null);
+  const [authModalConfig, setAuthModalConfig] = useState<{
+    title?: string;
+    desc?: string;
+    pendingTrack?: Track;
+    pendingCheckoutTrack?: Track;
+    pendingCheckoutProject?: GuidedProject;
+    pendingCheckoutBundle?: boolean;
+  } | null>(null);
 
   // Certificate Modal State
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
@@ -285,6 +293,39 @@ export function App() {
     setCurrentUser(user);
     if (authModalConfig?.pendingTrack) {
       issueAndShowCertificate(authModalConfig.pendingTrack, user);
+      setAuthModalConfig(null);
+    } else if (authModalConfig?.pendingCheckoutTrack) {
+      const trackToBuy = authModalConfig.pendingCheckoutTrack;
+      setAuthModalConfig(null);
+      setTimeout(() => {
+        PaymentService.openCheckout({
+          track: trackToBuy,
+          currentUser: user,
+          onSuccess: () => {},
+          onError: (err) => alert(err),
+        });
+      }, 300);
+    } else if (authModalConfig?.pendingCheckoutProject) {
+      const projectToBuy = authModalConfig.pendingCheckoutProject;
+      setAuthModalConfig(null);
+      setTimeout(() => {
+        PaymentService.openProjectCheckout({
+          project: projectToBuy,
+          currentUser: user,
+          onSuccess: () => {},
+          onError: (err) => alert(err),
+        });
+      }, 300);
+    } else if (authModalConfig?.pendingCheckoutBundle) {
+      setAuthModalConfig(null);
+      setTimeout(() => {
+        PaymentService.openAllProjectsBundleCheckout({
+          currentUser: user,
+          onSuccess: () => {},
+          onError: (err) => alert(err),
+        });
+      }, 300);
+    } else {
       setAuthModalConfig(null);
     }
   };
@@ -404,8 +445,8 @@ export function App() {
               }
             }}
             currentUser={currentUser}
-            onOpenAuth={() => {
-              setAuthModalConfig(null);
+            onOpenAuth={(cfg?: any) => {
+              setAuthModalConfig(cfg || null);
               setIsAuthModalOpen(true);
             }}
           />
@@ -426,8 +467,8 @@ export function App() {
               handleNavigate('admin', { trackSlug, lessonId });
             }}
             currentUser={currentUser}
-            onOpenAuth={() => {
-              setAuthModalConfig(null);
+            onOpenAuth={(cfg?: any) => {
+              setAuthModalConfig(cfg || null);
               setIsAuthModalOpen(true);
             }}
           />
@@ -440,6 +481,10 @@ export function App() {
             onSelectProject={(projectId) => {
               handleNavigate('project-milestone', { projectId });
             }}
+            onOpenAuth={(cfg?: any) => {
+              setAuthModalConfig(cfg || null);
+              setIsAuthModalOpen(true);
+            }}
           />
         )}
 
@@ -450,6 +495,10 @@ export function App() {
             onBackToProjects={() => handleNavigate('projects')}
             userStats={userStats}
             onStatsUpdate={handleStatsUpdate}
+            onOpenAuth={(cfg?: any) => {
+              setAuthModalConfig(cfg || null);
+              setIsAuthModalOpen(true);
+            }}
           />
         )}
 
