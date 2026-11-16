@@ -1,3 +1,5 @@
+import { checkRateLimit, createRateLimitResponse } from './_rateLimiter';
+
 interface Env {
   DEVFORGE_KV?: {
     get: (key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }) => Promise<any>;
@@ -59,6 +61,19 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 15 leaderboard updates per 60 seconds per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'leaderboard_post',
+      maxRequests: 15,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(
+        rateLimit,
+        'Leaderboard update rate limit exceeded. You can only update leaderboard rankings up to 15 times per minute.'
+      );
+    }
 
     // 1. Authenticate caller session from Cookie or Bearer header
     let sessionToken: string | null = null;

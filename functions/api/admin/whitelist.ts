@@ -1,4 +1,5 @@
 import { Env, verifyAdminSession, DEFAULT_SUPERADMIN_EMAILS } from '../_auth';
+import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -46,6 +47,16 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 10 whitelist mutations per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'admin_whitelist_post',
+      maxRequests: 10,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Admin action rate limit exceeded. Please wait a moment.');
+    }
 
     // Strict SuperAdmin Session Verification
     const auth = await verifyAdminSession(request, env);

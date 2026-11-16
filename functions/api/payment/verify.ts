@@ -1,3 +1,5 @@
+import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
+
 interface Env {
   DEVFORGE_KV?: {
     get: (key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }) => Promise<any>;
@@ -32,6 +34,19 @@ export const onRequestOptions = async () => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 5 payment verification attempts per 10 minutes per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'payment_verify',
+      maxRequests: 5,
+      windowSeconds: 600,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(
+        rateLimit,
+        'Payment verification rate limit exceeded. Please wait a few minutes before trying again.'
+      );
+    }
     const body = (await request.json().catch(() => null)) as any;
 
     if (!body || (!body.trackId && !body.projectId)) {

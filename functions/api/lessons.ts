@@ -1,4 +1,5 @@
 import { Env, verifyAdminSession } from './_auth';
+import { checkRateLimit, createRateLimitResponse } from './_rateLimiter';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -23,9 +24,20 @@ export const onRequestOptions = async () => {
   });
 };
 
-export const onRequestGet = async (context: { env: Env }) => {
+export const onRequestGet = async (context: { request: Request; env: Env }) => {
   try {
-    const { env } = context;
+    const { request, env } = context;
+
+    // Rate limiting: max 60 curriculum fetch requests per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'lessons_get',
+      maxRequests: 60,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many curriculum requests.');
+    }
+
     if (!env || !env.DEVFORGE_KV) {
       return JSON_RESPONSE({
         success: false,
@@ -57,6 +69,16 @@ export const onRequestGet = async (context: { env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 20 curriculum save/sync requests per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'lessons_post',
+      maxRequests: 20,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many curriculum update attempts.');
+    }
 
     // Strict SuperAdmin Authentication Check
     const auth = await verifyAdminSession(request, env);

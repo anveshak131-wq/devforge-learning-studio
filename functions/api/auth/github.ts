@@ -1,4 +1,5 @@
 import { Env, DEFAULT_SUPERADMIN_EMAILS } from '../_auth';
+import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -75,6 +76,19 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 15 GitHub token exchange attempts per 5 minutes per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'auth_github',
+      maxRequests: 15,
+      windowSeconds: 300,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(
+        rateLimit,
+        'Too many GitHub authentication attempts. Please wait a few minutes before trying again.'
+      );
+    }
     const body = (await request.json().catch(() => null)) as any;
     const { code, state: returnedState, redirectUri } = body || {};
 

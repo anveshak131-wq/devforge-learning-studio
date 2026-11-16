@@ -1,4 +1,5 @@
 import { Env, DEFAULT_SUPERADMIN_EMAILS } from '../_auth';
+import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -27,6 +28,16 @@ export const onRequestOptions = async () => {
 export const onRequestGet = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 60 session checks per minute per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'auth_me_get',
+      maxRequests: 60,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(rateLimit, 'Rate limit exceeded: too many session check requests.');
+    }
 
     // Extract session token from cookie or Authorization header
     let token: string | null = null;

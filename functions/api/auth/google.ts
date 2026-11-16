@@ -1,3 +1,5 @@
+import { checkRateLimit, createRateLimitResponse } from '../_rateLimiter';
+
 interface Env {
   DEVFORGE_KV?: {
     get: (key: string, options?: { type?: 'text' | 'json' | 'arrayBuffer' | 'stream' }) => Promise<any>;
@@ -41,6 +43,19 @@ export const onRequestOptions = async () => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 15 Google login attempts per 5 minutes per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'auth_google',
+      maxRequests: 15,
+      windowSeconds: 300,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(
+        rateLimit,
+        'Too many Google sign-in attempts. Please wait a few minutes before trying again.'
+      );
+    }
     let body: any = null;
 
     try {

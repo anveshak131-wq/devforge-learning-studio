@@ -1,4 +1,5 @@
 import { Env, DEFAULT_SUPERADMIN_EMAILS } from './_auth';
+import { checkRateLimit, createRateLimitResponse } from './_rateLimiter';
 
 const CORS_HEADERS = {
   'Access-Control-Allow-Origin': '*',
@@ -31,6 +32,20 @@ export const onRequestOptions = async () => {
 export const onRequestGet = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 40 verification lookups per minute per IP to prevent scraper exhaustion
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'cert_get',
+      maxRequests: 40,
+      windowSeconds: 60,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(
+        rateLimit,
+        'Rate limit exceeded: too many certificate verification requests. Please wait a moment before trying again.'
+      );
+    }
+
     if (!env || !env.DEVFORGE_KV) {
       return JSON_RESPONSE({
         success: false,
@@ -87,6 +102,20 @@ export const onRequestGet = async (context: { request: Request; env: Env }) => {
 export const onRequestPost = async (context: { request: Request; env: Env }) => {
   try {
     const { request, env } = context;
+
+    // Rate limiting: max 5 certificate registration/issuance requests per 10 minutes per IP
+    const rateLimit = checkRateLimit(request, {
+      keyPrefix: 'cert_post',
+      maxRequests: 5,
+      windowSeconds: 600,
+    });
+    if (!rateLimit.allowed) {
+      return createRateLimitResponse(
+        rateLimit,
+        'Certificate issuance rate limit exceeded. You may only issue up to 5 certificates per 10 minutes.'
+      );
+    }
+
     if (!env || !env.DEVFORGE_KV) {
       return JSON_RESPONSE({
         success: false,
