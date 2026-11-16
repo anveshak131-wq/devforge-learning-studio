@@ -27,11 +27,9 @@ import { LegalView, LegalTab } from './components/legal/LegalView';
 const AdminPortalView = React.lazy(() =>
   import('./components/admin/AdminPortalView').then(m => ({ default: m.AdminPortalView }))
 );
-import { SupportModal } from './components/support/SupportModal';
 import { CourseStorageService } from './services/courseStorageService';
 import { AdminSecurityService } from './services/adminSecurityService';
 import { ALL_PROJECTS, getProjectBySlug } from './data/projects';
-import { Heart } from 'lucide-react';
 
 function parseRouteFromLocation(): { view: string; payload?: any } {
   let path = window.location.pathname.replace(/^\/+|\/+$/g, '');
@@ -141,7 +139,6 @@ export function App() {
   const [isFlashcardsOpen, setIsFlashcardsOpen] = useState(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [authModalConfig, setAuthModalConfig] = useState<{ title?: string; desc?: string; pendingTrack?: Track } | null>(null);
-  const [isSupportModalOpen, setIsSupportModalOpen] = useState(false);
 
   // Certificate Modal State
   const [isCertModalOpen, setIsCertModalOpen] = useState(false);
@@ -294,7 +291,6 @@ export function App() {
           setAuthModalConfig(null);
           setIsAuthModalOpen(true);
         }}
-        onOpenSupport={() => setIsSupportModalOpen(true)}
         onLogout={handleLogout}
       />
 
@@ -306,7 +302,6 @@ export function App() {
             onNavigate={handleNavigate}
             onOpenPlacementQuiz={() => setIsPlacementQuizOpen(true)}
             onOpenFlashcards={() => setIsFlashcardsOpen(true)}
-            onOpenSupport={() => setIsSupportModalOpen(true)}
           />
         )}
 
@@ -510,13 +505,6 @@ export function App() {
             >
               Contact Us
             </button>
-            <button
-              onClick={() => setIsSupportModalOpen(true)}
-              className="text-rose-400 hover:text-rose-300 flex items-center space-x-1.5 transition font-semibold ml-1"
-            >
-              <Heart className="w-3.5 h-3.5 fill-rose-500 text-rose-500" />
-              <span>Support DevForge</span>
-            </button>
           </div>
         </footer>
       )}
@@ -560,12 +548,6 @@ export function App() {
         onClose={() => setIsCertModalOpen(false)}
         certificate={activeCertificate}
         onOpenPublicVerify={(credId) => handleNavigate('verify', { credentialId: credId })}
-      />
-
-      {/* Community Support Modal with Razorpay */}
-      <SupportModal
-        isOpen={isSupportModalOpen}
-        onClose={() => setIsSupportModalOpen(false)}
       />
     </div>
   );
