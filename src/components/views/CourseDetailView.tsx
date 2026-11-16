@@ -28,6 +28,8 @@ import { TRACK_OFFICIAL_DOCS } from '../../utils/lessonResources';
 import { CourseQuiz } from '../../types/quiz';
 import { QuizService } from '../../services/quizService';
 import { CourseQuizModal } from '../quiz/CourseQuizModal';
+import { ProctoredExamModal } from '../quiz/ProctoredExamModal';
+import { ExamEngine } from '../../services/examEngine';
 
 interface CourseDetailViewProps {
   track: Track;
@@ -86,9 +88,11 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   const officialDocs = TRACK_OFFICIAL_DOCS[track.language];
 
   // Course Quizzes & Certification Exams (Python, SQL)
+  const [isProctoredModalOpen, setIsProctoredModalOpen] = useState(false);
   const trackQuizzes = QuizService.getQuizzes(track.id);
   const finalExam = QuizService.getFinalExam(track.id);
   const quizProgress = QuizService.getTrackQuizProgress(track.id);
+  const examStatus = ExamEngine.getTrackExamStatus(track.id);
 
   const handleOpenQuiz = (quizToOpen: CourseQuiz) => {
     setActiveQuiz(quizToOpen);
@@ -353,15 +357,18 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
               <div className="space-y-1">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase tracking-wider">
-                    🏆 Official Certification Exam
+                    🏆 Proctored Certification Exam
                   </span>
-                  {quizProgress.finalExamScore !== null ? (
+                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
+                    300-Question Exam Bank
+                  </span>
+                  {examStatus.bestScore !== null ? (
                     <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
-                      Score: {quizProgress.finalExamScore}% ({quizProgress.hasPassedFinalExam ? 'Passed' : 'Needs Review'})
+                      Best Score: {examStatus.bestScore}% ({examStatus.bestGrade || 'Passed'})
                     </span>
                   ) : (
                     <span className="text-xs text-slate-400">
-                      20 Timed Questions • 20 Mins
+                      20 Questions • 25 Mins • 1st Attempt Free
                     </span>
                   )}
                 </div>
@@ -371,7 +378,9 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                 <p className="text-xs text-slate-300 max-w-xl">
                   {finalExam.subtitle || 'Pass with 70%+ to unlock and stamp your official assessment score onto your verified certificate.'}
                 </p>
-                <div className="pt-1 flex items-center space-x-3 text-[11px] text-slate-400 font-mono">
+                <div className="pt-1 flex flex-wrap items-center gap-3 text-[11px] text-slate-400 font-mono">
+                  <span>Attempts: {examStatus.attemptsCount} / {examStatus.maxAttempts}</span>
+                  <span>•</span>
                   <span>Checkpoints: {quizProgress.completedCount}/{Math.max(1, trackQuizzes.length - 1)} Completed</span>
                   {quizProgress.averageScore > 0 && <span>• Checkpoint Avg: {quizProgress.averageScore}%</span>}
                 </div>
@@ -380,11 +389,17 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
 
             <div className="shrink-0 w-full md:w-auto">
               <button
-                onClick={() => handleOpenQuiz(finalExam)}
-                className="w-full md:w-auto px-4 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition"
+                onClick={() => {
+                  if (track.id === 'python' || track.id === 'sql') {
+                    setIsProctoredModalOpen(true);
+                  } else {
+                    handleOpenQuiz(finalExam);
+                  }
+                }}
+                className="w-full md:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition cursor-pointer"
               >
                 <Award className="w-4 h-4" />
-                <span>{quizProgress.finalExamScore !== null ? 'Retake Final Exam' : 'Start Final Exam'}</span>
+                <span>{examStatus.attemptsCount > 0 ? 'Open Certification Exam' : 'Start Final Exam'}</span>
               </button>
             </div>
           </div>
@@ -596,7 +611,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
         </div>
       </div>
 
-      {/* Interactive Course Quiz Modal */}
+      {/* Interactive Course Quiz Modal (Module Checkpoints) */}
       <CourseQuizModal
         isOpen={isQuizModalOpen}
         quiz={activeQuiz}
@@ -606,6 +621,20 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
         }}
         onViewCertificate={onViewCertificate}
       />
+
+      {/* Proctored 300-Question Final Certification Exam */}
+      {(track.id === 'python' || track.id === 'sql') && (
+        <ProctoredExamModal
+          isOpen={isProctoredModalOpen}
+          trackId={track.id as 'python' | 'sql'}
+          courseTitle={track.title}
+          onClose={() => {
+            setIsProctoredModalOpen(false);
+            setQuizRefreshKey((k) => k + 1);
+          }}
+          onViewCertificate={() => onViewCertificate?.(track.id)}
+        />
+      )}
     </div>
   );
 };

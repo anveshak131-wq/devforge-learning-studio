@@ -183,12 +183,24 @@ export const CertificateModal: React.FC<CertificateModalProps> = ({
                 </span>
               </div>
 
-              {/* Gold Seal Emblem */}
+              {/* Gold / Silver / Bronze Seal Emblem */}
               <div className="flex flex-col items-center">
-                <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 p-[2px] shadow-lg shadow-amber-500/30 flex items-center justify-center">
+                <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full p-[2px] shadow-lg flex items-center justify-center ${
+                  (certificate.examScore !== undefined && certificate.examScore >= 90) || certificate.grade === 'Distinction'
+                    ? 'bg-gradient-to-tr from-amber-400 via-yellow-300 to-amber-600 shadow-amber-500/40 ring-2 ring-amber-400/50'
+                    : (certificate.examScore !== undefined && certificate.examScore >= 80) || certificate.grade === 'High Honors'
+                    ? 'bg-gradient-to-tr from-slate-300 via-indigo-200 to-slate-400 shadow-indigo-500/30 ring-2 ring-indigo-400/50'
+                    : 'bg-gradient-to-tr from-amber-500 via-yellow-400 to-amber-600 shadow-amber-500/30'
+                }`}>
                   <div className="w-full h-full rounded-full bg-slate-950 print:bg-white flex flex-col items-center justify-center text-amber-400 print:text-amber-700">
-                    <ShieldCheck className="w-5 h-5 sm:w-6 sm:h-6" />
-                    <span className="text-[6px] sm:text-[7px] font-bold tracking-tighter uppercase">VERIFIED</span>
+                    <Award className="w-5 h-5 sm:w-6 sm:h-6" />
+                    <span className="text-[6px] sm:text-[7px] font-black tracking-tighter uppercase">
+                      {(certificate.examScore !== undefined && certificate.examScore >= 90) || certificate.grade === 'Distinction'
+                        ? 'DISTINCTION'
+                        : (certificate.examScore !== undefined && certificate.examScore >= 80) || certificate.grade === 'High Honors'
+                        ? 'HONORS'
+                        : 'VERIFIED'}
+                    </span>
                   </div>
                 </div>
               </div>

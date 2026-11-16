@@ -173,4 +173,80 @@ export class PaymentService {
       onError(e?.message || 'Failed to initialize payment gateway.');
     }
   }
+
+  /**
+   * Open Razorpay Checkout Modal for ₹49 Certification Retake
+   */
+  static async openRetakeCheckout(options: {
+    trackId: string;
+    currentUser: User | null;
+    onSuccess: (paymentId: string) => void;
+    onError: (err: string) => void;
+  }) {
+    const { trackId, currentUser, onSuccess, onError } = options;
+
+    if (typeof window === 'undefined') return;
+
+    let razorpayKey = (import.meta as any).env?.VITE_RAZORPAY_KEY_ID;
+
+    if (!razorpayKey) {
+      try {
+        const configRes = await fetch('/api/payment/config');
+        if (configRes.ok) {
+          const configData = await configRes.json();
+          if (configData.keyId) razorpayKey = configData.keyId;
+        }
+      } catch {}
+    }
+
+    if (!razorpayKey) {
+      razorpayKey = 'rzp_live_U0kHC7jXJDBq6g';
+    }
+
+    if (!(window as any).Razorpay) {
+      onError('Razorpay checkout SDK failed to load. Please refresh.');
+      return;
+    }
+
+    const rzpOptions = {
+      key: razorpayKey,
+      amount: 4900, // ₹49
+      currency: 'INR',
+      name: 'DevForge Learning Studio',
+      description: `${trackId.toUpperCase()} Certification Re-Exam Pass`,
+      image: 'https://devforge-65f.pages.dev/favicon.ico',
+      prefill: {
+        name: currentUser?.fullName || '',
+        email: currentUser?.email || '',
+        contact: '',
+      },
+      notes: {
+        trackId,
+        type: 're_exam_retake',
+        platform: 'DevForge Learning Studio',
+      },
+      theme: {
+        color: '#4f46e5',
+      },
+      handler: async (response: any) => {
+        const paymentId = response.razorpay_payment_id || `pay_retake_${Date.now()}`;
+        onSuccess(paymentId);
+      },
+      modal: {
+        ondismiss: function () {
+          onError('Payment window closed.');
+        },
+      },
+    };
+
+    try {
+      const rzp = new (window as any).Razorpay(rzpOptions);
+      rzp.on('payment.failed', function (resp: any) {
+        onError(resp?.error?.description || 'Payment was declined or cancelled.');
+      });
+      rzp.open();
+    } catch (err: any) {
+      onError(err?.message || 'Failed to initialize payment gateway.');
+    }
+  }
 }
