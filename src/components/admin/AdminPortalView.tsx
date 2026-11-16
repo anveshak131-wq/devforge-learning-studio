@@ -156,14 +156,12 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   };
 
   const handleRemoveAdmin = async (email: string) => {
-    if (AuthService.SUPERADMIN_EMAILS.includes(email.toLowerCase())) {
-      showToast('Cannot remove primary SuperAdmin account', 'error');
-      return;
-    }
     const res = await AuthService.removeAdminEmail(email);
     if (res.success && res.admins) {
       setAdminWhitelist(res.admins);
       showToast(`Revoked Admin access for ${email}`, 'info');
+    } else {
+      showToast(res.error || 'Cannot remove primary SuperAdmin account', 'error');
     }
   };
 
@@ -235,7 +233,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   // Handle Save
   const handleSaveLesson = () => {
     if (!formData) return;
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
     const success = CourseStorageService.saveLesson(currentTrack.id, formData, adminEmail);
     if (success) {
       showToast(`Topic "${formData.title}" successfully saved and updated in live courses!`, 'success');
@@ -249,7 +247,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const handleRevertLesson = () => {
     if (!formData) return;
     if (window.confirm(`Revert "${formData.title}" back to factory defaults? All custom changes to this topic will be undone.`)) {
-      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
       CourseStorageService.resetLesson(currentTrack.id, formData.id, adminEmail);
       showToast(`Topic reverted to original defaults.`, 'info');
       // Reload
@@ -262,7 +260,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
   const handleDeleteLesson = () => {
     if (!formData) return;
     if (window.confirm(`Are you sure you want to delete topic "${formData.title}"? Learners will no longer see this topic.`)) {
-      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
       CourseStorageService.deleteLesson(currentTrack.id, formData.id, adminEmail);
       showToast(`Topic deleted successfully.`, 'info');
       // Select next lesson
@@ -333,7 +331,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       ]
     };
 
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
     CourseStorageService.addLesson(currentTrack.id, newLesson, adminEmail);
     showToast(`New topic "${newLesson.title}" created successfully!`, 'success');
     setSelectedLessonId(newLesson.id);
@@ -436,7 +434,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       }
     };
     setFormData(updatedLesson);
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
   };
 
@@ -471,7 +469,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
           }
         };
         setFormData(updatedLesson);
-        const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+        const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
         CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
         showToast(`Uploaded slide deck "${file.name}"!`, 'success');
       } else {
@@ -502,7 +500,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       }
     };
     setFormData(updatedLesson);
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
     showToast('Uploaded slide presentation removed.', 'info');
   };
@@ -521,7 +519,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
       }
     };
     setFormData(updatedLesson);
-    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
     showToast(`Inserted sample presentation: "${sample.title}"`, 'success');
   };
@@ -1235,7 +1233,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                         }
                                       };
                                       setFormData(updatedLesson);
-                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
                                       CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                     }}
                                     placeholder="https://example.com/presentations/javascript-lecture.pdf"
@@ -1300,7 +1298,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                       }
                                     };
                                     setFormData(updatedLesson);
-                                    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+                                    const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
                                     CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                   }}
                                   placeholder="e.g. https://www.youtube.com/watch?v=PkZNo7MFNFg or youtu.be/VIDEO_ID"
@@ -1316,7 +1314,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                                         media: { type: 'video', videoUrl: '' }
                                       };
                                       setFormData(updatedLesson);
-                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'support.privatetoolbox@gmail.com';
+                                      const adminEmail = currentSession?.adminEmail || currentUser?.email || 'admin@devforge.internal';
                                       CourseStorageService.saveLesson(currentTrack.id, updatedLesson, adminEmail);
                                     }}
                                     className="px-3 py-2.5 rounded-xl bg-slate-800 text-slate-400 hover:text-white text-xs"
@@ -2184,7 +2182,7 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
                     <span>Google Identity Lock</span>
                   </div>
                   <p className="text-[11px] text-slate-400 leading-tight">
-                    Only <code className="text-emerald-300 font-mono">support.privatetoolbox@gmail.com</code>, <code className="text-emerald-300 font-mono">anveshkoganti54@gmail.com</code>, or admins explicitly added below can open the Studio.
+                    Only authorized SuperAdmins or email addresses explicitly whitelisted below can open the Studio.
                   </p>
                 </div>
 
@@ -2252,8 +2250,8 @@ export const AdminPortalView: React.FC<AdminPortalViewProps> = ({
 
               {/* List of currently authorized superadmins */}
               <div className="space-y-2 pt-1">
-                {adminWhitelist.map(email => {
-                  const isPrimary = AuthService.SUPERADMIN_EMAILS.includes(email.toLowerCase());
+                {adminWhitelist.map((email, idx) => {
+                  const isPrimary = idx === 0;
                   return (
                     <div
                       key={email}

@@ -135,54 +135,23 @@ export class CodeExecutor {
       }
     }
 
-    try {
-      // Create a function with safe scope and console binding
-      // We wrap inside an async function so users can use top-level await!
-      const wrappedCode = `
-        const React = {
-          createElement: (type, props, ...children) => {
-            const normalizedChildren = children.length === 1 ? children[0] : (children.length === 0 ? undefined : children);
-            return { type, props: { ...(props || {}), children: normalizedChildren } };
-          }
-        };
-        return (async function(console) {
-          ${runnableJs}
-        })(customConsole);
-      `;
+    const workerResult = await this.runInSandboxedWorker(runnableJs, 4000);
+    const duration = Math.round(performance.now() - startTime);
 
-      const runner = new Function('customConsole', wrappedCode);
-      const returnValue = await runner(customConsole);
-
-      const duration = Math.round(performance.now() - startTime);
-      return {
-        success: true,
-        logs,
-        returnValue,
-        transpiledCode,
-        executionTimeMs: duration
-      };
-    } catch (err: any) {
-      const duration = Math.round(performance.now() - startTime);
-      logs.push({
-        type: 'error',
-        args: [`Runtime Error: ${err.message}`],
-        timestamp: Date.now()
-      });
-      return {
-        success: false,
-        logs,
-        returnValue: undefined,
-        transpiledCode,
-        error: err.message,
-        executionTimeMs: duration
-      };
-    }
+    return {
+      success: workerResult.success,
+      logs: workerResult.logs,
+      returnValue: workerResult.returnValue,
+      transpiledCode,
+      error: workerResult.error,
+      executionTimeMs: duration
+    };
   }
 
   /**
    * Safe lightweight Python interpreter for key constructs, functions, loops, lists, dicts
    */
-  private static executePython(code: string, startTime: number): ExecutionResult {
+  private static async executePython(code: string, startTime: number): Promise<ExecutionResult> {
     const logs: ConsoleOutputMessage[] = [];
     try {
       const lines = code.split('\n');
@@ -269,46 +238,24 @@ export class CodeExecutor {
       }
 
       const runnableJs = jsLines.join('\n');
-      const customConsole = {
-        log: (...args: any[]) => {
-          logs.push({ type: 'log', args: args.map(formatArg), timestamp: Date.now() });
-        },
-        error: (...args: any[]) => {
-          logs.push({ type: 'error', args: args.map(formatArg), timestamp: Date.now() });
-        }
-      };
+      const pythonHelpers = `
+        if (!Array.prototype.append) Array.prototype.append = function(x) { this.push(x); };
+        if (!String.prototype.lower) String.prototype.lower = function() { return this.toLowerCase(); };
+        if (!String.prototype.upper) String.prototype.upper = function() { return this.toUpperCase(); };
+        if (!String.prototype.strip) String.prototype.strip = function() { return this.trim(); };
+      `;
 
-      try {
-        const runner = new Function('customConsole', `
-          if (!Array.prototype.append) Array.prototype.append = function(x) { this.push(x); };
-          if (!String.prototype.lower) String.prototype.lower = function() { return this.toLowerCase(); };
-          if (!String.prototype.upper) String.prototype.upper = function() { return this.toUpperCase(); };
-          if (!String.prototype.strip) String.prototype.strip = function() { return this.trim(); };
-          try {
-            ${runnableJs}
-          } catch(e) {
-            customConsole.error("Python Error: " + e.message);
-            throw e;
-          }
-        `);
-        runner(customConsole);
-        const duration = Math.round(performance.now() - startTime);
-        return {
-          success: true,
-          logs,
-          transpiledCode: runnableJs,
-          executionTimeMs: duration
-        };
-      } catch (e: any) {
-        const duration = Math.round(performance.now() - startTime);
-        return {
-          success: false,
-          logs,
-          transpiledCode: runnableJs,
-          error: e.message,
-          executionTimeMs: duration
-        };
-      }
+      const workerResult = await this.runInSandboxedWorker(pythonHelpers + '\n' + runnableJs, 4000);
+      const duration = Math.round(performance.now() - startTime);
+
+      return {
+        success: workerResult.success,
+        logs: workerResult.logs,
+        returnValue: workerResult.returnValue,
+        transpiledCode: runnableJs,
+        error: workerResult.error,
+        executionTimeMs: duration
+      };
     } catch (err: any) {
       const duration = Math.round(performance.now() - startTime);
       return {
@@ -366,7 +313,7 @@ export class CodeExecutor {
   /**
    * Golang Simulator / Transpiler
    */
-  private static executeGolang(code: string, startTime: number): ExecutionResult {
+  private static async executeGolang(code: string, startTime: number): Promise<ExecutionResult> {
     let js = code
       .replace(/package\s+[a-zA-Z0-9_]+/g, '// package')
       .replace(/import\s+(\(.*?\)|"[^"]*")/gs, '// imports')
@@ -384,7 +331,7 @@ export class CodeExecutor {
   /**
    * Rust Simulator / Transpiler
    */
-  private static executeRust(code: string, startTime: number): ExecutionResult {
+  private static async executeRust(code: string, startTime: number): Promise<ExecutionResult> {
     let js = code
       .replace(/println!\s*\((.*?)\);/g, 'customConsole.log($1);')
       .replace(/print!\s*\((.*?)\);/g, 'customConsole.log($1);')
@@ -401,7 +348,7 @@ export class CodeExecutor {
   /**
    * R Language Interpreter / Simulator
    */
-  private static executeR(code: string, startTime: number): ExecutionResult {
+  private static async executeR(code: string, startTime: number): Promise<ExecutionResult> {
     let js = code
       .replace(/#.*/g, '')
       .replace(/<-\s*/g, '= ')
@@ -435,7 +382,7 @@ export class CodeExecutor {
   /**
    * Java Simulator / Transpiler
    */
-  private static executeJava(code: string, startTime: number): ExecutionResult {
+  private static async executeJava(code: string, startTime: number): Promise<ExecutionResult> {
     let js = code
       .replace(/import\s+[a-zA-Z0-9_.*]+;/g, '')
       .replace(/public\s+class\s+[a-zA-Z0-9_]+\s*\{/g, '{')
@@ -451,7 +398,7 @@ export class CodeExecutor {
   /**
    * C++ Simulator / Transpiler
    */
-  private static executeCpp(code: string, startTime: number): ExecutionResult {
+  private static async executeCpp(code: string, startTime: number): Promise<ExecutionResult> {
     let js = code
       .replace(/#include\s*<[^>]+>/g, '')
       .replace(/using\s+namespace\s+std;/g, '')
@@ -517,37 +464,201 @@ export class CodeExecutor {
     };
   }
 
-  private static runJsFunction(runnableJs: string, startTime: number, langName: string): ExecutionResult {
-    const logs: ConsoleOutputMessage[] = [];
-    const customConsole = {
-      log: (...args: any[]) => logs.push({ type: 'log', args: args.map(formatArg), timestamp: Date.now() }),
-      error: (...args: any[]) => logs.push({ type: 'error', args: args.map(formatArg), timestamp: Date.now() })
-    };
+  private static async runJsFunction(runnableJs: string, startTime: number, langName: string): Promise<ExecutionResult> {
+    const workerResult = await this.runInSandboxedWorker(runnableJs, 4000);
+    const duration = Math.round(performance.now() - startTime);
 
-    try {
-      const runner = new Function('customConsole', `
-        try {
-          ${runnableJs}
-        } catch(e) {
-          customConsole.error("${langName} Error: " + e.message);
-          throw e;
-        }
-      `);
-      runner(customConsole);
-      return {
-        success: true,
-        logs,
-        transpiledCode: runnableJs,
-        executionTimeMs: Math.round(performance.now() - startTime)
-      };
-    } catch (e: any) {
-      return {
-        success: false,
-        logs,
-        error: e.message,
-        executionTimeMs: Math.round(performance.now() - startTime)
-      };
+    if (workerResult.error && !workerResult.logs.some(l => l.args.some(a => String(a).includes(workerResult.error!)))) {
+      workerResult.logs.push({
+        type: 'error',
+        args: [`${langName} Error: ${workerResult.error}`],
+        timestamp: Date.now()
+      });
     }
+
+    return {
+      success: workerResult.success,
+      logs: workerResult.logs,
+      returnValue: workerResult.returnValue,
+      transpiledCode: runnableJs,
+      error: workerResult.error,
+      executionTimeMs: duration
+    };
+  }
+
+  /**
+   * Run code inside a fully sandboxed Web Worker with strict execution timeout (4000ms).
+   * Web Workers do not have access to window, document, or localStorage.
+   * Infinite loops (e.g. while(true)) are automatically terminated after 4s without freezing UI.
+   */
+  private static runInSandboxedWorker(
+    runnableJs: string,
+    timeoutMs = 4000
+  ): Promise<{ success: boolean; logs: ConsoleOutputMessage[]; returnValue?: any; error?: string }> {
+    return new Promise((resolve) => {
+      // If Web Worker is not supported in environment, safely fallback
+      if (typeof Worker === 'undefined' || typeof Blob === 'undefined' || typeof URL === 'undefined') {
+        const logs: ConsoleOutputMessage[] = [];
+        const customConsole = {
+          log: (...args: any[]) => logs.push({ type: 'log', args: args.map(formatArg), timestamp: Date.now() }),
+          error: (...args: any[]) => logs.push({ type: 'error', args: args.map(formatArg), timestamp: Date.now() }),
+          warn: (...args: any[]) => logs.push({ type: 'warn', args: args.map(formatArg), timestamp: Date.now() }),
+          info: (...args: any[]) => logs.push({ type: 'info', args: args.map(formatArg), timestamp: Date.now() }),
+          table: (...args: any[]) => logs.push({ type: 'table', args: args.map(formatArg), timestamp: Date.now() }),
+        };
+        try {
+          const runner = new Function('console', 'customConsole', 'React', 'return (async function() {\n' + runnableJs + '\n})();');
+          runner(customConsole, customConsole, {})
+            .then((res: any) => resolve({ success: true, logs, returnValue: res }))
+            .catch((err: any) => resolve({ success: false, logs, error: err?.message || String(err) }));
+        } catch (err: any) {
+          resolve({ success: false, logs, error: err?.message || String(err) });
+        }
+        return;
+      }
+
+      const workerScript = `
+        self.onmessage = async function(e) {
+          const code = e.data.code;
+          const capturedLogs = [];
+
+          function formatWorkerArg(arg) {
+            if (arg === null) return 'null';
+            if (arg === undefined) return 'undefined';
+            if (typeof arg === 'function') return '[Function: ' + (arg.name || 'anonymous') + ']';
+            if (typeof arg === 'object') {
+              try {
+                return JSON.parse(JSON.stringify(arg));
+              } catch (e) {
+                return String(arg);
+              }
+            }
+            return arg;
+          }
+
+          const safeConsole = {
+            log: function(...args) {
+              capturedLogs.push({ type: 'log', args: args.map(formatWorkerArg), timestamp: Date.now() });
+            },
+            error: function(...args) {
+              capturedLogs.push({ type: 'error', args: args.map(formatWorkerArg), timestamp: Date.now() });
+            },
+            warn: function(...args) {
+              capturedLogs.push({ type: 'warn', args: args.map(formatWorkerArg), timestamp: Date.now() });
+            },
+            info: function(...args) {
+              capturedLogs.push({ type: 'info', args: args.map(formatWorkerArg), timestamp: Date.now() });
+            },
+            table: function(...args) {
+              capturedLogs.push({ type: 'table', args: args.map(formatWorkerArg), timestamp: Date.now() });
+            }
+          };
+
+          const React = {
+            createElement: function(type, props, ...children) {
+              const normalized = children.length === 1 ? children[0] : (children.length === 0 ? undefined : children);
+              return { type: type, props: Object.assign({}, props || {}, { children: normalized }) };
+            }
+          };
+
+          try {
+            const runner = new Function(
+              'console',
+              'customConsole',
+              'React',
+              'return (async function() {\\n' + code + '\\n})();'
+            );
+            const result = await runner(safeConsole, safeConsole, React);
+            self.postMessage({
+              success: true,
+              logs: capturedLogs,
+              returnValue: formatWorkerArg(result)
+            });
+          } catch (err) {
+            self.postMessage({
+              success: false,
+              logs: capturedLogs,
+              error: err && err.message ? err.message : String(err)
+            });
+          }
+        };
+      `;
+
+      let workerBlobUrl: string | null = null;
+      let worker: Worker | null = null;
+      let isCompleted = false;
+
+      try {
+        const blob = new Blob([workerScript], { type: 'application/javascript' });
+        workerBlobUrl = URL.createObjectURL(blob);
+        worker = new Worker(workerBlobUrl);
+
+        const timer = setTimeout(() => {
+          if (!isCompleted) {
+            isCompleted = true;
+            if (worker) worker.terminate();
+            if (workerBlobUrl) URL.revokeObjectURL(workerBlobUrl);
+            resolve({
+              success: false,
+              logs: [
+                {
+                  type: 'error',
+                  args: ['Execution timed out (' + timeoutMs + 'ms limit exceeded). Your code took too long to complete. Please check for infinite loops (e.g. while(true)).'],
+                  timestamp: Date.now()
+                }
+              ],
+              error: 'Execution timed out (' + timeoutMs + 'ms limit exceeded). Possible infinite loop detected.'
+            });
+          }
+        }, timeoutMs);
+
+        worker.onmessage = (event: MessageEvent) => {
+          if (!isCompleted) {
+            isCompleted = true;
+            clearTimeout(timer);
+            if (worker) worker.terminate();
+            if (workerBlobUrl) URL.revokeObjectURL(workerBlobUrl);
+            const data = event.data;
+            resolve({
+              success: data.success,
+              logs: data.logs || [],
+              returnValue: data.returnValue,
+              error: data.error,
+            });
+          }
+        };
+
+        worker.onerror = (err: ErrorEvent) => {
+          if (!isCompleted) {
+            isCompleted = true;
+            clearTimeout(timer);
+            if (worker) worker.terminate();
+            if (workerBlobUrl) URL.revokeObjectURL(workerBlobUrl);
+            resolve({
+              success: false,
+              logs: [
+                {
+                  type: 'error',
+                  args: ['Runtime Worker Error: ' + err.message],
+                  timestamp: Date.now()
+                }
+              ],
+              error: err.message || 'Worker runtime error'
+            });
+          }
+        };
+
+        worker.postMessage({ code: runnableJs });
+      } catch (err: any) {
+        if (workerBlobUrl) URL.revokeObjectURL(workerBlobUrl);
+        if (worker) worker.terminate();
+        resolve({
+          success: false,
+          logs: [{ type: 'error', args: ['Sandbox initialization error: ' + (err?.message || String(err))], timestamp: Date.now() }],
+          error: err?.message || 'Worker initialization failed'
+        });
+      }
+    });
   }
 }
 

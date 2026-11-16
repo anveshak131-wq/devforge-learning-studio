@@ -21,21 +21,13 @@ function generateCredentialId(language: string): string {
 }
 
 export class AuthService {
-  static readonly SUPERADMIN_EMAILS = [
-    'support.privatetoolbox@gmail.com',
-    'anveshkoganti54@gmail.com',
-  ];
-
-  static isSuperAdminEmail(email?: string | null): boolean {
-    if (!email) return false;
-    const clean = email.trim().toLowerCase();
-    return this.SUPERADMIN_EMAILS.includes(clean);
-  }
-
+  /**
+   * Check if a user is an authorized admin.
+   * Admin roles are exclusively verified and granted server-side via Cloudflare Edge KV sessions.
+   */
   static isAuthorizedAdmin(user?: User | null): boolean {
     const target = user !== undefined ? user : this.getCurrentUser();
     if (!target) return false;
-    if (this.isSuperAdminEmail(target.email)) return true;
     return target.role === 'admin';
   }
 
@@ -52,7 +44,7 @@ export class AuthService {
         }
       }
     } catch {}
-    return [...this.SUPERADMIN_EMAILS];
+    return [];
   }
 
   /**
@@ -209,7 +201,7 @@ export class AuthService {
       const data = localStorage.getItem(SESSION_KEY);
       if (!data) return null;
       const user: User = JSON.parse(data);
-      if (!user.role) user.role = this.isSuperAdminEmail(user.email) ? 'admin' : 'student';
+      if (!user.role) user.role = 'student';
       return user;
     } catch {
       return null;
@@ -221,7 +213,7 @@ export class AuthService {
    */
   static isAdmin(user?: User | null): boolean {
     const target = user !== undefined ? user : this.getCurrentUser();
-    return !!target && (target.role === 'admin' || this.isSuperAdminEmail(target.email));
+    return !!target && target.role === 'admin';
   }
 
   /**
@@ -258,7 +250,7 @@ export class AuthService {
       return { success: false, error: 'An account with this email already exists. Please log in.' };
     }
 
-    const role: UserRole = this.isSuperAdminEmail(cleanEmail) ? 'admin' : 'student';
+    const role: UserRole = 'student';
 
     const passwordHash = await hashPassword(password);
     const newUser: User = {
@@ -388,7 +380,6 @@ export class AuthService {
 
       const users = this.getUsers();
       let user: User;
-      const isSuperAdmin = this.isSuperAdminEmail(cleanEmail);
 
       if (users[cleanEmail]) {
         user = {
@@ -396,7 +387,7 @@ export class AuthService {
           fullName: cleanName,
           avatarUrl,
           googleId: payload.sub,
-          role: isSuperAdmin ? 'admin' : users[cleanEmail].user.role,
+          role: users[cleanEmail].user.role || 'student',
           provider: 'google',
         };
       } else {
@@ -405,7 +396,7 @@ export class AuthService {
           googleId: payload.sub,
           email: cleanEmail,
           fullName: cleanName,
-          role: isSuperAdmin ? 'admin' : 'student',
+          role: 'student',
           avatarUrl,
           createdAt: new Date().toISOString(),
           earnedCertificateIds: [],
