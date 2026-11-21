@@ -15,7 +15,8 @@ import {
   BookOpen, 
   HelpCircle,
   TrendingUp,
-  AlertCircle
+  AlertCircle,
+  Key
 } from 'lucide-react';
 import { CourseQuiz, QuizAttemptResult, QuizQuestion } from '../../types/quiz';
 import { QuizService } from '../../services/quizService';
@@ -25,13 +26,15 @@ interface CourseQuizModalProps {
   quiz: CourseQuiz | null;
   onClose: () => void;
   onViewCertificate?: (trackId: string) => void;
+  initialMode?: 'quiz' | 'answer_key';
 }
 
 export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
   isOpen,
   quiz,
   onClose,
-  onViewCertificate
+  onViewCertificate,
+  initialMode = 'quiz'
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState<Record<string, number>>({});
@@ -39,6 +42,7 @@ export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
   const [result, setResult] = useState<QuizAttemptResult | null>(null);
   const [timeRemaining, setTimeRemaining] = useState<number>(0);
   const [showReview, setShowReview] = useState(false);
+  const [isAnswerKeyMode, setIsAnswerKeyMode] = useState<boolean>(initialMode === 'answer_key');
   const timerRef = useRef<any>(null);
 
   // Initialize or reset quiz on open
@@ -49,8 +53,9 @@ export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
       setIsSubmitted(false);
       setResult(null);
       setShowReview(false);
+      setIsAnswerKeyMode(initialMode === 'answer_key');
 
-      const limit = quiz.timeLimitSeconds || 0;
+      const limit = (initialMode === 'answer_key') ? 0 : (quiz.timeLimitSeconds || 0);
       setTimeRemaining(limit);
 
       if (limit > 0) {
@@ -70,7 +75,7 @@ export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isOpen, quiz]);
+  }, [isOpen, quiz, initialMode]);
 
   // Auto-submit if countdown reaches 0
   useEffect(() => {
@@ -157,9 +162,29 @@ export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
             </h2>
           </div>
 
-          <div className="flex items-center space-x-3 shrink-0">
-            {/* Timer (if applicable and not submitted) */}
-            {(quiz.timeLimitSeconds || 0) > 0 && !isSubmitted && (
+          <div className="flex items-center space-x-2 sm:space-x-3 shrink-0">
+            {/* Mode Switcher: Practice vs Answer Key */}
+            <button
+              onClick={() => {
+                if (!isAnswerKeyMode) {
+                  if (timerRef.current) clearInterval(timerRef.current);
+                }
+                setIsAnswerKeyMode(!isAnswerKeyMode);
+              }}
+              className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1.5 border transition ${
+                isAnswerKeyMode
+                  ? 'bg-amber-500/20 text-amber-300 border-amber-500/40 shadow-sm'
+                  : 'bg-slate-800 text-slate-300 border-slate-700 hover:text-white'
+              }`}
+              title="Toggle between taking the quiz and viewing the full answer key"
+            >
+              <Key className="w-3.5 h-3.5 text-amber-400" />
+              <span className="hidden sm:inline">{isAnswerKeyMode ? 'Answer Key Active' : 'View Answers Key'}</span>
+              <span className="sm:hidden">{isAnswerKeyMode ? 'Key' : 'Answers'}</span>
+            </button>
+
+            {/* Timer (if applicable, not in answer key mode, and not submitted) */}
+            {(quiz.timeLimitSeconds || 0) > 0 && !isSubmitted && !isAnswerKeyMode && (
               <div className={`flex items-center space-x-1.5 px-3 py-1 rounded-lg font-mono text-xs font-bold border transition ${
                 timeRemaining < 120 
                   ? 'bg-rose-500/20 text-rose-300 border-rose-500/50 animate-pulse' 
@@ -242,30 +267,60 @@ export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
               <div className="grid grid-cols-1 gap-2.5 pt-2">
                 {currentQ.options.map((opt, oIdx) => {
                   const isSelected = userAnswers[currentQ.id] === oIdx;
+                  const isCorrect = oIdx === currentQ.correctOptionIndex;
                   const letter = String.fromCharCode(65 + oIdx); // A, B, C, D
 
                   return (
                     <button
                       key={oIdx}
-                      onClick={() => handleSelectOption(oIdx)}
+                      onClick={() => !isAnswerKeyMode && handleSelectOption(oIdx)}
                       className={`p-3.5 rounded-xl border text-left transition flex items-start space-x-3 text-xs md:text-sm font-medium ${
-                        isSelected
+                        isAnswerKeyMode && isCorrect
+                          ? 'bg-emerald-950/40 border-emerald-500/80 text-emerald-200 shadow-md shadow-emerald-950/30 font-semibold'
+                          : isSelected
                           ? 'bg-indigo-600/20 border-indigo-500 text-white shadow-md shadow-indigo-500/10'
                           : 'bg-slate-800/40 border-slate-700/60 hover:bg-slate-800/80 hover:border-slate-600 text-slate-300'
                       }`}
                     >
                       <span className={`w-6 h-6 rounded-lg text-xs font-bold font-mono flex items-center justify-center shrink-0 transition ${
-                        isSelected 
+                        isAnswerKeyMode && isCorrect
+                          ? 'bg-emerald-500 text-slate-950 shadow'
+                          : isSelected 
                           ? 'bg-indigo-500 text-white shadow' 
                           : 'bg-slate-800 text-slate-400 border border-slate-700'
                       }`}>
                         {letter}
                       </span>
-                      <span className="pt-0.5 leading-relaxed">{opt}</span>
+                      <div className="flex-1 min-w-0 pt-0.5">
+                        <span className="leading-relaxed">{opt}</span>
+                        {isAnswerKeyMode && isCorrect && (
+                          <span className="ml-2 inline-flex items-center text-[10px] font-mono font-bold text-emerald-400 uppercase">
+                            ✓ Correct Answer
+                          </span>
+                        )}
+                      </div>
                     </button>
                   );
                 })}
               </div>
+
+              {/* Answer Key Explanation Box */}
+              {isAnswerKeyMode && (
+                <div className="p-4 rounded-xl bg-indigo-950/30 border border-indigo-500/30 text-xs text-indigo-200 space-y-1.5 leading-relaxed shadow-lg">
+                  <div className="flex items-center space-x-1.5 font-bold text-indigo-300">
+                    <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                    <span>Verified Solution & Technical Rationale:</span>
+                  </div>
+                  <p className="text-slate-200 pl-5 leading-relaxed">
+                    {currentQ.explanation}
+                  </p>
+                  {currentQ.skillCategory && (
+                    <div className="pl-5 pt-0.5 text-[11px] font-mono text-slate-400">
+                      Tested Skill: <strong className="text-amber-300">{currentQ.skillCategory}</strong>
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           )}
 
@@ -504,6 +559,14 @@ export const CourseQuizModal: React.FC<CourseQuizModalProps> = ({
                   >
                     <span>Next Question</span>
                     <ArrowRight className="w-3.5 h-3.5" />
+                  </button>
+                ) : isAnswerKeyMode ? (
+                  <button
+                    onClick={onClose}
+                    className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-white text-xs font-bold flex items-center space-x-1.5 border border-slate-700 transition"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-emerald-400" />
+                    <span>Done Reviewing</span>
                   </button>
                 ) : (
                   <button

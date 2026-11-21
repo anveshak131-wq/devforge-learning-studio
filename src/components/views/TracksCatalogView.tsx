@@ -9,11 +9,14 @@ import {
   Award,
   Sparkles,
   Layers,
-  ChevronRight
+  ChevronRight,
+  Key,
+  ShieldCheck
 } from 'lucide-react';
 import { Track, UserStats } from '../../types';
 import { CourseStorageService } from '../../services/courseStorageService';
 import { LanguageIcon } from '../common/LanguageIcon';
+import { ExamBankModal } from '../quiz/ExamBankModal';
 
 interface TracksCatalogViewProps {
   userStats: UserStats;
@@ -31,6 +34,7 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
   const [tracks, setTracks] = useState<Track[]>(() => CourseStorageService.getTracks());
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [searchQuery, setSearchQuery] = useState<string>('');
+  const [isExamBankOpen, setIsExamBankOpen] = useState<boolean>(false);
 
   useEffect(() => {
     return CourseStorageService.subscribe(() => {
@@ -90,13 +94,24 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
             </p>
           </div>
 
-          <button
-            onClick={onOpenPlacementQuiz}
-            className="self-start md:self-auto px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-indigo-500/30 text-indigo-300 text-xs font-semibold flex items-center space-x-2 transition shadow-md shrink-0"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
-            <span>Diagnostic Placement Quiz</span>
-          </button>
+          <div className="flex flex-wrap items-center gap-2.5 self-start md:self-auto shrink-0">
+            <button
+              onClick={() => setIsExamBankOpen(true)}
+              className="px-4 py-2 rounded-xl bg-gradient-to-r from-amber-500/20 via-indigo-500/20 to-purple-500/20 hover:from-amber-500/30 hover:via-indigo-500/30 hover:to-purple-500/30 border border-amber-500/40 text-amber-300 text-xs font-semibold flex items-center space-x-2 transition shadow-lg cursor-pointer"
+              title="Explore all 300 certification exam questions with verified answers"
+            >
+              <Key className="w-3.5 h-3.5 text-amber-400" />
+              <span>300-Question Exam Bank & Answers</span>
+            </button>
+
+            <button
+              onClick={onOpenPlacementQuiz}
+              className="px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-indigo-500/30 text-indigo-300 text-xs font-semibold flex items-center space-x-2 transition shadow-md"
+            >
+              <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+              <span>Diagnostic Placement Quiz</span>
+            </button>
+          </div>
         </div>
 
         {/* Category Pills Filter */}
@@ -228,6 +243,12 @@ export const TracksCatalogView: React.FC<TracksCatalogViewProps> = ({
           );
         })}
       </div>
+
+      {/* 300-Question Exam Bank & Answers Modal */}
+      <ExamBankModal
+        isOpen={isExamBankOpen}
+        onClose={() => setIsExamBankOpen(false)}
+      />
     </div>
   );
 };

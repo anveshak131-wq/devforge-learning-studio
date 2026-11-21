@@ -18,7 +18,8 @@ import {
   Zap,
   TrendingUp,
   FileCode2,
-  Lock
+  Lock,
+  Key
 } from 'lucide-react';
 import { Track, UserStats, Lesson, TierLevel } from '../../types';
 import { User } from '../../types/auth';
@@ -29,6 +30,7 @@ import { CourseQuiz } from '../../types/quiz';
 import { QuizService } from '../../services/quizService';
 import { CourseQuizModal } from '../quiz/CourseQuizModal';
 import { ProctoredExamModal } from '../quiz/ProctoredExamModal';
+import { ExamBankModal } from '../quiz/ExamBankModal';
 import { ExamEngine } from '../../services/examEngine';
 
 interface CourseDetailViewProps {
@@ -56,6 +58,8 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   const [checkoutLoading, setCheckoutLoading] = useState(false);
   const [activeQuiz, setActiveQuiz] = useState<CourseQuiz | null>(null);
   const [isQuizModalOpen, setIsQuizModalOpen] = useState(false);
+  const [quizInitialMode, setQuizInitialMode] = useState<'quiz' | 'answer_key'>('quiz');
+  const [isExamBankOpen, setIsExamBankOpen] = useState(false);
   const [quizRefreshKey, setQuizRefreshKey] = useState(0);
 
   useEffect(() => {
@@ -104,8 +108,9 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
   const quizProgress = QuizService.getTrackQuizProgress(track.id);
   const examStatus = ExamEngine.getTrackExamStatus(track.id);
 
-  const handleOpenQuiz = (quizToOpen: CourseQuiz) => {
+  const handleOpenQuiz = (quizToOpen: CourseQuiz, mode: 'quiz' | 'answer_key' = 'quiz') => {
     setActiveQuiz(quizToOpen);
+    setQuizInitialMode(mode);
     setIsQuizModalOpen(true);
   };
 
@@ -369,9 +374,14 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                   <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40 uppercase tracking-wider">
                     🏆 Proctored Certification Exam
                   </span>
-                  <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
-                    300-Question Exam Bank
-                  </span>
+                  <button
+                    onClick={() => setIsExamBankOpen(true)}
+                    className="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-indigo-500/20 hover:bg-indigo-500/30 text-indigo-300 hover:text-white border border-indigo-500/40 transition flex items-center space-x-1 cursor-pointer"
+                    title="Click to explore the 300-Question Exam Bank with verified answers"
+                  >
+                    <Key className="w-3 h-3 text-amber-400" />
+                    <span>300-Question Exam Bank & Answers ↗</span>
+                  </button>
                   {examStatus.bestScore !== null ? (
                     <span className="px-2 py-0.5 rounded text-[10px] font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/40">
                       Best Score: {examStatus.bestScore}% ({examStatus.bestGrade || 'Passed'})
@@ -397,7 +407,16 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
               </div>
             </div>
 
-            <div className="shrink-0 w-full md:w-auto">
+            <div className="shrink-0 w-full md:w-auto flex flex-col sm:flex-row items-center gap-2">
+              <button
+                onClick={() => setIsExamBankOpen(true)}
+                className="w-full sm:w-auto px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-amber-300 font-bold text-xs flex items-center justify-center space-x-2 border border-amber-500/30 transition shadow-sm cursor-pointer"
+                title="Browse all 300 certification exam questions with answers"
+              >
+                <Key className="w-4 h-4 text-amber-400" />
+                <span>Exam Bank & Answers</span>
+              </button>
+
               <button
                 onClick={() => {
                   if (track.id === 'python' || track.id === 'sql') {
@@ -406,7 +425,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                     handleOpenQuiz(finalExam);
                   }
                 }}
-                className="w-full md:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-gradient-to-r from-amber-500 to-yellow-600 hover:from-amber-400 hover:to-yellow-500 text-slate-950 font-bold text-xs flex items-center justify-center space-x-2 shadow-lg shadow-amber-500/20 transition cursor-pointer"
               >
                 <Award className="w-4 h-4" />
                 <span>{examStatus.attemptsCount > 0 ? 'Open Certification Exam' : 'Start Final Exam'}</span>
@@ -602,13 +621,24 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
                               </div>
                             </div>
 
-                            <button
-                              onClick={() => handleOpenQuiz(modQuiz)}
-                              className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold shrink-0 transition flex items-center space-x-1.5 shadow-sm"
-                            >
-                              <span>{best ? 'Retake Checkpoint' : 'Take Checkpoint'}</span>
-                              <ArrowRight className="w-3.5 h-3.5" />
-                            </button>
+                            <div className="flex items-center space-x-2 shrink-0">
+                              <button
+                                onClick={() => handleOpenQuiz(modQuiz, 'answer_key')}
+                                className="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-300 border border-amber-500/30 text-xs font-semibold transition flex items-center space-x-1 shadow-sm cursor-pointer"
+                                title="View all questions and verified answer keys for this checkpoint"
+                              >
+                                <Key className="w-3.5 h-3.5 text-amber-400" />
+                                <span>Answers Key</span>
+                              </button>
+
+                              <button
+                                onClick={() => handleOpenQuiz(modQuiz, 'quiz')}
+                                className="px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold transition flex items-center space-x-1.5 shadow-sm cursor-pointer"
+                              >
+                                <span>{best ? 'Retake Checkpoint' : 'Take Checkpoint'}</span>
+                                <ArrowRight className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
                           </div>
                         );
                       })()}
@@ -625,6 +655,7 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
       <CourseQuizModal
         isOpen={isQuizModalOpen}
         quiz={activeQuiz}
+        initialMode={quizInitialMode}
         onClose={() => {
           setIsQuizModalOpen(false);
           setQuizRefreshKey((k) => k + 1);
@@ -646,6 +677,13 @@ export const CourseDetailView: React.FC<CourseDetailViewProps> = ({
           onOpenAuth={onOpenAuth}
         />
       )}
+
+      {/* 300-Question Master Certification Exam Bank Modal */}
+      <ExamBankModal
+        isOpen={isExamBankOpen}
+        onClose={() => setIsExamBankOpen(false)}
+        initialTrack={track.id === 'python' ? 'python' : track.id === 'sql' ? 'sql' : 'all'}
+      />
     </div>
   );
 };
