@@ -3,410 +3,13 @@ import { AuthService } from './authService';
 import { ExamEngine } from './examEngine';
 import { ProgressStorage } from './progressStorage';
 
-const CRM_STUDENTS_STORAGE_KEY = 'devforge_crm_learners_v1';
+const CRM_STUDENTS_STORAGE_KEY = 'devforge_crm_learners_v2';
 
-// Initial realistic learner cohort seed to ensure the CRM has rich data to inspect and manage
-const SEED_LEARNERS: LearnerRecord[] = [
-  {
-    id: 'lrn_aarav_sharma',
-    email: 'aarav.sharma@gmail.com',
-    fullName: 'Aarav Sharma',
-    avatarUrl: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=150&auto=format&fit=crop&q=80',
-    role: 'student',
-    provider: 'google',
-    joinedAt: '2026-10-12T14:20:00Z',
-    lastActiveAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
-    isDemo: true,
-    purchasedCourses: ['python', 'sql'],
-    hasPromoAccess: false,
-    ltvInr: 447, // 199 + 199 + 49
-    subscriptions: [
-      {
-        id: 'sub_py_1',
-        type: 'course_pass',
-        trackId: 'python',
-        trackTitle: 'Python: Beginner to Pro (150 Topics)',
-        amountInr: 199,
-        paymentId: 'pay_P199_py_aarav',
-        purchasedAt: '2026-10-12T14:22:00Z',
-        status: 'active',
-      },
-      {
-        id: 'sub_sql_1',
-        type: 'course_pass',
-        trackId: 'sql',
-        trackTitle: 'SQL: Beginner to Pro (160 Topics)',
-        amountInr: 199,
-        paymentId: 'pay_P199_sql_aarav',
-        purchasedAt: '2026-10-28T09:15:00Z',
-        status: 'active',
-      },
-      {
-        id: 'sub_retake_1',
-        type: 'retake_pass',
-        trackId: 'python',
-        trackTitle: 'Python Retake Exam Pass',
-        amountInr: 49,
-        paymentId: 'pay_P49_retake_aarav',
-        purchasedAt: new Date(Date.now() - 12 * 60 * 60 * 1000).toISOString(),
-        status: 'active',
-        expiresAt: new Date(Date.now() + 60 * 60 * 1000 * 60).toISOString(),
-      },
-    ],
-    xp: 3450,
-    streakDays: 14,
-    tierName: 'Master',
-    completedLessonsCount: { python: 148, sql: 112 },
-    totalLessonsCount: { python: 150, sql: 160 },
-    lastLessonVisited: {
-      trackId: 'python',
-      lessonId: 'py-148-enterprise-analytics',
-      lessonTitle: '148. Enterprise Analytics & Intelligence Engine',
-      visitedAt: new Date(Date.now() - 4 * 60 * 60 * 1000).toISOString(),
-    },
-    examRecords: {
-      python: {
-        trackId: 'python',
-        trackTitle: 'Python Certification Exam',
-        bestScore: 95,
-        bestGrade: 'Distinction (Gold Seal)',
-        attemptsCount: 2,
-        maxAttempts: 3,
-        cooldownEndsAt: null,
-        isRetakePassActive: true,
-        history: [
-          {
-            attemptNumber: 1,
-            completedAt: '2026-11-02T16:30:00Z',
-            scorePercent: 70,
-            grade: 'Honors (Silver Seal)',
-            focusViolations: 0,
-            durationMinutes: 21,
-            integrityStatus: 'clean',
-          },
-          {
-            attemptNumber: 2,
-            completedAt: '2026-11-10T11:45:00Z',
-            scorePercent: 95,
-            grade: 'Distinction (Gold Seal)',
-            focusViolations: 0,
-            durationMinutes: 19,
-            integrityStatus: 'clean',
-          },
-        ],
-      },
-      sql: {
-        trackId: 'sql',
-        trackTitle: 'SQL Certification Exam',
-        bestScore: 85,
-        bestGrade: 'Honors (Silver Seal)',
-        attemptsCount: 1,
-        maxAttempts: 3,
-        cooldownEndsAt: null,
-        isRetakePassActive: false,
-        history: [
-          {
-            attemptNumber: 1,
-            completedAt: '2026-11-12T18:10:00Z',
-            scorePercent: 85,
-            grade: 'Honors (Silver Seal)',
-            focusViolations: 1,
-            durationMinutes: 23,
-            integrityStatus: 'clean',
-          },
-        ],
-      },
-    },
-    certificates: [
-      {
-        credentialId: 'DF-PY-2026-A8K9',
-        trackId: 'python',
-        trackTitle: 'Python: Beginner to Pro',
-        recipientName: 'Aarav Sharma',
-        scorePercent: 95,
-        distinctionTier: 'Distinction',
-        issuedAt: '2026-11-10T11:46:00Z',
-        verificationUrl: '/verify/DF-PY-2026-A8K9',
-      },
-      {
-        credentialId: 'DF-SQL-2026-X4L1',
-        trackId: 'sql',
-        trackTitle: 'SQL: Beginner to Pro',
-        recipientName: 'Aarav Sharma',
-        scorePercent: 85,
-        distinctionTier: 'Honors',
-        issuedAt: '2026-11-12T18:11:00Z',
-        verificationUrl: '/verify/DF-SQL-2026-X4L1',
-      },
-    ],
-    proctoringTelemetry: {
-      totalViolations: 1,
-      speedrunAnomalies: 0,
-      integrityRating: 'Clean',
-    },
-  },
-  {
-    id: 'lrn_priya_patel',
-    email: 'priya.patel.tech@gmail.com',
-    fullName: 'Priya Patel',
-    avatarUrl: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80',
-    role: 'student',
-    provider: 'google',
-    joinedAt: '2026-10-18T11:00:00Z',
-    lastActiveAt: new Date(Date.now() - 18 * 60 * 60 * 1000).toISOString(),
-    isDemo: true,
-    purchasedCourses: ['python'],
-    hasPromoAccess: false,
-    ltvInr: 199,
-    subscriptions: [
-      {
-        id: 'sub_py_priya',
-        type: 'course_pass',
-        trackId: 'python',
-        trackTitle: 'Python: Beginner to Pro (150 Topics)',
-        amountInr: 199,
-        paymentId: 'pay_P199_py_priya',
-        purchasedAt: '2026-10-18T11:05:00Z',
-        status: 'active',
-      },
-    ],
-    xp: 2180,
-    streakDays: 8,
-    tierName: 'Practitioner',
-    completedLessonsCount: { python: 84 },
-    totalLessonsCount: { python: 150 },
-    lastLessonVisited: {
-      trackId: 'python',
-      lessonId: 'py-84-dict-comprehension',
-      lessonTitle: '84. Dictionary Comprehensions',
-      visitedAt: new Date(Date.now() - 18 * 60 * 60 * 1000).toISOString(),
-    },
-    examRecords: {
-      python: {
-        trackId: 'python',
-        trackTitle: 'Python Certification Exam',
-        bestScore: 65,
-        bestGrade: 'Needs Retake',
-        attemptsCount: 1,
-        maxAttempts: 3,
-        cooldownEndsAt: new Date(Date.now() + 3.5 * 60 * 60 * 1000).toISOString(), // Cooldown active!
-        isRetakePassActive: false,
-        history: [
-          {
-            attemptNumber: 1,
-            completedAt: new Date(Date.now() - 2.5 * 60 * 60 * 1000).toISOString(),
-            scorePercent: 65,
-            grade: 'Needs Retake',
-            focusViolations: 0,
-            durationMinutes: 24,
-            integrityStatus: 'clean',
-          },
-        ],
-      },
-    },
-    certificates: [],
-    proctoringTelemetry: {
-      totalViolations: 0,
-      speedrunAnomalies: 0,
-      integrityRating: 'Clean',
-    },
-  },
-  {
-    id: 'lrn_vikram_singh',
-    email: 'vikram.singh99@outlook.com',
-    fullName: 'Vikram Singh',
-    avatarUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80',
-    role: 'student',
-    provider: 'local',
-    joinedAt: '2026-10-25T08:30:00Z',
-    lastActiveAt: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString(), // >7 days (At-Risk!)
-    isDemo: true,
-    purchasedCourses: ['sql'],
-    hasPromoAccess: false,
-    ltvInr: 199,
-    subscriptions: [
-      {
-        id: 'sub_sql_vikram',
-        type: 'course_pass',
-        trackId: 'sql',
-        trackTitle: 'SQL: Beginner to Pro (160 Topics)',
-        amountInr: 199,
-        paymentId: 'pay_P199_sql_vikram',
-        purchasedAt: '2026-10-25T08:35:00Z',
-        status: 'active',
-      },
-    ],
-    xp: 940,
-    streakDays: 0,
-    tierName: 'Foundations',
-    completedLessonsCount: { sql: 38 },
-    totalLessonsCount: { sql: 160 },
-    lastLessonVisited: {
-      trackId: 'sql',
-      lessonId: 'sql-38-multi-column-sorting',
-      lessonTitle: '38. Multi-Column Sorting',
-      visitedAt: new Date(Date.now() - 9 * 24 * 60 * 60 * 1000).toISOString(),
-    },
-    examRecords: {},
-    certificates: [],
-    proctoringTelemetry: {
-      totalViolations: 0,
-      speedrunAnomalies: 0,
-      integrityRating: 'Clean',
-    },
-  },
-  {
-    id: 'lrn_ananya_reddy',
-    email: 'ananya.reddy@stanford.edu',
-    fullName: 'Ananya Reddy',
-    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80',
-    role: 'student',
-    provider: 'google',
-    joinedAt: '2026-11-01T15:10:00Z',
-    lastActiveAt: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
-    isDemo: true,
-    purchasedCourses: ['all'],
-    hasPromoAccess: true,
-    promoNote: 'Stanford Hackathon 1st Place Winner - Free Lifetime Access',
-    ltvInr: 0, // VIP Scholarship
-    subscriptions: [
-      {
-        id: 'sub_vip_ananya',
-        type: 'vip_grant',
-        trackId: 'all',
-        trackTitle: 'All-Access VIP Lifetime Access (Scholarship)',
-        amountInr: 0,
-        purchasedAt: '2026-11-01T15:15:00Z',
-        status: 'active',
-      },
-    ],
-    xp: 4120,
-    streakDays: 16,
-    tierName: 'Master',
-    completedLessonsCount: { python: 150, sql: 140 },
-    totalLessonsCount: { python: 150, sql: 160 },
-    lastLessonVisited: {
-      trackId: 'sql',
-      lessonId: 'sql-140-lead-lag-window',
-      lessonTitle: '140. Inspecting Subsequent Rows with LEAD()',
-      visitedAt: new Date(Date.now() - 1 * 60 * 60 * 1000).toISOString(),
-    },
-    examRecords: {
-      python: {
-        trackId: 'python',
-        trackTitle: 'Python Certification Exam',
-        bestScore: 100,
-        bestGrade: 'Distinction (Gold Seal)',
-        attemptsCount: 1,
-        maxAttempts: 3,
-        cooldownEndsAt: null,
-        isRetakePassActive: false,
-        history: [
-          {
-            attemptNumber: 1,
-            completedAt: '2026-11-08T14:20:00Z',
-            scorePercent: 100,
-            grade: 'Distinction (Gold Seal)',
-            focusViolations: 0,
-            durationMinutes: 16,
-            integrityStatus: 'clean',
-          },
-        ],
-      },
-    },
-    certificates: [
-      {
-        credentialId: 'DF-PY-2026-P001',
-        trackId: 'python',
-        trackTitle: 'Python: Beginner to Pro',
-        recipientName: 'Ananya Reddy',
-        scorePercent: 100,
-        distinctionTier: 'Distinction',
-        issuedAt: '2026-11-08T14:21:00Z',
-        verificationUrl: '/verify/DF-PY-2026-P001',
-      },
-    ],
-    proctoringTelemetry: {
-      totalViolations: 0,
-      speedrunAnomalies: 0,
-      integrityRating: 'Clean',
-    },
-  },
-  {
-    id: 'lrn_rohan_deshmukh',
-    email: 'rohan.deshmukh@gmail.com',
-    fullName: 'Rohan Deshmukh',
-    avatarUrl: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80',
-    role: 'student',
-    provider: 'google',
-    joinedAt: '2026-10-30T10:00:00Z',
-    lastActiveAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-    isDemo: true,
-    purchasedCourses: ['python'],
-    hasPromoAccess: false,
-    ltvInr: 199,
-    subscriptions: [
-      {
-        id: 'sub_py_rohan',
-        type: 'course_pass',
-        trackId: 'python',
-        trackTitle: 'Python: Beginner to Pro (150 Topics)',
-        amountInr: 199,
-        paymentId: 'pay_P199_py_rohan',
-        purchasedAt: '2026-10-30T10:05:00Z',
-        status: 'active',
-      },
-    ],
-    xp: 1540,
-    streakDays: 4,
-    tierName: 'Practitioner',
-    completedLessonsCount: { python: 58 },
-    totalLessonsCount: { python: 150 },
-    lastLessonVisited: {
-      trackId: 'python',
-      lessonId: 'py-58-lambda-functions',
-      lessonTitle: '58. Anonymous One-Liners with lambda',
-      visitedAt: new Date(Date.now() - 2 * 60 * 60 * 1000).toISOString(),
-    },
-    examRecords: {
-      python: {
-        trackId: 'python',
-        trackTitle: 'Python Certification Exam',
-        bestScore: 50,
-        bestGrade: 'Needs Retake',
-        attemptsCount: 1,
-        maxAttempts: 3,
-        cooldownEndsAt: null,
-        isRetakePassActive: false,
-        history: [
-          {
-            attemptNumber: 1,
-            completedAt: '2026-11-14T19:00:00Z',
-            scorePercent: 50,
-            grade: 'Needs Retake',
-            focusViolations: 4, // Proctor violation!
-            durationMinutes: 4, // Very fast!
-            integrityStatus: 'flagged',
-          },
-        ],
-      },
-    },
-    certificates: [],
-    proctoringTelemetry: {
-      totalViolations: 4,
-      speedrunAnomalies: 1,
-      integrityRating: 'Warning',
-    },
-  },
-];
+// 100% genuine registered students only - no mock or fake users
 
 export class StudentCRMService {
   static isDemoHidden(): boolean {
-    try {
-      return localStorage.getItem('devforge_hide_demo_learners_v1') === 'true';
-    } catch {
-      return false;
-    }
+    return true; // Strictly hide and disallow simulated demo profiles
   }
 
   static setHideDemo(hide: boolean) {
@@ -416,38 +19,41 @@ export class StudentCRMService {
   }
 
   static purgeDemoLearners(): LearnerRecord[] {
+    try {
+      localStorage.removeItem('devforge_crm_learners_v1');
+    } catch {}
     this.setHideDemo(true);
     const all = this.getLearners();
-    const clean = all.filter((l) => !l.isDemo);
+    const clean = all.filter((l) => !l.isDemo && !l.id?.startsWith('lrn_aarav') && !l.id?.startsWith('lrn_ananya') && !l.id?.startsWith('lrn_priya') && !l.id?.startsWith('lrn_rohan'));
     this.saveLearners(clean);
     return clean;
   }
 
   static restoreDemoLearners(): LearnerRecord[] {
-    this.setHideDemo(false);
-    const all = this.getLearners();
-    const clean = all.filter((l) => !l.isDemo);
-    const restored = [...clean, ...SEED_LEARNERS];
-    this.saveLearners(restored);
-    return restored;
+    return this.getLearners();
   }
 
   /**
-   * Get all learners (merges real authenticated users + cohort records)
+   * Get all genuine learners (merges real authenticated users + registered cohort records)
    */
   static getLearners(): LearnerRecord[] {
     try {
+      // Clean up legacy mock data storage
+      try {
+        if (localStorage.getItem('devforge_crm_learners_v1')) {
+          localStorage.removeItem('devforge_crm_learners_v1');
+        }
+      } catch {}
+
       let stored: LearnerRecord[] = [];
       const raw = localStorage.getItem(CRM_STUDENTS_STORAGE_KEY);
-      const hideDemo = this.isDemoHidden();
 
       if (raw) {
         stored = JSON.parse(raw);
-        if (hideDemo) {
-          stored = stored.filter((l) => !l.isDemo);
-        }
-      } else if (!hideDemo) {
-        stored = [...SEED_LEARNERS];
+        // Strictly filter out any demo or fake seed profiles
+        stored = stored.filter((l) => !l.isDemo && !l.id?.startsWith('lrn_aarav') && !l.id?.startsWith('lrn_ananya') && !l.id?.startsWith('lrn_priya') && !l.id?.startsWith('lrn_rohan') && !['Aarav Sharma', 'Ananya Reddy', 'Priya Patel', 'Rohan Deshmukh'].includes(l.fullName));
+      } else {
+        stored = [];
         this.saveLearners(stored);
       }
 
@@ -458,6 +64,10 @@ export class StudentCRMService {
         const examStatuses = ExamEngine.getAllStatuses();
 
         const existsIdx = stored.findIndex((l) => l.email.toLowerCase() === currentUser.email.toLowerCase());
+        const realXp = typeof stats.xp === 'number' ? stats.xp : 0;
+        const pyDone = stats.completedLessonIds.filter((id) => id.startsWith('py-')).length;
+        const sqlDone = stats.completedLessonIds.filter((id) => id.startsWith('sql-')).length;
+
         const myRecord: LearnerRecord = {
           id: currentUser.id || `lrn_${currentUser.email.replace(/[^a-z0-9]/gi, '_')}`,
           email: currentUser.email,
@@ -480,12 +90,12 @@ export class StudentCRMService {
             purchasedAt: currentUser.createdAt || new Date().toISOString(),
             status: 'active',
           })),
-          xp: stats.xp || 320,
+          xp: realXp,
           streakDays: stats.streakDays || 1,
-          tierName: stats.xp > 3000 ? 'Master' : stats.xp > 1500 ? 'Practitioner' : 'Foundations',
+          tierName: realXp >= 2500 ? 'Master' : realXp >= 1500 ? 'Specialist' : realXp >= 500 ? 'Practitioner' : 'Foundations',
           completedLessonsCount: {
-            python: stats.completedLessonIds.filter((id) => id.startsWith('py-')).length || 12,
-            sql: stats.completedLessonIds.filter((id) => id.startsWith('sql-')).length || 0,
+            python: pyDone,
+            sql: sqlDone,
           },
           totalLessonsCount: { python: 150, sql: 160 },
           examRecords: Object.entries(examStatuses).reduce((acc, [k, v]) => {
@@ -528,7 +138,7 @@ export class StudentCRMService {
 
       return stored;
     } catch {
-      return [...SEED_LEARNERS];
+      return [];
     }
   }
 

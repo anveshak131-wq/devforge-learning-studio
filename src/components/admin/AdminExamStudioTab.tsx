@@ -36,6 +36,7 @@ import { QuizQuestion, TrackExamStatus } from '../../types/quiz';
 import { PYTHON_EXAM_BANK } from '../../data/quizzes/examBankPython';
 import { SQL_EXAM_BANK } from '../../data/quizzes/examBankSql';
 import { ExamEngine } from '../../services/examEngine';
+import { StudentCRMService } from '../../services/studentCRMService';
 
 interface AdminExamStudioTabProps {
   onShowToast: (text: string, type?: 'success' | 'error' | 'info') => void;
@@ -972,54 +973,56 @@ export const AdminExamStudioTab: React.FC<AdminExamStudioTabProps> = ({ onShowTo
           </div>
 
           <div className="space-y-3">
-            {[
-              {
-                student: 'Rohan Deshmukh (rohan.deshmukh@gmail.com)',
-                exam: 'Python Certification',
-                duration: '4 minutes (Expected: 18-25m)',
-                violations: '4 Tab Switches',
-                status: 'Flagged (Speedrun Anomaly)',
-                badgeColor: 'bg-rose-500/20 text-rose-300 border-rose-500/30',
-                date: 'Nov 14, 2026',
-              },
-              {
-                student: 'Aarav Sharma (aarav.sharma@gmail.com)',
-                exam: 'Python Certification',
-                duration: '19 minutes',
-                violations: '0 Violations',
-                status: 'Clean Audit Verified',
-                badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-                date: 'Nov 10, 2026',
-              },
-              {
-                student: 'Ananya Reddy (ananya.reddy@stanford.edu)',
-                exam: 'Python Certification',
-                duration: '16 minutes',
-                violations: '0 Violations',
-                status: 'Clean Audit Verified',
-                badgeColor: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
-                date: 'Nov 08, 2026',
-              },
-            ].map((entry, idx) => (
-              <div
-                key={idx}
-                className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs"
-              >
-                <div>
-                  <div className="font-bold text-white">{entry.student}</div>
-                  <div className="text-[11px] text-slate-400 mt-0.5">
-                    {entry.exam} • Duration: <span className="font-mono text-indigo-300">{entry.duration}</span> • {entry.violations}
+            {(() => {
+              const learners = StudentCRMService.getLearners();
+              const realAudits = learners.flatMap((l) => {
+                if (!l.examRecords) return [];
+                return Object.values(l.examRecords).flatMap((er) =>
+                  er.history.map((h) => ({
+                    student: `${l.fullName} (${l.email})`,
+                    exam: er.trackTitle,
+                    duration: `${h.durationMinutes || 20} minutes`,
+                    violations: `${h.focusViolations} Violations`,
+                    status: (h.focusViolations > 2 || h.integrityStatus === 'flagged')
+                      ? 'Flagged (Focus Violation)'
+                      : 'Clean Audit Verified',
+                    badgeColor: (h.focusViolations > 2 || h.integrityStatus === 'flagged')
+                      ? 'bg-rose-500/20 text-rose-300 border-rose-500/30'
+                      : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+                    date: h.completedAt ? new Date(h.completedAt).toLocaleDateString() : 'Recent',
+                  }))
+                );
+              });
+
+              if (realAudits.length === 0) {
+                return (
+                  <div className="p-8 text-center rounded-xl bg-slate-900 border border-slate-800 text-slate-400 text-xs">
+                    No exam submissions recorded yet. When genuine students complete exams, their proctoring telemetry will appear here in real-time.
+                  </div>
+                );
+              }
+
+              return realAudits.map((entry, idx) => (
+                <div
+                  key={idx}
+                  className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs"
+                >
+                  <div>
+                    <div className="font-bold text-white">{entry.student}</div>
+                    <div className="text-[11px] text-slate-400 mt-0.5">
+                      {entry.exam} • Duration: <span className="font-mono text-indigo-300">{entry.duration}</span> • {entry.violations}
+                    </div>
+                  </div>
+
+                  <div className="flex items-center space-x-3">
+                    <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold border ${entry.badgeColor}`}>
+                      {entry.status}
+                    </span>
+                    <span className="text-[10px] text-slate-500">{entry.date}</span>
                   </div>
                 </div>
-
-                <div className="flex items-center space-x-3">
-                  <span className={`px-2.5 py-1 rounded-lg text-xs font-mono font-bold border ${entry.badgeColor}`}>
-                    {entry.status}
-                  </span>
-                  <span className="text-[10px] text-slate-500">{entry.date}</span>
-                </div>
-              </div>
-            ))}
+              ));
+            })()}
           </div>
         </div>
       )}

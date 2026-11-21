@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import {
   Trophy,
   Award,
@@ -18,8 +18,11 @@ import {
   Lock,
   ArrowUpRight
 } from 'lucide-react';
-import { LeaderboardPeriod, LeaderboardTrackFilter } from '../../types/leaderboard';
+import { LeaderboardPeriod, LeaderboardTrackFilter, LeaderboardEntry } from '../../types/leaderboard';
 import { LeaderboardService } from '../../services/leaderboardService';
+import { StudentCRMService } from '../../services/studentCRMService';
+import { AuthService } from '../../services/authService';
+import { ProgressStorage } from '../../services/progressStorage';
 
 interface LeaderboardViewProps {
   onNavigate: (view: string, payload?: any) => void;
@@ -29,16 +32,42 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
   const [period, setPeriod] = useState<LeaderboardPeriod>('all_time');
   const [trackFilter, setTrackFilter] = useState<LeaderboardTrackFilter>('all');
   const [isAnonymous, setIsAnonymous] = useState<boolean>(() => LeaderboardService.isAnonymous());
+  const [serverLeaders, setServerLeaders] = useState<LeaderboardEntry[]>([]);
 
-  // Current entries
+  // On mount: purge any legacy mock/fake demo profiles and sync genuine progress to KV
+  useEffect(() => {
+    StudentCRMService.purgeDemoLearners();
+
+    LeaderboardService.fetchServerLeaders().then((leaders) => {
+      if (leaders && leaders.length > 0) {
+        setServerLeaders(leaders);
+      }
+    });
+
+    const currentUser = AuthService.getCurrentUser();
+    const stats = ProgressStorage.getStats();
+    if (currentUser && stats.xp > 0) {
+      fetch('/api/leaderboard', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        credentials: 'include',
+        body: JSON.stringify({
+          xp: stats.xp,
+          streakDays: stats.streakDays || 1,
+        }),
+      }).catch(() => {});
+    }
+  }, []);
+
+  // Current entries (strictly genuine users only)
   const entries = useMemo(() => {
-    return LeaderboardService.getLeaderboard(period, trackFilter);
-  }, [period, trackFilter, isAnonymous]);
+    return LeaderboardService.getLeaderboard(period, trackFilter, serverLeaders);
+  }, [period, trackFilter, isAnonymous, serverLeaders]);
 
   // Standing of current user
   const userStanding = useMemo(() => {
-    return LeaderboardService.getCurrentUserStanding(period, trackFilter);
-  }, [period, trackFilter, isAnonymous, entries]);
+    return LeaderboardService.getCurrentUserStanding(period, trackFilter, serverLeaders);
+  }, [period, trackFilter, isAnonymous, serverLeaders]);
 
   const top1 = entries[0];
   const top2 = entries[1];
@@ -146,13 +175,13 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
         {/* ================================================================= */}
         {/* TOP 3 PODIUM */}
         {/* ================================================================= */}
-        {entries.length >= 3 && (
+        {entries.length > 0 && (
           <div className="pt-8 pb-4">
             <div className="flex items-end justify-center gap-2 sm:gap-6 max-w-2xl mx-auto">
               
               {/* RANK 2: SILVER */}
               {top2 && (
-                <div className="flex-1 flex flex-col items-center">
+                <div className="flex-1 flex flex-col items-center max-w-[180px]">
                   <div className="relative mb-3 flex flex-col items-center">
                     <span className="text-xl mb-1">🥈</span>
                     <img
@@ -188,7 +217,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
 
               {/* RANK 1: GOLD CHAMPION */}
               {top1 && (
-                <div className="flex-1 flex flex-col items-center -mt-6">
+                <div className="flex-1 flex flex-col items-center -mt-6 max-w-[200px]">
                   <div className="relative mb-3 flex flex-col items-center">
                     <span className="text-2xl mb-1 animate-bounce">👑</span>
                     <img
@@ -225,7 +254,7 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
 
               {/* RANK 3: BRONZE */}
               {top3 && (
-                <div className="flex-1 flex flex-col items-center">
+                <div className="flex-1 flex flex-col items-center max-w-[180px]">
                   <div className="relative mb-3 flex flex-col items-center">
                     <span className="text-xl mb-1">🥉</span>
                     <img
@@ -355,11 +384,6 @@ export const LeaderboardView: React.FC<LeaderboardViewProps> = ({ onNavigate }) 
                               {entry.isCurrentUser && (
                                 <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-indigo-500/20 text-indigo-300 border border-indigo-500/40">
                                   YOU
-                                </span>
-                              )}
-                              {entry.isDemo && (
-                                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/40">
-                                  🧪 TEST
                                 </span>
                               )}
                             </div>
