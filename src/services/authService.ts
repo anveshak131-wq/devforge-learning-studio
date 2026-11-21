@@ -6,6 +6,11 @@ const USERS_KEY = 'devforge_auth_users_v1';
 const SESSION_KEY = 'devforge_auth_session_v1';
 const CERTIFICATES_KEY = 'devforge_certificates_v1';
 
+export const SUPERADMIN_EMAILS = [
+  'support.privatetoolbox@gmail.com',
+  'anveshkoganti54@gmail.com',
+] as const;
+
 // Helper for SHA-256 password hashing via Web Crypto API
 async function hashPassword(password: string): Promise<string> {
   const msgUint8 = new TextEncoder().encode(password + '_devforge_salt_2026');
@@ -22,12 +27,23 @@ function generateCredentialId(language: string): string {
 
 export class AuthService {
   /**
+   * Check if a user is one of the two dedicated platform SuperAdmins
+   */
+  static isSuperAdmin(user?: User | null): boolean {
+    const target = user !== undefined ? user : this.getCurrentUser();
+    if (!target || !target.email) return false;
+    const cleanEmail = target.email.trim().toLowerCase();
+    return SUPERADMIN_EMAILS.includes(cleanEmail as any);
+  }
+
+  /**
    * Check if a user is an authorized admin.
    * Admin roles are exclusively verified and granted server-side via Cloudflare Edge KV sessions.
    */
   static isAuthorizedAdmin(user?: User | null): boolean {
     const target = user !== undefined ? user : this.getCurrentUser();
     if (!target) return false;
+    if (this.isSuperAdmin(target)) return true;
     return target.role === 'admin';
   }
 
@@ -201,7 +217,11 @@ export class AuthService {
       const data = localStorage.getItem(SESSION_KEY);
       if (!data) return null;
       const user: User = JSON.parse(data);
-      if (!user.role) user.role = 'student';
+      if (user.email && SUPERADMIN_EMAILS.includes(user.email.trim().toLowerCase() as any)) {
+        user.role = 'admin';
+      } else if (!user.role) {
+        user.role = 'student';
+      }
       return user;
     } catch {
       return null;
@@ -381,13 +401,15 @@ export class AuthService {
       const users = this.getUsers();
       let user: User;
 
+      const isSuperAdminEmail = SUPERADMIN_EMAILS.includes(cleanEmail as any);
+
       if (users[cleanEmail]) {
         user = {
           ...users[cleanEmail].user,
           fullName: cleanName,
           avatarUrl,
           googleId: payload.sub,
-          role: users[cleanEmail].user.role || 'student',
+          role: isSuperAdminEmail ? 'admin' : (users[cleanEmail].user.role || 'student'),
           provider: 'google',
         };
       } else {
@@ -396,11 +418,11 @@ export class AuthService {
           googleId: payload.sub,
           email: cleanEmail,
           fullName: cleanName,
-          role: 'student',
+          role: isSuperAdminEmail ? 'admin' : 'student',
           avatarUrl,
           createdAt: new Date().toISOString(),
           earnedCertificateIds: [],
-          purchasedCourses: [],
+          purchasedCourses: isSuperAdminEmail ? ['all'] : [],
           provider: 'google',
         };
       }

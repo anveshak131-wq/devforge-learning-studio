@@ -19,6 +19,7 @@ import { GuidedProject, UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
 import { ALL_PROJECTS } from '../../data/projects';
 import { PaymentService } from '../../services/paymentService';
+import { AuthService } from '../../services/authService';
 
 interface ProjectsCatalogViewProps {
   userStats: UserStats;
@@ -73,7 +74,10 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
     return true;
   });
 
+  const isSuperAdmin = AuthService.isSuperAdmin(currentUser);
+
   const checkProjectPurchased = (projectId: string): boolean => {
+    if (isSuperAdmin) return true;
     return PaymentService.isProjectPurchased(projectId, currentUser);
   };
 
@@ -131,6 +135,32 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
           >
             Dismiss
           </button>
+        </div>
+      )}
+
+      {/* SuperAdmin Banner */}
+      {isSuperAdmin && (
+        <div className="p-4 rounded-2xl bg-gradient-to-r from-amber-950/60 via-indigo-950/40 to-slate-900 border border-amber-500/40 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shadow-xl">
+          <div className="flex items-center space-x-3">
+            <div className="w-8 h-8 rounded-full bg-amber-500/20 border border-amber-500/40 flex items-center justify-center text-amber-400 shrink-0">
+              <Sparkles className="w-4 h-4" />
+            </div>
+            <div>
+              <div className="font-bold text-amber-300 flex items-center space-x-2">
+                <span>SuperAdmin Access Active</span>
+                <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                  ADMIN PASS
+                </span>
+              </div>
+              <p className="text-[11px] text-slate-300 mt-0.5">
+                All {ALL_PROJECTS.length} projects, all milestone stages, and verified solution keys are fully unlocked for your account.
+              </p>
+            </div>
+          </div>
+          <div className="flex items-center space-x-2 font-mono text-[11px] text-amber-400 bg-slate-950/60 px-3 py-1.5 rounded-xl border border-amber-500/30 shrink-0">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+            <span>{currentUser?.email}</span>
+          </div>
         </div>
       )}
 
@@ -212,7 +242,12 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
 
                   <div className="flex items-center space-x-2">
                     {/* Price / Unlocked Status Badge */}
-                    {isPurchased ? (
+                    {isSuperAdmin ? (
+                      <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-amber-500/15 text-amber-300 border border-amber-500/30 flex items-center gap-1">
+                        <ShieldCheck className="w-3 h-3 text-amber-400" />
+                        Admin Pass
+                      </span>
+                    ) : isPurchased ? (
                       <span className="px-2.5 py-0.5 rounded text-[11px] font-mono font-bold uppercase tracking-wider bg-emerald-500/15 text-emerald-400 border border-emerald-500/30 flex items-center gap-1">
                         <CheckCircle2 className="w-3 h-3" />
                         Unlocked
@@ -253,7 +288,7 @@ export const ProjectsCatalogView: React.FC<ProjectsCatalogViewProps> = ({
                   <div className="space-y-1">
                     {project.milestones.map((m, mIdx) => {
                       const done = userStats.completedMilestoneIds.includes(m.id);
-                      const isMilestoneUnlocked = isPurchased && (mIdx === 0 || userStats.completedMilestoneIds.includes(project.milestones[mIdx - 1].id));
+                      const isMilestoneUnlocked = isSuperAdmin || (isPurchased && (mIdx === 0 || userStats.completedMilestoneIds.includes(project.milestones[mIdx - 1].id)));
 
                       return (
                         <div key={m.id} className="flex items-center space-x-2 text-xs">

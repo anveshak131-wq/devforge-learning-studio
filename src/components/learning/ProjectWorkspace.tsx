@@ -14,7 +14,10 @@ import {
   ShieldCheck,
   Zap,
   AlertCircle,
-  FolderGit2
+  FolderGit2,
+  Key,
+  Copy,
+  Check
 } from 'lucide-react';
 import { GuidedProject, ProjectMilestone, ExecutionResult, TestResultItem, UserStats } from '../../types';
 import { User as UserType } from '../../types/auth';
@@ -25,6 +28,7 @@ import { TestRunner } from '../../services/testRunner';
 import { SqlSession, TableSchema } from '../../services/sqlEngine';
 import { ProgressStorage } from '../../services/progressStorage';
 import { PaymentService } from '../../services/paymentService';
+import { AuthService } from '../../services/authService';
 import { ExportRepoModal } from '../modals/ExportRepoModal';
 
 interface ProjectWorkspaceProps {
@@ -45,17 +49,21 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
   onOpenAuth,
 }) => {
   const [purchaseVersion, setPurchaseVersion] = useState(0);
-  const isPurchased = PaymentService.isProjectPurchased(project.id, currentUser);
+  const isSuperAdmin = AuthService.isSuperAdmin(currentUser);
+  const isPurchased = isSuperAdmin || PaymentService.isProjectPurchased(project.id, currentUser);
   const projectPrice = PaymentService.getProjectPrice(project);
 
   const [purchasingType, setPurchasingType] = useState<'project' | 'bundle' | null>(null);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [isExportModalOpen, setIsExportModalOpen] = useState(false);
+  const [showAdminKey, setShowAdminKey] = useState(false);
+  const [copiedKey, setCopiedKey] = useState(false);
 
   // Helper: milestone unlocked check
-  // Milestone 0 (Milestone 1) is unlocked once purchased.
-  // Subsequent milestones require completion of previous milestone.
+  // For the two platform SuperAdmins, all milestones are unlocked unconditionally.
+  // For learners, Milestone 0 is unlocked once purchased, and subsequent require completion of previous.
   const isMilestoneUnlocked = (idx: number) => {
+    if (isSuperAdmin) return true;
     if (!isPurchased) return false;
     if (idx === 0) return true;
     const prevMilestone = project.milestones[idx - 1];
@@ -120,6 +128,7 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
       setTestResults(null);
       setUnlockedHints(0);
       setGatingNotice(null);
+      setCopiedKey(false);
     }
   }, [milestone?.id]);
 
@@ -421,6 +430,12 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
             <span className="text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/20">
               +{project.xpReward} XP
             </span>
+            {isSuperAdmin && (
+              <span className="hidden sm:inline-flex items-center space-x-1 text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                <ShieldCheck className="w-3 h-3 text-amber-400" />
+                <span>SuperAdmin Pass</span>
+              </span>
+            )}
           </div>
         </div>
 
@@ -465,7 +480,7 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
             );
           })}
 
-          <div className="flex items-center pl-2 border-l border-slate-800">
+          <div className="flex items-center pl-2 border-l border-slate-800 space-x-2">
             <button
               onClick={() => setIsExportModalOpen(true)}
               className="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs font-semibold flex items-center space-x-1.5 border border-slate-700/80 transition shadow-sm"
@@ -474,6 +489,21 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
               <FolderGit2 className="w-3.5 h-3.5 text-indigo-400" />
               <span className="hidden sm:inline">Export Repo</span>
             </button>
+
+            {isSuperAdmin && (
+              <button
+                onClick={() => setShowAdminKey(prev => !prev)}
+                className={`px-2.5 py-1 rounded-lg text-xs font-semibold flex items-center space-x-1.5 border transition shadow-sm ${
+                  showAdminKey
+                    ? 'bg-amber-500 text-slate-950 border-amber-400 font-bold shadow-amber-500/20'
+                    : 'bg-amber-500/15 text-amber-300 border-amber-500/40 hover:bg-amber-500/25'
+                }`}
+                title="SuperAdmin Solution Key: View verified answer key for this milestone"
+              >
+                <Key className="w-3.5 h-3.5" />
+                <span>{showAdminKey ? 'Hide Key' : 'Solution Key'}</span>
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -578,6 +608,62 @@ export const ProjectWorkspace: React.FC<ProjectWorkspaceProps> = ({
                           <strong>Hint {hIdx + 1}:</strong> {hint}
                         </div>
                       ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {/* Admin Solution Key (Restricted strictly to the two platform SuperAdmins) */}
+              {isSuperAdmin && (
+                <div className="pt-3 border-t border-slate-800 space-y-2">
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center space-x-1.5 text-xs font-semibold text-amber-300">
+                      <Key className="w-4 h-4 text-amber-400" />
+                      <span>Admin Solution Key</span>
+                      <span className="px-1.5 py-0.2 rounded text-[9px] font-mono font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                        👑 TWO ADMINS ONLY
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setShowAdminKey(prev => !prev)}
+                      className="text-xs text-amber-400 hover:text-amber-300 underline font-medium flex items-center space-x-1"
+                    >
+                      <span>{showAdminKey ? 'Hide Key' : 'Reveal Key'}</span>
+                    </button>
+                  </div>
+
+                  {showAdminKey && (
+                    <div className="p-3.5 rounded-xl bg-amber-950/40 border border-amber-500/40 space-y-2.5 shadow-xl">
+                      <div className="flex items-center justify-between text-[11px]">
+                        <span className="text-amber-200/90 font-mono font-semibold">
+                          Milestone {milestone.stepNumber} Verified Solution
+                        </span>
+                        <div className="flex items-center space-x-2">
+                          <button
+                            onClick={() => {
+                              navigator.clipboard.writeText(milestone.solutionCode);
+                              setCopiedKey(true);
+                              setTimeout(() => setCopiedKey(false), 2000);
+                            }}
+                            className="px-2 py-1 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-[10px] font-mono font-semibold flex items-center space-x-1 border border-amber-500/30 transition"
+                          >
+                            {copiedKey ? <Check className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                            <span>{copiedKey ? 'Copied' : 'Copy Key'}</span>
+                          </button>
+                          <button
+                            onClick={() => handleCodeChange(milestone.solutionCode)}
+                            className="px-2 py-1 rounded bg-indigo-600 hover:bg-indigo-500 text-white text-[10px] font-semibold flex items-center space-x-1 shadow transition"
+                            title="Replace editor code with this verified solution"
+                          >
+                            <Sparkles className="w-3 h-3 text-amber-300" />
+                            <span>Load Into Editor</span>
+                          </button>
+                        </div>
+                      </div>
+
+                      <pre className="p-3 rounded-lg bg-slate-950 border border-amber-500/30 text-amber-100 font-mono text-[11px] overflow-x-auto max-h-64 select-text whitespace-pre leading-relaxed">
+                        {milestone.solutionCode}
+                      </pre>
                     </div>
                   )}
                 </div>

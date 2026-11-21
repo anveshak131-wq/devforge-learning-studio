@@ -413,7 +413,12 @@ export class PaymentService {
   static isProjectPurchased(projectId: string, currentUser?: User | null): boolean {
     const user = currentUser !== undefined ? currentUser : AuthService.getCurrentUser();
 
-    // SuperAdmins & Admins have full access
+    // Dedicated SuperAdmins (support.privatetoolbox@gmail.com & anveshkoganti54@gmail.com) have unconditional access to all projects
+    if (user && AuthService.isSuperAdmin(user)) {
+      return true;
+    }
+
+    // Admins have full access
     if (user && AuthService.isAuthorizedAdmin(user)) {
       return true;
     }
